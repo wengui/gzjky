@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+/*----------------login_contact---------------*/
+.login_header{width:100%; height:128px; float:left; border-bottom:2px solid #ddd}
+.bg_top_login{background:#454c52; width:100%; height:28px; float:left}
+.login_out{width:1000px; margin:0 auto; font:13px/26px "微软雅黑" ;}
+.login_out li{float:left; height:28px;}
+.login_out li a{color:#dde0e5; text-decoration:none;}
+.login_out li a:hover{color:#fff;}
+.login_wechat{background:url(../images/icon/wechat.jpg)/*tpa=http://www.995120.cn/images/icon/wechat.jpg*/ left center no-repeat; text-align:left; width:70px; padding-left:30px;}
+.login_bolg{background:url(../images/icon/micro_blog.jpg)/*tpa=http://www.995120.cn/images/icon/micro_blog.jpg*/ left center no-repeat; text-align:left; width:70px; padding-left:30px;}
+.login_service_phone{background:url(../images/icon/service_phone.jpg)/*tpa=http://www.995120.cn/images/icon/service_phone.jpg*/ left center no-repeat;text-align:left; width:620px; padding-left:30px; color:#dde0e5;}
+.login_top{width:70px; text-align:right;}
+.login_register{width:80px;text-align:right;}
+
+/*----------------login_logo_menu---------------*/
+.logo_menu{width:100%; height:100px; float:left;background:#fff;}
+.login_menu{width:320px; float:right; font:18px/100px "微软雅黑"}
+.bg_logo{width:1044px; height:100px; margin:0 auto;}
+.login_menu li{width:88px; float:left; margin-left:12px; display:inline; text-align:center; height:100px;}
+.login_menu li a{color:#5a5a5a; text-decoration:none; font-weight:500; display:block;width:88px;}
+.login_menu li a:hover{color:#0ca7a1; text-decoration:none; font-weight:500;border-bottom:2px solid #0ca7a1}
+.login_menu .activation a{color:#0ca7a1; text-decoration:none; font-weight:500;border-bottom:2px solid #0ca7a1}
+
+/*----------------login_banner---------------*/
+.login_banner{background:url(../images/login/banner.jpg)/*tpa=http://www.995120.cn/images/login/banner.jpg*/ top center no-repeat; width:100%; height:608px; float:left;}
+.login_bannner_main{width:1002px; margin:0 auto;}
+.login_bannner_gg{background:url(../images/login/banner_gg.png)/*tpa=http://www.995120.cn/images/login/banner_gg.png*/ left 120px  no-repeat; width:520px; height:608px; float:left}
+
+/*----------------login_main---------------*/
+.bg_login_mian{background:url(../images/login/bg_login.png)/*tpa=http://www.995120.cn/images/login/bg_login.png*/ right 40px no-repeat; width:482px; height:608px; float:left}
+.login_main{width:285px; height:335px; padding:36px 33px 0 31px; float:left; margin:40px 0 0 133px; display:inline;}
+.login_main li{float:left; font-family:"微软雅黑"; }
+.tBlue{width:55px; color:#0ca7a1; font-size:18px;text-align:left; font-weight:500; line-height:24px height:24px;}
+.taRegister{width:230px; color:#aeaeae; font-size:13px; height:18px; text-align:right; padding-top:6px}
+.taRegister a{color:#ff9600; text-decoration:underline;}
+.taRegister a:hover{color:#e78801;}
+.tBlack{width:285px; height:32px; color:#5a5a5a; font-size:13px; line-height:32px; text-align:left}
+.login_input{width:285px; height:35px; text-align:left}
+.lCaptcha_input{width:125px;}
+.lInput{width:273px; height:33px; border:1px solid #a8abae; background:#fff; line-height:33px; padding-left:10px; color:#5a5a5a}
+.yInput{width:113px; height:33px; border:1px solid #a8abae; background:#fff; line-height:33px; padding-left:10px; color:#5a5a5a}
+.login_captcha{width:100px; height:35px; background:url(../images/login/captcha.png)/*tpa=http://www.995120.cn/images/login/captcha.png*/ center center no-repeat;}
+.taBlack{width:60px; font:14px/35px "微软雅黑"}
+.taBlack a{color:#5a5a5a; text-decoration:underline;}
+.login_btn{width:285px; height:45px; padding-top:10px; padding-bottom:10px;}
+.login_btn a{background:url(../images/button/btn_login.png) no-repeat; width:285px; height:45px;text-align:center;font:16px/45px "微软雅黑"; color:#fff; display:block; text-decoration:none;}
+.taBlack2{width:285px; font:14px/35px "微软雅黑"; text-align:left}
+.taBlack2 a{color:#5a5a5a; text-decoration:none;}
+.taBlack2 a:hover{text-decoration:underline;}

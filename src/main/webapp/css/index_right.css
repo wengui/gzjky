@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+/*----------------index_welcome---------------*/
+.index_welcome{width:670px; margin:0 auto; font-family:"微软雅黑"}
+.index_welcome_header{width:670px; height:75px; border-bottom:1px solid #aeaeae; float:left}
+.notice{width:144px; float:left; border-right:1px solid #aeaeae; height:57px; background:url(../images/icon/notice.jpg) left center no-repeat; padding-top:18px;}
+.notice li{width:104px; float:left; padding-left:40px;text-align:left; }
+.tgreen_notice{ font-size:18px; font-weight:500; color:#0ca7a1; height:20px;}
+.tgrey_notice{ font-size:12px;color:#aeaeae; height:14px;}
+.health_tip{width:515px; float:left; height:57px; padding-top:18px;}
+.health_tip li{width:500px; float:left; padding-left:15px;text-align:left; }
+.tgrey_healthTip{color:#aeaeae; font-size:13px; height:20px}
+.tgreen_healthTip{color:#0ca7a1; font-size:14px;height:37px}
+
+/*----------------index_main---------------*/
+.index_welcome_main{width:670px; margin-top:20px; float:left}
+.health_date{width:670px; float:left}
+.health_date li{float:left; text-align:left}
+.tgreen_healthDate{font-size:30px; font-weight:500; color:#0ca7a1; height:40px; line-height:40px; width:670px;}
+.tgrey_healthDate{color:#5a5a5a}
+.bloodPressure_date{background:url(../images/icon/blood_pressure.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px; margin-top:40px;}
+.tblack_date{font:30px/30px Georgia; width:255px; height:32px; color:#5a5a5a;}
+.tgrey_time{font:13px/18px "微软雅黑"; width:255px; color:#aeaeae; height:16px;} 
+.tblack_datemin{font-size:14px;}
+.bloodPressure_alarm{background:url(../images/icon/bpAlarm.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.heartRate_date{background:url(../images/icon/heart.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.heartRate_alarm{background:url(../images/icon/heart_alarm.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.oxygen_date{background:url(../images/icon/oxygen.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.sos_alarm{background:url(../images/icon/sos_alarm.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.tblack_sosdate{font:18px/30px "微软雅黑"; width:255px; height:32px; color:#5a5a5a;}
+
+/*----------------bpDiagnosis_results---------------*/
+.bpDiagnosis_results{width:630px; float:left; background:#f7f7f7; padding:20px; margin-top:30px;}
+.bpDiagnosis_results_text{width:300px; float:left; margin-right:10px; display:inline; font-family:"微软雅黑"; text-align:left;}
+.tgreen_results{font-size:18px; color:#0ca7a1; font-weight:500; height:30px; line-height:40px;}
+.tblack_results{font-size:14px; line-height:24px; color:#5a5a5a; margin-left:10px;}/*-height:24px; margin-bottom:30px;-*/
+.tblack_results a{color:#0ca7a1;}
+.bpDiagnosis_results_trendChart{width:310px; height:228px; float:left}
+
+/*----------------hrDiagnosis_results---------------*/
+.hrDiagnosis_results{width:630px; float:left; padding:20px; margin-top:20px;font-family:"微软雅黑"; border-bottom:1px solid #aeaeae; margin-bottom:30px;}
+.hrDiagnosis_results_text{width:300px; float:left; margin-right:10px; display:inline;  text-align:left;}
+.hrDiagnosis_results_sketchMap{width:320px; float:left}
+.hrDiagnosis_results_sketchMap li{width:320px;float:left;}
+.tblack_sketchMap{font-size:18px; height:30px; line-height:30px; text-align:center color:#5a5a5a; font-weight:500}
+.tgrey_sketchMap{font-size:14px; height:24px; line-height:24px; color:#aeaeae; text-align:center}
+.sketchMap{height:100px; padding-top:20px; text-align:right}
+
+/*----------------health_advice---------------*/
+.health_advice{width:670px; float:left}
+.health_advice li{float:left;text-align:left; font-family:"微软雅黑";}
+.bghealth_advice{width:630px; float:left; background:#f7f7f7; padding:20px; margin-top:10px;}
+.bghealth_advice h1{font:13px/18px "微软雅黑"; color:#5a5a5a}

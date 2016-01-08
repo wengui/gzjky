@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+/*----------------app_download---------------*/
+.download{width:100%; float:left;}
+.app_download{width:100%;float:left;}
+.appDownload_main{width:920px;height:auto; min-height:770px; margin:20px auto; padding:40px; background:#fff; font-family:"微软雅黑";}
+.appDownload_tab{width:920px; float:left}
+.appDownload_tab_menu{width:920px; float:left}
+.appDownload_tab_menu ul{margin:0;padding:0px; height:48px; border-bottom:2px solid #0ca7a1}
+.appDownload_tab_menu li{width:166px; margin-right:2px; float:left; background:#5a5a5a;height:48px; line-height:48px; display:block; cursor:pointer; color:#fff; font-size:18px; font-weight:500;}
+.appDownload_tab_menu li.appDownload_selected{background:#0ca7a1}
+.appDownload_tab_menu img{margin-right:10px;}
+.appDownload_box{width:920px; float:left;}
+.hide{display:none;}
+.app_android_left{width:680px; float:left; }
+.app_information{width:650px; float:left; padding:30px 20px 0 10px; border-bottom:1px dotted #aeaeae}
+.app_icon_android{width:64px; float:left;  height:64px;} 
+.app_information_main{width:436px; height:auto; padding:0 15px; float:left;min-height: 200px;}
+.app_coad{width:120px; float:right;text-align:center;margin-bottom:20px;  }
+.app_information_main li{width:436px; float:left; padding:5px 0; text-align:left; }
+.app_name{font-size:18px; font-weight:500;color:#5a5a5a}
+.app_edition,.app_deployment{font-size:13px;color:#5a5a5a}
+.tgray_appLeft{margin-right:5px;color:#aeaeae}
+.tgray_appRight{margin-left:20px; margin-right:5px; color:#aeaeae}
+.tgray_app{font-size:13px; color:#aeaeae}
+.tblack_app{font-size:13px; color:#5a5a5a; line-height:24px;}
+
+.app_android_left{border-right: 1px solid #aeaeae;padding-right: 5px;}
+.app_android_right{width:200px; float:left; padding:30px 10px 0 20px}
+.app_android_right li{float:left; font-size:13px; text-align:left}
+.download_protocol{color:#aeaeae}
+.tBluev {color: #0099FF;font-size: 16px;margin-right: 5px;}
+.tgrey_informationModify{text-align:right; color:#aeaeae; width:200px;float:left;}
+.tblack_informationModify{color:#5a5a5a;  text-align:left; float:left;}
+.inputMin_informationModify{width:218px; height:28px; border:1px solid #aeaeae; padding-left:10px; font:13px/26px "微软雅黑"; color:#5a5a5a}
+a#register_button{
+	width: 230px;
+	height: 40px;
+	display: block;
+	background: #0ca7a1;
+	text-align: center;
+	color: #fff;
+	line-height: 40px;
+	text-decoration: none;
+	margin-left: 60px;
+}

@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+/*----------------basic_information---------------*/
+.information_modify{width:670px; margin:0 auto; font-family:"微软雅黑"}
+.title_informationModify{float:left;width:670px; font-size:30px; font-weight:500; line-height:40px; height:40px; color:#0ca7a1; text-align:left; margin-top:30px; margin-bottom:20px;}
+.tgrey_title_informationModify{color:#5a5a5a}
+.information_modify_main{float:left;width:670px; font-size:13px;}
+.btn_title_informationModify{background:#f7f7f7; height:40px; line-height:40px; color:#5a5a5a; width:650px; padding:0 10px; float:left}
+.tLeft{text-align:left; width:325px; height:40px;float:left;}
+.tRight{text-align:right; width:325px;height:40px;float:left;}
+.informationModify_main{width:650px; padding:0 10px; float:left; margin:20px 0;}
+.tLeft_informationModify{width:570px;float:left;}
+.tLeft_informationModify li{float:left; padding:5px 0; height:30px; line-height:30px;}
+.tRight_informationModify{width:80px; float:left;}
+.thead_informationModify{ height:30px; margin-top:10px;}
+.thead_informationModify a{color:#0ca7a1;}
+.tblack_informationModify{color:#5a5a5a;width:490px;  text-align:left; float:left;}
+.tgrey_informationModify{text-align:right; color:#aeaeae; width:80px;float:left;}
+.inputMin_informationModify{width:218px; height:28px; border:1px solid #aeaeae; padding-left:10px; font:13px/26px "微软雅黑"; color:#5a5a5a; display:none}
+.inputMax_informationModify{width:543px; height:28px; border:1px solid #aeaeae; padding-left:10px; font:13px/26px "微软雅黑"; color:#5a5a5a; display:none}
+.selectMax_informationModify{width:230px; height:30px; border:1px solid #aeaeae; padding-left:10px; font:13px/26px "微软雅黑"; color:#5a5a5a; display:none}
+.selectMid_informationModify{width:111px; height:30px; border:1px solid #aeaeae; padding-left:10px; font:13px/26px "微软雅黑"; color:#5a5a5a; margin-right:4px;display:none}
+.selectMin_informationModify{width:72px;height:30px; border:1px solid #aeaeae; padding-left:10px;font:13px/26px "微软雅黑"; color:#5a5a5a; margin-right:3px; display:none}
+
+/*----------------detailed_information---------------*/
+.detailed_information_left,.detailed_information_right{width:325px; float:left}
+.detailed_information_left li,.detailed_information_right li{float:left; padding:5px 0; height:30px; line-height:30px;}
+.tgrey_informationDetailed{text-align:right; color:#aeaeae; width:80px; }
+.tblack_informationDetailed{color:#5a5a5a;width:245px; text-align:left;}
+
+/*----------------health_records---------------*/
+.health_records{width:670px; margin:0 auto; font-family:"微软雅黑"}
+.tab_healthRecords{float:left;width:670px; font-size:13px;}
+.tab_healthRecords_menu{width:670px; float:left; margin-bottom:10px;}
+.tab_healthRecords_menu ul{margin:0;padding:0px; height:95px;}
+.tab_healthRecords_menu li{width:220px; margin-right:2px; float:left; background:#f7f7f7;height:93px; line-height:93px; display:block; cursor:pointer; border:1px solid #f7f7f7}
+.tab_healthRecords_menu li.selected_healthRecords{border:1px solid #0ca7a1}
+.tab_healthRecords_box{width:670px; float:left;}
+.hide_healthRecords{display:none;}
+.tgreenPrompt{width:660px; float:left; height:30px; line-height:30px; text-align:left; color:#0ca7a1; background:#f7f7f7; padding-left:10px;}
+.tblackPrompt{color:#5a5a5a}
+.health_examination{width:670px; float:left;}
+.health_examination li{float:left;padding:5px 0; height:30px; line-height:30px; text-align:left}
+.tleft_healthExamination{width:110px; color:#aeaeae}
+.tright_healthExamination{width:560px;}
+.tright_healthExamination_check8{width:128px;color:#5a5a5a}
+.tright_healthExamination_check9{width:140px;color:#5a5a5a}
+.tright_healthExamination_check11{width:164px;color:#5a5a5a}
+.tright_healthExamination input{margin:0 2px 0 0;}
+.tright_healthExamination a{color:#0ca7a1; text-decoration:none;}
+
+/*----------------password_information---------------*/
+.password_informationMain{width:670px; float:left;margin-top:40px;}
+.password_informationMain li{float:left; margin-bottom:10px;}
+.register_input{width:360px; height:44px; text-align:left;}
+.register_input input{width:339px; height:42px; border:1px solid #dbdbdb; padding-left:10px;  background:#f7f7f7; color:#ccc; font:500 18px/42px "微软雅黑";}
+.register_prompt_hidden{width:310px; height:44px;font-size:13px; line-height:18px; color:#aeaeae; text-align:left; display:none}
+.imgWrong_hidden{background:url(../images/icon/wrong.png) left center no-repeat; height:44px;font-size:13px; line-height:44px; color:#aeaeae; text-align:left; width:262px; padding-left:38px; display:none;}
+.btn_reguster{width:670px; height:44px; margin-top:40px;}
+.btn_reguster a{background:url(../images/button/btn_register.png) no-repeat; width:341px; height:49px; display:block; color:#fff; text-decoration:none; font:500 18px/49px "微软雅黑"}
+.tRed{color:#ee3a67; font-size:16px; margin-right:5px;}
