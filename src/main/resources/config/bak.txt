@@ -1,0 +1,46 @@
+	
+		<!-- ========================= RESOURCE DEFINITIONS ========================= -->
+
+	<!-- Local Apache Commons DBCP DataSource that refers to a combined database -->
+	<!-- (see dataAccessContext-jta.xml for an alternative) -->
+	<!-- The placeholders are resolved from jdbc.properties through -->
+	<!-- the PropertyPlaceholderConfigurer in applicationContext.xml -->
+	
+	<bean id="sqlSessionFactory2" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceSlave" />
+		<property name="mapperLocations" value="classpath:cn/teamlab/wg/dao/readdao/*.xml" />
+	</bean>
+			  	
+	<bean id="dataSourceSlave"  
+	    class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">  
+	    <property name="targetDataSource" ref="targetDataSourceSlave"></property>  
+	    <property name="defaultAutoCommit" value="false"></property>  
+	</bean>
+	
+	<bean id="targetDataSourceSlave" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>		
+		<!-- 最大接続数 -->
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<!-- 未使用の接続を保持する最大数 -->
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<!-- 未使用の接続を保持する最小数 -->
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<!-- maxActiveを超える接続要求に対するウェイトタイム ミリ秒（-1でタイム アウトなし） -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<!-- The initial number of connections that are created when the pool -->
+		<property name="initialSize" value="${jdbc.initialSize}"/>
+		<property name="validationQuery" value="${jdbc.validationQuery}" />
+		<property name="defaultReadOnly" value="true"/>
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.teamlab.wg" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory2"/>
+	</bean>
+	
+    <bean id="sqlSessionSlave" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg index="0" ref="sqlSessionFactory2"/>
+    </bean>

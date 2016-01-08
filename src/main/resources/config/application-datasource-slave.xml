@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop.xsd
+			http://www.springframework.org/schema/security
+			http://www.springframework.org/schema/security/spring-security.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/jee
+			http://www.springframework.org/schema/jee/spring-jee.xsd
+			http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx.xsd
+			http://www.springframework.org/schema/util 
+			http://www.springframework.org/schema/util/spring-util.xsd">
+			
+	<!-- ========================= RESOURCE DEFINITIONS ========================= -->
+
+	<!-- Local Apache Commons DBCP DataSource that refers to a combined database -->
+	<!-- (see dataAccessContext-jta.xml for an alternative) -->
+	<!-- The placeholders are resolved from jdbc.properties through -->
+	<!-- the PropertyPlaceholderConfigurer in applicationContext.xml -->
+	
+	<!-- myBatis文件 -->
+	<bean id="sqlSessionFactory2" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceSlave" />
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="mapperLocations" value="classpath:com/gzjky/dao/readdao/*.xml" />
+		<property name="configLocation" value="classpath:/com/gzjky/dao/resource/mybatis-configuration.xml" />
+	</bean>
+			  	
+	<!-- <bean id="dataSourceSlave"  
+	    class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">  
+	    <property name="targetDataSource" ref="targetDataSourceSlave"></property>  
+	    <property name="defaultAutoCommit" value="false"></property>  
+	</bean> -->
+		  
+	<bean id="dataSourceSlave" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>		
+		<!-- 最大接続数 -->
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<!-- 未使用の接続を保持する最大数 -->
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<!-- 未使用の接続を保持する最小数 -->
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<!-- maxActiveを超える接続要求に対するウェイトタイム ミリ秒（-1でタイム アウトなし） -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<!-- The initial number of connections that are created when the pool -->
+		<property name="initialSize" value="${jdbc.initialSize}"/>
+		<property name="validationQuery" value="${jdbc.validationQuery}" />
+		<property name="defaultReadOnly" value="true"/>
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.gzjky.dao.readdao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory2"/>
+	</bean>
+</beans>

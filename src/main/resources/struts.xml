@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<!-- START SNIPPET: xworkSample -->
+<struts>
+
+<!-- 去掉struts標籤的submit換行 -->
+	<package name="admin" extends="struts-default">
+	
+	 	  <interceptors> 
+            <!--用户验证拦截器--> 
+            <interceptor name="authentication" class="com.gzjky.interceptor.AuthenticationInterceptor"/>
+             <!--定义一个带用户验证的拦截器栈--> 
+            <interceptor-stack name="myDefaultStack"> 
+                <interceptor-ref name="defaultStack"/> 
+                <interceptor-ref name="authentication"/> 
+            </interceptor-stack> 
+
+        </interceptors> 
+        
+        <!-- 将自定义拦截器栈设置默认的拦截器 -->
+        <default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
+	
+	<!-- global异常配置：必须将global-results配置到global-exception-mappings之前 -->
+	   <global-results>
+	   	  <result name="sql">/jsp/login.jsp</result>   
+          <result name="null">/jsp/login.jsp</result>   
+          <result name="all">/jsp/login.jsp</result>  
+          <result name="loginError">/jsp/login.jsp</result>
+  	   </global-results>
+		<global-exception-mappings>
+		  <exception-mapping result="all" exception="java.lang.Exception"/>
+          <exception-mapping result="sql" exception="java.sql.SQLException"/>   
+          <exception-mapping result="null" exception="java.lang.NullPointerException"/>  
+   	   </global-exception-mappings>
+	</package>
+	
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.mapper.action.prefix.enabled" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	
+	<!-- 配置了系列常量 -->
+	<!-- 指定struts国际化资源文件的baseName -->  
+    <constant name="struts.custom.i18n.resources" value="messageResource"/>  
+    <!-- 指定每次HTTP请求时是否重新加载国际化资源文件，默认为false,开发阶段设为true -->  
+    <constant name="struts.i18n.reload" value="true"/>  
+	<!-- 配置应用的编码方式 -->	
+	<constant name="struts.i18n.encoding" value="UTF-8"/>	
+	<constant name="struts.devMode" value="true"/>	
+	
+	<!-- 使用模块化管理，把每一个模块的struts。xml都包含进了 -->
+	<!-- 
+	<include file="config/struts/data/struts-base.xml" />
+	<include file="config/struts/data/struts-admin-base.xml" />
+	<include file="config/struts/data/struts-admin.xml" />
+	<include file="config/struts/data/struts-plugin.xml" />
+	 -->
+	<include file="com/gzjky/action/**/*.struts.xml" />
+
+
+</struts>
+
+<!-- END SNIPPET: xworkSample -->
+
