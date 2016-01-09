@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+
+	<package name="struts-base" extends="struts-default">
+
+		<interceptors> 
+            <!--用户验证拦截器--> 
+            <interceptor name="authentication" class="com.gzjky.interceptor.AuthenticationInterceptor"/>
+             <!--定义一个带用户验证的拦截器栈--> 
+            <interceptor-stack name="myDefaultStack"> 
+                <interceptor-ref name="defaultStack"/> 
+                <interceptor-ref name="authentication"/> 
+            </interceptor-stack> 
+
+        </interceptors> 
+        
+        <!-- 将自定义拦截器栈设置默认的拦截器 -->
+        <default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
+	
+	<!-- global异常配置：必须将global-results配置到global-exception-mappings之前 -->
+	   <global-results>
+	   	  <result name="sql">/jsp/login.jsp</result>   
+          <result name="null">/jsp/login.jsp</result>   
+          <result name="all">/jsp/login.jsp</result>  
+          <result name="loginError">/jsp/login.jsp</result>
+  	   </global-results>
+		<global-exception-mappings>
+		  <exception-mapping result="all" exception="java.lang.Exception"/>
+          <exception-mapping result="sql" exception="java.sql.SQLException"/>   
+          <exception-mapping result="null" exception="java.lang.NullPointerException"/>  
+   	   </global-exception-mappings>
+
+	</package>
+
+</struts>

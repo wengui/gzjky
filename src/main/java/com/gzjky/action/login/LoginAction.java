@@ -21,7 +21,9 @@ public class LoginAction extends ActionSupport {
 	
 	private String passwd;
 	
-	
+	/*
+	 * 用户登录系统
+	 */
 	public String login() throws Exception{
 		
 		UserInfo userInfo = userInfoReadMapper.selectByUserName(loginId, loginId, passwd);
@@ -41,6 +43,18 @@ public class LoginAction extends ActionSupport {
 		System.out.println(passwd);
 		return SUCCESS;
 		
+	}
+	
+	/*
+	 * 用户退出系统
+	 */
+	public String layout(){
+		
+		//清除session
+		ActionContext.getContext().getSession().clear();
+		
+		//返回到登录页面
+		return "layout";
 	}
 	
 

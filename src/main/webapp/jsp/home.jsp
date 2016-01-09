@@ -407,7 +407,7 @@ a.title_info{color:#0ca7a1;text-decoration: none;}
            <li class="index_username">欢迎您，test1</li>
            <li class="index_signout">
                <a href="javascript:void(0)" onclick="logout();" title="安全退出">安全退出</a>
-               <form action="/h/level.helowin" id="logoutForm" name="logoutForm" method="post">
+               <form action="/gzjky/login/layout.do" id="logoutForm" name="logoutForm" method="post">
                </form>
            </li> 
           </ul>
