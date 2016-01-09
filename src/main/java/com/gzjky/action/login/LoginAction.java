@@ -7,6 +7,11 @@ import com.gzjky.dao.readdao.UserInfoReadMapper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 用户登录
+ * @author yuting
+ *
+ */
 public class LoginAction extends ActionSupport {
 
 	/**
