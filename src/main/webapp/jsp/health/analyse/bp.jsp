@@ -40,19 +40,6 @@
 	}
 </style>
 <script type="text/javascript">
-var deviceVersionMap = {};
-
-	deviceVersionMap["606"] = "无线网络生理参数监测仪TE8000Y";
-
-	deviceVersionMap["605"] = "无线网络生理参数监测仪TE8000Y2";
-
-	deviceVersionMap["301"] = "腕式监测呼救定位器TE8000Y3";
-
-	deviceVersionMap["108"] = "无线电子测量血压计TE-7000Y";
-
-	deviceVersionMap["801"] = "十二导心电采集仪TE8000Y4";
-
-	deviceVersionMap["502"] = "心电蓝牙TE9100Y";
 
  var startDate="";
   var endDate="";
@@ -83,7 +70,7 @@ var deviceVersionMap = {};
 	  if(pointerStart<0) pointerStart = 0;
 
 	  var requestUrl = "";
-	 var para = "startDate=" + startDate + "&endDate=" + endDate //+ "&dateType="+dateType
+	 var para = "startDate=" + startDate + "&endDate=" + endDate + "&bloodType="+bloodType
 		+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
 	 if(bloodType == 0){
 		 requestUrl = "/gzjky/historyAction/queryBloodPressureList.do";
@@ -98,7 +85,7 @@ var deviceVersionMap = {};
 			url: requestUrl,
 			async:true,
 			data:para,
-			dataType:"text",
+			dataType:"json",
 			type:"POST",
 			complete:function(){
 			    hideScreenProtectDiv(1);
@@ -109,12 +96,12 @@ var deviceVersionMap = {};
 			},success:function(response){
 			    var modelMap = response.modelMap;
 			    if(bloodType == 0){
-			    	recordList = modelMap.bloodPressureList;
+			    	recordList = response.outBeanList;
 			    }else{
 			    	recordList = modelMap.bloodAlertList;
 			    }
 				
-				$.fn.page.settings.count = modelMap.recordTotal;
+				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
 			}
 		});
@@ -143,14 +130,14 @@ var deviceVersionMap = {};
 	  	$("table.bPhistory_table tr:even").addClass("even");
 	  	$("table.bPhistory_table tr:odd").addClass("odd");
   	}
-  var columnArray = ["device_serial_id","device_version","take_time","pressure_value"];
+  var columnArray = ["deviceSerialId","deviceVersion","takeTime","pressure_value"];
   function addrowtotable(table,index){
 	 var rowcount=table.rows.length;
 	 var tr=table.insertRow(rowcount);
 	 var i = 0;
-	 recordList[index].take_time = recordList[index].take_time.substring(0,19);
-	 if(recordList[index].take_time=='1970-01-01 00:00:00')
-	 	recordList[index].take_time=recordList[index].upload_time;
+	 recordList[index].takeTime = recordList[index].takeTime.substring(0,19);
+	 if(recordList[index].takeTime=='1970-01-01 00:00:00')
+	 	recordList[index].takeTime=recordList[index].upload_time;
 	 //收缩压
 	 var shrink = recordList[index].shrink;
 	 //舒张压
@@ -167,14 +154,14 @@ var deviceVersionMap = {};
 	 for(var k=0;k<columnArray.length;k++){
 		  var td = tr.insertCell(i);
 		  //td.style="word-break:break-all;";
-		  if(columnArray[k] == "device_serial_id" || columnArray[k] == "device_version"){
+		  if(columnArray[k] == "deviceSerialId" || columnArray[k] == "deviceVersion"){
 			  if(recordList[index][columnArray[k]] == "" || recordList[index][columnArray[k]] == null || recordList[index][columnArray[k]]=="null"){
 				  td.innerHTML = "--";
 			  }else{
-				  if(columnArray[k] == "device_serial_id"){
+				  if(columnArray[k] == "deviceSerialId"){
 				  	  td.innerHTML = recordList[index][columnArray[k]];
 				  }else{
-					  td.innerHTML = deviceVersionMap[recordList[index][columnArray[k]]];
+					  td.innerHTML = recordList[index][columnArray[k]];
 				  }
 			  }
 		  }else{
@@ -184,10 +171,10 @@ var deviceVersionMap = {};
 	}
 	  if(bloodType == 0){
 		  var td = tr.insertCell(i);
-		  if(recordList[index]["heart_rate"] == 0 || recordList[index]["heart_rate"] == "" || recordList[index]["heart_rate"] == null || recordList[index]["heart_rate"]=="null"){
+		  if(recordList[index]["pressureValue"] == 0 || recordList[index]["pressureValue"] == "" || recordList[index]["pressureValue"] == null || recordList[index]["pressureValue"]=="null"){
 			  td.innerHTML = "--";
 		  }else{
-			  td.innerHTML = recordList[index]["heart_rate"];
+			  td.innerHTML = recordList[index]["pressureValue"];
 		  }
 		  i++;
 	  }
@@ -274,7 +261,7 @@ var deviceVersionMap = {};
   function show_bp_remark(i){
   		$("#bp_id").val(recordList[i].id);	
   		$("#feedback").val(recordList[i].feedback);
-  		$("#bp_time").html(recordList[i].take_time.substring(0,19));
+  		$("#bp_time").html(recordList[i].takeTime.substring(0,19));
 		$("#bp_value").html(recordList[i].shrink+"/"+recordList[i].diastole+"mmHg");
   		$("#bpRemarkWindow").draggable({
 			disabled : true

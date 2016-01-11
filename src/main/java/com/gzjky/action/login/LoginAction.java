@@ -43,9 +43,6 @@ public class LoginAction extends ActionSupport {
 		{
 			return INPUT;
 		}
-		
-		System.out.println(loginId);
-		System.out.println(passwd);
 		return SUCCESS;
 		
 	}
