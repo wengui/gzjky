@@ -57,8 +57,11 @@ public class QueryBloodPressureListAction extends ActionSupport{
 				// 告警的场合
 				queryBloodPressureInputBean.setBloodType(CodeConstant.ECG_TYPE_STATUS);
 			}
-			queryBloodPressureInputBean.setPointerStart(NumberUtils.toInt(request.getParameter("pointerStart")));
-			queryBloodPressureInputBean.setPageSize(NumberUtils.toInt(request.getParameter("pageSize")));
+			int pointerStart = NumberUtils.toInt(request.getParameter("pointerStart"));
+			int pageSize = NumberUtils.toInt(request.getParameter("pageSize"));
+			
+			queryBloodPressureInputBean.setPageMax((pointerStart + 1) * pageSize);
+			queryBloodPressureInputBean.setPageMin(pointerStart * pageSize);
 			
 	        // 从数据库中取得需要的对象
 	        bloodPressureList = bloodPressureHistoryReadMapper.selectBloodPressureByCondition(queryBloodPressureInputBean);
