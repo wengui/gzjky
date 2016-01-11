@@ -104,9 +104,6 @@
    
 </script>
 
-<style type="text/css">
-	.bg_logo{background:url(/images/icon/logo.jpg) 22px center no-repeat;}
-</style>
 </head>
 
 <body>
@@ -154,7 +151,7 @@
               <li class="field_text" style="width: 285px"><input type="text" id="login_id" name="loginId" class="lInput" value="用户名/手机/邮箱" onclick="checkLoginInput('onclick')" onblur="checkLoginInput('onblur')"/></li>
               <li class="tBlack">密码</li>
               <li class="field_text" style="width: 285px"><input type="password" id="passwd" name="passwd" class="lInput" /></li>
-              <li class="tBlack" id="errMessageArea" style="color:#ff9600;">长时间无操作，请重新登录！</li>
+              <li class="tBlack" id="errMessageArea" style="color:#ff9600;"></li>
               <li class="tBlack" style="display:none;">验证码</li>
               <li class="lCaptcha_input" style="display:none;"><input type="text" class="yInput" /></li>
               <li class="login_captcha" style="display:none;"></li>

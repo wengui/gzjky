@@ -1279,7 +1279,7 @@ input[type="password"]:focus{
 /* Tabs */
 /*-----------------------------------*/
 
-.tabs_framed{margin-bottom:50px;}
+.tabs_framed{margin-bottom:0px;}
 .sidebar .tabs_framed{margin-bottom:30px;}
 
 /*-----------------------------------*/
@@ -1467,13 +1467,14 @@ input[type="password"]:focus{
 .tabs_framed.styled .tabs li a{
     color:#837963;
     text-shadow: none;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 400;
+    width: 160px;
 }
 .tabs_framed.styled .tabs li.active a{line-height: 46px;}
 
 .tabs_framed.styled .tab-content {
-    padding: 16px 22px 12px;
+    padding: 1px 1px 1px;
     border-top: 1px solid #EEE;
     -webkit-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.16);
     -moz-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.16);

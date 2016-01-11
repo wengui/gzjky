@@ -20,9 +20,17 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common/balance.js'/>" type="text/javascript"></script>
 
-<style type="text/css">
-a.title_info{color:#0ca7a1;text-decoration: none;}
-</style>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
+
 <script type="text/JavaScript">
 
 	function reinitIframe() {
@@ -430,17 +438,15 @@ a.title_info{color:#0ca7a1;text-decoration: none;}
     <!--indexMenu end-->
     <!--indexMenu_secondary start-->
     <div class="indexMenu_secondary">
-      <div class="indexMenu_secondary_main">
-        <ul id="helathMenuNav">
-          <li id="hMenu0" onclick="activeHelathMenu(0)" class="indexMenu_secondary_activation"><a href="<c:url value='/jsp/health/welcome.jsp'/>" target="mainFrame" title="欢迎页">首页</a></li>
-          <li id="hMenu1" onclick="activeHelathMenu(1)"><a href="../jsp/health/analyse/ianalysis.jsp" target="mainFrame" title="健康分析">健康分析</a></li>
-          
-          <li id="hMenu2" onclick="activeHelathMenu(2)"><a href="../jsp/health/lbs/location.jsp" target="mainFrame" title="终端定位">终端定位</a></li>
-          
-          <li id="hMenu3" onclick="activeHelathMenu(3)"><a href="../jsp/health/healthrecord/healthrecords.jsp" target="mainFrame" title="健康档案">健康档案</a></li>
-          <li id="hMenu4" onclick="activeHelathMenu(4)"><a href="../jsp/health/equipment/equipment.jsp" target="mainFrame" title="我的设备">我的设备</a></li>
-          <li id="hMenu5" onclick="activeHelathMenu(5)"><a href="../jsp/health/account/account.jsp" target="mainFrame" title="账户/套餐">账户/套餐</a></li>
-          <li id="hMenu6" onclick="activeHelathMenu(6)"><a href="../jsp/health/doctor_report/reportlist.jsp" target="mainFrame" title="月报">医生报告</a></li>
+      <div >
+        <ul id="helathMenuNav" class="dropdown clearfix gradient indexMenu_secondary_main">
+          <li id="hMenu0" onclick="activeHelathMenu(0)" class="menu-level-0 indexMenu_secondary_activation "><a href="<c:url value='/jsp/health/welcome.jsp'/>" target="mainFrame" title="欢迎页">首页</a></li>
+          <li id="hMenu1" onclick="activeHelathMenu(1)" class="menu-level-0"><a href="../jsp/health/analyse/ianalysis.jsp" target="mainFrame" title="健康分析">健康分析</a></li>
+          <li id="hMenu2" onclick="activeHelathMenu(2)" class="menu-level-0"><a href="../jsp/health/lbs/location.jsp" target="mainFrame" title="终端定位">终端定位</a></li>
+          <li id="hMenu3" onclick="activeHelathMenu(3)" class="menu-level-0"><a href="../jsp/health/healthrecord/healthrecords.jsp" target="mainFrame" title="健康档案">健康档案</a></li>
+          <li id="hMenu4" onclick="activeHelathMenu(4)" class="menu-level-0"><a href="../jsp/health/equipment/equipment.jsp" target="mainFrame" title="我的设备">我的设备</a></li>
+          <li id="hMenu5" onclick="activeHelathMenu(5)" class="menu-level-0"><a href="../jsp/health/account/account.jsp" target="mainFrame" title="账户/套餐">账户/套餐</a></li>
+          <li id="hMenu6" onclick="activeHelathMenu(6)" class="menu-level-0"><a href="../jsp/health/doctor_report/reportlist.jsp" target="mainFrame" title="医生报告">医生报告</a></li>
         </ul> 
       </div>
     </div>
@@ -464,11 +470,10 @@ a.title_info{color:#0ca7a1;text-decoration: none;}
             <li class="wMedical"><a onclick="goToHealthRecord(this)" style="cursor: pointer;" target="mainFrame" title="健康档案">健康档案</a></li>
             <li class="wHome"><a onclick="goToAccount(this)" style="cursor: pointer;" target="mainFrame" title="账户/套餐">账户/套餐</a></li>
             <li class="wBalance">我的余额：<span class="wMoney" id="memberBalanceArea"></span>
-            	<a title="充值" class="title_info" style="margin-left:20px;" onclick="goToRecharge(this)" target="mainFrame">立即充值</a></li>
+            	<span class="title_info"><a title="充值" class="title_info" onclick="goToRecharge(this)" target="mainFrame">立即充值</a></span>
+            </li>
             <li class="tGray wBalance" id="familyMember">我的家庭成员：
-            	
-             	
-             </li>
+            </li>
             <li class="tGray" id="device">我的设备：
             	<ul id='deviceListUL'>
             	    
@@ -491,15 +496,6 @@ a.title_info{color:#0ca7a1;text-decoration: none;}
     </div>
     </div>
     <!--index_health_main start-->  
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 <style>
 .tGray_bottom a{text-decoration: none; color: #ffffff;}

@@ -10,6 +10,17 @@
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
+
 <script type="text/javascript">
 var tabIndex = "0";
 var tabMap = {};
@@ -80,6 +91,26 @@ window.setInterval("sonIframeResize()", 500);
 </head>
 
 <body>
+<div class="example-item alt-color gradient">
+<div class="tabs_framed styled" >
+    <div class="inner">
+        <ul class="tabs clearfix tab_id1 bookmarks2 active_bookmark1">
+            <li class="first gradient active"><a href="#bp" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">血压</a></li>
+            <li class="last gradient"><a href="#ecg" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">心电</a></li>
+        </ul>
+
+        <div class="tab-content clearfix gradient">
+            <div class="tab-pane fade gradient active in" id="bp">
+              	<iframe id="bp_iframe" frameborder="0" width="100%"  scrolling="no"  onload="sonIframeResize();"></iframe>
+            </div>
+            <div class="tab-pane fade gradient" id="ecg">
+                <iframe id ="ecg_iframe"  frameborder="0" width="100%"  scrolling="no" onload="sonIframeResize();"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--
  <div class="index_tab">   
    <div class="tab_menu">
       <ul>
@@ -96,5 +127,6 @@ window.setInterval("sonIframeResize()", 500);
       </div>
    </div>
  </div>
+  -->
 </body>
 </html>

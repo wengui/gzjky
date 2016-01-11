@@ -16,11 +16,10 @@
 /*----------------login_logo_menu---------------*/
 .logo_menu{width:100%; height:100px; float:left;background:#fff;}
 .login_menu{width:320px; float:right; font:18px/100px "微软雅黑"}
-.bg_logo{width:1044px; height:100px; margin:0 auto;}
 .login_menu li{width:88px; float:left; margin-left:12px; display:inline; text-align:center; height:100px;}
 .login_menu li a{color:#5a5a5a; text-decoration:none; font-weight:500; display:block;width:88px;}
-.login_menu li a:hover{color:#0ca7a1; text-decoration:none; font-weight:500;border-bottom:2px solid #0ca7a1}
-.login_menu .activation a{color:#0ca7a1; text-decoration:none; font-weight:500;border-bottom:2px solid #0ca7a1}
+.login_menu li a:hover{color:#71A944; text-decoration:none; font-weight:500;border-bottom:2px solid #71A944}
+.login_menu .activation a{color:#71A944; text-decoration:none; font-weight:500;border-bottom:2px solid #71A944}
 
 /*----------------login_banner---------------*/
 .login_banner{background:url(../images/login/banner.jpg)/*tpa=http://www.995120.cn/images/login/banner.jpg*/ top center no-repeat; width:100%; height:608px; float:left;}
@@ -31,8 +30,8 @@
 .bg_login_mian{background:url(../images/login/bg_login.png)/*tpa=http://www.995120.cn/images/login/bg_login.png*/ right 40px no-repeat; width:482px; height:608px; float:left}
 .login_main{width:285px; height:335px; padding:36px 33px 0 31px; float:left; margin:40px 0 0 133px; display:inline;}
 .login_main li{float:left; font-family:"微软雅黑"; }
-.tBlue{width:55px; color:#0ca7a1; font-size:18px;text-align:left; font-weight:500; line-height:24px height:24px;}
-.taRegister{width:230px; color:#aeaeae; font-size:13px; height:18px; text-align:right; padding-top:6px}
+.tBlue{width:50px; color:#71A944; font-size:18px;text-align:left; font-weight:500; line-height:24px height:24px;}
+.taRegister{width:160px; color:#aeaeae; font-size:13px; height:18px; text-align:right; padding-top:6px; float:left;}
 .taRegister a{color:#ff9600; text-decoration:underline;}
 .taRegister a:hover{color:#e78801;}
 .tBlack{width:285px; height:32px; color:#5a5a5a; font-size:13px; line-height:32px; text-align:left}
