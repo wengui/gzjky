@@ -71,6 +71,7 @@ var deviceVersionMap = {};
 	  var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
 	  if(pointerStart<0) pointerStart = 0;
 
+	  var recordList = [];
 	  var requestUrl = "";
 	 var para = "startDate=" + startDate + "&endDate=" + endDate //+ "&dateType="+dateType
 		+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
@@ -87,7 +88,7 @@ var deviceVersionMap = {};
 			url: requestUrl,
 			async:true,
 			data:para,
-			dataType:"text",
+			dataType:"json",
 			type:"POST",
 			complete:function(){
 			    hideScreenProtectDiv(1);
@@ -98,12 +99,12 @@ var deviceVersionMap = {};
 			},success:function(response){
 			    var modelMap = response.modelMap;
 			    if(bloodType == 0){
-			    	recordList = modelMap.bloodPressureList;
+			    	recordList = response.outBeanList;
 			    }else{
 			    	recordList = modelMap.bloodAlertList;
 			    }
 				
-				$.fn.page.settings.count = modelMap.recordTotal;
+				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
 			}
 		});
