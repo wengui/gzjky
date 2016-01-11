@@ -75,9 +75,9 @@ var deviceVersionMap = {};
 	 var para = "startDate=" + startDate + "&endDate=" + endDate //+ "&dateType="+dateType
 		+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
 	 if(bloodType == 0){
-		 requestUrl = "/historyAction/queryBloodPressureList.action";
+		 requestUrl = "/gzjky/historyAction/queryBloodPressureList.do";
 	  }else if(bloodType == 1){
-		  requestUrl = "/historyAction/queryBloodAlertList.action";
+		  requestUrl = "/gzjky/historyAction/queryBloodAlertList.do";
 	  }
       
       
@@ -87,7 +87,7 @@ var deviceVersionMap = {};
 			url: requestUrl,
 			async:true,
 			data:para,
-			dataType:"json",
+			dataType:"text",
 			type:"POST",
 			complete:function(){
 			    hideScreenProtectDiv(1);
@@ -279,7 +279,7 @@ var deviceVersionMap = {};
   	var requestUrl = "";
 	 var para = "id=" + id+"&feedback="+feedback;
 	 if(bloodType == 0){
-		 requestUrl = "/historyAction/addBloodPressureFeedback.action";
+		 requestUrl = "/historyAction/addBloodPressureFeedback.do";
 	  }else if(bloodType == 1){
 		 requestUrl = "/historyAction/addBloodAlertFeedback.action";
 	  }

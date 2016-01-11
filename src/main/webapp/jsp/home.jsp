@@ -432,7 +432,7 @@ a.title_info{color:#0ca7a1;text-decoration: none;}
     <div class="indexMenu_secondary">
       <div class="indexMenu_secondary_main">
         <ul id="helathMenuNav">
-          <li id="hMenu0" onclick="activeHelathMenu(0)" class="indexMenu_secondary_activation"><a href="../jsp/health/welcome.jsp" target="mainFrame" title="欢迎页">首页</a></li>
+          <li id="hMenu0" onclick="activeHelathMenu(0)" class="indexMenu_secondary_activation"><a href="<c:url value='/jsp/health/welcome.jsp'/>" target="mainFrame" title="欢迎页">首页</a></li>
           <li id="hMenu1" onclick="activeHelathMenu(1)"><a href="../jsp/health/analyse/ianalysis.jsp" target="mainFrame" title="健康分析">健康分析</a></li>
           
           <li id="hMenu2" onclick="activeHelathMenu(2)"><a href="../jsp/health/lbs/location.jsp" target="mainFrame" title="终端定位">终端定位</a></li>
@@ -485,7 +485,7 @@ a.title_info{color:#0ca7a1;text-decoration: none;}
       <!--index_health_left end-->
       <!--index_health_right start-->
       <div class="index_health_right">
-        <iframe src="./health/welcome.jsp" scrolling="no" frameborder="0" name="mainFrame" id="mainFrame" onload="reinitIframe();"></iframe>
+        <iframe src="<c:url value='/jsp/health/welcome.jsp'/>" scrolling="no" frameborder="0" name="mainFrame" id="mainFrame" onload="reinitIframe();"></iframe>
       </div>
       <!--index_health_right end-->
     </div>
