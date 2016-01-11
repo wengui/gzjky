@@ -15,15 +15,15 @@
 <link rel="stylesheet" href="<c:url value='/css/popup.css'/>" type="text/css" />
 
 <!-- main JS libs -->
-<script src="<c:url value='js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='js/libs/jquery-ui.min.js'/>"></script>
-<script src="<c:url value='js/libs/bootstrap.min.js'/>"></script>
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
 <!-- Style CSS -->
-<link href="<c:url value='css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='style.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
 <!-- scripts -->
-<script src="js/general.js"></script>
+<script src="<c:url value='/js/general.js'/>"></script>
 
 
 <script type="text/javascript" src="<c:url value='/js/jquery/jquery-1.4.2.min.js'/>"></script>

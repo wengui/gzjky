@@ -7,9 +7,9 @@
 .login_out li{float:left; height:28px;}
 .login_out li a{color:#dde0e5; text-decoration:none;}
 .login_out li a:hover{color:#fff;}
-.login_wechat{background:url(../images/icon/wechat.jpg)/*tpa=http://www.995120.cn/images/icon/wechat.jpg*/ left center no-repeat; text-align:left; width:70px; padding-left:30px;}
-.login_bolg{background:url(../images/icon/micro_blog.jpg)/*tpa=http://www.995120.cn/images/icon/micro_blog.jpg*/ left center no-repeat; text-align:left; width:70px; padding-left:30px;}
-.login_service_phone{background:url(../images/icon/service_phone.jpg)/*tpa=http://www.995120.cn/images/icon/service_phone.jpg*/ left center no-repeat;text-align:left; width:620px; padding-left:30px; color:#dde0e5;}
+.login_wechat{background:url(../images/icon/wechat.jpg)/*tpa=http://www.995120.cn/images/icon/wechat.jpg*/ left center no-repeat; text-align:left; width:95px; padding-left:30px;}
+.login_bolg{background:url(../images/icon/micro_blog.jpg)/*tpa=http://www.995120.cn/images/icon/micro_blog.jpg*/ left center no-repeat; text-align:left; width:95px; padding-left:30px;}
+.login_service_phone{background:url(../images/icon/service_phone.jpg)/*tpa=http://www.995120.cn/images/icon/service_phone.jpg*/ left center no-repeat;text-align:left; width:630px; padding-left:30px; color:#dde0e5;}
 .login_top{width:70px; text-align:right;}
 .login_register{width:80px;text-align:right;}
 
