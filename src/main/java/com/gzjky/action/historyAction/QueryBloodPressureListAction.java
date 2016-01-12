@@ -64,30 +64,31 @@ public class QueryBloodPressureListAction extends ActionSupport{
 	        // 从数据库中取得需要的对象
 	        bloodPressureList = bloodPressureHistoryReadMapper.selectBloodPressureByCondition(queryBloodPressureInputBean);
 	        
+	        ModelMap modelMap = new ModelMap();
+	        
 	        // 取得结果不为空的场合
 			if (!VaildateUtils.isEmptyList(bloodPressureList)) {
-				ModelMap modelMap = new ModelMap();
 
 				modelMap.setOutBeanList(bloodPressureList);
 
 				modelMap.setRecordTotal(bloodPressureList.get(0).getTotal());
-
-				// 将java对象转成json对象
-				HttpServletResponse response = ServletActionContext.getResponse();
-				// 以下代码从JSON.java中拷过来的
-				response.setContentType("text/html");
-				PrintWriter out;
-				out = response.getWriter();
-
-				// 将java对象转成json对象
-				JSONObject jsonObject = JSONObject.fromObject(modelMap);// 将list
-																		// 转换为json
-																		// 数组
-				out.print(jsonObject);
-				out.flush();
-				out.close();
-
 			}
+			
+
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out;
+			out = response.getWriter();
+
+			// 将java对象转成json对象
+			JSONObject jsonObject = JSONObject.fromObject(modelMap);// 将list
+																	// 转换为json
+																	// 数组
+			out.print(jsonObject);
+			out.flush();
+			out.close();
 			
 		} catch (Exception e) {
 			return null;
