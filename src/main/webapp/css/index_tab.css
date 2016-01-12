@@ -2,10 +2,10 @@
 
 /*----------------index_tab---------------*/
 .index_tab{width:670px; margin:0 auto; font-family:"微软雅黑"}
-.tab_menu{width:670px; float:left}
-.tab_menu ul{margin:0;padding:0px; height:48px; border-bottom:3px solid #0ca7a1}
-.tab_menu li{width:166px; margin-right:2px; float:left; background:#5a5a5a;height:48px; line-height:48px; display:block; cursor:pointer; color:#fff; font-size:18px; font-weight:500;}
-.tab_menu li.selected{background:#0ca7a1}
+.tab_menu{}
+.tab_menu ul{}
+.tab_menu li{}
+.tab_menu li.selected{}
 .tab_box{width:670px; float:left;}
 .hide{display:none;}
 

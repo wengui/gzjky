@@ -17,6 +17,16 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
+
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
+
 <script type="text/javascript">
 var deviceVersionMap = {};
 	deviceVersionMap["606"] = "无线网络生理参数监测仪TE8000Y";
@@ -228,13 +238,13 @@ function showEcgDetail(obj,index){
 </script>
 </head>
 
-<body onload="startInit()">
+<body onload="startInit()" style="background:#e8e3d7">
 <!--bp_history start-->
 <div class="bp_history">
   <div class="title_BPhistory">
     <ul>
       <li class="tgreen_title_BPhistory"><span class="tgrey_title_BPhistory"  id="ecg_title">心电</span><span id="sub_title">历史</span></li>
-      <li class="select_BPhistory"><select onchange="changeHeartType(this)"><option selected="selected" value="0">心电历史</option><option value="1">心率告警</option></select></li>
+      <li class="select_BPhistory"><span class="select-style"><select onchange="changeHeartType(this)"><option selected="selected" value="0">心电历史</option><option value="1">心率告警</option></select></span></li>
     </ul>
   </div>
   <div class="search">
@@ -251,7 +261,7 @@ function showEcgDetail(obj,index){
           </li>
         </ul>
       </li>
-      <li class="btn_search"><a href="javascript:void(0)" onclick="queryStart()">查询</a></li>           
+      <li><a href="javascript:void(0)" class="btn  btn_search" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>           
     </ul>
   </div>
   <div class="index_table">
@@ -335,12 +345,12 @@ function showEcgDetail(obj,index){
  
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
     	转<select id="gopage" onchange="gotoPage()">
