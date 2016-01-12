@@ -21,6 +21,11 @@
 	<action name="delBloodPressure" class="com.gzjky.action.historyAction.DelBloodPressure" method="delBlood">
      	<result name="success">/jsp/health/analyse/bp.jsp</result>
 	</action>
+	
+	<!-- 心电历史查询 -->
+	<action name="queryEcgList" class="com.gzjky.action.historyAction.ElectrocardioHistoryListAction" method="getList">
+     	<result name="success">/jsp/health/analyse/ecg.jsp</result>
+	</action>
 
 	</package>
 </struts>

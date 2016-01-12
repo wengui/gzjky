@@ -1,15 +1,14 @@
-
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120健康服务中心</title>
-<link href="/css/common.css" rel="stylesheet" type="text/css" />
-<link href="/css/index_tab.css" rel="stylesheet" type="text/css" />
-<script src="/js/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="/js/base.js"></script>
+<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
+<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
+<script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
 <script type="text/javascript">
    var hly_url=  "http://v3.995120.cn:7090/hly_svr";
 	function query(){
@@ -49,7 +48,7 @@
 	function goback() {
 		//window.location.href = "/jsp/health/analyse/ianalysis.jsp?tabIndex=1";
 		//flag是否是通过返回按钮到某个页面
-		window.location.href = "/jsp/health/analyse/ianalysis.jsp?tabIndex=1&flag=1";
+		window.location.href = "<c:url value='/jsp/health/analyse/ianalysis.jsp?tabIndex=1&flag=1'/>";
 	}
 </script>
 

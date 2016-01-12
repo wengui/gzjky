@@ -28,13 +28,6 @@
 <script src="<c:url value='/js/general.js'/>"></script>
 
 <script type="text/javascript">
-var deviceVersionMap = {};
-	deviceVersionMap["606"] = "无线网络生理参数监测仪TE8000Y";
-	deviceVersionMap["605"] = "无线网络生理参数监测仪TE8000Y2";
-	deviceVersionMap["301"] = "腕式监测呼救定位器TE8000Y3";
-	deviceVersionMap["108"] = "无线电子测量血压计TE-7000Y";
-	deviceVersionMap["801"] = "十二导心电采集仪TE8000Y4";
-	deviceVersionMap["502"] = "心电蓝牙TE9100Y";
 
 var startDate="";
 var endDate="";
@@ -73,14 +66,10 @@ function query(){
 	  endDate = $("#endDate").val();
 	  
 	 var requestUrl = "";
-	 var para = "startDate=" + startDate + "&endDate=" + endDate //+ "&dateType="+dateType
+	 var para = "startDate=" + startDate + "&endDate=" + endDate + "&heartType="+heartType
 		+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize + "&currentnum="+$.fn.page.settings.currentnum;
 	 
-	 if(heartType == 0){
-		 requestUrl = "/historyAction/queryEcgList.action";
-	  }else if(heartType == 1){
-		  requestUrl = "/historyAction/queryEcgAlertList.action";
-	  }
+	 requestUrl = "/gzjky/historyAction/queryEcgList.do";
   
 	  showScreenProtectDiv(1);
 	  showLoading();
@@ -97,14 +86,10 @@ function query(){
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    if(heartType == 0){
-			    	recordList = modelMap.ecgList;
-			    }else{
-			    	recordList = modelMap.ecgAlertList;
-			    }
+				// 数据取得
+				recordList = response.outBeanList;
 				
-				$.fn.page.settings.count = modelMap.recordTotal;
+				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
 			}
 		});
@@ -130,34 +115,34 @@ function showData(){
 	  $("table.bPhistory_table tr:even").addClass("even");
 	  $("table.bPhistory_table tr:odd").addClass("odd");
 }
-var columnArray = ["serial_id","device_version","take_time","heart_rate","record_count"];
+var columnArray = ["deviceSerialId","deviceVersion","takeTime","heartRate","timeLength"];
 function addrowtotable(table,index){
 	 var rowcount=table.rows.length;
 	 var tr=table.insertRow(rowcount);
 	 var i = 0;
-	 recordList[index].take_time = recordList[index].take_time.substring(0,19);
-	 //recordList[index].heart_rate = recordList[index].heart_rate +"(次/分)";
+	 recordList[index].takeTime = recordList[index].takeTime.substring(0,19);
+	 //recordList[index].heartRate = recordList[index].heartRate +"(次/分)";
 	if(heartType == 1){
-		 recordList[index].record_count = "心率超出阀值";
+		 recordList[index].timeLength = "心率超出阀值";
 	 }
 	 
 	 for(var k=0;k<columnArray.length;k++){
 		  var td = tr.insertCell(i);
-		  if(columnArray[k] == "heart_rate"){
+		  if(columnArray[k] == "heartRate"){
 			  if(recordList[index][columnArray[k]] == "0"){
 				  td.innerHTML = "--"
 			  }else{
 				  td.innerHTML = recordList[index][columnArray[k]];  
 			  }
 			  
-		  }else if(columnArray[k] == "serial_id" || columnArray[k] == "device_version"){
+		  }else if(columnArray[k] == "deviceSerialId" || columnArray[k] == "deviceVersion"){
 			  if(recordList[index][columnArray[k]] == "" || recordList[index][columnArray[k]] == null || recordList[index][columnArray[k]]=="null"){
 				  td.innerHTML = "--";
 			  }else{
-				  if(columnArray[k] == "serial_id"){
+				  if(columnArray[k] == "deviceSerialId"){
 				  	  td.innerHTML = recordList[index][columnArray[k]];
 				  }else{
-					  td.innerHTML = deviceVersionMap[recordList[index][columnArray[k]]];
+					  td.innerHTML = recordList[index][columnArray[k]];
 				  }
 			  }
 			   
@@ -227,13 +212,13 @@ function showEcgDetail(obj,index){
 	var file_unit_id = recordList[index].file_unit_id;
 	var file_cluster_id = recordList[index].file_cluster_id;
 	var file_unit_type = recordList[index].file_unit_type;
-	var heart_rate = recordList[index].heart_rate;
-	var record_count = recordList[index].record_count;
-	var device_version = recordList[index].device_version;
+	var heartRate = recordList[index].heartRate;
+	var timeLength = recordList[index].timeLength;
+	var deviceVersion = recordList[index].deviceVersion;
 	obj.target = "mainFrame";
-	obj.href = "./ecg_detail.jsp?heart_rate="+heart_rate + "&record_count="+record_count
+	obj.href = "./ecg_detail.jsp?heartRate="+heartRate + "&timeLength="+timeLength
 				+"&file_unit_id="+file_unit_id+"&file_cluster_id="+file_cluster_id+"&file_unit_type="+file_unit_type
-				+"&device_version="+device_version;
+				+"&deviceVersion="+deviceVersion;
 }
 </script>
 </head>

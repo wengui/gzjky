@@ -61,6 +61,9 @@ public class QueryBloodPressureListAction extends ActionSupport{
 			queryBloodPressureInputBean.setPageMax((pointerStart + pageSize));
 			queryBloodPressureInputBean.setPageMin(pointerStart);
 			
+			//TODO 患者id取得，最终是要从session里面取得一个可变的值
+			queryBloodPressureInputBean.setPatientId("1");
+			
 	        // 从数据库中取得需要的对象
 	        bloodPressureList = bloodPressureHistoryReadMapper.selectBloodPressureByCondition(queryBloodPressureInputBean);
 	        
