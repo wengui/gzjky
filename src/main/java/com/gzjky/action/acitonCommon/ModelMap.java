@@ -7,6 +7,8 @@ public class ModelMap {
 	public int recordTotal;
 	
 	public List<?> outBeanList;
+	
+	public int updateFlag;
 
 	public int getRecordTotal() {
 		return recordTotal;
@@ -22,6 +24,14 @@ public class ModelMap {
 
 	public void setOutBeanList(List<?> outBeanList) {
 		this.outBeanList = outBeanList;
+	}
+
+	public int getUpdateFlag() {
+		return updateFlag;
+	}
+
+	public void setUpdateFlag(int updateFlag) {
+		this.updateFlag = updateFlag;
 	}
 
 }

@@ -12,6 +12,15 @@
      	<result name="success">/jsp/health/analyse/bp.jsp</result>
 	</action>
 
+	<!-- 血压查备注追加-->
+	<action name="addBloodPressureFeedback" class="com.gzjky.action.historyAction.AddBloodPressureFeedback" method="addFeedBack">
+     	<result name="success">/jsp/health/analyse/bp.jsp</result>
+	</action>
+	
+	<!-- 血压历史记录删除-->
+	<action name="delBloodPressure" class="com.gzjky.action.historyAction.DelBloodPressure" method="delBlood">
+     	<result name="success">/jsp/health/analyse/bp.jsp</result>
+	</action>
 
 	</package>
 </struts>

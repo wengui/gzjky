@@ -83,8 +83,8 @@ public class QueryBloodPressureListAction extends ActionSupport{
 			out.close();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
-		};
+			return null;
+		}
 
 		
 		return SUCCESS;

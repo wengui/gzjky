@@ -179,11 +179,7 @@
   	 $.confirm("确定删除该记录吗?",function(){			
 	  	 var requestUrl = "";
 		 var para = "id=" + recordList[i].id;
-		 if(bloodType == 0){
-			 requestUrl = "/historyAction/delBloodPressure.action";
-		  }else if(bloodType == 1){
-			  requestUrl = "/historyAction/delBloodAlert.action";
-		  }
+		 requestUrl = "/gzjky/historyAction/delBloodPressure.do";
 		  showScreenProtectDiv(1);
 		  showLoading();
 		  xmlHttp = $.ajax({
@@ -199,12 +195,12 @@
 				error:function(){
 					$.alert('无权限');
 				},success:function(response){
-					if(response=="1"){
+					if(response.updateFlag=="1"){
 					$.alert("删除成功！");
 					closeDiv();
 					query();
 					}
-					else if(response=="-1"){
+					else if(response.updateFlag=="0"){
 						$.alert("删除出现异常！");
 					}
 				}
@@ -268,12 +264,8 @@
   	var id=$("#bp_id").val();
   	var feedback=$("#feedback").val();
   	var requestUrl = "";
-	 var para = "id=" + id+"&feedback="+feedback;
-	 if(bloodType == 0){
-		 requestUrl = "/historyAction/addBloodPressureFeedback.do";
-	  }else if(bloodType == 1){
-		 requestUrl = "/historyAction/addBloodAlertFeedback.action";
-	  }
+	var para = "id=" + id+"&feedback="+feedback;
+	requestUrl = "/gzjky/historyAction/addBloodPressureFeedback.do";
 	  showScreenProtectDiv(1);
 	  showLoading();
 	  xmlHttp = $.ajax({
@@ -289,12 +281,12 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-				if(response=="1"){
+				if(response.updateFlag=="1"){
 					$.alert("备注成功！");
 					closeDiv();
 					query();
 				}
-				else if(response=="-1"){
+				else if(response.updateFlag=="0"){
 					$.alert("备注出现异常！");
 				}
 			}
