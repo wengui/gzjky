@@ -11,6 +11,19 @@
 <script src="<c:url value='/js/jquery/jquery-1.4.4.js'/>" type="text/javascript"></script>
 <script type="text/javascript" src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/jquery/jquery.nicescroll.js'/>"></script>
+
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
+
+
 <script type="text/javascript">
 $("#scrollBar").niceScroll({  
 	cursorcolor:"#aeaeae",  
@@ -69,6 +82,26 @@ var tabMap = {};
 </head>
 
 <body>
+<div class="example-item alt-color gradient">
+<div class="tabs_framed styled" >
+    <div class="inner tab_menu">
+        <ul class="tabs clearfix active_bookmark1">
+            <li class="active"><a href="#ef" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">电子围栏</a></li>
+            <li ><a href="#sos" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">SOS报警</a></li>
+        </ul>
+
+        <div class="tab-content clearfix">
+            <div class="tab-pane fade in active" id="ef">
+              	<iframe id="ef_iframe" src="./electronic_fence.jsp" frameborder="0" width="100%"  scrolling="no"  onload="sonIframeResize();"></iframe>
+            </div>
+            <div class="tab-pane fade" id="sos">
+                <iframe id ="sos_iframe" src="./sos_alert.jsp" frameborder="0" width="100%"  scrolling="no" onload="sonIframeResize();"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- 
   <div class="index_tab">
     <div class="tab_menu">
       <ul>
@@ -85,6 +118,6 @@ var tabMap = {};
       </div>
     </div>
   </div>
-
+ -->
 </body>
 </html>

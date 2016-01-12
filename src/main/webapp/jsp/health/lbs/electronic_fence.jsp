@@ -24,6 +24,18 @@
 <script type="text/javascript" src="<c:url value='/js/lbs/pageFrame.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/lbs/safe_island1.js'/>"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
+
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
+
 <script type="text/JavaScript"> 
 	var para = "";
  	var xmlHttp;
@@ -625,11 +637,11 @@ function safe_island_del() {
 	
 
 </head>
-<body onload="initQuery();">
+<body onload="initQuery();" style="background:#e8e3d7">
 	
  <div style="font-family:微软雅黑">
        <div class="location">
-          <div class="title_location"><span class="tgrey_title_location">电子</span>围栏</div>
+          <div class="tgreen_title_BPhistory">电子围栏</div>
         </div>
         <div class="location_main">
           <ul>
