@@ -93,7 +93,7 @@ window.setInterval("sonIframeResize()", 500);
 <body>
 <div class="example-item alt-color gradient">
 <div class="tabs_framed styled" >
-    <div class="inner">
+    <div class="inner tab_menu">
         <ul class="tabs clearfix active_bookmark1">
             <li class="active"><a href="#bp" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">血压</a></li>
             <li ><a href="#ecg" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">心电</a></li>
@@ -110,23 +110,5 @@ window.setInterval("sonIframeResize()", 500);
     </div>
 </div>
 </div>
-<!--
- <div class="index_tab">   
-   <div class="tab_menu">
-      <ul>
-        <li class="selected">血压</li>
-        <li>心电</li>
-      </ul>
-   </div>
-   <div class="tab_box">
-      <div>
-			<iframe id="bp_iframe" frameborder="0" width="100%"  scrolling="no"  onload="sonIframeResize();"></iframe>
-      </div>
-      <div class="hide">
-        	<iframe id ="ecg_iframe"  frameborder="0" width="100%"  scrolling="no" onload="sonIframeResize();"></iframe>
-      </div>
-   </div>
- </div>
-  -->
 </body>
 </html>
