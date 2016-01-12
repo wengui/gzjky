@@ -119,22 +119,5 @@
     </div>
 </div>
 </div>
-
- <!-- 
-  <div class="index_tab">   
-   <div class="tab_menu">
-      <ul>
-        <li class="selected"><a style="width:166px; height: 48px; display:block;text-decoration:none;color:#fff; " href="./memberbaseinfo.jsp" target="indexFrame" title="基本信息" >基本信息</a></li>
-        <li><a style="width:166px; height: 48px; display:block; text-decoration:none;color:#fff; " href="./disease_history.jsp" target="indexFrame" title="健康病历">健康病历</a></li>
-        <li><a style="width:166px; height: 48px; display:block;text-decoration:none;color:#fff; " href="./family_phone.jsp" target="indexFrame" title="亲情号码">亲情号码</a></li>
-        <li style="margin-right:-2px;"><a style="width:166px; height: 48px; display:block;text-decoration:none;color:#fff; " href="./modify_password.jsp" target="indexFrame" title="密码修改">密码修改</a></li>
-      </ul>
-   </div>
-   <div class="tab_box" >
-       <iframe id="indexFrame"  name = "indexFrame" src="./memberbaseinfo.jsp"  frameborder="0" width="100%"  scrolling="no"  onload="sonIframeResize();"></iframe>
-   </div> 
-  </div> 
-   -->  
-   
 </body>
 </html>

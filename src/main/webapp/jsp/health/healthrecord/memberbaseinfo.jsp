@@ -23,8 +23,8 @@
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script type="text/javascript">
-   var edit_image = "/images/button/btn_editor.png";
-   var save_image = "/images/button/btn_preserve.png";
+   var edit_image = "<c:url value='/images/button/btn_editor.png'/>";
+   var save_image = "<c:url value='/images/button/btn_preserve.png'/>";
    var basic_form_id =  "memberBaseInfo_form";
     var detail_form_id = "detail_form";
     var workinfo_form_id = "workinfo_form";
@@ -64,7 +64,7 @@
     	);
     })
     function query_memberBaseInfo(){
-    	var requestUrl = "/healthRecordAction/queryMemberBaseInfo.action";
+    	var requestUrl = "/gzjky/healthRecordAction/queryMemberBaseInfo.do";
     	var para = "unit_id=" + window.parent.member_unit_id + "&cluster_id=" + window.parent.member_cluster_id + "&unit_type=" + window.parent.member_unit_type;
   	   showScreenProtectDiv(1);
 	   showLoading();
@@ -81,8 +81,7 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    memberBaseInfo = modelMap.memberBaseInfo;
+			    memberBaseInfo = response.result;
 			    init_memberBaseInfo(memberBaseInfo);
 			}
 		});
