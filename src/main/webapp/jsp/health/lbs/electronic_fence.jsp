@@ -643,10 +643,10 @@ function safe_island_del() {
        <div class="location">
           <div class="tgreen_title_BPhistory">电子围栏</div>
         </div>
-        <div class="location_main">
+        <div class="">
           <ul>
             <li class="relocation" id="sel__dev_div"></li>
-            <li class="btn_relocation"><a href="javascript:void(0);" onclick="position();">重新定位</a></li>
+            <li><a href="javascript:void(0);" class="btn  btn_relocation" onclick="position();"><span style="font-size:17px; font-weight:500;color:#5a5a5a">重新定位</span></a></li>
           </ul>
         </div>
         <div class="bg_island">
@@ -665,23 +665,11 @@ function safe_island_del() {
                     <li class="tblack_island" style="color: #5A5A5A;"><span  id="cur_center_radius" ></span>米</li>    
                   </ul>
                 </li>
-               <!--  <li style="float:left;margin-bottom:5px;">
-	               <ul>
-	                <li class="tgrey_island">当前位置：</li>
-                	<li class="tblack_island"><span style="color:#5A5A5A;"  id="cur_location_Addr"></span></li>
-	               </ul>
-                </li>
-                 <li style="float:left;">
-	             <ul>
-	                 <li class="tgrey_island">更新时间：</li>
-                	<li class="tblack_island" ><span style="color: #5A5A5A;" id="cur_location_time"></span></li>
-	             </ul>
-                </li> -->
               </ul>
             </li>
             <li class="bg_island_right">
-            	<a class="island_edit" title="设置安全岛" href="javascript:void(0);" onclick="showIsland();">设置</a>
-            	<a class="island_del" title="删除安全岛" href="javascript:void(0);" onclick="safe_island_del();">清除</a>
+            	<a class="btn island_edit" title="设置安全岛" href="javascript:void(0);" onclick="showIsland();"><span style="color:#5a5a5a">设置</span></a>
+            	<a class="btn island_del" title="删除安全岛" href="javascript:void(0);" onclick="safe_island_del();"><span style="color:#5a5a5a">清除</span></a>
             </li>
           </ul>
         </div>

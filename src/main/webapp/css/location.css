@@ -6,13 +6,13 @@
 .tgrey_title_location{color:#5a5a5a}
 .relocation{color:#aeaeae; text-align:left; font:13px; width:350px; float:left}
 .relocation select{width:200px; height:28px; line-height:28px; padding-left:10px; font-size:13px; color:#5a5a5a; margin-left:5px;border:1px solid #aeaeae}
-.btn_relocation{width:320px; float:left}
+.btn_relocation{width:140px; float:left}
 .btn_relocation a{ background:url(../images/button/btn_location.png) no-repeat; height:30px; width:80px; line-height:30px; text-align:center; color:#fff; text-decoration:none; display:block;}
 .bg_island{background:#f7f7f7; width:628px; float:left; border:1px solid #aeaeae; padding:10px 20px; margin-top:10px;}
 .bg_island_left{width:488px; float:left; font-size:13px; text-align:left;}
 .tgrey_island{color:#aeaeae; width:80px;float:left;}
 .tblack_island{color:#5a5a5a; line-height:18px; width:408px;float:left;}
-.bg_island_right{width:140px; float:left; text-align:right}
+.bg_island_right{width:500px; float:left;}
 /*.bg_island_right a.island_edit{background:url(../images/icon/btn_editor_island.png) no-repeat; display:inline-block; width:37px; height:36px; margin-top:5px; }
 .bg_island_right a.island_edit:hover{background:url(../images/icon/btn_editor_islanClick.png) no-repeat; display:inline-block; width:37px; height:36px;}
 .bg_island_right a.island_del{background:url(../images/icon/btn_editor_island.png) no-repeat; display:inline-block; width:37px; height:36px; margin-top:5px; margin-left:10px}
