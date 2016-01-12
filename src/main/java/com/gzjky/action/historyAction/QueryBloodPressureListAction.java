@@ -50,12 +50,9 @@ public class QueryBloodPressureListAction extends ActionSupport{
 			queryBloodPressureInputBean.setStartDate(request.getParameter("startDate")); // 开始时间
 			queryBloodPressureInputBean.setEndDate(request.getParameter("endDate"));// 结束时间
 			String bloodType = request.getParameter("bloodType");
-			if(CodeConstant.BLOOD_TYPE.equals(bloodType)){
-				// 历史的场合
-				queryBloodPressureInputBean.setBloodType(CodeConstant.BLOOD_TYPE_STATUS);
-			}else{
+			if(CodeConstant.WARN_TYPE.equals(bloodType)){
 				// 告警的场合
-				queryBloodPressureInputBean.setBloodType(CodeConstant.ECG_TYPE_STATUS);
+				queryBloodPressureInputBean.setBloodType(CodeConstant.WARN_TYPE_STATUS);
 			}
 			int pointerStart = NumberUtils.toInt(request.getParameter("pointerStart"));
 			int pageSize = NumberUtils.toInt(request.getParameter("pageSize"));

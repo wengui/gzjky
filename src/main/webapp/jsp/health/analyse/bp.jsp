@@ -23,8 +23,6 @@
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
 <!-- main JS libs -->
 <script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
 <script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
 <!-- Style CSS -->
 <link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
@@ -69,14 +67,12 @@
 	  var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
 	  if(pointerStart<0) pointerStart = 0;
 
-	  var requestUrl = "";
-	 var para = "startDate=" + startDate + "&endDate=" + endDate + "&bloodType="+bloodType
+	  	var requestUrl = "";
+		var para = "startDate=" + startDate + "&endDate=" + endDate + "&bloodType="+bloodType
 		+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
-	 if(bloodType == 0){
-		 requestUrl = "/gzjky/historyAction/queryBloodPressureList.do";
-	  }else if(bloodType == 1){
-		  requestUrl = "/gzjky/historyAction/queryBloodAlertList.do";
-	  }
+
+	  requestUrl = "/gzjky/historyAction/queryBloodPressureList.do";
+
       
       
 	  showScreenProtectDiv(1);
@@ -94,12 +90,9 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    if(bloodType == 0){
-			    	recordList = response.outBeanList;
-			    }else{
-			    	recordList = modelMap.bloodAlertList;
-			    }
+			    
+				// 数据取得
+				recordList = response.outBeanList;
 				
 				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
@@ -148,7 +141,7 @@
 		 recordList[index].pressure_value = shrink +"/"+ diastole;
 	 }
 	 
-	 if(bloodType == 0 && recordList[index].alertId != ""){
+	 if(bloodType == 0 && recordList[index].state != "正常"){
 		 tr.className = "abnormal";
 	 }
 	 for(var k=0;k<columnArray.length;k++){
