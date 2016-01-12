@@ -4,7 +4,7 @@
 .equipment{width:670px; float:left; font-family:"微软雅黑";}
 .title_equipment{width:670px; float:left; font-size:30px; font-weight:500; color:#0ca7a1; text-align:left; margin:20px 0 10px 0;}
 .tblack_equipment{color:#5a5a5a}
-.header_equipment{background:#f7f7f7; height:40px; line-height:40px; color:#5a5a5a; width:650px; padding:0 10px; float:left}
+.header_equipment{height:40px; line-height:40px; color:#5a5a5a; width:650px; padding:0 10px; float:left;font-size:14px}
 .tLeft_equipment{text-align:left; width:325px; height:40px;float:left;}
 .tRight_equipment{text-align:right; width:325px;height:40px;float:left;}
 .equipment_main{width:670px; float:left; font-size:13px; padding:10px 0; border-bottom:1px solid #aeaeae}

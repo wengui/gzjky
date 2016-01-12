@@ -16,6 +16,15 @@
 <script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/common/date.js'/>"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
+
 <script type="text/javascript">
 	//设备型号数组
 	var parameter=[
@@ -84,7 +93,7 @@
 		        hideLoading();
 			},
 			error:function(){
-				$.alert('无权限');
+				//$.alert('无权限');
 			},success:function(response){
 			    var modelMap = response.modelMap;
 			    	recordList = modelMap.sosAlertList;
@@ -162,7 +171,7 @@ function query_year(){
 }
 </script>
 </head>
-<body onload="startInit()">
+<body onload="startInit()" style="background:#e8e3d7">
  <div class="bp_history">
           <div class="title_BPhistory">
             <ul>
@@ -192,7 +201,7 @@ function query_year(){
 						 快速查询：<a href="javascript:changeDate(3)">最新3天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" style="margin-right:8px;">最近30天</a><a href="javascript:changeDate(365)" style="margin-right:2px;">最近一年</a>	
 						</li>
 					</ul></li>
-				<li class="btn_search"><a href="javascript:void(0);" onclick="queryStart();">查询</a>
+				<li> <a href="javascript:void(0)" class="btn  btn_search" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a>
 				</li>
 			</ul>
 		</div>
@@ -257,12 +266,12 @@ function query_year(){
  
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
     转<select id="gopage" onchange="gotoPage()">
@@ -273,7 +282,7 @@ function query_year(){
  			
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

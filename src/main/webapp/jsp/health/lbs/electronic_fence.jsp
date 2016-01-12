@@ -668,14 +668,14 @@ function safe_island_del() {
               </ul>
             </li>
             <li class="bg_island_right">
-            	<a class="btn island_edit" title="设置安全岛" href="javascript:void(0);" onclick="showIsland();"><span style="color:#5a5a5a">设置</span></a>
+            	<a class="btn island_edit" title="设置安全岛" href="javascript:void(0);" onclick="showIsland();"><span style="color:#5a5a5a ">设置</span></a>
             	<a class="btn island_del" title="删除安全岛" href="javascript:void(0);" onclick="safe_island_del();"><span style="color:#5a5a5a">清除</span></a>
             </li>
           </ul>
         </div>
         <div class="map">
        	  <div id="map_canvas" style="width: 100%;height: 450px; position:absolute; top:0; left:0; z-index: 2"></div>
-       	  <div class="btn_islandHistory" id="show_location_button_close"><img title="定位历史查询" onclick="closeShowLocationHistoryDiv();" src="/images/icon/history.png" /></div>
+       	  <div class="btn_islandHistory" id="show_location_button_close"><img title="定位历史查询" onclick="closeShowLocationHistoryDiv();" src="../../../images/icon/history.png" /></div>
           
              <div class="bgblack" id="show_location_history_div" >
               <div class="map_search">
@@ -684,7 +684,7 @@ function safe_island_del() {
                   <li class="tmapSearch_input"><input type="text" name="startDate" id="startDate" style=" border:1px solid #ccc" onFocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
                   <li class="tmapSearch">结束时间</li>
                   <li class="tmapSearch_input"><input type="text" name="endDate" id="endDate" style="border:1px solid #ccc" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
-                  <li class="tmapSearch_btn"><a href="javascript:void(0);" onclick="queryStart();">查询</a></li>
+                  <li ><a href="javascript:void(0);" class="btn" style="width:215px" onclick="queryStart();"><span style="color:#5a5a5a">查询</span></a></li>
                 </ul>
               </div>
               <div class="map_queryResults" id="scrollBar" style="overflow-x:hidden;">
@@ -729,7 +729,7 @@ function safe_island_del() {
 </style>
 </head>
 <body>
- <div class="popup"  id="ShowLogin"  style="display:none;position:absolute;top:400px; left:100px;z-index: 30;">
+ <div class="popup"  id="ShowLogin"  style="display:none;position:absolute;top:350px; left:100px;z-index: 30;">
   <div class="popup_header">
     <ul>
       <li class="name_popupHeader">安全岛中心设置</li>
@@ -737,18 +737,18 @@ function safe_island_del() {
     </ul>
   </div>
   <div  id="popWindow_main" class="popup_main">
-      <table width="410" border="0" cellspacing="0" cellpadding="0" style=" font:'宋体'; font-size:12px;" class="popWindow_tab">
-          <colgroup><col width="30%" /><col width="70%" /></colgroup>
+      <table width="410" border="0" cellspacing="0" cellpadding="0" style="font-size:14px;" class="popWindow_tab">
+          <colgroup><col width="40%" /><col width="60%" /></colgroup>
           <tr>
-            <td class="right_text">新安全岛中心地址：<span style="color:#c00;font-size:14px;line-height:30px;">*</span></td>
-            <td class="left_text">
-            	<input type="text" name="name" id="safe_island_address" value="" maxlength="128" style="height:18px; padding-top:5px; border:#CCCCCC solid 1px; width:248px; padding-left:3px; font:12px '宋体';"/>
+            <td ><span style="color:#c00;font-size:14px;line-height:30px;font:微软雅黑;">*</span>新安全岛中心地址：</td>
+            <td>
+            	<input type="text" name="name" id="safe_island_address" value="" maxlength="128" style="height:28px; padding-top:5px; border:#CCCCCC solid 1px; width:248px; padding-left:3px; font:12px '宋体';"/>
             </td>
           </tr>
           <tr>
-            <td class="right_text">新安全岛半径：<span style="color:#c00;font-size:14px;line-height:30px;">*</span></td>
+            <td class="right_text"><span style="color:#c00;font-size:14px;line-height:30px;font:微软雅黑;">*</span>新安全岛半径：</td>
             <td class="left_text">
-            	<input type="text" name="phone" id="safe_island_radius" value="" maxlength="8" style="height:18px; padding-top:5px; border:#CCCCCC solid 1px; width:248px; padding-left:3px; font:12px '宋体';"/>
+            	<input type="text" name="phone" id="safe_island_radius" value="" maxlength="8" style="height:28px; padding-top:5px; border:#CCCCCC solid 1px; width:248px; padding-left:3px; font:12px '宋体';"/>
             </td>
           </tr>
           <tr>
@@ -759,9 +759,9 @@ function safe_island_del() {
           </tr>
           <tr>
             <td></td>
-            <td style="text-align:center; padding-top:18px" class="btn_map_edit" >
-            	<a href="javascript:void(0);" onclick="addSafeIsland();">确&nbsp;&nbsp;定</a>
-            	<a href="javascript:void(0);" onclick="clearLastMessage();">重&nbsp;&nbsp;置</a>
+            <td >
+            	<a href="javascript:void(0);" class="btn" onclick="addSafeIsland();"><span style="color:#5a5a5a ">确&nbsp;&nbsp;定</span></a>
+            	<a href="javascript:void(0);" class="btn" onclick="clearLastMessage();"><span style="color:#5a5a5a ">重&nbsp;&nbsp;置</span></a>
             </td>
           </tr>
         </table>

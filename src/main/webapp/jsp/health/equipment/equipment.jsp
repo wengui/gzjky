@@ -15,6 +15,16 @@
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
   $(function(){
     var $div_li = $("div.tab_menu ul li");
@@ -401,103 +411,70 @@
 </script>
 </head>
 
-<body onload="query();">
-<div class="index_tab">   
+<body onload="query();" >
+
+<!-- 
+	<div class="index_tab">
    <div class="tab_menu">
       <ul>
         <li class="selected">&nbsp;我的设备</li>
-       <!--   <li>报修/退换货记录</li>-->
       </ul>
    </div>
-   <div class="tab_box">
-     <div>
-       <div class="equipment">
-         <div class="title_equipment"><span class="tblack_equipment">我的</span>设备</div>
-         <div class="header_equipment" id="deviceInfo_head">
-           <ul>
-             <li class="tLeft_equipment">设备信息</li>
-             <li class="tRight_equipment"><a href="member_bind_device.jsp"><img src="/images/button/btn_add.png"  /></a></li>
-           </ul>
-         </div>
-        <!--   <div class="equipment_main">
-           <ul>
-            <li class="tgrey_equipmentMain">设备类型：</li>
-            <li class="tblack_equipmentMain">Te_8000Y3</li>
-            <li class="tgrey_equipmentMain">设备编号：</li>
-            <li class="tblack_equipmentMain">3021408120456<a href="###" class="pl_equipmentMain">解除绑定</a></li>
-            <li class="tgrey_equipmentMain">SIM卡号：</li>
-            <li class="tblack_equipmentMain">13863886388<a href="###" class="pl_equipmentMain">卡号修改</a></li>
-            <li class="tgrey_equipmentMain">血压通知：</li>
-            <li class="tblack_equipmentMain"><img src="/images/icon/btn_on.png" /></li>
-            <li class="tgrey_equipmentMain">售后服务：</li>
-            <li class="tblack_equipmentMain"><a href="###">申请报修/退换货</a></li>
-            <li class="tgrey_equipmentMain">操作：</li>
-            <li class="tblack_equipmentMain"><a href="###">修改配置</a></li>
-           </ul>
-         </div>
-         <div class="equipment_main">
-           <ul>
-            <li class="tgrey_equipmentMain">设备类型：</li>
-            <li class="tblack_equipmentMain">Te_8000Y3</li>
-            <li class="tgrey_equipmentMain">设备编号：</li>
-            <li class="tblack_equipmentMain">3021408120456<a href="###" class="pl_equipmentMain">解除绑定</a></li>
-            <li class="tgrey_equipmentMain">SIM卡号：</li>
-            <li class="tblack_equipmentMain">13863886388<a href="###" class="pl_equipmentMain">卡号修改</a></li>
-            <li class="tgrey_equipmentMain">血压通知：</li>
-            <li class="tblack_equipmentMain"><img src="/images/icon/btn_on.png" /></li>
-            <li class="tgrey_equipmentMain">售后服务：</li>
-            <li class="tblack_equipmentMain"><a href="###">申请报修/退换货</a></li>
-            <li class="tgrey_equipmentMain">操作：</li>
-            <li class="tblack_equipmentMain"><a href="###">修改配置</a></li>
-           </ul>
-         </div>-->
-       </div>
-     </div>
-     <div class="hide">
-       <div class="repair_records">
-         <div class="title_equipment"><span class="tblack_equipment">报修/退换货</span>记录</div>
-         <div class="index_table">
-           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table">
-             <colgroup>
-                <col width="15%" />
-                <col width="15%" />
-                <col width="15%" />
-                <col width="20%" />
-                <col width="20%" />
-                <col width="15%" />
-              </colgroup>
-              <tr>
-                <th>设备类型</th>
-                <th>设备编号</th>
-                <th>服务类型</th>
-                <th>申请时间</th>
-                <th>状态审核</th>
-                <th>操作</th>
-              </tr>
-              <tr>
-                <td>Te-8000Y3</td>
-                <td>3021408456</td>
-                <td>设备报修</td>
-                <td>2014-05-09</td>
-                <td>申请已通过</td>
-                <td><a href="###">查看进度</a></td>
-              </tr>
-              <tr>
-                <td>Te-8000Y3</td>
-                <td>3021408456</td>
-                <td>设备报修</td>
-                <td>2014-05-09</td>
-                <td>申请已通过</td>
-                <td><a href="###">查看进度</a></td>
-              </tr>
-           </table>
-         </div>
-       </div>
-     </div>
-   </div>
+-->   
+<div class="example-item alt-color gradient">
+  <div class="tabs_framed styled" >
+    <div class="inner tab_menu">
+       <ul class="tabs clearfix active_bookmark1">
+            <li class="active"><a href="#eq" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">我的设备</a></li>
+       </ul>
+	   <div class="tab-content clearfix">
+	     <div class="tab-pane fade in active" id="eq">
+	       <div class="equipment">
+	         <div class="tgreen_title_BPhistory">我的设备</div>
+	         <div class="header_equipment" id="deviceInfo_head">
+	           <ul>
+	             <li class="tLeft_equipment">设备信息</li>
+	             <li class="tRight_equipment"><a href="member_bind_device.jsp"><img src="../../../images/button/btn_add.png"  /></a></li>
+	           </ul>
+	         </div>
+	        <!--   <div class="equipment_main">
+	           <ul>
+	            <li class="tgrey_equipmentMain">设备类型：</li>
+	            <li class="tblack_equipmentMain">Te_8000Y3</li>
+	            <li class="tgrey_equipmentMain">设备编号：</li>
+	            <li class="tblack_equipmentMain">3021408120456<a href="###" class="pl_equipmentMain">解除绑定</a></li>
+	            <li class="tgrey_equipmentMain">SIM卡号：</li>
+	            <li class="tblack_equipmentMain">13863886388<a href="###" class="pl_equipmentMain">卡号修改</a></li>
+	            <li class="tgrey_equipmentMain">血压通知：</li>
+	            <li class="tblack_equipmentMain"><img src="/images/icon/btn_on.png" /></li>
+	            <li class="tgrey_equipmentMain">售后服务：</li>
+	            <li class="tblack_equipmentMain"><a href="###">申请报修/退换货</a></li>
+	            <li class="tgrey_equipmentMain">操作：</li>
+	            <li class="tblack_equipmentMain"><a href="###">修改配置</a></li>
+	           </ul>
+	         </div>
+	         <div class="equipment_main">
+	           <ul>
+	            <li class="tgrey_equipmentMain">设备类型：</li>
+	            <li class="tblack_equipmentMain">Te_8000Y3</li>
+	            <li class="tgrey_equipmentMain">设备编号：</li>
+	            <li class="tblack_equipmentMain">3021408120456<a href="###" class="pl_equipmentMain">解除绑定</a></li>
+	            <li class="tgrey_equipmentMain">SIM卡号：</li>
+	            <li class="tblack_equipmentMain">13863886388<a href="###" class="pl_equipmentMain">卡号修改</a></li>
+	            <li class="tgrey_equipmentMain">血压通知：</li>
+	            <li class="tblack_equipmentMain"><img src="/images/icon/btn_on.png" /></li>
+	            <li class="tgrey_equipmentMain">售后服务：</li>
+	            <li class="tblack_equipmentMain"><a href="###">申请报修/退换货</a></li>
+	            <li class="tgrey_equipmentMain">操作：</li>
+	            <li class="tblack_equipmentMain"><a href="###">修改配置</a></li>
+	           </ul>
+	         </div>-->
+	       </div>
+	     </div>
+	   </div>
+	 </div>
+</div>    	
 </div>
-
-<div>
 <form id="addform"  style="display:none;">
 </form>
 </div>   
@@ -553,7 +530,7 @@
 	<img src="/images/public/blue-loading.gif" />
 </div>
 
-<div id="transparentDiv" ></div>
+
 
 <div id="transparentDiv2"></div>
 </body>

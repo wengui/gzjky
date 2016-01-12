@@ -8,26 +8,27 @@
 .relocation select{width:200px; height:28px; line-height:28px; padding-left:10px; font-size:13px; color:#5a5a5a; margin-left:5px;border:1px solid #aeaeae}
 .btn_relocation{width:140px; float:left}
 .btn_relocation a{ background:url(../images/button/btn_location.png) no-repeat; height:30px; width:80px; line-height:30px; text-align:center; color:#fff; text-decoration:none; display:block;}
-.bg_island{background:#f7f7f7; width:628px; float:left; border:1px solid #aeaeae; padding:10px 20px; margin-top:10px;}
-.bg_island_left{width:488px; float:left; font-size:13px; text-align:left;}
+.bg_island{background:#f7f7f7; width:668px; float:left; border:1px solid #aeaeae; padding:10px 20px; margin-top:10px;}
+.bg_island_left{width:388px; float:left; font-size:13px; text-align:left;}
 .tgrey_island{color:#aeaeae; width:80px;float:left;}
-.tblack_island{color:#5a5a5a; line-height:18px; width:408px;float:left;}
-.bg_island_right{width:500px; float:left;}
+.tblack_island{color:#5a5a5a; line-height:14px; width:208px;float:left;}
+.bg_island_right{width:200px; float:right;}
 /*.bg_island_right a.island_edit{background:url(../images/icon/btn_editor_island.png) no-repeat; display:inline-block; width:37px; height:36px; margin-top:5px; }
 .bg_island_right a.island_edit:hover{background:url(../images/icon/btn_editor_islanClick.png) no-repeat; display:inline-block; width:37px; height:36px;}
 .bg_island_right a.island_del{background:url(../images/icon/btn_editor_island.png) no-repeat; display:inline-block; width:37px; height:36px; margin-top:5px; margin-left:10px}
 .bg_island_right a.island_del:hover{background:url(../images/icon/btn_editor_islanClick.png) no-repeat; display:inline-block; width:37px; height:36px;}
-*/
+
 .bg_island_right a{display:inline-block; width:37px;line-height:36px; height:36px; margin-top:5px; color: #0ca7a1;}
 .bg_island_right a:hover{display:inline-block; width:37px; height:36px;line-height:36px;}
+*/
 .map{width:670px; height:450px; position:absolute; top:210px; left:50%; margin-left:-335px; z-index:1;font-size:13px;}
 .btn_islandHistory{position:absolute; left:384px; top:0;width:36px; height:36px; float:left;z-index:3;}
-.bgblack{position:absolute; left:420px; top:0;width:230px; height:430px; float:left; background:url(../images/health/bg_transparent.png) no-repeat; padding:10px; z-index:3;}
+.bgblack{position:absolute; left:420px; top:0;width:250px; height:450px; float:left; background:url(../images/health/bg_transparent.png) no-repeat; padding:10px; z-index:3;}
 .map_History{position:absolute; left:384px; top:0;  width:286px; height:450px; z-index:3;}
-.map_search{width:230px; float:left; color:#fff; text-align:left;}
-.map_search li{float:left; padding:5px 0;}
+.map_search{width:260px; float:left; color:#fff; text-align:left;}
+.map_search li{float:left; padding:5px;margin: 4px;}
 .tmapSearch{width:63px; height:30px; float:left; line-height:30px;}
-.tmapSearch_input{width:167px;height:30px;float:left; line-height:30px;}
+.tmapSearch_input{width:157px;height:30px;float:left; line-height:30px;}
 .tmapSearch_input input{height:30px; line-height:30px; width:157px; padding-left:10px;}
 .tmapSearch_btn a{width:230px; height:40px; display:block; background:#0ca7a1; text-align:center; color:#fff; line-height:40px; text-decoration:none}
 .map_queryResults{width:218px; height:280px; float:left;overflow:hidden; margin-top:10px; padding-right:12px;} 
