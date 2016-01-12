@@ -5,17 +5,17 @@
 ul{padding:0;margin:0;list-style-type:none;}
 li{list-style-type:none;}
 .popup{width:480px; position:absolute; font-family:"微软雅黑"; top:200px; left:100px;}
-.popup_header{width:100%; float:left; height:40px; background:#0ca7a1; line-height:40px; color:#fff}
+.popup_header{width:100%; float:left; height:40px; background:#71A944; line-height:40px; color:#fff}
 .name_popupHeader{width:72%; padding-left:3%; text-align:left; font-size:18px; font-weight:500; float:left}
 .close_popupHeader{width:22%; padding-right:3%; text-align:right; float:left}
 .close_popupHeader a{color:#fff; text-decoration:none; font-size:20px;}
 .popup_main{width:92%; float:left; padding:4%; background:#fff; font-size:13px;text-align:left;}
 .popup_main li{padding:10px 0;}
-.popup_main2{width:92%; float:left; padding:4%; background:#fff; font-size:13px;text-align:left;}
+.popup_main2{width:100%; float:left; padding:4%; background:#fff; font-size:13px;text-align:left;}
 .popup_main2 li{padding:3px 0;}
 /*----------------bp---------------*/
 .tblack_bp{width:100%; float:left; height:30px; line-height:30px; text-align:left; color:#5a5a5a}
-.tgreen_bpPrompt{width:100%; float:left; height:30px; line-height:30px; text-align:left; color:#0ca7a1}
+.tgreen_bpPrompt{width:100%; float:left; height:30px; line-height:30px; text-align:left; color:#71A944}
 .tgreen_bp{background:url(../images/icon/greenMax.png)/*tpa=http://www.995120.cn/images/icon/greenMax.png*/ right center no-repeat;width:100%;text-align:left; float:left; height:30px; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
 .tblue_bp{background:url(../images/icon/blueMax.png)/*tpa=http://www.995120.cn/images/icon/blueMax.png*/ right center no-repeat; width:100%;float:left; height:30px; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
 .tyellow_bp{background:url(../images/icon/yellowMax.png)/*tpa=http://www.995120.cn/images/icon/yellowMax.png*/ right center no-repeat; width:100%;float:left; height:30px; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
@@ -32,18 +32,18 @@ li{list-style-type:none;}
 .tblack_Packagedetails_right{width:76%; float:left; text-align: left; font-size:13px; color:#5a5a5a;margin-bottom:10px;}
 .tgrey_Packagedetails_left2{width:25%; float:left; padding-left:4%;text-align: right; font-size:13px; color:#aeaeae;margin-bottom:10px;}
 .tblack_Packagedetails_right2{width:70%; float:left; text-align: left; font-size:13px; color:#5a5a5a;margin-bottom:10px;}
-#package_name{color:#0ca7a1;}
+#package_name{color:#71A944;}
 
 .tgrey_popup{width:30%;float:left; height:30px; line-height:30px; text-align:right; color:#aeaeae; margin-bottom: 10px}
 .tblack_popup{width:69%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left; color:#aeaeae;margin-bottom: 10px}
 .tgrey_popup2{width:40%;float:left; height:30px; line-height:30px; text-align:right; color:#aeaeae; margin-bottom: 10px}
 .tblack_popup2{width:59%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left; color:#aeaeae;margin-bottom: 10px}
 .btn_popup_confirm{width:69%; padding-left:31%;height:30px; line-height:30px;float:left; }
-.btn_popup_confirm a{height:30px; background:#0ca7a1; line-height:30px; color:#fff; text-align: center; width:88px; display: block; text-decoration: none; float:left; margin-right:10px;}
+.btn_popup_confirm a{height:30px; background:#71A944; line-height:30px; color:#fff; text-align: center; width:88px; display: block; text-decoration: none; float:left; margin-right:10px;}
 .btn_popup_confirm2{width:76%; padding-left:24%;height:30px; line-height:30px;float:left; }
-.btn_popup_confirm2 a{height:30px; background:#0ca7a1; line-height:30px; color:#fff; text-align: center; width:88px; display: block; text-decoration: none; float:left; margin-right:10px;}
+/*.btn_popup_confirm2 a{height:30px; background:#71A944; line-height:30px; color:#fff; text-align: center; width:88px; display: block; text-decoration: none; float:left; margin-right:10px;}*/
 .btn_popup_confirm3{width:50%; padding-left:0%;height:40px; line-height:40px;float:left; } 
-.btn_popup_confirm3 a{height:40px; background:#0ca7a1; line-height:40px; color:#fff; text-align: center; width:150px; display: block; text-decoration: none; float:left; margin-right:50px;font-size:20px;}
+.btn_popup_confirm3 a{height:40px; background:#71A944; line-height:40px; color:#fff; text-align: center; width:150px; display: block; text-decoration: none; float:left; margin-right:50px;font-size:20px;}
 
 
 
@@ -60,7 +60,7 @@ li{list-style-type:none;}
 .information_push_button a{background:url(../images/button/bg_alarmclock_z.png)/*tpa=http://www.995120.cn/images/button/bg_alarmclock_z.png*/ no-repeat; display:block;font-size:24px; color:#fff; font-weight:500; text-decoration:none; line-height:26px;width:120px;padding:7px 0; height:26px;}
 /*.information_push_button a:hover{background:url(../images/button/bg_alarmclock_c.png) no-repeat; display:none}*/
 .img_alarm_clock{margin-right:10px}
-.information_push_title{width:640px; text-align:left; color:#0ca7a1; font-size:14px; font-weight:600;padding-bottom:10px;border-bottom:1px dotted #fff}
+.information_push_title{width:640px; text-align:left; color:#71A944; font-size:14px; font-weight:600;padding-bottom:10px;border-bottom:1px dotted #fff}
 .information_push_left{width:100px; text-align:left; color:#aeaeae; float:left; padding:5px 0; border-top:1px dotted #aeaeae}
 .information_push_right{width:540px; text-align:left; color:#5a5a5a; float:left;padding:5px 0; border-top:1px dotted #aeaeae}
 

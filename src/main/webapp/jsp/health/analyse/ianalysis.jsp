@@ -94,16 +94,16 @@ window.setInterval("sonIframeResize()", 500);
 <div class="example-item alt-color gradient">
 <div class="tabs_framed styled" >
     <div class="inner">
-        <ul class="tabs clearfix tab_id1 bookmarks2 active_bookmark1">
-            <li class="first gradient active"><a href="#bp" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">血压</a></li>
-            <li class="last gradient"><a href="#ecg" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">心电</a></li>
+        <ul class="tabs clearfix active_bookmark1">
+            <li class="active"><a href="#bp" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">血压</a></li>
+            <li ><a href="#ecg" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">心电</a></li>
         </ul>
 
-        <div class="tab-content clearfix gradient">
-            <div class="tab-pane fade gradient active in" id="bp">
+        <div class="tab-content clearfix">
+            <div class="tab-pane fade in active" id="bp">
               	<iframe id="bp_iframe" frameborder="0" width="100%"  scrolling="no"  onload="sonIframeResize();"></iframe>
             </div>
-            <div class="tab-pane fade gradient" id="ecg">
+            <div class="tab-pane fade" id="ecg">
                 <iframe id ="ecg_iframe"  frameborder="0" width="100%"  scrolling="no" onload="sonIframeResize();"></iframe>
             </div>
         </div>

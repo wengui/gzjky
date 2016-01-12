@@ -30,7 +30,7 @@
 .tblack_sosdate{font:18px/30px "微软雅黑"; width:255px; height:32px; color:#5a5a5a;}
 
 /*----------------bpDiagnosis_results---------------*/
-.bpDiagnosis_results{width:630px; float:left; background:#f7f7f7; padding:20px; margin-top:30px;}
+.bpDiagnosis_results{width:630px; float:left; background:#e8e3d7; padding:20px; margin-top:30px;}
 .bpDiagnosis_results_text{width:300px; float:left; margin-right:10px; display:inline; font-family:"微软雅黑"; text-align:left;}
 .tgreen_results{font-size:18px; color:#0ca7a1; font-weight:500; height:30px; line-height:40px;}
 .tblack_results{font-size:14px; line-height:24px; color:#5a5a5a; margin-left:10px;}/*-height:24px; margin-bottom:30px;-*/

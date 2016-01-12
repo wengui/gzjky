@@ -38,7 +38,7 @@ body{background:#ededed}
 /*----------------index_left---------------*/
 .index_health_middle{width:100%; float:left;}
 .index_health_main{width:1000px; margin:20px auto}
-.index_health_left{width:280px; float:left; display:inline; background:#fff; margin-right:10px; padding:20px; }
+.index_health_left{width:280px; float:left; display:inline; background:#e8e3d7; margin-right:10px; padding:20px; }
 .wInformation li{float:left; font-family:"微软雅黑";}
 .wInformation_img{width:80px; height:80px; margin-right:10px; display:inline}
 .tGrayMax{width:150px; height:28px; text-align:left; color:#aeaeae; font-size:24px; font-weight:500; line-height:28px;}

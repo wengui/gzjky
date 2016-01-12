@@ -300,13 +300,13 @@
 </script>
 </head>
 
-<body onload="startInit()">
+<body onload="startInit()"style="background:#e8e3d7">
 <!--bp_history start-->
 <div class="bp_history">
   <div class="title_BPhistory">
     <ul>
-      <li class="tgreen_title_BPhistory"  ><span class="tgrey_title_BPhistory" >血压</span><span id="sub_title">历史</span></li>
-      <li class="select_BPhistory"><select onchange="changeBloodType(this)"><option selected="selected" value="0">血压历史</option><option value="1">血压告警</option></select></li>
+      <li class="tgreen_title_BPhistory">血压历史</li>
+      <li class="select_BPhistory"><span class="select-style"><select onchange="changeBloodType(this)"><option selected="selected" value="0">血压历史</option><option value="1">血压告警</option></select></span></li>
     </ul>
   </div>
   <div class="search">
@@ -322,7 +322,7 @@
           </li>
         </ul>
       </li>
-      <li class="btn_search"><a href="javascript:void(0)" onclick="queryStart()">查询</a></li>           
+      <li> <a href="javascript:void(0)" class="btn  btn_search" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>           
     </ul>
   </div>
   <div class="index_table">
@@ -339,7 +339,7 @@
         <th >设备编号</th>
         <th>设备类型</th>
         <th>测压时间</th>
-        <th nowrap="nowrap">收缩压/舒张压<br/>(mmHg)</th>
+        <th nowrap="nowrap">收缩压/舒张压<br/>&nbsp;&nbsp;&nbsp;&nbsp;(mmHg)</th>
         <th>脉率</th>
         <th>操作</th>
       </tr>
@@ -362,8 +362,6 @@
       </tr>
     </table>
   </div>
-  
-  
 
 <script type="text/javascript">
 		var reg = /^[1-9]{6,16}/; 
@@ -405,15 +403,14 @@
 <input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
 </div>
  -->
- 
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
     转<select id="gopage" onchange="gotoPage()">
@@ -421,17 +418,12 @@
     </li>
   </ul>
 </div>
-  
-
 <div id="divloading">
 	<img src="/images/public/blue-loading.gif" />
 </div>
-
 <div id="transparentDiv" ></div>
-
 <div id="transparentDiv2"></div>
   
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -471,9 +463,9 @@
 	  		</ul>
 	  		<ul>
 	            <li class="btn_popup_confirm2" >
-	                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-	            	<a href="javascript:void(0)" onclick="addRemark();">确定</a>
-			        <a href="javascript:void(0)" onclick="closeDiv();">取消</a>
+	                &nbsp;&nbsp;
+	            	<a href="javascript:void(0)" class="btn" onclick="addRemark();"><span style="color:#5a5a5a">确定</span></a>
+			        <a href="javascript:void(0)" class="btn" onclick="closeDiv();"><span style="color:#5a5a5a">取消</span></a>
 	            </li>     
 	  		</ul>
 	  </div>
