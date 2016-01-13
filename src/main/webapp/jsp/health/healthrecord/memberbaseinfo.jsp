@@ -22,6 +22,14 @@
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
    var edit_image = "<c:url value='/images/button/btn_editor.png'/>";
    var save_image = "<c:url value='/images/button/btn_preserve.png'/>";
@@ -260,9 +268,9 @@
 </script>
 </head>
 
-<body>
+<body style="background:#e8e3d7">
 <div class="information_modify">
-    <div class="title_informationModify"><span class="tgrey_title_informationModify">基本</span>信息</div>
+    <div class="tgreen_title_BPhistory">基本信息</div>
     <div class="information_modify_main"  id="main_div">
     <form id="memberBaseInfo_form" class="user_form formular">
       <!--basic_information start-->
@@ -279,34 +287,36 @@
              <ul>
                <li class="tgrey_informationModify">*真实姓名：</li>
                <li class="tblack_informationModify">
-               		<input class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[16]] " type="text"  id="patientname"  name="patientname" maxlength="16" />
+               		<input class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[16]] " style="width:230px;height:28px" type="text"  id="patientname"  name="patientname" maxlength="16" />
                </li>
                <li class="tgrey_informationModify">*性别：</li>
                <li class="tblack_informationModify">
+               	   <span class="select-style">
 	               <select  class="selectMax_informationModify  text-input validate[required]"  id="patientsex"  name="patientsex">
 	                   <option value="">请选择</option>
 		               <option value="0">男</option>
 		               <option value="1">女</option>
 	               </select>
+	               </span>
 	           </li>
                <li class="tgrey_informationModify">*出生日期：</li>
                <li class="tblack_informationModify">
-               		<input class="inputMin_informationModify text-input validate[required]"  type="text"   id="patientbirthday"  name="patientbirthday"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d',errDealMode:2})" />
+               		<input class="inputMin_informationModify text-input validate[required]"  style="width:230px;height:28px" type="text"   id="patientbirthday"  name="patientbirthday"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d',errDealMode:2})" />
                </li>
                <li class="tgrey_informationModify">*手机号：</li>
                <li class="tblack_informationModify">
-              		 <input class="inputMin_informationModify text-input validate[required,funcCall[mobilephone]]" type="text"  id="patientphone"  name="patientphone"   />
+              		 <input class="inputMin_informationModify text-input validate[required,funcCall[mobilephone]]"  style="width:230px;height:28px" type="text"  id="patientphone"  name="patientphone"   />
                </li>
                <li class="tgrey_informationModify">*电子邮箱：</li>
                <li class="tblack_informationModify">
-               		<input class="inputMin_informationModify text-input validate[required,custom[email]]" type="text"  id="email"   name="email"   />
+               		<input class="inputMin_informationModify text-input validate[required,custom[email]]"  style="width:230px;height:28px" type="text"  id="email"   name="email"   />
                </li>
              </ul>
            </li>
            <li class="tRight_informationModify">
              <ul>
                <li><img height="80" id="patientimage" src="/images/health/default_head.gif?t=1452044932829" /></li>
-               <li class="thead_informationModify"><a href="javascript:void(0)" onclick="edit_photo()">修改头像</a></li>
+               <li class="thead_informationModify"><a href="javascript:void(0)" class="btn" onclick="edit_photo()"><span style="font-size:13px;color:#5a5a5a">修改头像</span></a></li>
              </ul>
            </li>
           </ul>
@@ -328,6 +338,7 @@
               <ul>
                 <li class="tgrey_informationDetailed">证件类型：</li>
                 <li class="tblack_informationDetailed">
+                <span class="select-style">
 	                <select class="selectMax_informationModify"  id="cardtype"  name="cardtype"  onchange="change_credentials_type(this)">
 	                    <option value="">请选择</option>
 	                	<option value="身份证">身份证</option>
@@ -337,23 +348,27 @@
 	                	<option value="军官证">军官证</option>
 	                	<option value="港澳通行证">港澳通行证</option>
 	                </select>
+	                </span>
 	            </li>
 	           <li class="tgrey_informationDetailed">是否军人：</li>
                 <li class="tblack_informationDetailed">
+                <span class="select-style">
                 	<select class="selectMax_informationModify" id="issoldier"  name="issoldier">
 	                	<option value="1">是</option>
 	                	<option value="0">否</option>
 	                </select>
+	                </span>
                 </li>
                 <li class="tgrey_informationDetailed">身高(cm)：</li>
                 <li class="tblack_informationDetailed">
-					<input class="inputMin_informationModify text-input validate[funcCall[pyheight]]"  type="text"  id="height"   name="height"  maxlength="3" />
+					<input class="inputMin_informationModify text-input validate[funcCall[pyheight]]"  style="width:230px;height:28px" type="text"  id="height"   name="height"  maxlength="3" />
                 </li>
                 <li class="tgrey_informationDetailed">民族：</li>
                 <!-- <li class="tblack_informationDetailed">
                 	   <input class="inputMin_informationModify text-input validate[funcCall[chinese]]" type="text"  id="tribe"  name="tribe"  maxlength="32" />
                 </li>  --> 
 				<li class="tblack_informationDetailed">
+						<span class="select-style">
 						<select class="selectMax_informationModify" id="patientnational"  name="patientnational" >
 							<option value="">请选择</option>
 							
@@ -474,17 +489,21 @@
 							<option value="外国人入中国籍">外国人入中国籍</option>
 							
 						</select>
+						</span>
                 </li>
                 <li class="tgrey_informationDetailed">婚姻状况：</li>
                 <li class="tblack_informationDetailed">
+                	<span class="select-style">
 	                <select class="selectMax_informationModify" id="marriagestatus"  name="marriagestatus" >
 	                	<option value="0">未婚</option>
 	                	<option value="2">已婚</option>
 	                	<option value="1">离异</option>
 	                </select>
+	                </span>
                 </li>                     
                 <li class="tgrey_informationDetailed">学历：</li>
                 <li class="tblack_informationDetailed">
+                	<span class="select-style">
 	                <select class="selectMax_informationModify" id="education" name="education"  >
 		                <option value="">请选择</option>
 					    <option value="初中">初中</option>
@@ -498,14 +517,15 @@
 						<option value="博士">博士</option>
 						<option value="其他">其他</option>
 	                </select>
+	                </span>
                 </li>
                 <li class="tgrey_informationDetailed">家庭电话：</li>
                 <li class="tblack_informationDetailed">
-                	<input class="inputMin_informationModify text-input validate[funcCall[telephone]]" type="text" id="telephone"  name="telephone"  />
+                	<input class="inputMin_informationModify text-input validate[funcCall[telephone]]" style="width:230px;height:28px" type="text" id="telephone"  name="telephone"  />
                 </li>   
 	            <li class="tgrey_informationDetailed">家庭地址：</li>
 	            <li class="tblack_informationDetailed">
-	            	<input class="inputMax_informationModify text-input validate[funcCall[includespecialchar]]" type="text"  id="homeaddress"  name="homeaddress"  maxlength="128"  />
+	            	<input class="inputMax_informationModify text-input validate[funcCall[includespecialchar]]" style="width:555px;height:28px" type="text"  id="homeaddress"  name="homeaddress"  maxlength="128"  />
 	            </li>                             
               </ul>
             </li>
@@ -513,33 +533,38 @@
               <ul>
                 <li class="tgrey_informationDetailed">证件号码：</li>
                 <li class="tblack_informationDetailed">
-                	<input class="inputMin_informationModify  validate[funcCall[includespecialchar]]" type="text"  maxlength="18" id="cardnum" name="cardnum"  />
+                	<input class="inputMin_informationModify  validate[funcCall[includespecialchar]]"  style="width:230px;height:28px" type="text"  maxlength="18" id="cardnum" name="cardnum"  />
                 </li>
                 <li class="tgrey_informationDetailed">是否残疾：</li>
                 <li class="tblack_informationDetailed">
+                	<span class="select-style">
                 	<select class="selectMax_informationModify" id="isdisability"  name="isdisability" >
                 		<option value="0">否</option>
 	                	<option value="1">是</option>
 	                </select>
+	                </span>
                 </li>
                 <li class="tgrey_informationDetailed">体重(kg)：</li>
                 <li class="tblack_informationDetailed">
-					<input class="inputMin_informationModify text-input validate[funcCall[pyweight]]" type="text"  id="weight" name="weight"  maxlength="3" />
+					<input class="inputMin_informationModify text-input validate[funcCall[pyweight]]" type="text"  style="width:230px;height:28px" id="weight" name="weight"  maxlength="3" />
                 </li>
                 <li class="tgrey_informationDetailed">籍贯：</li>
                 <li class="tblack_informationDetailed">
-                	   <input class="inputMin_informationModify text-input validate[funcCall[chinese]]" type="text"  id="nativeplace"  name="nativeplace" maxlength="64" />
+                	   <input class="inputMin_informationModify text-input validate[funcCall[chinese]]" type="text"  style="width:230px;height:28px" id="nativeplace"  name="nativeplace" maxlength="64" />
                 </li>                  
                 <li class="tgrey_informationDetailed">户籍类型：</li>
                 <li class="tblack_informationDetailed">
+                	<span class="select-style">
 	                <select class="selectMax_informationModify" id="householdtype"  name="householdtype" >
 			              <option value="">请选择</option>
 						  <option value="0">城市</option>
 						  <option value="1">农村</option>
 	                </select>
+	                </span>
                 </li>    
                 <li class="tgrey_informationDetailed">政治面貌：</li>
                 <li class="tblack_informationDetailed">
+                	<span class="select-style">
 	                <select class="selectMax_informationModify" id="political"  name="political">
 	              		<option value="">请选择</option>
 						<option value="中共党员">中共党员</option>
@@ -547,6 +572,7 @@
 						<option value="民主党派成员">民主党派成员</option>
 						<option value="群众">群众</option>
 	                </select>
+	                </span>
                 </li>                    
               </ul>
             </li>
@@ -569,19 +595,21 @@
               <ul>
                 <li class="tgrey_informationDetailed">工作年限：</li>
                 <li class="tblack_informationDetailed"> 
+                	<span class="select-style">
 	                <select class="selectMax_informationModify" id="workyears" name="workyears">
 	                	<option value="">请选择</option>
 						<option value="1-2年">1-2年</option>
 						<option value="3年以上">3年以上</option>
 	                </select>
+	                </span>
                 </li>
                 <li class="tgrey_informationDetailed">公司名称：</li>
                 <li class="tblack_informationDetailed">
-					<input class="inputMax_informationModify validate[funcCall[includespecialchar]]" type="text"  id="companyname"  name="companyname"  maxlength="64" />
+					<input class="inputMax_informationModify validate[funcCall[includespecialchar]]" style="width:230px;height:28px" type="text"  id="companyname"  name="companyname"  maxlength="64" />
                 </li>
                 <li class="tgrey_informationDetailed">公司地址：</li>
                 <li class="tblack_informationDetailed">
-					<input class="inputMax_informationModify validate[funcCall[includespecialchar]]" type="text"  id="companyaddress"  name="companyaddress"  maxlength="120"  />
+					<input class="inputMax_informationModify validate[funcCall[includespecialchar]]" style="width:555px;height:28px" type="text"  id="companyaddress"  name="companyaddress"  maxlength="120"  />
                 </li>
               </ul>
             </li>
@@ -589,6 +617,7 @@
               <ul>
                 <li class="tgrey_informationDetailed">薪酬：</li>
                 <li class="tblack_informationDetailed">
+                	<span class="select-style">
 	                <select class="selectMax_informationModify" id="annualincome"  name="annualincome">
 	                	<option value="">请选择</option>
 						<option value="1">2万以下</option>
@@ -601,6 +630,7 @@
 						<option value="8">50-100万</option>
 						<option value="9">100万以上</option>
 	                </select>
+	                </span>
                 </li>
               </ul>
             </li>
@@ -663,7 +693,7 @@
       <li class="img_upload">
       	<input class="inputMin_informationModify" type="file"  id="filePath"   name="filePath"  />
       </li>
-      <li class="btn_upload"><a href="javascript:void(0)" onclick="upload()">上传</a></li>  
+      <li class="btn_upload"><a href="javascript:void(0)"  class="btn" onclick="upload()"><span style="font-size:13px;color:#5a5a5a">上传</span></a></li>  
       <li class="tgreen_bpPrompt">图像文件类型只限JPG、PNG、GIF、BMP等常见格式，大小不超过2M</li>
       <li><iframe name='hidden_frame' id="hidden_frame" style='display:none'></iframe></li>
     </ul>
