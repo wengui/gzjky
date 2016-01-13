@@ -1,12 +1,12 @@
 @charset "utf-8";
 
 /*----------------equipment---------------*/
-.equipment{width:670px; float:left; font-family:"微软雅黑";}
+.equipment{width:670px; float:left; font-family:"微软雅黑";margin-top:25px }
 .title_equipment{width:670px; float:left; font-size:30px; font-weight:500; color:#0ca7a1; text-align:left; margin:20px 0 10px 0;}
 .tblack_equipment{color:#5a5a5a}
-.header_equipment{height:40px; line-height:40px; color:#5a5a5a; width:650px; padding:0 10px; float:left;font-size:14px}
-.tLeft_equipment{text-align:left; width:325px; height:40px;float:left;}
-.tRight_equipment{text-align:right; width:325px;height:40px;float:left;}
+.header_equipment{height:50px; line-height:50px; color:#5a5a5a; width:650px; padding:0 10px; float:left;font-size:14px}
+.tLeft_equipment{text-align:left; width:285px; height:50px;float:left;}
+.tRight_equipment{width:325px;height:60px;float:left;}
 .equipment_main{width:670px; float:left; font-size:13px; padding:10px 0; border-bottom:1px solid #aeaeae}
 .equipment_main li{float:left; height:30px; line-height:30px;}
 .tgrey_equipmentMain{width:80px; text-align:right; color:#aeaeae;}

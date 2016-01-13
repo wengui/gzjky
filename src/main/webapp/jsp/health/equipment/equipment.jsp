@@ -78,7 +78,7 @@
 	//查询用户设备
 	function query(){
 		showScreenProtectDiv(1);
-	 	showLoading();
+	 	//showLoading();
 		$.ajax({
 				url:"/deviceBaseInfo/queryMemberBindDevice.action",
 				async:true,
@@ -434,7 +434,9 @@
 	         <div class="header_equipment" id="deviceInfo_head">
 	           <ul>
 	             <li class="tLeft_equipment">设备信息</li>
-	             <li class="tRight_equipment"><a href="member_bind_device.jsp"><img src="../../../images/button/btn_add.png"  /></a></li>
+	             <li class="tRight_equipment">
+	             <a href="./member_bind_device.jsp" class="btn"><span style="font-size:17px; font-weight:500;color:#5a5a5a">增加设备</span></a>
+	             </li>
 	           </ul>
 	         </div>
 	        <!--   <div class="equipment_main">
@@ -527,11 +529,8 @@
 		
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
-
-
-
 <div id="transparentDiv2"></div>
 </body>
 </html>

@@ -22,6 +22,16 @@
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 	$.metadata.setType("attr", "validate");
 	$(function(){$("#editform").validate({
@@ -166,17 +176,18 @@
 </script>
 </head>
 <body>
-  <div class="index_tab">   
-   <div class="tab_menu">
-      <ul>
-        <li class="selected">&nbsp;我的设备</li>
-      </ul>
-   </div>
-   <div class="tab_box">
-      <div class="">
+<div class="example-item alt-color gradient">
+  <div class="tabs_framed styled" >
+    <div class="inner tab_menu">
+       <ul class="tabs clearfix active_bookmark1">
+            <li class="active"><a href="#mb" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">我的设备</a></li>
+       </ul>
+	   <div class="tab-content clearfix">
+	     <div class="tab-pane fade in active" id="eq">
+      	<div class="">
       	<form id="memberBindDevice_form">
 	        <div class="password_information">
-	          <div class="title_informationModify"><span class="tgrey_title_informationModify">绑定</span>设备</div>
+	          <div class="tgreen_title_BPhistory">绑定设备</div>
 	          <div class="password_informationMain">
 	            <ul>
 	              <li>设备序列号：</li>
@@ -193,8 +204,8 @@
 	              <div id="new_user" name="new_user" >
 	              
 	              </div>              
-	              
-	              <li class="btn_popup_confirm3"><a href="javascript:void(0)" onclick="deviceBinding()">提交</a><a href="javascript:void(0)" onclick="returnEquipment()">返回</a></li>
+	              <li><a href="javascript:void(0)" class="btn" onclick="deviceBinding()"><span style="font-size:17px; font-weight:500;color:#5a5a5a;width:140px">提交</span></a>
+                  	 <a class="btn"href="javascript:void(0)" onclick="returnEquipment()"><span style="font-size:17px; font-weight:500;color:#5a5a5a;width:140px">返回</span></a></li>
 	              <!-- <li class="btn_reguster"><a href="javascript:void(0)" onclick="deviceBinding()">提交</a></li>
 	              <li class="btn_reguster"><a href="javascript:void(0)" onclick="returnEquipment()">返回</a></li> -->
 	            </ul>
@@ -204,8 +215,11 @@
         </form>
       </div>
       <!--password_modification end-->
-   </div> 
+	   </div> 
+	  </div>
+    </div>
   </div>
+</div>
   
 
 <div id="divloading">

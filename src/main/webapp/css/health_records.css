@@ -52,8 +52,8 @@ li.tleft_healthExamination{width:110px; color:#aeaeae;text-align: right;}
 .tright_healthExamination a{color:#0ca7a1; text-decoration:none;}
 
 /*----------------password_information---------------*/
-.password_informationMain{width:670px; float:left;margin-top:40px;}
-.password_informationMain li{float:left; margin-bottom:10px;width:670px; font-size: 13px;text-align:left; color:#5a5a5a}
+.password_informationMain{width:350px; float:left;margin-top:40px;}
+.password_informationMain li{float:left; margin-bottom:10px;width:350px; font-size: 14px;text-align:left; color:#5a5a5a}
 .register_input{height:44px; line-height: 44px; }
 .register_input input{width:339px; height:42px; border:1px solid #dbdbdb; padding-left:10px;  background:#f7f7f7; color:#ccc; font:500 18px/42px "微软雅黑"; margin-right: 5px}
 .register_prompt_hidden{width:310px; height:44px;font-size:13px; line-height:18px; color:#aeaeae; text-align:left; display:none}
