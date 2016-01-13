@@ -11,11 +11,11 @@
 .informationModify_main{width:680px; padding:0 10px; float:left; margin:20px 0;}
 .informationModify_main2{width:580px; padding:0 10px; float:left; margin:20px 60px;font-size:13px;font-family:微软雅黑;}
 .informationModify_main2 li{padding:2px 0; float:left; }
-.tLeft_informationModify{width:530px;float:left;}
+.tLeft_informationModify{width:520px;float:left;}
 .tLeft_informationModify li{float:left; padding:5px 0; height:30px; line-height:30px;}
 .tRight_informationModify{width:80px; float:left;}
 .thead_informationModify{ height:30px; margin-top:10px;}
-.tblack_informationModify{color:#5a5a5a;width:480px;  text-align:left; float:left;}
+.tblack_informationModify{color:#5a5a5a;width:430px;  text-align:left; float:left;}
 .tgrey_informationModify{text-align:right; width:80px;float:left;}
 .inputMin_informationModify{width:218px; height:28px; border:1px solid #aeaeae; padding-left:10px; font:13px/26px "微软雅黑"; color:#5a5a5a}
 .inputMax_informationModify{width:543px; height:28px; border:1px solid #aeaeae; padding-left:10px; font:13px/26px "微软雅黑"; color:#5a5a5a; }

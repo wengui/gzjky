@@ -324,9 +324,6 @@
 </head>
 
 <body onload="Query();">
-
-
-
 <div class="information_push">
   <div class="information_push_main" id="pushMsgDetailDiv">
     <ul>
@@ -340,27 +337,7 @@
   </div>
   <div class="information_push_button"><a href="javascript:void(0)" onclick="showPushMsgDetailDiv()"><img title="推送消息" src="../images/icon/alarm_clock.png" class="img_alarm_clock" /><span id="pushMsgCount">0</span></a></div>
 </div>
-
-
-
-
-
-
-  <div class="index_health">
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="index_health">
 <!doctype html>
 <html lang="en">
 <head>
