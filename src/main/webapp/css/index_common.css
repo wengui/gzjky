@@ -18,7 +18,7 @@ body{background:#ededed}
 /*----------------indexMenu---------------*/
 .logo_menu{width:100%; height:100px; float:left;background: url(../images/bg.jpg) center top repeat;}
 .bg_logo{width:1044px; height:100px; margin:0 auto;background: url(../images/bg.jpg) center top repeat;}
-.index_menu{width:420px; float:right; font:18px/100px "微软雅黑"}
+.index_menu{width:460px; float:right; font:18px/100px "微软雅黑"}
 .index_menu li{width:88px; float:left; margin-left:12px; display:inline; text-align:center; height:100px;}
 .index_menu li a{color:#5a5a5a; text-decoration:none; font-weight:500; display:block;width:88px;}
 .index_menu li a:hover{color:#71A944; text-decoration:none; font-weight:500;border-bottom:2px solid #71A944}

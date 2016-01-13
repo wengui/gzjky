@@ -380,7 +380,7 @@
 		.bg_logo{background:url(../images/icon/logo.jpg) 22px center no-repeat;}
 	</style>
 </head>
-<body>	
+<body >	
     <!--index_health_header start-->
     <div class="index_health_header">
       <div class="bgTop_index">
@@ -403,7 +403,6 @@
         <div class="bg_logo">
           <div class="index_menu">
             <ul id="topMenuNav">
-              <li id="topMenu0" ></li>
               <li id="topMenu1" onclick="activeTopMenu(1)" class="activation"><a href="../jsp/home.jsp" title="健康中心">健康中心</a></li>
               <li id="topMenu2" ><a href="../jsp/download/download.jsp" title="APP下载、Android、iOS" target="_blank">应用下载</a></li>
               <li id="topMenu3" ><a href="/h/d.helowin?code=2hLtOLIuHAzLxbZoNN5q0st3F3pn8/rEvTb8AJjwM4QRf+HKJm4LWQiWiSGtt3lc&iv=4kmmmcebmot8f5uv" title="新手上路" target="_blank">新手上路</a></li>
