@@ -26,6 +26,16 @@
 	<action name="editMemberWorkInfo" class="com.gzjky.action.healthRecordAction.EditMemberWorkInfoAction" method="editWorkInfo">
      	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
 	</action>
+	
+	<!-- 患者生活习惯-->
+	<action name="queryMemberHabit" class="com.gzjky.action.healthRecordAction.QueryMemberHabitAction" method="getHabitInfo">
+     	<result name="success">/jsp/health/healthrecord/memberhabit.jsp</result>
+	</action>
+	
+	<!-- 患者生活习惯更新-->
+	<action name="editMemberHabit" class="com.gzjky.action.healthRecordAction.EditMemberHabitAction" method="editHabitInfo">
+     	<result name="success">/jsp/health/healthrecord/memberhabit.jsp</result>
+	</action>
 
 	</package>
 </struts>

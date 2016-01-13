@@ -24,8 +24,8 @@ var member_login_id = "";
 var doctor_unit_id = "24913";
 var doctor_cluster_id = "1";
 var doctor_unit_type = "2"
-var edit_image = "/images/button/btn_editor.png";
-var save_image = "/images/button/btn_preserve.png";
+var edit_image = "<c:url value='/images/button/btn_editor.png'/>";
+var save_image = "<c:url value='/images/button/btn_preserve.png'/>";
 
 $(function(){
 	var $div_hrli = $("div.healthRecords_menu_yuan ul li");
@@ -107,8 +107,8 @@ $(function(){
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    var state = modelMap.state;
+			    var state = response.updateFlag;
+			    var returnMessage=response.message;
 			    if(state == "1"){
 			    	obj.onclick = function(){
 			    		if(formId == "habit_form"){
@@ -152,13 +152,13 @@ $(function(){
   <div class="tab_healthRecords">
 	<div class="healthRecords_menu_yuan">
            <ul>
-             <li title="生活习惯" class="selected_healthRecords_yuan" ><img src="/images/health/habit.png"><span>生活习惯</span></li>
-             <li title="家族遗传史"><img src="/images/health/family.png"><span>家族遗传史</span></li>
-             <li  title="当前并发症"><img src="/images/health/cp.png"><span>当前并发症</span></li>
-             <li title="疾病史"><img src="/images/health/disease.png"><span>疾病史</span></li>
-             <li title="高血压专项"><img src="/images/health/bp.png"><span>高血压专项</span></li>
-             <li title="健康检查"><img src="/images/health/health.png"><span>健康检查</span></li>
-			 <li style="margin-right: -25px" title="健康体检"><img src="/images/health/icon_physical_z.jpg"><span>健康体检</span></li>            
+             <li title="生活习惯" class="selected_healthRecords_yuan" ><img src="<c:url value='/images/health/habit.png'/>"><span>生活习惯</span></li>
+             <li title="家族遗传史"><img src="<c:url value='/images/health/family.png'/>"><span>家族遗传史</span></li>
+             <li title="当前并发症"><img src="<c:url value='/images/health/cp.png'/>"><span>当前并发症</span></li>
+             <li title="疾病史"><img src="<c:url value='/images/health/disease.png'/>"><span>疾病史</span></li>
+             <li title="高血压专项"><img src="<c:url value='/images/health/bp.png'/>"><span>高血压专项</span></li>
+             <li title="健康检查"><img src="<c:url value='/images/health/health.png'/>"><span>健康检查</span></li>
+			 <li style="margin-right: -25px" title="健康体检"><img src="<c:url value='/images/health/icon_physical_z.jpg'/>"><span>健康体检</span></li>            
            </ul>
 	 </div>
     <div class="tab_healthRecords_box">
