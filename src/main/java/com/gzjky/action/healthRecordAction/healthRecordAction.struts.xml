@@ -11,6 +11,21 @@
 	<action name="queryMemberBaseInfo" class="com.gzjky.action.healthRecordAction.QueryMemberBaseInfoAction" method="getBaseInfo">
      	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
 	</action>
+	
+	<!-- 基本信息编辑 -->
+	<action name="editMemberBaseInfo" class="com.gzjky.action.healthRecordAction.EditMemberBaseInfoAction" method="editBaseInfo">
+     	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
+	</action>
+	
+	<!-- 基本信息-详细信息编辑 -->
+	<action name="editMemberWorkInfo" class="com.gzjky.action.healthRecordAction.EditMemberDetailAction" method="editDetailInfo">
+     	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
+	</action>
+	
+	<!-- 基本信息-详细信息编辑 -->
+	<action name="editMemberWorkInfo" class="com.gzjky.action.healthRecordAction.EditMemberWorkInfoAction" method="editWorkInfo">
+     	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
+	</action>
 
 	</package>
 </struts>

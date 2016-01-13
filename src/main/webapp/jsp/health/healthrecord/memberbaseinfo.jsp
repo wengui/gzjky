@@ -119,12 +119,11 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    var state = modelMap.state;
-			    var returnMessage=modelMap.returnMessage;
-			    if(state == "0"){
+			    var state = response.updateFlag;
+			    var returnMessage=response.message;
+			    if(state == "1"){
 			    	if(formId == "memberBaseInfo_form"){
-				    	var memberName = $("#name").val();
+				    	var memberName = $("#patientname").val();
 		    			var left_memberName = top.document.getElementById("left_memberName");
 		    			
 		    			var simpleMemberName = memberName;
@@ -166,7 +165,7 @@
 	function save_baseinfo(obj){
 		//if(!$("#"+basic_form_id).valid()) return false;
 		if(!jQuery('#memberBaseInfo_form').validationEngine('validate')) return false;
-		var url = "/healthRecordAction/editMemberBaseInfo.action";
+		var url = "/gzjky/healthRecordAction/editMemberBaseInfo.do";
 		var para = get_requestPara(basic_form_id);
 		send_request(basic_form_id,obj,url,para);
 	}
@@ -179,7 +178,7 @@
 	function save_detail(obj){
 		//if(!$("#"+detail_form_id).valid()) return false;
 		if(!jQuery('#detail_form').validationEngine('validate')) return false;
-		var url = "/healthRecordAction/editMemberDetail.action";
+		var url = "/gzjky/healthRecordAction/editMemberDetail.do";
 		var para = get_requestPara(detail_form_id);
 		send_request(detail_form_id,obj,url,para);
 	}
@@ -192,7 +191,7 @@
 	function save_workinfo(obj){
 		//if(!$("#"+workinfo_form_id).valid()) return false;
 		if(!jQuery('#workinfo_form').validationEngine('validate')) return false;
-		var url = "/healthRecordAction/editMemberWorkInfo.action";
+		var url = "/gzjky/healthRecordAction/editMemberWorkInfo.do";
 		var para = get_requestPara(workinfo_form_id);
 		send_request(workinfo_form_id,obj,url,para);
 	}
@@ -228,7 +227,7 @@
         url = url.replace("995120upload", "");
         var imgUrl = "http://v3.995120.cn/995120upload" + url + "?rand=" + Rand;
         
-        document.getElementById("header_photo").src = imgUrl;
+        document.getElementById("patientimage").src = imgUrl;
         parent.parent.document.getElementById("memberHeadImg").src = imgUrl;
         closeDiv();
     }
@@ -271,7 +270,7 @@
         <div class="btn_title_informationModify">
           <ul>
             <li class="tLeft">基本信息</li>
-            <li class="tRight"><a href="javascript:void(0)" onclick="edit_baseinfo(this)"><img src="/images/button/btn_editor.png" /></a></li>
+            <li class="tRight"><a href="javascript:void(0)" onclick="edit_baseinfo(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
           </ul>
         </div>
         <div class="informationModify_main" >
@@ -280,11 +279,11 @@
              <ul>
                <li class="tgrey_informationModify">*真实姓名：</li>
                <li class="tblack_informationModify">
-               		<input class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[16]] " type="text"  id="name"  name="name" maxlength="16" />
+               		<input class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[16]] " type="text"  id="patientname"  name="patientname" maxlength="16" />
                </li>
                <li class="tgrey_informationModify">*性别：</li>
                <li class="tblack_informationModify">
-	               <select  class="selectMax_informationModify  text-input validate[required]"  id="sex"  name="sex"   >
+	               <select  class="selectMax_informationModify  text-input validate[required]"  id="patientsex"  name="patientsex">
 	                   <option value="">请选择</option>
 		               <option value="0">男</option>
 		               <option value="1">女</option>
@@ -292,11 +291,11 @@
 	           </li>
                <li class="tgrey_informationModify">*出生日期：</li>
                <li class="tblack_informationModify">
-               		<input class="inputMin_informationModify text-input validate[required]"  type="text"   id="born_date"  name="born_date"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d',errDealMode:2})" />
+               		<input class="inputMin_informationModify text-input validate[required]"  type="text"   id="patientbirthday"  name="patientbirthday"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d',errDealMode:2})" />
                </li>
                <li class="tgrey_informationModify">*手机号：</li>
                <li class="tblack_informationModify">
-              		 <input class="inputMin_informationModify text-input validate[required,funcCall[mobilephone]]" type="text"  id="cell_phone"  name="cell_phone"   />
+              		 <input class="inputMin_informationModify text-input validate[required,funcCall[mobilephone]]" type="text"  id="patientphone"  name="patientphone"   />
                </li>
                <li class="tgrey_informationModify">*电子邮箱：</li>
                <li class="tblack_informationModify">
@@ -306,7 +305,7 @@
            </li>
            <li class="tRight_informationModify">
              <ul>
-               <li><img height="80" id="header_photo" src="/images/health/default_head.gif?t=1452044932829" /></li>
+               <li><img height="80" id="patientimage" src="/images/health/default_head.gif?t=1452044932829" /></li>
                <li class="thead_informationModify"><a href="javascript:void(0)" onclick="edit_photo()">修改头像</a></li>
              </ul>
            </li>
@@ -320,7 +319,7 @@
         <div class="btn_title_informationModify">
           <ul>
             <li class="tLeft">详细信息</li>
-            <li class="tRight"><a href="javascript:void(0)"  onclick="edit_detail(this)"><img src="/images/button/btn_editor.png" /></a></li>
+            <li class="tRight"><a href="javascript:void(0)"  onclick="edit_detail(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
           </ul>
         </div>
         <div class="informationModify_main">
@@ -329,7 +328,7 @@
               <ul>
                 <li class="tgrey_informationDetailed">证件类型：</li>
                 <li class="tblack_informationDetailed">
-	                <select class="selectMax_informationModify"  id="credentials_type"  name="credentials_type"  onchange="change_credentials_type(this)">
+	                <select class="selectMax_informationModify"  id="cardtype"  name="cardtype"  onchange="change_credentials_type(this)">
 	                    <option value="">请选择</option>
 	                	<option value="身份证">身份证</option>
 	                	<option value="驾驶证">驾驶证</option>
@@ -341,7 +340,7 @@
 	            </li>
 	           <li class="tgrey_informationDetailed">是否军人：</li>
                 <li class="tblack_informationDetailed">
-                	<select class="selectMax_informationModify" id="is_armyman"  name="is_armyman">
+                	<select class="selectMax_informationModify" id="issoldier"  name="issoldier">
 	                	<option value="1">是</option>
 	                	<option value="0">否</option>
 	                </select>
@@ -355,7 +354,7 @@
                 	   <input class="inputMin_informationModify text-input validate[funcCall[chinese]]" type="text"  id="tribe"  name="tribe"  maxlength="32" />
                 </li>  --> 
 				<li class="tblack_informationDetailed">
-						<select class="selectMax_informationModify" id="tribe"  name="tribe" >
+						<select class="selectMax_informationModify" id="patientnational"  name="patientnational" >
 							<option value="">请选择</option>
 							
 							<option value="汉族">汉族</option>
@@ -478,7 +477,7 @@
                 </li>
                 <li class="tgrey_informationDetailed">婚姻状况：</li>
                 <li class="tblack_informationDetailed">
-	                <select class="selectMax_informationModify" id="marriage"  name="marriage" >
+	                <select class="selectMax_informationModify" id="marriagestatus"  name="marriagestatus" >
 	                	<option value="0">未婚</option>
 	                	<option value="2">已婚</option>
 	                	<option value="1">离异</option>
@@ -486,7 +485,7 @@
                 </li>                     
                 <li class="tgrey_informationDetailed">学历：</li>
                 <li class="tblack_informationDetailed">
-	                <select class="selectMax_informationModify" id="educational_level" name="educational_level"  >
+	                <select class="selectMax_informationModify" id="education" name="education"  >
 		                <option value="">请选择</option>
 					    <option value="初中">初中</option>
 						<option value="高中">高中</option>
@@ -502,11 +501,11 @@
                 </li>
                 <li class="tgrey_informationDetailed">家庭电话：</li>
                 <li class="tblack_informationDetailed">
-                	<input class="inputMin_informationModify text-input validate[funcCall[telephone]]" type="text" id="phone"  name="phone"  />
+                	<input class="inputMin_informationModify text-input validate[funcCall[telephone]]" type="text" id="telephone"  name="telephone"  />
                 </li>   
 	            <li class="tgrey_informationDetailed">家庭地址：</li>
 	            <li class="tblack_informationDetailed">
-	            	<input class="inputMax_informationModify text-input validate[funcCall[includespecialchar]]" type="text"  id="address"  name="address"  maxlength="128"  />
+	            	<input class="inputMax_informationModify text-input validate[funcCall[includespecialchar]]" type="text"  id="homeaddress"  name="homeaddress"  maxlength="128"  />
 	            </li>                             
               </ul>
             </li>
@@ -514,11 +513,11 @@
               <ul>
                 <li class="tgrey_informationDetailed">证件号码：</li>
                 <li class="tblack_informationDetailed">
-                	<input class="inputMin_informationModify  validate[funcCall[includespecialchar]]" type="text"  maxlength="18" id="credentials_id" name="credentials_id"  />
+                	<input class="inputMin_informationModify  validate[funcCall[includespecialchar]]" type="text"  maxlength="18" id="cardnum" name="cardnum"  />
                 </li>
                 <li class="tgrey_informationDetailed">是否残疾：</li>
                 <li class="tblack_informationDetailed">
-                	<select class="selectMax_informationModify" id="is_handicapped"  name="is_handicapped" >
+                	<select class="selectMax_informationModify" id="isdisability"  name="isdisability" >
                 		<option value="0">否</option>
 	                	<option value="1">是</option>
 	                </select>
@@ -529,11 +528,11 @@
                 </li>
                 <li class="tgrey_informationDetailed">籍贯：</li>
                 <li class="tblack_informationDetailed">
-                	   <input class="inputMin_informationModify text-input validate[funcCall[chinese]]" type="text"  id="native_place"  name="native_place" maxlength="64" />
+                	   <input class="inputMin_informationModify text-input validate[funcCall[chinese]]" type="text"  id="nativeplace"  name="nativeplace" maxlength="64" />
                 </li>                  
                 <li class="tgrey_informationDetailed">户籍类型：</li>
                 <li class="tblack_informationDetailed">
-	                <select class="selectMax_informationModify" id="registered_residence_nature"  name="registered_residence_nature" >
+	                <select class="selectMax_informationModify" id="householdtype"  name="householdtype" >
 			              <option value="">请选择</option>
 						  <option value="0">城市</option>
 						  <option value="1">农村</option>
@@ -541,7 +540,7 @@
                 </li>    
                 <li class="tgrey_informationDetailed">政治面貌：</li>
                 <li class="tblack_informationDetailed">
-	                <select class="selectMax_informationModify" id="political_affiliation"  name="political_affiliation">
+	                <select class="selectMax_informationModify" id="political"  name="political">
 	              		<option value="">请选择</option>
 						<option value="中共党员">中共党员</option>
 						<option value="共青团员">共青团员</option>
@@ -561,7 +560,7 @@
         <div class="btn_title_informationModify">
           <ul>
             <li class="tLeft">工作信息</li>
-            <li class="tRight"><a href="javascript:void(0)" onclick="edit_workinfo(this)"><img src="/images/button/btn_editor.png" /></a></li>
+            <li class="tRight"><a href="javascript:void(0)" onclick="edit_workinfo(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
           </ul>
         </div>
         <div class="informationModify_main">
@@ -570,7 +569,7 @@
               <ul>
                 <li class="tgrey_informationDetailed">工作年限：</li>
                 <li class="tblack_informationDetailed"> 
-	                <select class="selectMax_informationModify" id="working_life" name="working_life">
+	                <select class="selectMax_informationModify" id="workyears" name="workyears">
 	                	<option value="">请选择</option>
 						<option value="1-2年">1-2年</option>
 						<option value="3年以上">3年以上</option>
@@ -578,11 +577,11 @@
                 </li>
                 <li class="tgrey_informationDetailed">公司名称：</li>
                 <li class="tblack_informationDetailed">
-					<input class="inputMax_informationModify validate[funcCall[includespecialchar]]" type="text"  id="company"  name="company"  maxlength="64" />
+					<input class="inputMax_informationModify validate[funcCall[includespecialchar]]" type="text"  id="companyname"  name="companyname"  maxlength="64" />
                 </li>
                 <li class="tgrey_informationDetailed">公司地址：</li>
                 <li class="tblack_informationDetailed">
-					<input class="inputMax_informationModify validate[funcCall[includespecialchar]]" type="text"  id="company_address"  name="company_address"  maxlength="120"  />
+					<input class="inputMax_informationModify validate[funcCall[includespecialchar]]" type="text"  id="companyaddress"  name="companyaddress"  maxlength="120"  />
                 </li>
               </ul>
             </li>
@@ -590,7 +589,7 @@
               <ul>
                 <li class="tgrey_informationDetailed">薪酬：</li>
                 <li class="tblack_informationDetailed">
-	                <select class="selectMax_informationModify" id="average_income_of_year"  name="average_income_of_year">
+	                <select class="selectMax_informationModify" id="annualincome"  name="annualincome">
 	                	<option value="">请选择</option>
 						<option value="1">2万以下</option>
 						<option value="2">2-5万</option>
@@ -658,7 +657,7 @@
       <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv();">X</a></li>
     </ul>
   </div>
-  <form id="upload_form" action="/jsp/health/healthrecord/upload_member_head_img.jsp" method="post"  enctype="multipart/form-data"  target="hidden_frame">
+  <form id="upload_form" action="/gzjky/jsp/health/healthrecord/upload_member_head_img.jsp" method="post"  enctype="multipart/form-data"  target="hidden_frame">
   <div class="popup_main">
     <ul>
       <li class="img_upload">
