@@ -16,8 +16,8 @@ body{background:#ededed}
 .index_signout{background:url(../images/icon/sign_out.jpg) left center no-repeat; width:80px;text-align:right;}
 
 /*----------------indexMenu---------------*/
-.logo_menu{width:100%; height:100px; float:left;background: url(../images/bg.jpg) center top repeat;}
-.bg_logo{width:1044px; height:100px; margin:0 auto;background: url(../images/bg.jpg) center top repeat;}
+.logo_menu{width:100%; height:100px; float:left;}
+.bg_logo{width:1044px; height:100px; margin:0 auto;}
 .index_menu{width:460px; float:right; font:18px/100px "微软雅黑"}
 .index_menu li{width:88px; float:left; margin-left:12px; display:inline; text-align:center; height:100px;}
 .index_menu li a{color:#5a5a5a; text-decoration:none; font-weight:500; display:block;width:88px;}

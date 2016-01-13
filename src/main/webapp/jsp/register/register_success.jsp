@@ -9,7 +9,14 @@
 <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/register.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_bottom.css'/>" rel="stylesheet" type="text/css" />
-
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 	document.onkeydown=function() {  
 		if (window.event.keyCode==13) {
