@@ -291,7 +291,7 @@
                </li>
                <li class="tgrey_informationModify">*性别：</li>
                <li class="tblack_informationModify">
-               	   <span class="select-style">
+               	   <span class="select-style_baseinfo" >
 	               <select  class="selectMax_informationModify  text-input validate[required]"  id="patientsex"  name="patientsex">
 	                   <option value="">请选择</option>
 		               <option value="0">男</option>
@@ -338,7 +338,7 @@
               <ul>
                 <li class="tgrey_informationDetailed">证件类型：</li>
                 <li class="tblack_informationDetailed">
-                <span class="select-style">
+                <span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify"  id="cardtype"  name="cardtype"  onchange="change_credentials_type(this)">
 	                    <option value="">请选择</option>
 	                	<option value="身份证">身份证</option>
@@ -352,7 +352,7 @@
 	            </li>
 	           <li class="tgrey_informationDetailed">是否军人：</li>
                 <li class="tblack_informationDetailed">
-                <span class="select-style">
+                <span class="select-style_baseinfo">
                 	<select class="selectMax_informationModify" id="issoldier"  name="issoldier">
 	                	<option value="1">是</option>
 	                	<option value="0">否</option>
@@ -368,7 +368,7 @@
                 	   <input class="inputMin_informationModify text-input validate[funcCall[chinese]]" type="text"  id="tribe"  name="tribe"  maxlength="32" />
                 </li>  --> 
 				<li class="tblack_informationDetailed">
-						<span class="select-style">
+						<span class="select-style_baseinfo">
 						<select class="selectMax_informationModify" id="patientnational"  name="patientnational" >
 							<option value="">请选择</option>
 							
@@ -493,7 +493,7 @@
                 </li>
                 <li class="tgrey_informationDetailed">婚姻状况：</li>
                 <li class="tblack_informationDetailed">
-                	<span class="select-style">
+                	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="marriagestatus"  name="marriagestatus" >
 	                	<option value="0">未婚</option>
 	                	<option value="2">已婚</option>
@@ -503,7 +503,7 @@
                 </li>                     
                 <li class="tgrey_informationDetailed">学历：</li>
                 <li class="tblack_informationDetailed">
-                	<span class="select-style">
+                	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="education" name="education"  >
 		                <option value="">请选择</option>
 					    <option value="初中">初中</option>
@@ -537,7 +537,7 @@
                 </li>
                 <li class="tgrey_informationDetailed">是否残疾：</li>
                 <li class="tblack_informationDetailed">
-                	<span class="select-style">
+                	<span class="select-style_baseinfo">
                 	<select class="selectMax_informationModify" id="isdisability"  name="isdisability" >
                 		<option value="0">否</option>
 	                	<option value="1">是</option>
@@ -554,7 +554,7 @@
                 </li>                  
                 <li class="tgrey_informationDetailed">户籍类型：</li>
                 <li class="tblack_informationDetailed">
-                	<span class="select-style">
+                	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="householdtype"  name="householdtype" >
 			              <option value="">请选择</option>
 						  <option value="0">城市</option>
@@ -564,7 +564,7 @@
                 </li>    
                 <li class="tgrey_informationDetailed">政治面貌：</li>
                 <li class="tblack_informationDetailed">
-                	<span class="select-style">
+                	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="political"  name="political">
 	              		<option value="">请选择</option>
 						<option value="中共党员">中共党员</option>
@@ -595,7 +595,7 @@
               <ul>
                 <li class="tgrey_informationDetailed">工作年限：</li>
                 <li class="tblack_informationDetailed"> 
-                	<span class="select-style">
+                	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="workyears" name="workyears">
 	                	<option value="">请选择</option>
 						<option value="1-2年">1-2年</option>
@@ -617,7 +617,7 @@
               <ul>
                 <li class="tgrey_informationDetailed">薪酬：</li>
                 <li class="tblack_informationDetailed">
-                	<span class="select-style">
+                	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="annualincome"  name="annualincome">
 	                	<option value="">请选择</option>
 						<option value="1">2万以下</option>
