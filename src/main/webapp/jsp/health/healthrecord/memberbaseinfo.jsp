@@ -93,8 +93,8 @@
     		if(id in memberBaseInfo){
     			$("#main_div #"+id).val(memberBaseInfo[id]);
     			if(id=="credentials_type" && $("#main_div #"+id).val()=="身份证"){
-    				//$("#main_div #credentials_id").rules("add",{idcade:true});
-    				$("#main_div #credentials_id").addClass("validate[funcCall[idcade]]");
+    				//$("#main_div #cardnum").rules("add",{idcade:true});
+    				$("#main_div #cardnum").addClass("validate[funcCall[idcade]]");
     			}
     		}
     	});
@@ -234,15 +234,15 @@
     
     function change_credentials_type(obj){
     	//validator.resetForm();
-    	$("#main_div #credentials_id").validationEngine("hide");
+    	$("#main_div #cardnum").validationEngine("hide");
     	var obj_value = $(obj).val();
     	var credential_validate = {idcade:true};
     	if(obj_value=="身份证"){
-    		$("#main_div #credentials_id").addClass("validate[funcCall[idcade]]");
-    		//$("#main_div #credentials_id").rules("add",credential_validate);
+    		$("#main_div #cardnum").addClass("validate[funcCall[idcade]]");
+    		//$("#main_div #cardnum").rules("add",credential_validate);
     	}else{
-    		//$("#main_div #credentials_id").rules("remove");
-    		$("#main_div #credentials_id").removeClass("validate[funcCall[idcade]]")
+    		//$("#main_div #cardnum").rules("remove");
+    		$("#main_div #cardnum").removeClass("validate[funcCall[idcade]]")
     	}
     }
 

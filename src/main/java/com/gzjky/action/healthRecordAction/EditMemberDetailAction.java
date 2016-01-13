@@ -7,12 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.action.acitonCommon.ModelMap;
-import com.gzjky.base.util.date.DateFormatter;
-import com.gzjky.base.util.date.DateUtil;
 import com.gzjky.bean.gen.PatientInfo;
 import com.gzjky.dao.constant.MsgConstant;
 import com.gzjky.dao.writedao.PatientInfoWriteMapper;
@@ -52,12 +49,29 @@ public class EditMemberDetailAction extends ActionSupport {
 			String id = "1";
 			
 			record.setId(NumberUtils.toInt(id));// 患者ID
-			record.setPatientname(request.getParameter("patientname"));// 患者姓名
-			record.setPatientsex(request.getParameter("patientsex"));// 患者性别
-			DateTime birthday = DateUtil.parseDate(request.getParameter("patientbirthday"),DateFormatter.SDF_YMDHMS6);
-			record.setPatientbirthday(birthday);// 患者出生日期
-			record.setPatientphone(request.getParameter("patientphone"));// 患者手机号
-			record.setEmail(request.getParameter("email"));// 患者邮箱
+			record.setCardtype(request.getParameter("cardtype"));// 证件类型
+			record.setCardnum(request.getParameter("cardnum")); // 证件号
+			if("1".equals(request.getParameter("issoldier"))){
+				record.setIssoldier(true);// 是军人
+			}else{
+				record.setIssoldier(false);// 不是军人
+			}
+			
+			if("1".equals(request.getParameter("isdisability"))){
+				record.setIsdisability(true);// 是残疾
+			}else{
+				record.setIsdisability(false);// 不是残疾
+			}
+			record.setHeight(NumberUtils.toDouble(request.getParameter("height")));// 身高
+			record.setWeight(NumberUtils.toDouble(request.getParameter("weight")));// 体重
+			record.setPatientnational(request.getParameter("patientnational"));// 民族
+			record.setNativeplace(request.getParameter("nativeplace"));// 籍贯
+			record.setMarriagestatus(request.getParameter("marriagestatus"));// 婚姻情况
+			record.setHouseholdtype(request.getParameter("householdtype"));// 户籍类型
+			record.setEducation(request.getParameter("education"));// 学历
+			record.setPolitical(request.getParameter("political"));// 政治面貌
+			record.setTelephone(request.getParameter("telephone"));// 固话
+			record.setHomeaddress(request.getParameter("homeaddress"));// 家庭住址
 
 			// 更新处理
 			int updattCount = patientInfoWriteMapper.updateByPrimaryKeySelective(record);

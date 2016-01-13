@@ -18,7 +18,7 @@
 	</action>
 	
 	<!-- 基本信息-详细信息编辑 -->
-	<action name="editMemberWorkInfo" class="com.gzjky.action.healthRecordAction.EditMemberDetailAction" method="editDetailInfo">
+	<action name="editMemberDetail" class="com.gzjky.action.healthRecordAction.EditMemberDetailAction" method="editDetailInfo">
      	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
 	</action>
 	

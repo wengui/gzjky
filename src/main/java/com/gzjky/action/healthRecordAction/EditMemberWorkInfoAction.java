@@ -7,12 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.action.acitonCommon.ModelMap;
-import com.gzjky.base.util.date.DateFormatter;
-import com.gzjky.base.util.date.DateUtil;
 import com.gzjky.bean.gen.PatientInfo;
 import com.gzjky.dao.constant.MsgConstant;
 import com.gzjky.dao.writedao.PatientInfoWriteMapper;
@@ -53,12 +50,10 @@ public class EditMemberWorkInfoAction extends ActionSupport {
 			String id = "1";
 			
 			record.setId(NumberUtils.toInt(id));// 患者ID
-			record.setPatientname(request.getParameter("patientname"));// 患者姓名
-			record.setPatientsex(request.getParameter("patientsex"));// 患者性别
-			DateTime birthday = DateUtil.parseDate(request.getParameter("patientbirthday"),DateFormatter.SDF_YMDHMS6);
-			record.setPatientbirthday(birthday);// 患者出生日期
-			record.setPatientphone(request.getParameter("patientphone"));// 患者手机号
-			record.setEmail(request.getParameter("email"));// 患者邮箱
+			record.setWorkyears(request.getParameter("workyears"));// 工作年限
+			record.setAnnualincome(request.getParameter("annualincome"));// 工作年限
+			record.setCompanyname(request.getParameter("companyname"));// 公司名称
+			record.setCompanyaddress(request.getParameter("companyaddress"));// 公司地址
 
 			// 更新处理
 			int updattCount = patientInfoWriteMapper.updateByPrimaryKeySelective(record);
