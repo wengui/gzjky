@@ -21,6 +21,14 @@
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script src="<c:url value='/js/page/jquery.hwin.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 	$(function(){
 		/*
@@ -220,13 +228,13 @@
 	}
 </script>
 </head>
-<body>
+<body  style="background:#e8e3d7">
 <!--bp_history start-->
-<div class="bp_history" style="height:650px">
+<div class="bp_history" style="height:650px;background:#e8e3d7" >
   <div class="title_BPhistory">
     <ul>
-      <li class="tgreen_title_BPhistory"><span class="tgrey_title_BPhistory">亲情</span>号码</li>
-      <li class="select_BPhistory"><a href="javascript:void(0)" onclick="add_familyPhone()"><img src="/images/button/phone_add.png" /></a></li>
+      <li class="tgreen_title_BPhistory">亲情号码</li>
+      <li class="select_PhoneFamily"><a href="javascript:void(0)" onclick="add_familyPhone()"><img src="../../../images/button/phone_add.png" /></a></li>
     </ul>
   </div>
   <div class="index_table">
@@ -265,7 +273,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
-<link href="/css/popup.css" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 
 <style type="text/css">
 
@@ -275,7 +283,7 @@
 </style>
 
 </head>
-<body>
+<body  style="background:#e8e3d7">
  <div class="popup" id="familyPhoneWindow" style="width:600px;display:none;position:absolute;top:50px; left:10px;z-index: 30;height:300">
   <div class="popup_header">
     <ul>
@@ -290,17 +298,17 @@
   		<input type="hidden" name="member_unit_type" id="member_unit_type"/>
 		<div class="popup_main">
 	         <ul>
-	              <li class="tgrey_popup">*真实姓名：</li>
-	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer]]" type="text"  id="name"  name="name" maxlength="32" />
+	              <li class="tgrey_popup" >*真实姓名：</li>
+	              <li class="tblack_popup" >
+	              		<input class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer]]" style="width:230px" type="text"  id="name"  name="name" maxlength="32" />
 	              </li>
 	              <li class="tgrey_popup">固定电话：</li>
 	              <li class="tblack_popup">
-	              <input class="inputMin_informationModify text-input validate[funcCall[telephone]]" type="text"  id="phone"  name="phone" />
+	              <input class="inputMin_informationModify text-input validate[funcCall[telephone]]" style="width:230px" type="text"  id="phone"  name="phone" />
 	           	   </li>
 	              <li class="tgrey_popup">*手机号码：</li>
 	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[required,funcCall[Internationalmobilephone]]"  type="text"   id="cellphone"  name="cellphone" />
+	              		<input class="inputMin_informationModify text-input validate[required,funcCall[Internationalmobilephone]]" style="width:230px"  type="text"   id="cellphone"  name="cellphone" />
 	              </li>
 	              <li class="tgrey_popup">*诊断报告：</li>
 	              <li class="tblack_popup">
@@ -322,17 +330,17 @@
 	              </li>
 	             <li class="tgrey_popup">单位：</li>
 	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"  type="text"   id="company"  name="company" maxlength="128" />
+	              		<input class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"  style="width:230px" type="text"   id="company"  name="company" maxlength="128" />
 	              </li>
 	             <li class="tgrey_popup">邮箱：</li>
 	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[custom[email]]"  type="text"   id="email"  name="email" />
+	              		<input class="inputMin_informationModify text-input validate[custom[email]]"  style="width:230px" type="text"   id="email"  name="email" />
 	              </li>
 	             <li class="tgrey_popup">家庭地址：</li>
 	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"  type="text"   id="home_address"  name="home_address" maxlength="256" />
+	              		<input class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"  style="width:230px" type="text"   id="home_address"  name="home_address" maxlength="256" />
 	              </li>			              
-	              <li class="btn_popup_confirm"><a href="javascript:void(0)" onclick="saveFamilyPhone()">保存</a></li>                                       
+	              <li class="btn_popup_confirm"><a href="javascript:void(0)" class="btn" onclick="saveFamilyPhone()"><span style="color:#5a5a5a">保存</span></a></li>                                            
 	         </ul>
 	      </div> 
   </form>

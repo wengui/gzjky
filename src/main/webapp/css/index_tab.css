@@ -14,6 +14,7 @@
 .title_BPhistory{width:680px; float:left;}
 .tgreen_title_BPhistory{font-size:30px;float:left; text-align:left; font-weight:500; color:#71A944; height:48px; line-height:48px; width:320px;font-family:"微软雅黑"}
 .select_BPhistory{width:228px; float:left; text-align:right; padding-top:10px; height:45px;}
+.select_PhoneFamily{width:345px; float:left; text-align:right; padding-top:10px; height:45px;}
 .select-style{ position:absolute; overflow:hidden;}
 .select-style select{ width:118px;height:28px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
     background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
