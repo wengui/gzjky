@@ -17,9 +17,19 @@
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript" ></script>
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
   $(function(){
-	var $div_trli = $("div.tab_menu_record ul li");
+	var $div_trli = $("div.tab_menu ul li");
 	
 	$div_trli.click(function(){	
 	$(this).addClass("selected_record").siblings().removeClass("selected_record");
@@ -277,13 +287,12 @@
 </script>
 </head>
 
-<body onload="startInit()">
+<body onload="startInit()" style="background:#e8e3d7">
   <div class="account">
   
     <div class="account_title">
       <ul>
-        <li class="account_titleGreen">账户/套餐</li>
-        <li class="account_titleGray">当前位置：账户/套餐</li>
+        <li class="tgreen_title_BPhistory">账户/套餐</li>
       </ul>
     </div>
     <div class="account_main">
@@ -291,11 +300,11 @@
         <div class="title_myMeal">
           <ul>
             <li class="tLeft_myMeal">我的套餐</li>
-            <li class="tRight_myMeal"><a href="meal.jsp"><img src="/images/button/btn_buy.png" title="购买套餐"/></a></li>
+            <li class="tRight_myMeal"><a href="meal.jsp"><img src="../../../images/button/btn_buy.png" title="购买套餐"/></a></li>
           </ul>
         </div>
-        <div class="account_table">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="meal_table"  id="faceTable">
+        <div class="index_table">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table"  id="faceTable">
             <colgroup>
               <col width="35%" />
               <col width="15%" />
@@ -354,48 +363,54 @@
  
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
     转<select id="gopage" onchange="gotoPage()">
     	</select>页
     </li>
   </ul>
-</div>        
-        <!--account_security start-->
+</div>       
+<!--account_security start-->
+
       <div class="my_meal">
+      <br> </br>
         <div class="title_myMeal">
           <ul>
-            <li class="tLeft_myMeal">我的余额：<span id="package_bill">0.00</span>元&nbsp;&nbsp;&nbsp;<a title="充值" style="color:#0ca7a1; margin-left:20px; text-decoration: none;" href="recharge.jsp">立即充值</a></li>
+            <li class="tLeft_myMeal">我的余额：<span id="package_bill">0.00</span>元&nbsp;&nbsp;&nbsp;<a title="充值" class="btn" style="color:margin-left:20px; text-decoration: none;" href="recharge.jsp"><span style="color:#5a5a5a">立即充值</span></a></li>
             <li class="tRight_myMeal"></li>
           </ul>
         </div>
       </div>
       
       <!--account_security end-->
-        <div class="transaction_record">
-          <div class="tab_menu_record">
-            <ul>
-              <li class="selected_record">充值记录</li>
-              <li>消费记录</li>
-            </ul>
-          </div>
-          <div class="tab_box_record">
-            <div>
-            <!--bp_history start-->
-            	<iframe id="recharge_history_iframe" src="recharge_history.jsp"  frameborder="0" width="100%"  scrolling="no"  onload="sonIframeResize();"></iframe>
-            <!--bp_history end-->
-            </div>
-            <div class="hide_record">
-  			 	<iframe id ="consume_record_iframe" src="consume_record.jsp"  frameborder="0" width="100%"  scrolling="no"  onload="sonIframeResize();"></iframe>
-            </div>
-            </div>
-          </div>
+ 
+      <div class="transaction_record">
+          <div class="example-item alt-color gradient">
+				<div class="tabs_framed styled" >
+				    <div class="inner tab_menu">
+				        <ul class="tabs clearfix active_bookmark1">
+				            <li class="active"><a href="#rh" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">充值记录</a></li>
+				            <li ><a href="#cr" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">消费记录</a></li>
+				        </ul>
+				
+				        <div class="tab-content clearfix">
+				            <div class="tab-pane fade in active" id="rh">
+				              	<iframe id="recharge_history_iframe" src="recharge_history.jsp" frameborder="0" width="100%"  scrolling="no"  onload="sonIframeResize();"></iframe>
+				            </div>
+				            <div class="tab-pane fade" id="cr">
+				                <iframe id ="consume_record_iframe" src="consume_record.jsp" frameborder="0" width="100%"  scrolling="no" onload="sonIframeResize();"></iframe>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+		  </div>
+		</div>
         </div>
       </div>
       <!--my_meal end-->

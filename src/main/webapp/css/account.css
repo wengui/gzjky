@@ -1,13 +1,13 @@
 @charset "utf-8";
 
 /*----------------account---------------*/
-.account{width:670px;margin:0 auto; font-family:"微软雅黑"}
-.account_title{width:670px;float:left;text-align:left;}
+.account{width:680px;margin:0 auto; font-family:"微软雅黑"}
+.account_title{width:680px;float:left;text-align:left;}
 .account_titleGreen{font-size:24px; color:#0ca7a1; height:30px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #0ca7a1; width:120px; float:left}
 .account_titleGray{font-size:14px; color:#aeaeae;border-bottom:2px solid #aeaeae; width:550px;height:20px; padding-top:23px; padding-bottom:5px;float:left; text-align:right}
 .account_titleGray a{text-decoration:none; color:#aeaeae; margin:0 5px;}
 .account_titleGray a:hover{text-decoration:underline}
-.account_main{width:670px;float:left;}
+.account_main{width:680px;float:left;}
 /* .account_security{width:650px; height:80px; float:left; margin-top:10px; padding:20px 0;} */
 .account_security{width:650px; height:40px; float:left; margin-top:0px; padding:20px 0;}
 .account_security li{float:left}
@@ -27,9 +27,9 @@
 .tyellow_balance{font-size:30px; font-weight:500; color:#5a5a5a; margin-right:10px;}
 
 /*----------------my_meal---------------*/
-.my_meal{width:670px; float:left}
-.title_myMeal{height:40px; background:#f7f7f7; line-height:40px; color:#5a5a5a; width:650px; padding:0 10px; float:left;border-top:1px solid #aeaeae}
-.tLeft_myMeal{text-align:left; width:325px; height:40px;float:left; font-size:14px; }
+.my_meal{width:680px; float:left;font-family:"微软雅黑"}
+.title_myMeal{height:40px; line-height:40px; color:#5a5a5a; width:680px; padding:0 10px; float:left;border-top:1px solid #aeaeae}
+.tLeft_myMeal{text-align:left; width:325px; height:50px;float:left; font-size:14px; }
 .tRight_myMeal{text-align:right; width:325px;height:40px;float:left;}
 .account_table{width:670px; float:left; margin-top:10px;}
 .meal_table{float:left; text-align:left; border-collapse:collapse}
@@ -38,13 +38,13 @@
 .meal_table td{color:#5a5a5a; text-align:center; font-size:13px; padding:10px 0;border:1px solid #ddd;}
 .even{background:#f7f7f7}
 .odd{background:#fff}
-.transaction_record{width:670px; float:left; margin-top:40px;}
-.transaction_record_main{width:670px; float:left;}
-.tab_menu_record{width:670px; float:left}
+.transaction_record{width:680px; float:left; margin-top:40px;}
+.transaction_record_main{width:680px; float:left;}
+.tab_menu_record{width:680px; float:left}
 .tab_menu_record ul{margin:0;padding:0px; border-bottom:1px solid #0ca7a1; height:40px;}
 .tab_menu_record li{width:106px; margin-right:2px; float:left; background:#aeaeae;height:40px; line-height:40px; display:block; cursor:pointer; color:#fff; font-size:14px;}
 .tab_menu_record li.selected_record{background:#0ca7a1}
-.tab_box_record{width:670px; float:left;}
+.tab_box_record{width:680px; float:left;}
 .hide_record{display:none;}
 
 /*----------------recharge---------------*/

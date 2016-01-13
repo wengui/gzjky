@@ -6,192 +6,139 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120健康服务中心</title>
 <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript" ></script>
-<script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/common.js"  type="text/javascript'/>"></script>
-<script src="<c:url value='/js/base.js'/>" type="text/javascript" ></script>
-<script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
+<link href="<c:url value='/css/account.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="<c:url value='/js/page/screen.css'/>" />
+<!-- 验证框架 -->
+<script src="<c:url value='/js/page/jquery.validate.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/page/hwin-additional-methods.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/page/jquery.metadata.js'/>" type="text/javascript"></script>
 <script type="text/javascript">
-  var startDate="";
-  var endDate="";
-  function startInit(){
-	  queryStart();
-  }
-  function queryStart(){
-	  $.fn.page.settings.currentnum = 1;
-	  startDate = $("#startDate").val();
-	  endDate = $("#endDate").val();	
-	  query();
-  }
-  function query(){
-	  var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
-	  if(pointerStart<0) pointerStart = 0;
-
-	  var para = "startDate=" + startDate + "&endDate=" + endDate 
-		+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
-	  var requestUrl="/packageAction/queryMemberRechargeHistory.action";
-      
-	  showScreenProtectDiv(1);
-	  showLoading();
-	  xmlHttp = $.ajax({
-			url: requestUrl,
-			async:true,
-			data:para,
-			dataType:"json",
-			type:"POST",
-			complete:function(){
-			    hideScreenProtectDiv(1);
-		        hideLoading();
-			},
-			error:function(){
-				$.alert('无权限');
-			},success:function(response){
-			    var modelMap = response.modelMap;		   
-			    recordList = modelMap.memberRechargeHistoryList;		    			
-				$.fn.page.settings.count = modelMap.memberRechargeHistoryCount;
-				page($.fn.page.settings.currentnum);
-			}
+	$.metadata.setType("attr", "validate");
+	var validator;
+	$(function(){
+	    $("#errMessageArea").empty();
+		validator = $("#addform").validate({
+			messages:{
+				'bill': {
+					required:"充值金额是必填项.",
+					min:"充值金额不能少于0.01元"
+        		},'verifyCode':{
+        			required:"验证码是必填项."
+        		}
+       		}
 		});
-  }
-  function showData(){
-	  clearFaceTable();
-	  var table = document.getElementById("faceTable");
-	  for(var i=0;i<$.fn.page.settings.currentsize;i++){
-		  addrowtotable(table,i);
-	  }
-	  /* $("table.bPhistory_table tr:even").addClass("even");
-	  $("table.bPhistory_table tr:odd").addClass("odd"); */
-  }
-
-  function addrowtotable(table,index){
-	 var rowcount=table.rows.length;
-	 var tr=table.insertRow(rowcount);
-
-	 recordList[index].datetime = recordList[index].datetime.substring(0,19);
-	
-	 var td = tr.insertCell(0);
-	 td.innerHTML=recordList[index].datetime;
+	});
 	
 	
-	 var td = tr.insertCell(1);
-	 td.innerHTML=recordList[index].bill;
-	 	 
-	 var td = tr.insertCell(2);
-	 td.innerHTML=recordList[index].platform_order_id;
-	 
-	 var td = tr.insertCell(3);
-	 var state=recordList[index].state;
-	 if(state==0){
-	 	td.innerHTML="充值成功";
-	 }	
-	 if(state==1){
-	 	td.innerHTML="充值中";
-	 }	
-	 if(state==-1){
-	 	td.innerHTML="充值失败";
-	 }	
-  }
-  
-</script>
-</head>
-
-<body onload="startInit()">
-<!--bp_history start-->
-<div class="transaction_record_main">
-  <div class="search">
-    <ul>
-      <li class="criteria_search">
-        <ul>
-          <li class="startTime">开始时间</li>
-          <li class="time_input"><input type="text"  id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
-          <li class="endTime">结束时间</li>
-          <li class="time_input"><input type="text"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
-          <li class="quick_search">快速查询：<a href="javascript:changeDate(3)" >最近三天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" >最近一月</a><a href="javascript:changeDate(365)">最近一年</a></li>
-        </ul>
-      </li>
-      <li class="btn_search"><a href="javascript:void(0)" onclick="queryStart()">查询</a></li>           
-    </ul>
-  </div>
-  <div class="index_table">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table" id="faceTable">
-      <colgroup>
-        <col width="30%" />
-        <col width="20%" />
-        <col width="30%" />
-        <col width="20%" />
-      </colgroup>
-      <tr>
-        <th>充值日期</th>
-        <th>充值金额(元)</th>
-        <th>平台订单号</th>
-        <th>状态</th>
-      </tr>
-    </table>
-  </div>
-  
-  
-
-<script type="text/javascript">
-		var reg = /^[1-9]{6,16}/; 
-		
-		function gotoPage(){
-			var num = $.trim($("#gopage").val());
-			if(num==''){
-				$.alert('请输入页码');
-				$("#gopage").focus();
-				return false;
-			}
-			if(!/^\d+$/.test(num)){
-				$.alert('页码中包括非数字字符');
-				$("#gopage").focus();
-				return false;
-			}
-			if(num == '0') {
-			    $.alert('页码不正确');
-			    return false;
-			}
-			if(parseInt(num)>$.fn.page.settings.pagecount)
-			{
-				$.alert('无效的页码');
-				$("#gopage").focus();
-				return false;
-			}
-			pageClick(num);
+	function changeVeriyCode(){
+		document.getElementById("imageCode").src="/VerifyCode?randomCode="+Math.random();
+	}
+	
+	function pay() {
+        
+		if($("#addform").valid()) {
+		   showLoading();
+	       showScreenProtectDiv(2);
+	       document.addform.submit();
+	       lock = true;
+	       return true;
 		}
-	</script>
+		return false;
+		
+   }
+	
+   var lock = false;
+   document.onkeydown=function() {  
+	   if (window.event.keyCode==13) {
+	       if(!lock) pay();
+	   }
+   }  
+	
+</script>	
+</head>
+<body id="body_content">
+  <div class="account">
+    <div class="account_title">
+      <ul>
+        <li class="account_titleGreen">账户/充值</li>
+        <li class="account_titleGray">当前位置：<a href="/jsp/health/account/account.jsp" target="mainFrame">账户/套餐</a>>账户充值</li>
+      </ul>
+    </div>
+    <div class="recharge">
+    
+    
+      
+      
+      <form action="/recharge/generateOrder.helowin" id="addform" name="addform" method="post" autocomplete="off">
+      <!--account_security start-->
+      <div class="recharge_main">
+        <ul>
+          <li class="tgrey_recharge">充值账号：</li>
+          <li class="tblack_recharge">test1</li>
+          <li class="tgrey_recharge">充值金额：</li>
+          <li class="Input_recharge"><input type="text" id="bill" name="bill" class="inputMin_informationModify" value="" validate="required:true,money:true,min:0.01,max:1000" value=""/></li>
+          <li class="tgrey_recharge">验&nbsp;证&nbsp;码：</li>
+          <li class="Input_recharge">
+                
+                <input type="text" name="verifyCode" id="verifyCode" class="inputMin_informationModify"  autocomplete="off"  maxlength="5" validate="required:true" />
+          
+          </li>
+          <li class="tgrey_recharge"></li>
+          <li class="Input_recharge">
+               <table>
+                  <tr>
+                     <td><img id="imageCode" name="imageCode" onclick="changeVeriyCode()" src="/VerifyCode" border="0" title="点击换一张" width="85" height="22" /></td>
+                     <td>&nbsp;&nbsp;<a style="text-decoration: none; color: #0ca7a1;" href="javascript:void(0)" onclick="changeVeriyCode()" title="点击换一张">换一张</a></td>
+                  </tr>
+               </table>
+          </li>
+          
+          
+          <li class="tgrey_recharge"></li>
+          <li class="Input_recharge" id="errMessageArea" style="color:red;"></li>
+          
+          <li class="thirdParty_payment" style="display:none;">
+            <ul>
+              <li class="tgrey_thirdParty">第三方支付：</li>
+              <li class="radio_thirdParty"><input name="pay_type" type="radio" value="alipay" checked/><img src="/images/bank/zfb.png" class="img_bank"  /></li>
+            </ul>
+          </li>
+          <li class="thirdParty_payment" style="display:none;">
+            <ul>
+              <li class="tgrey_thirdParty">储蓄卡支付：</li>
+              <li class="savings_card">
+              <input name="pay_type" type="radio" value="ABC" /><img src="/images/bank/abc.png" class="img_bank" />
+              <input name="pay_type" type="radio" value="ICBCB2C" /><img src="/images/bank/icbc.png" class="img_bank" />
+              <input name="pay_type" type="radio" value="CCB" /><img src="/images/bank/ccb.png" class="img_bank" /><br/>
+              <input name="pay_type" type="radio" value="PSBC-DEBIT" /><img src="/images/bank/post.png" class="img_bank" />
+              <input name="pay_type" type="radio" value="CMB" /><img src="/images/bank/cmb.png" class="img_bank" />
+              <input name="pay_type" type="radio" value="CEBBANK" /><img src="/images/bank/ceb.png" class="img_bank" /><br/>
+              <input name="pay_type" type="radio" value="BJBANK" /><img src="/images/bank/bob.png" class="img_bank" />
+              <input name="pay_type" type="radio" value="BOCB2C" /><img src="/images/bank/boc.png" class="img_bank" />
+              <input name="pay_type" type="radio" value="CMBC" /><img src="/images/bank/cmbc.png" class="img_bank" /><br/>
+              <input name="pay_type" type="radio" value="GDB" /><img src="/images/bank/gdb.png" class="img_bank" />
+              <input name="pay_type" type="radio" value="SPABANK" /><img src="/images/bank/pab.png" class="img_bank" />
+              </li>
+            </ul>
+          </li>
+          <li class="btn_recharge"><a href="javascript:void(0)" onclick="pay();">下一步</a></li>
+        </ul>
+      </div>
+      <!--account_security end-->
+      </form>
+      
+      
+      
+      
+    </div>
+  </div>
+</body>
 
-<!-- 
-<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-<div id="fanye" >
-<input type="button" value="首页" class="button_fy page-first" />
-<input type="button" value="上一页" class="button_fy page-perv" />
-<input type="button" value="下一页" class="button_fy page-next" />
-<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
- 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-</div>
- -->
- 
-<div class="index_page">
-  <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
-    <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
-    </li>
-    <li class="page_select">
-    转<select id="gopage" onchange="gotoPage()">
-    	</select>页
-    </li>
-  </ul>
-</div>
-  
+
+
 
 <div id="divloading">
 	<img src="/images/public/blue-loading.gif" />
@@ -200,7 +147,5 @@
 <div id="transparentDiv" ></div>
 
 <div id="transparentDiv2"></div>
- </div>
-<!--bp_history end-->
-</body>
+
 </html>
