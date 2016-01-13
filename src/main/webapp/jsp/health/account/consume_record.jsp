@@ -18,6 +18,14 @@
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 
 <script type="text/javascript">
   var startDate="";
@@ -41,7 +49,7 @@
 	 var requestUrl="/packageAction/queryConsumeRecord.action";
     
 	  showScreenProtectDiv(1);
-	  showLoading();
+	  //showLoading();
 	  xmlHttp = $.ajax({
 			url: requestUrl,
 			async:true,
@@ -177,7 +185,7 @@
 </script>
 </head>
 
-<body onload="startInit()">
+<body onload="startInit()" style="background:#e8e3d7">
 <!--bp_history start-->
 <div class="transaction_record_main">
   <div class="search">
@@ -191,7 +199,7 @@
           <li class="quick_search">快速查询：<a href="javascript:changeDate(3)" >最近三天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" >最近一月</a><a href="javascript:changeDate(365)">最近一年</a></li>
         </ul>
       </li>
-      <li class="btn_search"><a href="javascript:void(0)" onclick="queryStart()">查询</a></li>           
+      <li><a href="javascript:void(0)" class="btn  btn_search" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>    
     </ul>
   </div>
   <div class="index_table">
@@ -256,15 +264,15 @@
  
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
-    转<select id="gopage" onchange="gotoPage()">
+    	转<select id="gopage" onchange="gotoPage()">
     	</select>页
     </li>
   </ul>
