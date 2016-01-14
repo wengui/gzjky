@@ -1165,8 +1165,7 @@
 			},success:function(response){
 			    hideScreenProtectDiv(2);
 		        hideLoading();
-			    var modelMap = response.modelMap;
-			    var status = modelMap.status;
+			    var status = response.updateFlag;
 			    if(status==0){
 			    	$.alert("删除发生异常！");
 			    }
@@ -1204,7 +1203,7 @@
 	function addMemberIllnessHistory(i){
 		if(!jQuery('#addMemberIllnessHistory').validationEngine('validate')) return false;
 	
-		var disease_id=$("#disease_id").val();
+		var diseaseName=$("#diseaseName").val();
 		var startTime=$("#startTime").val();
 		var endTime=$("#endTime").val();
 		var hospitalRecord=$("#hospitalRecord").val();
@@ -1214,7 +1213,7 @@
 		var requestUrl = "/gzjky/healthRecordAction/addMemberIllnessHistory.do";
     	var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id+"&member_unit_type="+window.parent.member_unit_type
     					+ "&operator_unit_id="+doctor_unit_id+"&operator_cluster_id="+doctor_cluster_id+"&operator_unit_type="+doctor_unit_type
-    					+ "&disease_id="+disease_id+"&startTime="+startTime+"&endTime="+endTime+"&hospitalRecord="+hospitalRecord
+    					+ "&diseaseName="+diseaseName+"&startTime="+startTime+"&endTime="+endTime+"&hospitalRecord="+hospitalRecord
     					+ "&recoverRecord="+recoverRecord+"&comment="+comment ;
     					
   	    showScreenProtectDiv(2);
@@ -1233,8 +1232,7 @@
 			},success:function(response){
 			    hideScreenProtectDiv(2);
 		        hideLoading();				
-			    var modelMap = response.modelMap;
-			    var status = modelMap.status;
+			    var status = response.updateFlag;
 			    if(status==0){
 			    	$.alert("增加发生异常！");
 			    }
@@ -1397,10 +1395,10 @@
 			error:function(){
 				$.alert('无权限或操作异常');
 			},success:function(response){
-				var modelMap = response.modelMap;
-				var state = modelMap.state;
+				
+				var state = response.updateFlag;
 				if(state=='0'){
-					menu_Nodes = modelMap.treeNodes.parseObj();
+					menu_Nodes = response.outBeanList;
 					$.fn.zTree.init($("#search_menu_tree"), search_menu_setting, menu_Nodes);
 					search_menu_zTree = $.fn.zTree.getZTreeObj("search_menu_tree");
 					search_menu_zTree.expandAll(true);
@@ -1515,7 +1513,7 @@
              <ul>
                <li class="tgrey_informationModify">*开始日期：</li>
                <li class="tblack_informationModify">
-               		<input type="text"   id="startTime" name="startTime" value='' onfocus="var endTime=$dp.$('endTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){endTime.focus();},maxDate:'#F{$dp.$D(\'endTime\') || \'%y-%M-%d\'}' })" class="inputMin_informationModify text-input validate[required,date] "/>
+               		<input type="text"   id="startTime" name="startTime" value='' onfocus="var startTime=$dp.$('startTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){startTime.focus();},maxDate:'#F{$dp.$D(\'startTime\') || \'%y-%M-%d\'}' })" class="inputMin_informationModify text-input validate[required,date] "/>
                </li>
              </ul>
              </li>
@@ -1524,7 +1522,7 @@
              <ul>
                <li class="tgrey_informationModify">结束日期：</li>
                <li class="tblack_informationModify">
-               		<input type="text"   id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'startTime\')}',maxDate:'%y-%M-%d'})" class="inputMin_informationModify text-input validate[date]"/>
+               		<input type="text"   id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'endTime\')}',maxDate:'%y-%M-%d'})" class="inputMin_informationModify text-input validate[date]"/>
                </li>
              </ul>
 

@@ -42,8 +42,23 @@
      	<result name="success">/jsp/health/healthrecord/memberhtcomplication.jsp</result>
 	</action>
 	
+	<!-- 疾病史名称查询-->
+	<action name="searchAllOfficeDiseaseByTree" class="com.gzjky.action.healthRecordAction.SearchAllOfficeDiseaseByTreeAction" method="searchTree">
+     	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
+	</action>
+	
 	<!-- 疾病史查询-->
 	<action name="queryMemberIllnessHistoryList" class="com.gzjky.action.healthRecordAction.QueryMemberIllnessHistoryListAction" method="getList">
+     	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
+	</action>
+	
+	<!-- 疾病史新加-->
+	<action name="addMemberIllnessHistory" class="com.gzjky.action.healthRecordAction.AddDelIllnessHistoryAction" method="addDelIllnessHistory">
+     	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
+	</action>
+	
+	<!-- 疾病史删除-->
+	<action name="deleteMemberIllnessHistory" class="com.gzjky.action.healthRecordAction.DeleteMemberIllnessHistoryAction" method="delIllnessHistory">
      	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
 	</action>
 	
