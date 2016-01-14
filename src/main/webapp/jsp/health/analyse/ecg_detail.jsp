@@ -59,12 +59,12 @@
     <div class="ecg_title">
       <ul>
         <li class="ecg_titleGreen">心电详情</li>
-        <li class="ecg_titleGray">当前位置：<a href="/jsp/health/analyse/ianalysis.jsp">健康分析</a>><a href="javascript:void(0)" onclick="goback()">心电分析</a>><a href="javascript:void(0)">心电详情</a></li>
+        <li class="ecg_titleGray"></li>
       </ul>
     </div>
     <div class="ecg_main">
       <li><div style="width: 670px;height:300px;overflow:auto"><img id="ecg_image" /></div></li> <br/>
-      <li class="tgreen_ecg"><span class="tgrey_ecg">诊断</span>结论</li>
+      <li class="tgreen_ecg">诊断结论</li>
       <li class="tGrey_ecgname">心率：</li>
       <li class="tblack_ecgname"><span></span><br/></li>
       <li class="tGrey_ecgname">采集时间：</li>
@@ -84,7 +84,7 @@
     
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

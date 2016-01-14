@@ -13,9 +13,16 @@
 <script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
-<style type="text/css">
-body{background:#fff}
-</style>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 var member_unit_id = "24913";
 var member_cluster_id = "1";
@@ -39,7 +46,8 @@ $(function(){
 									5:"memberMedicalExamintaionIframe",6:"healthTestIframe"};
 	var page_map = {0:"memberhabit",1:"memberfamilydisease",
 									2:"memberhtcomplication",3:"memberIllnessHistory",4:"memberhtspecial",
-									5:"medicalexamination",6:"http://zijin.995120.cn/jktj/hasControl/index.htm?patientId=24913"};
+									5:"medicalexamination",6:""};
+									//5:"medicalexamination",6:"http://zijin.995120.cn/jktj/hasControl/index.htm?patientId=24913"};
 	$div_hrli.click(function(){	
 	   $(this).addClass("selected_healthRecords_yuan").siblings().removeClass("selected_healthRecords_yuan");
 	   var index = $div_hrli.index(this);
@@ -145,9 +153,9 @@ $(function(){
 </script>
 </head>
 
-<body >
+<body  style="background:#e8e3d7" >
 <div class="health_records">
-  <div class="title_informationModify"><span class="tgrey_title_informationModify">健康</span>病历</div>
+  <div class="tgreen_title_BPhistory">健康病历</div>
   <!--tab_healthRecords start-->
   <div class="tab_healthRecords">
 	<div class="healthRecords_menu_yuan">

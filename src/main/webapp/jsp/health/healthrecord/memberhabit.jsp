@@ -15,6 +15,15 @@
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
+
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 		var save_image = window.parent.save_image;
 		var habit_form = "habit_form";
@@ -124,7 +133,7 @@
 	    }
 </script>
 </head>
-<body>
+<body style="background:#e8e3d7">
 <div style="font-size:13px;font-family:微软雅黑">
 <form id="habit_form">
    <!--detailed_information start-->
@@ -141,48 +150,59 @@
            <ul>
              <li class="tgrey_informationDetailed">工作类型：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
               <select class="selectMax_informationModify" id="workType"  name="workType" >
 		           <option value="脑力">脑力</option>
 		           <option value="体力">体力</option>
 		           <option value="脑力+体力">脑力+体力</option>
               </select>
+              </span>
           </li>
              <li class="tgrey_informationDetailed">血型：</li>
-             <li class="tblack_informationDetailed"> 
+             <li class="tblack_informationDetailed">
+             <span class="select-style_habit" > 
              <select class="selectMax_informationModify" id="bloodType"  name="bloodType" >
 		          <option value="A">A</option>
 		          <option value="B">B</option>
 		          <option value="AB">AB</option>
 		          <option value="O">O</option>
              </select>
+              </span>    
              </li>
              <li class="tgrey_informationDetailed">腰围：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
               <select class="selectMax_informationModify" id="waistline"  name="waistline" >
 		           <option value="正常">正常</option>
 		           <option value="非正常">非正常</option>option>
               </select>
+               </span>    
           </li>
              <li class="tgrey_informationDetailed">吸烟频次：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
               <select class="selectMax_informationModify" id="smokingRate"  name="smokingRate" >
 		           <option value="1-5根/天">1-5根/天</option>
 		           <option value="5-10根/天">5-10根/天</option>
 		           <option value="10-20根/天">10-20根/天</option>
 		           <option value="20根以上/天">20根以上/天</option>
               </select>
+               </span>    
              </li>
              <li class="tgrey_informationDetailed">饮酒类型：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
               <select class="selectMax_informationModify" id="drinkingType"  name="drinkingType" >
 		           <option value="白酒">白酒</option>
 		           <option value="红酒">红酒</option>
 		           <option value="黄酒">黄酒</option>
 		           <option value="啤酒">啤酒</option>
               </select>
+               </span>    
              </li>
              <li class="tgrey_informationDetailed">运动时长：</li>
-             <li class="tblack_informationDetailed"> 
+             <li class="tblack_informationDetailed">
+             <span class="select-style_habit" > 
               <select class="selectMax_informationModify"   id="sportTime"  name="sportTime">
 		           <option value="15分钟以下">15分钟以下</option>
 		           <option value="15-30分钟">15-30分钟</option>
@@ -191,13 +211,16 @@
 		           <option value="60-90分钟">60-90分钟</option>
 		           <option value="90分钟以上">90分钟以上</option>
               </select>
+               </span>    
              </li>
              <li class="tgrey_informationDetailed">降压药：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
               <select class="selectMax_informationModify" id="hypotensor"  name="hypotensor" >
 	               <option value="从来不吃">从来不吃</option>
 	               <option value="按时服用">按时服用</option>
               </select>
+               </span>    
              </li>
            </ul>
          </li>
@@ -205,41 +228,50 @@
            <ul>
              <li class="tgrey_informationDetailed">工作压力：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
               <select class="selectMax_informationModify"  id="workPressure"  name="workPressure" >
 		           <option value="高">高</option>
 		           <option value="中">中</option>
 		           <option value="低">低</option>
               </select>
+               </span>    
              </li>
              <li class="tgrey_informationDetailed">体重：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
               <select class="selectMax_informationModify"  id="weight"  name="weight">
 		           <option value="未超重">未超重</option>
 		           <option value="超重">超重</option>
-              </select>                  	
+              </select>    
+               </span>                  	
              </li>
              <li class="tgrey_informationDetailed">吸烟年限：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
              	  <select class="selectMax_informationModify"  id="smokingTime"  name="smokingTime" onchange="changeSmokingTime(this)">
 			           <option value="不吸烟">不吸烟</option>
 			           <option value="1-3年">1-3年</option>
 			           <option value="3-5年">3-5年</option>
 			           <option value="5-10年">5-10年</option>
 			           <option value="10年以上">10年以上</option>
-               </select>   
+               </select> 
+                </span>      
              </li>
              <li class="tgrey_informationDetailed">饮酒频次：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
              	  <select class="selectMax_informationModify"  id="drinkingRate"  name="drinkingRate" onchange="changeDrinkingRate(this)">
 			           <option value="不饮酒">不饮酒</option>
 			           <option value="1-50ml/天">1-50ml/天</option>
 			           <option value="50-100ml/天">50-100ml/天</option>
 			           <option value="100-300ml/天">100-300ml/天</option>
 			           <option value="300ml以上/天">300ml以上/天</option>
-               </select>                    		
+               </select>  
+                </span>                      		
              </li>
              <li class="tgrey_informationDetailed">运动频次：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
               	  <select class="selectMax_informationModify"  id="sportRate"  name="sportRate" onchange="changeSportRate(this)">
 			           <option value="不运动">不运动</option>
 			           <option value="1天/周">1天/周</option>
@@ -248,10 +280,12 @@
 			           <option value="4天/周">4天/周</option>
 			           <option value="5天/周">5天/周</option>
 			           <option value="6天/周">6天/周</option>
-               </select>                    		
+               </select>  
+                </span>                      		
              </li>
              <li class="tgrey_informationDetailed">睡眠时长：</li>
              <li class="tblack_informationDetailed">
+             <span class="select-style_habit" >
               	  <select class="selectMax_informationModify"  id="sleepTime"  name="sleepTime">
 			           <option value="0-1小时">0-1小时</option>
 			           <option value="1-2小时">1-2小时</option>
@@ -262,7 +296,8 @@
 			           <option value="6-7小时">6-7小时</option>
 			           <option value="7-8小时">7-8小时</option>
 			           <option value="8小时以上">8小时以上</option>
-               </select>                   
+               </select>
+               </span>                   
              </li>   
            </ul>
          </li>
@@ -274,7 +309,7 @@
  
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

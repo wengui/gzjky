@@ -13,14 +13,19 @@
 .bp_history{width:670px; float:left; margin-top:24px;font-family:"微软雅黑";background:#e8e3d7}
 .title_BPhistory{width:680px; float:left;}
 .tgreen_title_BPhistory{font-size:30px;float:left; text-align:left; font-weight:500; color:#71A944; height:48px; line-height:48px; width:320px;font-family:"微软雅黑"}
-.select_BPhistory{width:228px; float:left; text-align:right; padding-top:10px; height:45px;}
+.select_BPhistory{float:left; text-align:right; padding-top:10px; height:45px;}
 .select_PhoneFamily{width:345px; float:left; text-align:right; padding-top:10px; height:45px;}
 .select-style{ position:absolute; overflow:hidden;}
-.select-style select{ width:118px;height:28px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
+.select-style select{ margin-left:230px;width:118px;height:28px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
     background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
 .select-style_baseinfo{ position:absolute; overflow:hidden;}
 .select-style_baseinfo select{ width:230px;height:28px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
     background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
+.select-style_habit{ position:absolute; overflow:hidden;}
+.select-style_habit select{ width:230px;height:28px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
+    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
+    
+    
 /*----------------search---------------*/
 .search{width:630px; padding:20px;float:left; margin-top:10px; }
 .search li{float:left; text-align:left}
@@ -54,7 +59,7 @@
 .ecg{width:670px;margin:0 auto; font-family:"微软雅黑"}
 .ecg_title{width:670px;float:left;text-align:left;}
 .ecg_titleGreen{font-size:24px; color:#71A944; height:30px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #71A944; width:120px; float:left}
-.ecg_titleGray{font-size:14px; color:#aeaeae;border-bottom:2px solid #aeaeae; width:550px;height:20px; padding-top:23px; padding-bottom:5px;float:left; text-align:right}
+.ecg_titleGray{font-size:14px; color:#71A944;border-bottom:2px solid #71A944; width:550px;height:20px; padding-top:23px; padding-bottom:5px;float:left; text-align:right}
 .ecg_titleGray a{text-decoration:none; color:#aeaeae; margin:0 5px;}
 .ecg_titleGray a:hover{text-decoration:underline}
 .ecg_main{width:670px;float:left;text-align:left;}
