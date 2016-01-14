@@ -36,6 +36,17 @@
 	<action name="editMemberHabit" class="com.gzjky.action.healthRecordAction.EditMemberHabitAction" method="editHabitInfo">
      	<result name="success">/jsp/health/healthrecord/memberhabit.jsp</result>
 	</action>
+	
+	<!-- 患者当前并发症更新-->
+	<action name="editMemberHtComplication" class="com.gzjky.action.healthRecordAction.EditMemberHtComplicationAction" method="editComplicationInfo">
+     	<result name="success">/jsp/health/healthrecord/memberhtcomplication.jsp</result>
+	</action>
+	
+	<!-- 疾病史查询-->
+	<action name="queryMemberIllnessHistoryList" class="com.gzjky.action.healthRecordAction.QueryMemberIllnessHistoryListAction" method="getList">
+     	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
+	</action>
+	
 
 	</package>
 </struts>

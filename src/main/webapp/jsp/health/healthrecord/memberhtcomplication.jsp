@@ -24,7 +24,7 @@
 	});
 
 	function queryMemberHtComplication(){
-		var requestUrl = "/healthRecordAction/queryMemberHtComplication.action";
+		var requestUrl = "/gzjky/healthRecordAction/queryMemberHtComplication.do";
 		var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id+"&member_unit_type="+window.parent.member_unit_type;
 	
 		    showScreenProtectDiv(1);
@@ -42,8 +42,7 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    var memberHtComplication = modelMap.memberHtComplication;
+			    var memberHtComplication = response.result;
 			    if(memberHtComplication != null){
 			    	init_memberHtComplication(memberHtComplication);
 			    }else{
@@ -67,7 +66,7 @@
 		$(obj).find("img").attr("src",save_image);
 	}
 	function save_complication(obj){
-		var url = "/healthRecordAction/addMemberHtComplication.action";
+		var url = "/gzjky/healthRecordAction/editMemberHtComplication.do";
 		var para = get_requestPara(complication_form);
 		send_request_forDisease(complication_form,obj,url,para);
 	}

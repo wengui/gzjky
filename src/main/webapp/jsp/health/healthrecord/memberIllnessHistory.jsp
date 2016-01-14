@@ -78,7 +78,7 @@
 		var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
 		if(pointerStart<0) pointerStart = 0;
 		
-		var requestUrl = "/healthRecordAction/queryMemberIllnessHistoryList.action";
+		var requestUrl = "/gzjky/healthRecordAction/queryMemberIllnessHistoryList.do";
     	var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id+"&member_unit_type="+window.parent.member_unit_type
     					+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
 	
@@ -97,9 +97,11 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    memberIllnessHistoryList = modelMap.memberIllnessHistoryList;
-			    $.fn.page.settings.count=modelMap.recordTotal;
+				
+				// 数据取得
+				memberIllnessHistoryList = response.outBeanList;
+				
+				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
 			}
 		});
@@ -1107,8 +1109,8 @@
     
     function addrowtotable(i){
     	try{
-    		var begin_date=memberIllnessHistoryList[i].begin_date;
-    		var end_date=memberIllnessHistoryList[i].end_date;
+    		var startTime=memberIllnessHistoryList[i].startTime;
+    		var endTime=memberIllnessHistoryList[i].endTime;
 	
 		    var table = document.getElementById("faceTable");
 		    var rowcount=table.rows.length;
@@ -1120,17 +1122,17 @@
 		    
 		    
 		    td=tr.insertCell(1);
-		    td.innerHTML =  diseaseTypeDic[memberIllnessHistoryList[i].disease_id];
+		    td.innerHTML =  memberIllnessHistoryList[i].diseaseName;
 		  
 		    
 	        td=tr.insertCell(2);
-		    td.innerHTML =  begin_date;
+		    td.innerHTML =  startTime;
 
-		    if(end_date=="0000-00-00"||end_date=="3000-01-01"){
-				end_date="";
+		    if(endTime=="0000-00-00"||endTime=="3000-01-01"){
+				endTime="";
 			}
 		    td=tr.insertCell(3);
-		    td.innerHTML =  end_date;
+		    td.innerHTML =  endTime;
 		  
 		    
 		    td=tr.insertCell(4);
@@ -1144,7 +1146,7 @@
 	
 	function deleteMemberIllnessHistory(i){
 		var id=memberIllnessHistoryList[i].id;
-		var requestUrl = "/healthRecordAction/deleteMemberIllnessHistory.action";
+		var requestUrl = "/gzjky/healthRecordAction/deleteMemberIllnessHistory.do";
     	var para = "id="+id;
 		$.confirm('你确定要删除吗？', function () {
   	    showScreenProtectDiv(2);
@@ -1187,15 +1189,15 @@
 			$("#search_diseaseBtn").attr("style","display:none");
 			$("#save_button").attr("style","display:none");
 			
-			$("#disease_name").val(diseaseTypeDic[memberIllnessHistoryList[i].disease_id]);
-			$("#begin_date").val(memberIllnessHistoryList[i].begin_date);
-			var end_date=memberIllnessHistoryList[i].end_date;
-			if(end_date=="0000-00-00"||end_date=="3000-01-01"){
-				end_date="";
+			$("#diseaseName").val(memberIllnessHistoryList[i].diseaseName);
+			$("#startTime").val(memberIllnessHistoryList[i].startTime);
+			var endTime=memberIllnessHistoryList[i].endTime;
+			if(endTime=="0000-00-00"||endTime=="3000-01-01"){
+				endTime="";
 			}
-			$("#end_date").val(end_date);
-			$("#hospital_record").val(memberIllnessHistoryList[i].hospital_record);
-			$("#recover_record").val(memberIllnessHistoryList[i].recover_record);
+			$("#endTime").val(endTime);
+			$("#hospitalRecord").val(memberIllnessHistoryList[i].hospitalRecord);
+			$("#recoverRecord").val(memberIllnessHistoryList[i].recoverRecord);
 			$("#comment").val(memberIllnessHistoryList[i].comment);
 	}
 	
@@ -1203,17 +1205,17 @@
 		if(!jQuery('#addMemberIllnessHistory').validationEngine('validate')) return false;
 	
 		var disease_id=$("#disease_id").val();
-		var begin_date=$("#begin_date").val();
-		var end_date=$("#end_date").val();
-		var hospital_record=$("#hospital_record").val();
-		var recover_record=$("#recover_record").val();
+		var startTime=$("#startTime").val();
+		var endTime=$("#endTime").val();
+		var hospitalRecord=$("#hospitalRecord").val();
+		var recoverRecord=$("#recoverRecord").val();
 		var comment=$("#comment").val();
 		
-		var requestUrl = "/healthRecordAction/addMemberIllnessHistory.action";
+		var requestUrl = "/gzjky/healthRecordAction/addMemberIllnessHistory.do";
     	var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id+"&member_unit_type="+window.parent.member_unit_type
     					+ "&operator_unit_id="+doctor_unit_id+"&operator_cluster_id="+doctor_cluster_id+"&operator_unit_type="+doctor_unit_type
-    					+ "&disease_id="+disease_id+"&begin_date="+begin_date+"&end_date="+end_date+"&hospital_record="+hospital_record
-    					+ "&recover_record="+recover_record+"&comment="+comment ;
+    					+ "&disease_id="+disease_id+"&startTime="+startTime+"&endTime="+endTime+"&hospitalRecord="+hospitalRecord
+    					+ "&recoverRecord="+recoverRecord+"&comment="+comment ;
     					
   	    showScreenProtectDiv(2);
 	    showLoading();
@@ -1360,17 +1362,17 @@
 			//alert(v);
 			//alert(vv);
 			if(vv>0){
-				$("#disease_name").val(v);
+				$("#diseaseName").val(v);
 				$("#disease_id").val(vv);
 				search_hideMenu();
 			}
 		}
 
 		function search_showMenu() {
-			var cityObj = $("#disease_name");
+			var cityObj = $("#diseaseName");
 			search_menu_zTree.cancelSelectedNode();
 			
-			var cityPosition = $("#disease_name").position();
+			var cityPosition = $("#diseaseName").position();
 			$("#search_menuContent").css({left:cityPosition.left + "px", top:cityPosition.top + cityObj.outerHeight() + "px"}).slideDown("fast");
 			$("body").bind("mousedown", search_onBodyDown);
 		}
@@ -1387,7 +1389,7 @@
 		function reloadTree() {
 			para='';
   			xmlHttp = $.ajax({
-			url:'/healthRecordAction/searchAllOfficeDiseaseByTree.action',
+			url:'/gzjky/healthRecordAction/searchAllOfficeDiseaseByTree.do',
 			async:false,
 			data:para,
 			dataType:"json",
@@ -1472,18 +1474,6 @@
 			pageClick(num);
 		}
 	</script>
-
-<!-- 
-<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-<div id="fanye" >
-<input type="button" value="首页" class="button_fy page-first" />
-<input type="button" value="上一页" class="button_fy page-perv" />
-<input type="button" value="下一页" class="button_fy page-next" />
-<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
- 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-</div>
- -->
  
 <div class="index_page">
   <ul>
@@ -1514,7 +1504,7 @@
                <li class="tgrey_informationModify">*疾病名称：</li>
                <li class="tblack_informationModify">
                		<div class="family_disease_relation">
-               		<input class="inputMin_informationModify text-input validate[required] " type="text"  id="disease_name"  name="disease_name" maxlength=32  readonly="readonly"/>
+               		<input class="inputMin_informationModify text-input validate[required] " type="text"  id="diseaseName"  name="diseaseName" maxlength=32  readonly="readonly"/>
                		<a id="search_diseaseBtn" href="javascript:void(0)" onclick="search_showMenu(); return false;">选择疾病</a>              		
                		</div>
                </li>
@@ -1525,7 +1515,7 @@
              <ul>
                <li class="tgrey_informationModify">*开始日期：</li>
                <li class="tblack_informationModify">
-               		<input type="text"   id="begin_date" name="begin_date" value='' onfocus="var end_date=$dp.$('end_date');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){end_date.focus();},maxDate:'#F{$dp.$D(\'end_date\') || \'%y-%M-%d\'}' })" class="inputMin_informationModify text-input validate[required,date] "/>
+               		<input type="text"   id="startTime" name="startTime" value='' onfocus="var endTime=$dp.$('endTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){endTime.focus();},maxDate:'#F{$dp.$D(\'endTime\') || \'%y-%M-%d\'}' })" class="inputMin_informationModify text-input validate[required,date] "/>
                </li>
              </ul>
              </li>
@@ -1534,7 +1524,7 @@
              <ul>
                <li class="tgrey_informationModify">结束日期：</li>
                <li class="tblack_informationModify">
-               		<input type="text"   id="end_date" name="end_date" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'begin_date\')}',maxDate:'%y-%M-%d'})" class="inputMin_informationModify text-input validate[date]"/>
+               		<input type="text"   id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'startTime\')}',maxDate:'%y-%M-%d'})" class="inputMin_informationModify text-input validate[date]"/>
                </li>
              </ul>
 
@@ -1544,7 +1534,7 @@
              <ul>
                <li class="tgrey_informationModify">住院情况：</li>
                <li class="tblack_informationModify">
-               		<textarea rows="5" cols="40" name="hospital_record"  id="hospital_record"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
+               		<textarea rows="5" cols="40" name="hospitalRecord"  id="hospitalRecord"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
                </li>
              </ul>
 
@@ -1555,7 +1545,7 @@
 
                <li class="tgrey_informationModify">转归情况：</li>
                <li class="tblack_informationModify">
-               		<textarea rows="5" cols="40" name="recover_record"  id="recover_record" class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
+               		<textarea rows="5" cols="40" name="recoverRecord"  id="recoverRecord" class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
                </li>
              </ul>
 
