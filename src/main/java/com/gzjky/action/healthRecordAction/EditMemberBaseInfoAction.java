@@ -54,7 +54,7 @@ public class EditMemberBaseInfoAction extends ActionSupport {
 			record.setId(NumberUtils.toInt(id));// 患者ID
 			record.setPatientname(request.getParameter("patientname"));// 患者姓名
 			record.setPatientsex(request.getParameter("patientsex"));// 患者性别
-			DateTime birthday = DateUtil.parseDate(request.getParameter("patientbirthday"),DateFormatter.SDF_YMDHMS6);
+			DateTime birthday = DateUtil.parseDate(request.getParameter("patientbirthday"),DateFormatter.SDF_YMD);
 			record.setPatientbirthday(birthday);// 患者出生日期
 			record.setPatientphone(request.getParameter("patientphone"));// 患者手机号
 			record.setEmail(request.getParameter("email"));// 患者邮箱

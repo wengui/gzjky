@@ -1203,6 +1203,7 @@
 	function addMemberIllnessHistory(i){
 		if(!jQuery('#addMemberIllnessHistory').validationEngine('validate')) return false;
 	
+		var diseaseId=$("#diseaseId").val();
 		var diseaseName=$("#diseaseName").val();
 		var startTime=$("#startTime").val();
 		var endTime=$("#endTime").val();
@@ -1212,7 +1213,7 @@
 		
 		var requestUrl = "/gzjky/healthRecordAction/addMemberIllnessHistory.do";
     	var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id+"&member_unit_type="+window.parent.member_unit_type
-    					+ "&operator_unit_id="+doctor_unit_id+"&operator_cluster_id="+doctor_cluster_id+"&operator_unit_type="+doctor_unit_type
+    					+ "&operator_unit_id="+doctor_unit_id+"&diseaseId="+diseaseId+"&operator_unit_type="+doctor_unit_type
     					+ "&diseaseName="+diseaseName+"&startTime="+startTime+"&endTime="+endTime+"&hospitalRecord="+hospitalRecord
     					+ "&recoverRecord="+recoverRecord+"&comment="+comment ;
     					
@@ -1361,7 +1362,7 @@
 			//alert(vv);
 			if(vv>0){
 				$("#diseaseName").val(v);
-				$("#disease_id").val(vv);
+				$("#diseaseId").val(vv);
 				search_hideMenu();
 			}
 		}
@@ -1492,7 +1493,7 @@
 <div class="bp_history" id="add_history" style="display:none">
 	<div class="index_table">
 	<form id="addMemberIllnessHistory"  method="post" style="height: 300px">
-		<input type="text"  id="disease_id"  name="disease_id" maxlength=32  style="display:none"/>
+		<input type="text"  id="diseaseId"  name="diseaseId" maxlength=32  style="display:none"/>
 	 	
 	 	<div class="informationModify_main2" >
           <ul>
