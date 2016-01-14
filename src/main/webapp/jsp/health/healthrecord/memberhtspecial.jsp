@@ -594,7 +594,7 @@
        <ul>
          <li class="tLeft">高血压专项</li>
          <li class="tRight">
-         	<a href="javascript:void(0)" onclick="edit_htSpecial(this)" id="editHtspecialBtn"><img src="/images/button/btn_editor.png" /></a>
+         	<a href="javascript:void(0)" onclick="edit_htSpecial(this)" id="editHtspecialBtn"><img src="../../../images/button/btn_editor.png" /></a>
          	<!-- <a href="javascript:void(0)" onclick="showHtspecialRecord()"><img src="/images/button/btn_his.png" /></a> -->
          </li>
        </ul>
@@ -710,7 +710,7 @@
 
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

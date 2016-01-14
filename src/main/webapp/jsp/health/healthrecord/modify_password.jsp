@@ -23,8 +23,6 @@
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <!-- main JS libs -->
 <script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
 <script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
 <!-- Style CSS -->
 <link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
@@ -105,7 +103,7 @@
    
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

@@ -916,7 +916,7 @@
 		
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

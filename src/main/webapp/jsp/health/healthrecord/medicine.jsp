@@ -311,7 +311,7 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
   
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

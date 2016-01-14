@@ -86,7 +86,7 @@
         <div class="btn_title_informationModify">
             <ul>
               <li class="tLeft">当前并发症</li>
-              <li class="tRight"><a href="javascript:void(0)" onclick="edit_complication(this)"><img src="/images/button/btn_editor.png" /></a></li>
+              <li class="tRight"><a href="javascript:void(0)" onclick="edit_complication(this)"><img src="../../../images/button/btn_editor.png" /></a></li>
             </ul>
          </div>
         <div class="health_examination">
@@ -197,7 +197,7 @@ Sokolow-Lyons>38mv或Cornell>2440mm•mms
  
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

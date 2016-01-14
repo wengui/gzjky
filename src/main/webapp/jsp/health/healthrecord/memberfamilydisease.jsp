@@ -521,7 +521,7 @@
           <div class="btn_title_informationModify">
             <ul>
               <li class="tLeft">家族遗传史</li>
-              <li class="tRight"><a href="javascript:void(0)" onclick="edit_family(this)"><img src="/images/button/btn_editor.png" /></a></li>
+              <li class="tRight"><a href="javascript:void(0)" onclick="edit_family(this)"><img src="../../../images/button/btn_editor.png" /></a></li>
             </ul>
           </div>
           <div class="informationModify_main2" style="overflow-y:auto;position:relative;height: 500px;">
@@ -591,7 +591,7 @@
 
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>
