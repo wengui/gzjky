@@ -23,6 +23,14 @@
 <script src="<c:url value='/js/common.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>"  type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <style type="text/css">
 .advice_main table tr td span{float: right;text-align: right;}
 </style>
@@ -500,11 +508,11 @@
 		
 </script>
 </head>
-<body>
+<body style="background:#e8e3d7">
 <div  style="display:none;height:500px;float:left; margin-top:24px;font-size:13px;font-family:微软雅黑;color:#5a5a5a;" id="htspecial_record" >
  <div class="search">
     <ul>
-      <li class="criteria_search" style="height: 40px;">高血压专项</li>
+      <li class="criteria_search" style="height: 40px;font-size:17px; ">高血压专项</li>
       <li class="btn_search" style="height: 40px;"><a href="javascript:void(0)" onclick="showAddspecial()"> 返回</a></li> 
     </ul>
   </div>
@@ -592,7 +600,7 @@
 <div class="detailed_information"  style="font-size:13px;font-family:微软雅黑">
      <div class="btn_title_informationModify">
        <ul>
-         <li class="tLeft">高血压专项</li>
+         <li class="tLeft" ><span style="font-size:17px">高血压专项</span></li>
          <li class="tRight">
          	<a href="javascript:void(0)" onclick="edit_htSpecial(this)" id="editHtspecialBtn"><img src="../../../images/button/btn_editor.png" /></a>
          	<!-- <a href="javascript:void(0)" onclick="showHtspecialRecord()"><img src="/images/button/btn_his.png" /></a> -->
@@ -640,20 +648,23 @@
 						<input class="inputMin_informationModify text-input validate[required,funcCall[number2]]"  type="text"   id="dbp"  name="dbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg
     			</td>
     		</tr>     
-    		<tr>
+    		<tr >
     			<td width="130px"><span class="method">血压等级：</span></td>
     			<td>
+    					<span class="select-style_htspecial">
 						<select id="ht_level" style="width:100px">
 							<option value="9">不详</option>
 							<option value="1">一级高血压</option>
 							<option value="2">二级高血压</option>
 							<option value="3">三级高血压</option>
 						</select>
+						</span>
     			</td>
     		</tr>
-    		<tr>
+    		<tr >
     			<td width="130px"><span class="method">风险等级：</span></td>
     			<td>
+    					<span class="select-style_htspecial">
 						<select id="risk_level" style="width:100px">
 							<option value="9">不详</option>
 							<option value="1">低危</option>
@@ -661,6 +672,7 @@
 							<option value="3">高危</option>
 							<option value="4">超高危</option>
 						</select>
+						</span>
     			</td>
     		</tr>  			
     		<tr>

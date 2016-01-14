@@ -24,7 +24,12 @@
 .select-style_habit{ position:absolute; overflow:hidden;}
 .select-style_habit select{ width:230px;height:28px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
     background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
-    
+.select-style_htspecial{ position:absolute; overflow:hidden;}
+.select-style_htspecial select{ width:230px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
+    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}    
+.select-style_medcine{ position:absolute; overflow:hidden;}
+.select-style_medcine select{ width:120px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
+    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
     
 /*----------------search---------------*/
 .search{width:630px; padding:20px;float:left; margin-top:10px; }
@@ -85,14 +90,13 @@
 .advice_titleGray a{text-decoration:none; color:#aeaeae; margin:0 5px;}
 .advice_titleGray a:hover{text-decoration:underline}
 .advice_main{width:670px;float:left;text-align:left;}
-.advice_main table.adviceInfo tr{height: 38px;}
+.advice_main table.adviceInfo tr{height: 40px;}
 .advice_main table tr td span{float: left;
 padding: 5px 0;
 height: 28px;
 line-height: 28px;
 font: 13px/26px "微软雅黑";
 text-align: right;
-color: #aeaeae;
 }
 .advice_main table tr td{font: 13px/26px "微软雅黑";color: #5a5a5a;}
 .btn_save{
@@ -117,7 +121,7 @@ color: #aeaeae;
 	margin-bottom: 6px;
 	margin-left: 40px;
 }
-span.method{line-height: 30px;}
+span.method{line-height: 28px;}
 .advice_main select{
 	font: 13px/26px "微软雅黑";
 	color: #5a5a5a;
