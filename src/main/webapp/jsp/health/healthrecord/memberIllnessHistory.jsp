@@ -23,6 +23,14 @@
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/ztree/jquery.ztree.all-3.1.min.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <style type="text/css">
 	ul.ztree {margin-top: 10px;border: 1px solid #617775;background: #f0f6e4;width:220px;height:360px;overflow-y:scroll;overflow-x:auto;}
 </style>
@@ -1415,14 +1423,14 @@
 		});
 </SCRIPT>
 
-<body>
+<body style="background:#e8e3d7">
 <div style="font-size:13px;font-family:微软雅黑;color:#5a5a5a;">
 <!--bp_history start-->
 <div class="bp_history" id="show_history">
-  <div class="search">
+  <div class="width:670px">
     <ul>
-      <li class="criteria_search" style="height: 40px;">疾病史</li>
-      <li class="btn_search" style="height: 40px;"><a href="javascript:void(0)" onclick="toAddMemberIllnessHistory()">新建疾病史</a></li>           
+      <li style="font-size:17px; font-weight:500;color:#5a5a5a;text-align:cener;float:left;width:530px;text-align:left;padding-left:20px">疾病史</li>
+      <li class="btn" style="height: 40px;"><a href="javascript:void(0)" onclick="toAddMemberIllnessHistory()"><span style="font-size:14px; font-weight:500;color:#5a5a5a">新建疾病史</span></a></li>           
     </ul>
   </div>
   <div class="index_table">
@@ -1476,12 +1484,12 @@
  
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
     转<select id="gopage" onchange="gotoPage()">
@@ -1489,9 +1497,10 @@
     </li>
   </ul>
 </div>
+
 </div>
-<div class="bp_history" id="add_history" style="display:none">
-	<div class="index_table">
+<div class="bp_history" id="add_history" style="display:none;">
+	<div class="index_table" style="background:#fff">
 	<form id="addMemberIllnessHistory"  method="post" style="height: 300px">
 		<input type="text"  id="diseaseId"  name="diseaseId" maxlength=32  style="display:none"/>
 	 	
@@ -1500,10 +1509,10 @@
           
            <li class="tLeft_informationModify">            
              <ul>
-               <li class="tgrey_informationModify">*疾病名称：</li>
+               <li class="tgrey_informationModify" style="height:40px;">*疾病名称：</li>
                <li class="tblack_informationModify">
                		<div class="family_disease_relation">
-               		<input class="inputMin_informationModify text-input validate[required] " type="text"  id="diseaseName"  name="diseaseName" maxlength=32  readonly="readonly"/>
+               		<input class="inputMin_informationModify text-input validate[required] " type="text" style="width:230px" id="diseaseName"  name="diseaseName" maxlength=32  readonly="readonly"/>
                		<a id="search_diseaseBtn" href="javascript:void(0)" onclick="search_showMenu(); return false;">选择疾病</a>              		
                		</div>
                </li>
@@ -1514,7 +1523,7 @@
              <ul>
                <li class="tgrey_informationModify">*开始日期：</li>
                <li class="tblack_informationModify">
-               		<input type="text"   id="startTime" name="startTime" value='' onfocus="var startTime=$dp.$('startTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){startTime.focus();},maxDate:'#F{$dp.$D(\'startTime\') || \'%y-%M-%d\'}' })" class="inputMin_informationModify text-input validate[required,date] "/>
+               		<input type="text"   id="startTime" name="startTime" value='' onfocus="var startTime=$dp.$('startTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){startTime.focus();},maxDate:'#F{$dp.$D(\'startTime\') || \'%y-%M-%d\'}' })" class="inputMin_informationModify text-input validate[required,date]" style="width:230px"/>
                </li>
              </ul>
              </li>
@@ -1523,39 +1532,38 @@
              <ul>
                <li class="tgrey_informationModify">结束日期：</li>
                <li class="tblack_informationModify">
-               		<input type="text"   id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'endTime\')}',maxDate:'%y-%M-%d'})" class="inputMin_informationModify text-input validate[date]"/>
+               		<input type="text"   id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'endTime\')}',maxDate:'%y-%M-%d'})" class="inputMin_informationModify text-input validate[date]" style="width:230px"/>
                </li>
              </ul>
 
              </li>
              
              <li>
-             <ul>
+             <ul style="height:110px;">
                <li class="tgrey_informationModify">住院情况：</li>
-               <li class="tblack_informationModify">
-               		<textarea rows="5" cols="40" name="hospitalRecord"  id="hospitalRecord"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
+               <li class="tblack_informationModify" style="width:300px;height:80px;">
+               		<textarea rows="5" cols="40" name="hospitalRecord"  id="hospitalRecord"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:12px" ></textarea>
                </li>
              </ul>
 
              </li>
              
              <li>
-             <ul>
-
+             <ul style="height:110px;">
                <li class="tgrey_informationModify">转归情况：</li>
-               <li class="tblack_informationModify">
-               		<textarea rows="5" cols="40" name="recoverRecord"  id="recoverRecord" class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
+               <li class="tblack_informationModify" style="width:300px;height:80px;">
+               		<textarea rows="5" cols="40" name="recoverRecord"  id="recoverRecord" class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:12px" ></textarea>
                </li>
              </ul>
 
              </li>
              
              <li>
-             <ul>
+             <ul style="height:110px;">
 
                <li class="tgrey_informationModify">备注：</li>
-               <li class="tblack_informationModify">
-               		<textarea rows="5" cols="40" name="comment"  id="comment"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
+               <li class="tblack_informationModify" style="width:300px;height:80px;">
+               		<textarea rows="5" cols="40" name="comment"  id="comment"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:12px" ></textarea>
                </li>
              </ul>
 
@@ -1564,10 +1572,9 @@
              <li>
 
              <ul>
-
              	<!-- <li class="tgrey_informationModify"></li> -->
-	 			<li class="btn_search" style="height: 40px;margin-left:50px;"><a href="javascript:void(0)" onclick="addMemberIllnessHistory()" id="save_button">保存</a></li>
-	 			<li class="btn_search" style="height: 40px;"><a href="javascript:void(0)" onclick="showMemberIllnessHistory()">返回列表</a></li>
+	 			<li style="height: 40px;margin-left:80px"><a href="javascript:void(0)"  class="btn" onclick="addMemberIllnessHistory()" id="save_button"><span style="font-size:14px; color:#5a5a5a;width:110px">保存</span></a></li>
+	 			<li style="height: 40px;"><a href="javascript:void(0)"  class="btn" onclick="showMemberIllnessHistory()"><span style="font-size:14px; color:#5a5a5a;width:110px">返回列表</span></a></li>
 	 		 </ul>
 	 		 </li>
             </li>
