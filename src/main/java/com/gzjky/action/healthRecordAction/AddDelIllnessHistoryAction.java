@@ -50,9 +50,9 @@ public class AddDelIllnessHistoryAction extends ActionSupport {
 			// 患者ID要从session中取得
 			record.setPatientid(1);// 患者ID
 			record.setDiseasename(request.getParameter("diseaseName"));// 疾病名称
-			record.setDiseasecode(request.getParameter("diseaseCode"));// 疾病code
-			DateTime startTime = DateUtil.parseDate(request.getParameter("startTime"), DateFormatter.SDF_YMDHMS6);
-			DateTime endTime = DateUtil.parseDate(request.getParameter("endTime"), DateFormatter.SDF_YMDHMS6);
+			record.setDiseasecode(request.getParameter("diseaseId"));// 疾病code
+			DateTime startTime = DateUtil.parseDate(request.getParameter("startTime"), DateFormatter.SDF_YMD);
+			DateTime endTime = DateUtil.parseDate(request.getParameter("endTime"), DateFormatter.SDF_YMD);
 			record.setStarttime(startTime);// 开始时间
 			record.setEndtime(endTime);// 结束时间
 			record.setHospitalization(request.getParameter("hospitalRecord"));// 住院情况
