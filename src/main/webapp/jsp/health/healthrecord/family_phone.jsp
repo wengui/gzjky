@@ -274,12 +274,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-
 <style type="text/css">
-
-.tgrey_popup{width:16%;float:left; height:30px; line-height:30px; text-align:right; color:#aeaeae; margin-bottom: 10px}
-.tblack_popup{width:84%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left; color:#aeaeae;margin-bottom: 10px}
-
+.tgrey_popup{width:16%;float:left; height:30px; line-height:30px; text-align:right; margin-bottom: 10px;font-family:"微软雅黑"}
+.tblack_popup{width:84%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left;margin-bottom: 10px;font-family:"微软雅黑"}
 </style>
 
 </head>
@@ -312,14 +309,17 @@
 	              </li>
 	              <li class="tgrey_popup">*诊断报告：</li>
 	              <li class="tblack_popup">
+	              		<span class="select-style_habit">
 		             	<select  class="selectMax_informationModify text-input validate[required]"  id="is_rev_doctor_report"  name="is_rev_doctor_report" >
 		                    <option value="">请选择</option>
 		            		<option value="1">接收</option>
 		            		<option value="0">不接收</option>
 		               </select>
+		               </span>
 	              </li>
 	              <li class="tgrey_popup">*亲属关系：</li>
 	              <li class="tblack_popup">
+	              		<span class="select-style_habit">
 	              		<select  class="selectMax_informationModify text-input validate[required]"  id="relationship"  name="relationship" >
 		                    <option value="">请选择</option>
 		            		<option value="家庭成员" selected="selected">家庭成员</option>
@@ -327,6 +327,7 @@
 		            		<option value="同事">同事</option>
 		            		<option value="其他">其他</option>
 		               </select>
+		               </span>
 	              </li>
 	             <li class="tgrey_popup">单位：</li>
 	              <li class="tblack_popup">

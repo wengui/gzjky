@@ -34,10 +34,10 @@ li{list-style-type:none;}
 .tblack_Packagedetails_right2{width:70%; float:left; text-align: left; font-size:13px; color:#5a5a5a;margin-bottom:10px;}
 #package_name{color:#71A944;}
 
-.tgrey_popup{width:30%;float:left; height:30px; line-height:30px; text-align:right; color:#aeaeae; margin-bottom: 10px}
-.tblack_popup{width:69%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left; color:#aeaeae;margin-bottom: 10px}
-.tgrey_popup2{width:40%;float:left; height:30px; line-height:30px; text-align:right; color:#aeaeae; margin-bottom: 10px}
-.tblack_popup2{width:59%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left; color:#aeaeae;margin-bottom: 10px}
+.tgrey_popup{width:30%;float:left; height:30px; line-height:30px; text-align:right; margin-bottom: 10px}
+.tblack_popup{width:69%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left; margin-bottom: 10px}
+.tgrey_popup2{width:34%;float:left; height:30px; line-height:30px; text-align:right; margin-bottom: 10px}
+.tblack_popup2{width:59%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left; margin-bottom: 10px}
 .btn_popup_confirm{width:69%; padding-left:31%;height:30px; line-height:30px;float:left; }
 /*.btn_popup_confirm a{height:30px; background:#71A944; line-height:30px; color:#fff; text-align: center; width:88px; display: block; text-decoration: none; float:left; margin-right:10px;}*/
 .btn_popup_confirm2{width:76%; padding-left:24%;height:30px; line-height:30px;float:left; }
