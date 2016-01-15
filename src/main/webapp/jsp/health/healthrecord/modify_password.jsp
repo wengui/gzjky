@@ -21,6 +21,15 @@
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
+
 <script type="text/javascript">
 	$(function(){
 		jQuery('#changePwd_form').validationEngine("attach",
@@ -69,11 +78,11 @@
 	  }
 </script>
 </head>
-<body>
-<div>
-<form id="changePwd_form">
+<body style="background:#e8e3d7">
+<div style="margin-top:24px">
+<form id="changePwd_form" style="background:#e8e3d7">
        <div class="password_information" style="font-family: '微软雅黑'">
-         <div class="title_informationModify"><span class="tgrey_title_informationModify">密码</span>修改</div>
+         <div class="tgreen_title_BPhistory">密码修改</div>
          <div class="password_informationMain">
            <ul>
              <li>旧密码：</li>
@@ -85,7 +94,7 @@
              <li>确认新密码：</li>
              <li class="register_input"><input type="password"  id="confirmPwd"  name="confirmPwd"   class="validate[required,minSize[6],maxSize[20],equals[newPwd],funcCall[password]]"/>
              </li>
-             <li class="btn_reguster"><a onclick="changePwd()" style="cursor: pointer;">确定</a></li>
+             <li class="btn_reguster"><a onclick="changePwd()" class="btn" style="cursor: pointer;"><span style="font-size:17px; font-weight:500;color:#5a5a5a; width:320px;">确定</span></a></li>
            </ul>
          </div>
        </div>
@@ -94,7 +103,7 @@
    
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

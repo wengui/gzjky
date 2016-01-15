@@ -23,6 +23,14 @@
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/ztree/jquery.ztree.all-3.1.min.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <style type="text/css">
 	ul.ztree {margin-top: 10px;border: 1px solid #617775;background: #f0f6e4;width:220px;height:360px;overflow-y:scroll;overflow-x:auto;}
 </style>
@@ -78,7 +86,7 @@
 		var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
 		if(pointerStart<0) pointerStart = 0;
 		
-		var requestUrl = "/healthRecordAction/queryMemberIllnessHistoryList.action";
+		var requestUrl = "/gzjky/healthRecordAction/queryMemberIllnessHistoryList.do";
     	var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id+"&member_unit_type="+window.parent.member_unit_type
     					+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
 	
@@ -97,9 +105,11 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    memberIllnessHistoryList = modelMap.memberIllnessHistoryList;
-			    $.fn.page.settings.count=modelMap.recordTotal;
+				
+				// 数据取得
+				memberIllnessHistoryList = response.outBeanList;
+				
+				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
 			}
 		});
@@ -1107,8 +1117,8 @@
     
     function addrowtotable(i){
     	try{
-    		var begin_date=memberIllnessHistoryList[i].begin_date;
-    		var end_date=memberIllnessHistoryList[i].end_date;
+    		var startTime=memberIllnessHistoryList[i].startTime;
+    		var endTime=memberIllnessHistoryList[i].endTime;
 	
 		    var table = document.getElementById("faceTable");
 		    var rowcount=table.rows.length;
@@ -1120,17 +1130,17 @@
 		    
 		    
 		    td=tr.insertCell(1);
-		    td.innerHTML =  diseaseTypeDic[memberIllnessHistoryList[i].disease_id];
+		    td.innerHTML =  memberIllnessHistoryList[i].diseaseName;
 		  
 		    
 	        td=tr.insertCell(2);
-		    td.innerHTML =  begin_date;
+		    td.innerHTML =  startTime;
 
-		    if(end_date=="0000-00-00"||end_date=="3000-01-01"){
-				end_date="";
+		    if(endTime=="0000-00-00"||endTime=="3000-01-01"){
+				endTime="";
 			}
 		    td=tr.insertCell(3);
-		    td.innerHTML =  end_date;
+		    td.innerHTML =  endTime;
 		  
 		    
 		    td=tr.insertCell(4);
@@ -1144,7 +1154,7 @@
 	
 	function deleteMemberIllnessHistory(i){
 		var id=memberIllnessHistoryList[i].id;
-		var requestUrl = "/healthRecordAction/deleteMemberIllnessHistory.action";
+		var requestUrl = "/gzjky/healthRecordAction/deleteMemberIllnessHistory.do";
     	var para = "id="+id;
 		$.confirm('你确定要删除吗？', function () {
   	    showScreenProtectDiv(2);
@@ -1163,8 +1173,7 @@
 			},success:function(response){
 			    hideScreenProtectDiv(2);
 		        hideLoading();
-			    var modelMap = response.modelMap;
-			    var status = modelMap.status;
+			    var status = response.updateFlag;
 			    if(status==0){
 			    	$.alert("删除发生异常！");
 			    }
@@ -1187,33 +1196,34 @@
 			$("#search_diseaseBtn").attr("style","display:none");
 			$("#save_button").attr("style","display:none");
 			
-			$("#disease_name").val(diseaseTypeDic[memberIllnessHistoryList[i].disease_id]);
-			$("#begin_date").val(memberIllnessHistoryList[i].begin_date);
-			var end_date=memberIllnessHistoryList[i].end_date;
-			if(end_date=="0000-00-00"||end_date=="3000-01-01"){
-				end_date="";
+			$("#diseaseName").val(memberIllnessHistoryList[i].diseaseName);
+			$("#startTime").val(memberIllnessHistoryList[i].startTime);
+			var endTime=memberIllnessHistoryList[i].endTime;
+			if(endTime=="0000-00-00"||endTime=="3000-01-01"){
+				endTime="";
 			}
-			$("#end_date").val(end_date);
-			$("#hospital_record").val(memberIllnessHistoryList[i].hospital_record);
-			$("#recover_record").val(memberIllnessHistoryList[i].recover_record);
+			$("#endTime").val(endTime);
+			$("#hospitalRecord").val(memberIllnessHistoryList[i].hospitalRecord);
+			$("#recoverRecord").val(memberIllnessHistoryList[i].recoverRecord);
 			$("#comment").val(memberIllnessHistoryList[i].comment);
 	}
 	
 	function addMemberIllnessHistory(i){
 		if(!jQuery('#addMemberIllnessHistory').validationEngine('validate')) return false;
 	
-		var disease_id=$("#disease_id").val();
-		var begin_date=$("#begin_date").val();
-		var end_date=$("#end_date").val();
-		var hospital_record=$("#hospital_record").val();
-		var recover_record=$("#recover_record").val();
+		var diseaseId=$("#diseaseId").val();
+		var diseaseName=$("#diseaseName").val();
+		var startTime=$("#startTime").val();
+		var endTime=$("#endTime").val();
+		var hospitalRecord=$("#hospitalRecord").val();
+		var recoverRecord=$("#recoverRecord").val();
 		var comment=$("#comment").val();
 		
-		var requestUrl = "/healthRecordAction/addMemberIllnessHistory.action";
+		var requestUrl = "/gzjky/healthRecordAction/addMemberIllnessHistory.do";
     	var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id+"&member_unit_type="+window.parent.member_unit_type
-    					+ "&operator_unit_id="+doctor_unit_id+"&operator_cluster_id="+doctor_cluster_id+"&operator_unit_type="+doctor_unit_type
-    					+ "&disease_id="+disease_id+"&begin_date="+begin_date+"&end_date="+end_date+"&hospital_record="+hospital_record
-    					+ "&recover_record="+recover_record+"&comment="+comment ;
+    					+ "&operator_unit_id="+doctor_unit_id+"&diseaseId="+diseaseId+"&operator_unit_type="+doctor_unit_type
+    					+ "&diseaseName="+diseaseName+"&startTime="+startTime+"&endTime="+endTime+"&hospitalRecord="+hospitalRecord
+    					+ "&recoverRecord="+recoverRecord+"&comment="+comment ;
     					
   	    showScreenProtectDiv(2);
 	    showLoading();
@@ -1231,8 +1241,7 @@
 			},success:function(response){
 			    hideScreenProtectDiv(2);
 		        hideLoading();				
-			    var modelMap = response.modelMap;
-			    var status = modelMap.status;
+			    var status = response.updateFlag;
 			    if(status==0){
 			    	$.alert("增加发生异常！");
 			    }
@@ -1360,17 +1369,17 @@
 			//alert(v);
 			//alert(vv);
 			if(vv>0){
-				$("#disease_name").val(v);
-				$("#disease_id").val(vv);
+				$("#diseaseName").val(v);
+				$("#diseaseId").val(vv);
 				search_hideMenu();
 			}
 		}
 
 		function search_showMenu() {
-			var cityObj = $("#disease_name");
+			var cityObj = $("#diseaseName");
 			search_menu_zTree.cancelSelectedNode();
 			
-			var cityPosition = $("#disease_name").position();
+			var cityPosition = $("#diseaseName").position();
 			$("#search_menuContent").css({left:cityPosition.left + "px", top:cityPosition.top + cityObj.outerHeight() + "px"}).slideDown("fast");
 			$("body").bind("mousedown", search_onBodyDown);
 		}
@@ -1387,7 +1396,7 @@
 		function reloadTree() {
 			para='';
   			xmlHttp = $.ajax({
-			url:'/healthRecordAction/searchAllOfficeDiseaseByTree.action',
+			url:'/gzjky/healthRecordAction/searchAllOfficeDiseaseByTree.do',
 			async:false,
 			data:para,
 			dataType:"json",
@@ -1395,10 +1404,10 @@
 			error:function(){
 				$.alert('无权限或操作异常');
 			},success:function(response){
-				var modelMap = response.modelMap;
-				var state = modelMap.state;
+				
+				var state = response.updateFlag;
 				if(state=='0'){
-					menu_Nodes = modelMap.treeNodes.parseObj();
+					menu_Nodes = response.outBeanList;
 					$.fn.zTree.init($("#search_menu_tree"), search_menu_setting, menu_Nodes);
 					search_menu_zTree = $.fn.zTree.getZTreeObj("search_menu_tree");
 					search_menu_zTree.expandAll(true);
@@ -1414,14 +1423,14 @@
 		});
 </SCRIPT>
 
-<body>
+<body style="background:#e8e3d7">
 <div style="font-size:13px;font-family:微软雅黑;color:#5a5a5a;">
 <!--bp_history start-->
 <div class="bp_history" id="show_history">
-  <div class="search">
+  <div class="width:670px">
     <ul>
-      <li class="criteria_search" style="height: 40px;">疾病史</li>
-      <li class="btn_search" style="height: 40px;"><a href="javascript:void(0)" onclick="toAddMemberIllnessHistory()">新建疾病史</a></li>           
+      <li style="font-size:17px; font-weight:500;color:#5a5a5a;text-align:cener;float:left;width:530px;text-align:left;padding-left:20px">疾病史</li>
+      <li class="btn" style="height: 40px;"><a href="javascript:void(0)" onclick="toAddMemberIllnessHistory()"><span style="font-size:14px; font-weight:500;color:#5a5a5a">新建疾病史</span></a></li>           
     </ul>
   </div>
   <div class="index_table">
@@ -1472,27 +1481,15 @@
 			pageClick(num);
 		}
 	</script>
-
-<!-- 
-<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-<div id="fanye" >
-<input type="button" value="首页" class="button_fy page-first" />
-<input type="button" value="上一页" class="button_fy page-perv" />
-<input type="button" value="下一页" class="button_fy page-next" />
-<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
- 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-</div>
- -->
  
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
     转<select id="gopage" onchange="gotoPage()">
@@ -1500,21 +1497,22 @@
     </li>
   </ul>
 </div>
+
 </div>
-<div class="bp_history" id="add_history" style="display:none">
-	<div class="index_table">
+<div class="bp_history" id="add_history" style="display:none;">
+	<div class="index_table" style="background:#fff">
 	<form id="addMemberIllnessHistory"  method="post" style="height: 300px">
-		<input type="text"  id="disease_id"  name="disease_id" maxlength=32  style="display:none"/>
+		<input type="text"  id="diseaseId"  name="diseaseId" maxlength=32  style="display:none"/>
 	 	
 	 	<div class="informationModify_main2" >
           <ul>
           
            <li class="tLeft_informationModify">            
              <ul>
-               <li class="tgrey_informationModify">*疾病名称：</li>
+               <li class="tgrey_informationModify" style="height:40px;">*疾病名称：</li>
                <li class="tblack_informationModify">
                		<div class="family_disease_relation">
-               		<input class="inputMin_informationModify text-input validate[required] " type="text"  id="disease_name"  name="disease_name" maxlength=32  readonly="readonly"/>
+               		<input class="inputMin_informationModify text-input validate[required] " type="text" style="width:230px" id="diseaseName"  name="diseaseName" maxlength=32  readonly="readonly"/>
                		<a id="search_diseaseBtn" href="javascript:void(0)" onclick="search_showMenu(); return false;">选择疾病</a>              		
                		</div>
                </li>
@@ -1525,7 +1523,7 @@
              <ul>
                <li class="tgrey_informationModify">*开始日期：</li>
                <li class="tblack_informationModify">
-               		<input type="text"   id="begin_date" name="begin_date" value='' onfocus="var end_date=$dp.$('end_date');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){end_date.focus();},maxDate:'#F{$dp.$D(\'end_date\') || \'%y-%M-%d\'}' })" class="inputMin_informationModify text-input validate[required,date] "/>
+               		<input type="text"   id="startTime" name="startTime" value='' onfocus="var startTime=$dp.$('startTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){startTime.focus();},maxDate:'#F{$dp.$D(\'startTime\') || \'%y-%M-%d\'}' })" class="inputMin_informationModify text-input validate[required,date]" style="width:230px"/>
                </li>
              </ul>
              </li>
@@ -1534,39 +1532,38 @@
              <ul>
                <li class="tgrey_informationModify">结束日期：</li>
                <li class="tblack_informationModify">
-               		<input type="text"   id="end_date" name="end_date" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'begin_date\')}',maxDate:'%y-%M-%d'})" class="inputMin_informationModify text-input validate[date]"/>
+               		<input type="text"   id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'endTime\')}',maxDate:'%y-%M-%d'})" class="inputMin_informationModify text-input validate[date]" style="width:230px"/>
                </li>
              </ul>
 
              </li>
              
              <li>
-             <ul>
+             <ul style="height:110px;">
                <li class="tgrey_informationModify">住院情况：</li>
-               <li class="tblack_informationModify">
-               		<textarea rows="5" cols="40" name="hospital_record"  id="hospital_record"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
+               <li class="tblack_informationModify" style="width:300px;height:80px;">
+               		<textarea rows="5" cols="40" name="hospitalRecord"  id="hospitalRecord"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:12px" ></textarea>
                </li>
              </ul>
 
              </li>
              
              <li>
-             <ul>
-
+             <ul style="height:110px;">
                <li class="tgrey_informationModify">转归情况：</li>
-               <li class="tblack_informationModify">
-               		<textarea rows="5" cols="40" name="recover_record"  id="recover_record" class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
+               <li class="tblack_informationModify" style="width:300px;height:80px;">
+               		<textarea rows="5" cols="40" name="recoverRecord"  id="recoverRecord" class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:12px" ></textarea>
                </li>
              </ul>
 
              </li>
              
              <li>
-             <ul>
+             <ul style="height:110px;">
 
                <li class="tgrey_informationModify">备注：</li>
-               <li class="tblack_informationModify">
-               		<textarea rows="5" cols="40" name="comment"  id="comment"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray"></textarea>
+               <li class="tblack_informationModify" style="width:300px;height:80px;">
+               		<textarea rows="5" cols="40" name="comment"  id="comment"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:12px" ></textarea>
                </li>
              </ul>
 
@@ -1575,10 +1572,9 @@
              <li>
 
              <ul>
-
              	<!-- <li class="tgrey_informationModify"></li> -->
-	 			<li class="btn_search" style="height: 40px;margin-left:50px;"><a href="javascript:void(0)" onclick="addMemberIllnessHistory()" id="save_button">保存</a></li>
-	 			<li class="btn_search" style="height: 40px;"><a href="javascript:void(0)" onclick="showMemberIllnessHistory()">返回列表</a></li>
+	 			<li style="height: 40px;margin-left:80px"><a href="javascript:void(0)"  class="btn" onclick="addMemberIllnessHistory()" id="save_button"><span style="font-size:14px; color:#5a5a5a;width:110px">保存</span></a></li>
+	 			<li style="height: 40px;"><a href="javascript:void(0)"  class="btn" onclick="showMemberIllnessHistory()"><span style="font-size:14px; color:#5a5a5a;width:110px">返回列表</span></a></li>
 	 		 </ul>
 	 		 </li>
             </li>
@@ -1595,7 +1591,7 @@
 	
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

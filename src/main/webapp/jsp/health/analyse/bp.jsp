@@ -300,7 +300,7 @@
 </script>
 </head>
 
-<body onload="startInit()"style="background:#e8e3d7">
+<body onload="startInit()" style="background:#e8e3d7">
 <!--bp_history start-->
 <div class="bp_history">
   <div class="title_BPhistory">

@@ -21,6 +21,14 @@
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <style type="text/css">
 
 .popup_main ul li.huanhang{width:100%;float:left;   }
@@ -29,7 +37,7 @@
 .tblack_popup1{width:83%; padding_left:1%;float:left; text-align:left; color:#aeaeae;padding:5px 0;margin:-15px 0;}
 
 </style>
-<script type="text/javascript">
+<script type="text/javascript" >
 	jQuery('#addMemberConsultForm').validationEngine("attach",
     			{
     				promptPosition:"centerRight:0,-10",
@@ -230,7 +238,7 @@
 </script>
 </head>
 
-<body onload="startInit()" style="height:500px">
+<body onload="startInit()" style="height:500px;background:#e8e3d7">
 <!--bp_history start-->
 <div class="bp_history">
   <div class="title_BPhistory">
@@ -252,7 +260,7 @@
        
       <li class="btn_search"><a href="javascript:void(0)" onclick="queryStart()">查询</a></li>     
       -->  
-      <li class="btn_search"><a href="javascript:void(0)" onclick="showDialog()">新增</a></li>               
+      <li class="btn btn_search"><a href="javascript:void(0)" onclick="showDialog()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">新增</span></a></li>               
     </ul>
   </div>
   <div class="index_table">
@@ -318,12 +326,12 @@
  
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
     转<select id="gopage" onchange="gotoPage()">
@@ -457,7 +465,7 @@
    
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

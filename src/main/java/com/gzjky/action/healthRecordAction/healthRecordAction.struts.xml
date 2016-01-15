@@ -11,6 +11,57 @@
 	<action name="queryMemberBaseInfo" class="com.gzjky.action.healthRecordAction.QueryMemberBaseInfoAction" method="getBaseInfo">
      	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
 	</action>
+	
+	<!-- 基本信息编辑 -->
+	<action name="editMemberBaseInfo" class="com.gzjky.action.healthRecordAction.EditMemberBaseInfoAction" method="editBaseInfo">
+     	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
+	</action>
+	
+	<!-- 基本信息-详细信息编辑 -->
+	<action name="editMemberDetail" class="com.gzjky.action.healthRecordAction.EditMemberDetailAction" method="editDetailInfo">
+     	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
+	</action>
+	
+	<!-- 基本信息-详细信息编辑 -->
+	<action name="editMemberWorkInfo" class="com.gzjky.action.healthRecordAction.EditMemberWorkInfoAction" method="editWorkInfo">
+     	<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
+	</action>
+	
+	<!-- 患者生活习惯-->
+	<action name="queryMemberHabit" class="com.gzjky.action.healthRecordAction.QueryMemberHabitAction" method="getHabitInfo">
+     	<result name="success">/jsp/health/healthrecord/memberhabit.jsp</result>
+	</action>
+	
+	<!-- 患者生活习惯更新-->
+	<action name="editMemberHabit" class="com.gzjky.action.healthRecordAction.EditMemberHabitAction" method="editHabitInfo">
+     	<result name="success">/jsp/health/healthrecord/memberhabit.jsp</result>
+	</action>
+	
+	<!-- 患者当前并发症更新-->
+	<action name="editMemberHtComplication" class="com.gzjky.action.healthRecordAction.EditMemberHtComplicationAction" method="editComplicationInfo">
+     	<result name="success">/jsp/health/healthrecord/memberhtcomplication.jsp</result>
+	</action>
+	
+	<!-- 疾病史名称查询-->
+	<action name="searchAllOfficeDiseaseByTree" class="com.gzjky.action.healthRecordAction.SearchAllOfficeDiseaseByTreeAction" method="searchTree">
+     	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
+	</action>
+	
+	<!-- 疾病史查询-->
+	<action name="queryMemberIllnessHistoryList" class="com.gzjky.action.healthRecordAction.QueryMemberIllnessHistoryListAction" method="getList">
+     	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
+	</action>
+	
+	<!-- 疾病史新加-->
+	<action name="addMemberIllnessHistory" class="com.gzjky.action.healthRecordAction.AddDelIllnessHistoryAction" method="addDelIllnessHistory">
+     	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
+	</action>
+	
+	<!-- 疾病史删除-->
+	<action name="deleteMemberIllnessHistory" class="com.gzjky.action.healthRecordAction.DeleteMemberIllnessHistoryAction" method="delIllnessHistory">
+     	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
+	</action>
+	
 
 	</package>
 </struts>

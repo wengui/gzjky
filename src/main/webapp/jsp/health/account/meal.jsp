@@ -18,7 +18,14 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
-
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript" >
 	 var deviceBaseInfoList;
 	 var packageBaseinfoList;
@@ -241,12 +248,11 @@
 
 </head>
 
-<body onload="startInit()">
+<body onload="startInit()" style="background:#e8e3d7">
   <div class="account">
     <div class="account_title">
       <ul>
-        <li class="account_titleGreen">账户/套餐</li>
-        <li class="account_titleGray">当前位置：<a href="/jsp/health/account/account.jsp"">账户/套餐</a>>套餐列表</li>
+        <li class="tgreen_title_BPhistory">账户/套餐</li>
       </ul>
     </div>
     <div class="recharge" id="show_list">
@@ -274,7 +280,7 @@
   
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

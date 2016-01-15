@@ -21,6 +21,14 @@
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 		$(function(){
 	    	jQuery('#medicalExaminationForm').validationEngine("attach",
@@ -272,23 +280,23 @@
 		}
 </script>
 </head>
-<body>
+<body style="background:#e8e3d7" >
 <div style="font-size:13px;font-family:微软雅黑">
-<div class="bp_history" style="height:500px">
- <div class="search" style="padding-right:0px; width:650px;" >
+<div style="height:500px">
+ <div class="search" style="padding-right:0px; width:680px" >
     <ul>
       <li class="criteria_search_zsgc" >
         <ul>
-          <li class="startTime">健康检查</li>
-          <li class="time_input"><!-- <input type="text"   id="create_time" name="create_time" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/> --></li>
+          <li style="font-size:17px; font-weight:500;color:#5a5a5a;text-align:cener">健康检查</li>
+          <li class="time_input"></li>
         </ul>
       </li>
       <li class="btn_search_zsgc">
           <ul>
 	      <!-- <li><a href="javascript:void(0)" onclick="queryStart()">查询</a></li> -->
-	      <li><a href="javascript:void(0)" onclick="deleteMedicalExamination()">删除</a></li>
-	      <li><a href="javascript:void(0)" onclick="showMedicalExamintionDialog(1)">修改</a></li>
-	      <li> <a href="javascript:void(0)" onclick="showMedicalExamintionDialog()">增加</a></li>
+	      <li><a href="javascript:void(0)" class="btn"  onclick="deleteMedicalExamination()"><span style="font-size:14px; font-weight:500;color:#5a5a5a">删除</span></a></li>
+	      <li><a href="javascript:void(0)" class="btn" onclick="showMedicalExamintionDialog(1)"><span style="font-size:14px; font-weight:500;color:#5a5a5a">修改</span></a></li>
+	      <li> <a href="javascript:void(0)" class="btn" onclick="showMedicalExamintionDialog()"><span style="font-size:14px; font-weight:500;color:#5a5a5a">增加</span></a></li>
 	      </ul>
       </li>
     </ul>
@@ -304,7 +312,7 @@
         <!-- <col width="20%" /> -->
       </colgroup>
       <tr>
-      	<th nowrap="nowrap"><input type="checkbox" id="selAll"  onclick="selectAll(this)"  />选择</th>
+      	<th nowrap="nowrap"><div class="rowCheckbox"><input type="checkbox" name="chkall" id="selAll"  onclick="selectAll(this)"  /><label for="chkall">选择</label></div></th>
         <th nowrap="nowrap" title="餐后血糖(餐后2小时内)">餐后血糖</th>
         <th nowrap="nowrap" title="空腹全血血糖">空腹血糖</th>
         <th nowrap="nowrap" title="总胆固醇">总胆固醇</th>
@@ -346,26 +354,14 @@
 		}
 	</script>
 
-<!-- 
-<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-<div id="fanye" >
-<input type="button" value="首页" class="button_fy page-first" />
-<input type="button" value="上一页" class="button_fy page-perv" />
-<input type="button" value="下一页" class="button_fy page-next" />
-<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
- 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-</div>
- -->
- 
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
     转<select id="gopage" onchange="gotoPage()">
@@ -376,7 +372,7 @@
   
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>
@@ -414,40 +410,40 @@
 	         <ul>
 	              <li class="tgrey_popup2">*餐后血糖(餐后2小时内)：</li>
 	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,20]]]" type="text"  id="chxt"  name="chxt" maxlength="5" />
+	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,20]]]" style="width:230px" type="text"  id="chxt"  name="chxt" maxlength="5" />
 	              		mmol/L
 	              </li>
 	              <li class="tgrey_popup2">*空腹全血血糖：</li>
 	              <li class="tblack_popup2">
-		              <input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,20]]]" type="text"  id="kfqxxt"  name="kfqxxt"  maxlength="5" />
+		              <input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,20]]]" style="width:230px" type="text"  id="kfqxxt"  name="kfqxxt"  maxlength="5" />
 		              mmol/L
 	           	   </li>
 	              <li class="tgrey_popup2">*总胆固醇：</li>
 	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,20]]]"  type="text"   id="zdgc"  name="zdgc"  maxlength="5" />
+	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,20]]]" style="width:230px" type="text"   id="zdgc"  name="zdgc"  maxlength="5" />
 	              		mmol/L
 	              </li>
 	              <li class="tgrey_popup2">*高密度脂蛋白胆固醇：</li>
 	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,10]]]"  type="text"   id="gmdzdbdgc"  name="gmdzdbdgc"  maxlength="5" />
+	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,10]]]" style="width:230px" type="text"   id="gmdzdbdgc"  name="gmdzdbdgc"  maxlength="5" />
 		             	mmol/L
 	              </li>
 	              <li class="tgrey_popup2">*低密度脂蛋白胆固醇：</li>
 	              <li class="tblack_popup2">
-						<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,10]]]"  type="text"   id="dmdzdbdgc"  name="dmdzdbdgc"  maxlength="5" />
+						<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,10]]]"  type="text" style="width:230px" id="dmdzdbdgc"  name="dmdzdbdgc"  maxlength="5" />
 	              		mmol/L
 	              </li>
 	             <li class="tgrey_popup2">*血清肌酐：</li>
 	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[1,200]]]"  type="text"   id="xqjq"  name="xqjq" maxlength="5" />
+	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[1,200]]]" style="width:230px" type="text"   id="xqjq"  name="xqjq" maxlength="5" />
 	              		μmol/L
 	              </li>
 	             <li class="tgrey_popup2">*微量尿白蛋白：</li>
 	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,100]]]"  type="text"   id="wlnbdb"  name="wlnbdb" maxlength="5" />
+	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,100]]]" style="width:230px" type="text"   id="wlnbdb"  name="wlnbdb" maxlength="5" />
 	              		mg/24h
 	              </li>			              
-	              <li class="btn_popup_confirm2"><a href="javascript:void(0)" onclick="saveMedicalExamination()">保存</a></li>                                       
+	              <li class="btn_popup_confirm2"><a href="javascript:void(0)" class="btn" onclick="saveMedicalExamination()"><span style="color:#5a5a5a">保存</span></a></li>                                       
 	         </ul>
 	      </div>                 
   </form>

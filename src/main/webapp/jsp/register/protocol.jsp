@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心 | 注册协议</title>
+<title>贵州健康云 | 注册协议</title>
 <link rel="Shortcut Icon" href="/995120.ico" />
 <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/register.css'/>" rel="stylesheet" type="text/css" />
@@ -14,6 +14,14 @@ td {
 	color: #666;
 }
 </style>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 
 <script type="text/javascript">
 	document.onkeydown=function() {  
@@ -33,8 +41,8 @@ td {
 					<ul>
 						<li class="login_wechat"><a
 							href="../health/index/wechat.jsp"
-							title="995120健康服务中心官方微信" target="_blank">官方微信</a></li>
-						<li class="login_bolg"><a title="995120健康服务中心官方微博"
+							title="贵州健康云官方微信" target="_blank">官方微信</a></li>
+						<li class="login_bolg"><a title="贵州健康云官方微博"
 							href="http://weibo.com/5137507355/profile" target="_blank">官方微博</a></li>
 						<li class="login_service_phone">400-0785-120</li>
 						<li class="login_top"></li>
@@ -59,7 +67,7 @@ td {
 				<div class="step_agreement"></div>
 				<div class="bg_register">
 					<ul>
-						<li class="tgreen_agreement">995120健康服务中心用户协议</li>
+						<li class="tgreen_agreement">贵州健康云用户协议</li>
 						<li class="agreement_main">
 							<table>
 								<tbody>
@@ -1017,9 +1025,10 @@ td {
 								</tbody>
 							</table>
 						</li>
-						<li class="btn_agreement"><a href="register.jsp"
-							class="btn_agree" title="同意">同意</a> <a href="../login.jsp"
-							class="btn_disagree" title="不同意">不同意</a></li>
+						<li class="btn_agreement">
+							<a href="register.jsp"
+							class="btn_agree" title="同意">同意</a>
+							<a href="../login.jsp" class="btn_disagree" title="不同意">不同意</a></li>
 					</ul>
 				</div>
 			</div>

@@ -18,6 +18,14 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <title>995120健康服务中心</title>
 <style type="text/css">
 .med_table1 {
@@ -222,10 +230,16 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
  					<table width="100%" cellpadding="0" cellspacing="0" border="0" class="med_table1">
  						<tr>
  							<td>
+ 								<span class="select-style_medcine">
  								&nbsp;&nbsp;药品类目: <select class="type_id" id="type_id">
  								</select>
- 								&nbsp;&nbsp;药品名称: <input class="common_name" id="common_name" />	
- 								<input type="button" class="btn_save1"value="查询" onclick="query()"/>
+ 								</span>
+ 								<span style="margin-left:240px">
+ 								药品名称: <input class="common_name" id="common_name" />
+ 								</span>
+ 								<span style="margin-left:10px">
+ 								<a href="javascript:void(0)" class="btn  btn_search" onclick="query()"><span style="font-size:14px; color:#5a5a5a">查询</span></a>
+ 								</span>
  							</td>
  						</tr>
  					</table>
@@ -295,12 +309,12 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
  
 <div class="index_page">
   <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
     <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
+	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
     </li>
     <li class="page_select">
     转<select id="gopage" onchange="gotoPage()">
@@ -311,7 +325,7 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
   
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

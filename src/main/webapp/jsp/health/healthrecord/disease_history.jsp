@@ -13,9 +13,16 @@
 <script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
-<style type="text/css">
-body{background:#fff}
-</style>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 var member_unit_id = "24913";
 var member_cluster_id = "1";
@@ -24,8 +31,8 @@ var member_login_id = "";
 var doctor_unit_id = "24913";
 var doctor_cluster_id = "1";
 var doctor_unit_type = "2"
-var edit_image = "/images/button/btn_editor.png";
-var save_image = "/images/button/btn_preserve.png";
+var edit_image = "<c:url value='/images/button/btn_editor.png'/>";
+var save_image = "<c:url value='/images/button/btn_preserve.png'/>";
 
 $(function(){
 	var $div_hrli = $("div.healthRecords_menu_yuan ul li");
@@ -39,7 +46,8 @@ $(function(){
 									5:"memberMedicalExamintaionIframe",6:"healthTestIframe"};
 	var page_map = {0:"memberhabit",1:"memberfamilydisease",
 									2:"memberhtcomplication",3:"memberIllnessHistory",4:"memberhtspecial",
-									5:"medicalexamination",6:"http://zijin.995120.cn/jktj/hasControl/index.htm?patientId=24913"};
+									5:"medicalexamination",6:""};
+									//5:"medicalexamination",6:"http://zijin.995120.cn/jktj/hasControl/index.htm?patientId=24913"};
 	$div_hrli.click(function(){	
 	   $(this).addClass("selected_healthRecords_yuan").siblings().removeClass("selected_healthRecords_yuan");
 	   var index = $div_hrli.index(this);
@@ -107,8 +115,8 @@ $(function(){
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    var state = modelMap.state;
+			    var state = response.updateFlag;
+			    var returnMessage=response.message;
 			    if(state == "1"){
 			    	obj.onclick = function(){
 			    		if(formId == "habit_form"){
@@ -145,20 +153,20 @@ $(function(){
 </script>
 </head>
 
-<body >
+<body  style="background:#e8e3d7" >
 <div class="health_records">
-  <div class="title_informationModify"><span class="tgrey_title_informationModify">健康</span>病历</div>
+  <div class="tgreen_title_BPhistory">健康病历</div>
   <!--tab_healthRecords start-->
   <div class="tab_healthRecords">
 	<div class="healthRecords_menu_yuan">
            <ul>
-             <li title="生活习惯" class="selected_healthRecords_yuan" ><img src="/images/health/habit.png"><span>生活习惯</span></li>
-             <li title="家族遗传史"><img src="/images/health/family.png"><span>家族遗传史</span></li>
-             <li  title="当前并发症"><img src="/images/health/cp.png"><span>当前并发症</span></li>
-             <li title="疾病史"><img src="/images/health/disease.png"><span>疾病史</span></li>
-             <li title="高血压专项"><img src="/images/health/bp.png"><span>高血压专项</span></li>
-             <li title="健康检查"><img src="/images/health/health.png"><span>健康检查</span></li>
-			 <li style="margin-right: -25px" title="健康体检"><img src="/images/health/icon_physical_z.jpg"><span>健康体检</span></li>            
+             <li title="生活习惯" class="selected_healthRecords_yuan" ><img src="<c:url value='/images/health/habit.png'/>"><span>生活习惯</span></li>
+             <li title="家族遗传史"><img src="<c:url value='/images/health/family.png'/>"><span>家族遗传史</span></li>
+             <li title="当前并发症"><img src="<c:url value='/images/health/cp.png'/>"><span>当前并发症</span></li>
+             <li title="疾病史"><img src="<c:url value='/images/health/disease.png'/>"><span>疾病史</span></li>
+             <li title="高血压专项"><img src="<c:url value='/images/health/bp.png'/>"><span>高血压专项</span></li>
+             <li title="健康检查"><img src="<c:url value='/images/health/health.png'/>"><span>健康检查</span></li>
+			 <li style="margin-right: -25px" title="健康体检"><img src="<c:url value='/images/health/icon_physical_z.jpg'/>"><span>健康体检</span></li>            
            </ul>
 	 </div>
     <div class="tab_healthRecords_box">

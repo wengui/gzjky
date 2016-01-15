@@ -35,6 +35,20 @@
 
 	//初始化方法
 	function QueryHealth(){
+		//2016/1/13 liu test START 用
+		{
+			var headTitle="近期血压趋势图";
+			var morningHeadTitle="血压等级分析依据图";
+			var newMorningHeadTitle="近期晨峰血压趋势图";
+			//显示最新血压趋势图
+			bloodPressureCharts(null,headTitle,"0");
+			//显示最新晨峰血压趋势图
+			bloodPressureCharts(null,newMorningHeadTitle,"2");
+			//显示血压等级分析依据图
+			bloodPressureCharts(null,morningHeadTitle,"1");
+		}
+		//2016/1/13 liu test END 用
+		
 		healthStatus();//查询用户健康状态
 		queryDiagnose();//查询用户的血压趋势图
 		queryDoctorAdvice();//查询用户的最新医嘱
@@ -173,6 +187,7 @@
 	
 	//查询血压记录
 	function queryDiagnose() {
+		
 		var onePageSize = 10;
 	    var pointerStart = 0;
 		var para = "pointerStart="+pointerStart+"&pageSize="+onePageSize;
@@ -426,7 +441,7 @@
 					marginRight : 80,
 					marginBottom : 45
 				},
-				colors:['#0ca7a1','#51b336','#ff9600'],
+				colors:['#71A944','#51b336','#ff9600'],
 				title:{
 				text : headTitle
 				},
@@ -693,7 +708,7 @@
 
 </head>
 
-<body onload="QueryHealth();" >
+<body onload="QueryHealth();" style="background:#e8e3d7" >
   <div class="index_welcome">
     <!--index_welcome_header start-->
     <div class="index_welcome_header">
@@ -717,7 +732,7 @@
       <!--health_date start--> 
       <div class="health_date">
        <ul>
-         <li class="tgreen_healthDate"><span class="tgrey_healthDate">健康</span>状况</li>
+         <li class="tgreen_healthDate">健康状况</li>
          <li class="bloodPressure_date">
            <ul>
              <li class="tblack_date" id="last_bloodpressure"><span class="tblack_datemin">--</span></li>
@@ -761,7 +776,7 @@
       <!--health_date end-->
       <!--医生医嘱 -->
 	  	<div class="bpDiagnosis_results" id="doctorAdvice" style="display:block;margin-top:8px">
-       		<div style="text-align: left;width:100%;color:#0ca7a1;font:18px/30px '微软雅黑'; font-weight: bolder;">最新医嘱</div>
+       		<div style="text-align: left;width:100%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;">最新医嘱</div>
        		<div class="bpDiagnosis_results_text"  style="font-size: 12px;width: 100%;">
 				<ul id="advice">
 					<li class="tgreen_results" style="font-size: 16px; padding-left:20px">测压目标：</li>
@@ -779,9 +794,9 @@
 			</div>
 	  	</div>
        	<div class="bpDiagnosis_results" id="consultative" style="display:block;margin-top:10px">
-          	<div style="text-align: left;width:50%;color:#0ca7a1;font:18px/30px '微软雅黑'; font-weight: bolder;float: left;">最新咨询</div>
-          	<div style="text-align: right;width:47%;color:#0ca7a1;float: left;">
-          		<a class='tgreen_results' style="font-size: 13px;" href='/jsp/health/healthrecord/member_consult.jsp'  >会员咨询历史</a>
+          	<div style="text-align: left;width:50%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;float: left;">最新咨询</div>
+          	<div style="text-align: right;width:47%;color:#71A944;float: left;">
+          		<a class='tgreen_results' style="font-size: 13px;text-decoration: underline;" href='./healthrecord/member_consult.jsp'  >会员咨询历史</a>
 			</div>
        		<div class="bpDiagnosis_results_text"  style="font-size: 12px;width: 100%;">
        			<ul id="advice">
@@ -795,18 +810,18 @@
       <div class="bpDiagnosis_results">
         <div class="bpDiagnosis_results_trendChart" style="width: 310px;" id="container"></div> 
        	<div class="bpDiagnosis_results_trendChart"  id="container1" style="padding-left: 10px; width:310px; "></div>
-       	<div style="float: right;font-size: 12px;margin-top: -10px;" id="bpmorning_what" class="tblack_results">
-       		<a class='tgreen_results' style="font-size: 12px;" href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a></div>
+       	<div style="float: right;font-size: 12px;margin-top: 10px;" id="bpmorning_what" class="tblack_results">
+       		<a class='tgreen_results' style="font-size: 12px;text-decoration: underline;" href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a></div>
       </div>
       <!-- 晨峰血压 -->
        <div class="bpDiagnosis_results" id="morningBP" style="display:block;margin-top:0px">
-       <div style="text-align: left;width:100%;color:#0ca7a1;font:18px/30px '微软雅黑'; font-weight: bolder;" id="histroy_bp_diagnose">血压等级分析</div>
+       <div style="text-align: left;width:100%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;" id="histroy_bp_diagnose">血压等级分析</div>
        		<div class="bpDiagnosis_results_text"  style="font-size: 12px;">
 					<ul id="bpanalyse">
 					
 						<li class="tgreen_results" style="font-size: 16px; padding-left:20px">血压等级：</li>
-						<li class="tblack_results" id="pressure_level" style="font-size: 13px; padding-left:30px">暂无<a
-							href="javascript:void(0);" onclick="bloodPressureStandard();" style="font-size: 13px; padding-left:30px">高血压分级标准</a>
+						<li class="tblack_results" id="pressure_level" style="font-size: 13px; padding-left:30px">暂无<br/>
+						<a href="javascript:void(0);" onclick="bloodPressureStandard();" style="font-size: 13px; text-decoration: underline;">高血压分级标准</a>
 						</li>
 						
 						<li class="tgreen_results" style="font-size: 16px; padding-left:20px">心血管风险分层：</li>
@@ -819,7 +834,7 @@
           				<li class="tblack_results" id="doctor_bpreport" style="font-size: 13px; padding-left:30px;display: none;">暂无</li>
 						
 						<li class="tgreen_results" id="suggest_name" style="font-size: 16px; padding-left:20px">保健建议</li>
-          				<li class="tblack_results" id="health_suggest" style="font-size: 13px; padding-left:30px"><h1>暂无</h1></li>
+          				<li class="tblack_results" id="health_suggest" style="font-size: 13px; padding-left:30px">暂无</li>
 
 					</ul>
 				</div>
@@ -839,7 +854,7 @@
         <div class="hrDiagnosis_results_text">
           <ul>
             <li class="tgreen_results">心电医生回复：</li>
-            <li class="tblack_results" id="doctor_report"></li>
+            <li class="tblack_results" id="doctor_report">暂无</li>
           </ul>
         </div>
         <div class="hrDiagnosis_results_sketchMap">
@@ -861,7 +876,7 @@
 <title></title>
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body >
  <div class="popup" id="popWindow" style="display:none;position:absolute;top:900px; left:100px;z-index: 30;">
   <div class="popup_header">
     <ul>
@@ -869,26 +884,26 @@
       <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv();">X</a></li>
     </ul>
   </div>
-  <div class="popup_main">
+  <div class="popup_main" >
     <ul>
       <li class="tblack_bp">中国高血压防治指南2010年修订版</li>
-      <li class="tyellow_max_bp"><img src="/images/icon/tyellow.png" class="img_color" />
+      <li class="tyellow_max_bp"><img src="../../images/icon/tyellow.png" class="img_color" />
       低血压：<span class="tgrey_bp">收缩压小于</span>90<span class="tgrey_bp">，舒张压小于</span>60</li>
       
-      <li class="tgreen_bp"><img src="/images/icon/green.png" class="img_color" />
+      <li class="tgreen_bp"><img src="../../images/icon/green.png" class="img_color" />
       正常血压：<span class="tgrey_bp">收缩压小于</span>120<span class="tgrey_bp">，舒张压小于</span>80</li>
-      <li class="tblue_bp"><img src="/images/icon/blue.png" class="img_color" />
+      <li class="tblue_bp"><img src="../../images/icon/blue.png" class="img_color" />
       正常高值：<span class="tgrey_bp">收缩压</span>120-139<span class="tgrey_bp">，舒张压</span>80-89</li>
-      <li class="tyellow_bp"><img src="/images/icon/yellow.png" class="img_color" />
+      <li class="tyellow_bp"><img src="../../images/icon/yellow.png" class="img_color" />
       高于正常：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压大于等于</span>90</li>
-      <li class="torange_bp"><img src="/images/icon/orange.png" class="img_color" />
+      <li class="torange_bp"><img src="../../images/icon/orange.png" class="img_color" />
       高血压一级：<span class="tgrey_bp">收缩压</span>140-159<span class="tgrey_bp">，舒张压</span>90-99</li>
-      <li class="tbrown_bp"><img src="/images/icon/brown.png" class="img_color" />
+      <li class="tbrown_bp"><img src="../../images/icon/brown.png" class="img_color" />
       高血压二级：<span class="tgrey_bp">收缩压</span>160-179<span class="tgrey_bp">，舒张压</span>100-109</li>
-      <li class="tred_bp"><img src="/images/icon/red.png" class="img_color" />
+      <li class="tred_bp"><img src="../../images/icon/red.png" class="img_color" />
       高血压三级：<span class="tgrey_bp">收缩压大于等于</span>180<span class="tgrey_bp">，舒张压大于等于</span>110</li>
       
-       <li class="tred_orange_bp"><img src="/images/icon/red_orange.png" class="img_color" />
+       <li class="tred_orange_bp"><img src="../../images/icon/red_orange.png" class="img_color" />
       单纯收缩期高血压：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压小于</span>90</li>
       
       <li class="tgreen_bpPrompt">注意：高压和低压分属于不同级别时，以较高分级为标准</li>
@@ -901,7 +916,7 @@
 		
 
 <div id="divloading">
-	<img src="/images/public/blue-loading.gif" />
+	<img src="../../images/public/blue-loading.gif" />
 </div>
 
 <div id="transparentDiv" ></div>

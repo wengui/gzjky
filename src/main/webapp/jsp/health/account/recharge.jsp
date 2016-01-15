@@ -7,6 +7,7 @@
 <title>995120健康服务中心</title>
 <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/account.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
@@ -15,6 +16,16 @@
 <script src="<c:url value='/js/page/jquery.validate.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/hwin-additional-methods.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.metadata.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 	$.metadata.setType("attr", "validate");
 	var validator;
@@ -59,12 +70,11 @@
 	
 </script>	
 </head>
-<body id="body_content">
+<body id="body_content" style="background:#e8e3d7">
   <div class="account">
     <div class="account_title">
       <ul>
-        <li class="account_titleGreen">账户/充值</li>
-        <li class="account_titleGray">当前位置：<a href="/jsp/health/account/account.jsp" target="mainFrame">账户/套餐</a>>账户充值</li>
+        <li class="tgreen_title_BPhistory">账户/充值</li>
       </ul>
     </div>
     <div class="recharge">
@@ -79,19 +89,17 @@
           <li class="tgrey_recharge">充值账号：</li>
           <li class="tblack_recharge">test1</li>
           <li class="tgrey_recharge">充值金额：</li>
-          <li class="Input_recharge"><input type="text" id="bill" name="bill" class="inputMin_informationModify" value="" validate="required:true,money:true,min:0.01,max:1000" value=""/></li>
+          <li class="Input_recharge"><input type="text" id="bill" name="bill" style="width:200px" value="" validate="required:true,money:true,min:0.01,max:1000" value=""/></li>
           <li class="tgrey_recharge">验&nbsp;证&nbsp;码：</li>
           <li class="Input_recharge">
-                
-                <input type="text" name="verifyCode" id="verifyCode" class="inputMin_informationModify"  autocomplete="off"  maxlength="5" validate="required:true" />
-          
+                <input type="text" name="verifyCode" id="verifyCode" style="width:200px" autocomplete="off"  maxlength="5" validate="required:true" />
           </li>
           <li class="tgrey_recharge"></li>
           <li class="Input_recharge">
                <table>
                   <tr>
-                     <td><img id="imageCode" name="imageCode" onclick="changeVeriyCode()" src="/VerifyCode" border="0" title="点击换一张" width="85" height="22" /></td>
-                     <td>&nbsp;&nbsp;<a style="text-decoration: none; color: #0ca7a1;" href="javascript:void(0)" onclick="changeVeriyCode()" title="点击换一张">换一张</a></td>
+                     <td><img id="imageCode" name="imageCode" onclick="changeVeriyCode()" src="../../../images/VerifyCode.jpg" border="0" title="点击换一张" width="85" height="22" /></td>
+                     <td>&nbsp;&nbsp;<a class="btn" href="javascript:void(0)" onclick="changeVeriyCode()" title="点击换一张"><span style="font-size:12px; font-weight:500;color:#5a5a5a">换一张</span></a></td>
                   </tr>
                </table>
           </li>
@@ -124,21 +132,13 @@
               </li>
             </ul>
           </li>
-          <li class="btn_recharge"><a href="javascript:void(0)" onclick="pay();">下一步</a></li>
+          <li class="btn_recharge"><a href="javascript:void(0)" class="btn" onclick="pay();"><span style="font-size:17px; font-weight:500;color:#5a5a5a;width:165px">下一步</span></a></li>
         </ul>
       </div>
       <!--account_security end-->
       </form>
-      
-      
-      
-      
-    </div>
-  </div>
+ </div>
 </body>
-
-
-
 
 <div id="divloading">
 	<img src="/images/public/blue-loading.gif" />
