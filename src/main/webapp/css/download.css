@@ -3,12 +3,12 @@
 /*----------------app_download---------------*/
 .download{width:100%; float:left;}
 .app_download{width:100%;float:left;}
-.appDownload_main{width:920px;height:auto; min-height:770px; margin:20px auto; padding:40px; background:#fff; font-family:"微软雅黑";}
+.appDownload_main{width:1000px;height:auto; min-height:770px; margin:20px auto; padding:40px; background:#fff; font-family:"微软雅黑";}
 .appDownload_tab{width:920px; float:left}
 .appDownload_tab_menu{width:920px; float:left}
-.appDownload_tab_menu ul{margin:0;padding:0px; height:48px; border-bottom:2px solid #0ca7a1}
-.appDownload_tab_menu li{width:166px; margin-right:2px; float:left; background:#5a5a5a;height:48px; line-height:48px; display:block; cursor:pointer; color:#fff; font-size:18px; font-weight:500;}
-.appDownload_tab_menu li.appDownload_selected{background:#0ca7a1}
+.appDownload_tab_menu ul{margin:0;padding:0px; height:48px; border-bottom:2px solid #5a5a5a}
+.appDownload_tab_menu li{width:166px; margin-right:2px; float:left; background:#e8e3d7;height:48px; line-height:48px; display:block; cursor:pointer; color:#fff; font-size:18px; font-weight:500;}
+.appDownload_tab_menu li.appDownload_selected{background:#5a5a5a}
 .appDownload_tab_menu img{margin-right:10px;}
 .appDownload_box{width:920px; float:left;}
 .hide{display:none;}

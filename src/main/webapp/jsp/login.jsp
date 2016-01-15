@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="<c:url value='/css/common.css'/>" type="text/css" />
 <link rel="stylesheet" href="<c:url value='/css/login.css'/>" type="text/css" />
 <link rel="stylesheet" href="<c:url value='/css/index_common.css'/>" type="text/css" />
-<link rel="stylesheet" href="<c:url value='/css/popup.css'/>" type="text/css" />
+
 
 <!-- main JS libs -->
 <script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
