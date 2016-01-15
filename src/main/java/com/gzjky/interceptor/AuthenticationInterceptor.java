@@ -1,6 +1,8 @@
 package com.gzjky.interceptor;
 
 import com.gzjky.action.login.LoginAction;
+import com.gzjky.action.password.passwordAction;
+import com.gzjky.action.register.registerAction;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
@@ -25,7 +27,9 @@ public class AuthenticationInterceptor extends AbstractInterceptor {
 	public String intercept(ActionInvocation invocation) throws Exception {
 
 		// 判断是否请求为登录界面(login),如果是则不拦截
-		if (LoginAction.class == invocation.getAction().getClass()) {
+		if (LoginAction.class == invocation.getAction().getClass()
+				||registerAction.class == invocation.getAction().getClass()
+				||passwordAction.class == invocation.getAction().getClass()) {
 			return invocation.invoke();
 		}
 

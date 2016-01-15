@@ -1,5 +1,9 @@
 package com.gzjky.action.login;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.struts2.ServletActionContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.bean.gen.UserInfo;
@@ -26,25 +30,43 @@ public class LoginAction extends ActionSupport {
 	
 	private String passwd;
 	
+	private String errorMessage;
+	
 	/*
 	 * 用户登录系统
 	 */
 	public String login() throws Exception{
 		
-		UserInfo userInfo = userInfoReadMapper.selectByUserName(loginId, loginId, passwd);
-		
-		//调用业务逻辑组件的valid方法来
+		//页面参数取得
+        HttpServletRequest request = ServletActionContext.getRequest();
+        
+        loginId = request.getParameter("loginId");
+        passwd = request.getParameter("passwd");
+
+        //通过用户名，手机，邮箱查找用户信息
+		UserInfo userInfo = userInfoReadMapper.selectBy(loginId, loginId, loginId);		
+		//调用业务逻辑组件的valid方法进行check
+        //用户名check
+
 		//验证用户输入的用户名和密码是否正确
-		if (userInfo!=null)
+		if (userInfo!= null)
 		{
-			//session中设置userInfoBean
-			ActionContext.getContext().getSession().put("user",userInfo);
+            if(PwdUtil.ComparePasswords(userInfo.getPassword(), passwd)){
+                //session中设置userInfoBean
+                ActionContext.getContext().getSession().put("user",userInfo);
+                return "success";
+            }
+            else{
+            	//设置 error内容
+            	errorMessage= "用户名或密码错误!";
+                return "error";
+            }
 		}else
-		{
-			return INPUT;
-		}
-		return SUCCESS;
-		
+		{			
+			//设置 error内容
+        	errorMessage= "该用户不存在!";
+            return "error";
+		}		
 	}
 	
 	/*
@@ -74,6 +96,14 @@ public class LoginAction extends ActionSupport {
 
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 }

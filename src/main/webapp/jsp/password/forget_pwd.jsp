@@ -43,7 +43,7 @@
 		para="login_id="+login_id;
 		
 		xmlHttp = $.ajax({						
-				url:"/register/queryMemberBaseInfoByLoginId.action",
+				url:"/gzjky/register/queryMemberBaseInfoByLoginId.do",
 				cache: false,
 				async: false,
 				data:para,
@@ -53,12 +53,11 @@
 				error:function(){
 					$.alert('异常');
 				},success:function(response){
-					var modelMap=response.modelMap;
-					if(modelMap.count<=0){
+					if(response==null){
 						$("#login_id_point").html("<span class='tRed'>*</span>您输入的用户名不存在，请重新输入！");	
 					}
-					else if(modelMap.count>0){						
-						memberBaseInfo=modelMap.memberBaseInfo;
+					else {						
+						memberBaseInfo=response;
 						$("#login_id_point").html("<img src='../../images/login/tick.png'/>");
 						check_login_id=true;					
 					}
@@ -268,7 +267,7 @@
 				var mail=$("#mail").val();
 				var para="login_id="+login_id+"&email="+mail;
 				xmlHttp = $.ajax({						
-					url:"/findPwd/sendPwd.action",
+					url:"/gzjky/findPwd/sendPwd.do",
 					async:true,
 					data:para,
 					dataType:"json",
