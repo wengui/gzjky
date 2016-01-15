@@ -458,7 +458,7 @@
 	         <ul>
 	            <li class="tgrey_Packagedetails_left2">备注：</li>
 	            <li class="tblack_Packagedetails_right2" >
-	            	<textarea class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray" id="feedback" name="feedback" rows="5" cols="35" maxlength="100"></textarea>
+	            	<textarea class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:13px" id="feedback" name="feedback" rows="5" cols="35" maxlength="100"></textarea>
 	            </li>            
 	  		</ul>
 	  		<ul>

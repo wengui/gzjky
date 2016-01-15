@@ -23,7 +23,14 @@
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
-
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 	var family_form = "family_form";
 	var save_image = window.parent.save_image;
@@ -326,10 +333,10 @@
 		if(heighBloodPressure==1){
 
 			heighBloodPressureRelationNum++;
-			var str="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'>亲属关系:<select id='heighBloodPressure_relation_name"+heighBloodPressureRelationNum+"'>";
-			str+=relation_name_str+"</select>";
-			str+="&nbsp;&nbsp;患病年份:<select id='heighBloodPressure_relation_year"+heighBloodPressureRelationNum+"'>";
-			str+=relation_year_str+"</select>";
+			var str="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'>亲属关系:<span class='select-style_relation'><select id='heighBloodPressure_relation_name"+heighBloodPressureRelationNum+"'>";
+			str+=relation_name_str+"</select></span>";
+			str+="&nbsp;&nbsp;患病年份:<span class='select-style_relation'><select id='heighBloodPressure_relation_year"+heighBloodPressureRelationNum+"'>";
+			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addHeighBloodPressureRelation_button' onclick='addHeighBloodPressureRelation()' class='relation_button'>+继续添加</a>";
 			$("#heighBloodPressure_relation").html(str);
@@ -345,7 +352,7 @@
 		heighBloodPressureRelationNum++;	
 		
 		
-		var str="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'>亲属关系:<select id='heighBloodPressure_relation_name"+heighBloodPressureRelationNum+"'>";
+		var str="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodPressure_relation_name"+heighBloodPressureRelationNum+"'>";
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:<select id='heighBloodPressure_relation_year"+heighBloodPressureRelationNum+"'>";
 		str+=relation_year_str+"</select>";
@@ -366,10 +373,10 @@
 		var heighBloodFat=$("#heighBloodFat").val();
 		if(heighBloodFat==1){
 			heighBloodFatRelationNum++;
-			var str="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'>亲属关系:<select id='heighBloodFat_relation_name"+heighBloodFatRelationNum+"'>";
+			var str="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodFat_relation_name"+heighBloodFatRelationNum+"'>";
 			str+=relation_name_str+"</select>";
 			str+="&nbsp;&nbsp;患病年份:<select id='heighBloodFat_relation_year"+heighBloodFatRelationNum+"'>";
-			str+=relation_year_str+"</select>";
+			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='relation_button'>+继续添加</a>";
 			$("#heighBloodFat_relation").html(str);
@@ -383,10 +390,10 @@
 		$("#addHeighBloodFatRelation_button").remove();
 		$("#delHeighBloodFatRelation_button").remove();
 		heighBloodFatRelationNum++;	
-		var str="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'>亲属关系:<select id='heighBloodFat_relation_name"+heighBloodFatRelationNum+"'>";
+		var str="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodFat_relation_name"+heighBloodFatRelationNum+"'>";
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:<select id='heighBloodFat_relation_year"+heighBloodFatRelationNum+"'>";
-		str+=relation_year_str+"</select>";
+		str+=relation_year_str+"</select></span>";
 		str+="<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='relation_button'>删除</a></div>";
 		str+="<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='relation_button'>+继续添加</a>";
 		$("#heighBloodFat_relation").append(str);	
@@ -404,10 +411,10 @@
 		var diabetesMellitus=$("#diabetesMellitus").val();
 		if(diabetesMellitus==1){
 			diabetesMellitusRelationNum++;
-			var str="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'>亲属关系:<select id='diabetesMellitus_relation_name"+diabetesMellitusRelationNum+"'>";
+			var str="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='diabetesMellitus_relation_name"+diabetesMellitusRelationNum+"'>";
 			str+=relation_name_str+"</select>";
 			str+="&nbsp;&nbsp;患病年份:<select id='diabetesMellitus_relation_year"+diabetesMellitusRelationNum+"'>";
-			str+=relation_year_str+"</select>";
+			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='relation_button'>+继续添加</a>";
 			$("#diabetesMellitus_relation").html(str);
@@ -421,10 +428,10 @@
 		$("#addDiabetesMellitusRelation_button").remove();
 		$("#delDiabetesMellitusRelation_button").remove();
 		diabetesMellitusRelationNum++;	
-		var str="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'>亲属关系:<select id='diabetesMellitus_relation_name"+diabetesMellitusRelationNum+"'>";
+		var str="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='diabetesMellitus_relation_name"+diabetesMellitusRelationNum+"'>";
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:<select id='diabetesMellitus_relation_year"+diabetesMellitusRelationNum+"'>";
-		str+=relation_year_str+"</select>";
+		str+=relation_year_str+"</select></span>";
 		str+="<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='relation_button'>删除</a></div>";
 		str+="<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='relation_button'>+继续添加</a>";
 		$("#diabetesMellitus_relation").append(str);	
@@ -442,10 +449,10 @@
 		var coronaryDisease=$("#coronaryDisease").val();
 		if(coronaryDisease==1){
 			coronaryDiseaseRelationNum++;
-			var str="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'>亲属关系:<select id='coronaryDisease_relation_name"+coronaryDiseaseRelationNum+"'>";
+			var str="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='coronaryDisease_relation_name"+coronaryDiseaseRelationNum+"'>";
 			str+=relation_name_str+"</select>";
 			str+="&nbsp;&nbsp;患病年份:<select id='coronaryDisease_relation_year"+coronaryDiseaseRelationNum+"'>";
-			str+=relation_year_str+"</select>";
+			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='relation_button'>+继续添加</a>";
 			$("#coronaryDisease_relation").html(str);
@@ -459,10 +466,10 @@
 		$("#addCoronaryDiseaseRelation_button").remove();
 		$("#delCoronaryDiseaseRelation_button").remove();
 		coronaryDiseaseRelationNum++;	
-		var str="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'>亲属关系:<select id='coronaryDisease_relation_name"+coronaryDiseaseRelationNum+"'>";
+		var str="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='coronaryDisease_relation_name"+coronaryDiseaseRelationNum+"'>";
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:<select id='coronaryDisease_relation_year"+coronaryDiseaseRelationNum+"'>";
-		str+=relation_year_str+"</select>";
+		str+=relation_year_str+"</select></sapn>";
 		str+="<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='relation_button'>删除</a></div>";
 		str+="<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='relation_button'>+继续添加</a>";
 		$("#coronaryDisease_relation").append(str);	
@@ -480,10 +487,10 @@
 		var cardiovascularAccident=$("#cardiovascularAccident").val();
 		if(cardiovascularAccident==1){
 			cardiovascularAccidentRelationNum++;
-			var str="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'>亲属关系:<select id='cardiovascularAccident_relation_name"+cardiovascularAccidentRelationNum+"'>";
+			var str="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='cardiovascularAccident_relation_name"+cardiovascularAccidentRelationNum+"'>";
 			str+=relation_name_str+"</select>";
 			str+="&nbsp;&nbsp;患病年份:<select id='cardiovascularAccident_relation_year"+cardiovascularAccidentRelationNum+"'>";
-			str+=relation_year_str+"</select>";
+			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='relation_button'>+继续添加</a>";
 			$("#cardiovascularAccident_relation").html(str);
@@ -497,10 +504,10 @@
 		$("#addCardiovascularAccidentRelation_button").remove();
 		$("#delCardiovascularAccidentRelation_button").remove();
 		cardiovascularAccidentRelationNum++;	
-		var str="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'>亲属关系:<select id='cardiovascularAccident_relation_name"+cardiovascularAccidentRelationNum+"'>";
+		var str="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='cardiovascularAccident_relation_name"+cardiovascularAccidentRelationNum+"'>";
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:<select id='cardiovascularAccident_relation_year"+cardiovascularAccidentRelationNum+"'>";
-		str+=relation_year_str+"</select>";
+		str+=relation_year_str+"</select></span>";
 		str+="<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='relation_button'>删除</a></div>";
 		str+="<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='relation_button'>+继续添加</a>";
 		$("#cardiovascularAccident_relation").append(str);	
@@ -513,14 +520,14 @@
 </script>
 
 </head>
-<body>
+<body  style="background:#e8e3d7">
 <div style="font-size:13px;font-family:微软雅黑">
 <form id="family_form">
         <!--basic_information start-->
         <div class="basic_information">
           <div class="btn_title_informationModify">
             <ul>
-              <li class="tLeft">家族遗传史</li>
+              <li class="tLeft" style="font-size:17px; font-weight:500;">家族遗传史</li>
               <li class="tRight"><a href="javascript:void(0)" onclick="edit_family(this)"><img src="../../../images/button/btn_editor.png" /></a></li>
             </ul>
           </div>
@@ -530,56 +537,66 @@
                <ul>         	
                  <li class="tgrey_informationModify">高血压：</li>
                  <li class="tblack_informationModify">
+                 	 <span class="select-style_familydisease">
 	                 <select class="selectMax_informationModify" id="heighBloodPressure"  name="heighBloodPressure" onchange="changeHeighBloodPressure()">
 				            <option value="-1"></option>
 				            <option value="0">无</option>
 				            <option value="1">有</option>
 	                 </select>
+	                 </span>
                  </li>
-                 <div class="family_disease_relation" id="heighBloodPressure_relation" align="left"  style="margin-left:80px";></div>
+                 <div class="family_disease_relation" id="heighBloodPressure_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
                         
                  <li class="tgrey_informationModify">高血脂：</li>
                  <li class="tblack_informationModify">
+                 	<span class="select-style_familydisease">
 	                 <select class="selectMax_informationModify" id="heighBloodFat"  name="heighBloodFat"  onchange="changeHeighBloodFat()">
 				            <option value="-1"></option>
 				            <option value="0">无</option>
 				            <option value="1">有</option>
-	                 </select>                 
+	                 </select>    
+	                 </span>             
                  </li>
-                 <div class="family_disease_relation" id="heighBloodFat_relation" align="left"  style="margin-left:80px";></div>
+                 <div class="family_disease_relation" id="heighBloodFat_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
                 
                 
                  <li class="tgrey_informationModify">糖尿病：</li>
                  <li class="tblack_informationModify">
+                 <span class="select-style_familydisease">
 	                 <select class="selectMax_informationModify" id="diabetesMellitus"  name="diabetesMellitus" onchange="changeDiabetesMellitus()">
 				            <option value="-1"></option>
 				            <option value="0">无</option>
 				            <option value="1">有</option>
-	                 </select>                    
+	                 </select>   
+	                 </span>                 
                  </li>
-                 <div class="family_disease_relation" id="diabetesMellitus_relation" align="left"  style="margin-left:80px";></div>
+                 <div class="family_disease_relation" id="diabetesMellitus_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
                  
                  
                  <li class="tgrey_informationModify">冠心病：</li>
                  <li class="tblack_informationModify">
+                 <span class="select-style_familydisease">
 	                 <select class="selectMax_informationModify" id="coronaryDisease"  name="coronaryDisease"  onchange="changeCoronaryDisease()">
 				            <option value="-1"></option>
 				            <option value="0">无</option>
 				            <option value="1">有</option>
-	                 </select>                   
+	                 </select>      
+	                 </span>             
                  </li>
-                 <div class="family_disease_relation" id="coronaryDisease_relation" align="left"  style="margin-left:80px";></div>
+                 <div class="family_disease_relation" id="coronaryDisease_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
                  
                  
                  <li class="tgrey_informationModify">脑血管意外：</li>
                  <li class="tblack_informationModify">
+                 <span class="select-style_familydisease">
 	                 <select class="selectMax_informationModify" id="cardiovascularAccident"  name="cardiovascularAccident" onchange="changeCardiovascularAccident()">
 				            <option value="-1"></option>
 				            <option value="0">无</option>
 				            <option value="1">有</option>
-	                 </select>                   
+	                 </select>         
+	                 </span>          
                  </li>
-                 <div class="family_disease_relation" id="cardiovascularAccident_relation" align="left"  style="margin-left:80px";></div>
+                 <div class="family_disease_relation" id="cardiovascularAccident_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
                  
                </ul>
              </li>

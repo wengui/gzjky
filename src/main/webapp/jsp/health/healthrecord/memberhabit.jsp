@@ -140,7 +140,7 @@
    <div class="detailed_information">
      <div class="btn_title_informationModify">
        <ul>
-         <li class="tLeft">生活习惯</li>
+         <li class="tLeft" style="font-size:17px; font-weight:500;">生活习惯</li>
          <li class="tRight"><a href="javascript:void(0)" onclick="edit_habit(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
        </ul>
      </div>

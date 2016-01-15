@@ -15,8 +15,6 @@
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <!-- main JS libs -->
 <script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
 <script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
 <!-- Style CSS -->
 <link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
@@ -153,7 +151,7 @@ $(function(){
 </script>
 </head>
 
-<body  style="background:#e8e3d7" >
+<body style="background:#e8e3d7">
 <div class="health_records">
   <div class="tgreen_title_BPhistory">健康病历</div>
   <!--tab_healthRecords start-->
