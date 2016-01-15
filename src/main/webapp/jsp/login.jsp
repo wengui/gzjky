@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29,6 +28,12 @@
 <script type="text/javascript" src="<c:url value='/js/jquery/jquery-1.4.2.min.js'/>"></script>
 
 <script type="text/JavaScript">
+
+
+	var msg="${requestScope.errorMessage}";
+	if(msg!=""){
+		$("#errMessageArea").html(msg);
+	}
 
    var login_id_tip = "用户名/手机/邮箱";
    var regstr = /^[a-zA-Z0-9]{1}\w{4,29}$/;
@@ -151,7 +156,7 @@
               <li class="field_text" style="width: 285px"><input type="text" id="login_id" name="loginId" class="lInput" value="用户名/手机/邮箱" onclick="checkLoginInput('onclick')" onblur="checkLoginInput('onblur')"/></li>
               <li class="tBlack">密码</li>
               <li class="field_text" style="width: 285px"><input type="password" id="passwd" name="passwd" class="lInput" /></li>
-              <li class="tBlack" id="errMessageArea" style="color:#ff9600;"></li>
+              <li class="tBlack" id="errMessageArea" style="color:#ff9600;">${errorMessage}</li>
               <li class="tBlack" style="display:none;">验证码</li>
               <li class="lCaptcha_input" style="display:none;"><input type="text" class="yInput" /></li>
               <li class="login_captcha" style="display:none;"></li>

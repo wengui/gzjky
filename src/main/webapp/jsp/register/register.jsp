@@ -28,6 +28,8 @@
 <script src="<c:url value='/js/general.js'/>"></script>
 
 <script type="text/javascript">
+
+
 	var pwdStrongContext="";
 
 	$(function(){
@@ -150,6 +152,13 @@
 				$("#cell_phone").val("");
 			}		
 	} 
+	function showEmailPoint(){
+		var email=$("#email").val();
+		if(email=="邮箱"){
+			$("#email").attr("style","color:#5a5a5a;");
+			$("#email").val("");
+		}		
+} 
 	
 	function checkCellPhone(){
 			var cell_phone=$("#cell_phone").val();
@@ -157,6 +166,13 @@
 				$("#cell_phone").attr("style","color:#ccc;");
 				$("#cell_phone").val("手机号码");
 			}		
+	} 
+	function checkEmail(){
+		var email=$("#email").val();
+		if(email==""){
+			$("#email").attr("style","color:#ccc;");
+			$("#email").val("邮箱");
+		}		
 	} 
 	
 	function showCodePoint(){
@@ -203,9 +219,12 @@
 		var passwd=$("#passwd").val();
 		var cell_phone=$("#cell_phone").val();
 		var check_code=$("#check_code").val();
-		var para="login_id="+login_id+"&passwd="+passwd+"&cell_phone="+cell_phone+"&memo="+check_code;
+		var email=$("#email").val();
+		var para="login_id="+login_id+"&passwd="+passwd+"&cell_phone="+cell_phone+"&memo="+check_code+"&email="+email;
+		var requestUrl ="/gzjky/register/register.do";
+
 		xmlHttp = $.ajax({						
-			url:"/register/registerMember.action",
+			url: requestUrl,
 			async:true,
 			data:para,
 			dataType:"json",
@@ -213,19 +232,25 @@
 			error:function(){
 				$.alert('注册发生异常！');			
 			},success:function(response){	
-				if(response==null){	
+				if(response.result=="0"){	
 					$.alert('注册发生异常！');
 				}
-				if(response=="-1"){	
+				if(response.result=="-1"){	
 					$.alert("请先获取手机验证码！");
 				}	
-				if(response=="-2"){	
+				if(response.result=="-2"){	
 					$.alert("验证码错误或失效！");	
 				}	
-				if(response=="-3"){		
+				if(response.result=="-3"){		
 					$.alert("该用户名已存在！");	
+				}
+				if(response.result=="-4"){		
+					$.alert("该手机号码已存在！");	
 				}	
-				if(response=="1"){	
+				if(response.result=="-5"){		
+					$.alert("该邮箱已存在！");	
+				}	
+				if(response.result=="1"){	
 					window.location.href="register_success.jsp";
 				}
 			}
@@ -323,11 +348,21 @@
 										class="validate[required, minSize[6], maxSize[20], equals[passwd]，funcCall[password]]"
 										onblur="checkRePasswd()" /></li>
 									<!-- <li class="register_prompt" id="re_passwd_point"></li> -->
+									
+									
+									<li class="register_input" style="margin-top: 10px"><input
+										type="text" value="邮箱" name="email" id="email"
+										class="validate[required, funcCall[email]]"
+										onfocus="showEmailPoint();" onblur="checkEmail();"
+										maxlength="20" /></li>
+									
 									<li class="register_input" style="margin-top: 10px"><input
 										type="text" value="手机号码" name="cell_phone" id="cell_phone"
 										class="validate[required, funcCall[worldtelephone2]]"
 										onfocus="showCellPhonePoint();" onblur="checkCellPhone();"
 										maxlength="20" /></li>
+										
+										
 									<li class="captcha" style="margin-top: 10px"><a
 										href="javascript:void(0)" onclick="sendCellPhone();"
 										id="send_check_code" title="发送验证码">发送验证码</a></li>

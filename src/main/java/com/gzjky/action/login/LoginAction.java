@@ -1,8 +1,16 @@
 package com.gzjky.action.login;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.ServletActionContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.gzjky.base.util.password.PwdUtil;
+import com.gzjky.bean.gen.UserAndPatient;
 import com.gzjky.bean.gen.UserInfo;
+import com.gzjky.dao.readdao.UserAndPatientReadMapper;
 import com.gzjky.dao.readdao.UserInfoReadMapper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -21,30 +29,56 @@ public class LoginAction extends ActionSupport {
 	
 	@Autowired
 	private UserInfoReadMapper userInfoReadMapper;
+	@Autowired
+	private UserAndPatientReadMapper userAndPatientReadMapper;
 	
 	private String loginId;
 	
 	private String passwd;
+	
+	private String errorMessage;
 	
 	/*
 	 * 用户登录系统
 	 */
 	public String login() throws Exception{
 		
-		UserInfo userInfo = userInfoReadMapper.selectByUserName(loginId, loginId, passwd);
-		
-		//调用业务逻辑组件的valid方法来
+		//页面参数取得
+        HttpServletRequest request = ServletActionContext.getRequest();
+        
+        loginId = request.getParameter("loginId");
+        passwd = request.getParameter("passwd");
+
+        //通过用户名，手机，邮箱查找用户信息
+		UserInfo userInfo = userInfoReadMapper.selectBy(loginId, loginId, loginId);		
+		//调用业务逻辑组件的valid方法进行check
+        //用户名check
+
 		//验证用户输入的用户名和密码是否正确
-		if (userInfo!=null)
+		if (userInfo!= null)
 		{
-			//session中设置userInfoBean
-			ActionContext.getContext().getSession().put("user",userInfo);
+            if(PwdUtil.ComparePasswords(userInfo.getPassword(), passwd)){
+                //session中设置userInfoBean
+                ActionContext.getContext().getSession().put("user",userInfo);
+                List<UserAndPatient> userAndPatientList = null ;
+                userAndPatientList = userAndPatientReadMapper.selectByUserId(userInfo.getId());
+                //session中添加PatientList信息
+                ActionContext.getContext().getSession().put("PatientList",userAndPatientList);
+              //session中添加默认Patient信息 
+                ActionContext.getContext().getSession().put("Patient",userAndPatientList.get(0));
+                return "success";
+            }
+            else{
+            	//设置 error内容
+            	errorMessage= "用户名或密码错误!";
+                return "error";
+            }
 		}else
-		{
-			return INPUT;
-		}
-		return SUCCESS;
-		
+		{			
+			//设置 error内容
+        	errorMessage= "该用户不存在!";
+            return "error";
+		}		
 	}
 	
 	/*
@@ -74,6 +108,14 @@ public class LoginAction extends ActionSupport {
 
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 }

@@ -93,6 +93,14 @@ function worldtelephone2(field,rules,i,options){
 	}
 }
 
+function email(field,rules,i,options){
+	if(!/^[a-zA-Z0-9_\.]+@[a-zA-Z0-9-]+[\.a-zA-Z]+$/.test(field.val())){
+		return "请输入一个有效的邮件地址.";
+	}
+}
+
+
+
 function filterSpecialSign(field,rules,i,options){
 	if(/%+/.test(field.val())){
 		return "请不要输入字符%";
