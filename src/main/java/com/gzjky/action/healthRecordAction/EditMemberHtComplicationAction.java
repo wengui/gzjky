@@ -1,16 +1,18 @@
 package com.gzjky.action.healthRecordAction;
 
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.action.acitonCommon.ModelMap;
-import com.gzjky.bean.gen.PatientLivingHabitsInfo;
-import com.gzjky.dao.constant.MsgConstant;
+import com.gzjky.base.util.VaildateUtils;
+import com.gzjky.bean.gen.PatientNowComplicationsChecked;
+import com.gzjky.dao.writedao.PatientNowComplicationsCheckedWriteMapper;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -27,6 +29,9 @@ public class EditMemberHtComplicationAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = -3786376143842917884L;
 	
+	@Autowired
+	private PatientNowComplicationsCheckedWriteMapper writeMapper;
+	
 	/**
 	 * 患者生活习惯更新
 	 * @return
@@ -38,25 +43,32 @@ public class EditMemberHtComplicationAction extends ActionSupport {
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
-			// 更新参数设定
-			PatientLivingHabitsInfo record = new PatientLivingHabitsInfo();
-			//TODO 患者ID要从共通拿出来
-			String id = "1";
-			
-			
-			// 更新处理
-			//int updattCount = patientLivingHabitsInfoWriteMapper.updateByPatientIdSelective(record);
-			int updattCount = 0;
+            writeMapper.deleteByPatientId(1);
+            
+            
+            Enumeration<String> en = request.getParameterNames();  
+            String parameterName = null;
+            int state = 1;
+            while (en.hasMoreElements()) {  
+                parameterName = (String) en.nextElement();  
+                String value = request.getParameter(parameterName);  
+                if(!VaildateUtils.isNullOrEmpty(value)){
+                	PatientNowComplicationsChecked record = new PatientNowComplicationsChecked();
+                	//TODO
+                	record.setPatientid(1);
+                	record.setDiseaseidvalue(value);
+                	int insertCount = writeMapper.insert(record);
+                	
+                	// 插入失败的场合
+                	if(insertCount == 0){
+                		state = 0;
+                	}
+                }
+                
+            } 
 			
 			ModelMap modelMap = new ModelMap();
-			modelMap.setUpdateFlag(updattCount);
-			if(updattCount == 0){
-				// 更新失败
-				modelMap.setMessage(MsgConstant.UPDATEINFO002);
-			}else{
-				// 更新成功
-				modelMap.setMessage(MsgConstant.UPDATEINFO001);
-			}
+			modelMap.setUpdateFlag(state);
 			
 	        // 将java对象转成json对象
 			HttpServletResponse response=ServletActionContext.getResponse();  

@@ -37,6 +37,16 @@
      	<result name="success">/jsp/health/healthrecord/memberhabit.jsp</result>
 	</action>
 	
+	<!-- 患者当前并发症页面初期化-->
+	<action name="queryDisease" class="com.gzjky.action.healthRecordAction.QueryDiseaseAction" method="getDisease">
+     	<result name="success">/jsp/health/healthrecord/memberhtcomplication.jsp</result>
+	</action>
+	
+	<!-- 患者当前并发症查询-->
+	<action name="queryMemberHtComplication" class="com.gzjky.action.healthRecordAction.QueryMemberHtComplicationAction" method="getHtComplication">
+     	<result name="success">/jsp/health/healthrecord/memberhtcomplication.jsp</result>
+	</action>
+	
 	<!-- 患者当前并发症更新-->
 	<action name="editMemberHtComplication" class="com.gzjky.action.healthRecordAction.EditMemberHtComplicationAction" method="editComplicationInfo">
      	<result name="success">/jsp/health/healthrecord/memberhtcomplication.jsp</result>

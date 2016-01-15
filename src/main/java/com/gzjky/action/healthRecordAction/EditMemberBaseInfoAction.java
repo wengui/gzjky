@@ -1,18 +1,17 @@
 package com.gzjky.action.healthRecordAction;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.action.acitonCommon.ModelMap;
-import com.gzjky.base.util.date.DateFormatter;
-import com.gzjky.base.util.date.DateUtil;
 import com.gzjky.bean.gen.PatientInfo;
 import com.gzjky.dao.constant.MsgConstant;
 import com.gzjky.dao.writedao.PatientInfoWriteMapper;
@@ -31,6 +30,7 @@ public class EditMemberBaseInfoAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 4206240602120824422L;
+	private SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟 
 	
 	@Autowired
 	private PatientInfoWriteMapper patientInfoWriteMapper;
@@ -54,7 +54,7 @@ public class EditMemberBaseInfoAction extends ActionSupport {
 			record.setId(NumberUtils.toInt(id));// 患者ID
 			record.setPatientname(request.getParameter("patientname"));// 患者姓名
 			record.setPatientsex(request.getParameter("patientsex"));// 患者性别
-			DateTime birthday = DateUtil.parseDate(request.getParameter("patientbirthday"),DateFormatter.SDF_YMD);
+			Date birthday = sdf.parse(request.getParameter("patientbirthday"));
 			record.setPatientbirthday(birthday);// 患者出生日期
 			record.setPatientphone(request.getParameter("patientphone"));// 患者手机号
 			record.setEmail(request.getParameter("email"));// 患者邮箱

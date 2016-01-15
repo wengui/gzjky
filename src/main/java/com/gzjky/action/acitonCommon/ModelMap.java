@@ -28,7 +28,7 @@ public class ModelMap {
 	 * 返回页面的json对象
 	 */
 	public Object result;
-
+	
 	public int getRecordTotal() {
 		return recordTotal;
 	}

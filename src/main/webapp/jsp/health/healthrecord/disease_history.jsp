@@ -22,13 +22,7 @@
 <!-- scripts -->
 <script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
-var member_unit_id = "24913";
-var member_cluster_id = "1";
-var member_unit_type = "2"
-var member_login_id = "";
-var doctor_unit_id = "24913";
-var doctor_cluster_id = "1";
-var doctor_unit_type = "2"
+
 var edit_image = "<c:url value='/images/button/btn_editor.png'/>";
 var save_image = "<c:url value='/images/button/btn_preserve.png'/>";
 
@@ -85,12 +79,6 @@ $(function(){
 			}
 		});
 		
-		if(formId in formdic){
-			para += "unit_id=" + member_unit_id + "&cluster_id=" + member_cluster_id + "&unit_type=" + member_unit_type;
-		}else{
-			para += "member_unit_id=" + member_unit_id + "&member_cluster_id=" + member_cluster_id + "&member_unit_type=" + member_unit_type;
-			para += "&creator_unit_id=" + doctor_unit_id + "&creator_cluster_id=" + doctor_cluster_id + "&creator_unit_type=" + doctor_unit_type;
-		}
 		return para.substring(0,para.length);
 	}
 
