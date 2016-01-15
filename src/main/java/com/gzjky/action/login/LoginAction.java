@@ -63,7 +63,9 @@ public class LoginAction extends ActionSupport {
                 ActionContext.getContext().getSession().put("user",userInfo);
                 List<UserAndPatient> userAndPatientList = null ;
                 userAndPatientList = userAndPatientReadMapper.selectByUserId(userInfo.getId());
+                //session中添加PatientList信息
                 ActionContext.getContext().getSession().put("PatientList",userAndPatientList);
+              //session中添加默认Patient信息 
                 ActionContext.getContext().getSession().put("Patient",userAndPatientList.get(0));
                 return "success";
             }
