@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.gzjky.action.acitonCommon.ModelMap;
-import com.gzjky.action.login.PwdUtil;
+import com.gzjky.base.util.password.PwdUtil;
 import com.gzjky.bean.gen.PatientInfo;
 import com.gzjky.bean.gen.UserAndPatient;
 import com.gzjky.bean.gen.UserInfo;

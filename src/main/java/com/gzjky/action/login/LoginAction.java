@@ -1,12 +1,17 @@
 package com.gzjky.action.login;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.gzjky.base.util.password.PwdUtil;
+import com.gzjky.bean.gen.UserAndPatient;
 import com.gzjky.bean.gen.UserInfo;
+import com.gzjky.dao.readdao.UserAndPatientReadMapper;
 import com.gzjky.dao.readdao.UserInfoReadMapper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -25,6 +30,8 @@ public class LoginAction extends ActionSupport {
 	
 	@Autowired
 	private UserInfoReadMapper userInfoReadMapper;
+	@Autowired
+	private UserAndPatientReadMapper userAndPatientReadMapper;
 	
 	private String loginId;
 	
@@ -54,6 +61,10 @@ public class LoginAction extends ActionSupport {
             if(PwdUtil.ComparePasswords(userInfo.getPassword(), passwd)){
                 //session中设置userInfoBean
                 ActionContext.getContext().getSession().put("user",userInfo);
+                List<UserAndPatient> userAndPatientList = null ;
+                userAndPatientList = userAndPatientReadMapper.selectByUserId(userInfo.getId());
+                ActionContext.getContext().getSession().put("PatientList",userAndPatientList);
+                ActionContext.getContext().getSession().put("Patient",userAndPatientList.get(0));
                 return "success";
             }
             else{
