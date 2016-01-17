@@ -46,7 +46,7 @@
 			var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
 			if(pointerStart<0)
 	    		pointerStart = 0;
-			var requestUrl = "/healthRecordAction/queryMemberMedicalExaminationList.action";
+			var requestUrl = "/gzjky/healthRecordAction/queryMemberMedicalExaminationList.do";
 			//var create_time = $("#create_time").val();
 			var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id
 						+"&member_unit_type="+window.parent.member_unit_type
@@ -68,10 +68,9 @@
 				error:function(){
 					$.alert('无权限');
 				},success:function(response){
-				    var modelMap = response.modelMap;
-				    var memberMedicalExaminationList = modelMap.memberMedicalExaminationList;
-					recordList = memberMedicalExaminationList;
-					$.fn.page.settings.count = modelMap.recordTotal;
+					
+					recordList = response.outBeanList;
+					$.fn.page.settings.count = response.recordTotal;
 					page($.fn.page.settings.currentnum);
 				}
 			});
@@ -170,12 +169,12 @@
 		}
 		function saveMedicalExamination(){
 			if(!jQuery('#medicalExaminationForm').validationEngine('validate')) return false;
-			var requestUrl = "/healthRecordAction/addMemberMedicalExamination.action";
+			var requestUrl = "/gzjky/healthRecordAction/addMemberMedicalExamination.do";
 			var para  = $("#medicalExaminationForm").dataForJson({prefix:''});
 			para += "&member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id
 			+"&member_unit_type="+window.parent.member_unit_type;
 			if(medicalExamination_popType == "edit"){
-				requestUrl = "/healthRecordAction/updateMemberMedicalExamination.action";
+				requestUrl = "/gzjky/healthRecordAction/editMemberMedicalExamination.do";
 			}else{
 				para += "&creator_unit_id=" + window.parent.doctor_unit_id + "&creator_cluster_id=" + window.parent.doctor_cluster_id + "&creator_unit_type=" + window.parent.doctor_unit_type;
 			}
@@ -199,8 +198,7 @@
 			        hideLoading();
 			        $("#transparentDiv2").css("z-index",3);
 					$("#divloading").css("z-index",30);
-				    var modelMap = response.modelMap;
-				    var status = modelMap.status;
+				    var status = response.updateFlag;
 				    if(status == "1"){
 				    	$.alert('保存成功！');
 				    	if(medicalExamination_popType == "add"){
@@ -231,7 +229,7 @@
 					return;
 				});
 				
-				var requestUrl = "/healthRecordAction/deleteMemberMedicalExamination.action";
+				var requestUrl = "/gzjky/healthRecordAction/deleteMemberMedicalExamination.do";
 				var para = "ids="+para_value.substring(0,para_value.length-1);
 				showScreenProtectDiv(2);
 			    showLoading();
@@ -249,8 +247,7 @@
 					},success:function(response){
 						hideScreenProtectDiv(2);
 				        hideLoading();
-					    var modelMap = response.modelMap;
-					    var status = modelMap.status;
+					    var status = response.updateFlag;
 					    if(status == "1"){
 					    	$.alert('删除成功！');
 					    	$.fn.page.settings.realcount-=len;

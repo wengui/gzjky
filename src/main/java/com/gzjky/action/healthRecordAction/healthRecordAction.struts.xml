@@ -72,6 +72,23 @@
      	<result name="success">/jsp/health/healthrecord/memberIllnessHistory.jsp</result>
 	</action>
 	
-
+	<!-- 健康检查一览取得-->
+	<action name="queryMemberMedicalExaminationList" class="com.gzjky.action.healthRecordAction.QueryMemberMedicalExaminationListAction" method="getList">
+     	<result name="success">/jsp/health/healthrecord/medicalexamination.jsp</result>
+	</action>
+	
+	<!-- 添加健康检查记录-->
+	<action name="addMemberMedicalExamination" class="com.gzjky.action.healthRecordAction.AddMemberMedicalExaminationAction" method="addRecord">
+     	<result name="success">/jsp/health/healthrecord/medicalexamination.jsp</result>
+	</action>
+	
+	<!-- 更新健康检查记录-->
+	<action name="editMemberMedicalExamination" class="com.gzjky.action.healthRecordAction.EditMemberMedicalExaminationAction" method="editRecord"/>
+     
+	<!-- 更新健康检查记录-->
+	<action name="deleteMemberMedicalExamination" class="com.gzjky.action.healthRecordAction.DeleteMemberMedicalExaminationAction" method="delRecord"/>
+	
+	
+	
 	</package>
 </struts>
