@@ -103,7 +103,7 @@ public class passwordAction extends ActionSupport {
         		+ loginId+"，通过您提交的忘记密码申请，新密码已被系统随机设置为："
 				+ newPassword
 				+ "，点此链接马上激活新密码:"
-				+ "http://v3.995120.cn/jsp/password/active_new_pwd.jsp?sign="
+				+ "http://localhost:8080/gzjky/jsp/password/active_new_pwd.jsp?sign="
 				+ uuid.toString()
 				+ "，请在一个小时内处理此业务，超过时间上次申请将无效！");
 		

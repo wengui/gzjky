@@ -7,7 +7,7 @@
   </head>
   <body onload="javascript:document.forms[0].submit();">
   	<form id="activePwd" name="activePwd" action="/gzjky/findPwd/activePwd.do" method="post">
-  		<input  name="sign" id="sign" value=<%=request.getParameter("sign")%>>
+  		<input type="hidden" name="sign" id="sign" value=<%=request.getParameter("sign")%>>
   	</form>
     
   </body>
