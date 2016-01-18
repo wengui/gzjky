@@ -285,20 +285,20 @@
 					error:function(){	
 						$("#result_point").html("<span class='tRed'>*</span>出现异常！");
 					},success:function(response){		
-						if(response=="-1"){
+						if(response.result=="-1"){
 							$("#result_point").html("<span class='tRed'>*</span>连接邮件服务失败！");
 						}
-						if(response=="-2"){
+						if(response.result=="-2"){
 							$("#result_point").html("<span class='tRed'>*</span>出现异常！");
 						}
-						if(response=="-3"){
+						if(response.result=="-3"){
 							$("#result_point").html("<span class='tRed'>*</span>抱歉，您上次提交的忘记密码申请还未处理，1小时内不能重复申请！");
 						}
-						if(response=="1"){
+						if(response.result=="1"){
 							$("#login_id").val("");
 							$("#back_way").val("0");
 							$("#mail").val("");				
-							window.location.href="/jsp/password/password_mail_success.jsp?mail="+mail;
+							window.location.href="password_mail_success.jsp?mail="+mail;
 						}
 					}
 				});	

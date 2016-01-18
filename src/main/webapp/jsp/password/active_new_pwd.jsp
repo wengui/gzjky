@@ -6,8 +6,8 @@
     <title>找回密码</title>
   </head>
   <body onload="javascript:document.forms[0].submit();">
-  	<form id="activePwd" name="activePwd" action="/findPwd/activePwd.action" method="post">
-  		<input type="hidden" name="login_id" value="null">
+  	<form id="activePwd" name="activePwd" action="/gzjky/findPwd/activePwd.do" method="post">
+  		<input  name="sign" id="sign" value=<%=request.getParameter("sign")%>>
   	</form>
     
   </body>

@@ -7,22 +7,22 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.base.mail.mailControl;
+import com.gzjky.base.util.password.PwdUtil;
 import com.gzjky.bean.gen.UserInfo;
+import com.gzjky.bean.gen.UserPasswordFind;
 import com.gzjky.dao.readdao.UserInfoReadMapper;
+import com.gzjky.dao.readdao.UserPasswordFindReadMapper;
 import com.gzjky.dao.writedao.PatientInfoWriteMapper;
 import com.gzjky.dao.writedao.UserAndPatientWriteMapper;
 import com.gzjky.dao.writedao.UserInfoWriteMapper;
+import com.gzjky.dao.writedao.UserPasswordFindWriteMapper;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.Properties;
 
-import javax.mail.AuthenticationFailedException;
-import javax.mail.Authenticator;
-import javax.mail.Message.RecipientType;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
+import java.util.UUID;
+
 import net.sf.json.JSONObject;
 
 /**
@@ -42,7 +42,10 @@ public class passwordAction extends ActionSupport {
 	PatientInfoWriteMapper patientInfoWriteMapper;
 	@Autowired
 	UserAndPatientWriteMapper userAndPatientWriteMapper;
-	
+	@Autowired
+	UserPasswordFindWriteMapper userPasswordFindWriteMapper;
+	@Autowired
+	UserPasswordFindReadMapper userPasswordFindReadMapper;
 	//用户名
 	private String loginId;
 	//密码
@@ -67,6 +70,28 @@ public class passwordAction extends ActionSupport {
 		// 邮箱
 		email = request.getParameter("email");
 	
+		//userPasswordFind表信息处理
+		UUID uuid = UUID.randomUUID();
+		UserPasswordFind userPasswordFind = new UserPasswordFind();
+		userPasswordFind.setUid(uuid.toString());
+		userPasswordFind.setUserid(userInfoReadMapper.selectUserByUserName(loginId).getId());
+		Date now = new Date();
+		userPasswordFind.setBegintime(now);
+		Calendar rightNow = Calendar.getInstance();
+		rightNow.setTime(now);
+		//日期加1天
+		rightNow.add(Calendar.DAY_OF_YEAR,1);
+		userPasswordFind.setEndtime(rightNow.getTime());
+		Random r=new Random();
+		String newPassword = String.valueOf(r.nextInt(9))
+				+String.valueOf(r.nextInt(9))
+				+String.valueOf(r.nextInt(9))
+				+String.valueOf(r.nextInt(9))
+				+String.valueOf(r.nextInt(9))
+				+String.valueOf(r.nextInt(9));
+		userPasswordFind.setNewpassword(newPassword);
+		userPasswordFindWriteMapper.insert(userPasswordFind);
+		
 		mailControl mail = new mailControl(); 
 		mail.setTo("87547931@qq.com");
 		mail.setFrom("13761370411@163.com");// 你的邮箱
@@ -76,9 +101,10 @@ public class passwordAction extends ActionSupport {
 		mail.setSubject("我忘记密码了！");
 		mail.setContent("尊敬的用户： "
         		+ loginId+"，通过您提交的忘记密码申请，新密码已被系统随机设置为："
-				+ "814293"
+				+ newPassword
 				+ "，点此链接马上激活新密码:"
-				+ "http://v3.995120.cn/jsp/password/active_new_pwd.jsp?sign=92E8469CE62C3A93FA8E0D430EAA3937"
+				+ "http://v3.995120.cn/jsp/password/active_new_pwd.jsp?sign="
+				+ uuid.toString()
 				+ "，请在一个小时内处理此业务，超过时间上次申请将无效！");
 		
 		if (!mail.sendMail()) {
@@ -117,30 +143,12 @@ public class passwordAction extends ActionSupport {
 		// 页面参数取得
 		HttpServletRequest request = ServletActionContext.getRequest();
 		// 用户名
-		loginId = request.getParameter("login_id");
+		String uid = request.getParameter("sign");
 		
-		UserInfo userInfo = new UserInfo();
-		userInfo = userInfoReadMapper.selectUserByUserName(loginId);
-		
-		try {			
-			// 将java对象转成json对象
-			HttpServletResponse response = ServletActionContext.getResponse();
-			// 以下代码从JSON.java中拷过来的
-			response.setContentType("text/html");
-			PrintWriter out = null;
-			out = response.getWriter();
-			// 将java对象转成json对象
-			JSONObject jsonObject = JSONObject.fromObject(userInfo);// 将list转换为json数组
-			out.print(jsonObject);
-			out.flush();
-			out.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
+		UserPasswordFind userPasswordFind = new UserPasswordFind();
+		userPasswordFind = userPasswordFindReadMapper.selectByPrimaryKey(uid);
+		result = String.valueOf(userInfoWriteMapper.updatePasswordById(userPasswordFind.getUserid(), PwdUtil.CreateDbPassword(userPasswordFind.getNewpassword()))) ;
+				
 		return "success";
 		
 	}
