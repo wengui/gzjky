@@ -49,7 +49,7 @@ public class EditMemberDetailAction extends ActionSupport {
 			String id = "1";
 			
 			record.setId(NumberUtils.toInt(id));// 患者ID
-			record.setCardtype(request.getParameter("cardtype"));// 证件类型
+			record.setCardtype(request.getParameter("certiType"));// 证件类型
 			record.setCardnum(request.getParameter("cardnum")); // 证件号
 			if("1".equals(request.getParameter("issoldier"))){
 				record.setIssoldier(true);// 是军人
@@ -64,12 +64,12 @@ public class EditMemberDetailAction extends ActionSupport {
 			}
 			record.setHeight(NumberUtils.toDouble(request.getParameter("height")));// 身高
 			record.setWeight(NumberUtils.toDouble(request.getParameter("weight")));// 体重
-			record.setPatientnational(request.getParameter("patientnational"));// 民族
+			record.setPatientnational(request.getParameter("nationalityCodeDict"));// 民族
 			record.setNativeplace(request.getParameter("nativeplace"));// 籍贯
-			record.setMarriagestatus(request.getParameter("marriagestatus"));// 婚姻情况
-			record.setHouseholdtype(request.getParameter("householdtype"));// 户籍类型
-			record.setEducation(request.getParameter("education"));// 学历
-			record.setPolitical(request.getParameter("political"));// 政治面貌
+			record.setMarriagestatus(request.getParameter("maritalStatusDict"));// 婚姻情况
+			record.setHouseholdtype(request.getParameter("censusRegDict"));// 户籍类型
+			record.setEducation(request.getParameter("userAcademic"));// 学历
+			record.setPolitical(request.getParameter("politicalAffiliatio"));// 政治面貌
 			record.setTelephone(request.getParameter("telephone"));// 固话
 			record.setHomeaddress(request.getParameter("homeaddress"));// 家庭住址
 

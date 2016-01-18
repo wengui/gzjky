@@ -15,7 +15,7 @@
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
-
+<script src="<c:url value='/js/dictionaryInfo.js'/>" type="text/javascript"></script>
 <!-- main JS libs -->
 <script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
 <script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
@@ -29,8 +29,10 @@
 		var habit_form = "habit_form";
 		$(function(){
 			$("#"+habit_form+" :input").attr("disabled",true);
+			queryDictionaryInfo("memberHabit");
 			queryMemberHabit();
 		});
+		
 		function queryMemberHabit(){
 			var requestUrl = "/gzjky/healthRecordAction/queryMemberHabit.do";
 			var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id+"&member_unit_type="+window.parent.member_unit_type;
@@ -140,7 +142,7 @@
    <div class="detailed_information">
      <div class="btn_title_informationModify">
        <ul>
-         <li class="tLeft">生活习惯</li>
+         <li class="tLeft" style="font-size:17px; font-weight:500;">生活习惯</li>
          <li class="tRight"><a href="javascript:void(0)" onclick="edit_habit(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
        </ul>
      </div>

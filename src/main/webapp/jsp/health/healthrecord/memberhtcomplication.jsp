@@ -19,15 +19,16 @@
 	var complication_form = "complication_form";
 	var save_image = window.parent.save_image;
 	$(function(){
+		reloadCheckBox() ;
+		
 		$("#"+complication_form+" :input").attr("disabled",true);
 		queryMemberHtComplication();
 	});
 
 	function queryMemberHtComplication(){
 		var requestUrl = "/gzjky/healthRecordAction/queryMemberHtComplication.do";
-		var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id+"&member_unit_type="+window.parent.member_unit_type;
-	
-		    showScreenProtectDiv(1);
+		var para = "";
+		showScreenProtectDiv(1);
 	    showLoading();
 		xmlHttp = $.ajax({
 			url: requestUrl,
@@ -56,7 +57,7 @@
     	$("#"+complication_form+" :input").each(function(index,obj){
     		var id = obj.id;
     		if(id in memberHtComplication){
-    			$("#"+complication_form+" #"+id).attr("checked",memberHtComplication[id]==1?true:false);
+    			$("#"+complication_form+" #"+id).attr("checked",memberHtComplication[id]==$("#"+id).val()?true:false);
     		}
     	});
 	}
@@ -72,132 +73,123 @@
 	}
 	
     function get_requestPara(formId){
-    	return window.parent.get_requestPara("memberHtComplicationIframe",formId);
+    	return getRequestPara("memberHtComplicationIframe",formId);
     }
+    
+	function getRequestPara(iframeId,formId){
+		var para = "";
+		$("#"+formId+" :input").each(function(index,obj){
+			if(obj.type== "checkbox"){
+				if(obj.checked == true){
+					para += obj.id+"=" +obj.value + "&";
+				}else{
+					para += obj.id+"=" +"" + "&";
+				}
+			}else{
+				para += obj.id+"=" +obj.value + "&";
+			}
+		});
+		
+		return para.substring(0,para.length);
+	}
+	
     function send_request_forDisease(formId,obj,requestUrl,para){
     	window.parent.send_request_forDisease("memberHtComplicationIframe",formId,obj,requestUrl,para)
     }
+    
+    function reloadCheckBox() {
+		para='';
+		xmlHttp = $.ajax({
+		url:'/gzjky/healthRecordAction/queryDisease.do',
+		async:false,
+		data:para,
+		dataType:"json",
+		type:"POST",
+		error:function(){
+			$.alert('无权限或操作异常');
+		},success:function(response){
+			
+			var state = response.updateFlag;
+			var recordList = [];
+			if(state=='1'){
+				recordList = response.outBeanList;
+
+				showCheckBox(recordList);
+			}else if(state=='2'){
+				$.alert('未知的错误');
+			}
+		}
+	}); 
+	}
+    
+    function showCheckBox(recordList){
+    	
+    	var $ul = $("#"+"health_ul");   //获取UL对象
+    	
+		 var $htmlLi = '';  //创建DOM对象
+		
+		 
+         
+		var count = 0;
+		for (var i = 0; i < recordList.length; i++){	
+			
+			var $htmlUlStart = $("<li class='tright_healthExamination'><ul id = li_ul"+i+">"); // 创建DOM对象 ul			
+			var $htmlLiId = $("<li class='tleft_healthExamination'>"+recordList[i].diseasename+"：</li>"); // 创建DOM对象 li
+			var $htmlLiName = '';
+			if(recordList[i].comment == null || recordList[i].comment == ''){
+				$htmlLiName = $("<li class='tright_healthExamination_check8'><input id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+recordList[i].diseasesubname+"</li>"); // 创建DOM对象 li
+			}else{
+				$htmlLiName = $("<li class='tright_healthExamination_check8 tright_healthExamination'><input id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+
+						 "<a href='javascript:void(0)' title="+recordList[i].comment+">"+recordList[i].diseasesubname+"</a></li>"); // 创建DOM对象 li
+			}
+			 
+			if(i == 0){
+				$ul.append($htmlLiId);
+				$ul.append($htmlUlStart);
+				count = i;
+				var $getul = $("#"+'li_ul'+count);
+		         $getul.append($htmlLiName);
+				
+			}else{
+				if(i < recordList.length && i != 0){
+					if(recordList[i].diseasename != recordList[i-1].diseasename){
+						$ul.append($htmlLiId);
+						//$ul.append($htmlSubLi);
+						$ul.append($htmlUlStart);
+						count = i;
+					}
+				}
+			
+			var $getul = $("#"+'li_ul'+count);
+	         $getul.append($htmlLiName); 
+	         
+		}
+    }
+   }
+    
 </script>
 </head>
-<body>
+<body style="background:#e8e3d7">
 <div style="font-size:13px;font-family:微软雅黑">
 <form id="complication_form">
         <div class="tgreenPrompt"><span class="tblackPrompt">温馨提示：</span>项目字体为深色的，表明该项目有提示内容，请将鼠标放于项目上，提示内容自动显示。</div>
         <div class="btn_title_informationModify">
             <ul>
               <li class="tLeft">当前并发症</li>
-              <li class="tRight"><a href="javascript:void(0)" onclick="edit_complication(this)"><img src="../../../images/button/btn_editor.png" /></a></li>
+              <li class="tRight"><a href="javascript:void(0)" onclick="edit_complication(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
             </ul>
          </div>
-        <div class="health_examination">
-          <ul>
-            <li class="tleft_healthExamination">脑血管病：</li>
-            <li class="tright_healthExamination">
-              <ul>
-                <li class="tright_healthExamination_check8"><input id="brainBleeding" name="brainBleeding" type="checkbox" value="1" />脑出血</li>
-                <li class="tright_healthExamination_check8"><input id="ischemicStroke"  name="ischemicStroke" type="checkbox" value="1" />缺血性脑卒中</li>
-                <li class="tright_healthExamination_check9"><input id="transientIschemicAttack"  name="transientIschemicAttack" type="checkbox" value="1" />短暂性脑缺血发作</li>
-              </ul>
-            </li>
-            <li class="tleft_healthExamination">心脏疾病：</li>
-            <li class="tright_healthExamination">
-              <ul>
-                <li class="tright_healthExamination_check8"><input id="myocardialInfarctionHistory"  name="myocardialInfarctionHistory" type="checkbox" value="1" />心肌梗死史</li>
-                <li class="tright_healthExamination_check8"><input id="angina"  name="angina" type="checkbox" value="1" />心绞痛</li>
-                <li class="tright_healthExamination_check9"><input id="revascularization"  name="revascularization" type="checkbox" value="1" />冠状动脉血运重建史</li>
-                <li class="tright_healthExamination_check11"><input id="congestiveHeartFailure"  name="congestiveHeartFailure" type="checkbox" value="1" />充血性心力衰竭</li>
-              </ul>
-            </li>
-            <li class="tleft_healthExamination">肾脏疾病：</li>
-            <li class="tright_healthExamination">
-              <ul>
-                <li class="tright_healthExamination_check8"><input id="diabeticNephropathy"  name="diabeticNephropathy"  type="checkbox" value="1" />糖尿病肾病</li>
-                <li class="tright_healthExamination_check8"><input id="renalImpairment"  name="renalImpairment" type="checkbox" value="1" />肾功能受损</li>
-              </ul>
-            </li>
-            <li class="tleft_healthExamination">视网膜病变：</li>
-            <li class="tright_healthExamination">
-              <ul>
-                <li class="tright_healthExamination_check8"><input id="haemorrhagesOrExudates"  name="haemorrhagesOrExudates" type="checkbox" value="1" />出血或渗出</li>
-                <li class="tright_healthExamination_check8"><input id="lookMammillaEdema"  name="lookMammillaEdema" type="checkbox" value="1" />视乳头水肿</li>
-              </ul>
-            </li>
-            <li class="tleft_healthExamination">糖尿病：</li>
-            <li class="tright_healthExamination">
-              <ul>
-                <li class="tright_healthExamination_check8"><input id="diabetesMellitus"  name="diabetesMellitus" type="checkbox" value="1" />
-                <a href="javascript:void(0)"  title="空腹血糖：≥7.0mmol/L( 126mg/dL)
-餐后血糖：≥11.1mmol/L( 200mg/dL)
-糖化血红蛋白：(HbA1c)≥6.5%
-		          ">糖尿病</a>
-                </li>
-              </ul>
-            </li>
-            <li class="tleft_healthExamination">外周血管病：</li>
-            <li class="tright_healthExamination">
-              <ul>
-                <li class="tright_healthExamination_check8"><input  id="peripheralVascular"  name="peripheralVascular" type="checkbox" value="1" />外周血管病</li>
-              </ul>
-            </li>
-            <li class="tleft_healthExamination">心血管危险因素：</li>
-            <li class="tright_healthExamination">
-              <ul>
-                <li class="tright_healthExamination_check8"><input id="impairedGlucoseTolerance"  name="impairedGlucoseTolerance" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="2小时血糖7.8-11.0 mmol/L">糖耐量受损</a>
-                </li>
-                <li class="tright_healthExamination_check8"><input id="fastingGlucose"  name="fastingGlucose" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="6.1-6.9 mmol/L">空腹血糖异常</a>
-                
-                </li>
-                <li class="tright_healthExamination_check9"><input id="dyslipidemia" name="dyslipidemia" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="TC≥5.7mmol/L(220mg/dL)或
-LDL-C>3.3mmol/L(130mg/dL)或  
-HDL-C<1.0mmol/L(40mg/dL)">血脂异常</a>
-                </li>
-              </ul>
-            </li>
-            <li class="tleft_healthExamination">靶器官损害：</li>
-            <li class="tright_healthExamination">
-              <ul>
-                <li class="tright_healthExamination_check8"><input id="leftVentricularHypertrophy"  name="leftVentricularHypertrophy" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="心电图：
-Sokolow-Lyons>38mv或Cornell>2440mm•mms
-超声心动图LVMI：
-男125, 女120g/m2">左心室肥厚</a>
-                </li>
-                <li class="tright_healthExamination_check8"><input id="carotidUltrasoundAbnormalities"  name="carotidUltrasoundAbnormalities" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="IMT>0.9mm">颈动脉超声异常</a>
-                </li>
-                <li class="tright_healthExamination_check9"><input id="atheroscleroticPlaque" name="atheroscleroticPlaque" type="checkbox" value="1" />动脉粥样斑块</li>
-                <li class="tright_healthExamination_check11"><input id="carotidFemoralPulseWva" name="carotidFemoralPulseWva" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="脉搏波速度>12m/s">颈股动脉脉搏波速度异常</a>
-                </li>
-                <li class="tright_healthExamination_check8"><input id="abnormalAnkleBrachialBPI"  name="abnormalAnkleBrachialBPI" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="血压指数<0.9">踝臂血压指数异常</a>
-                </li>
-                <li class="tright_healthExamination_check8"><input id="glomerularFiltrationRate"  name="glomerularFiltrationRate" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="eGFR<60ml/min/1.73m2">肾小球滤过率降低</a>
-                </li>
-                <li class="tright_healthExamination_check9"><input id="heightMildSerumCreatinine" name="heightMildSerumCreatinine" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="男性115-133mol/L(1.3-1.5mg/dL)，
-女性107-124mol/L(1.2-1.4mg/dL)">血清肌酐轻度升高</a>
-                </li>
-                <li class="tright_healthExamination_check11"><input id="microalbuminuria"  name="microalbuminuria" type="checkbox" value="1" />
-                <a href="javascript:void(0)"  title="30-300mg/24h">微量白蛋白尿</a>
-                </li>
-                <li class="tright_healthExamination_check8"><input  id="abnormalAlbuminCreatinineRatio"  name="abnormalAlbuminCreatinineRatio" type="checkbox" value="1" />
-                <a href="javascript:void(0)" title="≥30mg/g(3.5mg/mmol)">白蛋白肌酐比异常</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+        <div class="health_examination" id="health_examination">
+            <ul id="health_ul">
+            
+            </ul>
         </div>
 </form>
 </div>
  
 
 <div id="divloading">
-	<img src="../../../images/public/blue-loading.gif" />
+	<img src="<c:url value='/images/public/blue-loading.gif'/>" />
 </div>
 
 <div id="transparentDiv" ></div>

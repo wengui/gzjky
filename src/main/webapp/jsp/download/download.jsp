@@ -14,7 +14,16 @@
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/base.js'/> type="text/javascript""></script>
-
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
+<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<!-- scripts -->
+<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 	var clientVersionList;
 	function clickDownloadTab(id) {
@@ -158,11 +167,11 @@
     <!--app_download start-->
     <div class="app_download">
       <div class="appDownload_main">
-        <div class="appDownload_tab">
+        <div class="tabs_framed styled appDownload_tab">
           <div class="appDownload_tab_menu">
             <ul id="menuUL">
-              <li title="android客户端下载" id="donwnloadMenu1" onclick="clickDownloadTab(1)" class="appDownload_selected"><img src="/images/icon/icon_android.png"  />Android版</li>
-              <li title="iOS客户端下载" id="donwnloadMenu2" onclick="clickDownloadTab(2)"><img src="/images/icon/icon_iphone.png"  />iPhone版</li>
+              <li title="android客户端下载" id="donwnloadMenu1" onclick="clickDownloadTab(1)" class="appDownload_selected"><img src="../../images/icon/icon_android.png"  />Android版</li>
+              <li title="iOS客户端下载" id="donwnloadMenu2" onclick="clickDownloadTab(2)"><img src="../../images/icon/icon_iphone.png"  />iPhone版</li>
             </ul>
           </div>
           <div class="appDownload_box">

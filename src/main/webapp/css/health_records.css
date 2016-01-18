@@ -44,7 +44,7 @@
 .health_examination li{float:left;padding:5px 0; height:30px; line-height:30px; text-align:left}
 li.tleft_healthExamination{width:110px; color:#aeaeae;text-align: right;}
 .tright_healthExamination{width:560px;}
-.tright_healthExamination_check8{width:128px;color:#5a5a5a}
+.tright_healthExamination_check8{width:140px;color:#5a5a5a}
 .tright_healthExamination_check9{width:140px;color:#5a5a5a}
 .tright_healthExamination_check11{width:164px;color:#5a5a5a}
 .tright_healthExamination input{margin:0 2px 0 0;}

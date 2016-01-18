@@ -24,40 +24,40 @@ body{background:#ededed}
 .register_middle{width:100%; float:left;}
 .register_main{width:1000px; margin:20px auto; font-family:"微软雅黑";}
 .step_agreement{background:url(../images/registration/step01.png)/*tpa=http://www.995120.cn/images/registration/step01.png*/ top center no-repeat; width:1000px; height:100px; margin-bottom:20px; float:left} 
-.bg_register{width:1000px; height:580px; padding:40px; float:left; background:#fff}
+.bg_register{width:1000px; height:600px; padding:40px; float:left; background:#fff}
 .bg_register li{float:left;}
 .tgreen_agreement{font-size:24px; height:30px; font-weight:500; color:#71A944; margin-bottom:20px; width:920px;}
 .agreement_main{background:url(../images/registration/bg_agreement.png)/*tpa=http://www.995120.cn/images/registration/bg_agreement.png*/ repeat; height:400px; width:878px; padding:20px; border:1px solid #aeaeae; text-align:left; overflow-y:auto;}
 .agreement_main h1{font-size:14px; font-weight:500; color:#5a5a5a;line-height:24px; float:left; width:100%}
 .agreement_main h2{font-size:12px; color:#aeaeae; line-height:24px; float:left; width:100%}
 .btn_agreement{width:920px; text-align:center; font-size:16px; font-weight:500; height:45px; padding-top:20px;}
-.btn_agree{background:#71A944; width:131px; height:41px; line-height:41px; color:#fff; text-decoration:none; display:block; float:left; margin-left:350px} 
+.btn_agree{background:#71A944; width:131px; height:41px; line-height:41px; color:#fff; text-decoration:none; display:block; float:left; margin-left:320px} 
 .btn_disagree{background:url(../images/button/btn_register_disagree.png)/*tpa=http://www.995120.cn/images/button/btn_register_disagree.png*/ no-repeat;width:131px; height:41px; line-height:41px; color:#5a5a5a; text-decoration:none; display:block; float:left; margin-left:20px}
 
 /*----------------step_register---------------*/ 
 .step_register{background:url(../images/registration/step02.png)/*tpa=http://www.995120.cn/images/registration/step02.png*/ top center no-repeat; width:1000px; height:100px; margin-bottom:20px; float:left} 
 .register_title{width:920px; float:left;}
 .register_title li{float:left; text-align:left}
-.titleGreen{font-size:24px; color:#71A944; height:40px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #71A944; width:125px;}
+.titleGreen{font-size:24px; color:#71A944; height:40px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #71A944; width:125px; font-family:"微软雅黑";}
 .titleGray{font-size:16px; color:#aeaeae; font-weight:500; border-bottom:2px solid #aeaeae; width:795px;height:40px; padding-top:23px; padding-bottom:5px;}
 .register_write{width:920px; float:left; margin-top:40px;}
 .register_write_left{width:669px; float:left; border-right:1px solid #ddd}
 .register_write_left li{float:left; margin-bottom:10px;}
 .register_input{width:360px; height:44px; text-align:left;}
-.register_input input{width:339px; height:42px; border:1px solid #dbdbdb; padding-left:10px;  background:#f7f7f7; color:#ccc; font:500 18px/42px "微软雅黑";}
+.register_input input{width:339px; height:42px; border:1px solid #dbdbdb; padding-left:10px;  background:#f7f7f7; font-family:"微软雅黑";}
 .register_prompt{width:300px; height:44px;font-size:13px; line-height:18px; color:#aeaeae; text-align:left;}
 .tRed{color:#ee3a67; font-size:16px; margin-right:5px;}
 .tBluev{color:#0099FF; font-size:16px; margin-right:5px;}
 .register_prompt_hidden{width:300px; height:44px;font-size:13px; line-height:18px; color:#aeaeae; text-align:left; display:none}
 .password_rank{width:660px; height:40px; background:url(../images/registration/password_rank.png)/*tpa=http://www.995120.cn/images/registration/password_rank.png*/ left center no-repeat; display:none}
 .imgWrong_hidden{background:url(../images/icon/wrong.png)/*tpa=http://www.995120.cn/images/icon/wrong.png*/ left center no-repeat; height:44px;font-size:13px; line-height:44px; color:#aeaeae; text-align:left; width:262px; padding-left:38px; display:none;}
-.captcha{width:115px; height:44px;font-size:13px;}
-.captcha a{background:url(../images/button/btn_captcha.png)/*tpa=http://www.995120.cn/images/button/btn_captcha.png*/ no-repeat; width:114px; height:44px; display:block; font:14px/44px "微软雅黑"; color:#5a5a5a; text-decoration:none;}
-.captcha a:hover{background:url(../images/button/btn_captcha_c.png)/*tpa=http://www.995120.cn/images/button/btn_captcha_c.png*/ no-repeat; color:#71A944}
+.captcha{width:110px; height:44px;font-size:13px;}
+.captcha a{background:#71A944;width:114px; height:44px; display:block; font:14px/44px "微软雅黑"; color: #fff; text-decoration:none;}
+.captcha a:hover{background:#71A944; color:#5a5a5a;}
 .captcha_prompt{width:660px; height:30px; font:13px/30px "微软雅黑"; color:#aeaeae; text-align:left}
 .tBlue{color:#71A944}
-.btn_reguster{width:660px; height:44px; margin-top:40px;}
-.btn_reguster a{background:#71A944; width:341px; height:49px; display:block; color:#fff; text-decoration:none; font:500 18px/49px "微软雅黑"}
+.btn_reguster{width:660px; height:44px; margin-top:15px;}
+.btn_reguster a{background:#71A944; width:359px; height:49px; display:block; color:#fff; text-decoration:none; font:500 18px/49px "微软雅黑"}
 .register_write_right{width:230px; float:left; padding-left:20px;}
 .register_write_right li{float:left}
 .login_prompt{font:13px/30px "微软雅黑"; color:#aeaeae; width:230px; height:30px; text-align:left}

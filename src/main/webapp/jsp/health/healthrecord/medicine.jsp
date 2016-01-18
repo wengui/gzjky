@@ -50,9 +50,8 @@ font-size: 14px;
 	float:left; 
 	height:auto; 
 	color:#5a5a5a; 
-	background: #f7f7f7;
 }
-.med_search table tr td{font: 14px/28px "微软雅黑";}
+.med_search table tr td{font: 14px/42px "微软雅黑";}
 table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 .tgreen_bp{
 	background:url(../images/icon/greenMax.png) right center no-repeat;
@@ -64,7 +63,7 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 	border-bottom:1px dotted #aeaeae;
 }
 #type_id{height: 28px;}
-#common_name{border: 1px solid #aeaeae;height: 28px;}
+#common_name{border: 1px solid #aeaeae;height: 28px;width:180px}
 </style>
 <script type="text/javascript">
 		$(function(){
@@ -234,9 +233,13 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
  								&nbsp;&nbsp;药品类目: <select class="type_id" id="type_id">
  								</select>
  								</span>
- 								<span style="margin-left:240px">
- 								药品名称: <input class="common_name" id="common_name" />
+ 							</td>
+ 							<td>
+ 								<span style="margin-left:200px">
+ 								药品名称: <input class="common_name" id="common_name" type="text" />
  								</span>
+ 							</td>
+ 							<td>
  								<span style="margin-left:10px">
  								<a href="javascript:void(0)" class="btn  btn_search" onclick="query()"><span style="font-size:14px; color:#5a5a5a">查询</span></a>
  								</span>
@@ -295,18 +298,6 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 		}
 	</script>
 
-<!-- 
-<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-<div id="fanye" >
-<input type="button" value="首页" class="button_fy page-first" />
-<input type="button" value="上一页" class="button_fy page-perv" />
-<input type="button" value="下一页" class="button_fy page-next" />
-<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
- 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-</div>
- -->
- 
 <div class="index_page">
   <ul>
     <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
@@ -335,8 +326,8 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
     	<ul>
     			<li>&nbsp;</li>
 		   		<li class="btn_popup_confirm" style="width: 65%;padding-left: 35%">
-		   			<a id="closeTips" href="javascript:void(0)" onclick="confirmMedicine();">确定</a>
-		   			<a id="closeDiv" href="javascript:void(0)" onclick="closeMedicine();">取消</a>
+		   			<a id="closeTips" href="javascript:void(0)"  class="btn" onclick="confirmMedicine();"><span style="color:#5a5a5a">确定</span></a>
+		   			<a id="closeDiv" href="javascript:void(0)" class="btn"  onclick="closeMedicine();"><span style="color:#5a5a5a">取消</span></a>
 		   		</li>
 		</ul>   		
   </div>

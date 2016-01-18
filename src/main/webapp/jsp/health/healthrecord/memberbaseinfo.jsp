@@ -22,6 +22,7 @@
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
+<script src="<c:url value='/js/dictionaryInfo.js'/>" type="text/javascript"></script>
 <!-- main JS libs -->
 <script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
 <script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
@@ -41,6 +42,7 @@
     	$("#"+basic_form_id+" :input").attr("disabled",true);
     	$("#"+detail_form_id+" :input").attr("disabled",true);
     	$("#"+workinfo_form_id+" :input").attr("disabled",true);
+    	queryDictionaryInfo("memberBaseInfo");
     	query_memberBaseInfo();
     	jQuery('#memberBaseInfo_form').validationEngine("attach",
     			{
@@ -292,7 +294,7 @@
                <li class="tgrey_informationModify">*性别：</li>
                <li class="tblack_informationModify">
                	   <span class="select-style_baseinfo" >
-	               <select  class="selectMax_informationModify  text-input validate[required]"  id="patientsex"  name="patientsex">
+	               <select  class="selectMax_informationModify  text-input validate[required]"  id="dictSex"  name="dictSex">
 	                   <option value="">请选择</option>
 		               <option value="0">男</option>
 		               <option value="1">女</option>
@@ -339,7 +341,7 @@
                 <li class="tgrey_informationDetailed">证件类型：</li>
                 <li class="tblack_informationDetailed">
                 <span class="select-style_baseinfo">
-	                <select class="selectMax_informationModify"  id="cardtype"  name="cardtype"  onchange="change_credentials_type(this)">
+	                <select class="selectMax_informationModify"  id="certiType"  name="certiType"  onchange="change_credentials_type(this)">
 	                    <option value="">请选择</option>
 	                	<option value="身份证">身份证</option>
 	                	<option value="驾驶证">驾驶证</option>
@@ -369,7 +371,7 @@
                 </li>  --> 
 				<li class="tblack_informationDetailed">
 						<span class="select-style_baseinfo">
-						<select class="selectMax_informationModify" id="patientnational"  name="patientnational" >
+						<select class="selectMax_informationModify" id="nationalityCodeDict"  name="nationalityCodeDict" >
 							<option value="">请选择</option>
 							
 							<option value="汉族">汉族</option>
@@ -494,7 +496,7 @@
                 <li class="tgrey_informationDetailed">婚姻状况：</li>
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
-	                <select class="selectMax_informationModify" id="marriagestatus"  name="marriagestatus" >
+	                <select class="selectMax_informationModify" id="maritalStatusDict"  name="maritalStatusDict" >
 	                	<option value="0">未婚</option>
 	                	<option value="2">已婚</option>
 	                	<option value="1">离异</option>
@@ -504,7 +506,7 @@
                 <li class="tgrey_informationDetailed">学历：</li>
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
-	                <select class="selectMax_informationModify" id="education" name="education"  >
+	                <select class="selectMax_informationModify" id="userAcademic" name="userAcademic"  >
 		                <option value="">请选择</option>
 					    <option value="初中">初中</option>
 						<option value="高中">高中</option>
@@ -555,7 +557,7 @@
                 <li class="tgrey_informationDetailed">户籍类型：</li>
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
-	                <select class="selectMax_informationModify" id="householdtype"  name="householdtype" >
+	                <select class="selectMax_informationModify" id="censusRegDict"  name="censusRegDict" >
 			              <option value="">请选择</option>
 						  <option value="0">城市</option>
 						  <option value="1">农村</option>
@@ -565,7 +567,7 @@
                 <li class="tgrey_informationDetailed">政治面貌：</li>
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
-	                <select class="selectMax_informationModify" id="political"  name="political">
+	                <select class="selectMax_informationModify" id="politicalAffiliatio"  name="politicalAffiliatio">
 	              		<option value="">请选择</option>
 						<option value="中共党员">中共党员</option>
 						<option value="共青团员">共青团员</option>
@@ -596,7 +598,7 @@
                 <li class="tgrey_informationDetailed">工作年限：</li>
                 <li class="tblack_informationDetailed"> 
                 	<span class="select-style_baseinfo">
-	                <select class="selectMax_informationModify" id="workyears" name="workyears">
+	                <select class="selectMax_informationModify" id="workingyear" name="workingyear">
 	                	<option value="">请选择</option>
 						<option value="1-2年">1-2年</option>
 						<option value="3年以上">3年以上</option>
@@ -618,7 +620,7 @@
                 <li class="tgrey_informationDetailed">薪酬：</li>
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
-	                <select class="selectMax_informationModify" id="annualincome"  name="annualincome">
+	                <select class="selectMax_informationModify" id="moneyForYear"  name="moneyForYear">
 	                	<option value="">请选择</option>
 						<option value="1">2万以下</option>
 						<option value="2">2-5万</option>
