@@ -10,7 +10,7 @@
 .login_wechat{background:url(../images/icon/wechat.jpg)/*tpa=http://www.995120.cn/images/icon/wechat.jpg*/ left center no-repeat; text-align:left; width:95px; padding-left:30px;}
 .login_bolg{background:url(../images/icon/micro_blog.jpg)/*tpa=http://www.995120.cn/images/icon/micro_blog.jpg*/ left center no-repeat; text-align:left; width:95px; padding-left:30px;}
 .login_service_phone{background:url(../images/icon/service_phone.jpg)/*tpa=http://www.995120.cn/images/icon/service_phone.jpg*/ left center no-repeat;text-align:left; width:630px; padding-left:30px; color:#dde0e5;}
-.login_top{width:70px; text-align:right;}
+.login_top{width:120px; text-align:right;}
 .login_register{width:80px;text-align:right;}
 
 /*----------------login_logo_menu---------------*/
