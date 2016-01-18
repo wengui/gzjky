@@ -133,7 +133,7 @@
 		var count = 0;
 		for (var i = 0; i < recordList.length; i++){	
 			
-			var $htmlUlStart = $("<ul id = li_ul"+i+">"); // 创建DOM对象 ul			
+			var $htmlUlStart = $("<li class='tright_healthExamination'><ul id = li_ul"+i+">"); // 创建DOM对象 ul			
 			var $htmlLiId = $("<li class='tleft_healthExamination'>"+recordList[i].diseasename+"：</li>"); // 创建DOM对象 li
 			var $htmlLiName = '';
 			if(recordList[i].comment == null || recordList[i].comment == ''){
@@ -154,6 +154,7 @@
 				if(i < recordList.length && i != 0){
 					if(recordList[i].diseasename != recordList[i-1].diseasename){
 						$ul.append($htmlLiId);
+						//$ul.append($htmlSubLi);
 						$ul.append($htmlUlStart);
 						count = i;
 					}
@@ -168,7 +169,7 @@
     
 </script>
 </head>
-<body>
+<body style="background:#e8e3d7">
 <div style="font-size:13px;font-family:微软雅黑">
 <form id="complication_form">
         <div class="tgreenPrompt"><span class="tblackPrompt">温馨提示：</span>项目字体为深色的，表明该项目有提示内容，请将鼠标放于项目上，提示内容自动显示。</div>
