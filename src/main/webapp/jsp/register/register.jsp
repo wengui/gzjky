@@ -48,7 +48,7 @@
 	function checkLoginId(){
 		var login_id=$("#login_id").val();
 		if(login_id==""){
-			$("#login_id").attr("style","color:#ccc;");
+			//$("#login_id").attr("style","color:#ccc;");
 			$("#login_id").val("用户名");
 		}
 	}
@@ -163,14 +163,14 @@
 	function checkCellPhone(){
 			var cell_phone=$("#cell_phone").val();
 			if(cell_phone==""){
-				$("#cell_phone").attr("style","color:#ccc;");
+				//$("#cell_phone").attr("style","color:#ccc;");
 				$("#cell_phone").val("手机号码");
 			}		
 	} 
 	function checkEmail(){
 		var email=$("#email").val();
 		if(email==""){
-			$("#email").attr("style","color:#ccc;");
+			//$("#email").attr("style","color:#ccc;");
 			$("#email").val("邮箱");
 		}		
 	} 
@@ -186,7 +186,7 @@
 	function checkCode(){
 		var check_code=$("#check_code").val();
 		if(check_code==""){
-			$("#check_code").attr("style","color:#ccc;");
+			//$("#check_code").attr("style","color:#ccc;");
 			$("#check_code").val("验证码");
 		}	
 	} 
