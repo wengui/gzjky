@@ -47,7 +47,7 @@
 			if(!jQuery('#changePwd_form').validationEngine("validate")){
 				return false;
 		   }
-		   var requestUrl = "/healthRecordAction/changePwd.action";
+		  var requestUrl = "/healthRecordAction/changePwd.action";
 		  var para = $("#changePwd_form").dataForJson({prefix:''});
 	  	   showScreenProtectDiv(1);
 		   showLoading();
@@ -86,13 +86,13 @@
          <div class="password_informationMain">
            <ul>
              <li>旧密码：</li>
-             <li class="register_input"><input type="password"  id="oldPwd" name="oldPwd" class="validate[required,minSize[6],maxSize[20],funcCall[filterSpecialSign]]"/>
+             <li class="register_input"><input type="password"  id="oldPwd" name="oldPwd" class="validate[required,minSize[6],maxSize[20],funcCall[filterSpecialSign]]" style="height:42px"/>
              </li>
              <li>新密码：</li>
-             <li class="register_input"><input type="password"  id="newPwd"  name="newPwd"   class= "validate[required,minSize[6],maxSize[20],funcCall[password]]"/>
+             <li class="register_input"><input type="password"  id="newPwd"  name="newPwd"   class= "validate[required,minSize[6],maxSize[20],funcCall[password]]" style="height:42px"/>
              </li>
              <li>确认新密码：</li>
-             <li class="register_input"><input type="password"  id="confirmPwd"  name="confirmPwd"   class="validate[required,minSize[6],maxSize[20],equals[newPwd],funcCall[password]]"/>
+             <li class="register_input"><input type="password"  id="confirmPwd"  name="confirmPwd"   class="validate[required,minSize[6],maxSize[20],equals[newPwd],funcCall[password]]" style="height:42px"/>
              </li>
              <li class="btn_reguster"><a onclick="changePwd()" class="btn" style="cursor: pointer;"><span style="font-size:17px; font-weight:500;color:#5a5a5a; width:320px;">确定</span></a></li>
            </ul>

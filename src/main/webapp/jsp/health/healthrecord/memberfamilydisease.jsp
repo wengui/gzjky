@@ -85,10 +85,10 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							heighBloodPressureRelationNum++;
-							str+="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'>亲属关系:<select id='heighBloodPressureRelationName"+heighBloodPressureRelationNum+"'>";
+							str+="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodPressureRelationName"+heighBloodPressureRelationNum+"'>";
 							str+=relation_name_str+"</select>";
 							str+="&nbsp;&nbsp;患病年份:<select id='heighBloodPressureRelationYear"+heighBloodPressureRelationNum+"'>";
-							str+=relation_year_str+"</select></div>";			
+							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#heighBloodPressure_relation").html(str);
 						if(heighBloodPressureRelationNum>0){
@@ -110,10 +110,10 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							heighBloodFatRelationNum++;
-							str+="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'>亲属关系:<select id='heighBloodFatRelationName"+heighBloodFatRelationNum+"'>";
+							str+="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodFatRelationName"+heighBloodFatRelationNum+"'>";
 							str+=relation_name_str+"</select>";
 							str+="&nbsp;&nbsp;患病年份:<select id='heighBloodFatRelationYear"+heighBloodFatRelationNum+"'>";
-							str+=relation_year_str+"</select></div>";			
+							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#heighBloodFat_relation").html(str);
 						if(heighBloodFatRelationNum>0){
@@ -135,10 +135,10 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							diabetesMellitusRelationNum++;
-							str+="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'>亲属关系:<select id='diabetesMellitusRelationName"+diabetesMellitusRelationNum+"'>";
+							str+="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='diabetesMellitusRelationName"+diabetesMellitusRelationNum+"'>";
 							str+=relation_name_str+"</select>";
 							str+="&nbsp;&nbsp;患病年份:<select id='diabetesMellitusRelationYear"+diabetesMellitusRelationNum+"'>";
-							str+=relation_year_str+"</select></div>";			
+							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#diabetesMellitus_relation").html(str);
 						if(diabetesMellitusRelationNum>0){
@@ -160,10 +160,10 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							coronaryDiseaseRelationNum++;
-							str+="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'>亲属关系:<select id='coronaryDiseaseRelationName"+coronaryDiseaseRelationNum+"'>";
+							str+="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='coronaryDiseaseRelationName"+coronaryDiseaseRelationNum+"'>";
 							str+=relation_name_str+"</select>";
 							str+="&nbsp;&nbsp;患病年份:<select id='coronaryDiseaseRelationYear"+coronaryDiseaseRelationNum+"'>";
-							str+=relation_year_str+"</select></div>";			
+							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#coronaryDisease_relation").html(str);
 						if(coronaryDiseaseRelationNum>0){
@@ -185,10 +185,10 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							cardiovascularAccidentRelationNum++;
-							str+="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'>亲属关系:<select id='cardiovascularAccidentRelationName"+cardiovascularAccidentRelationNum+"'>";
+							str+="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='cardiovascularAccidentRelationName"+cardiovascularAccidentRelationNum+"'>";
 							str+=relation_name_str+"</select>";
 							str+="&nbsp;&nbsp;患病年份:<select id='cardiovascularAccidentRelationYear"+cardiovascularAccidentRelationNum+"'>";
-							str+=relation_year_str+"</select></div>";			
+							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#cardiovascularAccident_relation").html(str);
 						if(cardiovascularAccidentRelationNum>0){
