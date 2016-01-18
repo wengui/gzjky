@@ -51,17 +51,17 @@ public class EditMemberHabitAction extends ActionSupport {
 			record.setPatientid(NumberUtils.toInt(id));// 患者ID
 			record.setWorktype(request.getParameter("workType"));// 工作类型
 			record.setWorkpressure(request.getParameter("workPressure"));// 工作压力
-			record.setBloodtype(request.getParameter("bloodType"));// 血型
-			record.setWeight(request.getParameter("weight"));// 体重
-			record.setWaistcircumference(request.getParameter("waistline"));// 腰围
-			record.setSmokingyear(request.getParameter("smokingTime"));// 吸烟年限
-			record.setSmokingfrequency(request.getParameter("smokingRate"));// 吸烟频次
-			record.setDrinkfrequency(request.getParameter("drinkingRate"));// 饮酒频次
-			record.setDrinktype(request.getParameter("drinkingType"));// 饮酒类型
-			record.setMovementfrequency(request.getParameter("sportRate"));// 运动频次
-			record.setMovementtime(request.getParameter("sportTime"));// 运动时长
-			record.setSleeptime(request.getParameter("sleepTime"));// 睡眠时长
-			record.setIsmedication(request.getParameter("hypotensor"));// 降压药
+			record.setBloodtype(request.getParameter("aboBloodTypeDict"));// 血型
+			record.setWeight(request.getParameter("Weight"));// 体重
+			record.setWaistcircumference(request.getParameter("Waistline"));// 腰围
+			record.setSmokingyear(request.getParameter("SmokeTime"));// 吸烟年限
+			record.setSmokingfrequency(request.getParameter("SmokeNum"));// 吸烟频次
+			record.setDrinkfrequency(request.getParameter("drinkFreqCodeDict"));// 饮酒频次
+			record.setDrinktype(request.getParameter("alcoholTypeDict"));// 饮酒类型
+			record.setMovementfrequency(request.getParameter("SportNum"));// 运动频次
+			record.setMovementtime(request.getParameter("SportTime"));// 运动时长
+			record.setSleeptime(request.getParameter("SleepTime"));// 睡眠时长
+			record.setIsmedication(request.getParameter("Hypotensor"));// 降压药
 			
 			// 更新处理
 			int updattCount = patientLivingHabitsInfoWriteMapper.updateByPatientIdSelective(record);

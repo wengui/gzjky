@@ -163,7 +163,7 @@
              <li class="tgrey_informationDetailed">血型：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" > 
-             <select class="selectMax_informationModify" id="bloodType"  name="bloodType" >
+             <select class="selectMax_informationModify" id="aboBloodTypeDict"  name="aboBloodTypeDict" >
 		          <option value="A">A</option>
 		          <option value="B">B</option>
 		          <option value="AB">AB</option>
@@ -174,7 +174,7 @@
              <li class="tgrey_informationDetailed">腰围：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" >
-              <select class="selectMax_informationModify" id="waistline"  name="waistline" >
+              <select class="selectMax_informationModify" id="Waistline"  name="Waistline" >
 		           <option value="正常">正常</option>
 		           <option value="非正常">非正常</option>option>
               </select>
@@ -183,7 +183,7 @@
              <li class="tgrey_informationDetailed">吸烟频次：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" >
-              <select class="selectMax_informationModify" id="smokingRate"  name="smokingRate" >
+              <select class="selectMax_informationModify" id="SmokeNum"  name="SmokeNum" >
 		           <option value="1-5根/天">1-5根/天</option>
 		           <option value="5-10根/天">5-10根/天</option>
 		           <option value="10-20根/天">10-20根/天</option>
@@ -194,7 +194,7 @@
              <li class="tgrey_informationDetailed">饮酒类型：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" >
-              <select class="selectMax_informationModify" id="drinkingType"  name="drinkingType" >
+              <select class="selectMax_informationModify" id="alcoholTypeDict"  name="alcoholTypeDict" >
 		           <option value="白酒">白酒</option>
 		           <option value="红酒">红酒</option>
 		           <option value="黄酒">黄酒</option>
@@ -205,7 +205,7 @@
              <li class="tgrey_informationDetailed">运动时长：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" > 
-              <select class="selectMax_informationModify"   id="sportTime"  name="sportTime">
+              <select class="selectMax_informationModify"   id="SportTime"  name="SportTime">
 		           <option value="15分钟以下">15分钟以下</option>
 		           <option value="15-30分钟">15-30分钟</option>
 		           <option value="30-45分钟">30-45分钟</option>
@@ -218,7 +218,7 @@
              <li class="tgrey_informationDetailed">降压药：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" >
-              <select class="selectMax_informationModify" id="hypotensor"  name="hypotensor" >
+              <select class="selectMax_informationModify" id="Hypotensor"  name="Hypotensor" >
 	               <option value="从来不吃">从来不吃</option>
 	               <option value="按时服用">按时服用</option>
               </select>
@@ -241,7 +241,7 @@
              <li class="tgrey_informationDetailed">体重：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" >
-              <select class="selectMax_informationModify"  id="weight"  name="weight">
+              <select class="selectMax_informationModify"  id="Weight"  name="Weight">
 		           <option value="未超重">未超重</option>
 		           <option value="超重">超重</option>
               </select>    
@@ -250,7 +250,7 @@
              <li class="tgrey_informationDetailed">吸烟年限：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" >
-             	  <select class="selectMax_informationModify"  id="smokingTime"  name="smokingTime" onchange="changeSmokingTime(this)">
+             	  <select class="selectMax_informationModify"  id="SmokeTime"  name="SmokeTime" onchange="changeSmokingTime(this)">
 			           <option value="不吸烟">不吸烟</option>
 			           <option value="1-3年">1-3年</option>
 			           <option value="3-5年">3-5年</option>
@@ -262,7 +262,7 @@
              <li class="tgrey_informationDetailed">饮酒频次：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" >
-             	  <select class="selectMax_informationModify"  id="drinkingRate"  name="drinkingRate" onchange="changeDrinkingRate(this)">
+             	  <select class="selectMax_informationModify"  id="drinkFreqCodeDict"  name="drinkFreqCodeDict" onchange="changeDrinkingRate(this)">
 			           <option value="不饮酒">不饮酒</option>
 			           <option value="1-50ml/天">1-50ml/天</option>
 			           <option value="50-100ml/天">50-100ml/天</option>
@@ -274,7 +274,7 @@
              <li class="tgrey_informationDetailed">运动频次：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" >
-              	  <select class="selectMax_informationModify"  id="sportRate"  name="sportRate" onchange="changeSportRate(this)">
+              	  <select class="selectMax_informationModify"  id="SportNum"  name="SportNum" onchange="changeSportRate(this)">
 			           <option value="不运动">不运动</option>
 			           <option value="1天/周">1天/周</option>
 			           <option value="2天/周">2天/周</option>
@@ -288,7 +288,7 @@
              <li class="tgrey_informationDetailed">睡眠时长：</li>
              <li class="tblack_informationDetailed">
              <span class="select-style_habit" >
-              	  <select class="selectMax_informationModify"  id="sleepTime"  name="sleepTime">
+              	  <select class="selectMax_informationModify"  id="SleepTime"  name="SleepTime">
 			           <option value="0-1小时">0-1小时</option>
 			           <option value="1-2小时">1-2小时</option>
 			           <option value="2-3小时">2-3小时</option>

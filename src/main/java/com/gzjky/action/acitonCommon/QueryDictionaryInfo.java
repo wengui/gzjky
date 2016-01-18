@@ -44,16 +44,22 @@ public class QueryDictionaryInfo extends ActionSupport {
         add("politicalAffiliatio");
         add("workingyear");
         add("moneyForYear");
-        
-        
-        
-        
     }};
 	//健康病例-生活习惯
 	static List<String> memberHabitList = new ArrayList<String>(){{
         add("workType");
-        add("WorkPressure");
+        add("workPressure");
+        add("aboBloodTypeDict");
         add("Weight");
+        add("Waistline");
+        add("SmokeTime");
+        add("SmokeNum");
+        add("drinkFreqCodeDict");
+        add("alcoholTypeDict");
+        add("SportNum");
+        add("SportTime");
+        add("SleepTime");
+        add("Hypotensor");
     }};
 	//健康病例-家族遗传史
 	static List<String> memberFamilyDiseaseList = new ArrayList<String>(){{
@@ -61,7 +67,8 @@ public class QueryDictionaryInfo extends ActionSupport {
     }};
 	//健康病例-高血压专项
 	static List<String> memberHtspecialList = new ArrayList<String>(){{
-
+        add("BPLevel");
+        add("RiskLevel");
     }};	
 	public final static Map map = new HashMap() {{
 		put("memberBaseInfo", memberBaseInfoList);  

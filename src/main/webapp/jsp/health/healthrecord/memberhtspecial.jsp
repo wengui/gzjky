@@ -23,6 +23,7 @@
 <script src="<c:url value='/js/common.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/dictionaryInfo.js'/>" type="text/javascript"></script>
 <!-- main JS libs -->
 <script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
 <script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
@@ -38,6 +39,7 @@
 		var save_image = window.parent.save_image;
 		var edit_image = window.parent.edit_image;
 		$(function(){
+			queryDictionaryInfo("memberHtspecial");
 			query();
 			queryHtspecial();
 	    	jQuery('#htspecialForm').validationEngine("attach",
@@ -652,7 +654,7 @@
     			<td width="130px"><span class="method">血压等级：</span></td>
     			<td>
     					<span class="select-style_htspecial">
-						<select id="ht_level" style="width:100px">
+						<select id="BPLevel" style="width:100px">
 							<option value="9">不详</option>
 							<option value="1">一级高血压</option>
 							<option value="2">二级高血压</option>
@@ -665,7 +667,7 @@
     			<td width="130px"><span class="method">风险等级：</span></td>
     			<td>
     					<span class="select-style_htspecial">
-						<select id="risk_level" style="width:100px">
+						<select id="RiskLevel" style="width:100px">
 							<option value="9">不详</option>
 							<option value="1">低危</option>
 							<option value="2">中危</option>
