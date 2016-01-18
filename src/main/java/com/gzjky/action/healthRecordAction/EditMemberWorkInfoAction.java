@@ -50,7 +50,7 @@ public class EditMemberWorkInfoAction extends ActionSupport {
 			String id = "1";
 			
 			record.setId(NumberUtils.toInt(id));// 患者ID
-			record.setWorkyears(request.getParameter("workyears"));// 工作年限
+			record.setWorkyears(request.getParameter("workingyear"));// 工作年限
 			record.setAnnualincome(request.getParameter("annualincome"));// 工作年限
 			record.setCompanyname(request.getParameter("companyname"));// 公司名称
 			record.setCompanyaddress(request.getParameter("companyaddress"));// 公司地址
