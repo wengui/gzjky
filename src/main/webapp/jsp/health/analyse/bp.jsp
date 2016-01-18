@@ -141,7 +141,7 @@
 		 recordList[index].pressure_value = shrink +"/"+ diastole;
 	 }
 	 
-	 if(bloodType == 0 && recordList[index].state != "正常"){
+	 if(bloodType == 0 && recordList[index].state != "Normal"){
 		 tr.className = "abnormal";
 	 }
 	 for(var k=0;k<columnArray.length;k++){

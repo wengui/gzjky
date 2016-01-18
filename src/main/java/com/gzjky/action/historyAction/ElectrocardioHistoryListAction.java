@@ -53,7 +53,7 @@ public class ElectrocardioHistoryListAction extends ActionSupport{
 			String heartType = request.getParameter("heartType");
 			if(CodeConstant.WARN_TYPE.equals(heartType)){
 				// 告警的场合
-				input.setHeartType(CodeConstant.ELC_WARN_STATUS);
+				input.setHeartType(CodeConstant.WARN_TYPE_STATUS);
 			}
 			int pointerStart = NumberUtils.toInt(request.getParameter("pointerStart"));
 			int pageSize = NumberUtils.toInt(request.getParameter("pageSize"));

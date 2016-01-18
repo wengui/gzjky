@@ -102,7 +102,6 @@ $(function(){
 				$.alert('无权限');
 			},success:function(response){
 			    var state = response.updateFlag;
-			    var returnMessage=response.message;
 			    if(state == "1"){
 			    	obj.onclick = function(){
 			    		if(formId == "habit_form"){

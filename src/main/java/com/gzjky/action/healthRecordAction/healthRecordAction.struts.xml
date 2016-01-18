@@ -25,6 +25,12 @@
 	<!-- 患者生活习惯更新-->
 	<action name="editMemberHabit" class="com.gzjky.action.healthRecordAction.EditMemberHabitAction" method="editHabitInfo"/>
 	
+	<!-- 家族遗传史查询-->
+	<action name="queryMemberFamilyDisease" class="com.gzjky.action.healthRecordAction.QueryMemberFamilyDiseaseAction" method="getRecord"/>
+	
+	<!-- 家族遗传史更新-->
+	<action name="editMemberFamilyDisease" class="com.gzjky.action.healthRecordAction.EditMemberFamilyDiseaseAction" method="editRecord"/>
+	
 	<!-- 患者当前并发症页面初期化-->
 	<action name="queryDisease" class="com.gzjky.action.healthRecordAction.QueryDiseaseAction" method="getDisease"/>
 	
