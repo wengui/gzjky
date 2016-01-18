@@ -12,7 +12,7 @@
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/artDialog/artDialog.plugins.min.js' type="text/javascript"/>"></script>
+<script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script type="text/javascript">
 	<!--
 	function MM_jumpMenu(targ,selObj,restore){ //v3.0
@@ -128,40 +128,38 @@
 	
 	function changePasswd(obj){
 		$("#confirm_button").attr("onclick", "");
-		var login_id="null";
-		var cell_phone="null";
-		var check_code="null";
+		var login_id="<%=request.getParameter("login_id")%>";
 		var passwd=$("#passwd").val();
-		if(checkPasswd()&checkRePasswd()&login_id!=null&cell_phone!=null&check_code!=null){
-			var para="login_id="+login_id+"&cell_phone="+cell_phone+"&memo="+check_code+"&passwd="+passwd;
+		if(checkPasswd()&checkRePasswd()&login_id!=null){
+			var para="login_id="+login_id+"&passwd="+passwd;
 
 			xmlHttp = $.ajax({						
-				url:"/findPwd/changePasswd.action",
+				url:"/gzjky/findPwd/changePasswd.do",
 				async:true,
 				data:para,
 				dataType:"json",
 				type:"POST",		
 				error:function(){
 					$.alert('密码修改发生异常！',function(){
-						window.location.href="/jsp/password/forget_pwd.jsp";
+						window.location.href="forget_pwd.jsp";
 					});
 					
 				},success:function(response){	
-					if(response=="1"){	
+					if(response.result=="1"){	
 					    $("#passwd").val("");
 					    $("#re_passwd").val("");	
-						window.location.href="/jsp/password/password_success.jsp";
+						window.location.href="password_success.jsp";
 					}
 					else{
 						$.alert('密码修改发生异常！',function(){
-							window.location.href="/jsp/password/forget_pwd.jsp";
+							window.location.href="forget_pwd.jsp";
 						});
 						
 					}
 				}
 			});	
 		}
-		obj.onclick = function(){changePasswd(obj);};
+		
 	}
 	
 	document.onkeydown=function() {  

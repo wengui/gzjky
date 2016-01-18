@@ -54,6 +54,8 @@ public class passwordAction extends ActionSupport {
 	private String phone;
 	//email
 	private String email;
+	//短信验证码
+	private String phoneCheckcode;
 	//错误信息
 	private String errorMessage;
 	
@@ -135,7 +137,7 @@ public class passwordAction extends ActionSupport {
 
 	
 	/*
-	 * 用户信息取得
+	 * 邮箱取回密码激活
 	 */
 	public String activePwd() {
 		
@@ -149,6 +151,92 @@ public class passwordAction extends ActionSupport {
 		userPasswordFind = userPasswordFindReadMapper.selectByPrimaryKey(uid);
 		result = String.valueOf(userInfoWriteMapper.updatePasswordById(userPasswordFind.getUserid(), PwdUtil.CreateDbPassword(userPasswordFind.getNewpassword()))) ;
 				
+		if(result.equals("1")){
+			return "success";
+		}
+		else{
+			//设置 error内容
+	    	errorMessage= "用户名或密码错误!";
+	        return "error";
+		}
+	
+	}
+	
+	/*
+	 * 短信炎症
+	 */
+	public String checkCode() {
+		
+		String result = "";
+		// 页面参数取得
+		HttpServletRequest request = ServletActionContext.getRequest();
+		// 用户名
+		loginId = request.getParameter("login_id");
+		// 手机
+		phone = request.getParameter("cell_phone");
+		// 短信验证码
+		phoneCheckcode = request.getParameter("memo");
+		
+		//短信验证
+		//TODO		
+		result = "1";
+		try {			
+			ModelMap modelMap = new ModelMap();
+			modelMap.setResult(result);
+
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out = null;
+			out = response.getWriter();
+			// 将java对象转成json对象
+			JSONObject jsonObject = JSONObject.fromObject(modelMap);// 将list转换为json数组
+			out.print(jsonObject);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "success";
+		
+	}
+	
+	/*
+	 * 密码修改
+	 */
+	public String changePasswd() {
+		
+		String result = "";
+		// 页面参数取得
+		HttpServletRequest request = ServletActionContext.getRequest();
+		// 用户名
+		loginId = request.getParameter("login_id");
+		// 用户名
+		passwd = request.getParameter("passwd");
+			
+		result = String.valueOf(userInfoWriteMapper.updatePasswordByName(loginId, PwdUtil.CreateDbPassword(passwd)));
+
+		try {			
+			ModelMap modelMap = new ModelMap();
+			modelMap.setResult(result);
+
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out = null;
+			out = response.getWriter();
+			// 将java对象转成json对象
+			JSONObject jsonObject = JSONObject.fromObject(modelMap);// 将list转换为json数组
+			out.print(jsonObject);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "success";
 		
 	}
@@ -190,6 +278,14 @@ public class passwordAction extends ActionSupport {
 
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
+	}
+	
+	public String getPhoneCheckcode() {
+		return phoneCheckcode;
+	}
+
+	public void setPhoneCheckcode(String phoneCheckcode) {
+		this.phoneCheckcode = phoneCheckcode;
 	}
 
 }

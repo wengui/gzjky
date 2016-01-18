@@ -10,13 +10,15 @@
 <link href="<c:url value='/css/password.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_bottom.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>"  type="text/javascript"></script>
+<link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>"  rel="stylesheet"  type="text/css" />
+<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
+<script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>"  type="text/javascript" charset="utf-8"></script>
+<script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>"  type="text/javascript"></script>
 <!-- main JS libs -->
 <script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
 <script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
 <!-- Style CSS -->
 <link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
@@ -121,11 +123,11 @@
 				return false;
 			}	
 			if(memberBaseInfo!=null){
-				if(memberBaseInfo.cell_phone==null||memberBaseInfo.cell_phone==""){
+				if(memberBaseInfo.cellphone==null||memberBaseInfo.cellphone==""){
 					$("#cell_phone_point").html("<span class='tRed'>*</span>该用户没有绑定手机号码！");	
 					return false;
 				}
-				else if(cell_phone==memberBaseInfo.cell_phone){
+				else if(cell_phone==memberBaseInfo.cellphone){
 					$("#cell_phone_point").html("");		
 					return true;
 				}
@@ -247,7 +249,7 @@
 				var check_code=$("#check_code").val();
 				var para="login_id="+login_id+"&cell_phone="+cell_phone+"&memo="+check_code;
 				xmlHttp = $.ajax({						
-					url:"/register/checkCheckCode.action",
+					url:"/gzjky/findPwd/checkCode.do",
 					async:true,
 					data:para,
 					dataType:"json",
@@ -255,17 +257,17 @@
 					error:function(){	
 						$.alert('异常');
 					},success:function(response){		
-						if(response=="-1"){	
+						if(response.result=="-1"){	
 							$("#cell_phone_point").html("<span class='tRed'>*</span>请先获取手机验证码！");
 						}	
-						if(response=="-2"){		
+						if(response.result=="-2"){		
 							$("#check_code_point").html("<span class='tRed'>*</span>验证码错误或失效！");
 						}	
-						if(response=="1"){		
+						if(response.result=="1"){		
 							$("#login_id").val("");
 							$("#cell_phone").val("");
 							$("#check_code").val("");
-							window.location.href="/jsp/password/password_modification.jsp?login_id="+login_id+"&cell_phone="+cell_phone+"&check_code="+check_code;
+							window.location.href="password_modification.jsp?login_id="+login_id+"&cell_phone="+cell_phone+"&check_code="+check_code;
 						}
 					}
 				});	
