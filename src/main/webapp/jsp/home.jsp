@@ -20,16 +20,11 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common/balance.js'/>" type="text/javascript"></script>
 
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+
 <!-- Style CSS -->
 <link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
 <link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
+
 
 <script type="text/JavaScript">
 
@@ -48,17 +43,17 @@
 	window.setInterval("reinitIframe();", 500);
 	//初始化方法
 	function Query() {
-		//memberBindDevice();
-		//hos_docInfo();
+		memberBindDevice();
+		hos_docInfo();
 		//packageBaseinfo();
 		//queryBalance();
 		//connect("ws://v3.995120.cn/MemberActivityMsg/Server", "24913_1_2");
 	}
 	//查询用户绑定设备
 	function memberBindDevice() {
-		/*var para = "";	
+		var para = "";	
 		$.ajax({
-			url:"/welcome/queryMemberDeviceBind.action",
+			url:"/gzjky/home/getEquipment.do",
 			async:true,
 			data:para,
 			dataType:"json",
@@ -67,9 +62,8 @@
 				$.alert("发生异常","请注意");
 			},
 			success:function(response) {
-				var modelMap = response.modelMap;
-				var memberDeviceBindList=modelMap.memberDeviceBindList;
-				
+
+				var memberDeviceBindList=response;	
 				
 				$("#device").empty();
 				$("#device").html("我的设备");
@@ -80,9 +74,10 @@
 					var str = "";
 					for ( var i = 0; i < memberDeviceBindList.length; i++) {
 						var text = '';
-						var product = memberDeviceBindList[i].product;
-						var description = memberDeviceBindList[i].description;
-						text = product + "(" + description.replace(product, '') + ")";
+						var product = memberDeviceBindList[i].equipmentNum;
+						var description = memberDeviceBindList[i].deviceVersionName;
+						//text = product + "(" + description.replace(product, '') + ")";
+						text = description;
 						str += "<li class='wtBlack'>" + text + "</li>";
 					}
 					
@@ -92,31 +87,29 @@
 				    $("#deviceListUL").html("<li class='wtBlack'>暂无</li>");
 				}
 				
-			
-			
-		        
+    
 		        $("#deviceListUL").append("<li class='wtaGreen'><a href='/jsp/health/equipment/member_bind_device.jsp' target='mainFrame' title='增加设备'>增加设备</a></li>"); 
 				
 			}
-		});*/
+		});
 	}
 	
 	//查询用户绑定的医院医生
 	function hos_docInfo(){
 		var para= "";	
 		$.ajax({
-			url:"/welcome/queryHosDocInfo.action",
+			url:"/gzjky/home/getHospitalAndDoctor.do",
 			async:true,
 			data:para,
 			dataType:"json",
 			type:"POST",
 			error:function(){
-				$.alert("发生异常1","请注意");
+				$.alert("发生异常","请注意");
 				return false;
 			},
 			success:function(response) {
-				var modelMap = response.modelMap;
-				var hosDocInfoList = modelMap.hosDocInfoList;
+
+				var hosDocInfoList = response;
 				
 				$("#hos_doc").empty();
 				$("#hos_doc").html("我的医院医生：");
@@ -128,11 +121,9 @@
 					for ( var i = 0; i < hosDocInfoList.length; i++) {
 						var text = '';
 						var bind_type=hosDocInfoList[i].bind_type;
-						if(bind_type==0||bind_type=='0'){
-							text = hosDocInfoList[i].hosName + "(" + hosDocInfoList[i].code + ")";
-						}else{
-							text = hosDocInfoList[i].docName + "(" + hosDocInfoList[i].job_num + ")";
-						}
+						
+						text = hosDocInfoList[i].hName + "(" + hosDocInfoList[i].dName + ")";
+
 						str += "<li class='wtBlack'>" + text + "</li>";
 					}
 					$("#hosDocListUL").html(str);
@@ -381,6 +372,7 @@
 	</style>
 </head>
 <body >	
+
     <!--index_health_header start-->
     <div class="index_health_header">
       <div class="bgTop_index">
@@ -441,7 +433,7 @@
           <ul>
             <li class="wInformation_img"><a href="../jsp/health/healthrecord/healthrecords.jsp" target="mainFrame" title="健康档案"><img width="80" height="90" id="memberHeadImg" src="../images/health/default_head.gif?t=1452046474054" /></a></li>
             <li class="tGrayMax">您好！</li>
-            <li class="tGreen" ><a class="title_info" href="../jsp/health/healthrecord/healthrecords.jsp" target="mainFrame" title="无名氏"  id="left_memberName">无名氏</a></li>
+            <li class="tGreen" ><a class="title_info" href="../jsp/health/healthrecord/healthrecords.jsp" target="mainFrame" title="无名氏"  id="left_memberName">${sessionScope.Patient.pname}</a></li>
             <li class="tGrayMin" style="font-size:8px;">最近2016-01-06 09:57:38</li>
             <li class="wMedical"><a onclick="goToHealthRecord(this)" style="cursor: pointer;" target="mainFrame" title="健康档案">健康档案</a></li>
             <li class="wHome"><a onclick="goToAccount(this)" style="cursor: pointer;" target="mainFrame" title="账户/套餐">账户/套餐</a></li>
@@ -449,13 +441,14 @@
             	<span class="title_info"><a title="充值" class="title_info" onclick="goToRecharge(this)" target="mainFrame">立即充值</a></span>
             </li>
             <li class="tGray wBalance" id="familyMember">我的家庭成员：
+	            <c:forEach items="${sessionScope.PatientList}"  begin="1" var="pa">
+	            <br/>
+				<c:out value="${pa.pname}"/>
+				</c:forEach>
             </li>
             <li class="tGray" id="device">我的设备：
             	<ul id='deviceListUL'>
-            	    
-					<li class='wtBlack'>暂无</li>
-					
-					<li class='wtaGreen'><a onclick="goToEquipment(this)" target="mainFrame" title="增加设备">增加设备</a></li>
+       
             	</ul>
             </li>
             <li class="tGray" id="hos_doc">我的医院医生：</li>

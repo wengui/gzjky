@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="home" extends="struts-base" namespace="/home">
+	
+	<!-- 用户设备信息取得-->
+	<action name="getEquipment" class="com.gzjky.action.home.homeAction" method="getEquipment">
+		
+	</action>
+
+	<!-- 用户医生医院信息取得-->
+	<action name="getHospitalAndDoctor" class="com.gzjky.action.home.homeAction" method="getHospitalAndDoctor">
+		
+	</action>
+	</package>
+</struts>

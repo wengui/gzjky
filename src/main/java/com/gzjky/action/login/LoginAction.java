@@ -8,7 +8,8 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.base.util.password.PwdUtil;
-import com.gzjky.bean.gen.UserAndPatient;
+import com.gzjky.bean.extend.UserinfoAndPatientinfoBean;
+
 import com.gzjky.bean.gen.UserInfo;
 import com.gzjky.dao.readdao.UserAndPatientReadMapper;
 import com.gzjky.dao.readdao.UserInfoReadMapper;
@@ -60,14 +61,14 @@ public class LoginAction extends ActionSupport {
             if(PwdUtil.ComparePasswords(userInfo.getPassword(), passwd)){
                 //session中设置userInfoBean
                 ActionContext.getContext().getSession().put("user",userInfo);
-                List<UserAndPatient> userAndPatientList = null ;
-                userAndPatientList = userAndPatientReadMapper.selectByUserId(userInfo.getId());
+                List<UserinfoAndPatientinfoBean> userinfoAndPatientinfoList = null ;
+                userinfoAndPatientinfoList = userAndPatientReadMapper.selectUserAndPatientinfoByUserId(userInfo.getId());
                 //session中添加PatientList信息
-                ActionContext.getContext().getSession().put("PatientList",userAndPatientList);
+                ActionContext.getContext().getSession().put("PatientList",userinfoAndPatientinfoList);
               //session中添加默认Patient信息 
-                if(userAndPatientList.size()!=0){
-                	ActionContext.getContext().getSession().put("Patient",userAndPatientList.get(0));
-                	ActionContext.getContext().getSession().put("PatientID",userAndPatientList.get(0).getPatientid());
+                if(userinfoAndPatientinfoList.size()!=0){
+                	ActionContext.getContext().getSession().put("Patient",userinfoAndPatientinfoList.get(0));
+                	ActionContext.getContext().getSession().put("PatientID",userinfoAndPatientinfoList.get(0).getPid());
                 }             
                 return "success";
             }
