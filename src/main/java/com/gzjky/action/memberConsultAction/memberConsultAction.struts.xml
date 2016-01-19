@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="memberConsultAction" extends="struts-base" namespace="/memberConsultAction">
+	
+	<!-- 会员咨询登录 -->
+	<action name="addMemberConsult" class="com.gzjky.action.memberConsultAction.AddMemberConsultAction" method="addRecord"/>
+
+	<!-- 会员咨询查询 -->
+	<action name="queryMemberConsultList" class="com.gzjky.action.memberConsultAction.QueryMemberConsultListAction" method="getList"/>
+	
+
+	</package>
+</struts>

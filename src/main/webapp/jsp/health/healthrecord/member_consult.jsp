@@ -77,7 +77,7 @@
 	 var requestUrl = "";
 	 //var para = "startDate=" + startDate + "&endDate=" + endDate
 	 var para = "pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
-	 requestUrl = "/memberConsultAction/queryMemberConsultList.action";
+	 requestUrl = "/gzjky/memberConsultAction/queryMemberConsultList.do";
       
 	  showScreenProtectDiv(1);
 	  showLoading();
@@ -94,9 +94,8 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    recordList = modelMap.memberConsultList;
-				$.fn.page.settings.count = modelMap.recordTotal;
+			    recordList = response.outBeanList;
+				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
 			}
 		});
@@ -111,7 +110,6 @@
 	  $("table.bPhistory_table tr:odd").addClass("odd");
   }
 
-  var stateMap = {1:"新建",2:"处理中",3:"完成"}
   function addrowtotable(table,index){
 	 var rowcount=table.rows.length;
 	 var tr=table.insertRow(rowcount);
@@ -122,14 +120,14 @@
 	  td.title = content;
 	  
 	  td = tr.insertCell(1);
-	  td.innerHTML = recordList[index].create_time.substring(0,19);
+	  td.innerHTML = recordList[index].createTime.substring(0,19);
 	  
 	  var report_content = recordList[index].report;
 	  td = tr.insertCell(2);
 	  td.innerHTML = report_content.length>=12?report_content.substring(0,10)+".." : report_content;
 
 	  td = tr.insertCell(3);
-	  td.innerHTML = stateMap[recordList[index].state];
+	  td.innerHTML = recordList[index].state;
 	 
 	  td = tr.insertCell(4);
 	  td.innerHTML = "<a href='javascript:void(0)' onclick='showDialogDetail("+index+")'>查看</a>";
@@ -154,18 +152,18 @@
 	   $("#memberConsultDetailForm :checkbox").attr("checked",false);
 	   var content = recordList[index].content;
 	   var content_arr = content.split(" ");
-	   var symptom_strs = new Array();
-	   if(content_arr.length>1){
-		   symptom_strs = content_arr[1].split(",");
-		   for(var i=0;i<symptom_strs.length;i++){
-			   $("#memberConsultDetailForm input[name='symptom_id'][value='"+htRelatedSymptomStrMap[symptom_strs[i]]+"']").attr("checked",true);
+	   var symptomStrs = new Array();
+	   if(recordList[index].symptom != '' && recordList[index].symptom != null){
+		   symptomStrs = recordList[index].symptom.split(",");
+		   for(var i=0;i<symptomStrs.length;i++){
+			   $("#memberConsultDetailForm input[name='symptomId'][value='"+symptomStrs[i]+"']").attr("checked",true);
 		   }
 	   }
 	   $("#memberConsultDetailForm").find("#content").val(content_arr[0]);
-	   $("#memberConsultDetailForm").find("#create_time").val(recordList[index].create_time.substring(0,19));
+	   $("#memberConsultDetailForm").find("#createTime").val(recordList[index].createTime.substring(0,19));
 	   $("#memberConsultDetailForm").find("#report").val(recordList[index].report);
-	   $("#memberConsultDetailForm").find("#report_create_time").val(recordList[index].report_create_time.substring(0,19));
-	   $("#memberConsultDetailForm").find("#state").val(stateMap[recordList[index].state]);
+	   $("#memberConsultDetailForm").find("#reportCreateTime").val(recordList[index].reportCreateTime.substring(0,19));
+	   $("#memberConsultDetailForm").find("#state").val(recordList[index].state);
 	   
 		$('#memberConsultDetailWindow').draggable({
 			disabled : true
@@ -180,23 +178,23 @@
 		if(!jQuery('#addMemberConsultForm').validationEngine("validate")){
 			return false;
 		}
-		var requestUrl = "/memberConsultAction/insertMemberConsult.action";
+		var requestUrl = "/gzjky/memberConsultAction/addMemberConsult.do";
 	   var content = $("#addMemberConsultForm").find("#content").val();
 	   var para = "content="+content;
-	   var symptom_ids = "";
-	   var symptom_str = "";
-	   $("#addMemberConsultForm input[name='symptom_id']").each(function(index,obj){
+	   var symptomIds = "";
+	   var symptomStr = "";
+	   $("#addMemberConsultForm input[name='symptomId']").each(function(index,obj){
 		   if(this.checked){
-		   		symptom_ids += this.value+":";
-		   		symptom_str += htRelatedSymptomMap[this.value] + ",";
+		   		symptomIds += this.value+":";
+		   		symptomStr += htRelatedSymptomMap[this.value] + ",";
 		   }
 	   });
-	   if(symptom_ids.length>0){
-		   para += "&symptom_ids=" + symptom_ids.substring(0,symptom_ids.length-1);
-		   para += "&symptom_str=" + symptom_str.substring(0,symptom_str.length-1);
+	   if(symptomIds.length>0){
+		   para += "&symptomIds=" + symptomIds.substring(0,symptomIds.length-1);
+		   para += "&symptomStr=" + symptomStr.substring(0,symptomStr.length-1);
 	   }else{
-		   para += "&symptom_ids=";
-		   para += "&symptom_str=";
+		   para += "&symptomIds=";
+		   para += "&symptomStr=";
 	   }
   	   showScreenProtectDiv(1);
 	   showLoading();
@@ -214,7 +212,7 @@
 			},success:function(response){
 				hideScreenProtectDiv(1);
 		        hideLoading();
-			    var state = response;
+			    var state = response.updateFlag;
 			    if(state == "1"){
 			    	$.alert("增加成功");
 			    }else{
@@ -357,11 +355,11 @@
 	              <li class="tblack_popup1"  >
 	              		
 	              			
-	              			<input type="checkbox" name="symptom_id"  style="margin-bottom:-5px; margin-right:2px;"   value="1"/>发烧
+	              			<input type="checkbox" name="symptomId"  style="margin-bottom:-5px; margin-right:2px;"   value="1"/>发烧
 	              			
 	              		
 	              			
-	              			<input type="checkbox" name="symptom_id"  style="margin-bottom:-5px; margin-right:2px;"   value="2"/>感冒
+	              			<input type="checkbox" name="symptomId"  style="margin-bottom:-5px; margin-right:2px;"   value="2"/>感冒
 	              			
 	              		
 	              </li>
@@ -400,15 +398,8 @@
 	              <ul>
 	              <li class="tgrey_popup1">症状：</li>
 	              <li class="tblack_popup1"  >
-	              		
-	              			
-	              			<input type="checkbox" name="symptom_id"  style="margin-bottom:-5px; margin-right:2px;" disabled="disabled"  value="1"/>发烧
-	              			
-	              		
-	              			
-	              			<input type="checkbox" name="symptom_id"  style="margin-bottom:-5px; margin-right:2px;" disabled="disabled"  value="2"/>感冒
-	              			
-	              		
+	              	<input type="checkbox" name="symptomId"  style="margin-bottom:-5px; margin-right:2px;" disabled="disabled"  value="1"/>发烧
+	              	<input type="checkbox" name="symptomId"  style="margin-bottom:-5px; margin-right:2px;" disabled="disabled"  value="2"/>感冒
 	              </li>
 	              </ul>
 	              </li>
@@ -426,7 +417,7 @@
 	              <ul>			
 	           	  <li class="tgrey_popup1">咨询时间：</li>
 	              <li class="tblack_popup1">
-	              		<input class="inputMin_informationModify " type="text"  id="create_time"  name="create_time"  disabled="disabled" />
+	              		<input class="inputMin_informationModify " type="text"  id="createTime"  name="createTime"  disabled="disabled" />
 	              </li> 
 	              </ul>
 	              </li>  
@@ -444,7 +435,7 @@
 	              <ul>
 	              <li class="tgrey_popup1">回复时间：</li>
 	              <li class="tblack_popup1">
-	              		<input class="inputMin_informationModify " type="text"  id="report_create_time"  name="report_create_time"   disabled="disabled"/>
+	              		<input class="inputMin_informationModify " type="text"  id="reportCreateTime"  name="reportCreateTime"   disabled="disabled"/>
 	              </li> 
 	              </ul>
 	              </li>   
