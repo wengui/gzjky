@@ -64,5 +64,17 @@
 	<!-- 更新健康检查记录-->
 	<action name="deleteMemberMedicalExamination" class="com.gzjky.action.healthRecordAction.DeleteMemberMedicalExaminationAction" method="delRecord"/>
 	
+	<!-- 查询亲情号记录-->
+	<action name="queryMemberFamilyPhone" class="com.gzjky.action.healthRecordAction.QueryMemberFamilyPhoneAction" method="getList"/>
+	
+	<!--添加亲情号-->
+	<action name="addMemberFamilyPhone" class="com.gzjky.action.healthRecordAction.AddMemberFamilyPhoneAction" method="addRecord"/>
+	
+	<!--更新亲情号-->
+	<action name="editMemberFamilyPhone" class="com.gzjky.action.healthRecordAction.EditMemberFamilyPhoneAction" method="editRecord"/>
+	
+	<!--删除亲情号-->
+	<action name="deleteMemberFamilyPhone" class="com.gzjky.action.healthRecordAction.DeleteMemberFamilyPhoneAction" method="delRecord"/>
+	
 	</package>
 </struts>
