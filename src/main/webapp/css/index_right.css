@@ -14,20 +14,20 @@
 
 /*----------------index_main---------------*/
 .index_welcome_main{width:670px; margin-top:20px; float:left}
-.health_date{width:670px; float:left}
+.health_date{width:670px; float:left;height: 330px; border-bottom:1px solid #aeaeae; }
 .health_date li{float:left; text-align:left}
 .tgreen_healthDate{font-size:30px; font-weight:500; color:#71A944; height:40px; line-height:40px; width:670px;}
 .tgrey_healthDate{color:#5a5a5a}
-.bloodPressure_date{background:url(../images/icon/blood_pressure.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px; margin-top:40px;}
-.tblack_date{font:30px/30px Georgia; width:255px; height:32px; color:#5a5a5a;}
-.tgrey_time{font:13px/18px "微软雅黑"; width:255px; color:#aeaeae; height:16px;} 
+.bloodPressure_date{background:url(../images/icon/blood_pressure.png) left center no-repeat; height:48px; width:300px; padding-left:60px; margin-left:20px; margin-top:40px;}
+.tblack_date{font:30px/30px Georgia; width:300px; height:32px; color:#5a5a5a;}
+.tgrey_time{font:13px/18px "微软雅黑"; width:300px; color:#aeaeae; height:16px;} 
 .tblack_datemin{font-size:14px;}
-.bloodPressure_alarm{background:url(../images/icon/bpAlarm.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
-.heartRate_date{background:url(../images/icon/heart.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
-.heartRate_alarm{background:url(../images/icon/heart_alarm.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
-.oxygen_date{background:url(../images/icon/oxygen.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
-.sos_alarm{background:url(../images/icon/sos_alarm.png) left center no-repeat; height:48px; width:255px; padding-left:60px; margin-left:20px;margin-top:40px;}
-.tblack_sosdate{font:18px/30px "微软雅黑"; width:255px; height:32px; color:#5a5a5a;}
+.bloodPressure_alarm{background:url(../images/icon/bpAlarm.png) left center no-repeat; height:48px; width:300px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.heartRate_date{background:url(../images/icon/heart.png) left center no-repeat; height:48px; width:300px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.heartRate_alarm{background:url(../images/icon/heart_alarm.png) left center no-repeat; height:48px; width:300px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.oxygen_date{background:url(../images/icon/oxygen.png) left center no-repeat; height:48px; width:300px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.sos_alarm{background:url(../images/icon/sos_alarm.png) left center no-repeat; height:48px; width:300px; padding-left:60px; margin-left:20px;margin-top:40px;}
+.tblack_sosdate{font:18px/30px "微软雅黑"; width:300px; height:32px; color:#5a5a5a;}
 
 /*----------------bpDiagnosis_results---------------*/
 .bpDiagnosis_results{width:680px; float:left; background:#e8e3d7; padding:20px; margin-top:30px;}

@@ -50,45 +50,40 @@
 		//2016/1/13 liu test END 用
 		
 		healthStatus();//查询用户健康状态
-		queryDiagnose();//查询用户的血压趋势图
 		queryDoctorAdvice();//查询用户的最新医嘱
 		queryConsultive();//查询用户的最新咨询回复
+		queryDiagnose();//查询用户的血压趋势图
 		if(true)queryEcg();//查询用户的心电信息
 		var week = "星期" + "日一二三四五六".split("")[new Date().getDay()];
 		$('#today').text(getdate()+week);
 		queryCityByIP();////根据IP查城市
 	}
+	
 	//查询用户健康状态
 	function healthStatus(){
 		$.ajax({
-			url:"/healthStatus/queryHealthStatus.action",
+			url:"/gzjky/healthStatus/queryHealthStatus.do",
 			async:true,
 			data:null,
 			dataType:"json",
 			type:"POST",
 			error:function(){
-				//$.alert("发生异常1","请注意");
+				$.alert("发生异常","请注意");
 			},
 			success:function(response) {
-				var modelMap = response.modelMap;
-				var bloodPressureAlert=modelMap.bloodPressureAlert;
-				var bloodPressureRecord=modelMap.bloodPressureRecord;
-				var sosAlert=null;
-				var record =null;
-				var alert = null;
-				if(true){
-					sosAlert=modelMap.sosAlert;
-					record =modelMap.record;
-					alert = modelMap.alert;
+				var modelMap = response.result;
+				if(result = null){
+					return;
 				}
 				
-				if(bloodPressureRecord != null){
-					$('#last_bloodpressure').html(bloodPressureRecord.shrink+"/"+bloodPressureRecord.diastole+"<span class='tblack_datemin'>mmHg</span>");
-					$('#last_bloodpressure_time').text("最近一次血压值（"+bloodPressureRecord.take_time.substring(0,19)+"）");
+				var sosAlert=null;
+				if(modelMap.shrink != ""){
+					$('#last_bloodpressure').html(modelMap.shrink+"/"+modelMap.diastole+"<span class='tblack_datemin'>mmHg</span>");
+					$('#last_bloodpressure_time').text("最近一次血压值（"+modelMap.bloodTakeTime+"）");
 				}
-				if(bloodPressureAlert!= null){
-					$('#last_bloodalert').html(bloodPressureAlert.shrink+"/"+bloodPressureAlert.diastole+"<span class='tblack_datemin'>mmHg</span>");
-					$('#last_bloodalert_time').text("血压异常记录（"+bloodPressureAlert.alert_time.substring(0,19)+"）");
+				if(modelMap.shrinkAlert!= ""){
+					$('#last_bloodalert').html(modelMap.shrinkAlert+"/"+modelMap.diastoleAlert+"<span class='tblack_datemin'>mmHg</span>");
+					$('#last_bloodalert_time').text("血压异常记录（"+modelMap.bloodTakeTimeAlert+"）");
 				}
 				if(sosAlert!=null){
 					if(sosAlert.orgin_type=="0"){
@@ -99,54 +94,83 @@
 					$('#last_sosalert').text("SOS异常记录（"+sosAlert.alert_time.substring(0,19)+"）");
 				}
 				
-				/*if(record != null){
-					$('#last_heartrate').html(record.heart_rate+"<span class='tblack_datemin'>bpm</span>");
-					$('#last_heartrate_time').text("最近一次心率值（"+record.take_time.substring(0,19)+"）");
-				}else{
-					if(bloodPressureRecord != null){
-					$('#last_heartrate').html(bloodPressureRecord.heart_rate+"<span class='tblack_datemin'>bpm</span>");
-					$('#last_heartrate_time').text("最近一次脉率值（"+bloodPressureRecord.take_time.substring(0,19)+"）");
-					}
-				}*/
-				var time2=0;
+				var time1=0;
 				var hearty='<span class="tblack_datemin">--</span>';
 				var text2="最近一次心率值";
 				
-		 		if(record!=null){
-		 			var take_t=record.take_time.substring(0,19);
-		 			take_t=Date.parse(take_t.replace(/-/g,"\/"));
-		 			if(take_t>time2){
-		 				time2=take_t;
-		 				text2="最近一次心率值（"+record.take_time.substring(0,19)+"）";
-		 				hearty=record.heart_rate+"<span class='tblack_datemin'>bpm</span>";
-		 			}
+		 		if(modelMap.heartRate != ""){
+		 			var take_t=modelMap.heartTakeTime;
+	 				time1=take_t;
+	 				text2="最近一次心率值（"+modelMap.heartTakeTime+"）";
+	 				hearty=modelMap.heartRate+"<span class='tblack_datemin'>bpm</span>";
 		 		}
-				if(bloodPressureRecord != null){
-					var take_t=bloodPressureRecord.take_time.substring(0,19);
-		 			take_t=Date.parse(take_t.replace(/-/g,"\/"));
-		 			if(take_t>time2){
+				if(modelMap.pulseRate != ""){
+					var take_t=modelMap.bloodTakeTime;
+		 			if(take_t>time1){
 		 				time2=take_t;
-			 			text2="最近一次脉率值（"+bloodPressureRecord.take_time.substring(0,19)+"）";
-			 			hearty=bloodPressureRecord.heart_rate+"<span class='tblack_datemin'>bpm</span>";
+			 			text2="最近一次脉率值（"+modelMap.bloodTakeTime+"）";
+			 			hearty=modelMap.pulseRate+"<span class='tblack_datemin'>bpm</span>";
 					}
 				}
 				$('#last_heartrate').html(hearty);
 				$('#last_heartrate_time').text(text2);
-				if(alert != null){
-					if(alert.heart_rate == null){
-						alert.heart_rate ="";
-					}else{
-						$('#last_heartratealert').html(alert.heart_rate+"<span class='tblack_datemin'>bpm</span>");
-					}
-					if(alert.take_time == null){
-						alert.take_time = "";
-					}else{
-					$('#last_heartratealert_time').text("心率异常记录（"+alert.take_time.substring(0,19)+"）");
-					}
+				if(modelMap.heartRateAlert != ""){
+					$('#last_heartratealert').html(modelMap.heartRateAlert+"<span class='tblack_datemin'>bpm</span>");
+					$('#last_heartratealert_time').text("心率异常记录（"+modelMap.heartTakeTimeAlert+"）");
 				}
 			}
 		});
 	}
+	
+	//最新医生医嘱
+	function queryDoctorAdvice(){
+		$.ajax({
+			url:"/gzjky/healthStatus/queryDoctorAdvice.do",
+			async:true,
+			data:"",
+			dataType:"json",
+			type:"POST",
+			error:function(){
+				$.alert("发生异常","请注意");
+			},
+			success:function(response) {
+				var modelMap = response.result;
+				//显示最新医嘱内容
+				drawAdvice(modelMap);
+			}
+		});
+	}
+	function drawAdvice(doctorAdvice){
+		if(doctorAdvice==null){
+			return;
+		}
+		var advice = doctorAdvice[0];
+		var dp_goal="舒张压："+advice.targetDpBottom+"mmHg-"+advice.targetDpTop+
+			"mmHg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"收缩压："+advice.targetSpBottom+"mmHg-"+advice.targetSpTop+"mmHg";
+		var plan="<div>起始时间："+advice.startTime.substring(0,11)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"测压频率："+advice.pl+"&nbsp;"+advice.xq+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"<span class='wordbreak'>测压时间段："+advice.hours+"</span></div>";
+		var med=doctorAdvice.medicine_taken;
+		var med_div="<div>";
+		if(advice.name!=null& advice.name != ""){
+			for(var i=0;i<doctorAdvice.length;i++){
+				var div="<div>("+(i+1)+") 药名："+doctorAdvice[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;疗程："+doctorAdvice[i].lc+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+					"剂量："+doctorAdvice[i].jl+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+					"<span class='wordbreak'>用药时间："+doctorAdvice[i].fqfh+"&nbsp;"+doctorAdvice[i].jtsj+"</span></div>";
+				med_div+=div;
+			}
+			med_div+="</div>";
+		}else{
+			med_div+="暂无</div>";
+		}
+		$("#goal").html(dp_goal);
+		$("#plan").html(plan);
+		$("#medicine").html(med_div);
+		if(advice.suggestion!=null&&advice.suggestion!='')
+			$("#suggestion").html("<div class='wordbreak'>"+advice.suggestion+"</div>");
+	}
+	
 	//查询心电信息 
 	 var hly_url=  "http://v3.995120.cn:7090/hly_svr";
 	function queryEcg(){
@@ -505,67 +529,6 @@
 			
 			
 
-	}
-	//最新医生医嘱
-	function queryDoctorAdvice(){
-		$.ajax({
-			url:"/healthStatus/queryDoctorAdvice.action",
-			async:true,
-			data:"",
-			dataType:"json",
-			type:"POST",
-			error:function(){
-				//$.alert("发生异常4","请注意");
-			},
-			success:function(response) {
-				var modelMap = response.modelMap;
-				var doctorAdvice = modelMap.doctorAdvice;//最新医嘱	
-				//显示最新医嘱内容
-				drawAdvice(doctorAdvice);
-			}
-		});
-	}
-	function drawAdvice(doctorAdvice){
-		if(doctorAdvice==null){
-			return;
-		}
-		var state=doctorAdvice.state;
-		if(state=='2'||state=='3'){return;}
-		var dp_goal="舒张压："+doctorAdvice.target_dp_bottom+"mmHg-"+doctorAdvice.target_dp_top+
-			"mmHg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
-			"收缩压："+doctorAdvice.target_sp_bottom+"mmHg-"+doctorAdvice.target_sp_top+"mmHg";
-		var bp=doctorAdvice.bp_taken;
-		var days=bp.days.split(",");
-		for(var i=0;i<days.length;i++){
-			if(days[i]=='0'){days[i]="周日";
-			}else if(days[i]=='1'){days[i]="周一";
-			}else if(days[i]=='2'){days[i]="周二";
-			}else if(days[i]=='3'){days[i]="周三";
-			}else if(days[i]=='4'){days[i]="周四";
-			}else if(days[i]=='5'){days[i]="周五";
-			}else{days[i]="周六";}
-		}
-		var plan="<div>起始时间："+bp.start_time+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
-			"测压频率："+days+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
-			"<span class='wordbreak'>测压时间段："+bp.hours+"</span></div>";
-		var med=doctorAdvice.medicine_taken;
-		var med_div="<div>";
-		if(med!=null&&med.length>0){
-			for(var i=0;i<med.length;i++){
-				var div="<div>("+(i+1)+") 药名："+med[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
-					"剂量："+med[i].dosage+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
-					"<span class='wordbreak'>用药时间："+med[i].hours+"</span></div>";
-				med_div+=div;
-			}
-			med_div+="</div>";
-		}else{
-			med_div+="暂无</div>";
-		}
-		$("#goal").html(dp_goal);
-		$("#plan").html(plan);
-		$("#medicine").html(med_div);
-		if(doctorAdvice.suggestion!=null&&doctorAdvice.suggestion!='')
-			$("#suggestion").html("<div class='wordbreak'>"+doctorAdvice.suggestion+"</div>");
 	}
 	//最新咨询回复
 	function queryConsultive(){
