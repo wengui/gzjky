@@ -64,5 +64,9 @@
 	<!-- 更新健康检查记录-->
 	<action name="deleteMemberMedicalExamination" class="com.gzjky.action.healthRecordAction.DeleteMemberMedicalExaminationAction" method="delRecord"/>
 	
+	<!-- 更新健康检查记录-->
+	<action name="queryMemberFamilyPhone" class="com.gzjky.action.healthRecordAction.QueryMemberFamilyPhoneAction" method="getList"/>
+	
+	
 	</package>
 </struts>

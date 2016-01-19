@@ -61,7 +61,7 @@
 	});
 
 	function queryFamilyPhone(){
-		var requestUrl = "/healthRecordAction/queryMemberFamilyPhone.action";
+		var requestUrl = "/gzjky/healthRecordAction/queryMemberFamilyPhone.do";
     	var para = "";
   	   showScreenProtectDiv(1);
 	   showLoading();
@@ -78,8 +78,7 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    recordList = modelMap.memberFamilyPhoneList;
+			    recordList = response.outBeanList;
 			    if(recordList != null){
 			    	drawTable();
 			    }
@@ -121,7 +120,7 @@
 	}
 	function delete_familyPhone(index){
 		$.confirm("确定要删除？",function(){
-			var requestUrl = "/healthRecordAction/deleteMemberFamilyPhone.action";
+			var requestUrl = "/gzjky/healthRecordAction/deleteMemberFamilyPhone.do";
 	    	var para = "id="+recordList[index].id;
 	  	    showScreenProtectDiv(1);
 		    showLoading();
@@ -156,9 +155,9 @@
 		if(!jQuery('#addFamilyPhoneForm').validationEngine("validate")){
 			return false;
 		}
-		var requestUrl = "/healthRecordAction/addMemberFamilyPhone.action";
+		var requestUrl = "/gzjky/healthRecordAction/addMemberFamilyPhone.do";
 		if(popType == "edit"){
-			requestUrl = "/healthRecordAction/updateMemberFamilyPhone.action";
+			requestUrl = "/gzjky/healthRecordAction/updateMemberFamilyPhone.do";
 		}
 	   var para = $("#addFamilyPhoneForm").dataForJson({prefix:''});
   	   showScreenProtectDiv(1);
