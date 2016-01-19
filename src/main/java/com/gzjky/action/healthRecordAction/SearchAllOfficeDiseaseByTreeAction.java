@@ -1,6 +1,7 @@
 package com.gzjky.action.healthRecordAction;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +29,8 @@ public class SearchAllOfficeDiseaseByTreeAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = -8302281447929175161L;
 	
+	private static List<String> list = new ArrayList<String>();
+	
 	@Autowired
 	private DictionaryInfoReadMapper dictionaryInfoReadMapper;
 	
@@ -41,8 +44,34 @@ public class SearchAllOfficeDiseaseByTreeAction extends ActionSupport {
 		
 		try {
 			
+			list.add("hxnk");
+			list.add("xhnk");
+			list.add("sjnk");
+			list.add("nfmk");
+			list.add("xyk");
+			list.add("snk");
+			list.add("xxgnk");
+			list.add("zlk");
+			list.add("fk");
+			list.add("ek");
+			list.add("ck");
+			list.add("pfk");
+			list.add("xbk");
+			list.add("gb");
+			list.add("jsbk");
+			list.add("yk");
+			list.add("ebhk");
+			list.add("kqk");
+			list.add("xxwk");
+			list.add("nwk");
+			list.add("mnwk");
+			list.add("gk");
+			list.add("wsk");
+			list.add("ssk");
+			list.add("xgwk");
+			
 	        // 从数据库中取得需要的对象
-			treeNodesBeanList = dictionaryInfoReadMapper.selectTreeNodes();
+			treeNodesBeanList = dictionaryInfoReadMapper.selectTreeNodes(list);
 	        
 	        ModelMap modelMap = new ModelMap();
 	        
