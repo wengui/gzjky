@@ -5,12 +5,14 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.bean.extend.PatientInfoOutputBean;
 import com.gzjky.dao.readdao.PatientInfoReadMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -34,7 +36,10 @@ public class QueryMemberBaseInfoAction extends ActionSupport {
 		
 
 		try {
-			PatientInfoOutputBean result = patientInfoReadMapper.selectByPatientId(1);
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
+			PatientInfoOutputBean result = patientInfoReadMapper.selectByPatientId(patientId);
 			
 			ModelMap modelMap = new ModelMap();
 			
@@ -53,8 +58,7 @@ public class QueryMemberBaseInfoAction extends ActionSupport {
 			out.close();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
 
 		return SUCCESS;

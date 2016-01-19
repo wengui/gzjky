@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +19,7 @@ import com.gzjky.bean.gen.PatientFamilyGeneticHistoryDetail;
 import com.gzjky.dao.constant.CodeConstant;
 import com.gzjky.dao.readdao.PatientFamilyGeneticHistoryDetailReadMapper;
 import com.gzjky.dao.readdao.PatientFamilyGeneticHistoryReadMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -43,13 +45,13 @@ public class QueryMemberFamilyDiseaseAction extends ActionSupport {
 	public String getRecord(){
 		
 		try {
-			
-			//TODO
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
 	        // 从数据库中取得需要的对象
-			PatientFamilyGeneticHistory historyRecord = historyReadMapper.selectByPatientId(1);
+			PatientFamilyGeneticHistory historyRecord = historyReadMapper.selectByPatientId(patientId);
 			
-			//TODO
-			List<PatientFamilyGeneticHistoryDetail> historyDetailRecordList = historyDetailReadMapper.selectByPatientId(1);
+			List<PatientFamilyGeneticHistoryDetail> historyDetailRecordList = historyDetailReadMapper.selectByPatientId(patientId);
 	        
 			List<MemberFamilyDiseaseOutputBean> result = new ArrayList<MemberFamilyDiseaseOutputBean>();
 	        

@@ -15,6 +15,7 @@ import com.gzjky.base.util.VaildateUtils;
 import com.gzjky.bean.extend.PatientDiseaseHistoryInputBean;
 import com.gzjky.bean.extend.PatientDiseaseHistoryOutputBean;
 import com.gzjky.dao.readdao.PatientDiseaseHistoryReadMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -40,7 +41,6 @@ public class QueryMemberIllnessHistoryListAction extends ActionSupport {
 		
 		
 		try {
-
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
@@ -53,8 +53,8 @@ public class QueryMemberIllnessHistoryListAction extends ActionSupport {
 			record.setPageMax((pointerStart + pageSize));
 			record.setPageMin(pointerStart);
 			
-			//TODO 患者id取得，最终是要从session里面取得一个可变的值
-			record.setPatientId("1");
+			// 患者id取得，最终是要从session里面取得一个可变的值
+			record.setPatientId(ActionContext.getContext().getSession().get("PatientID").toString());
 			
 	        // 从数据库中取得需要的对象
 			diseaseHistoryList = patientDiseaseHistoryReadMapper.selectByPatientId(record);

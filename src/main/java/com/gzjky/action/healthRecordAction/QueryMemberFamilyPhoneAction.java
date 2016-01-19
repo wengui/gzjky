@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +13,7 @@ import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.base.util.VaildateUtils;
 import com.gzjky.bean.extend.FamilyPhoneOutputBean;
 import com.gzjky.dao.readdao.FamilyPhoneReadMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -33,9 +35,11 @@ public class QueryMemberFamilyPhoneAction extends ActionSupport {
 	public String getList(){
 		
 		try {
-			
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
 	        // 从数据库中取得需要的对象
-			List<FamilyPhoneOutputBean> recordList = readMapper.selectByPatientId(1);
+			List<FamilyPhoneOutputBean> recordList = readMapper.selectByPatientId(patientId);
 	        
 	        ModelMap modelMap = new ModelMap();
 	        

@@ -15,6 +15,7 @@ import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.bean.gen.PatientInfo;
 import com.gzjky.dao.constant.MsgConstant;
 import com.gzjky.dao.writedao.PatientInfoWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -43,15 +44,16 @@ public class EditMemberBaseInfoAction extends ActionSupport {
 		
 		try {
 
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
 			// 更新参数设定
 			PatientInfo record = new PatientInfo();
-			//TODO 患者ID要从共通拿出来
-			String id = "1";
 			
-			record.setId(NumberUtils.toInt(id));// 患者ID
+			record.setId(patientId);// 患者ID
 			record.setPatientname(request.getParameter("patientname"));// 患者姓名
 			record.setPatientsex(request.getParameter("dictSex"));// 患者性别
 			Date birthday = sdf.parse(request.getParameter("patientbirthday"));

@@ -13,6 +13,7 @@ import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.bean.gen.PatientInfo;
 import com.gzjky.dao.constant.MsgConstant;
 import com.gzjky.dao.writedao.PatientInfoWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -40,15 +41,16 @@ public class EditMemberDetailAction extends ActionSupport {
 		
 		try {
 
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
 			// 更新参数设定
 			PatientInfo record = new PatientInfo();
-			//TODO 患者ID要从共通拿出来
-			String id = "1";
 			
-			record.setId(NumberUtils.toInt(id));// 患者ID
+			record.setId(patientId);// 患者ID
 			record.setCardtype(request.getParameter("certiType"));// 证件类型
 			record.setCardnum(request.getParameter("cardnum")); // 证件号
 			if("1".equals(request.getParameter("issoldier"))){

@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import com.gzjky.base.util.date.DateFormatter;
 import com.gzjky.base.util.date.DateUtil;
 import com.gzjky.bean.gen.PatientDiseaseHistory;
 import com.gzjky.dao.writedao.PatientDiseaseHistoryWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -41,6 +43,9 @@ public class AddDelIllnessHistoryAction extends ActionSupport {
 		
 		try {
 
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
@@ -48,7 +53,7 @@ public class AddDelIllnessHistoryAction extends ActionSupport {
 			PatientDiseaseHistory record = new PatientDiseaseHistory();
 			
 			// 患者ID要从session中取得
-			record.setPatientid(1);// 患者ID
+			record.setPatientid(patientId);// 患者ID
 			record.setDiseasename(request.getParameter("diseaseName"));// 疾病名称
 			record.setDiseasecode(request.getParameter("diseaseId"));// 疾病code
 			DateTime startTime = DateUtil.parseDate(request.getParameter("startTime"), DateFormatter.SDF_YMD);

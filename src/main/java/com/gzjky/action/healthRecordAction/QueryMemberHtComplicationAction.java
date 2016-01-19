@@ -6,12 +6,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.bean.gen.PatientNowComplicationsChecked;
 import com.gzjky.dao.readdao.PatientNowComplicationsCheckedReadMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -30,8 +32,11 @@ public class QueryMemberHtComplicationAction extends ActionSupport {
 		
 
 		try {
-			//TODO 患者ID要从session里取得			
-			List<PatientNowComplicationsChecked> result = readMapper.selectByPatientId(1);
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
+			// 患者ID要从session里取得			
+			List<PatientNowComplicationsChecked> result = readMapper.selectByPatientId(patientId);
 			
 			HashMap<String,String> codemap =  new HashMap<String,String>();
 			

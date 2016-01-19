@@ -13,6 +13,7 @@ import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.bean.gen.PatientLivingHabitsInfo;
 import com.gzjky.dao.constant.MsgConstant;
 import com.gzjky.dao.writedao.PatientLivingHabitsInfoWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -40,15 +41,16 @@ public class EditMemberHabitAction extends ActionSupport {
 		
 		try {
 
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
 			// 更新参数设定
 			PatientLivingHabitsInfo record = new PatientLivingHabitsInfo();
-			//TODO 患者ID要从共通拿出来
-			String id = "1";
 			
-			record.setPatientid(NumberUtils.toInt(id));// 患者ID
+			record.setPatientid(patientId);// 患者ID
 			record.setWorktype(request.getParameter("workType"));// 工作类型
 			record.setWorkpressure(request.getParameter("workPressure"));// 工作压力
 			record.setBloodtype(request.getParameter("aboBloodTypeDict"));// 血型

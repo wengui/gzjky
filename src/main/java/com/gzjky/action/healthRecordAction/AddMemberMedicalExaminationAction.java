@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.bean.gen.PatientHealthCheck;
 import com.gzjky.dao.writedao.PatientHealthCheckWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -39,6 +40,9 @@ public class AddMemberMedicalExaminationAction extends ActionSupport {
 		
 		try {
 
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
@@ -46,7 +50,7 @@ public class AddMemberMedicalExaminationAction extends ActionSupport {
 			PatientHealthCheck record = new PatientHealthCheck();
 			
 			// 患者ID要从session中取得
-			record.setPatientid(1);// 患者ID
+			record.setPatientid(patientId);// 患者ID
 			record.setPostprandialbloodglucose(NumberUtils.toDouble(request.getParameter("chxt")));// 餐后血糖
 			record.setFastingplasmaglucose(NumberUtils.toDouble(request.getParameter("kfqxxt")));// 空腹血糖
 			record.setTotalcholesterol(NumberUtils.toDouble(request.getParameter("zdgc")));// 总胆固醇

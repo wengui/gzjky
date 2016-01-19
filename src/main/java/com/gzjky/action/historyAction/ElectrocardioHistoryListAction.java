@@ -16,6 +16,7 @@ import com.gzjky.bean.extend.ElectrocardioInputBean;
 import com.gzjky.bean.extend.ElectrocardioOutputBean;
 import com.gzjky.dao.constant.CodeConstant;
 import com.gzjky.dao.readdao.ElectrocardioHistoryReadMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -61,8 +62,8 @@ public class ElectrocardioHistoryListAction extends ActionSupport{
 			input.setPageMax((pointerStart + pageSize));
 			input.setPageMin(pointerStart);
 			
-			//TODO 患者id取得，最终是要从session里面取得一个可变的值
-			//input.setPatientId("5");
+			// 患者id取得，最终是要从session里面取得一个可变的值
+			input.setPatientId(ActionContext.getContext().getSession().get("PatientID").toString());
 			
 	        // 从数据库中取得需要的对象
 			result = electrocardioHistoryReadMapper.selectElectrocardioByCondition(input);

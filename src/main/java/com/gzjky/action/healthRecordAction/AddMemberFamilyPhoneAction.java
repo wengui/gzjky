@@ -17,6 +17,7 @@ import com.gzjky.dao.constant.CodeConstant;
 import com.gzjky.dao.constant.MsgConstant;
 import com.gzjky.dao.readdao.FamilyPhoneReadMapper;
 import com.gzjky.dao.writedao.FamilyPhoneWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -42,6 +43,9 @@ public class AddMemberFamilyPhoneAction extends ActionSupport {
 		
 		try {
 
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+			
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 	        // 将java对象转成json对象
@@ -54,10 +58,8 @@ public class AddMemberFamilyPhoneAction extends ActionSupport {
 			ModelMap modelMap = new ModelMap();
 			// 更新参数设定
 			FamilyPhone record = new FamilyPhone();
-			//TODO 患者ID要从共通拿出来
-			String id = "1";
 			
-			record.setPatientid(NumberUtils.toInt(id));// 患者ID
+			record.setPatientid(patientId);// 患者ID
 			record.setName(request.getParameter("name"));
 			record.setTelephone(request.getParameter("phone"));
 			record.setCellphone(request.getParameter("cellphone"));
@@ -67,8 +69,8 @@ public class AddMemberFamilyPhoneAction extends ActionSupport {
 			record.setReport(request.getParameter("report"));
 			record.setFamilyship(request.getParameter("relationship"));
 			
-			int checkCellphone = readMapper.selectByPatientIdAndPhone(NumberUtils.toInt(id), request.getParameter("cellphone"));
-			List<FamilyPhoneOutputBean> recordList = readMapper.selectByPatientId(NumberUtils.toInt(id));
+			int checkCellphone = readMapper.selectByPatientIdAndPhone(patientId, request.getParameter("cellphone"));
+			List<FamilyPhoneOutputBean> recordList = readMapper.selectByPatientId(patientId);
 			
 			// 手机号已注册
 			if(checkCellphone > 0){

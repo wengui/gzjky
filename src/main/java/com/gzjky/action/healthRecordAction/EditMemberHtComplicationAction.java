@@ -6,6 +6,7 @@ import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,6 +14,7 @@ import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.base.util.VaildateUtils;
 import com.gzjky.bean.gen.PatientNowComplicationsChecked;
 import com.gzjky.dao.writedao.PatientNowComplicationsCheckedWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -39,6 +41,8 @@ public class EditMemberHtComplicationAction extends ActionSupport {
 	public String editComplicationInfo(){
 		
 		try {
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
 
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
@@ -54,8 +58,7 @@ public class EditMemberHtComplicationAction extends ActionSupport {
                 String value = request.getParameter(parameterName);  
                 if(!VaildateUtils.isNullOrEmpty(value)){
                 	PatientNowComplicationsChecked record = new PatientNowComplicationsChecked();
-                	//TODO
-                	record.setPatientid(1);
+                	record.setPatientid(patientId);
                 	record.setDiseaseidvalue(value);
                 	int insertCount = writeMapper.insert(record);
                 	

@@ -16,6 +16,7 @@ import com.gzjky.bean.extend.QueryBloodPressureInputBean;
 import com.gzjky.bean.extend.QueryBloodPressureOutputBean;
 import com.gzjky.dao.constant.CodeConstant;
 import com.gzjky.dao.readdao.BloodPressureHistoryReadMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -42,7 +43,6 @@ public class QueryBloodPressureListAction extends ActionSupport{
 		
 		
 		try {
-
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
@@ -61,8 +61,8 @@ public class QueryBloodPressureListAction extends ActionSupport{
 			queryBloodPressureInputBean.setPageMax((pointerStart + pageSize));
 			queryBloodPressureInputBean.setPageMin(pointerStart);
 			
-			//TODO 患者id取得，最终是要从session里面取得一个可变的值
-			queryBloodPressureInputBean.setPatientId("1");
+			// 患者id取得，最终是要从session里面取得一个可变的值
+			queryBloodPressureInputBean.setPatientId(ActionContext.getContext().getSession().get("PatientID").toString());
 			
 	        // 从数据库中取得需要的对象
 	        bloodPressureList = bloodPressureHistoryReadMapper.selectBloodPressureByCondition(queryBloodPressureInputBean);

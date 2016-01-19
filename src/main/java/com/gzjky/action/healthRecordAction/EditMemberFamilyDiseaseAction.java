@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,6 +18,7 @@ import com.gzjky.bean.gen.PatientFamilyGeneticHistoryDetail;
 import com.gzjky.dao.constant.CodeConstant;
 import com.gzjky.dao.writedao.PatientFamilyGeneticHistoryDetailWriteMapper;
 import com.gzjky.dao.writedao.PatientFamilyGeneticHistoryWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -46,14 +48,15 @@ public class EditMemberFamilyDiseaseAction extends ActionSupport{
 	public String editRecord(){
 		
 		try {
+			
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
 
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
 			PatientFamilyGeneticHistory historyRecord = new PatientFamilyGeneticHistory();// 家族史
 			List<PatientFamilyGeneticHistoryDetail> recordList = new ArrayList<PatientFamilyGeneticHistoryDetail>();
-			
-			int patientId = 1;
 			
 			// 参数设定
 			historyRecord.setPatientid(1);
@@ -98,13 +101,13 @@ public class EditMemberFamilyDiseaseAction extends ActionSupport{
 						CodeConstant.DISEASE_NAME5, recordList);
 			}
 			
-			//TODO 旧数据删除
-			historyWriteMapper.deleteByPatientId(1);
+			// 旧数据删除
+			historyWriteMapper.deleteByPatientId(patientId);
 			// 新数据插入
 			int state = historyWriteMapper.insertSelective(historyRecord);
             
-			//TODO 旧数据删除
-			historyDetailWriteMapper.deleteByPatientId(1);
+			// 旧数据删除
+			historyDetailWriteMapper.deleteByPatientId(patientId);
 			// 新数据插入
 			for(PatientFamilyGeneticHistoryDetail record : recordList){
 				historyDetailWriteMapper.insertSelective(record);

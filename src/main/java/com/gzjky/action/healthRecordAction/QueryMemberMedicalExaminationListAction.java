@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
@@ -16,6 +15,7 @@ import com.gzjky.base.util.VaildateUtils;
 import com.gzjky.bean.extend.PatientHealthCheckInputBean;
 import com.gzjky.bean.extend.PatientHealthCheckOutputBean;
 import com.gzjky.dao.readdao.PatientHealthCheckReadMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -45,8 +45,6 @@ public class QueryMemberMedicalExaminationListAction extends ActionSupport {
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			
-//			HttpSession session=request.getSession();
-//			int patientId = (int) session.getAttribute("Patient");
 			
 			// 查询参数设定
 			PatientHealthCheckInputBean record = new PatientHealthCheckInputBean();
@@ -57,8 +55,8 @@ public class QueryMemberMedicalExaminationListAction extends ActionSupport {
 			record.setPageMax((pointerStart + pageSize));
 			record.setPageMin(pointerStart);
 			
-			//TODO 患者id取得，最终是要从session里面取得一个可变的值
-			record.setPatientId("1");
+			// 患者id取得，最终是要从session里面取得一个可变的值
+			record.setPatientId(ActionContext.getContext().getSession().get("PatientID").toString());
 			
 	        // 从数据库中取得需要的对象
 			result = readMapper.selectByPatientId(record);

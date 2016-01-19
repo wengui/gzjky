@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.bean.gen.FamilyPhone;
 import com.gzjky.dao.writedao.FamilyPhoneWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -39,15 +40,17 @@ public class EditMemberFamilyPhoneAction extends ActionSupport {
 	public String editRecord(){
 		
 		try {
+			
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
 			// 页面参数取得
 			HttpServletRequest request = ServletActionContext.getRequest();
 			    
 			// 更新参数设定
 			FamilyPhone record = new FamilyPhone();
-			//TODO 患者ID要从共通拿出来
-			String id = "1";
 
-			record.setPatientid(NumberUtils.toInt(id));// 患者ID
+			record.setPatientid(patientId);// 患者ID
 			record.setId(NumberUtils.toInt(request.getParameter("id")));
 			record.setName(request.getParameter("name"));
 			record.setTelephone(request.getParameter("phone"));

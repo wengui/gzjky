@@ -4,12 +4,14 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.bean.extend.PatientLivingHabitsOutputBean;
 import com.gzjky.dao.readdao.PatientLivingHabitsInfoReadMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -34,8 +36,11 @@ public class QueryMemberHabitAction extends ActionSupport {
 		
 
 		try {
-			//TODO 患者ID要从session里取得
-			PatientLivingHabitsOutputBean result = patientLivingHabitsInfoReadMapper.selectByPatientId(1);
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
+
+			// 患者ID要从session里取得
+			PatientLivingHabitsOutputBean result = patientLivingHabitsInfoReadMapper.selectByPatientId(patientId);
 			
 			ModelMap modelMap = new ModelMap();
 			
