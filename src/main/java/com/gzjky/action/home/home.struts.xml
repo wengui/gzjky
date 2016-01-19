@@ -16,5 +16,9 @@
 	<action name="getHospitalAndDoctor" class="com.gzjky.action.home.homeAction" method="getHospitalAndDoctor">
 		
 	</action>
+	<!-- 用户医生医院信息取得-->
+	<action name="patientChange" class="com.gzjky.action.home.homeAction" method="patientChange">
+		
+	</action>
 	</package>
 </struts>

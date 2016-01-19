@@ -309,6 +309,34 @@
 		});
 		return true;
 	}
+	
+	//Patient切换 
+	function patientChange(obj) {
+		var family=obj.id;
+		var para="family="+family;
+		if(family!=="${sessionScope.Patient.pid}"){
+			$.ajax({
+				url:"/gzjky/home/patientChange.do",
+				async:true,
+				data:para,
+				dataType:"json",
+				type:"POST",
+				error:function(){
+					$.alert("发生异常","请注意");
+				},
+				success:function(response) {
+
+					if(response.result=="1"){	
+						window.location.href="../jsp/home.jsp";
+					}
+					else{
+						$.alert("发生异常","请注意");
+					}
+				}
+			});
+		}
+		
+	}
 </script>
 
 
@@ -441,9 +469,13 @@
             	<span class="title_info"><a title="充值" class="title_info" onclick="goToRecharge(this)" target="mainFrame">立即充值</a></span>
             </li>
             <li class="tGray wBalance" id="familyMember">我的家庭成员：
-	            <c:forEach items="${sessionScope.PatientList}"  begin="1" var="pa">
+	            <c:forEach items="${sessionScope.PatientList}"  var="pa">
 	            <br/>
-				<c:out value="${pa.pname}"/>
+
+	            <a href="javascript:void(0)" onclick="patientChange(this)" id="${pa.pid}">				
+					<c:out value="${pa.pname}"/>
+				</a>
+				
 				</c:forEach>
             </li>
             <li class="tGray" id="device">我的设备：
