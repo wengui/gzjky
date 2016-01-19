@@ -40,7 +40,7 @@
 					required:"手机号码  是必填项."
 				},'relationship':{
 					required:"亲属关系 是必选项"
-				},'is_rev_doctor_report':{
+				},'report':{
 					required:"诊断报告 是必选项"
 				}
 			}
@@ -107,7 +107,7 @@
 			}
 			
 			cell = row.insertCell(j++);
-			cell.innerHTML = '<a href="javascript:void(0)" onclick="edit_familyPhone('+i+')"><img src="/images/icon/phone_editor.png" />编辑</a><a href="javascript:void(0)" onclick="delete_familyPhone('+i+')"><img src="/images/icon/phone_del.png" />删除</a>';
+			cell.innerHTML = '<a href="javascript:void(0)" onclick="edit_familyPhone('+i+')"><img src="../../../images/icon/phone_editor.png" />编辑</a><a href="javascript:void(0)" onclick="delete_familyPhone('+i+')"><img src="../../../images/icon/phone_del.png" />删除</a>';
 		}
 	}
 	
@@ -137,9 +137,8 @@
 				error:function(){
 					$.alert('无权限');
 				},success:function(response){
-				    var modelMap = response.modelMap;
-				    var state = modelMap.state;
-				    if(state == "0"){
+				    var state = response.updateFlag;
+				    if(state == "1"){
 				    	queryFamilyPhone();
 				    	$.alert("删除成功");
 				    }else{
@@ -157,7 +156,7 @@
 		}
 		var requestUrl = "/gzjky/healthRecordAction/addMemberFamilyPhone.do";
 		if(popType == "edit"){
-			requestUrl = "/gzjky/healthRecordAction/updateMemberFamilyPhone.do";
+			requestUrl = "/gzjky/healthRecordAction/editMemberFamilyPhone.do";
 		}
 	   var para = $("#addFamilyPhoneForm").dataForJson({prefix:''});
   	   showScreenProtectDiv(1);
@@ -175,9 +174,8 @@
 			error:function(){
 				$.alert('无权限');
 			},success:function(response){
-			    var modelMap = response.modelMap;
-			    var state = modelMap.state;
-			    if(state == "0"){
+			    var state = response.updateFlag;
+			    if(state == "1"){
 			    	queryFamilyPhone();
 			    	if(popType == "add"){
 			    		$.alert("增加成功");
@@ -185,9 +183,9 @@
 			    		$.alert("修改成功");
 			    	}
 			    	closeDiv_familyPhone();
-			    }else if(state == "-2"){
+			    }else if(state == "2"){
 			    	$.alert("亲情号码最多只能设置3个");
-			    }else if(state == "-3"){
+			    }else if(state == "3"){
 			    	$.alert("亲情号码已存在");
 			    }else{
 			    	if(popType == "add"){
@@ -233,7 +231,7 @@
   <div class="title_BPhistory">
     <ul>
       <li class="tgreen_title_BPhistory">亲情号码</li>
-      <li class="select_PhoneFamily"><a href="javascript:void(0)" onclick="add_familyPhone()"><img src="../../../images/button/phone_add.png" /></a></li>
+      <li class="select_PhoneFamily"><a href="javascript:void(0)" onclick="add_familyPhone()"><img src="<c:url value='/images/button/phone_add.png'/>" /></a></li>
     </ul>
   </div>
   <div class="index_table">
@@ -259,7 +257,7 @@
  
 
 <div id="divloading">
-	<img src="../../../images/public/blue-loading.gif" />
+	<img src="<c:url value='/images/public/blue-loading.gif'/>" />
 </div>
 
 <div id="transparentDiv" ></div>
@@ -309,7 +307,7 @@
 	              <li class="tgrey_popup">*诊断报告：</li>
 	              <li class="tblack_popup">
 	              		<span class="select-style_habit">
-		             	<select  class="selectMax_informationModify text-input validate[required]"  id="is_rev_doctor_report"  name="is_rev_doctor_report" >
+		             	<select  class="selectMax_informationModify text-input validate[required]"  id="report"  name="report" >
 		                    <option value="">请选择</option>
 		            		<option value="1">接收</option>
 		            		<option value="0">不接收</option>
@@ -338,7 +336,7 @@
 	              </li>
 	             <li class="tgrey_popup">家庭地址：</li>
 	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"  style="width:230px" type="text"   id="home_address"  name="home_address" maxlength="256" />
+	              		<input class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"  style="width:230px" type="text"   id="homeAddress"  name="homeAddress" maxlength="256" />
 	              </li>			              
 	              <li class="btn_popup_confirm"><a href="javascript:void(0)" class="btn" onclick="saveFamilyPhone()"><span style="color:#5a5a5a">保存</span></a></li>                                            
 	         </ul>
