@@ -171,6 +171,40 @@
 			$("#suggestion").html("<div class='wordbreak'>"+advice.suggestion+"</div>");
 	}
 	
+	//最新咨询回复
+	function queryConsultive(){
+		$.ajax({
+			url:"/gzjky/healthStatus/queryMemberConsult.do",
+			async:true,
+			data:"",
+			dataType:"json",
+			type:"POST",
+			error:function(){
+				$.alert("发生异常","请注意");
+			},
+			success:function(response) {
+				var modelMap = response.result;
+				//var memberConsult = modelMap.memberConsult;//最新医嘱	
+				//显示最新医嘱内容
+				drawConsult(modelMap);
+			}
+		});
+	}
+	function drawConsult(memberConsult){
+		if(memberConsult==null){
+			return;
+		}else{
+			var create_time=memberConsult.consultingtime.substring(0,19);
+			var finish_time=memberConsult.resulttime.substring(0,19);
+			var cont="<div><div>咨询时间："+create_time+"</div><div class='wordbreak'>内容："+memberConsult.consultingcontent+"&nbsp;&nbsp;"+memberConsult.symptomname+"</div></div>";
+			var report="<div><div>回复时间："+finish_time+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+				"医生："+memberConsult.doctorloginname+"</div>"+
+				"<div class='wordbreak'>内容："+memberConsult.result+"</div></div>";
+			$("#consult_cont").html(cont+report);
+		}
+		
+	}
+	
 	//查询心电信息 
 	 var hly_url=  "http://v3.995120.cn:7090/hly_svr";
 	function queryEcg(){
@@ -361,7 +395,6 @@
 	function bloodPressureCharts(records,headTitle,flag) {
 		var tims = new Array(), cate = new Array();
 		var dia = new Array(), shr = new Array(), av = new Array();
-		
 		if (records != null && records != 'null') {
 			for ( var i = 0; i < records.length; i++) {
 				if(i<records.length-1){
@@ -530,39 +563,7 @@
 			
 
 	}
-	//最新咨询回复
-	function queryConsultive(){
-		$.ajax({
-			url:"/healthStatus/queryMemberConsult.action",
-			async:true,
-			data:"",
-			dataType:"json",
-			type:"POST",
-			error:function(){
-				//$.alert("发生异常5","请注意");
-			},
-			success:function(response) {
-				var modelMap = response.modelMap;
-				var memberConsult = modelMap.memberConsult;//最新医嘱	
-				//显示最新医嘱内容
-				drawConsult(memberConsult);
-			}
-		});
-	}
-	function drawConsult(memberConsult){
-		if(memberConsult==null){
-			return;
-		}else{
-			var create_time=memberConsult.create_time.substring(0,19);
-			var finish_time=memberConsult.report_create_time.substring(0,19);
-			var cont="<div><div>咨询时间："+create_time+"</div><div class='wordbreak'>内容："+memberConsult.content+"</div></div>";
-			var report="<div><div>回复时间："+finish_time+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
-				"医生："+memberConsult.doctor_name+"</div>"+
-				"<div class='wordbreak'>内容："+memberConsult.report+"</div></div>";
-			$("#consult_cont").html(cont+report);
-		}
-		
-	}
+
 	//获取当前日期
 	function getdate() {
 		var now = new Date();
