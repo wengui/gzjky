@@ -41,9 +41,9 @@
 			var morningHeadTitle="血压等级分析依据图";
 			var newMorningHeadTitle="近期晨峰血压趋势图";
 			//显示最新血压趋势图
-			bloodPressureCharts(null,headTitle,"0");
+			//bloodPressureCharts(null,headTitle,"0");
 			//显示最新晨峰血压趋势图
-			bloodPressureCharts(null,newMorningHeadTitle,"2");
+			//bloodPressureCharts(null,newMorningHeadTitle,"2");
 			//显示血压等级分析依据图
 			bloodPressureCharts(null,morningHeadTitle,"1");
 		}
@@ -365,11 +365,12 @@
 				if(i<records.length-1){
 				cate[i] = i ;
 				}
-				var datetime= records[i].take_time;
+// 				var datetime= records[i].take_time;
 				
-				if(flag=="2"){
-					datetime = records[i].create_time;
-				}
+// 				if(flag=="2"){
+// 					datetime = records[i].create_time;
+// 				}
+				var datetime= records[i].takeTime;
 				
 				if (datetime == null) {
 					datetime = '未知';
@@ -384,8 +385,8 @@
 				}
 				
 				tims[records.length - i - 1] = datetime;
-				var diap = records[i].diastole;
-				var shrp = records[i].shrink;
+				var diap = parseInt(records[i].diastole);
+				var shrp = parseInt(records[i].shrink);
 				var avg = 0;
 				//如果是血压等级分析依据图超出阈值的血压点显示红色
 				if(flag=="1"){
