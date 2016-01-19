@@ -67,6 +67,7 @@ public class LoginAction extends ActionSupport {
               //session中添加默认Patient信息 
                 if(userAndPatientList.size()!=0){
                 	ActionContext.getContext().getSession().put("Patient",userAndPatientList.get(0));
+                	ActionContext.getContext().getSession().put("PatientID",userAndPatientList.get(0).getPatientid());
                 }             
                 return "success";
             }
