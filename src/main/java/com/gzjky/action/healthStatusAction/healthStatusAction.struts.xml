@@ -13,5 +13,7 @@
 	<action name="queryDoctorAdvice" class="com.gzjky.action.healthStatusAction.QueryDoctorAdviceAction" method="getDoctorAdvice"/>	
 	
 	<action name="queryMemberConsult" class="com.gzjky.action.healthStatusAction.QueryMemberConsultationAction" method="getMemberConsultationRrecord"/>	
+	
+	<action name="queryBloodPressureRecord" class="com.gzjky.action.healthStatusAction.QueryBPGrapicRecordAction" method="getBPGraphicRecord"/>	
 	</package>
 </struts>

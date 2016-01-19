@@ -205,44 +205,6 @@
 		
 	}
 	
-	//查询心电信息 
-	 var hly_url=  "http://v3.995120.cn:7090/hly_svr";
-	function queryEcg(){
-		$.ajax({
-			url:"/healthStatus/queryEcgHeartRateAndReport.action",
-			async:true,
-			data:null,
-			dataType:"json",
-			type:"POST",
-			error:function(){
-				//$.alert("发生异常2","请注意");
-			},
-			success:function(response) {
-				var modelMap = response.modelMap;
-				var ecgRecordVo=modelMap.ecgRecordVo;
-				if(ecgRecordVo == null){
-					$('#doctor_report').text("暂无");
-					$('#image_heart_rate').html("<img src='../../images/health/bottom.png' />");
-				}else{
-					$('#doctor_report').text(ecgRecordVo.report);
-					$('#reference_range').html("您的心率值为"+ecgRecordVo.heart_rate+"<a class='tblack_results' href='javascript:void(0);' onclick='ecgPic();'>心电图</a>");
-					$("#ecg_image").attr("src",hly_url+ecgRecordVo.file_storage_path.replace("/helowindata/tomcat/webapps/hly_svr","")+"-I.jpg");
-					if(ecgRecordVo.heart_rate>=100){
-						$('#image_heart_rate').
-						html("<img style='margin-right: "+(20-(ecgRecordVo.heart_rate-100))+"px;' src='../../images/health/top.png'/><img src='../../images/health/bottom.png' />");
-					}else if(ecgRecordVo.heart_rate<=60){
-						$('#image_heart_rate').
-							html("<img style='margin-right: "+(150+(60-ecgRecordVo.heart_rate)*2)+"px;' src='../../images/health/top.png'/><img src='../../images/health/bottom.png' />");
-					}else{
-						$('#image_heart_rate').
-							html("<img style='margin-right: "+(150-(ecgRecordVo.heart_rate-60)*3.25)+"px;' src='../../images/health/top.png'/><img src='../../images/health/bottom.png' />");
-					}
-				}
-				
-			}
-		});
-	}
-	
 	//查询血压记录
 	function queryDiagnose() {
 		
@@ -250,7 +212,7 @@
 	    var pointerStart = 0;
 		var para = "pointerStart="+pointerStart+"&pageSize="+onePageSize;
 		xmlHttp = $.ajax({
-			url:"/healthStatus/queryBloodPressureRecord.action",
+			url:"/gzjky/healthStatus/queryBloodPressureRecord.do",
 			async:true,
 			data:para,
 			dataType:"json",
@@ -262,58 +224,61 @@
 				var headTitle="近期血压趋势图";
 				var morningHeadTitle="血压等级分析依据图";
 				var newMorningHeadTitle="近期晨峰血压趋势图";
-				var modelMap = response.modelMap;
-				var bloodPressureRecordList = modelMap.bloodPressureRecordList;//最新血压趋势数据
-				var morningSurgeBpList = modelMap.morningSurgeBpList;//最新晨峰血压趋势数据
-				var bloodPressureDiagnoseVo = modelMap.bloodPressureDiagnoseVo;
-				var bpcompleted = modelMap.bpcompleted;//最新医生血压回复
-				var typeLvl=null;//血压等级
-				var suggestionList=new Array();
+				var modelMap = response.outBeanList;
+				var bloodPressureRecordList = modelMap[0];
+				var morningSurgeBpList = modelMap[1];
 				
-				var riskLvl=null;//心血管分层
-				var angiocarpyList=null;//判断依据
-				var moringBpRecord=null;//近期晨峰压记录
-				var diagnose_time="";//历史血压分析时间
-				var versio="";
-				var angiocarpyNewList=""
-				if(bloodPressureDiagnoseVo!=null){
-					//心血管分层
-					riskLvl=bloodPressureDiagnoseVo.risk;
-					//心血管诊断依据
-					angiocarpyList=bloodPressureDiagnoseVo.basis;
-					angiocarpyNewList=bloodPressureDiagnoseVo.cv_risk;
-					//晨峰血压数据
-					moringBpRecord=bloodPressureDiagnoseVo.records;
-					//血压等级
-					typeLvl=bloodPressureDiagnoseVo.hype_type;
-					//保健建议
-		    		suggestionList=bloodPressureDiagnoseVo.suggestionList;
-		    		//历史血压分析时间
-		    		diagnose_time=bloodPressureDiagnoseVo.diagnose_time;
-		    		//版本
-		    		versio=bloodPressureDiagnoseVo.version;
-				}
-				if(diagnose_time==""||diagnose_time==null){
-					$("#histroy_bp_diagnose").html("血压等级分析");
-				}else{
-					$("#histroy_bp_diagnose").html("血压等级分析("+diagnose_time.substring(0,19)+")");
-				}
+// 				var modelMap = response.modelMap;
+// 				var bloodPressureRecordList = modelMap.bloodPressureRecordList;//最新血压趋势数据
+// 				var morningSurgeBpList = modelMap.morningSurgeBpList;//最新晨峰血压趋势数据
+// 				var bloodPressureDiagnoseVo = modelMap.bloodPressureDiagnoseVo;
+// 				var bpcompleted = modelMap.bpcompleted;//最新医生血压回复
+// 				var typeLvl=null;//血压等级
+// 				var suggestionList=new Array();
+// 				var riskLvl=null;//心血管分层
+// 				var angiocarpyList=null;//判断依据
+// 				var moringBpRecord=null;//近期晨峰压记录
+// 				var diagnose_time="";//历史血压分析时间
+// 				var versio="";
+// 				var angiocarpyNewList=""
+// 				if(bloodPressureDiagnoseVo!=null){
+// 					//心血管分层
+// 					riskLvl=bloodPressureDiagnoseVo.risk;
+// 					//心血管诊断依据
+// 					angiocarpyList=bloodPressureDiagnoseVo.basis;
+// 					angiocarpyNewList=bloodPressureDiagnoseVo.cv_risk;
+// 					//晨峰血压数据
+// 					moringBpRecord=bloodPressureDiagnoseVo.records;
+// 					//血压等级
+// 					typeLvl=bloodPressureDiagnoseVo.hype_type;
+// 					//保健建议
+// 		    		suggestionList=bloodPressureDiagnoseVo.suggestionList;
+// 		    		//历史血压分析时间
+// 		    		diagnose_time=bloodPressureDiagnoseVo.diagnose_time;
+// 		    		//版本
+// 		    		versio=bloodPressureDiagnoseVo.version;
+// 				}
+// 				if(diagnose_time==""||diagnose_time==null){
+// 					$("#histroy_bp_diagnose").html("血压等级分析");
+// 				}else{
+// 					$("#histroy_bp_diagnose").html("血压等级分析("+diagnose_time.substring(0,19)+")");
+// 				}
 				
-				//保健建议、血压诊断，治疗方案等的显示。如果没有则显示暂无
-				showDiagnose(typeLvl,suggestionList,riskLvl,angiocarpyList,angiocarpyNewList,bpcompleted,versio);
-				if(bloodPressureRecordList == null){
-					headTitle="近期血压趋势图(暂无数据)";	
-				}
-				if(moringBpRecord==null || moringBpRecord==""){
-					morningHeadTitle="血压等级分析依据图(暂无数据)";
-				}else{
-					var max = moringBpRecord.length-1;
-					$("#container2_time").text(moringBpRecord[max].take_time.substring(0,11)+"~"+moringBpRecord[0].take_time.substring(0,11));
-				}
-				if(morningSurgeBpList==null){
-					newMorningHeadTitle="近期晨峰血压趋势图(暂无数据)";
-					$("#bpmorning_what").html("无晨峰血压数据，请查看<a class='tgreen_results' style='font-size: 12px;' href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a>正确测量晨峰血压");
-				}
+// 				//保健建议、血压诊断，治疗方案等的显示。如果没有则显示暂无
+// 				showDiagnose(typeLvl,suggestionList,riskLvl,angiocarpyList,angiocarpyNewList,bpcompleted,versio);
+// 				if(bloodPressureRecordList == null){
+// 					headTitle="近期血压趋势图(暂无数据)";	
+// 				}
+//				if(moringBpRecord==null || moringBpRecord==""){
+//					morningHeadTitle="血压等级分析依据图(暂无数据)";
+//				}else{
+//					var max = moringBpRecord.length-1;
+//					$("#container2_time").text(moringBpRecord[max].take_time.substring(0,11)+"~"+moringBpRecord[0].take_time.substring(0,11));
+//				}
+//				if(morningSurgeBpList==null){
+//					newMorningHeadTitle="近期晨峰血压趋势图(暂无数据)";
+//					$("#bpmorning_what").html("无晨峰血压数据，请查看<a class='tgreen_results' style='font-size: 12px;' href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a>正确测量晨峰血压");
+//				}
 				//显示最新血压趋势图
 				bloodPressureCharts(bloodPressureRecordList,headTitle,"0");
 				
@@ -321,7 +286,7 @@
 				bloodPressureCharts(morningSurgeBpList,newMorningHeadTitle,"2");
 				
 				//显示血压等级分析依据图
-				bloodPressureCharts(moringBpRecord,morningHeadTitle,"1");
+//				bloodPressureCharts(moringBpRecord,morningHeadTitle,"1");
 			
 			}
 		});
@@ -564,6 +529,44 @@
 
 	}
 
+	//查询心电信息 
+	 var hly_url=  "http://v3.995120.cn:7090/hly_svr";
+	function queryEcg(){
+		$.ajax({
+			url:"/healthStatus/queryEcgHeartRateAndReport.action",
+			async:true,
+			data:null,
+			dataType:"json",
+			type:"POST",
+			error:function(){
+				//$.alert("发生异常2","请注意");
+			},
+			success:function(response) {
+				var modelMap = response.modelMap;
+				var ecgRecordVo=modelMap.ecgRecordVo;
+				if(ecgRecordVo == null){
+					$('#doctor_report').text("暂无");
+					$('#image_heart_rate').html("<img src='../../images/health/bottom.png' />");
+				}else{
+					$('#doctor_report').text(ecgRecordVo.report);
+					$('#reference_range').html("您的心率值为"+ecgRecordVo.heart_rate+"<a class='tblack_results' href='javascript:void(0);' onclick='ecgPic();'>心电图</a>");
+					$("#ecg_image").attr("src",hly_url+ecgRecordVo.file_storage_path.replace("/helowindata/tomcat/webapps/hly_svr","")+"-I.jpg");
+					if(ecgRecordVo.heart_rate>=100){
+						$('#image_heart_rate').
+						html("<img style='margin-right: "+(20-(ecgRecordVo.heart_rate-100))+"px;' src='../../images/health/top.png'/><img src='../../images/health/bottom.png' />");
+					}else if(ecgRecordVo.heart_rate<=60){
+						$('#image_heart_rate').
+							html("<img style='margin-right: "+(150+(60-ecgRecordVo.heart_rate)*2)+"px;' src='../../images/health/top.png'/><img src='../../images/health/bottom.png' />");
+					}else{
+						$('#image_heart_rate').
+							html("<img style='margin-right: "+(150-(ecgRecordVo.heart_rate-60)*3.25)+"px;' src='../../images/health/top.png'/><img src='../../images/health/bottom.png' />");
+					}
+				}
+				
+			}
+		});
+	}
+	
 	//获取当前日期
 	function getdate() {
 		var now = new Date();
@@ -598,30 +601,6 @@
 			var weather = '今日' + city + '天气：' + status1 + ',温度：' + temperature2
 					+'°'+'-'+temperature1+'°,'+direction1;
 			$('#weather').text(weather);	
-			/*
-			返回的数据
-			city='北京';
-			year1='14';//
-			month1='02';
-			day1='21';
-			year2='14';
-			month2='02';
-			day2='22';
-			city='北京';
-			savedate_weather='2014-02-21';
-			savedate_life='2014-02-21';
-			savedate_zhishu='2014-02-21';
-			status1='霾';
-			status2='雾';
-			figure1='mai';
-			figure2='wu';
-			direction1='无持续风向';
-			direction2='无持续风向';
-			power1='≤3';
-			power2='≤3';
-			temperature1='3';//白天温度
-			temperature2='-2';//晚上温度
-			 */
 		});
 	}
 
@@ -666,8 +645,6 @@
 		$("#popWindow2").hide(200);
 		hideScreenProtectDiv(1);
 	}
-
-
 </script>
 
 </head>
