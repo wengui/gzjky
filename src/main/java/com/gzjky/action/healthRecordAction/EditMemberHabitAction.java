@@ -10,8 +10,11 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.action.acitonCommon.ModelMap;
+import com.gzjky.base.util.VaildateUtils;
+import com.gzjky.bean.extend.PatientLivingHabitsOutputBean;
 import com.gzjky.bean.gen.PatientLivingHabitsInfo;
 import com.gzjky.dao.constant.MsgConstant;
+import com.gzjky.dao.readdao.PatientLivingHabitsInfoReadMapper;
 import com.gzjky.dao.writedao.PatientLivingHabitsInfoWriteMapper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -29,7 +32,8 @@ public class EditMemberHabitAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = -3878534138630690167L;
-	
+	@Autowired
+	private PatientLivingHabitsInfoReadMapper readMapper;
 	@Autowired
 	private PatientLivingHabitsInfoWriteMapper patientLivingHabitsInfoWriteMapper;
 	
@@ -41,6 +45,7 @@ public class EditMemberHabitAction extends ActionSupport {
 		
 		try {
 
+			int state = 0;
 			// 患者ID取得
 			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
 
@@ -65,12 +70,21 @@ public class EditMemberHabitAction extends ActionSupport {
 			record.setSleeptime(request.getParameter("SleepTime"));// 睡眠时长
 			record.setIsmedication(request.getParameter("Hypotensor"));// 降压药
 			
-			// 更新处理
-			int updattCount = patientLivingHabitsInfoWriteMapper.updateByPatientIdSelective(record);
+			// check表中是否有记录
+			PatientLivingHabitsOutputBean checkRecord =  readMapper.selectByPatientId(patientId); 
+			
+			// 没有记录的场合，新数据插入
+			if(VaildateUtils.isNull(checkRecord)){
+				state = patientLivingHabitsInfoWriteMapper.insertSelective(record);
+			}else{
+				// 有数据 的场合，更新处理
+				state = patientLivingHabitsInfoWriteMapper.updateByPatientIdSelective(record);
+			}
+			
 			
 			ModelMap modelMap = new ModelMap();
-			modelMap.setUpdateFlag(updattCount);
-			if(updattCount == 0){
+			modelMap.setUpdateFlag(state);
+			if(state == 0){
 				// 更新失败
 				modelMap.setMessage(MsgConstant.UPDATEINFO002);
 			}else{

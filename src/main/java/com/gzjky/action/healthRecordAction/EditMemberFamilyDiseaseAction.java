@@ -59,7 +59,7 @@ public class EditMemberFamilyDiseaseAction extends ActionSupport{
 			List<PatientFamilyGeneticHistoryDetail> recordList = new ArrayList<PatientFamilyGeneticHistoryDetail>();
 			
 			// 参数设定
-			historyRecord.setPatientid(1);
+			historyRecord.setPatientid(patientId);
 			historyRecord.setIshighbloodpressure(request.getParameter("heighBloodPressure"));// 高血压
 			historyRecord.setIshyperlipidemia(request.getParameter("heighBloodFat"));// 高血脂
 			historyRecord.setIsdiabetes(request.getParameter("diabetesMellitus"));// 糖尿病
@@ -165,15 +165,17 @@ public class EditMemberFamilyDiseaseAction extends ActionSupport{
 		List<String> heighBloodPressureRelationNameList = getPara(relationship);
 		List<String> heighBloodPressureRelationYearList = getPara(sickYear);
 		
-		for(int i = 0; i<heighBloodPressureRelationNameList.size(); i++){
-			PatientFamilyGeneticHistoryDetail historyDetailRecord = new PatientFamilyGeneticHistoryDetail();// 家族成员疾病史
-		
-			historyDetailRecord.setPatientid(patientId);
-			historyDetailRecord.setDiaseasename(diaseaseName);
-			historyDetailRecord.setRelationship(heighBloodPressureRelationNameList.get(i));
-			historyDetailRecord.setSickyear(heighBloodPressureRelationYearList.get(i));
+		if(!VaildateUtils.isEmptyList(heighBloodPressureRelationNameList)){
+			for(int i = 0; i<heighBloodPressureRelationNameList.size(); i++){
+				PatientFamilyGeneticHistoryDetail historyDetailRecord = new PatientFamilyGeneticHistoryDetail();// 家族成员疾病史
 			
-			recordList.add(historyDetailRecord);
+				historyDetailRecord.setPatientid(patientId);
+				historyDetailRecord.setDiaseasename(diaseaseName);
+				historyDetailRecord.setRelationship(heighBloodPressureRelationNameList.get(i));
+				historyDetailRecord.setSickyear(heighBloodPressureRelationYearList.get(i));
+				
+				recordList.add(historyDetailRecord);
+			}
 		}
 	}
 }
