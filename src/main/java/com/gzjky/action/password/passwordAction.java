@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.base.mail.mailControl;
 import com.gzjky.base.util.password.PwdUtil;
+import com.gzjky.bean.gen.UserAndPatient;
 import com.gzjky.bean.gen.UserInfo;
 import com.gzjky.bean.gen.UserPasswordFind;
 import com.gzjky.dao.readdao.UserInfoReadMapper;
@@ -17,9 +18,10 @@ import com.gzjky.dao.writedao.UserAndPatientWriteMapper;
 import com.gzjky.dao.writedao.UserInfoWriteMapper;
 import com.gzjky.dao.writedao.UserPasswordFindWriteMapper;
 import com.opensymphony.xwork2.ActionSupport;
-
+import com.gzjky.base.util.date.DateUtil;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -72,47 +74,64 @@ public class passwordAction extends ActionSupport {
 		// 邮箱
 		email = request.getParameter("email");
 	
-		//userPasswordFind表信息处理
-		UUID uuid = UUID.randomUUID();
-		UserPasswordFind userPasswordFind = new UserPasswordFind();
-		userPasswordFind.setUid(uuid.toString());
-		userPasswordFind.setUserid(userInfoReadMapper.selectUserByUserName(loginId).getId());
-		Date now = new Date();
-		userPasswordFind.setBegintime(now);
-		Calendar rightNow = Calendar.getInstance();
-		rightNow.setTime(now);
-		//日期加1天
-		rightNow.add(Calendar.DAY_OF_YEAR,1);
-		userPasswordFind.setEndtime(rightNow.getTime());
-		Random r=new Random();
-		String newPassword = String.valueOf(r.nextInt(9))
-				+String.valueOf(r.nextInt(9))
-				+String.valueOf(r.nextInt(9))
-				+String.valueOf(r.nextInt(9))
-				+String.valueOf(r.nextInt(9))
-				+String.valueOf(r.nextInt(9));
-		userPasswordFind.setNewpassword(newPassword);
-		userPasswordFindWriteMapper.insert(userPasswordFind);
+		int userId= userInfoReadMapper.selectUserByUserName(loginId).getId();
 		
-		mailControl mail = new mailControl(); 
-		mail.setTo("87547931@qq.com");
-		mail.setFrom("13761370411@163.com");// 你的邮箱
-		mail.setHost("smtp.163.com");
-		mail.setUsername("13761370411@163.com");// 用户
-		mail.setPassword("jhizhrxvbmmvvinn");// 密码
-		mail.setSubject("我忘记密码了！");
-		mail.setContent("尊敬的用户： "
-        		+ loginId+"，通过您提交的忘记密码申请，新密码已被系统随机设置为："
-				+ newPassword
-				+ "，点此链接马上激活新密码:"
-				+ "http://localhost:8080/gzjky/jsp/password/active_new_pwd.jsp?sign="
-				+ uuid.toString()
-				+ "，请在一个小时内处理此业务，超过时间上次申请将无效！");
-		
-		if (!mail.sendMail()) {
-			//连接邮件服务失败
-        	result= "-1";
+		//一小时内是否已发送密码重置邮件
+		List<UserPasswordFind> userPasswordFindList = null ;
+		userPasswordFindList = userPasswordFindReadMapper.selectByUserID(userId);
+		if(userPasswordFindList.size()!=0){
+			Date begin = new Date();
+			long minute = DateUtil.dateDiff(userPasswordFindList.get(0).getEndtime(),begin);
+			if (minute <60)
+			{
+				result= "-3";
+			}
 		}
+		
+		if(!result.equals("-3")){
+			//userPasswordFind表信息处理
+			UUID uuid = UUID.randomUUID();
+			UserPasswordFind userPasswordFind = new UserPasswordFind();
+			userPasswordFind.setUid(uuid.toString());
+			userPasswordFind.setUserid(userId);
+			Date now = new Date();
+			userPasswordFind.setBegintime(now);
+			Calendar rightNow = Calendar.getInstance();
+			rightNow.setTime(now);
+			//日期加1天
+			rightNow.add(Calendar.DAY_OF_YEAR,1);
+			userPasswordFind.setEndtime(rightNow.getTime());
+			Random r=new Random();
+			String newPassword = String.valueOf(r.nextInt(9))
+					+String.valueOf(r.nextInt(9))
+					+String.valueOf(r.nextInt(9))
+					+String.valueOf(r.nextInt(9))
+					+String.valueOf(r.nextInt(9))
+					+String.valueOf(r.nextInt(9));
+			userPasswordFind.setNewpassword(newPassword);
+			userPasswordFindWriteMapper.insert(userPasswordFind);
+			
+			mailControl mail = new mailControl(); 
+			mail.setTo("87547931@qq.com");
+			mail.setFrom("13761370411@163.com");// 你的邮箱
+			mail.setHost("smtp.163.com");
+			mail.setUsername("13761370411@163.com");// 用户
+			mail.setPassword("jhizhrxvbmmvvinn");// 密码
+			mail.setSubject("我忘记密码了！");
+			mail.setContent("尊敬的用户： "
+	        		+ loginId+"，通过您提交的忘记密码申请，新密码已被系统随机设置为："
+					+ newPassword
+					+ "，点此链接马上激活新密码:"
+					+ "http://localhost:8080/gzjky/jsp/password/active_new_pwd.jsp?sign="
+					+ uuid.toString()
+					+ "，请在一个小时内处理此业务，超过时间上次申请将无效！");
+			
+			if (!mail.sendMail()) {
+				//连接邮件服务失败
+	        	result= "-1";
+			}
+		}
+		
 		try {			
 			ModelMap modelMap = new ModelMap();
 			modelMap.setResult(result);
@@ -142,6 +161,7 @@ public class passwordAction extends ActionSupport {
 	public String activePwd() {
 		
 		String result = "";
+		
 		// 页面参数取得
 		HttpServletRequest request = ServletActionContext.getRequest();
 		// 用户名
@@ -150,13 +170,13 @@ public class passwordAction extends ActionSupport {
 		UserPasswordFind userPasswordFind = new UserPasswordFind();
 		userPasswordFind = userPasswordFindReadMapper.selectByPrimaryKey(uid);
 		result = String.valueOf(userInfoWriteMapper.updatePasswordById(userPasswordFind.getUserid(), PwdUtil.CreateDbPassword(userPasswordFind.getNewpassword()))) ;
-				
+		
 		if(result.equals("1")){
 			return "success";
 		}
 		else{
 			//设置 error内容
-	    	errorMessage= "用户名或密码错误!";
+	    	errorMessage= "密码更新失败!";
 	        return "error";
 		}
 	
