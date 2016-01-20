@@ -47,7 +47,7 @@
 			if(!jQuery('#changePwd_form').validationEngine("validate")){
 				return false;
 		   }
-		  var requestUrl = "/healthRecordAction/changePwd.action";
+		  var requestUrl = "/gzjky/findPwd/changePwdByUser.do";
 		  var para = $("#changePwd_form").dataForJson({prefix:''});
 	  	   showScreenProtectDiv(1);
 		   showLoading();
@@ -64,11 +64,11 @@
 				error:function(){
 					$.alert('无权限');
 				},success:function(response){
-				    var modelMap = response.modelMap;
-				    var state = modelMap.state;
-				    if(state == "0"){
+				    var modelMap = response;
+				    var state = modelMap.result;
+				    if(state == "1"){
 				    	$.alert("修改成功");
-				    }else if(state == "-2"){
+				    }else if(state == "-1"){
 				    	$.alert("输入旧密码不正确");
 				    }else{
 				    	$.alert("修改失败");

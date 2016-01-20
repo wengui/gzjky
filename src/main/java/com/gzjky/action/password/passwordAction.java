@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.base.mail.mailControl;
 import com.gzjky.base.util.password.PwdUtil;
+import com.gzjky.bean.extend.UserinfoAndPatientinfoBean;
 import com.gzjky.bean.gen.UserAndPatient;
 import com.gzjky.bean.gen.UserInfo;
 import com.gzjky.bean.gen.UserPasswordFind;
@@ -17,6 +18,7 @@ import com.gzjky.dao.writedao.PatientInfoWriteMapper;
 import com.gzjky.dao.writedao.UserAndPatientWriteMapper;
 import com.gzjky.dao.writedao.UserInfoWriteMapper;
 import com.gzjky.dao.writedao.UserPasswordFindWriteMapper;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.gzjky.base.util.date.DateUtil;
 import java.util.Calendar;
@@ -60,6 +62,12 @@ public class passwordAction extends ActionSupport {
 	private String phoneCheckcode;
 	//错误信息
 	private String errorMessage;
+	
+
+	//旧密码
+	private String oldpasswd;
+	//新密码
+	private String newpasswd;
 	
 	/*
 	 * 用户登录系统
@@ -234,7 +242,7 @@ public class passwordAction extends ActionSupport {
 		// 用户名
 		loginId = request.getParameter("login_id");
 		// 用户名
-		passwd = request.getParameter("passwd");
+		passwd = request.getParameter("oldPwd");
 			
 		result = String.valueOf(userInfoWriteMapper.updatePasswordByName(loginId, PwdUtil.CreateDbPassword(passwd)));
 
@@ -260,6 +268,55 @@ public class passwordAction extends ActionSupport {
 		return "success";
 		
 	}
+	
+	/*
+	 * 用户手动密码修改
+	 */
+	public String changePwdByUser() {
+		
+		String result = "";
+		// 用户名
+		UserInfo userInfo = (UserInfo)ActionContext.getContext().getSession().get("user");
+		// 页面参数取得
+		HttpServletRequest request = ServletActionContext.getRequest();		
+		// 用户名
+		oldpasswd = request.getParameter("oldPwd");
+			
+		newpasswd = request.getParameter("newPwd");
+		
+		//判断旧密码是否正确
+		 if(!PwdUtil.ComparePasswords(userInfo.getPassword(), oldpasswd)){
+			 
+			result="-1"; 			
+		 }
+		 else{
+			 result = String.valueOf(userInfoWriteMapper.updatePasswordByName(userInfo.getName(), PwdUtil.CreateDbPassword(newpasswd)));
+		 }
+
+		try {			
+			ModelMap modelMap = new ModelMap();
+			modelMap.setResult(result);
+
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out = null;
+			out = response.getWriter();
+			// 将java对象转成json对象
+			JSONObject jsonObject = JSONObject.fromObject(modelMap);// 将list转换为json数组
+			out.print(jsonObject);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "success";
+		
+	}
+	
+	
 	public String getLoginId() {
 		return loginId;
 	}
@@ -306,6 +363,24 @@ public class passwordAction extends ActionSupport {
 
 	public void setPhoneCheckcode(String phoneCheckcode) {
 		this.phoneCheckcode = phoneCheckcode;
+	}
+	public String getOldpasswd() {
+		return oldpasswd;
+	}
+
+
+	public void setOldpasswd(String oldpasswd) {
+		this.oldpasswd = oldpasswd;
+	}
+
+
+	public String getNewpasswd() {
+		return newpasswd;
+	}
+
+
+	public void setNewpasswd(String newpasswd) {
+		this.newpasswd = newpasswd;
 	}
 
 }
