@@ -37,15 +37,7 @@
 	function QueryHealth(){
 		//2016/1/13 liu test START 用
 		{
-			var headTitle="近期血压趋势图";
-			var morningHeadTitle="血压等级分析依据图";
-			var newMorningHeadTitle="近期晨峰血压趋势图";
-			//显示最新血压趋势图
-			//bloodPressureCharts(null,headTitle,"0");
-			//显示最新晨峰血压趋势图
-			//bloodPressureCharts(null,newMorningHeadTitle,"2");
-			//显示血压等级分析依据图
-			bloodPressureCharts(null,morningHeadTitle,"1");
+			bloodPressureCharts(null,"血压等级分析依据图","1");
 		}
 		//2016/1/13 liu test END 用
 		
@@ -53,6 +45,7 @@
 		queryDoctorAdvice();//查询用户的最新医嘱
 		queryConsultive();//查询用户的最新咨询回复
 		queryDiagnose();//查询用户的血压趋势图
+		queryDoctorReport();//查询周报月报信息
 		if(true)queryEcg();//查询用户的心电信息
 		var week = "星期" + "日一二三四五六".split("")[new Date().getDay()];
 		$('#today').text(getdate()+week);
@@ -72,7 +65,7 @@
 			},
 			success:function(response) {
 				var modelMap = response.result;
-				if(result = null){
+				if(modelMap == null){
 					return;
 				}
 				
@@ -141,7 +134,7 @@
 		});
 	}
 	function drawAdvice(doctorAdvice){
-		if(doctorAdvice==null){
+		if(doctorAdvice==null || doctorAdvice.length == 0){
 			return;
 		}
 		var advice = doctorAdvice[0];
@@ -290,6 +283,73 @@
 			
 			}
 		});
+	}
+	
+	//最新医生医嘱
+	function queryDoctorReport(){
+		$.ajax({
+			url:"/gzjky/healthStatus/queryDoctorReport.do",
+			async:true,
+			data:"",
+			dataType:"json",
+			type:"POST",
+			error:function(){
+				$.alert("发生异常","请注意");
+			},
+			success:function(response) {
+				var modelMap = response.result;
+				//显示最新医嘱内容
+				drawReport(modelMap);
+			}
+		});
+	}
+	
+	function drawReport(report){
+		if(report==null){
+			return;
+		}else{
+			
+			//血压等级分析
+			if (report.bloodlevel == null||report.bloodlevel == ""||report.bloodlevel == "null") {
+				$("#pressure_level").html("暂无&nbsp;&nbsp;&nbsp;&nbsp;<br><a href='javascript:void(0);' style='font-size: 13px; text-decoration: underline;' onclick='bloodPressureStandard();'>高血压分级标准</a>");
+			} else {
+				$("#pressure_level").html(report.bloodlevel+"&nbsp;&nbsp;<br><a href='javascript:void(0);' style='font-size: 13px; text-decoration: underline;' onclick='bloodPressureStandard();'>高血压分级标准</a>");
+			
+			}
+			//心血管分层
+			if (report.riskstratification == null||report.riskstratification == ""||report.riskstratification == "null") {
+				$("#risk_level").html("暂无");
+			} else {
+				$("#risk_level").html(report.riskstratification);
+			}
+			//保健建议
+			if(report.healthadvice !=null && report.healthadvice != ""){
+				$("#health_suggest").html(report.healthadvice);
+			}else{
+				$("#health_suggest").html("暂无");
+			}
+			
+			if(report.analysisResult == "undefined"){
+				$("#doctor_bpana").css("display","none");
+				$("#doctor_bpreport").css("display","none");
+				$("#doctor_spana").css("display","none");
+				$("#doctor_suggest").css("display","none");
+			}else{
+				//医生分析
+				if(report.analysisresult !=null && report.analysisresult != ""){
+					$("#doctor_bpreport").html(report.analysisresult);
+				}else{
+					$("#doctor_bpreport").html("暂无");
+				}
+				//医生建议
+				if(report.doctorhealthadvice !=null && report.doctorhealthadvice != ""){
+					$("#doctor_suggest").html(report.doctorhealthadvice);
+				}else{
+					$("#doctor_suggest").html("暂无");
+				}				
+			}
+		}
+		
 	}
 	//保健建议、血压诊断
 	function showDiagnose(typeLvl,suggestionList,riskLvl,angiocarpyList,angiocarpyNewList,bpcompleted,versio) {
@@ -531,7 +591,7 @@
 	}
 
 	//查询心电信息 
-	 var hly_url=  "http://v3.995120.cn:7090/hly_svr";
+	var hly_url=  "http://v3.995120.cn:7090/hly_svr";
 	function queryEcg(){
 		$.ajax({
 			url:"/healthStatus/queryEcgHeartRateAndReport.action",
@@ -772,10 +832,13 @@
 						<li class="tgreen_results" style="font-size: 16px; padding-left:20px">诊断依据：</li>
 						<li class="tblack_results" id="angiocarpy" style="font-size: 13px; padding-left:30px">暂无</li>
 						
-						<li class="tgreen_results" id="doctor_bpana" style="font-size: 16px; padding-left:20px;display: none;">医生分析</li>
-          				<li class="tblack_results" id="doctor_bpreport" style="font-size: 13px; padding-left:30px;display: none;">暂无</li>
+						<li class="tgreen_results" id="doctor_bpana" style="font-size: 16px; padding-left:20px;">医生分析</li>
+          				<li class="tblack_results" id="doctor_bpreport" style="font-size: 13px; padding-left:30px;">暂无</li>
 						
-						<li class="tgreen_results" id="suggest_name" style="font-size: 16px; padding-left:20px">保健建议</li>
+						<li class="tgreen_results" id="doctor_spana" style="font-size: 16px; padding-left:20px;">医生建议</li>
+          				<li class="tblack_results" id="doctor_suggest" style="font-size: 13px; padding-left:30px;">暂无</li>
+          				
+						<li class="tgreen_results" style="font-size: 16px; padding-left:20px">保健建议</li>
           				<li class="tblack_results" id="health_suggest" style="font-size: 13px; padding-left:30px">暂无</li>
 
 					</ul>
