@@ -22,43 +22,43 @@
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+
 <!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet"/>
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet"/>
 <!-- scripts -->
 <script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 	$.metadata.setType("attr", "validate");
-	$(function(){$("#editform").validate({
+	$(function(){$("#memberBindDevice_form").validate({
 		messages:{
-        	'memberDeviceBind.member_login_id':{
+        	'member_login_id':{
 			required:"新用户不能为空.",
 			alphanumeric:"只能输入字母，数字与下划线."
-        	},'memberDeviceBind.member_login_id1':{
+        	},'member_login_id1':{
 			required:"新用户不能为空.",
 			alphanumeric:"只能输入字母，数字与下划线."
-        	},'memberDeviceBind.member_login_id2':{
+        	},'member_login_id2':{
 			alphanumeric:"只能输入字母，数字与下划线."
-        	},'memberDeviceBind.device_bind_code':{
+        	},'device_bind_code':{
         	required:"绑定码不能为空.",
         	rangelength:"绑定码有效长度为6位.",
 			alphanumeric:"只能输入字母，数字与下划线."
        		}
+      	},
+      	errorPlacement: function(error, element) { 
+      	     error.appendTo(element.parent()); 
       	}
 	});
-	});
+	}); 
 	
 	
 	var device_sid;
 	var device_bind_code;
 	var device_ver;
 	var check_sid=false;
-	
+	var devicebind_count;
+	var device_id;
 	function queryVersion(){	
  	
 		device_sid=$("#device_sid").val();
@@ -72,7 +72,7 @@
 
 		var para="device_sid="+device_sid;
 		$.ajax({
-			url: "/deviceBaseInfo/queryDeviceBySid.action",
+			url: "/gzjky/device/queryDeviceBySid.do",
 			async:true,
 			data: para,
 			dataType:"json",
@@ -84,35 +84,65 @@
 			error:function(){
 				$.alert("异常！");
 			},success:function(response){
-				var modelMap=response.modelMap;
-				var deviceBaseInfo=modelMap.deviceBaseInfo;
+				var deviceBaseInfo=response.result;
+				var list = new Array();
+				list=response.outBeanList;
+				devicebind_count=list.length;
 				if(deviceBaseInfo==null){
 					$.alert("设备序列号不存在！");		
-				}							
+				}
+	
 				else{				
 					check_sid=true;
-					device_ver=  deviceBaseInfo.version;						
-					if(device_ver=="108"){		
-						var str="";
-						str+="<li>绑定新用户A：</li>";
-						str+="<li class='register_input'>";	
-						str+="<input type='text'  id='member_login_id1'  name='member_login_id1'   maxlength='30' validate='required:true,alphanumeric:true,rangelength:[5,30]'/>";	
-						str+="</li>";
-						str+="<li>绑定新用户B：</li>";
-						str+="<li class='register_input'>";
-						str+="<input type='text'  id='member_login_id2'  name='member_login_id2' maxlength='30'  validate='alphanumeric:true,rangelength:[5,30]'/>";
-						str+="</li>";
-
-						$("#new_user").html(str);	    
-					}                                    	
-	              
+					device_ver=  deviceBaseInfo.equipmentversion;	
+					device_id = deviceBaseInfo.id;	
+					if(device_ver=="108"){	
+						if(list.length >1){
+							$.alert("该设备已绑定两个账户！");		
+						}	
+						else if(list.length == 0){
+							var str="";
+							str+="<li>此次绑定用户：</li>";
+							str+="<li class='register_input'>";	
+							str+="<input type='text' readonly='readonly' "+"value="+ "${sessionScope.Patient.pname}"+" id='member_login_id1'  name='member_login_id1'   maxlength='30' />";	
+							str+="</li>";
+							$("#new_user").html(str);	
+						}
+						else if(list.length == 1){
+							if("${sessionScope.Patient.pid}"==list[0].id){
+								$.alert("该设备已被绑定！");	
+							}
+							else{
+								var str="";
+								str+="<li>已绑定用户：</li>";
+								str+="<li class='register_input'>";	
+								str+="<input type='text' readonly='readonly' "+"value="+ list[0].patientname+" id='member_login_id1'  name='member_login_id1'   maxlength='30' />";	
+								str+="</li>";
+								str+="<li>此次绑定用户：</li>";
+								str+="<li class='register_input'>";
+								str+="<input type='text' readonly='readonly'"+"value="+"${sessionScope.Patient.pname}"+" id='member_login_id2'  name='member_login_id2' maxlength='30'  />";
+								str+="</li>";
+								$("#new_user").html(str);	
+							}						
+						}						    
+					}                                    		              
 					else{
-						var str="";
-						str+="<li>绑定新用户：</li>";
-						str+="<li class='register_input'>	";
-						str+="<input type='text'  id='member_login_id'  name='member_login_id' maxlength='30'  validate='required:true,alphanumeric:true,rangelength:[5,30]'/>";
-						str+="</li>";
-						$("#new_user").html(str);	  
+						if(list.length >0){
+							$.alert("该设备已绑定一个账户！");		
+						}
+						else{
+							if("${sessionScope.Patient.pid}"==list[0].id){}
+							else{
+								var str="";
+								str+="<li>此次绑定用户：</li>";
+								str+="<li class='register_input'>	";
+								str+="<input type='text' readonly='readonly'"+"value=222 " +" id='member_login_id'  name='member_login_id' maxlength='30'  />";
+								str+="</li>";
+								$("#new_user").html(str);	
+							}
+							
+						}
+						  
 					} 
 				} 		 
 			}
@@ -129,25 +159,21 @@
 			return false;
 		} 
 		
+		if($("#member_login_id1").val()==undefined){
+			return false;
+		} 
+		
 		var member_login_id;
 		device_sid=$("#device_sid").val();		
 		device_bind_code=$("#device_bind_code").val();
 		
-		if(device_ver=="108"){
-			var member_login_id1=$("#member_login_id1").val();
-			var member_login_id2=$("#member_login_id2").val();
-			member_login_id=member_login_id1+";"+member_login_id2;
-		}
-		else{
-			member_login_id=$("#member_login_id").val();
-		}
-		
-		var para="device_sid="+device_sid+"&member_login_id="+member_login_id+"&device_bind_code="+device_bind_code+"&version="+device_ver;
+
+		var para="device_sid="+device_sid+"&device_bind_code="+device_bind_code+"&count="+devicebind_count +"&device_id="+device_id+"&device_ver="+device_ver;
 	
 		showScreenProtectDiv(1); 
 		showLoading();
 		$.ajax({
-					url: "/deviceBaseInfo/memberBindDevice.action",
+					url: "/gzjky/device/deviceBind.do",
 					async:true,
 					data: para,
 					dataType:"json",
@@ -159,8 +185,8 @@
 					error:function(){
 						$.alert("异常！");
 					},success:function(response){
-						if(response=="绑定成功！"){
-							$.alert(response,function(){returnEquipment();});
+						if(response.message=="绑定成功！"){
+							$.alert(response.message,function(){returnEquipment();});
 							//returnEquipment();
 						}
 						else{
