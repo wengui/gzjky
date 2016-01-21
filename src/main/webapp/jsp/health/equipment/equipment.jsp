@@ -272,7 +272,7 @@
 			$("#"+picId+"_"+i).attr("src", "/gzjky/images/icon/btn_off.png");
 			}else{
 				$.confirm('你确认取消血压通知吗?', function() {
-					bloodpressureNotice(i,"off");
+					bloodpressureNotice(i,"0");
 					$("#"+picId+"_"+i).attr("src", "/gzjky/images/icon/btn_off.png");
 					$("#"+picId+"_"+i).attr("title", "点击开启测压通知");
 					$("#"+picId+"_"+i).nextAll().remove();
@@ -285,7 +285,7 @@
 					$("#"+picId+"_"+i).attr("src", "/gzjky/images/icon/btn_on.png");
 				}else{
 			$.confirm('你确认增加血压通知吗?', function() {
-				bloodpressureNotice(i,"on");
+				bloodpressureNotice(i,"1");
 				$("#"+picId+"_"+i).attr("src", "/gzjky/images/icon/btn_on.png");
 				$("#"+picId+"_"+i).attr("title", "点击关闭测压通知");
 				$("#"+picId+"_"+i).nextAll().remove();
@@ -297,25 +297,23 @@
 	//血压通知
 	function bloodpressureNotice(i,isAdd){
 	    var url ='';
-	    if(isAdd == "on"){
-	       url = "/deviceBaseInfo/insertBloodPressureNotice.action";
-	    }else{
-	     url = "/deviceBaseInfo/cancelBloodPressureNotice.action";
-	    }
-	   var paramt="device_unit_id="+deviceBaseInfoList[i].unit_id+"&device_cluster_id="+deviceBaseInfoList[i].cluster_id+"&device_unit_type="+deviceBaseInfoList[i].unit_type;
+
+	   url = "/gzjky/device/updateBloodPressureNotice.do";
+	
+	   //var paramt="device_unit_id="+deviceBaseInfoList[i].unit_id+"&device_cluster_id="+deviceBaseInfoList[i].cluster_id+"&device_unit_type="+deviceBaseInfoList[i].unit_type;
+	   var param="device_id="+deviceBaseInfoList[i].id+"&f_id="+deviceBaseInfoList[i].fId+"&isAdd="+isAdd
 		xmlHttp =$.ajax({
 			url : url,
 			async : true,
-			data : paramt,
+			data : param,
 			dataType : "json",
 			type : "POST",
 			error : function() {
 				$.alert("发生异常");
 			},
 			success : function(response) {
-				var modelMap = response.modelMap;
-				var state = modelMap.state;
-				if(state =='0'){
+				var state = modelMap.result;
+				if(state =='1'){
 					$.alert('操作成功');
 				}
 			}

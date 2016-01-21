@@ -294,6 +294,59 @@ public class deviceAction extends ActionSupport {
 			result=pJcXybjSetWriteMapper.updateByPrimaryKeySelective(pj);		
 		}
 
+		try {			
+			ModelMap modelMap = new ModelMap();
+			modelMap.setResult(result);
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out = null;
+			out = response.getWriter();
+			// 将java对象转成json对象
+			JSONObject jsonObject = JSONObject.fromObject(modelMap);// 将list转换为json数组
+			out.print(jsonObject);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "success";
+		
+
+	}
+	
+	/*
+	 * 阈值信息录入
+	 */
+	public String updateBloodPressureNotice() {
+		
+		int result;
+		
+		// 页面参数取得
+		HttpServletRequest request = ServletActionContext.getRequest();
+		// 设备用户关系信息
+		String fid = request.getParameter("f_id");
+		String isAdd = request.getParameter("isAdd");
+		String eid = request.getParameter("device_id");
+		PJcXybjSet pj= new PJcXybjSet();
+	
+		if(fid==null||fid.equals("")){
+			// 获取当前Patient信息
+			UserinfoAndPatientinfoBean userinfoAndPatientinfo = (UserinfoAndPatientinfoBean) ActionContext.getContext()
+					.getSession().get("Patient");
+			//insert操作			
+			pj.setIsdelete(false);
+			pj.setEid(Integer.parseInt(eid));
+			pj.setUid(userinfoAndPatientinfo.getPid());			
+			result=pJcXybjSetWriteMapper.insertSelective(pj);		
+		}
+		else{
+			pj.setId(Integer.parseInt(fid));
+			pj.setNoticeflag(Integer.parseInt(isAdd));
+			result=pJcXybjSetWriteMapper.updateByPrimaryKeySelective(pj);		
+		}
 
 		try {			
 			ModelMap modelMap = new ModelMap();

@@ -31,5 +31,9 @@
 	<action name="insertMemberBloodPressureThreshold" class="com.gzjky.action.device.deviceAction" method="insertMemberBloodPressureThreshold">
 
 	</action>
+	<!-- 修改血压通知-->
+	<action name="updateBloodPressureNotice" class="com.gzjky.action.device.deviceAction" method="updateBloodPressureNotice">
+
+	</action>
 	</package>
 </struts>
