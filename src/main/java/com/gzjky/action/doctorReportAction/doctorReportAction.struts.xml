@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="doctorReportAction" extends="struts-base" namespace="/doctorReportAction">
+	
+	<!-- 血压查询 -->
+	<action name="queryReportList" class="com.gzjky.action.doctorReportAction.QueryDoctorReportListAction" method="getList"/>
+	</package>
+</struts>

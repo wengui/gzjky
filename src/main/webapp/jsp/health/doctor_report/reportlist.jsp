@@ -51,7 +51,7 @@
 		  var para = "startDate=" + startDate + "&endDate=" + endDate
 			  +"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
 		  
-		  requestUrl = "/doctorReportAction/queryReportList.action";
+		  requestUrl = "/gzjky/doctorReportAction/queryReportList.do";
 		  showScreenProtectDiv(2);
 		  showLoading();
 		  xmlHttp = $.ajax({
@@ -65,14 +65,13 @@
 			        hideLoading();
 				},
 				success:function(response){
-				    var modelMap = response.modelMap;
-				    recordList = modelMap.reportList;
-				    if(modelMap.recordTotal==undefined){
-				    	$.fn.page.settings.count = 1;
-				    }else{
-				    	$.fn.page.settings.count = modelMap.recordTotal;
-				    }
+					
+					// 数据取得
+					recordList = response.outBeanList;
+				
+					$.fn.page.settings.count = response.recordTotal;
 					page($.fn.page.settings.currentnum);
+
 				}
 			});
 	  
@@ -94,19 +93,19 @@
 	 var rowcount=table.rows.length;
 	 var tr=table.insertRow(rowcount);
 	 var i = 0;
-	 var type= recordList[index].type;
+	 var type= recordList[index].reportType;
 	 	td=tr.insertCell(0);
-	    td.innerHTML = recordList[index].create_time.substring(0,19);
+	    td.innerHTML = recordList[index].createdOn.substring(0,19);
 	    td.align="center";
 	    
 	    td=tr.insertCell(1);
-	    td.innerHTML =  type==2?'周报':type==3?'月报':type==4?'高血压预判':type==5?'高血压总结':'';
+	    td.innerHTML =  type==1?'周报':type==2?'月报':type==4?'高血压预判':type==5?'高血压总结':'';
 	    
 	    td=tr.insertCell(2);
-	    td.innerHTML =  recordList[index].hosptial_name;
+	    td.innerHTML =  recordList[index].hospitalName;
 	    
 	    td=tr.insertCell(3);
-	    td.innerHTML =  recordList[index].doctor_name;
+	    td.innerHTML =  recordList[index].doctorName;
 	    
 	    
 	    var report = recordList[index].report;
@@ -118,7 +117,9 @@
 	    
 	    td=tr.insertCell(4);
 	    td.obj = obj;
-	    td.innerHTML = "<a href='javascript:void(0)' onclick=\"showDetail(this.parentNode.obj)\">详情</a>";
+	    //td.innerHTML = "<a href='javascript:void(0)' onclick=\"showDetail(this.parentNode.obj)\">详情</a>";
+	    td.innerHTML = "<a href='javascript:void(0)' onclick=\"showDetail("+index+")\">详情</a>";
+	    
 	  
 	    
   }
@@ -173,25 +174,38 @@
 		$("#monthreport_detail").show(200);
 		showScreenProtectDiv(1);
   	}
-  	function showDetail(obj){
+  	//function showDetail(obj){
+  	function showDetail(index){
+  		var report = recordList[index]
   		//周报
-  		if(obj.type==2||obj.type==4){
-  			analyzeWeek(obj.report_content,obj.report);
-  			if(obj.type==2){
-  				$("#detail_title").html("周报详情");
-  			}else{
-  				$("#detail_title").html("高血压预判详情");
-  			}
+  		if(report.reportType==1){
+  			analyzeWeek(report);
+  			$("#detail_title").html("周报详情");
   			openWeekReport();
-  		}else if(obj.type==3||obj.type==5){
-  			analyzeMonth(obj.report_content,obj.report);
-  			if(obj.type==3){
-  				$("#detail_monthreport").html("月报详情");
-  			}else{
-  				$("#detail_monthreport").html("高血压跟踪详情");
-  			}
+  		}else if(report.reportType==2){
+  			analyzeMonth(report);
+			$("#detail_monthreport").html("月报详情");
   			openMonthReport();
   		}
+  
+  		//周报
+//   		if(obj.type==2||obj.type==4){
+//   			analyzeWeek(obj.report_content,obj.report);
+//   			if(obj.type==2){
+//   				$("#detail_title").html("周报详情");
+//   			}else{
+//   				$("#detail_title").html("高血压预判详情");
+//   			}
+//   			openWeekReport();
+//   		}else if(obj.type==3||obj.type==5){
+//   			analyzeMonth(obj.report_content,obj.report);
+//   			if(obj.type==3){
+//   				$("#detail_monthreport").html("月报详情");
+//   			}else{
+//   				$("#detail_monthreport").html("高血压跟踪详情");
+//   			}
+//   			openMonthReport();
+//   		}
   	}
 </script>
 </head>
@@ -331,120 +345,51 @@
 </style>
 <script type="text/javascript">
 	//解析周报XML
-	function analyzeWeek(xml,report) {
-		
-		var doctor_report = "report_content="+report;
-
-		xmlHttp = $.ajax({
-			url:"/doctorReportAction/analyzeDoctorReport.action",
-			async:true,
-			data:doctor_report,
-			dataType:"json",
-			type:"POST",
-			success:function(response) {
-				var modelMap = response.modelMap;
-				var doctor_reports = modelMap.doctor_report;
+	//function analyzeWeek(xml,report) {
+	function analyzeWeek(bpWeekReport) {
+// 		var doctor_report = "report_content="+report;
+// 		xmlHttp = $.ajax({
+// 			url:"/doctorReportAction/analyzeDoctorReport.action",
+// 			async:true,
+// 			data:doctor_report,
+// 			dataType:"json",
+// 			type:"POST",
+// 			success:function(response) {
+// 				var modelMap = response.modelMap;
+// 				var doctor_reports = modelMap.doctor_report;
 				
-				if(doctor_reports!=null){
+// 				if(doctor_reports!=null){
 			
-					$("#detail_doctor_report").html(doctor_reports.report);
-					$("#detail_doctor_suggest").html(doctor_reports.Suggestion);
-				}
-				}
-			});
+// 					$("#detail_doctor_report").html(doctor_reports.report);
+// 					$("#detail_doctor_suggest").html(doctor_reports.Suggestion);
+// 				}
+// 				}
+// 			});
 	
-		xml =  encodeURI(xml);  
-		xml =  encodeURI(xml); 
-		var para = "report_content="+xml;
-		
-		xmlHttp = $.ajax({
-			url:"/doctorReportAction/analyzeWeekReport.action",
-			async:true,
-			data:para,
-			dataType:"json",
-			type:"POST",
-			success:function(response) {
-				var modelMap = response.modelMap;
-				var bpWeekReport = modelMap.bpWeekReport;
-				if(bpWeekReport!=null){
-					if(bpWeekReport.version=='1.0.0'){
-						firstWeekVersion(bpWeekReport);
-					}else if(bpWeekReport.version=='1.1.0'){
-						$("#secondview").css("display","block"); 
-						$("#view").css("display","none"); 
-						secondWeekVersion(bpWeekReport);
-					}
-					
-				}
-		}
-	});
+		secondWeekVersion(bpWeekReport);
 	}
-	//第一版本周报解析
-	function firstWeekVersion(bpWeekReport){
-		bloodPressureCharts(bpWeekReport.records,'血压趋势图');
-		var target_diastole='';
-		var target_shrink = '';
-		if(bpWeekReport.target_shrink!=''){
-			target_shrink = bpWeekReport.target_shrink+"mmHg";
-			$("#target_shrink").html("目标收缩压:"+target_shrink);
-		}
-		if(bpWeekReport.target_diastole!=''){
-			target_diastole = bpWeekReport.target_diastole+"mmHg";
-			$("#target_diastole").html("目标舒张压:"+target_diastole);
-		}
-		var avgBp = '';
-		if(bpWeekReport.avgBp!=''){
-			var arr = bpWeekReport.avgBp.split(",");
-			avgBp = "收缩压:"+arr[0]+"mmHg,收缩压:"+arr[1]+"mmHg";
-		}
-		$("#tracking_date").html(avgBp);
-		var riskLvl = bpWeekReport.risk;
-		var riskLvls=["低危","中危","高危","很高危"];//心血管的分层
-		var riskVal=riskLvls[parseInt(riskLvl)-1];
-		$("#level").html(riskLvl==""?"暂无":riskVal);
-		var angiocarpyList = bpWeekReport.basis;
-		var risk="";
-		if(bpWeekReport.hype_type == '0'){
-			$("#hyper_type").html("暂无");
-			if(angiocarpyList!=null){
-				for ( var i = 0; i < angiocarpyList.length; i++) {
-					var ag = "(" + (i + 1) + ")" + angiocarpyList[i] + "<br/>";
-					risk += ag;
-				}
-				  $("#basis").html(risk==""?"暂无":risk);
-			}
-		}else{
-			
-			if(angiocarpyList== ''){
-				$("#hyper_type").html(bpWeekReport.bp_level);
-			}else{
-				$("#hyper_type").html(angiocarpyList[0]);
-			}
-			if(angiocarpyList!=null){
-				for ( var i = 1; i < angiocarpyList.length; i++) {
-					var ag = "(" + i  + ")" + angiocarpyList[i] + "<br/>";
-					risk += ag;
-				}
-				  $("#basis").html(risk==""?"暂无":risk);
-			}
-		}
-		
-	 	var suggestion="";
-	 	var suggestionList  = bpWeekReport.suggestion;
-	  	if(suggestionList!=null){
-			for ( var i = 0; i < suggestionList.length; i++) {
-			var su = "(" + (i + 1) + ")" + suggestionList[i] + "<br>";
-			suggestion += su;
-		}
-	  		$("#suggest").html(suggestion==""?"暂无":suggestion);
-	  	}
-	}
+
 	//第二版周报解析
 	function secondWeekVersion(bpWeekReport){
-		$("#week_tracking_date").html(bpWeekReport.create_time);
-		$("#week_interval").html(bpWeekReport.start_time+"~"+bpWeekReport.end_time);
+		
+		$("#secondview").css("display","block"); 
+		//创建日期
+		$("#week_tracking_date").html(bpWeekReport.createdOn);
+		//统计区间
+		$("#week_interval").html(bpWeekReport.starttime+"~"+bpWeekReport.endtime);
 		//日平均血压
-		bloodPressureCharts(bpWeekReport.records,'血压趋势图');
+		//bloodPressureCharts(bpWeekReport.records,'血压趋势图');
+		bloodPressureCharts(null,'血压趋势图');
+		
+		//血压数据统计表
+		bp_static = bpWeekReport.bp_static;
+		if(bp_static!=null){
+			bp_week_start_plan = 0 ;
+			bp_week_end_plan = bp_static.length>10?10:bp_static.length;
+			weekdrawPlanbp(bp_week_start_plan,bp_week_end_plan);
+			
+		}
+	
 		//测压异常事件
 		weekbprecords = bpWeekReport.incident;
 		if(weekbprecords!=null){
@@ -452,6 +397,7 @@
 			week_end_plan = weekbprecords.length>10?10:weekbprecords.length;
 			weekdrawPlan(week_start_plan,week_end_plan);
 		}
+		
 		//服用药物
 		var medicine_taken = bpWeekReport.medicine_taken;
 		 $("#week_plan_medicine tr").eq(0).nextAll().remove();
@@ -461,62 +407,37 @@
 				$("#week_plan_medicine").append(tr);
 			}
 		}
-	
-		//不适症状
-		var sideeffect = bpWeekReport.sideeffect;
-		if(sideeffect!=null){
-			var tr = "";
-			for(var i=0;i<sideeffect.length;i++){
-				 tr += "("+(i+1)+")"+sideeffect[i];
-			}
-			$("#week_plan_inadaptation").html(tr);
-		}
-		//血压统计
-		bp_static = bpWeekReport.bp_static;
-		if(bp_static!=null){
-			bp_week_start_plan = 0 ;
-			bp_week_end_plan = bp_static.length>10?10:bp_static.length;
-			weekdrawPlanbp(bp_week_start_plan,bp_week_end_plan);
-			
-		}
+
 		//降压目标
-		$("#bp_target").html("收缩压:"+bpWeekReport.target_shrink+"mmhg,舒张压:"+bpWeekReport.target_diastole+"mmhg");
+		$("#bp_target").html("收缩压:"+bpWeekReport.goalOfSBP+"mmhg,舒张压:"+bpWeekReport.goalOfDBP+"mmhg");
 		//血压分级
-		$("#bp_hype_type").html(bpWeekReport.hype_type);
+		$("#bp_hype_type").html(bpWeekReport.bloodLevel);
 		//风险分层
-		$("#risk_level").html(bpWeekReport.risk);
+		$("#risk_level").html(bpWeekReport.riskStratification);
 		//心血管风险因素
-		$("#cv_risk").html(bpWeekReport.cv_risk);
+		$("#cv_risk").html(bpWeekReport.cardiovascularRiskFactors);
 		//靶器官损害
-		$("#target_organ_damage").html(bpWeekReport.target_organ_damage);
+		$("#target_organ_damage").html(bpWeekReport.targetOrgan);
 		//伴临床疾患
-		$("#clinical").html(bpWeekReport.clinical);
+		$("#clinical").html(bpWeekReport.clinicalDisease);
 		//血压总体分析
-		$("#mean_bp").html("平均血压:收缩压:"+bpWeekReport.comprehensive_analyse.mean_shrink+"mmhg,舒张压:"+bpWeekReport.comprehensive_analyse.mean_diastole+"mmhg");
-		$("#bp_load").html("血压负荷:收缩压:"+bpWeekReport.comprehensive_analyse.shrink_load+"舒张压:"+bpWeekReport.comprehensive_analyse.diastole_load+";平均动脉压:"+bpWeekReport.comprehensive_analyse.map_load+",心律:"+bpWeekReport.comprehensive_analyse.hr_load);
-		$("#cv").html("血压变异性:"+bpWeekReport.comprehensive_analyse.cv);
-		$("#sbp").html("最大SBP:"+bpWeekReport.comprehensive_analyse.max_SBP+",发生时间:"+bpWeekReport.comprehensive_analyse.max_SBP_time+";最小SBP:"+bpWeekReport.comprehensive_analyse.min_SBP+",发生时间:"+bpWeekReport.comprehensive_analyse.min_SBP_time);
-		$("#dbp").html("最大DBP:"+bpWeekReport.comprehensive_analyse.max_DBP+",发生时间:"+bpWeekReport.comprehensive_analyse.max_DBP_time+";最小DBP:"+bpWeekReport.comprehensive_analyse.min_DBP+",发生时间:"+bpWeekReport.comprehensive_analyse.min_DBP_time);
+		$("#mean_bp").html("平均血压:收缩压:"+bpWeekReport.meanBloodPressureOfSBP+"mmhg,舒张压:"+bpWeekReport.meanBloodPressureOfDBP+"mmhg");
+		$("#bp_load").html("血压负荷:收缩压:"+bpWeekReport.bloodPressureLoadOfSBP+"舒张压:"+bpWeekReport.bloodPressureLoadOfDBP+";平均动脉压:"+bpWeekReport.bloodPressureLoadOfMAP+",心律:"+bpWeekReport.bloodPressureLoadOfHR);
+		$("#cv").html("血压变异性:"+bpWeekReport.sdMean);
+		$("#sbp").html("最大SBP:"+bpWeekReport.maxSBP+",发生时间:"+bpWeekReport.maxSBPTime+";最小SBP:"+bpWeekReport.minSBP+",发生时间:"+bpWeekReport.minSBPTime);
+		$("#dbp").html("最大DBP:"+bpWeekReport.maxDBP+",发生时间:"+bpWeekReport.maxDBPTime+";最小DBP:"+bpWeekReport.minDBP+",发生时间:"+bpWeekReport.minDBPTime);
+		//不适症状
+		$("#week_plan_inadaptation").html(bpWeekReport.noIndication);
 		//测压方案完成情况
-		$("#measure_compliance").html(bpWeekReport.measure_compliance);
+		$("#measure_compliance").html(bpWeekReport.completionStatus);
 		//总结
-		var conclusion = bpWeekReport.conclusion;
-		if(conclusion!=null){
-			var tr = "";
-			for(var i=0;i<conclusion.length;i++){
-				 tr += "("+(i+1)+")"+conclusion[i];
-			}
-			$("#conclusion").html(tr);
-		}
+		$("#conclusion").html(bpWeekReport.summary);
 		//建议
-		var suggestion = bpWeekReport.suggestion;
-		if(suggestion!=null){
-			var tr = "";
-			for(var i=0;i<suggestion.length;i++){
-				 tr += "("+(i+1)+")"+suggestion[i];
-			}
-			$("#suggestion").html(tr);
-		}
+		$("#suggestion").html(bpWeekReport.healthAdvice);
+		//分析结果
+		$("#detail_doctor_report").html(bpWeekReport.analysisResult);
+		//医生建议
+		$("#detail_doctor_suggest").html(bpWeekReport.doctorHealthAdvice);
 		
 	}
 	//血压趋势图
@@ -640,72 +561,70 @@
 				series : vals
 			});
 	}
-		var weekbprecords ="";//测压完成情况集合
+	
+	var weekbprecords ="";//测压完成情况集合
 	var week_start_plan=0;//测压完成情况开始条数
 	var week_end_plan=0;//测压完成情况结束条数
 	function weekdrawPlan(start,end){
-	 $("#week_plan_unnormal tr").eq(0).nextAll().remove();
-	if(weekbprecords!=null){
-		for(var i=start;i<end;i++){
-			var tr = "<tr><td>"+weekbprecords[i].value.replace(",","/")+"</td><td>"+weekbprecords[i].time+"</td><td>"+weekbprecords[i].description+"</td></tr>";
-			$("#week_plan_unnormal").append(tr);
+	 	$("#week_plan_unnormal tr").eq(0).nextAll().remove();
+		if(weekbprecords!=null){
+			for(var i=start;i<end;i++){
+				var tr = "<tr><td>"+weekbprecords[i].value.replace(",","/")+"</td><td>"+weekbprecords[i].time+"</td><td>"+weekbprecords[i].description+"</td></tr>";
+				$("#week_plan_unnormal").append(tr);
+			}
+			if(weekbprecords.length>10){
+				var str="<tr><td colspan='3' align='center' style='width: 100%'><a href='javascript:void(0);'   onclick='week_prevPlan();' >上页</a>&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);'   onclick='week_nextPlan();' >下页</a></td></tr>";
+				$("#week_plan_unnormal").append(str);
+			}
 		}
-		if(weekbprecords.length>10){
-			var str="<tr><td colspan='3' align='center' style='width: 100%'><a href='javascript:void(0);'   onclick='week_prevPlan();' >上页</a>&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);'   onclick='week_nextPlan();' >下页</a></td></tr>";
-			$("#week_plan_unnormal").append(str);
+	}
+	function week_prevPlan(){
+		if(week_start_plan!=0){
+			week_end_plan =  week_start_plan;
+			week_start_plan = week_start_plan-10;
+			weekdrawPlan(week_start_plan,week_end_plan);
 		}
 	}
-}
-function week_prevPlan(){
-	if(week_start_plan!=0){
-		week_end_plan =  week_start_plan;
-		week_start_plan = week_start_plan-10;
-		weekdrawPlan(week_start_plan,week_end_plan);
+	function week_nextPlan(){
+		if(weekbprecords.length>week_end_plan){
+			week_start_plan = week_end_plan;
+			week_end_plan= week_end_plan+10<weekbprecords.length?week_end_plan+10:weekbprecords.length;
+			weekdrawPlan(week_start_plan,week_end_plan);
+		}
 	}
-}
-function week_nextPlan(){
-	if(weekbprecords.length>week_end_plan){
-		week_start_plan = week_end_plan;
-		week_end_plan= week_end_plan+10<weekbprecords.length?week_end_plan+10:weekbprecords.length;
-		weekdrawPlan(week_start_plan,week_end_plan);
-	}
-}
-
+	
 	var bp_static ="";//血压数据统计集合
 	var bp_week_start_plan=0;//血压数据统计始条数
 	var bp_week_end_plan=0;//血压数据统计结束条数
 	function weekdrawPlanbp(start,end){
-	 $("#week_bp_static tr").eq(0).nextAll().remove();
-	if(bp_static!=null){
-		for(var i=start;i<end;i++){
-			var tr = "<tr><td>"+bp_static[i].take_time+"</td><td>"+bp_static[i].shrink+"</td><td>"+bp_static[i].diastole+"</td><td>"+bp_static[i].pulse_pressure+"</td><td>"+bp_static[i].mean_arterial_pressure+"</td><td>"+bp_static[i].heart_rate+"</td></tr>";
-			$("#week_bp_static").append(tr);
+		 $("#week_bp_static tr").eq(0).nextAll().remove();
+		if(bp_static!=null){
+			for(var i=start;i<end;i++){
+				var tr = "<tr><td>"+bp_static[i].take_time+"</td><td>"+bp_static[i].shrink+"</td><td>"+bp_static[i].diastole+"</td><td>"+bp_static[i].pulse_pressure+"</td><td>"+bp_static[i].mean_arterial_pressure+"</td><td>"+bp_static[i].heart_rate+"</td></tr>";
+				$("#week_bp_static").append(tr);
+			}
+			if(bp_static.length>10){
+				var str="<tr><td colspan='6' align='center' style='width: 100%'><a href='javascript:void(0);'   onclick='week_prevBp();' >上页</a>&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);'   onclick='week_nextBp();' >下页</a></td></tr>";
+				$("#week_bp_static").append(str);
+			}
 		}
-		if(bp_static.length>10){
-			var str="<tr><td colspan='6' align='center' style='width: 100%'><a href='javascript:void(0);'   onclick='week_prevBp();' >上页</a>&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);'   onclick='week_nextBp();' >下页</a></td></tr>";
-			$("#week_bp_static").append(str);
+	}
+	function week_prevBp(){
+		if(bp_week_start_plan!=0){
+			bp_week_end_plan =  bp_week_start_plan;
+			bp_week_start_plan = bp_week_start_plan-10;
+			weekdrawPlanbp(bp_week_start_plan,bp_week_end_plan);
 		}
 	}
-}
-function week_prevBp(){
-	if(bp_week_start_plan!=0){
-		bp_week_end_plan =  bp_week_start_plan;
-		bp_week_start_plan = bp_week_start_plan-10;
-		weekdrawPlanbp(bp_week_start_plan,bp_week_end_plan);
+	function week_nextBp(){
+		if(bp_static.length>bp_week_end_plan){
+			bp_week_start_plan = bp_week_end_plan;
+			bp_week_end_plan= bp_week_end_plan+10<bp_static.length?bp_week_end_plan+10:bp_static.length;
+			weekdrawPlanbp(bp_week_start_plan,bp_week_end_plan);
+		}
 	}
-}
-function week_nextBp(){
-	if(bp_static.length>bp_week_end_plan){
-		bp_week_start_plan = bp_week_end_plan;
-		bp_week_end_plan= bp_week_end_plan+10<bp_static.length?bp_week_end_plan+10:bp_static.length;
-		weekdrawPlanbp(bp_week_start_plan,bp_week_end_plan);
-	}
-}
-	
 </script>
-
 </head>
-
 <body >
  <div class="popup" id="weekreport_detail" style="display:none;position:absolute;top:20px; left:20px;z-index: 30;width: 630px;">
   <div class="popup_header">
@@ -716,24 +635,8 @@ function week_nextBp(){
   </div>
   
   <div class="popup_main">       
-	   <div  id="container" style="width: 600px;height: 200px;" class="bpDiagnosis_results_trendChart" >
+  <div  id="container" style="width: 600px;height: 200px;" class="bpDiagnosis_results_trendChart" >
      </div>
-     <!-- 周报第一版展示  -->
-     <div class="bpDiagnosis_results" >
-         <div class="bpDiagnosis_results_text" id="view" style="float: left;width: 600px;">
-          <ul>
-            <li class="tgreen_results" id="target_bpdown" >降压目标：<span  class="tblack_results" id="target_shrink"></span><span class="tblack_results" id="target_diastole"></span></li>
-            <li class="tgreen_results">本周平均压：<span id="tracking_date" class="tblack_results"></span></li>
-            <li class="tgreen_results">高血压等级： <span class="tblack_results" id="hyper_type"></span></li>
-            <li class="tgreen_results">心血管风险分层：<span class="tblack_results" id="level"></span></li>
-            <li class="tgreen_results">判断依据：</li>
-            <li class="tblack_results" id="basis"></li>
-           	<li class="tgreen_results">保健建议：</li>
-            <li class="tblack_results" id="suggest"></li>
-          </ul>
-        </div>
-        
-      </div>   
       <!-- 周报第二版展示 -->
        <div class="bpDiagnosis_results_text" id="secondview" style="float: left;width: 600px;display: none;" >
           <ul>
@@ -801,13 +704,9 @@ function week_nextBp(){
         <span class="tblack_results" id="detail_doctor_suggest"></span>
         </div>
   </div>
- 
- </div>
-
+  </div>
 </body>
 </html>
-
-   
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -825,66 +724,68 @@ var start_plan=0;//测压完成情况开始条数
 var end_plan=0;//测压完成情况结束条数
 var version=0;//版本 	
 //解析月报XML
-function analyzeMonth(xml,report) {
-	xml =  encodeURI(xml);  
-	xml =  encodeURI(xml); 
-	var para = "report_content="+xml;
-	$.ajax({
-		url:"/doctorReportAction/analyzeMonthReport.action",
-		async:true,
-		data:para,
-		dataType:"json",
-		type:"POST",
-		success:function(response) {
-			var modelMap = response.modelMap;
-			var bpMonthReport = modelMap.bpMonthReport;
-			if(bpMonthReport!=null){
-				if(bpMonthReport.version=='1.0.0'){
-					firstVersion(bpMonthReport);
-				}else if(bpMonthReport.version=='1.1.0'){
+//function analyzeMonth(xml,report) {
+function analyzeMonth(bpMonthReport) {
+// 	xml =  encodeURI(xml);  
+// 	xml =  encodeURI(xml); 
+// 	var para = "report_content="+xml;
+// 	$.ajax({
+// 		url:"/doctorReportAction/analyzeMonthReport.action",
+// 		async:true,
+// 		data:para,
+// 		dataType:"json",
+// 		type:"POST",
+// 		success:function(response) {
+// 			var modelMap = response.modelMap;
+// 			var bpMonthReport = modelMap.bpMonthReport;
+// 			if(bpMonthReport!=null){
+// 				if(bpMonthReport.version=='1.0.0'){
+// 					firstVersion(bpMonthReport);
+// 				}else if(bpMonthReport.version=='1.1.0'){
 					
-					$("#month_secondview").css("display","block"); 
-					$("#month_view").css("display","none"); 
-					secondVersion(bpMonthReport);
-				}
-			}
-	}
+// 					$("#month_secondview").css("display","block"); 
+// 					$("#month_view").css("display","none"); 
+// 					secondVersion(bpMonthReport);
+// 				}
+// 			}
+// 	}
 		
-});
-	var doctor_report = "report_content="+report;
-	xmlHttp = $.ajax({
-		url:"/doctorReportAction/analyzeDoctorReport.action",
-		async:true,
-		data:doctor_report,
-		dataType:"json",
-		type:"POST",
-		success:function(response) {
-			var modelMap = response.modelMap;
-			var doctor_reports = modelMap.doctor_report;
+// 	});
+	secondVersion(bpMonthReport);
+// 	var doctor_report = "report_content="+report;
+// 	xmlHttp = $.ajax({
+// 		url:"/doctorReportAction/analyzeDoctorReport.action",
+// 		async:true,
+// 		data:doctor_report,
+// 		dataType:"json",
+// 		type:"POST",
+// 		success:function(response) {
+// 			var modelMap = response.modelMap;
+// 			var doctor_reports = modelMap.doctor_report;
 			
-			if(doctor_reports!=null){
-				$("#unnormal_analyse").html(doctor_reports.anomalous);
-				$("#inadaptation_analyse").html(doctor_reports.inadaptation);
-				var level = document.getElementById("assessment_level");
-				var state = document.getElementById("user_state");
-				for(var i=0;i<level.options.length;i++) {  
-		            if(level.options[i].value == doctor_reports.state) {  
-		            	level.options[i].selected = true;  
-		                break;  
-		            }  
-		        } 
-				for(var i=0;i<state.options.length;i++) {  
-		            if(state.options[i].value == doctor_reports.level) {  
-		            	state.options[i].selected = true;  
-		                break;  
-		            }  
-		        }
-				if(doctor_reports.report!=null){
-					$("#doctor_result").html("总结："+doctor_reports.report);
-				}
-			}
-			}
-		});
+// 			if(doctor_reports!=null){
+// 				$("#unnormal_analyse").html(doctor_reports.anomalous);
+// 				$("#inadaptation_analyse").html(doctor_reports.inadaptation);
+// 				var level = document.getElementById("assessment_level");
+// 				var state = document.getElementById("user_state");
+// 				for(var i=0;i<level.options.length;i++) {  
+// 		            if(level.options[i].value == doctor_reports.state) {  
+// 		            	level.options[i].selected = true;  
+// 		                break;  
+// 		            }  
+// 		        } 
+// 				for(var i=0;i<state.options.length;i++) {  
+// 		            if(state.options[i].value == doctor_reports.level) {  
+// 		            	state.options[i].selected = true;  
+// 		                break;  
+// 		            }  
+// 		        }
+// 				if(doctor_reports.report!=null){
+// 					$("#doctor_result").html("总结："+doctor_reports.report);
+// 				}
+// 			}
+// 			}
+// 		});
 }
 
 //第一版本月报解析
@@ -940,11 +841,14 @@ function firstVersion(bpMonthReport){
 
 //第二版月报解析
 	function secondVersion(bpMonthReport){
-		$("#month_tracking_date").html(bpMonthReport.create_time);
-		$("#month_interval").html(bpMonthReport.start_time+"~"+bpMonthReport.end_time);
+	
+		$("#month_secondview").css("display","block");
+		
+		$("#month_tracking_date").html(bpMonthReport.createdOn);
+		$("#month_interval").html(bpMonthReport.starttime+"~"+bpMonthReport.endtime);
 		//日平均血压
 		///bloodPressureCharts(bpMonthReport.records,'血压趋势图');
-			version = 1;
+		version = 1;
 		//测压异常事件
 		bprecords = bpMonthReport.incident;
 		if(bprecords!=null){
@@ -961,15 +865,7 @@ function firstVersion(bpMonthReport){
 				$("#plan_medicine2").append(tr);
 			}
 		}
-		//不适症状
-		var sideeffect = bpMonthReport.sideeffect;
-		if(sideeffect!=null){
-			var tr = "";
-			for(var i=0;i<sideeffect.length;i++){
-				 tr += "("+(i+1)+")"+sideeffect[i];
-			}
-			$("#plan_inadaptation2").html(tr);
-		}
+
 		//血压统计
 		bp_static = bpMonthReport.bp_static;
 		if(bp_static!=null){
@@ -978,15 +874,6 @@ function firstVersion(bpMonthReport){
 			drawPlanbp(bp_start_plan,bp_end_plan);
 			
 		}
-		//服用药物后血压变化
-		//var medicine_effect = bpMonthReport.medicine_effect;
-		// $("#month_medicine_effect tr").eq(0).nextAll().remove();
-		//if(medicine_effect!=null){
-		//	for(var i=0;i<medicine_effect.length;i++){
-		//		var tr = "<tr><td>"+medicine_effect[i].brand+"</td><td>"+medicine_effect[i].time+"</td><td>"+medicine_effect[i].weekly_mean_pressure+"</td></tr>"
-		//		$("#month_medicine_effect").append(tr);
-		//	}
-		//}
 		
 		//心电监护结果
 		ecg_report = bpMonthReport.ecg_report;
@@ -997,44 +884,51 @@ function firstVersion(bpMonthReport){
 			drawPlanecg(ecg_start_plan,ecg_end_plan);
 			
 		}
+		
 		//降压目标
-		$("#month_bp_target").html("收缩压:"+bpMonthReport.target_shrink+"mmhg,舒张压:"+bpMonthReport.target_diastole+"mmhg");
+		$("#month_bp_target").html("收缩压:"+bpMonthReport.goalOfSBP+"mmhg,舒张压:"+bpMonthReport.goalOfDBP+"mmhg");
 		//血压分级
-		$("#month_bp_hype_type").html(bpMonthReport.hype_type);
+		$("#month_bp_hype_type").html(bpMonthReport.bloodLevel);
 		//风险分层
-		$("#month_risk_level").html(bpMonthReport.risk);
+		$("#month_risk_level").html(bpMonthReport.riskStratification);
 		//心血管风险因素
-		$("#month_cv_risk").html(bpMonthReport.cv_risk);
+		$("#month_cv_risk").html(bpMonthReport.cardiovascularRiskFactors);
 		//靶器官损害
-		$("#month_target_organ_damage").html(bpMonthReport.target_organ_damage);
+		$("#month_target_organ_damage").html(bpMonthReport.targetOrgan);
 		//伴临床疾患
-		$("#month_clinical").html(bpMonthReport.clinical);
+		$("#month_clinical").html(bpMonthReport.clinicalDisease);
 		//血压总体分析
-		$("#month_mean_bp").html("平均血压:收缩压:"+bpMonthReport.comprehensive_analyse.mean_shrink+"mmhg,舒张压:"+bpMonthReport.comprehensive_analyse.mean_diastole+"mmhg");
-		$("#month_bp_load").html("血压负荷:收缩压:"+bpMonthReport.comprehensive_analyse.shrink_load+"舒张压:"+bpMonthReport.comprehensive_analyse.diastole_load+";<br/>平均动脉压:"+bpMonthReport.comprehensive_analyse.map_load+",心律:"+bpMonthReport.comprehensive_analyse.hr_load);
-		$("#month_cv").html("血压变异性:"+bpMonthReport.comprehensive_analyse.cv);
-		$("#month_sbp").html("最大SBP:"+bpMonthReport.comprehensive_analyse.max_SBP+",发生时间:"+bpMonthReport.comprehensive_analyse.max_SBP_time+";最小SBP:"+bpMonthReport.comprehensive_analyse.min_SBP+",发生时间:"+bpMonthReport.comprehensive_analyse.min_SBP_time);
-		$("#month_dbp").html("最大DBP:"+bpMonthReport.comprehensive_analyse.max_DBP+",发生时间:"+bpMonthReport.comprehensive_analyse.max_DBP_time+";最小DBP:"+bpMonthReport.comprehensive_analyse.min_DBP+",发生时间:"+bpMonthReport.comprehensive_analyse.min_DBP_time);
+		$("#month_mean_bp").html("平均血压:收缩压:"+bpMonthReport.meanBloodPressureOfSBPk+"mmhg,舒张压:"+bpMonthReport.meanBloodPressureOfDBP+"mmhg");
+		$("#month_bp_load").html("血压负荷:收缩压:"+bpMonthReport.bloodPressureLoadOfSBP+"舒张压:"+bpMonthReport.bloodPressureLoadOfDBP+";平均动脉压:"+bpMonthReport.bloodPressureLoadOfMAP+",心律:"+bpMonthReport.bloodPressureLoadOfHR);
+		$("#month_cv").html("血压变异性:"+bpMonthReport.sdMean);
+		$("#month_sbp").html("最大SBP:"+bpMonthReport.maxSBP+",发生时间:"+bpMonthReport.maxSBPTime+";最小SBP:"+bpMonthReport.minSBP+",发生时间:"+bpMonthReport.minSBPTime);
+		$("#month_dbp").html("最大DBP:"+bpMonthReport.maxDBP+",发生时间:"+bpMonthReport.maxDBPTime+";最小DBP:"+bpMonthReport.minDBP+",发生时间:"+bpMonthReport.minDBPTime);
+		//不适症状
+		$("#plan_inadaptation2").html(bpMonthReport.noIndication);
 		//测压方案完成情况
-		$("#month_measure_compliance").html(bpMonthReport.measure_compliance);
+		$("#month_measure_compliance").html(bpMonthReport.completionStatus);
 		//总结
-		var conclusion = bpMonthReport.conclusion;
-		if(conclusion!=null){
-			var tr = "";
-			for(var i=0;i<conclusion.length;i++){
-				 tr += "("+(i+1)+")"+conclusion[i];
-			}
-			$("#month_conclusion").html(tr);
-		}
+		$("#month_conclusion").html(bpMonthReport.summary);
 		//建议
-		var suggestion = bpMonthReport.suggestion;
-		if(suggestion!=null){
-			var tr = "";
-			for(var i=0;i<suggestion.length;i++){
-				 tr += "("+(i+1)+")"+suggestion[i];
-			}
-			$("#month_suggestion").html(tr);
-		}
+		$("#month_suggestion").html(bpMonthReport.healthAdvice);
+		
+// 		var conclusion = bpMonthReport.summary;
+// 		if(conclusion!=null){
+// 			var tr = "";
+// 			for(var i=0;i<conclusion.length;i++){
+// 				 tr += "("+(i+1)+")"+conclusion[i];
+// 			}
+// 			$("#month_conclusion").html(tr);
+// 		}
+// 		//建议
+// 		var suggestion = bpMonthReport.suggestion;
+// 		if(suggestion!=null){
+// 			var tr = "";
+// 			for(var i=0;i<suggestion.length;i++){
+// 				 tr += "("+(i+1)+")"+suggestion[i];
+// 			}
+// 			$("#month_suggestion").html(tr);
+// 		}
 		
 	}
 	function drawPlan(start,end){
@@ -1082,34 +976,34 @@ function firstVersion(bpMonthReport){
 	var bp_start_plan=0;//血压数据统计始条数
 	var bp_end_plan=0;//血压数据统计结束条数
 	function drawPlanbp(start,end){
-	 $("#month_bp_static tr").eq(0).nextAll().remove();
-	if(bp_static!=null){
-		for(var i=start;i<end;i++){
-			var tr = "<tr><td>"+bp_static[i].take_time+"</td><td>"+bp_static[i].shrink+"</td><td>"+bp_static[i].diastole+"</td><td>"+bp_static[i].pulse_pressure+"</td><td>"+bp_static[i].mean_arterial_pressure+"</td><td>"+bp_static[i].heart_rate+"</td></tr>";
-			$("#month_bp_static").append(tr);
+		 $("#month_bp_static tr").eq(0).nextAll().remove();
+		if(bp_static!=null){
+			for(var i=start;i<end;i++){
+				var tr = "<tr><td>"+bp_static[i].take_time+"</td><td>"+bp_static[i].shrink+"</td><td>"+bp_static[i].diastole+"</td><td>"+bp_static[i].pulse_pressure+"</td><td>"+bp_static[i].mean_arterial_pressure+"</td><td>"+bp_static[i].heart_rate+"</td></tr>";
+				$("#month_bp_static").append(tr);
+			}
+			if(bp_static.length>10){
+				var str="<tr><td colspan='6' align='center' style='width: 100%'><a href='javascript:void(0);'   onclick='prevBp();' >上页</a>&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);'   onclick='nextBp();' >下页</a></td></tr>";
+				$("#month_bp_static").append(str);
+			}
 		}
-		if(bp_static.length>10){
-			var str="<tr><td colspan='6' align='center' style='width: 100%'><a href='javascript:void(0);'   onclick='prevBp();' >上页</a>&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);'   onclick='nextBp();' >下页</a></td></tr>";
-			$("#month_bp_static").append(str);
+	}
+	function prevBp(){
+		if(bp_start_plan!=0){
+			bp_end_plan =  bp_start_plan;
+			bp_start_plan = bp_start_plan-10;
+			drawPlanbp(bp_start_plan,bp_end_plan);
 		}
 	}
-}
-function prevBp(){
-	if(bp_start_plan!=0){
-		bp_end_plan =  bp_start_plan;
-		bp_start_plan = bp_start_plan-10;
-		drawPlanbp(bp_start_plan,bp_end_plan);
+	function nextBp(){
+		if(bp_static.length>bp_end_plan){
+			bp_start_plan = bp_end_plan;
+			bp_end_plan= bp_end_plan+10<bp_static.length?bp_end_plan+10:bp_static.length;
+			drawPlanbp(bp_start_plan,bp_end_plan);
+		}
 	}
-}
-function nextBp(){
-	if(bp_static.length>bp_end_plan){
-		bp_start_plan = bp_end_plan;
-		bp_end_plan= bp_end_plan+10<bp_static.length?bp_end_plan+10:bp_static.length;
-		drawPlanbp(bp_start_plan,bp_end_plan);
-	}
-}
-
-
+	
+	
 	var ecg_report ="";//血压数据统计集合
 	var ecg_start_plan=0;//血压数据统计始条数
 	var ecg_end_plan=0;//血压数据统计结束条数
@@ -1125,21 +1019,21 @@ function nextBp(){
 			$("#month_ecg_report").append(str);
 		}
 	}
-}
-function prevEcg(){
-	if(ecg_start_plan!=0){
-		ecg_end_plan =  ecg_start_plan;
-		ecg_start_plan = ecg_start_plan-10;
-		drawPlanecg(ecg_start_plan,ecg_end_plan);
 	}
-}
-function nextEcg(){
-	if(ecg_report.length>bp_end_plan){
-		ecg_start_plan = ecg_end_plan;
-		ecg_end_plan= ecg_end_plan+10<ecg_report.length?ecg_end_plan+10:ecg_report.length;
-		drawPlanecg(ecg_start_plan,ecg_end_plan);
+	function prevEcg(){
+		if(ecg_start_plan!=0){
+			ecg_end_plan =  ecg_start_plan;
+			ecg_start_plan = ecg_start_plan-10;
+			drawPlanecg(ecg_start_plan,ecg_end_plan);
+		}
 	}
-}
+	function nextEcg(){
+		if(ecg_report.length>bp_end_plan){
+			ecg_start_plan = ecg_end_plan;
+			ecg_end_plan= ecg_end_plan+10<ecg_report.length?ecg_end_plan+10:ecg_report.length;
+			drawPlanecg(ecg_start_plan,ecg_end_plan);
+		}
+	}
 	
 </script>
 
@@ -1155,123 +1049,78 @@ function nextEcg(){
   </div>
   
   <div class="popup_main">
-   <!-- 月报第一版展示 -->       
-	  <div class="bpDiagnosis_results" id="month_view" >
-         <div class="bpDiagnosis_results_text"  style="float: left;">
-          <ul>
-            <li class="tgreen_results">创建日期：<span class="tblack_results" id="tracking_date_create" ></span></li>
-            <li class="tgreen_results">统计区间：<span class="tblack_results" id="interval"></span></li>
-            <li class="tgreen_results">高血压等级：<span class="tblack_results" id="month_level"></span></li>
-            <li class="tgreen_results">降压目标：<span class="tblack_results" id="target"></span></li>
-            <li class="tgreen_results">测压方案完成情况：</li>
-            <li class="tblack_results">
-	            <table class="detailtable" id="plan_complete">
-	            <tr><td>计划时间 </td><td>描述</td></tr>
-	            </table>
-            </li>
-             <li class="tgreen_results">测压异常事件情况：</li>
-            <li class="tblack_results">
-	            <table class="detailtable"  id="plan_unnormal">
-	            <tr><td>血压值 </td><td>测压时间</td><td>事件名称</td></tr>
-	            </table>
-            </li>
-            <li class="tblack_results" style="margin-left: 80px;">总结：<span id="unnormal_analyse" ></span></li>
-             <li class="tgreen_results">服用药物情况：</li>
-            <li class="tblack_results">
-	            <table class="detailtable"  id="plan_medicine" style="width:430px; border:1px solid #aeaeae; border-collapse: collapse;margin-left: 80px;">
-	            <tr><td>药物名称</td><td>服用频率</td><td>服用时间</td></tr>
-	            </table>
-            </li>
-             <li class="tgreen_results">不适应症情况：</li>
-            <li class="tblack_results">
-            	<div id="plan_inadaptation" style="border: 0px;">
-	           
-	            </div>
-           
-            </li>
-            <li class="tblack_results" style="margin-left: 80px;">分析：<span id="inadaptation_analyse" ></span></li>
-          
-            <li class="tgreen_results">高血压防治情况：</li>
-            <li class="tblack_results" id="effect"></li>
-            <li class="tgreen_results">保健建议：</li>
-            <li class="tblack_results" id="ecg_suggest"></li>
-           	
-          </ul>
-        </div>
-       
-      </div>
-        <!-- 月报第二版展示 -->
-         <div class="bpDiagnosis_results_text" id="month_secondview" style="float: left;width: 600px;display: none;" >
-          <ul>
-            <li class="tgreen_results">创建日期：<span class="tblack_results" id="month_tracking_date" ></span></li>
-            <li class="tgreen_results">统计区间：<span class="tblack_results" id="month_interval"></span></li>
-            <li class="tgreen_results">降压目标：<span class="tblack_results" id="month_bp_target" ></span></li>
-            <li class="tgreen_results">血压分级：<span class="tblack_results" id="month_bp_hype_type"></span></li>
-            <li class="tgreen_results">风险分层：<span class="tblack_results" id="month_risk_level"></span></li>
-            <li class="tgreen_results" >心血管风险因素：</span>
-            </li>
-             <li class="tblack_results"><span class="tblack_results" id="month_cv_risk"></li>
-            <li class="tgreen_results" >靶器官损害：</li>
-            <li class="tblack_results"><span class="tblack_results" id="month_target_organ_damage"></span></li>
-            <li class="tgreen_results" >伴临床疾患：</li>
-            <li class="tblack_results"><span class="tblack_results" id="month_clinical"></span></li>
-            <li class="tgreen_results">血压数据统计表：</li>
-            <li class="tblack_results">
-	            <table class="detailtable" id="month_bp_static" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	            <tr><td>时间 </td><td>收缩压</td><td>舒张压</td><td>脉压</td><td >平均动脉压</td><td>心率</td></tr>
-	            </table>
-            </li>
-            <li class="tgreen_results">血压总体分析：</li>
-            <li class="tblack_results" id="month_mean_bp"></li>
-            <li class="tblack_results" id="month_bp_load"></li>
-            <li class="tblack_results" id="month_cv"></li>
-            <li class="tblack_results" id="month_sbp"></li>
-            <li class="tblack_results" id="month_dbp"></li>
-           
-            
-             <li class="tgreen_results">测压异常事件情况：</li>
-            <li class="tblack_results">
-	            <table class="detailtable"  id="plan_unnormal2" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	             <tr><td width="15%">血压值 </td><td width="35%">测压时间</td><td width="50%">反馈</td></tr>
-	            </table>
-            </li>
-             <li class="tgreen_results">服用药物情况：</li>
-            <li class="tblack_results">
-	            <table class="detailtable"  id="plan_medicine2" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	            <tr><td>通用名称</td><td>剂量</td><td>服用时间</td></tr>
-	            </table>
-            </li>
-            <!--  
-            <li class="tgreen_results">服用药物后血压变化：</li>
-            <li class="tblack_results">
-	            <table class="detailtable"  id="month_medicine_effect" style="width:430px; border:1px solid #aeaeae; border-collapse: collapse;margin-left: 80px;">
-	            <tr><td>商品名称 </td><td>开始服用日期</td><td>血压值</td></tr>
-	            </table>
-            </li>-->
-              <li class="tgreen_results">心电监护结果：</li>
-            <li class="tblack_results">
-	            <table class="detailtable"  id="month_ecg_report" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	            <tr><td width="25%">采集时间 </td><td width="12%">采集时长</td><td width="12%">平均心率</td><td width="51%">分析结果</td></tr>
-	            </table>
-            </li>
-             <li class="tgreen_results">不适应症情况：</li>
-            <li class="tblack_results">
-            	<span id="plan_inadaptation2" style="border: 0px;">
-	           
-	            </span>
-           
-            </li>
-             <li class="tgreen_results">测压方案完成情况：</li><li class="tblack_results" ><span id="month_measure_compliance" ></span></li>
-            
-            <li class="tgreen_results">总结：</li>
-            <li class="tblack_results" id="month_conclusion"></li>
-            <li class="tgreen_results">保健建议：</li>
-            <li class="tblack_results" id="month_suggestion"></li>
-           	
-          </ul>
-        </div>
+	  <!-- 月报第二版展示 -->
+	   <div class="bpDiagnosis_results_text" id="month_secondview" style="float: left;width: 600px;display: none;" >
+	    <ul>
+	      <li class="tgreen_results">创建日期：<span class="tblack_results" id="month_tracking_date" ></span></li>
+	      <li class="tgreen_results">统计区间：<span class="tblack_results" id="month_interval"></span></li>
+	      <li class="tgreen_results">降压目标：<span class="tblack_results" id="month_bp_target" ></span></li>
+	      <li class="tgreen_results">血压分级：<span class="tblack_results" id="month_bp_hype_type"></span></li>
+	      <li class="tgreen_results">风险分层：<span class="tblack_results" id="month_risk_level"></span></li>
+	      <li class="tgreen_results" >心血管风险因素：</span>
+	      </li>
+	       <li class="tblack_results"><span class="tblack_results" id="month_cv_risk"></li>
+	      <li class="tgreen_results" >靶器官损害：</li>
+	      <li class="tblack_results"><span class="tblack_results" id="month_target_organ_damage"></span></li>
+	      <li class="tgreen_results" >伴临床疾患：</li>
+	      <li class="tblack_results"><span class="tblack_results" id="month_clinical"></span></li>
+	      <li class="tgreen_results">血压数据统计表：</li>
+	      <li class="tblack_results">
+	       <table class="detailtable" id="month_bp_static" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
+	       <tr><td>时间 </td><td>收缩压</td><td>舒张压</td><td>脉压</td><td >平均动脉压</td><td>心率</td></tr>
+	       </table>
+	      </li>
+	      <li class="tgreen_results">血压总体分析：</li>
+	      <li class="tblack_results" id="month_mean_bp"></li>
+	      <li class="tblack_results" id="month_bp_load"></li>
+	      <li class="tblack_results" id="month_cv"></li>
+	      <li class="tblack_results" id="month_sbp"></li>
+	      <li class="tblack_results" id="month_dbp"></li>
+	     
+	      
+	       <li class="tgreen_results">测压异常事件情况：</li>
+	      <li class="tblack_results">
+	       <table class="detailtable"  id="plan_unnormal2" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
+	        <tr><td width="15%">血压值 </td><td width="35%">测压时间</td><td width="50%">反馈</td></tr>
+	       </table>
+	      </li>
+	       <li class="tgreen_results">服用药物情况：</li>
+	      <li class="tblack_results">
+	       <table class="detailtable"  id="plan_medicine2" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
+	       <tr><td>通用名称</td><td>剂量</td><td>服用时间</td></tr>
+	       </table>
+	      </li>
+	      <!--  
+	      <li class="tgreen_results">服用药物后血压变化：</li>
+	      <li class="tblack_results">
+	       <table class="detailtable"  id="month_medicine_effect" style="width:430px; border:1px solid #aeaeae; border-collapse: collapse;margin-left: 80px;">
+	       <tr><td>商品名称 </td><td>开始服用日期</td><td>血压值</td></tr>
+	       </table>
+	      </li>-->
+	        <li class="tgreen_results">心电监护结果：</li>
+	      <li class="tblack_results">
+	       <table class="detailtable"  id="month_ecg_report" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
+	       <tr><td width="25%">采集时间 </td><td width="12%">采集时长</td><td width="12%">平均心率</td><td width="51%">分析结果</td></tr>
+	       </table>
+	      </li>
+	       <li class="tgreen_results">不适应症情况：</li>
+	      <li class="tblack_results">
+	      	<span id="plan_inadaptation2" style="border: 0px;">
+	      
+	       </span>
+	     
+	      </li>
+	       <li class="tgreen_results">测压方案完成情况：</li><li class="tblack_results" ><span id="month_measure_compliance" ></span></li>
+	      
+	      <li class="tgreen_results">总结：</li>
+	      <li class="tblack_results" id="month_conclusion"></li>
+	      <li class="tgreen_results">保健建议：</li>
+	      <li class="tblack_results" id="month_suggestion"></li>
+	     	
+	    </ul>
+	  </div>
     <div class="ecg_main">
-    <ul>
+	<ul>
       <li>
       <div class="tGrey_ecgname" style="width: 300px;margin-top:10px;text-align: left;float: left;">
      	 评估等级：<select id="assessment_level" disabled="disabled">
@@ -1292,17 +1141,13 @@ function nextEcg(){
       <span class="tGrey_ecgname" id="doctor_result" >总结：</span>
       </div>
       </li>  
-      </ul>
+    </ul>
     </div>
-      
   </div>
- 
- </div>
-
+  </div>
 </body>
 </html>
-
- </div>
+</div>
 <!--bp_history end-->
 </body>
 </html>
