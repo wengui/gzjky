@@ -40,7 +40,6 @@
 		var edit_image = window.parent.edit_image;
 		$(function(){
 			queryDictionaryInfo("memberHtspecial");
-			query();
 			queryHtspecial();
 	    	jQuery('#htspecialForm').validationEngine("attach",
 	    			{
@@ -55,9 +54,8 @@
 			
 		});
 		function queryHtspecial(){
-			var requestUrl = "/healthRecordAction/queryMemberHtSpecial.action";
-			var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id
-						+"&member_unit_type="+window.parent.member_unit_type;
+			var requestUrl = "/gzjky/healthRecordAction/queryMemberHtSpecial.do";
+			var para = '';
 		
 			showScreenProtectDiv(1);
 		    showLoading();
@@ -74,10 +72,10 @@
 				error:function(){
 					$.alert('无权限');
 				},success:function(response){
-				    var modelMap = response.modelMap;
-				    var memberHtSpecial = modelMap.memberHtSpecial;
+				    var memberHtSpecial = response.result;
 				    if(memberHtSpecial != null){
 				    	init_memberHtSpecial(memberHtSpecial);
+				    	$("#RiskLevel").val(memberHtSpecial.riskLevel);
 				    }else{    	
 				    	$("#htspecialForm"+" :input").attr("disabled",true);
 				    	$("#htspecialForm .med_tab").find("a").css("display","none");
@@ -87,7 +85,7 @@
 		}
 		function init_memberHtSpecial(obj){
 			$("#htspecialForm").jsonForForm({data:obj,isobj:true});
-			$("input[name='is_use_medicine'][value='"+obj.is_use_medicine+"']").attr("checked",true);
+			$("input[name='isUseMedicine'][value='"+obj.isUseMedicine+"']").attr("checked",true);
 			var medicalDetailTable = document.getElementById("med_table");
 			//clearMedicalDetailTable(medicalDetailTable);
 			var medicineTakenItems = obj.medicineTakenItems;
@@ -105,38 +103,7 @@
 			$("#htspecialForm").find("#med_table a").css("display","none");
 		}
 		
-		function query(){
-			var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
-			if(pointerStart<0)
-	    		pointerStart = 0;
-			var requestUrl = "/healthRecordAction/queryMemberHtSpecialList.action";
-			var para = "member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id
-						+"&member_unit_type="+window.parent.member_unit_type
-						+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
-		
-			showScreenProtectDiv(1);
-		    showLoading();
-			xmlHttp = $.ajax({
-				url: requestUrl,
-				async:true,
-				data:para,
-				dataType:"json",
-				type:"POST",
-				complete:function(){
-				    hideScreenProtectDiv(1);
-			        hideLoading();
-				},
-				error:function(){
-					$.alert('无权限');
-				},success:function(response){
-				    var modelMap = response.modelMap;
-				    var memberHtSpecialList = modelMap.memberHtSpecialList;
-					recordList = memberHtSpecialList;
-					$.fn.page.settings.count = modelMap.recordTotal;
-					page($.fn.page.settings.currentnum);
-				}
-			});
-		}
+
 		function clearHtspecialTable(table){
 			while (table.rows[1]){
 				table.deleteRow(1);
@@ -161,10 +128,10 @@
 				 td=tr.insertCell(0);
 				 td.innerHTML = "&nbsp;&nbsp;&nbsp;" + (($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize + (i+1));
 				 td=tr.insertCell(1);
-				 td.innerHTML = recordList[i].ill_date;
+				 td.innerHTML = recordList[i].havaBloodDate;
 				 
 				 td=tr.insertCell(2);
-				 td.innerHTML = recordList[i].is_use_medicine == 1?"是":"否";
+				 td.innerHTML = recordList[i].isUseMedicine == 1?"是":"否";
 				 
 				 td=tr.insertCell(3);
 				 td.innerHTML = recordList[i].sbp;
@@ -174,7 +141,6 @@
 				 
 				 td=tr.insertCell(5);
 				 td.nowrap="nowrap";
-				 //td.innerHTML =  "<a href='javascript:void(0)' onclick='updateHtspecial("+i+")'>修改</a>|<a href='javascript:void(0)' onclick='deleteHtspecial("+i+")'>删除</a>";
 				 td.innerHTML =  "<a href='javascript:void(0)' onclick='updateHtspecial("+i+")'>查看</a>";
 			}catch(e){
 	    		$.alert('数据加载错误');
@@ -195,7 +161,7 @@
 			 td=tr.insertCell(1);
 			 td.innerHTML = '<input type="text" class="med_dosage validate[required,minSize[2],maxSize[12]]" name="medicine_taken.dosage" value="'+obj.dosage+'" data-prompt-position="topLeft:25,0" onblur="validateControl(this)"/>' ;
 			 td=tr.insertCell(2);
-			 td.innerHTML = '<input type="text" onclick="showHours(this)" class="med_hour validate[required]" name="medicine_taken.hours"  readonly="readonly" value="'+obj.take_time+'" data-prompt-position="topLeft:45,0" onblur="validateControl(this)"/>';
+			 td.innerHTML = '<input type="text" onclick="showHours(this)" class="med_hour validate[required]" name="medicine_taken.hours"  readonly="readonly" value="'+obj.takeTime+'" data-prompt-position="topLeft:45,0" onblur="validateControl(this)"/>';
 			
 			 td=tr.insertCell(3);
 			 td.innerHTML = '<a href="javascript:void(0)" onclick="deleteMed(this)">删除</a>';
@@ -213,7 +179,7 @@
 			
 			Htspecial_popType = "edit";
 			$("#htspecialForm").jsonForForm({data:recordList[index],isobj:true});
-			$("input[name='is_use_medicine'][value='"+recordList[index].is_use_medicine+"']").attr("checked",true);
+			$("input[name='isUseMedicine'][value='"+recordList[index].isUseMedicine+"']").attr("checked",true);
 			var medicalDetailTable = document.getElementById("med_table");
 			clearMedicalDetailTable(medicalDetailTable);
 			var medicineTakenItems = recordList[index].medicineTakenItems;
@@ -241,7 +207,7 @@
 			$("#htspecialForm").clearForm();
 			jQuery('#htspecialForm').validationEngine("hide");
 			Htspecial_popType = "add";
-			$("input[name='is_use_medicine'][value='1']").attr("checked",true);
+			$("input[name='isUseMedicine'][value='1']").attr("checked",true);
 			var medicalDetailTable = document.getElementById("med_table");
 			clearMedicalDetailTable(medicalDetailTable);
 			
@@ -265,18 +231,14 @@
 		
 		function saveHtspecial(obj){
 			if(!jQuery('#htspecialForm').validationEngine('validate')) return false;
-			var requestUrl = "/healthRecordAction/addMemberHtSpecial.action";
+			var requestUrl = "/gzjky/healthRecordAction/editMemberHtSpecial.do";
 			var para  = $("#htspecialForm").dataForJson({prefix:''});
-			var is_use_medicine = $("input[name='is_use_medicine']:checked").val();
-			para += "&is_use_medicine=" + is_use_medicine;
-			para += "&member_unit_id="+window.parent.member_unit_id+"&member_cluster_id="+window.parent.member_cluster_id
-					+"&member_unit_type="+window.parent.member_unit_type;
-			para += "&operator_unit_id=" + window.parent.doctor_unit_id + "&operator_cluster_id=" + window.parent.doctor_cluster_id + "&operator_unit_type=" + window.parent.doctor_unit_type;
+			var isUseMedicine = $("input[name='isUseMedicine']:checked").val();
+			var id = $("#id").val();
+			para += "&isUseMedicine=" + isUseMedicine;
+			para += "&id=" + id;
 			para += "&detail="+getMedicineXml();
 
-			//if(Htspecial_popType == "edit"){
-				//requestUrl = "/healthRecordAction/updateMemberHtSpecial.action";
-			//}
 			
 			
 			showScreenProtectDiv(2);
@@ -295,8 +257,7 @@
 				},success:function(response){
 				    hideScreenProtectDiv(2);
 			        hideLoading();
-				    var modelMap = response.modelMap;
-				    var state = modelMap.state;
+				    var state = response.updateFlag;
 				    if(state == "1"){
 				    	$.alert('保存成功！');
 				    	//if(Htspecial_popType == "add"){
@@ -313,49 +274,12 @@
 				    	//}
 				    	//closeDiv_htspecial();
 				    	//showHtspecialRecord();
-				    	query();
+				    	//query();
 				    }else if(state == "0"){
 				    	$.alert('保存失败！');
 				    }
 				}
 			});
-		}
-		
-		function deleteHtspecial(index){
-			$.confirm("确认删除该数据",function(){
-				var id = recordList[index].id;
-			
-				var requestUrl = "/healthRecordAction/deleteMemberHtSpecial.action";
-				var para = "id="+id;
-				showScreenProtectDiv(2);
-			    showLoading();
-				xmlHttp = $.ajax({
-					url: requestUrl,
-					async:true,
-					data:para,
-					dataType:"json",
-					type:"POST",
-					complete:function(){
-
-					},
-					error:function(){
-						$.alert('无权限');
-					},success:function(response){
-					    hideScreenProtectDiv(2);
-				        hideLoading();
-					    var modelMap = response.modelMap;
-					    var state = modelMap.state;
-					    if(state == "1"){
-					    	$.alert('删除成功！');
-					    	$.fn.page.settings.realcount-=1;
-							pagemodify("del");
-					    	query();
-					    }else if(state == "0"){
-					    	$.alert('删除失败！');
-					    }
-					}
-				});
-			},function(){});	
 		}
 		
 		
@@ -468,32 +392,25 @@
 		}
 		
 		function getMedicineXml(){
-			var medicine="<medicine_taken>";
+			var medicine=[];
 			var medicalDetailTable = document.getElementById("med_table");
 			var rowcount=medicalDetailTable.rows.length;
 			for(var i=1;i<rowcount;i++){
+				var mddicineDetail = [];
 				var name=$('input[name="medicine_taken.name"]',medicalDetailTable.rows[i]);
 				var fre=$('input[name="medicine_taken.dosage"]',medicalDetailTable.rows[i]);
 				var hour=$('input[name="medicine_taken.hours"]',medicalDetailTable.rows[i]);
-				var item="<item>"+
-							"<name>"+name.val()+"</name>"+
-							"<dosage>"+fre.val()+"</dosage>"+
-							"<take_time>"+hour.val()+"</take_time>"+
-							"</item>";
-				medicine+=item;
+				mddicineDetail.push(name.val());
+				mddicineDetail.push(fre.val());
+				mddicineDetail.push(hour.val()+";");
+				medicine.push(mddicineDetail);
 			}
-			medicine+="</medicine_taken>";
 			return medicine;
 		}
 		
 		var medical_obj;
 		function showMedicine(obj){
 			var url = "medicine.jsp";
-			//返回选择的用户信息
-			//var medicine_name = window.showModalDialog( url , obj.value , "dialogWidth=750px;dialogHeight=550px;scroll=no") ;
-			//if(medicine_name != undefined && medicine_name != null){
-			//	obj.value = medicine_name;
-			//}
 			medical_obj = obj
 			window.open( url ,'eeeee','fullscreen=no, resizable=no, status=no, z-look=yes, titlebar=no, scrollbars=no, toolbar=no, menubar=no, location=no, top=200, left=200, width=750, height=550') ;
 		}
@@ -568,18 +485,6 @@
 			pageClick(num);
 		}
 	</script>
-
-<!-- 
-<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-<div id="fanye" >
-<input type="button" value="首页" class="button_fy page-first" />
-<input type="button" value="上一页" class="button_fy page-perv" />
-<input type="button" value="下一页" class="button_fy page-next" />
-<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
- 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-</div>
- -->
  
 <div class="index_page">
   <ul>
@@ -622,14 +527,14 @@
     		<tr>
     			<td width="130px"><span>*患高血压日期：</span></td>
     			<td align="left">
-    			<input class="inputMin_informationModify text-input validate[required]" type="text"  id="ill_date"  name="ill_date" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-prompt-position="centerRight:0,-5"/>
+    			<input class="inputMin_informationModify text-input validate[required]" type="text"  id="havaBloodDate"  name="havaBloodDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-prompt-position="centerRight:0,-5"/>
     			</td>
     		</tr>
     		<tr>
     			<td width="130px"><span class="method">*是否用药：</span></td>
     			<td>
-    				<input type="radio" name="is_use_medicine" value="1" checked="checked" />是
-		            <input type="radio" name="is_use_medicine" value="0"/>否
+    				<input type="radio" name="isUseMedicine" value="1" checked="checked" />是
+		            <input type="radio" name="isUseMedicine" value="0"/>否
     			</td>
     		</tr>
     		<tr>
@@ -655,10 +560,7 @@
     			<td>
     					<span class="select-style_htspecial">
 						<select id="BPLevel" style="width:100px">
-							<option value="9">不详</option>
-							<option value="1">一级高血压</option>
-							<option value="2">二级高血压</option>
-							<option value="3">三级高血压</option>
+
 						</select>
 						</span>
     			</td>
@@ -668,11 +570,7 @@
     			<td>
     					<span class="select-style_htspecial">
 						<select id="RiskLevel" style="width:100px">
-							<option value="9">不详</option>
-							<option value="1">低危</option>
-							<option value="2">中危</option>
-							<option value="3">高危</option>
-							<option value="4">超高危</option>
+
 						</select>
 						</span>
     			</td>

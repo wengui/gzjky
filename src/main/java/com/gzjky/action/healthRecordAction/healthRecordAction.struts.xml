@@ -52,6 +52,13 @@
 	<!-- 疾病史删除-->
 	<action name="deleteMemberIllnessHistory" class="com.gzjky.action.healthRecordAction.DeleteMemberIllnessHistoryAction" method="delIllnessHistory"/>
 	
+		
+	<!-- 高血压专项查询-->
+	<action name="queryMemberHtSpecial" class="com.gzjky.action.healthRecordAction.QueryMemberHtSpecialAction" method="getRecord"/>
+		
+	<!-- 高血压专项更新记录-->
+	<action name="editMemberHtSpecial" class="com.gzjky.action.healthRecordAction.EditMemberHtSpecialAction" method="editRecord"/>
+	
 	<!-- 健康检查一览取得-->
 	<action name="queryMemberMedicalExaminationList" class="com.gzjky.action.healthRecordAction.QueryMemberMedicalExaminationListAction" method="getList"/>
 	

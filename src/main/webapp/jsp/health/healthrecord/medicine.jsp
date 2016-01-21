@@ -62,13 +62,13 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 	color:#5a5a5a; 
 	border-bottom:1px dotted #aeaeae;
 }
-#type_id{height: 28px;}
-#common_name{border: 1px solid #aeaeae;height: 28px;width:180px}
+#typeId{height: 28px;}
+#commonName{border: 1px solid #aeaeae;height: 28px;width:180px}
 </style>
 <script type="text/javascript">
 		$(function(){
 			if(name==""){
-				$("#common_name").val(window.dialogArguments);
+				$("#commonName").val(window.dialogArguments);
 			}
 			startInit();
 			
@@ -82,11 +82,11 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 			var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
 			if(pointerStart<0)
 				pointerStart = 0;
-			var name=$("#common_name").val();
-			var type_id=$("#type_id").val();
-			if(type_id==null)type_id="";
-			var requestUrl = "/medicineRecordAction/queryMedicine.action";
-			var para = "type_id="+type_id+"&common_name="+ name //+ "&terminology=" + terminology
+			var name=$("#commonName").val();
+			var typeId=$("#typeId").val();
+			if(typeId==null)typeId="";
+			var requestUrl = "/gzjky/medicineRecordAction/queryMedicine.do";
+			var para = "typeId="+typeId+"&commonName="+ name //+ "&terminology=" + terminology
 				+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize + 
 				"&currentnum="+$.fn.page.settings.currentnum;
 			showScreenProtectDiv(1);
@@ -104,9 +104,8 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 				error:function(){
 					$.alert('无权限');
 				},success:function(response){
-				    var modelMap = response.modelMap;
-				    recordList = modelMap.medicineList;
-					$.fn.page.settings.count = modelMap.recordTotal;
+				    recordList = response.outBeanList;
+					$.fn.page.settings.count = response.recordTotal;
 					page($.fn.page.settings.currentnum);
 				}
 			});  
@@ -125,15 +124,15 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 			$("table.bPhistory_table tr:even").addClass("even");
 			$("table.bPhistory_table tr:odd").addClass("odd");
 		}
-		var columnArray = ["id","common_name","terminology","priority","indication"];
+		var columnArray = ["id","commonName","terminology","priority","indication"];
 		var indicationMap = {};
 		function addrowtotable(table,index){
 			 var rowcount=table.rows.length;
 			 var tr=table.insertRow(rowcount);
 			 //tr.ondblclick = function(){tr_click(tr)};
-			 tr.name = recordList[index].common_name;
+			 tr.name = recordList[index].commonName;
 			 var i = 0;
-			 recordList[index].id = '<input type="checkbox" value="'+recordList[index].common_name+'" name="med_id" />';
+			 recordList[index].id = '<input type="checkbox" value="'+recordList[index].commonName+'" name="med_id" />';
 			 var st=recordList[index].priority;
 			 if(st=='1'||st==1){
 			 	recordList[index].priority="一线药物";
@@ -156,7 +155,7 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 		}
 
 		function initType(){
-			var requestUrl = "/medicineRecordAction/queryMedicineType.action";
+			var requestUrl = "/gzjky/medicineRecordAction/queryMedicineType.do";
 			var para = "";
 			$.ajax({
 				url: requestUrl,
@@ -169,8 +168,7 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 				error:function(){
 					$.alert('无权限');
 				},success:function(response){
-				    var modelMap = response.modelMap;
-				    medicineTypeList= modelMap.medicineTypeList;
+				    medicineTypeList= response.outBeanList;
 					drawType();
 				}
 			});
@@ -179,10 +177,10 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 			var select='<option value="">全部</option>';
 			if(medicineTypeList!=null&&medicineTypeList.length>0){
 				for(var i=0;i<medicineTypeList.length;i++){
-					select+='<option value="'+medicineTypeList[i].id+'">'+medicineTypeList[i].type+'</option>';
+					select+='<option value="'+medicineTypeList[i].id+'">'+medicineTypeList[i].catename+'</option>';
 				}
 			}
-			$("#type_id").html(select);
+			$("#typeId").html(select);
 		}
 		
 		function cancelMedicine(){
@@ -230,13 +228,13 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
  						<tr>
  							<td>
  								<span class="select-style_medcine">
- 								&nbsp;&nbsp;药品类目: <select class="type_id" id="type_id">
+ 								&nbsp;&nbsp;药品类目: <select class="typeId" id="typeId">
  								</select>
  								</span>
  							</td>
  							<td>
  								<span style="margin-left:200px">
- 								药品名称: <input class="common_name" id="common_name" type="text" />
+ 								药品名称: <input class="commonName" id="commonName" type="text" />
  								</span>
  							</td>
  							<td>

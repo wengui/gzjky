@@ -12,7 +12,7 @@
 <script type="text/javascript">
    var hly_url=  "http://v3.995120.cn:7090/hly_svr";
 	function query(){
-		var url = "/historyAction/queryEcgRecordDetail.action";
+		var url = "/gzjky/historyAction/queryEcgRecordDetail.action";
 		var para = "device_version=&file_unit_id=&file_cluster_id=&file_unit_type=";
 		
 		 showScreenProtectDiv(1);
