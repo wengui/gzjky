@@ -19,5 +19,8 @@
 	<!-- 心电历史查询 -->
 	<action name="queryEcgList" class="com.gzjky.action.historyAction.ElectrocardioHistoryListAction" method="getList"/>
 
+	<!-- 心电历史查询 -->
+	<action name="queryEcgRecordDetail" class="com.gzjky.action.historyAction.QueryEcgRecordDetailAction" method="getRecord"/>
+
 	</package>
 </struts>

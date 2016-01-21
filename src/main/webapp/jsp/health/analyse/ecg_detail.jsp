@@ -9,11 +9,15 @@
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
+<%
+	String id=request.getParameter("id"); 
+		id=new String(id.getBytes("UTF-8"),"UTF-8");  
+%>
 <script type="text/javascript">
-   var hly_url=  "http://v3.995120.cn:7090/hly_svr";
+   var hly_url=  "http://gzjky.sh-sdhr.com/upload/Electrocardiograms/";
 	function query(){
-		var url = "/gzjky/historyAction/queryEcgRecordDetail.action";
-		var para = "device_version=&file_unit_id=&file_cluster_id=&file_unit_type=";
+		var url = "/gzjky/historyAction/queryEcgRecordDetail.do";
+		var para = "id=" + ${param.id};
 		
 		 showScreenProtectDiv(1);
 		 showLoading();
@@ -31,10 +35,9 @@
 				 $.alert('无权限');
 			 },
 			 success:function(response){
-				   var modelMap = response.modelMap;
-				   var detail = modelMap.ecgRecordDetail;
+				   var detail = response.result;
 				   if(detail != null){
-					   $("#ecg_image").attr("src",hly_url+detail["file_storage_path"].replace("/helowindata/tomcat/webapps/hly_svr","")+"-I.jpg");
+					   $("#ecgImage").attr("src",hly_url+detail["ecgImage"].replace("~/upload/Electrocardiograms/",""));
 					   $("span").each(function(index,obj){
 						   var obj_id = obj.id;
 						   if(obj_id != ""){
@@ -63,22 +66,23 @@
       </ul>
     </div>
     <div class="ecg_main">
-      <li><div style="width: 670px;height:300px;overflow:auto"><img id="ecg_image" /></div></li> <br/>
+    <input value="" name="id" id="id" type="hidden"/>
+      <li><div style="width: 670px;height:300px;overflow:auto"><img id="ecgImage" /></div></li> <br/>
       <li class="tgreen_ecg">诊断结论</li>
       <li class="tGrey_ecgname">心率：</li>
-      <li class="tblack_ecgname"><span></span><br/></li>
+      <li class="tblack_ecgname"><span id="heartRate"></span><br/></li>
       <li class="tGrey_ecgname">采集时间：</li>
-      <li class="tblack_ecgname"><span id="collection_time"></span><br/></li>
+      <li class="tblack_ecgname"><span id="collectionTime"></span><br/></li>
       <li class="tGrey_ecgname">分析时间：</li>
-      <li class="tblack_ecgname"><span id="upload_time"></span><br/></li>
+      <li class="tblack_ecgname"><span id="uploadTime"></span><br/></li>
       <li class="tGrey_ecgname">采集时长：</li>
-      <li class="tblack_ecgname"><span id="record_count"></span>秒<br/></li>
+      <li class="tblack_ecgname"><span id="recordCount"></span>秒<br/></li>
       <li class="tGrey_ecgname">分析结果：</li>
-      <li class="tblack_ecgname"><span id="analyse_result"></span><br/></li>
+      <li class="tblack_ecgname"><span id="analyseResult"></span><br/></li>
       <li class="tGrey_ecgname">保健建议：</li>
       <li class="tblack_ecgname"><span id="suggestion"></span><br/></li>
       <li class="tGrey_ecgname">诊断医师：</li>
-      <li class="tblack_ecgname"><span id="doctor_name"></span><br/></li>   
+      <li class="tblack_ecgname"><span id="doctorName"></span><br/></li>   
       <li class="btn_goback"><a href="javascript:void(0)" onclick="goback()">返回</a></li>   
     </div>
     

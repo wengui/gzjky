@@ -1,47 +1,52 @@
-package com.gzjky.action.healthStatusAction;
+package com.gzjky.action.historyAction;
 
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gzjky.action.acitonCommon.ModelMap;
-import com.gzjky.bean.extend.QueryBPandHROutputBean;
-import com.gzjky.dao.readdao.BloodPressureHistoryReadMapper;
+import com.gzjky.bean.extend.QueryEcgRecordDetailOutputBean;
+import com.gzjky.dao.readdao.ElectrocardioHistoryReadMapper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
 
 /**
- * 患者生活习惯
+ * 心电详细
+ * 
  * @author yuting
  *
  */
-public class QueryBPandHRresultAction extends ActionSupport {
+public class QueryEcgRecordDetailAction extends ActionSupport {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2957143535668658323L;
-	
+	private static final long serialVersionUID = -6017844161553462765L;
 	@Autowired
-	private BloodPressureHistoryReadMapper bloodPressureHistoryReadMapper;
-	
-	
-	public String getBPandHRrecord(){
-		
+	private ElectrocardioHistoryReadMapper readMapper;
+
+	/**
+	 * 心电详细
+	 * @return
+	 */
+	public String getRecord() {
 
 		try {
+
+			HttpServletRequest request = ServletActionContext.getRequest();
 			int patientID = Integer.parseInt(ActionContext.getContext().getSession().get("PatientID").toString());
-			
+
 			// 患者ID要从session里取得
-			QueryBPandHROutputBean result = bloodPressureHistoryReadMapper.selectBPandHRresult(patientID);
-			
+			QueryEcgRecordDetailOutputBean result = readMapper.selectElectrocardioDetail(NumberUtils.toInt(request.getParameter("id")), patientID);
 			ModelMap modelMap = new ModelMap();
-			
+
 			// 将java对象转成json对象
 			HttpServletResponse response = ServletActionContext.getResponse();
 			// 以下代码从JSON.java中拷过来的
@@ -55,9 +60,10 @@ public class QueryBPandHRresultAction extends ActionSupport {
 			out.print(jsonObject);
 			out.flush();
 			out.close();
-			
+
 		} catch (Exception e) {
-			return null;
+			e.printStackTrace();
+			// return null;
 		}
 
 		return SUCCESS;

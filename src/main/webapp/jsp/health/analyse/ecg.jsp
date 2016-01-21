@@ -209,16 +209,9 @@ function changeHeartType(obj){
 }
 
 function showEcgDetail(obj,index){
-	var file_unit_id = recordList[index].file_unit_id;
-	var file_cluster_id = recordList[index].file_cluster_id;
-	var file_unit_type = recordList[index].file_unit_type;
-	var heartRate = recordList[index].heartRate;
-	var timeLength = recordList[index].timeLength;
-	var deviceVersion = recordList[index].deviceVersion;
+	var id = recordList[index].id;
 	obj.target = "mainFrame";
-	obj.href = "./ecg_detail.jsp?heartRate="+heartRate + "&timeLength="+timeLength
-				+"&file_unit_id="+file_unit_id+"&file_cluster_id="+file_cluster_id+"&file_unit_type="+file_unit_type
-				+"&deviceVersion="+deviceVersion;
+	obj.href = "./ecg_detail.jsp?id="+id;
 }
 </script>
 </head>
