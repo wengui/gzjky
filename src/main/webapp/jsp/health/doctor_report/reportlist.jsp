@@ -911,7 +911,22 @@ function firstVersion(bpMonthReport){
 		$("#month_conclusion").html(bpMonthReport.summary);
 		//建议
 		$("#month_suggestion").html(bpMonthReport.healthAdvice);
-		
+		var level = document.getElementById("assessment_level");
+		var state = document.getElementById("user_state");
+		for(var i=0;i<level.options.length;i++) {  
+            if(level.options[i].value == bpMonthReport.assessmentLevel) {  
+            	level.options[i].selected = true;  
+                break;  
+            }  
+        } 
+		for(var i=0;i<state.options.length;i++) {  
+            if(state.options[i].value == bpMonthReport.userStatus) {  
+            	state.options[i].selected = true;  
+                break;  
+            }  
+        }
+		//医生总结
+		$("#doctor_result").html(bpMonthReport.doctorSummary);
 // 		var conclusion = bpMonthReport.summary;
 // 		if(conclusion!=null){
 // 			var tr = "";
