@@ -242,7 +242,7 @@ public class passwordAction extends ActionSupport {
 		// 用户名
 		loginId = request.getParameter("login_id");
 		// 用户名
-		passwd = request.getParameter("oldPwd");
+		passwd = request.getParameter("passwd");
 			
 		result = String.valueOf(userInfoWriteMapper.updatePasswordByName(loginId, PwdUtil.CreateDbPassword(passwd)));
 
