@@ -15,14 +15,10 @@
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+
 <!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet"/>
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet"/>
 <!-- scripts -->
 <script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
@@ -40,47 +36,14 @@
    
    })
 
-	//设备型号数组
-	var parameter=[
-				
-				{id:"606",
-				desc:"无线网络生理参数监测仪TE8000Y"
-					
-					},
-					
-				{id:"605",
-				desc:"无线网络生理参数监测仪TE8000Y2"
-					
-					},
-					
-				{id:"301",
-				desc:"腕式监测呼救定位器TE8000Y3"
-					
-					},
-					
-				{id:"108",
-				desc:"无线电子测量血压计TE-7000Y"
-					
-					},
-					
-				{id:"801",
-				desc:"十二导心电采集仪TE8000Y4"
-					
-					},
-					
-				{id:"502",
-				desc:"心电蓝牙TE9100Y"
-					
-					}
-					
-			];
+
 	var deviceBaseInfoList = null; 		
 	//查询用户设备
 	function query(){
 		showScreenProtectDiv(1);
 	 	//showLoading();
 		$.ajax({
-				url:"/deviceBaseInfo/queryMemberBindDevice.action",
+				url:"/gzjky/device/queryMemberBindDevice.do",
 				async:true,
 				data:null,
 				dataType:"json",
@@ -93,8 +56,7 @@
 					$.alert("发生异常");
 				},
 				success:function(response) {
-					var modelMap = response.modelMap;
-					deviceBaseInfoList=modelMap.deviceBaseInfoList;
+					deviceBaseInfoList=response;
 					createDeviceInfoDiv(deviceBaseInfoList);
 				}
 			});
@@ -109,24 +71,24 @@
 			var deviceType = '';
 			var serial_id = '';
 			var sim = List[i].sim==null?'无':List[i].sim;
-			if(List[i].serial_id == null || List[i].serial_id == -1 || List[i].serial_id == 0){
+			if(List[i].num == null || List[i].num == -1 || List[i].num == 0){
 				serial_id = "未绑定";
 			}else{
-				serial_id = List[i].serial_id;
+				serial_id = List[i].num;
 			} 
-			for(var j=0;j<parameter.length;j++){
-		   		if(List[i].version==parameter[j].id){
-		   			deviceType=parameter[j].desc;
-		   		};
-		   	}
+			var deviceType  = List[i].versionname;
+		
 		   	var flag = List[i].version == '301';
-		   	var size = List[i].areaId;
-		    var shr_top = deviceBaseInfoList[i].shrink_threshold_top;
-			var shr_bottom = deviceBaseInfoList[i].shrink_threshold_bottom;
-			var dia_top = deviceBaseInfoList[i].diastole_threshold_top;
-			var dia_bottom = deviceBaseInfoList[i].diastole_threshold_bottom;
+		   	var notice = List[i].area;
+		    var shr_top = deviceBaseInfoList[i].ssymax;
+			var shr_bottom = deviceBaseInfoList[i].ssymin;
+			var dia_top = deviceBaseInfoList[i].szymax;
+			var dia_bottom = deviceBaseInfoList[i].szymin;
 			var isExistBlood = false;
-			if(shr_top==null||shr_bottom==null||dia_top==null||dia_bottom==null){
+			if(shr_top==null||shr_top==""
+					||shr_bottom==null||shr_bottom==""
+					||dia_top==null||dia_top==""
+					||dia_bottom==null||dia_bottom==""){
 				isExistBlood = true;
 			}
 		
@@ -141,15 +103,15 @@
             //301设备
             if(flag){
             div+="<li class='tgrey_equipmentMain'>远程定位：</li>"+
-            "<li class='tblack_equipmentMain'><img id='position_"+i+"' onclick=\"position('"+i+"');\" src='/images/icon/quick.png' title='远程定位'/></li>";
+            "<li class='tblack_equipmentMain'><img id='position_"+i+"' onclick=\"position('"+i+"');\" src='/gzjky/images/icon/quick.png' title='远程定位'/></li>";
             }
             //是否有血压通知
-            if(size == 0){
+            if(notice == 0){
              div+="<li class='tgrey_equipmentMain' >血压通知：</li>"+
-            "<li class='tblack_equipmentMain' ><img title='点击开启测压通知' onclick=\"switchingPic('img_notice','"+i+"');\"  id='img_notice_"+i+"' src='/images/icon/btn_off.png' /><span>已关闭血压检测短信通知服务</span></li>";
+            "<li class='tblack_equipmentMain' ><img title='点击开启测压通知' onclick=\"switchingPic('img_notice','"+i+"');\"  id='img_notice_"+i+"' src='/gzjky/images/icon/btn_off.png' /><span>已关闭血压检测短信通知服务</span></li>";
             }else{
              div+="<li class='tgrey_equipmentMain'>血压通知：</li>"+
-            "<li class='tblack_equipmentMain'><img title='点击关闭测压通知' id='img_notice_"+i+"' onclick=\"switchingPic('img_notice','"+i+"');\" src='/images/icon/btn_on.png' /><span>已开启血压检测短信通知服务</span></li>";
+            "<li class='tblack_equipmentMain'><img title='点击关闭测压通知' id='img_notice_"+i+"' onclick=\"switchingPic('img_notice','"+i+"');\" src='/gzjky/images/icon/btn_on.png' /><span>已开启血压检测短信通知服务</span></li>";
             }
            
            //301设备是操作,108血压设置
@@ -164,7 +126,14 @@
             		div+="<li class='tblack_equipmentMain' id='blood_set_"+i+"' >收缩压："+shr_bottom+"-"+shr_top+"mmHg,舒张压："+dia_bottom+"-"+dia_top+"mmHg"
             	}
             
-            div+="<a href='javascript:void(0)' class='pl_equipmentMain'><span title='阈值设置' onclick='eidtBlood("+i+","+shr_bottom+","+shr_top+","+dia_bottom+","+dia_top+");'>阈值设置</span></a></li ><li></li><li  style='color:red;padding-left:90px;'>系统默认的正常血压范围（收缩压：90-140mmHg,舒张压：60-90mmHg）</li>";
+            if(isExistBlood){
+            	div+="<a href='javascript:void(0)' class='pl_equipmentMain'><span title='阈值设置' onclick='eidtBlood("+i+","+0+","+0+","+0+","+0+");'>阈值设置</span></a></li ><li></li><li  style='color:red;padding-left:90px;'>系统默认的正常血压范围（收缩压：90-140mmHg,舒张压：60-90mmHg）</li>";
+            }
+            else{
+            	div+="<a href='javascript:void(0)' class='pl_equipmentMain'><span title='阈值设置' onclick='eidtBlood("+i+","+shr_bottom+","+shr_top+","+dia_bottom+","+dia_top+");'>阈值设置</span></a></li ><li></li><li  style='color:red;padding-left:90px;'>系统默认的正常血压范围（收缩压：90-140mmHg,舒张压：60-90mmHg）</li>";
+            }
+            	
+            
             }
            
            div+="</ul>"+
@@ -224,10 +193,10 @@
 			return ;
 		}
 		
-		var param="device_unit_id="+deviceBaseInfoList[i].unit_id+"&device_cluster_id="+deviceBaseInfoList[i].cluster_id+"&device_unit_type="+deviceBaseInfoList[i].unit_type+"&shrink_threshold_bottom="+shrl+"&shrink_threshold_top="
+		var param="device_id="+deviceBaseInfoList[i].id+"&f_id="+deviceBaseInfoList[i].fId+"&shrink_threshold_bottom="+shrl+"&shrink_threshold_top="
 			+shrh+"&diastole_threshold_bottom="+dial+"&diastole_threshold_top="+diah;
 		$.ajax({
-			url:"/deviceBaseInfo/insertMemberBloodPressureThreshold.action",
+			url:"/gzjky/device/insertMemberBloodPressureThreshold.do",
 			async:true,
 			data:param,
 			dataType:"json",
@@ -236,12 +205,16 @@
 				$.alert("执行过程中，出现错误！");
 			},
 			success:function(response) {
-				var modelMap = response.modelMap;
-				var state = modelMap.state;
-				if(state == "0"){
+				
+				var state = response.result
+				if(state == "1"){
 					$.alert("设置成功");
 					$("#blood_set_"+i).html("收缩压："+shrl+"-"+shrh+"mmHg,舒张压："+dial+"-"+diah+"mmHg"+
 	            	"<a href='javascript:void(0)' class='pl_equipmentMain'><span onclick='eidtBlood("+i+","+shrl+","+shrh+","+dial+","+diah+");'>阈值设置</span></a>");
+				}
+				else{
+					$.alert("设置失败");
+
 				}
 			}
 		});
@@ -296,11 +269,11 @@
 		var flag = $("#"+picId+"_"+i).attr("src").indexOf("btn_on")>0;
 		if(flag){
 		if(picId == "position"){
-			$("#"+picId+"_"+i).attr("src", "/images/icon/btn_off.png");
+			$("#"+picId+"_"+i).attr("src", "/gzjky/images/icon/btn_off.png");
 			}else{
 				$.confirm('你确认取消血压通知吗?', function() {
 					bloodpressureNotice(i,"off");
-					$("#"+picId+"_"+i).attr("src", "/images/icon/btn_off.png");
+					$("#"+picId+"_"+i).attr("src", "/gzjky/images/icon/btn_off.png");
 					$("#"+picId+"_"+i).attr("title", "点击开启测压通知");
 					$("#"+picId+"_"+i).nextAll().remove();
 					$("#"+picId+"_"+i).after("<span>已关闭血压检测短信通知服务</span>");
@@ -309,11 +282,11 @@
 		}else{
 			if(picId == "position"){
 					position(i);
-					$("#"+picId+"_"+i).attr("src", "/images/icon/btn_on.png");
+					$("#"+picId+"_"+i).attr("src", "/gzjky/images/icon/btn_on.png");
 				}else{
 			$.confirm('你确认增加血压通知吗?', function() {
 				bloodpressureNotice(i,"on");
-				$("#"+picId+"_"+i).attr("src", "/images/icon/btn_on.png");
+				$("#"+picId+"_"+i).attr("src", "/gzjky/images/icon/btn_on.png");
 				$("#"+picId+"_"+i).attr("title", "点击关闭测压通知");
 				$("#"+picId+"_"+i).nextAll().remove();
 				$("#"+picId+"_"+i).after("<span>已开启血压检测短信通知服务</span>");
@@ -392,10 +365,10 @@
 	}
 	
 	function unbind(i){
-		var para="unit_id="+deviceBaseInfoList[i].unit_id+"&cluster_id="+deviceBaseInfoList[i].cluster_id+"&unit_type="+deviceBaseInfoList[i].unit_type;
+		var para="epId="+deviceBaseInfoList[i].epId;
 		$.confirm('你确认解除绑定设备吗?', function() {
 				xmlHttp = $.ajax({
-				url:"/deviceBaseInfo/deleteMemberDeviceBind.action",
+				url:"/gzjky/device/deleteMemberDeviceBind.do",
 				async:true,
 				data:para,
 				dataType:"json",
@@ -406,7 +379,7 @@
 					$.alert("设备解除成功！",function(){location.reload();});					
 				}
 		});
-				});
+	});
 	}
 </script>
 </head>
@@ -500,23 +473,23 @@
   <div class="popup_main">
     <ul>
       <li class="tblack_bp">中国高血压防治指南2010年修订版</li>
-      <li class="tyellow_max_bp"><img src="/images/icon/tyellow.png" class="img_color" />
+      <li class="tyellow_max_bp"><img src="/gzjky/images/icon/tyellow.png" class="img_color" />
       低血压：<span class="tgrey_bp">收缩压小于</span>90<span class="tgrey_bp">，舒张压小于</span>60</li>
       
-      <li class="tgreen_bp"><img src="/images/icon/green.png" class="img_color" />
+      <li class="tgreen_bp"><img src="/gzjky/images/icon/green.png" class="img_color" />
       正常血压：<span class="tgrey_bp">收缩压小于</span>120<span class="tgrey_bp">，舒张压小于</span>80</li>
-      <li class="tblue_bp"><img src="/images/icon/blue.png" class="img_color" />
+      <li class="tblue_bp"><img src="/gzjky/images/icon/blue.png" class="img_color" />
       正常高值：<span class="tgrey_bp">收缩压</span>120-139<span class="tgrey_bp">，舒张压</span>80-89</li>
-      <li class="tyellow_bp"><img src="/images/icon/yellow.png" class="img_color" />
+      <li class="tyellow_bp"><img src="/gzjky/images/icon/yellow.png" class="img_color" />
       高于正常：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压大于等于</span>90</li>
-      <li class="torange_bp"><img src="/images/icon/orange.png" class="img_color" />
+      <li class="torange_bp"><img src="/gzjky/images/icon/orange.png" class="img_color" />
       高血压一级：<span class="tgrey_bp">收缩压</span>140-159<span class="tgrey_bp">，舒张压</span>90-99</li>
-      <li class="tbrown_bp"><img src="/images/icon/brown.png" class="img_color" />
+      <li class="tbrown_bp"><img src="/gzjky/images/icon/brown.png" class="img_color" />
       高血压二级：<span class="tgrey_bp">收缩压</span>160-179<span class="tgrey_bp">，舒张压</span>100-109</li>
-      <li class="tred_bp"><img src="/images/icon/red.png" class="img_color" />
+      <li class="tred_bp"><img src="/gzjky/images/icon/red.png" class="img_color" />
       高血压三级：<span class="tgrey_bp">收缩压大于等于</span>180<span class="tgrey_bp">，舒张压大于等于</span>110</li>
       
-       <li class="tred_orange_bp"><img src="/images/icon/red_orange.png" class="img_color" />
+       <li class="tred_orange_bp"><img src="/gzjky/images/icon/red_orange.png" class="img_color" />
       单纯收缩期高血压：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压小于</span>90</li>
       
       <li class="tgreen_bpPrompt">注意：高压和低压分属于不同级别时，以较高分级为标准</li>

@@ -15,6 +15,21 @@
 	<action name="queryDeviceBySid" class="com.gzjky.action.device.deviceAction" method="queryDeviceBySid">
 
 	</action>
+	
+	<!-- 绑定设备信息查询 -->
+	<action name="queryMemberBindDevice" class="com.gzjky.action.device.deviceAction" method="queryMemberBindDevice">
 
+	</action>
+
+
+	<!-- 解除绑定设备 -->
+	<action name="deleteMemberDeviceBind" class="com.gzjky.action.device.deviceAction" method="deleteMemberDeviceBind">
+
+	</action>
+	
+	<!-- 设备阈值设置 -->
+	<action name="insertMemberBloodPressureThreshold" class="com.gzjky.action.device.deviceAction" method="insertMemberBloodPressureThreshold">
+
+	</action>
 	</package>
 </struts>

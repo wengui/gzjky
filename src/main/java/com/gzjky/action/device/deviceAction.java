@@ -9,18 +9,25 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.gzjky.action.acitonCommon.ModelMap;
+import com.gzjky.bean.extend.PatientDeviceInfoBean;
 import com.gzjky.bean.extend.UserinfoAndPatientinfoBean;
 import com.gzjky.bean.gen.Equipment;
 import com.gzjky.bean.gen.EquipmentAndPatient;
+import com.gzjky.bean.gen.PJcXybjSet;
 import com.gzjky.bean.gen.PatientInfo;
 import com.gzjky.bean.gen.UserInfo;
 import com.gzjky.dao.readdao.EquipmentAndPatientReadMapper;
 import com.gzjky.dao.readdao.EquipmentReadMapper;
 import com.gzjky.dao.writedao.EquipmentAndPatientWriteMapper;
+import com.gzjky.dao.writedao.PJcXybjSetWriteMapper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+import net.sf.json.util.CycleDetectionStrategy;
+
 import org.joda.time.DateTime;
 
 /**
@@ -38,6 +45,9 @@ public class deviceAction extends ActionSupport {
 	EquipmentAndPatientReadMapper equipmentAndPatientReadMapper;
 	@Autowired
 	EquipmentAndPatientWriteMapper equipmentAndPatientWriteMapper;
+	@Autowired
+	PJcXybjSetWriteMapper pJcXybjSetWriteMapper;
+	
 	//用户名
 	private String loginId;
 	//密码
@@ -151,6 +161,143 @@ public class deviceAction extends ActionSupport {
 			ModelMap modelMap = new ModelMap();
 			modelMap.setResult(equ);
 			modelMap.setOutBeanList(patientInfoList);
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out = null;
+			out = response.getWriter();
+			// 将java对象转成json对象
+			JSONObject jsonObject = JSONObject.fromObject(modelMap);// 将list转换为json数组
+			out.print(jsonObject);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "success";
+		
+
+	}
+	/*
+	 * 绑定设备信息取得
+	 */
+	public String queryMemberBindDevice() {
+		
+		
+		// 获取当前Patient信息
+		UserinfoAndPatientinfoBean userinfoAndPatientinfo = (UserinfoAndPatientinfoBean) ActionContext.getContext()
+				.getSession().get("Patient");
+		List<PatientDeviceInfoBean> patientDeviceInfoList=null;
+		
+		patientDeviceInfoList= equipmentAndPatientReadMapper.queryMemberBindDevice(Integer.parseInt(userinfoAndPatientinfo.getPid()));
+
+		try {			
+
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out = null;
+			out = response.getWriter();
+			// 将java对象转成json对象
+			// 将java对象转成json对象
+			JsonConfig jsonConfig = new JsonConfig();
+			jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
+			JSONArray json = JSONArray.fromObject(patientDeviceInfoList, jsonConfig);
+			out.print(json.toString());
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "success";
+		
+
+	}
+	
+	/*
+	 * 绑定设备信息取得
+	 */
+	public String deleteMemberDeviceBind() {
+		
+		
+		// 页面参数取得
+		HttpServletRequest request = ServletActionContext.getRequest();
+		// 设备用户关系信息
+		String epId = request.getParameter("epId");
+		
+		int result=equipmentAndPatientWriteMapper.updateDeleteFlagByPrimaryKey(Integer.parseInt(epId));
+
+		try {			
+
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out = null;
+			out = response.getWriter();
+			// 将java对象转成json对象
+			JSONObject jsonObject = JSONObject.fromObject(result);// 将list转换为json数组
+			out.print(jsonObject);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "success";
+		
+
+	}
+	
+
+	/*
+	 * 阈值信息录入
+	 */
+	public String insertMemberBloodPressureThreshold() {
+		
+		int result;
+		
+		// 页面参数取得
+		HttpServletRequest request = ServletActionContext.getRequest();
+		// 设备用户关系信息
+		String fid = request.getParameter("f_id");
+		String eid = request.getParameter("device_id");
+		String ssymax=request.getParameter("shrink_threshold_top");
+		String ssymin=request.getParameter("shrink_threshold_bottom");
+		String szymax=request.getParameter("diastole_threshold_top");
+		String szymin=request.getParameter("diastole_threshold_bottom");
+		
+		PJcXybjSet pj= new PJcXybjSet();
+		//收缩压
+		pj.setSsymax(Integer.parseInt(ssymax));
+		pj.setSsymin(Integer.parseInt(ssymin));
+		//舒张压
+		pj.setSzymax(Integer.parseInt(szymax));
+		pj.setSzymin(Integer.parseInt(szymin));
+		if(fid==null||fid.equals("")){
+			// 获取当前Patient信息
+			UserinfoAndPatientinfoBean userinfoAndPatientinfo = (UserinfoAndPatientinfoBean) ActionContext.getContext()
+					.getSession().get("Patient");
+			//insert操作			
+			pj.setIsdelete(false);
+			pj.setEid(Integer.parseInt(eid));
+			pj.setUid(userinfoAndPatientinfo.getPid());
+			
+			result=pJcXybjSetWriteMapper.insertSelective(pj);		
+		}
+		else{
+			pj.setId(Integer.parseInt(fid));
+			result=pJcXybjSetWriteMapper.updateByPrimaryKeySelective(pj);		
+		}
+
+
+		try {			
+			ModelMap modelMap = new ModelMap();
+			modelMap.setResult(result);
 			// 将java对象转成json对象
 			HttpServletResponse response = ServletActionContext.getResponse();
 			// 以下代码从JSON.java中拷过来的

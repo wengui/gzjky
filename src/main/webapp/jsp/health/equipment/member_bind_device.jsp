@@ -131,15 +131,14 @@
 							$.alert("该设备已绑定一个账户！");		
 						}
 						else{
-							if("${sessionScope.Patient.pid}"==list[0].id){}
-							else{
+							
 								var str="";
 								str+="<li>此次绑定用户：</li>";
 								str+="<li class='register_input'>	";
-								str+="<input type='text' readonly='readonly'"+"value=222 " +" id='member_login_id'  name='member_login_id' maxlength='30'  />";
+								str+="<input type='text' readonly='readonly'"+"value="+"${sessionScope.Patient.pname}"+" id='member_login_id1'  name='member_login_id1' maxlength='30'  />";
 								str+="</li>";
 								$("#new_user").html(str);	
-							}
+						
 							
 						}
 						  
