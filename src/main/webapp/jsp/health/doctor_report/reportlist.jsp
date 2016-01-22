@@ -44,36 +44,33 @@
   }
   function query(){
 
-		  var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
-		  if(pointerStart<0) pointerStart = 0;
-	
-		  var requestUrl = "";
-		  var para = "startDate=" + startDate + "&endDate=" + endDate
-			  +"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
-		  
-		  requestUrl = "/gzjky/doctorReportAction/queryReportList.do";
-		  showScreenProtectDiv(2);
-		  showLoading();
-		  xmlHttp = $.ajax({
-				url: requestUrl,
-				async:true,
-				data:para,
-				dataType:"json",
-				type:"POST",
-				complete:function(){
-				    hideScreenProtectDiv(2);
-			        hideLoading();
-				},
-				success:function(response){
-					
-					// 数据取得
-					recordList = response.outBeanList;
-				
-					$.fn.page.settings.count = response.recordTotal;
-					page($.fn.page.settings.currentnum);
+	  var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
+	  if(pointerStart<0) pointerStart = 0;
 
-				}
-			});
+	  var requestUrl = "";
+	  var para = "startDate=" + startDate + "&endDate=" + endDate
+		  +"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
+	  
+	  requestUrl = "/gzjky/doctorReportAction/queryReportList.do";
+	  showScreenProtectDiv(2);
+	  showLoading();
+	  xmlHttp = $.ajax({
+			url: requestUrl,
+			async:true,
+			data:para,
+			dataType:"json",
+			type:"POST",
+			complete:function(){
+			    hideScreenProtectDiv(2);
+		        hideLoading();
+			},
+			success:function(response){
+				// 数据取得
+				recordList = response.outBeanList;
+				$.fn.page.settings.count = response.recordTotal;
+				page($.fn.page.settings.currentnum);
+			}
+		});
 	  
   }
   
@@ -117,14 +114,10 @@
 	    
 	    td=tr.insertCell(4);
 	    td.obj = obj;
-	    //td.innerHTML = "<a href='javascript:void(0)' onclick=\"showDetail(this.parentNode.obj)\">详情</a>";
 	    td.innerHTML = "<a href='javascript:void(0)' onclick=\"showDetail("+index+")\">详情</a>";
-	    
-	  
-	    
   }
   //周
- function query_week(){
+  function query_week(){
 	  $.fn.page.settings.currentnum = 1;
 	  dateType = 1;
 	  query();
@@ -136,77 +129,79 @@
 	  query();
   }
   //季度
- function query_quarter(){
+  function query_quarter(){
 	  $.fn.page.settings.currentnum = 1;
 	  dateType = 3;
 	  query();
   }
   //年
- function query_year(){
+  function query_year(){
 	  $.fn.page.settings.currentnum = 1;
 	  dateType = 4;
 	  query();
   }
   	
-	//关闭周报详情窗口
-	function closeWeekReport() {
-		$("#weekreport_detail").hide(200);
-		hideScreenProtectDiv(1);
-	}
-	//打开周报详情
-  	function openWeekReport(){
-  		$('#weekreport_detail').draggable({
+  //关闭周报详情窗口
+  function closeWeekReport() {
+	 $("#weekreport_detail").hide(200);
+	 hideScreenProtectDiv(1);
+  }
+  //打开周报详情
+  function openWeekReport(){
+     $('#weekreport_detail').draggable({
 			disabled : false
+	 });
+	 $("#weekreport_detail").show(200);
+	 showScreenProtectDiv(1);
+  }
+  //关闭周报详情窗口
+  function closeMonthReport() {
+	 $("#monthreport_detail").hide(200);
+	 hideScreenProtectDiv(1);
+  }
+  //打开周报详情
+  function openMonthReport(){
+	 $('#monthreport_detail').draggable({
+	 	disabled : false
+	 });
+	 $("#monthreport_detail").show(200);
+	 showScreenProtectDiv(1);
+  }
+
+  function showDetail(index){
+	 var report = recordList[index]
+ 		
+	 var requestUrl = "";
+	 var para = "startDate=" + report.starttime+" 00:00:00" + "&endDate=" + report.endtime+" 23:59:59"+"&reportType="+report.reportType;
+	 requestUrl = "/gzjky/doctorReportAction/queryReportDetail.do";
+	 xmlHttp = $.ajax({
+						url: requestUrl,
+						async:true,
+						data:para,
+						dataType:"json",
+						type:"POST",
+						complete:function(){
+						},
+				success:function(response){
+					// 数据取得
+					var modelMap = response.outBeanList;
+					report.bp_static =  modelMap[0];
+					report.incident =  modelMap[1];
+					report.ecg_report =  modelMap[2];
+					report.medicine_taken =  modelMap[3];
+				 	 //周报
+				 	 if(report.reportType==1){
+				 	 	analyzeWeek(report);
+				 		$("#detail_title").html("周报详情");
+				 		openWeekReport();
+				 	 }else if(report.reportType==2){
+				 		analyzeMonth(report);
+						$("#detail_monthreport").html("月报详情");
+				 		openMonthReport();
+				 	 }
+				}
 		});
-		$("#weekreport_detail").show(200);
-		showScreenProtectDiv(1);
-  	}
-	//关闭周报详情窗口
-	function closeMonthReport() {
-		$("#monthreport_detail").hide(200);
-		hideScreenProtectDiv(1);
-	}
-	//打开周报详情
-  	function openMonthReport(){
-  		$('#monthreport_detail').draggable({
-			disabled : false
-		});
-		$("#monthreport_detail").show(200);
-		showScreenProtectDiv(1);
-  	}
-  	//function showDetail(obj){
-  	function showDetail(index){
-  		var report = recordList[index]
-  		//周报
-  		if(report.reportType==1){
-  			analyzeWeek(report);
-  			$("#detail_title").html("周报详情");
-  			openWeekReport();
-  		}else if(report.reportType==2){
-  			analyzeMonth(report);
-			$("#detail_monthreport").html("月报详情");
-  			openMonthReport();
-  		}
-  
-  		//周报
-//   		if(obj.type==2||obj.type==4){
-//   			analyzeWeek(obj.report_content,obj.report);
-//   			if(obj.type==2){
-//   				$("#detail_title").html("周报详情");
-//   			}else{
-//   				$("#detail_title").html("高血压预判详情");
-//   			}
-//   			openWeekReport();
-//   		}else if(obj.type==3||obj.type==5){
-//   			analyzeMonth(obj.report_content,obj.report);
-//   			if(obj.type==3){
-//   				$("#detail_monthreport").html("月报详情");
-//   			}else{
-//   				$("#detail_monthreport").html("高血压跟踪详情");
-//   			}
-//   			openMonthReport();
-//   		}
-  	}
+   }
 </script>
 </head>
 
@@ -344,33 +339,8 @@
 #secondview td{border-bottom:1px solid #aeaeae; border-right:1px solid #aeaeae; padding:5px;vertical-align: top;}
 </style>
 <script type="text/javascript">
-	//解析周报XML
-	//function analyzeWeek(xml,report) {
-	function analyzeWeek(bpWeekReport) {
-// 		var doctor_report = "report_content="+report;
-// 		xmlHttp = $.ajax({
-// 			url:"/doctorReportAction/analyzeDoctorReport.action",
-// 			async:true,
-// 			data:doctor_report,
-// 			dataType:"json",
-// 			type:"POST",
-// 			success:function(response) {
-// 				var modelMap = response.modelMap;
-// 				var doctor_reports = modelMap.doctor_report;
-				
-// 				if(doctor_reports!=null){
-			
-// 					$("#detail_doctor_report").html(doctor_reports.report);
-// 					$("#detail_doctor_suggest").html(doctor_reports.Suggestion);
-// 				}
-// 				}
-// 			});
-	
-		secondWeekVersion(bpWeekReport);
-	}
-
 	//第二版周报解析
-	function secondWeekVersion(bpWeekReport){
+	function analyzeWeek(bpWeekReport){
 		
 		$("#secondview").css("display","block"); 
 		//创建日期
@@ -403,7 +373,7 @@
 		 $("#week_plan_medicine tr").eq(0).nextAll().remove();
 		if(medicine_taken!=null){
 			for(var i=0;i<medicine_taken.length;i++){
-				var tr = "<tr><td>"+medicine_taken[i].name+"</td><td>"+medicine_taken[i].dosage+"</td><td>"+medicine_taken[i].take_time+"</td></tr>";
+				var tr = "<tr><td>"+medicine_taken[i].name+"</td><td>"+medicine_taken[i].dosage+"</td><td>"+medicine_taken[i].takeTime+"</td></tr>";
 				$("#week_plan_medicine").append(tr);
 			}
 		}
@@ -569,7 +539,7 @@
 	 	$("#week_plan_unnormal tr").eq(0).nextAll().remove();
 		if(weekbprecords!=null){
 			for(var i=start;i<end;i++){
-				var tr = "<tr><td>"+weekbprecords[i].value.replace(",","/")+"</td><td>"+weekbprecords[i].time+"</td><td>"+weekbprecords[i].description+"</td></tr>";
+				var tr = "<tr><td>"+weekbprecords[i].shrink+"/"+weekbprecords[i].diastole+"</td><td>"+weekbprecords[i].takeTime+"</td><td>"+""+"</td></tr>";
 				$("#week_plan_unnormal").append(tr);
 			}
 			if(weekbprecords.length>10){
@@ -600,7 +570,7 @@
 		 $("#week_bp_static tr").eq(0).nextAll().remove();
 		if(bp_static!=null){
 			for(var i=start;i<end;i++){
-				var tr = "<tr><td>"+bp_static[i].take_time+"</td><td>"+bp_static[i].shrink+"</td><td>"+bp_static[i].diastole+"</td><td>"+bp_static[i].pulse_pressure+"</td><td>"+bp_static[i].mean_arterial_pressure+"</td><td>"+bp_static[i].heart_rate+"</td></tr>";
+				var tr = "<tr><td>"+bp_static[i].takeTime+"</td><td>"+bp_static[i].shrink+"</td><td>"+bp_static[i].diastole+"</td><td>"+bp_static[i].pressureValue+"</td><td>"+""+"</td><td>"+bp_static[i].heartRate+"</td></tr>";
 				$("#week_bp_static").append(tr);
 			}
 			if(bp_static.length>10){
@@ -723,149 +693,16 @@ var bprecords ="";//测压完成情况集合
 var start_plan=0;//测压完成情况开始条数
 var end_plan=0;//测压完成情况结束条数
 var version=0;//版本 	
-//解析月报XML
-//function analyzeMonth(xml,report) {
-function analyzeMonth(bpMonthReport) {
-// 	xml =  encodeURI(xml);  
-// 	xml =  encodeURI(xml); 
-// 	var para = "report_content="+xml;
-// 	$.ajax({
-// 		url:"/doctorReportAction/analyzeMonthReport.action",
-// 		async:true,
-// 		data:para,
-// 		dataType:"json",
-// 		type:"POST",
-// 		success:function(response) {
-// 			var modelMap = response.modelMap;
-// 			var bpMonthReport = modelMap.bpMonthReport;
-// 			if(bpMonthReport!=null){
-// 				if(bpMonthReport.version=='1.0.0'){
-// 					firstVersion(bpMonthReport);
-// 				}else if(bpMonthReport.version=='1.1.0'){
-					
-// 					$("#month_secondview").css("display","block"); 
-// 					$("#month_view").css("display","none"); 
-// 					secondVersion(bpMonthReport);
-// 				}
-// 			}
-// 	}
-		
-// 	});
-	secondVersion(bpMonthReport);
-// 	var doctor_report = "report_content="+report;
-// 	xmlHttp = $.ajax({
-// 		url:"/doctorReportAction/analyzeDoctorReport.action",
-// 		async:true,
-// 		data:doctor_report,
-// 		dataType:"json",
-// 		type:"POST",
-// 		success:function(response) {
-// 			var modelMap = response.modelMap;
-// 			var doctor_reports = modelMap.doctor_report;
-			
-// 			if(doctor_reports!=null){
-// 				$("#unnormal_analyse").html(doctor_reports.anomalous);
-// 				$("#inadaptation_analyse").html(doctor_reports.inadaptation);
-// 				var level = document.getElementById("assessment_level");
-// 				var state = document.getElementById("user_state");
-// 				for(var i=0;i<level.options.length;i++) {  
-// 		            if(level.options[i].value == doctor_reports.state) {  
-// 		            	level.options[i].selected = true;  
-// 		                break;  
-// 		            }  
-// 		        } 
-// 				for(var i=0;i<state.options.length;i++) {  
-// 		            if(state.options[i].value == doctor_reports.level) {  
-// 		            	state.options[i].selected = true;  
-// 		                break;  
-// 		            }  
-// 		        }
-// 				if(doctor_reports.report!=null){
-// 					$("#doctor_result").html("总结："+doctor_reports.report);
-// 				}
-// 			}
-// 			}
-// 		});
-}
 
-//第一版本月报解析
-function firstVersion(bpMonthReport){
-	$("#tracking_date_create").html(bpMonthReport.create_time);
-	$("#interval").html(bpMonthReport.start_time+"~"+bpMonthReport.end_time);
-	$("#month_level").html(bpMonthReport.hype_type+"("+bpMonthReport.risk+")");
-	$("#target").html("收缩压 "+bpMonthReport.target_shrink+"&nbsp;舒张压"+bpMonthReport.target_diastole);
-	
-	bprecords = bpMonthReport.measure_plan;
-	if(bprecords!=null){
-		start_plan = 0 ;
-		end_plan = bprecords.length>10?10:bprecords.length;
-		drawPlan(start_plan,end_plan);
-	}
-	var incident = bpMonthReport.incident;
-	 $("#plan_unnormal tr").eq(0).nextAll().remove();
-	if(incident!=null){
-		for(var i=0;i<incident.length;i++){
-			var tr = "<tr><td>"+incident[i].time+"</td><td>"+incident[i].value+"</td><td>"+incident[i].description+"</td></tr>"
-			$("#plan_unnormal").append(tr);
-		}
-	}
-	var medicine_taken = bpMonthReport.medicine_taken;
-	 $("#plan_medicine tr").eq(0).nextAll().remove();
-	if(medicine_taken!=null){
-		for(var i=0;i<medicine_taken.length;i++){
-			var tr = "<tr><td>"+medicine_taken[i].name+"</td><td>"+medicine_taken[i].dosage+"</td><td>"+medicine_taken[i].take_time+"</td></tr>"
-			$("#plan_medicine").append(tr);
-		}
-	}
-	var sideeffect = bpMonthReport.sideeffect;
-	if(sideeffect!=null){
-		var tr = "";
-		for(var i=0;i<sideeffect.length;i++){
-			 tr += "("+(i+1)+")"+sideeffect[i];
-		}
-		$("#plan_inadaptation").html(tr);
-	}
-	var effect = bpMonthReport.effect;
-	$("#effect").html(effect);
-	var suggestion="";
-	var suggestionList = bpMonthReport.suggestion;
-	if(suggestionList!=null){
-		for ( var i = 0; i < suggestionList.length; i++) {
-		var su = "(" + (i + 1) + ")" + suggestionList[i] + "<br>";
-		suggestion += su;
-	}
-  		$("#ecg_suggest").html(suggestion==""?"暂无":suggestion);
-  	}
-}
-
-
-//第二版月报解析
-	function secondVersion(bpMonthReport){
+	function analyzeMonth(bpMonthReport){
 	
 		$("#month_secondview").css("display","block");
 		
 		$("#month_tracking_date").html(bpMonthReport.createdOn);
 		$("#month_interval").html(bpMonthReport.starttime+"~"+bpMonthReport.endtime);
 		//日平均血压
-		///bloodPressureCharts(bpMonthReport.records,'血压趋势图');
+		bloodPressureCharts(null,'血压趋势图');
 		version = 1;
-		//测压异常事件
-		bprecords = bpMonthReport.incident;
-		if(bprecords!=null){
-			start_plan = 0 ;
-			end_plan = bprecords.length>10?10:bprecords.length;
-			drawPlan(start_plan,end_plan);
-		}
-		//服用药物
-		var medicine_taken = bpMonthReport.medicine_taken;
-		 $("#plan_medicine2 tr").eq(0).nextAll().remove();
-		if(medicine_taken!=null){
-			for(var i=0;i<medicine_taken.length;i++){
-				var tr = "<tr><td>"+medicine_taken[i].name+"</td><td>"+medicine_taken[i].dosage+"</td><td>"+medicine_taken[i].take_time+"</td></tr>"
-				$("#plan_medicine2").append(tr);
-			}
-		}
-
 		//血压统计
 		bp_static = bpMonthReport.bp_static;
 		if(bp_static!=null){
@@ -873,6 +710,24 @@ function firstVersion(bpMonthReport){
 			bp_end_plan = bp_static.length>10?10:bp_static.length;
 			drawPlanbp(bp_start_plan,bp_end_plan);
 			
+		}
+
+		//测压异常事件
+		bprecords = bpMonthReport.incident;
+		if(bprecords!=null){
+			start_plan = 0 ;
+			end_plan = bprecords.length>10?10:bprecords.length;
+			drawPlan(start_plan,end_plan);
+		}
+		
+		//服用药物
+		var medicine_taken = bpMonthReport.medicine_taken;
+		 $("#plan_medicine2 tr").eq(0).nextAll().remove();
+		if(medicine_taken!=null){
+			for(var i=0;i<medicine_taken.length;i++){
+				var tr = "<tr><td>"+medicine_taken[i].name+"</td><td>"+medicine_taken[i].dosage+"</td><td>"+medicine_taken[i].takeTime+"</td></tr>"
+				$("#plan_medicine2").append(tr);
+			}
 		}
 		
 		//心电监护结果
@@ -898,7 +753,7 @@ function firstVersion(bpMonthReport){
 		//伴临床疾患
 		$("#month_clinical").html(bpMonthReport.clinicalDisease);
 		//血压总体分析
-		$("#month_mean_bp").html("平均血压:收缩压:"+bpMonthReport.meanBloodPressureOfSBPk+"mmhg,舒张压:"+bpMonthReport.meanBloodPressureOfDBP+"mmhg");
+		$("#month_mean_bp").html("平均血压:收缩压:"+bpMonthReport.meanBloodPressureOfSBP+"mmhg,舒张压:"+bpMonthReport.meanBloodPressureOfDBP+"mmhg");
 		$("#month_bp_load").html("血压负荷:收缩压:"+bpMonthReport.bloodPressureLoadOfSBP+"舒张压:"+bpMonthReport.bloodPressureLoadOfDBP+";平均动脉压:"+bpMonthReport.bloodPressureLoadOfMAP+",心律:"+bpMonthReport.bloodPressureLoadOfHR);
 		$("#month_cv").html("血压变异性:"+bpMonthReport.sdMean);
 		$("#month_sbp").html("最大SBP:"+bpMonthReport.maxSBP+",发生时间:"+bpMonthReport.maxSBPTime+";最小SBP:"+bpMonthReport.minSBP+",发生时间:"+bpMonthReport.minSBPTime);
@@ -947,29 +802,15 @@ function firstVersion(bpMonthReport){
 		
 	}
 	function drawPlan(start,end){
-		if(version==0){
-			$("#plan_complete").empty();
-			if(bprecords!=null){
-				for(var i=start;i<end;i++){
-					var tr = "<tr><td>"+bprecords[i].time+"</td><td>"+bprecords[i].description+"</td></tr>"
-					$("#plan_complete").append(tr);
-				}
-				if(bprecords.length>10){
-					var str="<tr><td colspan='2' align='center' style='width: 100%'><a href='javascript:void(0);'   onclick='prevPlan();' >上页</a>&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);'   onclick='nextPlan();' >下页</a></td></tr>";
-					$("#plan_complete").append(str);
-				}
+		$("#plan_unnormal2 tr").eq(0).nextAll().remove();
+		if(bprecords!=null){
+			for(var i=start;i<end;i++){
+				var tr = "<tr><td>"+bprecords[i].shrink+"/"+bprecords[i].diastole+"</td><td>"+bprecords[i].takeTime+"</td><td>"+""+"</td></tr>";
+				$("#plan_unnormal2").append(tr);
 			}
-		}else{
-			 $("#plan_unnormal2 tr").eq(0).nextAll().remove();
-			if(bprecords!=null){
-				for(var i=start;i<end;i++){
-					var tr = "<tr><td>"+bprecords[i].value.replace(",","/")+"</td><td>"+bprecords[i].time+"</td><td>"+bprecords[i].description+"</td></tr>";
-					$("#plan_unnormal2").append(tr);
-				}
-				if(bprecords.length>10){
-					var str="<tr><td colspan='3' align='center' style='width: 100%'><a href='javascript:void(0);'   onclick='prevPlan();' >上页</a>&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);'   onclick='nextPlan();' >下页</a></td></tr>";
-					$("#plan_unnormal2").append(str);
-				}
+			if(bprecords.length>10){
+				var str="<tr><td colspan='3' align='center' style='width: 100%'><a href='javascript:void(0);'   onclick='prevPlan();' >上页</a>&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);'   onclick='nextPlan();' >下页</a></td></tr>";
+				$("#plan_unnormal2").append(str);
 			}
 		}
 	}
@@ -994,7 +835,7 @@ function firstVersion(bpMonthReport){
 		 $("#month_bp_static tr").eq(0).nextAll().remove();
 		if(bp_static!=null){
 			for(var i=start;i<end;i++){
-				var tr = "<tr><td>"+bp_static[i].take_time+"</td><td>"+bp_static[i].shrink+"</td><td>"+bp_static[i].diastole+"</td><td>"+bp_static[i].pulse_pressure+"</td><td>"+bp_static[i].mean_arterial_pressure+"</td><td>"+bp_static[i].heart_rate+"</td></tr>";
+				var tr = "<tr><td>"+bp_static[i].takeTime+"</td><td>"+bp_static[i].shrink+"</td><td>"+bp_static[i].diastole+"</td><td>"+bp_static[i].pressureValue+"</td><td>"+""+"</td><td>"+bp_static[i].heartRate+"</td></tr>";
 				$("#month_bp_static").append(tr);
 			}
 			if(bp_static.length>10){
@@ -1026,7 +867,7 @@ function firstVersion(bpMonthReport){
 	 $("#month_ecg_report tr").eq(0).nextAll().remove();
 	if(ecg_report!=null){
 		for(var i=start;i<end;i++){
-			var tr = "<tr><td>"+ecg_report[i].time+"</td><td>"+ecg_report[i].duration+"</td><td>"+ecg_report[i].heart_rate+"</td><td>"+ecg_report[i].result+"</td></tr>";
+			var tr = "<tr><td>"+ecg_report[i].takeTime+"</td><td>"+ecg_report[i].timeLength+"</td><td>"+ecg_report[i].heartRate+"</td><td>"+""+"</td></tr>";
 			$("#month_ecg_report").append(tr);
 		}
 		if(ecg_report.length>10){

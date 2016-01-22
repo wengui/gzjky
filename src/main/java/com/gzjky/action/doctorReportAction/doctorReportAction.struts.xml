@@ -7,7 +7,10 @@
 <struts>
 	<package name="doctorReportAction" extends="struts-base" namespace="/doctorReportAction">
 	
-	<!-- 血压查询 -->
+	<!-- 医生报告查询 -->
 	<action name="queryReportList" class="com.gzjky.action.doctorReportAction.QueryDoctorReportListAction" method="getList"/>
+	<!-- 医生报告详细查询 -->
+	<action name="queryReportDetail" class="com.gzjky.action.doctorReportAction.QueryDoctorReportDetailAction" method="getDoctorReportDetail"/>	
+	
 	</package>
 </struts>
