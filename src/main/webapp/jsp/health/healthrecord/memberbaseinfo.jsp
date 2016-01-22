@@ -44,6 +44,7 @@
     	$("#"+workinfo_form_id+" :input").attr("disabled",true);
     	queryDictionaryInfo("memberBaseInfo");
     	query_memberBaseInfo();
+    	show_headImageInfo();
     	jQuery('#memberBaseInfo_form').validationEngine("attach",
     			{
     				promptPosition:"centerRight:0,-10",
@@ -222,23 +223,23 @@
 	
 	
 	function callback(msg){  
-	     if(msg == 0) {
+	     if(msg == 1) {
 	         $.alert("上传头像成功！");
 	         
 	     } else {
-	         $.alert(msg);
+	         $.alert("头像上传失败！");
 	     }
 	} 
 		
     
     function refreshHeadImg(url) {
-        if(url == null) return;
+        //if(url == null) return;
         var Rand = Math.random(); 
-        url = url.replace("995120upload", "");
-        var imgUrl = "http://v3.995120.cn/995120upload" + url + "?rand=" + Rand;
+        //url = url.replace("995120upload", "");
+        //var imgUrl = "http://v3.995120.cn/995120upload" + url + "?rand=" + Rand;
         
-        document.getElementById("patientimage").src = imgUrl;
-        parent.parent.document.getElementById("memberHeadImg").src = imgUrl;
+        document.getElementById("patientimage").src = "http://localhost:8080/gzjky/imageUploadAction/showHeadImage.do";
+        parent.parent.document.getElementById("memberHeadImg").src = "http://localhost:8080/gzjky/imageUploadAction/showHeadImage.do";
         closeDiv();
     }
     
@@ -317,7 +318,7 @@
            </li>
            <li class="tRight_informationModify">
              <ul>
-               <li><img height="80" id="patientimage" src="/images/health/default_head.gif?t=1452044932829" /></li>
+               <li><img height="80" id="patientimage" src="<c:url value='/imageUploadAction/showHeadImage.do'/>" /></li>
                <li class="thead_informationModify"><a href="javascript:void(0)" class="btn" onclick="edit_photo()"><span style="font-size:13px;color:#5a5a5a">修改头像</span></a></li>
              </ul>
            </li>
@@ -664,6 +665,8 @@
 	function upload(){
 		var filePath = document.getElementById("filePath").value;
 		
+		var headImageReflag = false;
+		
 		if(filePath == "") {
 			$.alert("请先选择一个图片文件！");
 			document.getElementById("filePath").focus();
@@ -678,7 +681,18 @@
 		//$("#upload_form").submit(); 
 		var upload_form = document.getElementById("upload_form");
 		upload_form.submit();
+		
+		headImageReflag = true;
+		
+		// 照片修改成功，頭像刷新
+		if(headImageReflag == true){
+			callback(1);
+			
+			refreshHeadImg("test");
+			
+		}
 	}
+	
 </script>
 </head>
 <body>
@@ -689,11 +703,11 @@
       <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv();">X</a></li>
     </ul>
   </div>
-  <form id="upload_form" action="/gzjky/jsp/health/healthrecord/upload_member_head_img.jsp" method="post"  enctype="multipart/form-data"  target="hidden_frame">
+  <form id="upload_form" action="/gzjky/imageUploadAction/uploadHeadImage.do" method="post"  enctype="multipart/form-data"  target="hidden_frame">
   <div class="popup_main">
     <ul>
       <li class="img_upload">
-      	<input class="inputMin_informationModify" type="file"  id="filePath"   name="filePath"  />
+      	<input type="file" id="filePath" name="filePath"><br/>
       </li>
       <li class="btn_upload"><a href="javascript:void(0)"  class="btn" onclick="upload()"><span style="font-size:13px;color:#5a5a5a">上传</span></a></li>  
       <li class="tgreen_bpPrompt">图像文件类型只限JPG、PNG、GIF、BMP等常见格式，大小不超过2M</li>

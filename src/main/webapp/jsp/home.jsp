@@ -459,7 +459,7 @@
       <div class="index_health_left">
         <div class="wInformation">
           <ul>
-            <li class="wInformation_img"><a href="../jsp/health/healthrecord/healthrecords.jsp" target="mainFrame" title="健康档案"><img width="80" height="90" id="memberHeadImg" src="../images/health/default_head.gif?t=1452046474054" /></a></li>
+            <li class="wInformation_img"><a href="../jsp/health/healthrecord/healthrecords.jsp" target="mainFrame" title="健康档案"><img width="80" height="90" id="memberHeadImg" src="<c:url value='/imageUploadAction/showHeadImage.do'/>" /></a></li>
             <li class="tGrayMax">您好！</li>
             <li class="tGreen" ><a class="title_info" href="../jsp/health/healthrecord/healthrecords.jsp" target="mainFrame" title="无名氏"  id="left_memberName">${sessionScope.Patient.pname}</a></li>
             <li class="tGrayMin" style="font-size:8px;">最近2016-01-06 09:57:38</li>

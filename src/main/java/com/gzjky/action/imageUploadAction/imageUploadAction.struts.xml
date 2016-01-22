@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="imageUploadAction" extends="struts-base" namespace="/imageUploadAction">
+	
+	<!-- 2進制图片上传 -->
+	<action name="uploadHeadImage" class="com.gzjky.action.imageUploadAction.UploadHeadImageAction" method="upload">
+		<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
+	</action>
+
+	<!-- 2進制图片顯示 -->
+	<action name="showHeadImage" class="com.gzjky.action.imageUploadAction.ShowHeadImageAction" method="showHeadImage">
+			<result name="success" type="stream">  
+                <param name="contentType">image/jpeg</param>  
+               <param name="inputName">headImage</param>  
+               <param name="bufferSize">1024</param>  
+            </result> 
+	</action>
+
+	</package>
+</struts>
