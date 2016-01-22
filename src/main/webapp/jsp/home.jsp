@@ -88,7 +88,7 @@
 				}
 				
     
-		        $("#deviceListUL").append("<li class='wtaGreen'><a href='/jsp/health/equipment/member_bind_device.jsp' target='mainFrame' title='增加设备'>增加设备</a></li>"); 
+		        $("#deviceListUL").append("<li class='wtaGreen'><a href='../jsp/health/equipment/member_bind_device.jsp' target='mainFrame' title='增加设备'>增加设备</a></li>"); 
 				
 			}
 		});
@@ -409,7 +409,7 @@
            <li class="index_wechat"><a href="../jsp/health/index/wechat.jsp" title="995120健康服务中心官方微信" target="_blank">官方微信</a></li>
            <li class="index_bolg"><a href="http://weibo.com/5137507355/profile" title="995120健康服务中心官方微博" target="_blank">官方微博</a></li>
            <li class="index_service_phone" title="400电话">400-0785-120</li>
-           <li class="index_username">欢迎您，test1</li>
+           <li class="index_username">欢迎您，${sessionScope.Patient.uname}</li>
            <li class="index_signout">
                <a href="javascript:void(0)" onclick="logout();" title="安全退出">安全退出</a>
                <form action="/gzjky/login/layout.do" id="logoutForm" name="logoutForm" method="post">

@@ -2,7 +2,7 @@
 
 /*----------------equipment---------------*/
 .equipment{width:670px; float:left; font-family:"微软雅黑";margin-top:25px }
-.title_equipment{width:670px; float:left; font-size:30px; font-weight:500; color:#0ca7a1; text-align:left; margin:20px 0 10px 0;}
+.title_equipment{width:670px; float:left; font-size:30px; font-weight:500; color:#71A944; text-align:left; margin:20px 0 10px 0;}
 .tblack_equipment{color:#5a5a5a}
 .header_equipment{height:50px; line-height:50px; color:#5a5a5a; width:650px; padding:0 10px; float:left;font-size:14px}
 .tLeft_equipment{text-align:left; width:285px; height:50px;float:left;}
@@ -11,14 +11,14 @@
 .equipment_main li{float:left; height:30px; line-height:30px;}
 .tgrey_equipmentMain{width:80px; text-align:right; color:#aeaeae;}
 .tblack_equipmentMain{width:580px; padding-left:10px; text-align:left; color:#5a5a5a;}
-.tblack_equipmentMain a{color:#0ca7a1; text-decoration:none;}
+.tblack_equipmentMain a{color:#71A944; text-decoration:none;}
 .pl_equipmentMain{margin-left:10px;}
 
 /*----------------repair_records---------------*/
 .repair_records{width:670px; float:left; font-family:"微软雅黑";}
 .equipment_repair{width:670px;margin:0 auto; font-family:"微软雅黑"}
 .equipmentRepair_title{width:670px;float:left;text-align:left;}
-.equipmentRepair_titleGreen{font-size:24px; color:#0ca7a1; height:30px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #0ca7a1; width:180px; float:left}
+.equipmentRepair_titleGreen{font-size:24px; color:#71A944; height:30px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #71A944; width:180px; float:left}
 .equipmentRepair_titleGray{font-size:14px; color:#aeaeae;border-bottom:2px solid #aeaeae; width:490px;height:20px; padding-top:23px; padding-bottom:5px;float:left; text-align:right}
 .equipmentRepair_titleGray a{text-decoration:none; color:#aeaeae; margin:0 5px;}
 .equipmentRepair_titleGray a:hover{text-decoration:underline}
@@ -33,8 +33,8 @@
 .thInput_equipmentRepair{width:298px;font-family:"微软雅黑"; height:60px; border:1px solid #dbdbdb; padding:5px 10px; color:#5a5a5a; font-size:13px; line-height:18px; overflow:auto}
 .thimg_equipmentRepair{background:url(../images/health/img.png) left center no-repeat; width:490px;color:#aeaeae; height:53px;}
 .thimg_equipmentRepair li{height:20px; float:left; width:400px; padding-left:90px; color:#aeaeae; line-height:20px;}
-.thimg_equipmentRepair li a{color:#0ca7a1;}
+.thimg_equipmentRepair li a{color:#71A944;}
 .btn_equipmentRepair{width:670px; text-align:left;}
 .btn_equipmentRepair a{background:url(../images/button/btn_register.png) no-repeat; height:49px; width:341px; display:block; text-align:center; font-size:18px; font-weight:500; text-decoration:none; line-height:49px; color:#fff; margin-left:180px; margin-top:20px;}
-.tlong_equipmentRepair a{color:#0ca7a1; text-decoration:none}
+.tlong_equipmentRepair a{color:#71A944; text-decoration:none}
 .prompt_equipmentRepair{color:#5a5a5a; line-height:18px; margin-top:30px}
