@@ -44,7 +44,7 @@
     	$("#"+workinfo_form_id+" :input").attr("disabled",true);
     	queryDictionaryInfo("memberBaseInfo");
     	query_memberBaseInfo();
-    	show_headImageInfo();
+    	changeImage();
     	jQuery('#memberBaseInfo_form').validationEngine("attach",
     			{
     				promptPosition:"centerRight:0,-10",
@@ -664,6 +664,10 @@
 <script type="text/javascript">
 	function upload(){
 		var filePath = document.getElementById("filePath").value;
+		var obj_file = document.getElementById("filePath");  
+		var maxsize = 1024*1024;//1M  
+        var errMsg = "上传的附件文件不能超过1M！！！";  
+        var tipMsg = "您的浏览器暂不支持计算上传文件的大小，确保上传文件不要超过1M，建议使用IE、FireFox、Chrome浏览器。";  
 		
 		var headImageReflag = false;
 		
@@ -672,6 +676,34 @@
 			document.getElementById("filePath").focus();
 			return false;
 		}
+		
+		var  browserCfg = {};  
+        var ua = window.navigator.userAgent;  
+        if (ua.indexOf("MSIE")>=1){  
+            browserCfg.ie = true;  
+        }else if(ua.indexOf("Firefox")>=1){  
+            browserCfg.firefox = true;  
+        }else if(ua.indexOf("Chrome")>=1){  
+            browserCfg.chrome = true;  
+        }
+        
+		var filesize = 0;  
+        if(browserCfg.firefox || browserCfg.chrome ){  
+            filesize = obj_file.files[0].size;  
+        }else if(browserCfg.ie){  
+            var obj_img = document.getElementById('tempimg');  
+            obj_img.dynsrc=obj_file.value;  
+            filesize = obj_img.fileSize;  
+        }else{  
+            alert(tipMsg);  
+        return false;  
+        }  
+        
+        if(filesize>maxsize){  
+            alert(errMsg);  
+            return false;  
+        }
+        
 		var importFileType = filePath.substring(filePath.lastIndexOf(".")+1,filePath.length).toLowerCase();
 		if(importFileType != "gif" && importFileType != "bmp" && importFileType != "jpeg" && importFileType != "png" && importFileType != "jpg"){
 			$.alert("请选择图片文件！");
@@ -681,17 +713,22 @@
 		//$("#upload_form").submit(); 
 		var upload_form = document.getElementById("upload_form");
 		upload_form.submit();
-		
-		headImageReflag = true;
-		
-		// 照片修改成功，頭像刷新
-		if(headImageReflag == true){
-			callback(1);
-			
-			refreshHeadImg("test");
-			
-		}
+		winload();
+        callback(1);
+        closeDiv();
+        
 	}
+	
+	function changeImage(){
+		$("#patientimage").attr("src","<c:url value='/imageUploadAction/showHeadImage.do'/>");
+		parent.parent.document.getElementById("memberHeadImg").src = "<c:url value='/imageUploadAction/showHeadImage.do'/>";
+	}
+	
+	function winload(){ 
+		setTimeout("window.location.reload(true)",1500);
+
+		}
+	
 	
 </script>
 </head>
@@ -707,7 +744,7 @@
   <div class="popup_main">
     <ul>
       <li class="img_upload">
-      	<input type="file" id="filePath" name="filePath"><br/>
+      	<input type="file" id="filePath" name="filePath" ><br/>
       </li>
       <li class="btn_upload"><a href="javascript:void(0)"  class="btn" onclick="upload()"><span style="font-size:13px;color:#5a5a5a">上传</span></a></li>  
       <li class="tgreen_bpPrompt">图像文件类型只限JPG、PNG、GIF、BMP等常见格式，大小不超过2M</li>
