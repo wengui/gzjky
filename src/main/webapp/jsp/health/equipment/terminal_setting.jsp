@@ -114,44 +114,39 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 		var setting_flag_simcard = deviceSettingCommon.setting_flag_simcard;
 		var setting_flag_heartrate_alert = deviceSettingCommon.setting_flag_heartrate_alert;
 		var setting_flag_blood_pressure_alert = deviceSettingCommon.setting_flag_blood_pressure_alert;
-		var setting_flag_safe_island = deviceSettingCommon.setting_flag_safe_island;
 		var setting_flag_take_medicine_notice = deviceSettingCommon.setting_flag_take_medicine_notice;
 		var setting_flag_test_blood_pressure_notice = deviceSettingCommon.setting_flag_test_blood_pressure_notice;
 		var setting_flag_send_data_interval = deviceSettingCommon.setting_flag_send_data_interval;
 		if(setting_flag_simcard=="2")
-			$("#setting_flag_simcard").attr("checked","checked");
+			$("#setting_flag_simcard").attr("checked",true);
 		else
-			$("#setting_flag_simcard").attr("checked","");
+			$("#setting_flag_simcard").attr("checked",false);
 			
 		if(setting_flag_heartrate_alert=="2")
-			$("#setting_flag_heartrate_alert").attr("checked","checked");
+			$("#setting_flag_heartrate_alert").attr("checked",true);
 		else
-			$("#setting_flag_heartrate_alert").attr("checked","");
+			$("#setting_flag_heartrate_alert").attr("checked",false);
 			
 		if(setting_flag_blood_pressure_alert=="2")
-			$("#setting_flag_blood_pressure_alert").attr("checked","checked");
+			$("#setting_flag_blood_pressure_alert").attr("checked",true);
 		else
-			$("#setting_flag_blood_pressure_alert").attr("checked","");
+			$("#setting_flag_blood_pressure_alert").attr("checked",false);
 			
-		if(setting_flag_safe_island=="2")
-			$("#setting_flag_safe_island").attr("checked","checked");
-		else
-			$("#setting_flag_safe_island").attr("checked","");
-			
+
 		if(setting_flag_take_medicine_notice=="2")
-			$("#setting_flag_take_medicine_notice").attr("checked","checked");
+			$("#setting_flag_take_medicine_notice").attr("checked",true);
 		else
-			$("#setting_flag_take_medicine_notice").attr("checked","");
+			$("#setting_flag_take_medicine_notice").attr("checked",false);
 			
 		if(setting_flag_test_blood_pressure_notice=="2")
-			$("#setting_flag_test_blood_pressure_notice").attr("checked","checked");
+			$("#setting_flag_test_blood_pressure_notice").attr("checked",true);
 		else
-			$("#setting_flag_test_blood_pressure_notice").attr("checked","");
+			$("#setting_flag_test_blood_pressure_notice").attr("checked",false);
 			
 		if(setting_flag_send_data_interval=="2")
-			$("#setting_flag_send_data_interval").attr("checked","checked");
+			$("#setting_flag_send_data_interval").attr("checked",true);
 		else
-			$("#setting_flag_send_data_interval").attr("checked","");
+			$("#setting_flag_send_data_interval").attr("checked",false);
 		
 	}
 	//初始化用药提醒
@@ -654,7 +649,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 	
 	
 	function generatedirectivecancel(){
-		para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10";
+		para = "device_id="+device_id+"&commontype=5";
 		var setting_flag_simcard = $("#setting_flag_simcard").attr("checked");
 		var setting_flag_heartrate_alert = $("#setting_flag_heartrate_alert").attr("checked");
 		var setting_flag_blood_pressure_alert = $("#setting_flag_blood_pressure_alert").attr("checked");
@@ -699,7 +694,8 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 		}else{
 			para+="&setting_flag_send_data_interval=0";	
 		}
-		commonajax(para,"/deviceBaseInfo/generatedirectivecancel.action","true");
+		updateCommonInfo(para);
+	
 	}
 </script>
 </head>
@@ -708,7 +704,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
    <div class="ecg_title">
       <ul>
         <li class="ecg_titleGreen">修改配置</li>
-        <li class="ecg_titleGray">当前位置：<a href="/jsp/health/equipment/equipment.jsp">我的设备</a>>修改配置</li>
+        <li class="ecg_titleGray">当前位置：<a href="/gzjky/jsp/health/equipment/equipment.jsp">我的设备</a>>修改配置</li>
       </ul>
     </div>
 <form id="settingform">

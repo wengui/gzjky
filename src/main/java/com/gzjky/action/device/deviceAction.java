@@ -18,6 +18,7 @@ import com.gzjky.bean.gen.EquipmentAndPatient;
 import com.gzjky.bean.gen.JcBdhmSet;
 import com.gzjky.bean.gen.JcCytxSet;
 import com.gzjky.bean.gen.JcDsscSet;
+import com.gzjky.bean.gen.JcSetFlag;
 import com.gzjky.bean.gen.JcXlbjSet;
 import com.gzjky.bean.gen.JcXybjSet;
 import com.gzjky.bean.gen.JcYytxSet;
@@ -29,6 +30,7 @@ import com.gzjky.dao.readdao.EquipmentReadMapper;
 import com.gzjky.dao.readdao.JcBdhmSetReadMapper;
 import com.gzjky.dao.readdao.JcCytxSetReadMapper;
 import com.gzjky.dao.readdao.JcDsscSetReadMapper;
+import com.gzjky.dao.readdao.JcSetFlagReadMapper;
 import com.gzjky.dao.readdao.JcXlbjSetReadMapper;
 import com.gzjky.dao.readdao.JcXybjSetReadMapper;
 import com.gzjky.dao.readdao.JcYytxSetReadMapper;
@@ -36,6 +38,7 @@ import com.gzjky.dao.writedao.EquipmentAndPatientWriteMapper;
 import com.gzjky.dao.writedao.JcBdhmSetWriteMapper;
 import com.gzjky.dao.writedao.JcCytxSetWriteMapper;
 import com.gzjky.dao.writedao.JcDsscSetWriteMapper;
+import com.gzjky.dao.writedao.JcSetFlagWriteMapper;
 import com.gzjky.dao.writedao.JcXlbjSetWriteMapper;
 import com.gzjky.dao.writedao.JcXybjSetWriteMapper;
 import com.gzjky.dao.writedao.JcYytxSetWriteMapper;
@@ -101,6 +104,11 @@ public class deviceAction extends ActionSupport {
 	JcYytxSetReadMapper jcYytxSetReadMapper;
 	@Autowired
 	JcYytxSetWriteMapper jcYytxSetWriteMapper;
+	
+	@Autowired
+	JcSetFlagReadMapper jcSetFlagReadMapper;
+	@Autowired
+	JcSetFlagWriteMapper jcSetFlagWriteMapper;
 	//用户名
 	private String loginId;
 	//密码
@@ -454,6 +462,10 @@ public class deviceAction extends ActionSupport {
 		List<JcCytxSet> cytxSetList = null;
 		cytxSetList= jcCytxSetReadMapper.selectByDeviceIdAndPatientId(Integer.parseInt(eid), userinfoAndPatientinfo.getPid());
 
+		//取消设置
+		JcSetFlag setFlag=new JcSetFlag();
+		setFlag= jcSetFlagReadMapper.selectByDeviceIdAndPatientId(Integer.parseInt(eid), userinfoAndPatientinfo.getPid());
+
 		
 		TerminalInfoBean terminalinfo = new TerminalInfoBean();
 		//绑定号码设置信息
@@ -501,6 +513,16 @@ public class deviceAction extends ActionSupport {
 			terminalinfo.setNotice_intervals(String.valueOf(cytxSet.getTxzq()));		
 		}
 		*/
+		//取消设置
+		if(setFlag!=null){
+			
+			terminalinfo.setSetting_flag_blood_pressure_alert(String.valueOf(setFlag.getSettingFlagBloodPressureAlert()));
+			terminalinfo.setSetting_flag_heartrate_alert(String.valueOf(setFlag.getSettingFlagHeartrateAlert()));
+			terminalinfo.setSetting_flag_send_data_interval(String.valueOf(setFlag.getSettingFlagSendDataInterval()));
+			terminalinfo.setSetting_flag_simcard(String.valueOf(setFlag.getSettingFlagSimcard()));
+			terminalinfo.setSetting_flag_take_medicine_notice(String.valueOf(setFlag.getSettingFlagTakeMedicineNotice()));
+			terminalinfo.setSetting_flag_test_blood_pressure_notice(String.valueOf(setFlag.getSettingFlagTestBloodPressureNotice()));
+		}
 		try {			
 			ModelMap modelMap = new ModelMap();
 			modelMap.setResult(terminalinfo);
@@ -809,6 +831,41 @@ public class deviceAction extends ActionSupport {
 				result=jcXybjSetWriteMapper.updateByEidAndPid(xybjSetInsert);
 			}			
 		}
+		
+		//取消指令设置
+		else if (commontype.equals("5")){
+			//收缩压
+			String setting_flag_simcard = request.getParameter("setting_flag_simcard");
+			String setting_flag_heartrate_alert = request.getParameter("setting_flag_heartrate_alert");
+			//舒张压
+			String setting_flag_blood_pressure_alert = request.getParameter("setting_flag_blood_pressure_alert");
+			String setting_flag_take_medicine_notice = request.getParameter("setting_flag_take_medicine_notice");
+			String setting_flag_test_blood_pressure_notice = request.getParameter("setting_flag_test_blood_pressure_notice");
+			String setting_flag_send_data_interval = request.getParameter("setting_flag_send_data_interval");
+			JcSetFlag setFlag= new JcSetFlag();
+			setFlag=jcSetFlagReadMapper.selectByDeviceIdAndPatientId(Integer.parseInt(device_id), userinfoAndPatientinfo.getPid());
+			JcSetFlag setFlagInsert= new JcSetFlag();
+			setFlagInsert.setEid(Integer.parseInt(device_id));
+			setFlagInsert.setSettingFlagBloodPressureAlert(Integer.parseInt(setting_flag_blood_pressure_alert));
+			setFlagInsert.setSettingFlagHeartrateAlert(Integer.parseInt(setting_flag_heartrate_alert));
+			setFlagInsert.setSettingFlagSendDataInterval(Integer.parseInt(setting_flag_send_data_interval));
+			setFlagInsert.setSettingFlagSimcard(Integer.parseInt(setting_flag_simcard));
+			setFlagInsert.setSettingFlagTakeMedicineNotice(Integer.parseInt(setting_flag_take_medicine_notice));
+			setFlagInsert.setSettingFlagTestBloodPressureNotice(Integer.parseInt(setting_flag_test_blood_pressure_notice));
+			
+			
+			
+			setFlagInsert.setUid(userinfoAndPatientinfo.getPid());
+			if(setFlag==null){
+				
+				result=jcSetFlagWriteMapper.insertSelective(setFlagInsert);		
+			}
+			else{
+				result=jcSetFlagWriteMapper.updateByEidAndPid(setFlagInsert);
+			}			
+		}
+		
+		
 		try {			
 			ModelMap modelMap = new ModelMap();
 			modelMap.setResult(result);
