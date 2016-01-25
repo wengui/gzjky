@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120健康服务中心</title>
+
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
@@ -22,8 +25,6 @@
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
 
-<%@ include file="../../shared/importCss.jsp"%>
-<%@ include file="../../shared/importJs.jsp"%>
 
 <script type="text/javascript">
 
@@ -162,6 +163,7 @@
 	  td = tr.insertCell(i);
 	  td.innerHTML = "<a href='javascript:void(0)' onclick='show_bp_remark("+index+")'>备注</a><a href='javascript:void(0)' onclick='del_bp("+index+")'>删除</a>";
   }
+  
   
   function del_bp(i){
   	 $.confirm("确定删除该记录吗?",function(){			
@@ -320,26 +322,18 @@
 		    </ul>
 		  </div>
 		  <div class="index_table">
-		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table" id="faceTable">
-		      <colgroup>
-		        <col width="15%" />
-		        <col width="20%" />
-		        <col width="25%" />
-		        <col width="10%" />
-		        <col width="10%" />
-		        <col width="18%" />
-		      </colgroup>
+		    <table width="100%" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable">
 		      <tr>
-		        <th >设备编号</th>
-		        <th>设备类型</th>
-		        <th>测压时间</th>
-		        <th nowrap="nowrap">收缩压/舒张压<br/>&nbsp;&nbsp;&nbsp;&nbsp;(mmHg)</th>
-		        <th>脉率</th>
-		        <th>操作</th>
+		        <th width="15%">设备编号</th>
+		        <th width="20%">设备类型</th>
+		        <th width="15%">测压时间</th>
+		        <th width="20%">收缩压/舒张压&nbsp;(mmHg)</th>
+		        <th width="10%">脉率</th>
+		        <th width="18%">操作</th>
 		      </tr>
 		    </table>
 		    
-		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table" id="faceTable2" style="display:none;">
+		    <table width="100%"  cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable2" style="display:none;">
 		      <colgroup>
 		        <col width="15%" />
 		        <col width="20%" />
@@ -351,7 +345,7 @@
 		        <th>设备编号</th>
 		        <th>设备类型</th>
 		        <th>测压时间</th>
-		        <th nowrap="nowrap">收缩压/舒张压(mmHg)</th>
+		        <th>收缩压/舒张压&nbsp;(mmHg)</th>
 		        <th>操作</th>
 		      </tr>
 		    </table>
@@ -386,17 +380,6 @@
 				}
 			</script>
 		
-		<!-- 
-		<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-		<div id="fanye" >
-		<input type="button" value="首页" class="button_fy page-first" />
-		<input type="button" value="上一页" class="button_fy page-perv" />
-		<input type="button" value="下一页" class="button_fy page-next" />
-		<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
-		 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-		<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-		</div>
-		 -->
 		<div class="index_page">
 		  <ul>
 		    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
@@ -418,15 +401,12 @@
 		<div id="transparentDiv" ></div>
 		<div id="transparentDiv2"></div>
 		  
-		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-		<html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title></title>
 		<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 		
 		</head>
-		<body><br />
 		 <div class="popup" id="bpRemarkWindow" style="display:none;position:absolute;top:40px; left:100px;z-index: 30;">
 		  <div class="popup_header">
 		    <ul>
@@ -466,9 +446,6 @@
 		   </form>
 		
 		 </div>
-		
-		</body>
-		</html>
 		 </div>
      </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
