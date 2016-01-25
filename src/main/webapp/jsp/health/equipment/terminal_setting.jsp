@@ -1,6 +1,5 @@
-
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -17,7 +16,7 @@
 #bt01{width:100%; float:left; text-align:right; margin-top:10px;}
 #bt02{width:100%; float:left; margin-bottom:10px;}
 .sr01{width:228px; height:21px; text-align:left; padding-left:3px; line-height:21px; margin-top:4px;border:1px solid #7f9db9;}
-.button01{background:url(/images/button/btn_Submit.png) no-repeat; height:30px; width:80px; border:none; line-height:30px;color:#fff}
+.button01{background:url(/gzjky/images/button/btn_Submit.png) no-repeat; height:30px; width:80px; border:none; line-height:30px;color:#fff}
 .sjtx{border-collapse:collapse; border:1px solid #7f9db9; margin-top:10px;}
 .sjtx td{text-align:center; height:25px;border-bottom:1px solid #7f9db9;border-right:1px solid #7f9db9;}
 .sjtx_hander{background-color:#b4cee6;  font-size:12px; font-weight:bold; color:#1b3b58 }
@@ -37,12 +36,25 @@ h1,h2,h3,h4,h5,h6 { margin:0; padding:0;font-weight:normal;}
 html {height:100%; border:0; overflow:hidden;overflow-x:hidden}
 body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 </style>
-<script src="/js/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="/js/page/hwin-tool.js"></script>
-<script type="text/javascript" src="/js/page/jquery.hwin.js"></script>
-<script type="text/javascript" src="/js/page/jquery.maxlength.js"></script>
-<script type="text/javascript" src="/js/artDialog/jquery.artDialog.min.js"></script>
-<script type="text/javascript" src="/js/artDialog/artDialog.plugins.min.js"></script>
+<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
+<script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
+<script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
+<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/ztree/jquery.ztree.all-3.1.min.js'/>" type="text/javascript"></script>
+<!-- main JS libs -->
+<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
+<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+<!-- Style CSS -->
+<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet"/>
+<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet"/>
 <link href="/js/artDialog/skins/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	
@@ -52,10 +64,10 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 	//收起展开按钮功能的实现
 	function expand(lbname, liname){
 		if($("#"+liname).css("display")=="none"){
-			$("#"+lbname).attr("src","/images/button/sq.png");
+			$("#"+lbname).attr("src","/gzjky/images/button/sq.png");
 			$("#"+liname).show();
 		}else{
-			$("#"+lbname).attr("src","/images/button/zk.png");
+			$("#"+lbname).attr("src","/gzjky/images/button/zk.png");
 			$("#"+liname).hide();
 		}
 	}
@@ -69,27 +81,29 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 	var regx = /^\d+$/;
 	var array8 = new Array();
 	var array9 = new Array();
+	var device_id = "${param.device_id}";
 	function queryDeviceInfo() {
-		para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10";
+		var param="device_id="+device_id;
+		//para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10";
 		xmlHttp = $.ajax({
-			url:"/deviceBaseInfo/queryDeviceSettingCommonInfo.action",
+			url:"/gzjky/device/queryDeviceSettingCommonInfo.do",
 			async:true,
-			data:para,
+			data:param,
 			dataType:"json",
 			type:"POST",
 			error:function(){
 				$("#alert_message").text('查询失败');
 			},
 			success:function(response) {
-				var modelMap = response.modelMap;
-				deviceSettingCommon = modelMap.deviceSettingCommon;
+				var modelMap = response;
+				deviceSettingCommon = modelMap.result;
 				deviceTakeMedicineNoticeList = modelMap.deviceTakeMedicineNoticeList;
 				deviceTestBloodPressureNoticeList = modelMap.deviceTestBloodPressureNoticeList;
 				//显示数据
 				$("#settingform").jsonForForm({data:deviceSettingCommon,isobj:true});
 				//显示数据
-				showData(deviceTakeMedicineNoticeList);
-				showData2(deviceTestBloodPressureNoticeList);
+				showData(modelMap.outBeanList);
+				showData2(modelMap.outBeanList2);
 				//取消区域
 				initdirectivecancel(deviceSettingCommon);
 			}
@@ -148,11 +162,12 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 			return;
 		for(var i=0;i<deviceTakeMedicineNoticeList.length;i++){
 			var id = deviceTakeMedicineNoticeList[i].id;
-			var hour = deviceTakeMedicineNoticeList[i].hour;
-			var minute = deviceTakeMedicineNoticeList[i].minute;
-			var note = deviceTakeMedicineNoticeList[i].note;
-			var notice_interval = deviceTakeMedicineNoticeList[i].notice_interval;
-			var state = deviceTakeMedicineNoticeList[i].is_valid;
+			var time = deviceTakeMedicineNoticeList[i].txtime.split(':')
+			var hour = time[0];
+			var minute = time[1];
+			var note = deviceTakeMedicineNoticeList[i].txnr;
+			var notice_interval = deviceTakeMedicineNoticeList[i].txzq;
+			var state = deviceTakeMedicineNoticeList[i].isdelete;
 			addtable1(id,hour,minute,note,notice_interval,state);
 		}
 	}
@@ -166,23 +181,16 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 		var tr=table.insertRow(rowcount);
 		tr.id = id;
 		td=tr.insertCell(0);
-		if(minute<10){minute="0"+minute;}
+		if(minute<10){minute="0"+Number(minute);}
 		td.innerHTML=hour+":"+minute;
 		td=tr.insertCell(1);
-		var repeat_str='';
-		if(notice_interval=="1")
-			repeat_str="一天";
-		else if(notice_interval=="2")
-			repeat_str="一周";
-		else if(notice_interval=="3")
-			repeat_str="一月";
-		td.innerHTML=repeat_str;
+		td.innerHTML=notice_interval;
 		td=tr.insertCell(2);
 		td.innerHTML=note;
 		td=tr.insertCell(3);
-		var sta='<input type="button" name="'+state+'" onClick="validObjState(this)" value="关闭"> ';
-		if(state==0||state=='0'){
-			sta='<input type="button" name="'+state+'" onClick="validObjState(this)" value="开启"> ';
+		var sta='<input type="button" name="'+state+'" onClick="validObjState(this)" value="开启"> ';
+		if(state==false){
+			sta='<input type="button" name="'+state+'" onClick="validObjState(this)" value="关闭"> ';
 		}
 		var dele='| <input name="button" type="button" onClick="del(this.parentNode.parentNode.rowIndex)" value="删除">';
 		td.innerHTML=sta+dele;
@@ -195,10 +203,10 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 			return;
 		for(var i=0;i<deviceTestBloodPressureNoticeList.length;i++){
 			var id = deviceTestBloodPressureNoticeList[i].id;
-			var start_time = deviceTestBloodPressureNoticeList[i].start_time;
-			var end_time = deviceTestBloodPressureNoticeList[i].end_time;
-			var notice_interval = deviceTestBloodPressureNoticeList[i].notice_interval;
-			var state = deviceTestBloodPressureNoticeList[i].is_valid;
+			var start_time = deviceTestBloodPressureNoticeList[i].tbegin;
+			var end_time = deviceTestBloodPressureNoticeList[i].tend;
+			var notice_interval = deviceTestBloodPressureNoticeList[i].txzq;
+			var state = deviceTestBloodPressureNoticeList[i].isdelete;
 			addtable2(id,start_time,end_time,notice_interval,state);
 		}
 	}
@@ -218,9 +226,9 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 		td=tr.insertCell(2);
 		td.innerHTML=notice_interval;
 		td=tr.insertCell(3);
-		var sta='<input type="button" name="'+state+'" onClick="validObjState(this)" value="关闭"> ';
-		if(state==0||state=='0'){
-			sta='<input type="button" name="'+state+'" onClick="validObjState(this)" value="开启"> ';
+		var sta='<input type="button" name="'+state+'" onClick="validObjState(this)" value="开启"> ';
+		if(state==false){
+			sta='<input type="button" name="'+state+'" onClick="validObjState(this)" value="关闭"> ';
 		}
 		var dele='| <input name="button" type="button" onClick="del2(this.parentNode.parentNode.rowIndex)" value="删除">';
 		td.innerHTML=sta+dele;
@@ -228,7 +236,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 	
 	//更新数据方法
 	function updateCommonInfo(para) {
-		commonajax(para,"/deviceBaseInfo/updateCommonInfo.action");
+		commonajax(para,"/gzjky/device/updateCommonInfo.do");
 	}
 	
 	//短信中心号码设置（未用）		
@@ -294,7 +302,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 		for(var i=0;i<3;i++){
 			if(card[i]==null||card[i]=="")card[i]=model;
 		}
-		var para = "instype=H82&device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&simcard_1="+card[0]+"&simcard_2="+card[1]+"&simcard_3="+card[2];
+		var para = "device_id="+device_id+"&commontype=1"+"&simcard_1="+card[0]+"&simcard_2="+card[1]+"&simcard_3="+card[2];
 		updateCommonInfo(para);
 	}
 	
@@ -306,7 +314,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 			$("#send_data_interval").focus();
 			return false;
 		}
-		var para = "instype=H83&device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&send_data_interval="+send_data_interval;
+		var para = "device_id="+device_id+"&commontype=2"+"&send_data_interval="+send_data_interval;
 		updateCommonInfo(para);
 	}
 	
@@ -362,7 +370,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 			 $.alert("下限值不能等于上限值");
              return false;
 		}
-		var para = "instype=H86&device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&heartrate_alert_threshold_top="+heartrate_alert_threshold_top+"&heartrate_alert_threshold_bottom="+heartrate_alert_threshold_bottom;
+		var para = "device_id="+device_id+"&commontype=3"+"&heartrate_alert_threshold_top="+heartrate_alert_threshold_top+"&heartrate_alert_threshold_bottom="+heartrate_alert_threshold_bottom;
 		updateCommonInfo(para);
 	}
 	
@@ -407,7 +415,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 			 $.alert("舒张压下限值不能等于上限值");
              return false;
 		}
-		var para = "instype=H87&device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&blood_pressure_alert_shrink_threshold_top="+blood_pressure_alert_shrink_threshold_top+"&blood_pressure_alert_shrink_threshold_bottom="+blood_pressure_alert_shrink_threshold_bottom+"&blood_pressure_alert_diastole_threshold_top="+blood_pressure_alert_diastole_threshold_top+"&blood_pressure_alert_diastole_threshold_bottom="+blood_pressure_alert_diastole_threshold_bottom;
+		var para = "device_id="+device_id+"&commontype=4"+"&blood_pressure_alert_shrink_threshold_top="+blood_pressure_alert_shrink_threshold_top+"&blood_pressure_alert_shrink_threshold_bottom="+blood_pressure_alert_shrink_threshold_bottom+"&blood_pressure_alert_diastole_threshold_top="+blood_pressure_alert_diastole_threshold_top+"&blood_pressure_alert_diastole_threshold_bottom="+blood_pressure_alert_diastole_threshold_bottom;
 		updateCommonInfo(para);
 		
 	}
@@ -467,7 +475,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 			}
 		}
 		
-		addtable1("",hour,minute,note,notice_interval,1);
+		addtable1("",hour,minute,note,notice_interval,false);
 		
 		$("#note").val('');
 		$('#hour option:nth-child(1)').attr("selected","selected");
@@ -485,12 +493,18 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 			error:function(){
 				$.alert('操作失败');
 			},
+			
 			success:function(response) {
-				var modelMap = response.modelMap;
-				var state = modelMap.state;
-				$.alert('配置成功');
+
+				var state = response.result;
+				if(state=="1"){
+					query();
+					$.alert('配置成功');
+				}
+				
 				if(refresh=="true"){
 					$("#settingform").clearForm();
+					
 				}
 			//	queryDeviceInfo();
 			}
@@ -555,7 +569,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 			}
 		}
 		
-		addtable2("",start_time,end_time,notice_interval,1);
+		addtable2("",start_time,end_time,notice_interval,false);
 		
 		$('#start_time option:nth-child(1)').attr("selected","selected");
     	$('#end_time option:nth-child(1)').attr("selected","selected");
@@ -576,29 +590,38 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 	}
 	function validObjState(obj){
 		var sta=$(obj).attr("name");
-		if(sta==1) $(obj).attr("value","开启");
-		else $(obj).attr("value","关闭");
-		$(obj).attr("name",1-parseInt(sta));
+		if(sta=="false"){
+			$(obj).attr("value","开启");
+			$(obj).attr("name","true");
+		} 			
+		else {
+			$(obj).attr("value","关闭");
+			$(obj).attr("name","false");
+		}
+		
 	}
 	function generateH88(){
 		var table = document.getElementById("tableH88");
 		var rowcount=table.rows.length;
 		if(rowcount<=1)
 		{
-			para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&setting_flag_take_medicine_notice=2";
-			commonajax(para,"/deviceBaseInfo/generatedirectivecancel.action","true");
+			//para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&setting_flag_take_medicine_notice=2";
+			para= "device_id="+ device_id;
+			commonajax(para,"/gzjky/device/addTakeMedicineNotice.do","true");
 		}else{
 			var str = "";
 			for(var i=1;i<rowcount;i++){
+				var id = table.rows[i].id;
 				var times = table.rows[i].cells[0].innerHTML;
 				var notice_interval = table.rows[i].cells[1].innerHTML;
 				var note = table.rows[i].cells[2].innerHTML;
 				var sta=table.rows[i].cells[3].childNodes[0].name;
-				str+=","+times+":"+notice_interval+":"+note+":"+sta;
+				str+=","+id+";"+times+";"+notice_interval+";"+note+";"+sta;
 			}
 			str = str.slice(1);
-			para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&sms_center="+str;
-			commonajax(para,"/deviceBaseInfo/addTakeMedicineNotice.action");
+			//para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&sms_center="+str;
+			para ="device_id="+device_id+"&sms_center="+str;
+			commonajax(para,"/gzjky/device/addTakeMedicineNotice.do");
 		}
 		
 		
@@ -609,20 +632,22 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 		var rowcount=table.rows.length;
 		if(rowcount<=1)
 		{
-			para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&setting_flag_test_blood_pressure_notice=2";
-			commonajax(para,"/deviceBaseInfo/generatedirectivecancel.action","true");
+			para= "device_id="+ device_id;
+			commonajax(para,"/gzjky/device/addTestBloodPressureNotice.do");
 		}else{
 			var str = "";
 			for(var i=1;i<rowcount;i++){
+				var id = table.rows[i].id;
 				var start_time = table.rows[i].cells[0].innerHTML;
 				var end_time = table.rows[i].cells[1].innerHTML;
 				var notice_interval = table.rows[i].cells[2].innerHTML;
 				var sta=table.rows[i].cells[3].childNodes[0].name;
-				str+=","+start_time+":"+end_time+":"+notice_interval+":"+sta;
+				str+=","+id+";"+start_time+";"+end_time+";"+notice_interval+";"+sta;
 			}
 			str = str.slice(1);
-			para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&sms_center="+str;
-			commonajax(para,"/deviceBaseInfo/addTestBloodPressureNotice.action");
+			para ="device_id="+device_id+"&sms_center="+str;
+			//para = "device_unit_id=1129550&device_cluster_id=1&device_unit_type=10&sms_center="+str;
+			commonajax(para,"/gzjky/device/addTestBloodPressureNotice.do");
 		}
 	}
 	
@@ -694,7 +719,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">短信中心号码设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb81Hexpand" src="/images/button/sq.png" style="height:40px;" onclick="expand('lb81Hexpand','li_81H');"/></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb81Hexpand" src="/gzjky/images/button/sq.png" style="height:40px;" onclick="expand('lb81Hexpand','li_81H');"/></a></div>
           </li>
           <li class="list_main" id="li_81H">
             <div id="bt01"><input type="button" value="提 交" class="button01" onclick="generateH81()"/></div>
@@ -708,14 +733,14 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">绑定号码设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb82Hexpand" src="/images/button/sq.png" style="height:40px;" onclick="expand('lb82Hexpand','li_82H');" /></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb82Hexpand" src="/gzjky/images/button/sq.png" style="height:40px;" onclick="expand('lb82Hexpand','li_82H');" /></a></div>
           </li>
           <li class="list_main" id="li_82H">
             <div id="bt01"><div style="float: left;">号码可以为手机或固定电话，固话前请加区号如0571</div><input type="button" value="提 交" class="button01" onclick="generateH82()"/></div>
             <div id="bt02">
-            	号码1：<input name="simcard_1" id="simcard_1" type="text" class="sr01 simcard" maxlength="12"/><br />
-            	号码2：<input name="simcard_2" id="simcard_2" type="text" class="sr01 simcard"  maxlength="12"/><br />
-            	号码3：<input name="simcard_3" id="simcard_3" type="text" class="sr01 simcard"  maxlength="12"/>
+            	号码1：<input name="sim1" id="sim1" type="text" class="sr01 simcard" maxlength="12"/><br />
+            	号码2：<input name="sim2" id="sim2" type="text" class="sr01 simcard"  maxlength="12"/><br />
+            	号码3：<input name="sim3" id="sim3" type="text" class="sr01 simcard"  maxlength="12"/>
             </div>
           </li>
         </ul>   
@@ -725,7 +750,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">定时上传设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb83Hexpand" src="/images/button/sq.png" style="height:40px;" onclick="expand('lb83Hexpand','li_83H');" /></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb83Hexpand" src="/gzjky/images/button/sq.png" style="height:40px;" onclick="expand('lb83Hexpand','li_83H');" /></a></div>
           </li>
           <li class="list_main" id="li_83H">
             <div id="bt01"><input type="button" value="提 交" class="button01" onclick="generateH83()"/></div>
@@ -740,7 +765,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">电子围栏设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb84Hexpand" src="/images/button/sq.png" style="height:40px;" onclick="expand('lb84Hexpand','li_84H');" /></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb84Hexpand" src="/gzjky/images/button/sq.png" style="height:40px;" onclick="expand('lb84Hexpand','li_84H');" /></a></div>
           </li>
           <li id="li_84H" class="list_main">
             <div id="bt01"><input type="button" value="提 交" onclick="generateH84()" class="button01" /></div>
@@ -758,7 +783,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">心率报警设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb86Hexpand" src="/images/button/sq.png" style="height:40px;" onclick="expand('lb86Hexpand','li_86H');" /></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb86Hexpand" src="/gzjky/images/button/sq.png" style="height:40px;" onclick="expand('lb86Hexpand','li_86H');" /></a></div>
           </li>
           <li id="li_86H" class="list_main" style="">
             <div id="bt01"><input type="button" value="提 交" onclick="generateH86()" class="button01" /></div>
@@ -774,7 +799,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">血压报警设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb87Hexpand" src="/images/button/sq.png" style="height:40px;" onclick="expand('lb87Hexpand','li_87H');" /></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb87Hexpand" src="/gzjky/images/button/sq.png" style="height:40px;" onclick="expand('lb87Hexpand','li_87H');" /></a></div>
           </li>
           <li id="li_87H" class="list_main" style="">
             <div id="bt01"><input type="button" value="提 交" class="button01" onclick="generateH87()" /></div>
@@ -792,7 +817,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">用药时间提醒设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb88Hexpand" src="/images/button/sq.png" style="height:40px;" onclick="expand('lb88Hexpand','li_88H');" /></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb88Hexpand" src="/gzjky/images/button/sq.png" style="height:40px;" onclick="expand('lb88Hexpand','li_88H');" /></a></div>
           </li>
           <li id="li_88H" class="list_main" >
            	<div id="bt01"><input type="button" value="提 交" class="button01" onclick="generateH88()" /></div>
@@ -990,9 +1015,9 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
               <tr>
                 <td height="25">提醒周期：
                   <select name="notice_interval" id="notice_interval" style="height:20px; width:118px;">
-                    <option value="1">一天</option>
-                    <option value="2">一周</option>
-                    <option value="3">一月</option>
+                    <option value="一天">一天</option>
+                    <option value="一周">一周</option>
+                    <option value="一月">一月</option>
                 </select></td>
               </tr>
               <tr>
@@ -1014,7 +1039,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">测压时间提醒设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb89Hexpand" src="/images/button/sq.png" style="height:40px;" onclick="expand('lb89Hexpand','li_89H');" /></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb89Hexpand" src="/gzjky/images/button/sq.png" style="height:40px;" onclick="expand('lb89Hexpand','li_89H');" /></a></div>
           </li>
           <li id="li_89H" class="list_main" >
           		<div id="bt01"><input type="button" value="提 交" class="button01" onclick="generateH89()" /></div>
@@ -1157,7 +1182,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">时区设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb8AHexpand" src="/images/button/zk.png" style="height:40px;" onclick="expand('lb8AHexpand','li_8AH');" /></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb8AHexpand" src="/gzjky/images/button/zk.png" style="height:40px;" onclick="expand('lb8AHexpand','li_8AH');" /></a></div>
           </li>
           <li id="li_8AH" class="list_main" style="display:none">
             <div id="bt01"><input type="button" value="提 交" class="button01" onclick="generateH8A();"/></div>
@@ -1190,7 +1215,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
         <ul>
           <li class="list_bg">
            <div class="list_bt">取消指令设置</div>
-           <div class="list_button"><a href="javascript:void(0)"><img id="lb8EHexpand" src="/images/button/sq.png" style="height:40px;" onclick="expand('lb8EHexpand','li_8EH');" /></a></div>
+           <div class="list_button"><a href="javascript:void(0)"><img id="lb8EHexpand" src="/gzjky/images/button/sq.png" style="height:40px;" onclick="expand('lb8EHexpand','li_8EH');" /></a></div>
           </li>
           <li id="li_8EH" class="list_main" >
             <div id="bt01"><input type="button" onclick="generatedirectivecancel();" value="提 交" class="button01" /></div>

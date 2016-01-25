@@ -35,5 +35,26 @@
 	<action name="updateBloodPressureNotice" class="com.gzjky.action.device.deviceAction" method="updateBloodPressureNotice">
 
 	</action>
+	
+	<!-- 修改血压通知-->
+	<action name="queryDeviceSettingCommonInfo" class="com.gzjky.action.device.deviceAction" method="queryDeviceSettingCommonInfo">
+
+	</action>
+	
+	<!-- 用药时间提醒添加-->
+	<action name="addTakeMedicineNotice" class="com.gzjky.action.device.deviceAction" method="addTakeMedicineNotice">
+
+	</action>
+	<!-- 用药时间提醒添加-->
+	<action name="addTestBloodPressureNotice" class="com.gzjky.action.device.deviceAction" method="addTestBloodPressureNotice">
+
+	</action>
+	
+	<!-- 设备通常信息-->
+	<action name="updateCommonInfo" class="com.gzjky.action.device.deviceAction" method="updateCommonInfo">
+
+	</action>
+	
+	
 	</package>
 </struts>

@@ -345,7 +345,8 @@
 	}
 	//修改配置(301设备)
 	function updateConfiguration(i){
-		document.location.href="terminal_setting.jsp?device_unit_id="+deviceBaseInfoList[i].unit_id+"&device_cluster_id="+deviceBaseInfoList[i].cluster_id+"&device_unit_type="+deviceBaseInfoList[i].unit_type;
+		//document.location.href="terminal_setting.jsp?device_unit_id="+deviceBaseInfoList[i].unit_id+"&device_cluster_id="+deviceBaseInfoList[i].cluster_id+"&device_unit_type="+deviceBaseInfoList[i].unit_type;
+		document.location.href="terminal_setting.jsp?device_id="+deviceBaseInfoList[i].id;
 	}
 	
 	//显示增加窗口
