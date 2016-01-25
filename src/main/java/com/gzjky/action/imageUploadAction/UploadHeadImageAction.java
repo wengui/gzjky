@@ -64,13 +64,13 @@ public class UploadHeadImageAction extends ActionSupport {
 	 */
 	public byte[] imageToByte(File file) {
 
-		byte[] by = new byte[(int) filePath.length()];
+		byte[] by = new byte[(int) file.length()];
 
 		try {
 			// BufferedImage tt = ImageIO.read(filePath);
-			FileInputStream inputStream = new FileInputStream(filePath);
+			FileInputStream inputStream = new FileInputStream(file);
 			ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
-			byte[] b = new byte[(int) filePath.length()];
+			byte[] b = new byte[(int) file.length()];
 
 			int len = 0;
 			while ((len = inputStream.read(b)) > 0) {
