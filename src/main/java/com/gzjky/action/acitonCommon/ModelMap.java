@@ -15,6 +15,10 @@ public class ModelMap {
 	public List<?> outBeanList;
 	
 	/**
+	 * 返回页面的json list对象
+	 */
+	public List<?> outBeanList2;
+	/**
 	 * 处理成功标志
 	 */
 	public int updateFlag;
@@ -67,6 +71,14 @@ public class ModelMap {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public List<?> getOutBeanList2() {
+		return outBeanList2;
+	}
+
+	public void setOutBeanList2(List<?> outBeanList2) {
+		this.outBeanList2 = outBeanList2;
 	}
 	
 }
