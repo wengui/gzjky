@@ -93,8 +93,8 @@
 		var table2 = document.getElementById("faceTable2");
   		if(bloodType == 0){
 		   clearFaceTable();   
-		   table.style.display = "block";
-		   table2.style.display = "none";
+		   $('#faceTable').show();
+		   $('#faceTable2').hide();
 		   
 		   for(var i=0;i<$.fn.page.settings.currentsize;i++){
 		  		addrowtotable(table,i);
@@ -102,8 +102,9 @@
 		}else if(bloodType == 1){
 		   clearFaceTableByTableName("faceTable2");
 
-		   table2.style.display = "block";
-		   table.style.display = "none";
+		   $('#faceTable').hide();
+		   $('#faceTable2').show();
+		   
 		   for(var i=0;i<$.fn.page.settings.currentsize;i++){
 		  		addrowtotable(table2,i);
 	  	   }
@@ -299,26 +300,23 @@
 	<aside class="right-side">
 		<!--bp_history start-->
 		<div class="bp_history">
-		  <div class="title_BPhistory">
-		    <ul>
-		      <li class="tgreen_title_BPhistory">血压历史</li>
-		      <li class="select_BPhistory"><span class="select-style"><select onchange="changeBloodType(this)"><option selected="selected" value="0">血压历史</option><option value="1">血压告警</option></select></span></li>
-		    </ul>
-		  </div>
 		  <div class="search">
 		    <ul>
+		      
 		      <li class="criteria_search">
 		        <ul>
 		          <li class="startTime">开始时间</li>
 		          <li class="time_input"><input type="text"  id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
 		          <li class="endTime">结束时间</li>
 		          <li class="time_input"><input type="text"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
+		          <li class="startTime">血压历史</li>
+		          <li class="time_input"><span><select onchange="changeBloodType(this)"><option selected="selected" value="0">血压历史</option><option value="1">血压告警</option></select></span></li>
+		          <li> <a href="javascript:void(0)" class="btn btn-primary btn-sm" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>
 		          <li class="quick_search">
 		                  快速查询：<a href="javascript:changeDate(3)">最新3天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" style="margin-right:8px;">最近30天</a><a href="javascript:changeDate(365)" style="margin-right:2px;">最近一年</a>
 		          </li>
 		        </ul>
 		      </li>
-		      <li> <a href="javascript:void(0)" class="btn  btn_search" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>           
 		    </ul>
 		  </div>
 		  <div class="index_table">

@@ -39,7 +39,7 @@
 /*----------------search---------------*/
 .search{width:630px; padding:20px;float:left; margin-top:10px; }
 .search li{float:left; text-align:left}
-.criteria_search{width:470px;}
+.criteria_search{width:800px;}
 .startTime{width:60px; color:#5a5a5a; font-size:13px; height:30px; line-height:30px;font-family:"微软雅黑"}
 .endTime{width:60px; color:#5a5a5a; font-size:13px; height:30px; line-height:30px; margin-left:20px;font-family:"微软雅黑"}
 .time_input{width:165px; height:30px; line-height:30px;}
@@ -51,7 +51,7 @@
 .btn_search_text{font-size:18px; font-weight:500;}
 
 /*----------------table_page---------------*/
-.index_table{margin-left:15px;float:left;width:100%;}
+.index_table{margin:10px 15px 10px 15px;float:left;width:98%;}
 .bPhistory_table{float:left; text-align:left;font-family:"微软雅黑";width:100%;}
 .bPhistory_table a{color:#71A944; margin-right:15px; text-decoration:none;width:100%;}
 .bPhistory_table th{background-color:#f3f4f5; height:40px; padding-left:20px; line-height:40px;  text-align:left; font-size:14px}
@@ -59,7 +59,7 @@
 .even{background:#f7f7f7}
 .odd{background:#fff}
 .abnormal td{color:#ff9600}
-.index_page{float:right; height:25px; line-height:25px; margin-top:10px;}
+.index_page{float:right; height:25px; line-height:25px; margin:5px 15px 0px 0px;}
 .page_information{width:180px; float:left; text-align:left; font-size:14px; color:#5a5a5a;height:25px; line-height:25px;margin-top:5px;}
 .page_button{width:385px; float:left; font-size:14px; height:25px; line-height:25px;}
 .page_select{width:90px; float:left; text-align:right;font-size:14px; color:#5a5a5a;height:25px; line-height:25px;margin-top:5px;}
@@ -189,3 +189,10 @@ span.method{line-height: 28px;}
 
 .family_disease_relation a{text-decoration:none; color:#71A944; margin:0 5px;}
 .family_disease_relation a:hover{text-decoration:underline}
+
+.time_input select {
+    width: 145px;
+    padding-left: 10px;
+    height: 28px;
+    border: 1px solid #aeaeae;
+}
