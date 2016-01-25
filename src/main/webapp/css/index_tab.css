@@ -196,3 +196,24 @@ span.method{line-height: 28px;}
     height: 28px;
     border: 1px solid #aeaeae;
 }
+
+.btn-primary_select {
+	width: 145px;
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    padding: 6px 30px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    margin-left: 5px;
+}
+
