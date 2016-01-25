@@ -1,14 +1,14 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心V3.0</title>
+<title>贵州健康云服务中心</title>
 <meta http-equiv="keywords" content="个人健康服务中心,物联网,可穿戴设备,动态血压,心电,十二导联,电子围栏,用药提醒,测压提醒"/>
 <meta http-equiv="description" content="个人健康服务中心"/>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
 <link rel="Shortcut Icon"  href="/995120.ico"/>
 <link rel="stylesheet" href="<c:url value='/css/common.css'/>" type="text/css" />
 <link rel="stylesheet" href="<c:url value='/css/index_common.css'/>" type="text/css" />
@@ -20,11 +20,8 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common/balance.js'/>" type="text/javascript"></script>
 
-
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-
+<%@ include file="./shared/importCss.jsp"%>
+<%@ include file="./shared/importJs.jsp"%>
 
 <script type="text/JavaScript">
 
@@ -45,9 +42,6 @@
 	function Query() {
 		memberBindDevice();
 		hos_docInfo();
-		//packageBaseinfo();
-		//queryBalance();
-		//connect("ws://v3.995120.cn/MemberActivityMsg/Server", "24913_1_2");
 	}
 	//查询用户绑定设备
 	function memberBindDevice() {
@@ -214,7 +208,6 @@
 		});
 	}
 	
-	
 	//获取当前日期
 	function getdate() {
 		var now = new Date();
@@ -342,7 +335,529 @@
 
 </head>
 
-<body onload="Query();">
+<body class="skin-blue" onload="Query();">
+        <!-- header logo: style can be found in header.less -->
+       <%@ include file="./shared/pageHeader.jsp"%>
+       <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+			<%@ include file="./shared/sidebarMenu.jsp"%>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Dashboard
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        150
+                                    </h3>
+                                    <p>
+                                        New Orders
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>
+                                        53<sup style="font-size: 20px">%</sup>
+                                    </h3>
+                                    <p>
+                                        Bounce Rate
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>
+                                        44
+                                    </h3>
+                                    <p>
+                                        User Registrations
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>
+                                        65
+                                    </h3>
+                                    <p>
+                                        Unique Visitors
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                    </div><!-- /.row -->
+
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            
+                        </div><!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-6 connectedSortable"> 
+                            <!-- Box (with bar chart) -->
+                            <div class="box box-danger" id="loading-example">
+                                <div class="box-header">
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">
+                                        <button class="btn btn-danger btn-sm refresh-btn" data-toggle="tooltip" title="Reload"><i class="fa fa-refresh"></i></button>
+                                        <button class="btn btn-danger btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-danger btn-sm" data-widget='remove' data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                                    </div><!-- /. tools -->
+                                    <i class="fa fa-cloud"></i>
+
+                                    <h3 class="box-title">Server Load</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <div class="row">
+                                        <div class="col-sm-7">
+                                            <!-- bar chart -->
+                                            <div class="chart" id="bar-chart" style="height: 250px;"></div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="pad">
+                                                <!-- Progress bars -->
+                                                <div class="clearfix">
+                                                    <span class="pull-left">Bandwidth</span>
+                                                    <small class="pull-right">10/200 GB</small>
+                                                </div>
+                                                <div class="progress xs">
+                                                    <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
+                                                </div>
+
+                                                <div class="clearfix">
+                                                    <span class="pull-left">Transfered</span>
+                                                    <small class="pull-right">10 GB</small>
+                                                </div>
+                                                <div class="progress xs">
+                                                    <div class="progress-bar progress-bar-red" style="width: 70%;"></div>
+                                                </div>
+
+                                                <div class="clearfix">
+                                                    <span class="pull-left">Activity</span>
+                                                    <small class="pull-right">73%</small>
+                                                </div>
+                                                <div class="progress xs">
+                                                    <div class="progress-bar progress-bar-light-blue" style="width: 70%;"></div>
+                                                </div>
+
+                                                <div class="clearfix">
+                                                    <span class="pull-left">FTP</span>
+                                                    <small class="pull-right">30 GB</small>
+                                                </div>
+                                                <div class="progress xs">
+                                                    <div class="progress-bar progress-bar-aqua" style="width: 70%;"></div>
+                                                </div>
+                                                <!-- Buttons -->
+                                                <p>
+                                                    <button class="btn btn-default btn-sm"><i class="fa fa-cloud-download"></i> Generate PDF</button>
+                                                </p>
+                                            </div><!-- /.pad -->
+                                        </div><!-- /.col -->
+                                    </div><!-- /.row - inside box -->
+                                </div><!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                                            <input type="text" class="knob" data-readonly="true" value="80" data-width="60" data-height="60" data-fgColor="#f56954"/>
+                                            <div class="knob-label">CPU</div>
+                                        </div><!-- ./col -->
+                                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                                            <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#00a65a"/>
+                                            <div class="knob-label">Disk</div>
+                                        </div><!-- ./col -->
+                                        <div class="col-xs-4 text-center">
+                                            <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#3c8dbc"/>
+                                            <div class="knob-label">RAM</div>
+                                        </div><!-- ./col -->
+                                    </div><!-- /.row -->
+                                </div><!-- /.box-footer -->
+                            </div><!-- /.box -->        
+                            
+                            <!-- Custom tabs (Charts with tabs)-->
+                            <div class="nav-tabs-custom">
+                                <!-- Tabs within a box -->
+                                <ul class="nav nav-tabs pull-right">
+                                    <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
+                                    <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
+                                    <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <!-- Morris chart - Sales -->
+                                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
+                                    <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+                                </div>
+                            </div><!-- /.nav-tabs-custom -->
+                                                
+                            <!-- Calendar -->
+                            <div class="box box-warning">
+                                <div class="box-header">
+                                    <i class="fa fa-calendar"></i>
+                                    <div class="box-title">Calendar</div>
+                                    
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">
+                                        <!-- button with a dropdown -->
+                                        <div class="btn-group">
+                                            <button class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li><a href="#">Add new event</a></li>
+                                                <li><a href="#">Clear events</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">View calendar</a></li>
+                                            </ul>
+                                        </div>
+                                    </div><!-- /. tools -->                                    
+                                </div><!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <!--The calendar -->
+                                    <div id="calendar"></div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+
+                            <!-- quick email widget -->
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-envelope"></i>
+                                    <h3 class="box-title">Quick Email</h3>
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">
+                                        <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                                    </div><!-- /. tools -->
+                                </div>
+                                <div class="box-body">
+                                    <form action="#" method="post">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="emailto" placeholder="Email to:"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="subject" placeholder="Subject"/>
+                                        </div>
+                                        <div>
+                                            <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="box-footer clearfix">
+                                    <button class="pull-right btn btn-default" id="sendEmail">Send <i class="fa fa-arrow-circle-right"></i></button>
+                                </div>
+                            </div>
+
+                        </section><!-- /.Left col -->
+                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                        <section class="col-lg-6 connectedSortable">
+                            <!-- Map box -->
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">                                        
+                                        <button class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range"><i class="fa fa-calendar"></i></button>
+                                        <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
+                                    </div><!-- /. tools -->
+
+                                    <i class="fa fa-map-marker"></i>
+                                    <h3 class="box-title">
+                                        Visitors
+                                    </h3>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div id="world-map" style="height: 300px;"></div>
+                                    <div class="table-responsive">
+                                        <!-- .table - Uses sparkline charts-->
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <th>Country</th>
+                                                <th>Visitors</th>
+                                                <th>Online</th>
+                                                <th>Page Views</th>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">USA</a></td>
+                                                <td><div id="sparkline-1"></div></td>
+                                                <td>209</td>
+                                                <td>239</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">India</a></td>
+                                                <td><div id="sparkline-2"></div></td>
+                                                <td>131</td>
+                                                <td>958</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Britain</a></td>
+                                                <td><div id="sparkline-3"></div></td>
+                                                <td>19</td>
+                                                <td>417</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Brazil</a></td>
+                                                <td><div id="sparkline-4"></div></td>
+                                                <td>109</td>
+                                                <td>476</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">China</a></td>
+                                                <td><div id="sparkline-5"></div></td>
+                                                <td>192</td>
+                                                <td>437</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Australia</a></td>
+                                                <td><div id="sparkline-6"></div></td>
+                                                <td>1709</td>
+                                                <td>947</td>
+                                            </tr>
+                                        </table><!-- /.table -->
+                                    </div>
+                                </div><!-- /.box-body-->
+                                <div class="box-footer">
+                                    <button class="btn btn-info"><i class="fa fa-download"></i> Generate PDF</button>
+                                    <button class="btn btn-warning"><i class="fa fa-bug"></i> Report Bug</button>
+                                </div>
+                            </div>
+                            <!-- /.box -->
+
+                            <!-- Chat box -->
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h3 class="box-title"><i class="fa fa-comments-o"></i> Chat</h3>
+                                    <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
+                                        <div class="btn-group" data-toggle="btn-toggle" >
+                                            <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i></button>                                            
+                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body chat" id="chat-box">
+                                    <!-- chat item -->
+                                    <div class="item">
+                                        <img src="img/avatar.png" alt="user image" class="online"/>
+                                        <p class="message">
+                                            <a href="#" class="name">
+                                                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
+                                                Mike Doe
+                                            </a>
+                                            I would like to meet you to discuss the latest news about
+                                            the arrival of the new theme. They say it is going to be one the
+                                            best themes on the market
+                                        </p>
+                                        <div class="attachment">
+                                            <h4>Attachments:</h4>
+                                            <p class="filename">
+                                                Theme-thumbnail-image.jpg
+                                            </p>
+                                            <div class="pull-right">
+                                                <button class="btn btn-primary btn-sm btn-flat">Open</button>
+                                            </div>
+                                        </div><!-- /.attachment -->
+                                    </div><!-- /.item -->
+                                    <!-- chat item -->
+                                    <div class="item">
+                                        <img src="img/avatar2.png" alt="user image" class="offline"/>
+                                        <p class="message">
+                                            <a href="#" class="name">
+                                                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:15</small>
+                                                Jane Doe
+                                            </a>
+                                            I would like to meet you to discuss the latest news about
+                                            the arrival of the new theme. They say it is going to be one the
+                                            best themes on the market
+                                        </p>
+                                    </div><!-- /.item -->
+                                    <!-- chat item -->
+                                    <div class="item">
+                                        <img src="img/avatar3.png" alt="user image" class="offline"/>
+                                        <p class="message">
+                                            <a href="#" class="name">
+                                                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:30</small>
+                                                Susan Doe
+                                            </a>
+                                            I would like to meet you to discuss the latest news about
+                                            the arrival of the new theme. They say it is going to be one the
+                                            best themes on the market
+                                        </p>
+                                    </div><!-- /.item -->
+                                </div><!-- /.chat -->
+                                <div class="box-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Type message..."/>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box (chat box) -->
+
+                            <!-- TO DO List -->
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <i class="ion ion-clipboard"></i>
+                                    <h3 class="box-title">To Do List</h3>
+                                    <div class="box-tools pull-right">
+                                        <ul class="pagination pagination-sm inline">
+                                            <li><a href="#">&laquo;</a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">&raquo;</a></li>
+                                        </ul>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <ul class="todo-list">
+                                        <li>
+                                            <!-- drag handle -->
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>  
+                                            <!-- checkbox -->
+                                            <input type="checkbox" value="" name=""/>                                            
+                                            <!-- todo text -->
+                                            <span class="text">Design a nice theme</span>
+                                            <!-- Emphasis label -->
+                                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                                            <!-- General tools such as edit or delete-->
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>                                            
+                                            <input type="checkbox" value="" name=""/>
+                                            <span class="text">Make the theme responsive</span>
+                                            <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
+                                            <input type="checkbox" value="" name=""/>
+                                            <span class="text">Let theme shine like a star</span>
+                                            <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
+                                            <input type="checkbox" value="" name=""/>
+                                            <span class="text">Let theme shine like a star</span>
+                                            <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
+                                            <input type="checkbox" value="" name=""/>
+                                            <span class="text">Check your messages and notifications</span>
+                                            <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
+                                            <input type="checkbox" value="" name=""/>
+                                            <span class="text">Let theme shine like a star</span>
+                                            <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- /.box-body -->
+                                <div class="box-footer clearfix no-border">
+                                    <button class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+                                </div>
+                            </div><!-- /.box -->
+
+                        </section><!-- right col -->
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+
 <div class="information_push">
   <div class="information_push_main" id="pushMsgDetailDiv">
     <ul>
@@ -400,36 +915,6 @@
 	</style>
 </head>
 <body >	
-
-    <!--index_health_header start-->
-    <div class="index_health_header">
-      <div class="bgTop_index">
-        <div class="index_out">
-          <ul>
-           <li class="index_wechat"><a href="../jsp/health/index/wechat.jsp" title="995120健康服务中心官方微信" target="_blank">官方微信</a></li>
-           <li class="index_bolg"><a href="http://weibo.com/5137507355/profile" title="995120健康服务中心官方微博" target="_blank">官方微博</a></li>
-           <li class="index_service_phone" title="400电话">400-0785-120</li>
-           <li class="index_username">欢迎您，${sessionScope.Patient.uname}</li>
-           <li class="index_signout">
-               <a href="javascript:void(0)" onclick="logout();" title="安全退出">安全退出</a>
-               <form action="/gzjky/login/layout.do" id="logoutForm" name="logoutForm" method="post">
-               </form>
-           </li> 
-          </ul>
-        </div>
-      </div>
-      <!--indexMenu start-->
-      <div class="logo_menu" >
-        <div class="bg_logo">
-          <div class="index_menu">
-            <ul id="topMenuNav">
-              <li id="topMenu1" onclick="activeTopMenu(1)" class="activation"><a href="../jsp/home.jsp" title="健康中心">健康中心</a></li>
-              <li id="topMenu2" ><a href="../jsp/download/download.jsp" title="APP下载、Android、iOS" target="_blank">应用下载</a></li>
-              <li id="topMenu3" ><a href="/h/d.helowin?code=2hLtOLIuHAzLxbZoNN5q0st3F3pn8/rEvTb8AJjwM4QRf+HKJm4LWQiWiSGtt3lc&iv=4kmmmcebmot8f5uv" title="新手上路" target="_blank">新手上路</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
     <!--indexMenu end-->
     <!--indexMenu_secondary start-->
@@ -489,78 +974,9 @@
         </div>  
       </div>
       <!--index_health_left end-->
-      <!--index_health_right start-->
-      <div class="index_health_right">
-        <iframe src="<c:url value='/jsp/health/welcome.jsp'/>" scrolling="no" frameborder="0" name="mainFrame" id="mainFrame" onload="reinitIframe();"></iframe>
-      </div>
-      <!--index_health_right end-->
     </div>
     </div>
     <!--index_health_main start-->  
-
-<style>
-.tGray_bottom a{text-decoration: none; color: #ffffff;}
-</style>
-
-
-    <!--index_health_bottom start-->
-    <a name="page_botton_block"></a>
-    <div class="index_health_bottom" >
-      <div class="bottom_main">
-        <div class="bottom_contact">
-          <ul>
-            <li class="tWhite">
-            <span class="tGreen" title="联系我们">Contact us</span>联系我们
-            </li>
-            <li class="tGray_bottom" title="地址">地址：浙江省杭州市西湖区西斗门路天堂软件园E幢13楼</li>
-            <li class="tGray_bottom" title="客服热线">客服热线：400-0785-120</li>
-            <li class="tGray_bottom" title="公司官网">公司官网：<a href="http://www.hellowin.cn" target="_blank">www.hellowin.cn</a></li>
-            <li class="tGray_bottom" title="服务邮箱">邮箱：helowin@hellowin.cn</li>
-            <li class="tGray_bottom">
-				<a href="http://122.224.75.236/wzba/login.do?method=hdurl&doamin=http://www.995120.cn&id=330108000063652&SHID=1223.0AFF_NAME=com.rouger.
-				gs.main.UserInfoAff&AFF_ACTION=qyhzdetail&PAGE_URL=ShowDetail"
-				target="_blank"> <img src="http://122.224.75.236/wzba/view/baxx/gh.jpg" border="0"></a>        
-            
-            </li>
-            
-            
-          </ul>
-        </div>
-        <div class="bottom_help">
-          <ul>
-            <li class="tWhite"></li>
-            <li class="taqueation_left"></li>
-            <li class="taqueation_middle"></li>
-            <li class="taqueation_right"></li>
-            <li class="taqueation_left"></li>
-            <li class="taqueation_middle"></li>
-            <li class="taqueation_right"></li>
-          </ul>
-        </div>
-        <div class="bottom_concern">
-          <ul>
-            <li class="tWhite"><span class="tGreen">Concern us</span>关注我们</li>
-            <li class="wechat_code">官方微信</li>
-            <li class="blog_code">官方新浪微博</li>
-          </ul>
-        </div>
-        <div class="copyright">
-        
-        
-        Copyright © 2010-2014 浙江好络维物联网络技术有限公司版权所有  浙ICP备10212076号-1
-        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000351579'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000351579%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>    
- 
-        
-        </div>
-      </div>
-    </div>
-    <!--index_health_bottom start-->
-    <div id="transparentDiv2" onclick="showPushMsgDetailDiv();"></div>
-    
-    
-    
-    
-    
   </div>
 </body>
 </html>

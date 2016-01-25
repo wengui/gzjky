@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,20 +17,9 @@
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
+<%@ include file="../shared/importCss.jsp"%>
+<%@ include file="../shared/importJs.jsp"%>
 
-<style type="">
-.wordbreak{word-break:break-all;}
-</style>
 <script type="text/JavaScript">
 
 	//初始化方法
@@ -710,168 +699,177 @@
 
 </head>
 
-<body onload="QueryHealth();" style="background:#e8e3d7" >
-  <div class="index_welcome">
-    <!--index_welcome_header start-->
-    <div class="index_welcome_header">
-      <div class="notice">
-        <ul>
-          <li class="tgreen_notice">健康通告</li>
-          <li class="tgrey_notice">Announcement</li>
-        </ul>
-      </div>
-      <div class="health_tip">
-        <ul>
-          <li class="tgrey_healthTip" id="today"></li>
-          <li class="tgreen_healthTip" id="weather">
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!--index_welcome_header end-->
-    <!--index_welcome_main start-->
-    <div class="index_welcome_main">
-      <!--health_date start--> 
-      <div class="health_date">
-       <ul>
-         <li class="tgreen_healthDate">健康状况</li>
-         <li class="bloodPressure_date">
-           <ul>
-             <li class="tblack_date" id="last_bloodpressure"><span class="tblack_datemin">--</span></li>
-             <li class="tgrey_time" id="last_bloodpressure_time">最近一次血压值</li>
-           </ul>
-         </li>
-         <li class="bloodPressure_alarm">
-           <ul>
-             <li class="tblack_date" id="last_bloodalert"><span class="tblack_datemin">--</span></li>
-             <li class="tgrey_time" id="last_bloodalert_time">血压异常记录</li>
-           </ul>
-         </li>
-         <li class="heartRate_date">
-           <ul>
-             <li class="tblack_date" id="last_heartrate"><span class="tblack_datemin">--</span></li>
-             
-             <li class="tgrey_time" id="last_heartrate_time">最近一次脉率值</li>
-             
-           </ul>
-         </li>
-         <li class="heartRate_alarm">
-           <ul>
-             <li class="tblack_date" id="last_heartratealert"><span class="tblack_datemin">--</span></li>
-             <li class="tgrey_time" id="last_heartratealert_time">心率异常记录</li>
-           </ul>
-         </li>
-         <li class="oxygen_date">
-           <ul>
-             <li class="tblack_date"><span class="tblack_datemin">--</span></li>
-             <li class="tgrey_time">最近一次血氧值</li>
-           </ul>
-         </li>
-         <li class="sos_alarm">
-           <ul>
-             <li class="tblack_sosdate" id="last_island" ><span class="tblack_datemin">--</span></li>
-             <li class="tgrey_time" id="last_sosalert">SOS异常记录</li>
-           </ul>
-         </li>
-       </ul>
-      </div>
-      <!--health_date end-->
-      <!--医生医嘱 -->
-	  	<div class="bpDiagnosis_results" id="doctorAdvice" style="display:block;margin-top:8px">
-       		<div style="text-align: left;width:100%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;">最新医嘱</div>
-       		<div class="bpDiagnosis_results_text"  style="font-size: 12px;width: 100%;">
-				<ul id="advice">
-					<li class="tgreen_results" style="font-size: 16px; padding-left:20px">测压目标：</li>
-					<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="goal">暂无</li>
-					
-					<li class="tgreen_results" style="font-size: 16px; padding-left:20px">测压方案：</li>
-					<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="plan">暂无</li>
-					
-					<li class="tgreen_results" style="font-size: 16px; padding-left:20px">用药推荐：</li>
-					<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="medicine">暂无</li>
-					
-					<li class="tgreen_results" style="font-size: 16px; padding-left:20px">保健建议：</li>
-         			<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="suggestion">暂无</li>
-				</ul>
-			</div>
-	  	</div>
-       	<div class="bpDiagnosis_results" id="consultative" style="display:block;margin-top:10px">
-          	<div style="text-align: left;width:50%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;float: left;">最新咨询</div>
-          	<div style="text-align: right;width:47%;color:#71A944;float: left;">
-          		<a class='tgreen_results' style="font-size: 13px;text-decoration: underline;" href='./healthrecord/member_consult.jsp'  >会员咨询历史</a>
-			</div>
-       		<div class="bpDiagnosis_results_text"  style="font-size: 12px;width: 100%;">
-       			<ul id="advice">
-					<li class="tgreen_results" style="font-size: 16px; padding-left:20px">咨询内容：</li>
-					<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="consult_cont">暂无</li>
-				</ul>
-       		</div>
-       	</div>
-      <!--bpDiagnosis_results start-->
-       
-      <div class="bpDiagnosis_results">
-        <div class="bpDiagnosis_results_trendChart" style="width: 310px;" id="container"></div> 
-       	<div class="bpDiagnosis_results_trendChart"  id="container1" style="padding-left: 10px; width:310px; "></div>
-       	<div style="float: right;font-size: 12px;margin-top: 10px;" id="bpmorning_what" class="tblack_results">
-       		<a class='tgreen_results' style="font-size: 12px;text-decoration: underline;" href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a></div>
-      </div>
-      <!-- 晨峰血压 -->
-       <div class="bpDiagnosis_results" id="morningBP" style="display:block;margin-top:0px">
-       <div style="text-align: left;width:100%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;" id="histroy_bp_diagnose">血压等级分析</div>
-       		<div class="bpDiagnosis_results_text"  style="font-size: 12px;">
-					<ul id="bpanalyse">
-					
-						<li class="tgreen_results" style="font-size: 16px; padding-left:20px">血压等级：</li>
-						<li class="tblack_results" id="pressure_level" style="font-size: 13px; padding-left:30px">暂无<br/>
-						<a href="javascript:void(0);" onclick="bloodPressureStandard();" style="font-size: 13px; text-decoration: underline;">高血压分级标准</a>
-						</li>
-						
-						<li class="tgreen_results" style="font-size: 16px; padding-left:20px">心血管风险分层：</li>
-						<li class="tblack_results" id="risk_level" style="font-size: 13px; padding-left:30px">暂无</li>
-						
-						<li class="tgreen_results" style="font-size: 16px; padding-left:20px">诊断依据：</li>
-						<li class="tblack_results" id="angiocarpy" style="font-size: 13px; padding-left:30px">暂无</li>
-						
-						<li class="tgreen_results" id="doctor_bpana" style="font-size: 16px; padding-left:20px;">医生分析</li>
-          				<li class="tblack_results" id="doctor_bpreport" style="font-size: 13px; padding-left:30px;">暂无</li>
-						
-						<li class="tgreen_results" id="doctor_spana" style="font-size: 16px; padding-left:20px;">医生建议</li>
-          				<li class="tblack_results" id="doctor_suggest" style="font-size: 13px; padding-left:30px;">暂无</li>
-          				
-						<li class="tgreen_results" style="font-size: 16px; padding-left:20px">保健建议</li>
-          				<li class="tblack_results" id="health_suggest" style="font-size: 13px; padding-left:30px">暂无</li>
+<body class="skin-blue" onload="QueryHealth();" >
 
-					</ul>
-				</div>
-       <div class="bpDiagnosis_results_text" id="bpDiagnos">
-          <ul>
-           
-          </ul>
-        </div>
-       	 	<div class="bpDiagnosis_results_trendChart" style="padding-left: 10px;" id="container2"></div> 
-       		<div class="tblack_results" id="container2_time"></div> 
-       </div>    
-      
-      
-      <!--bpDiagnosis_results end-->
-      <!--hrDiagnosis_results start-->
-      <div class="hrDiagnosis_results">
-        <div class="hrDiagnosis_results_text">
-          <ul>
-            <li class="tgreen_results">心电医生回复：</li>
-            <li class="tblack_results" id="doctor_report">暂无</li>
-          </ul>
-        </div>
-        <div class="hrDiagnosis_results_sketchMap">
-          <ul>
-            <li class="tblack_sketchMap" id="reference_range">心率</li>
-            <li class="tgrey_sketchMap" >参考正常范围：60 &lt; 心率  &lt; 100</li>
-            <li class="sketchMap" id="image_heart_rate"><img style="margin-right: 150px;" src="../../images/health/top.png" /><img src="../../images/health/bottom.png" /></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!--index_welcome_main end-->
+	<!-- header logo: style can be found in header.less -->
+	<%@ include file="../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+	         <!-- Left side column. contains the logo and sidebar -->
+	<%@ include file="../shared/sidebarMenu.jsp"%>
+	<aside class="right-side">
+		  <div class="index_welcome">
+		    <!--index_welcome_header start-->
+		    <div class="index_welcome_header">
+		      <div class="notice">
+		        <ul>
+		          <li class="tgreen_notice">健康通告</li>
+		          <li class="tgrey_notice">Announcement</li>
+		        </ul>
+		      </div>
+		      <div class="health_tip">
+		        <ul>
+		          <li class="tgrey_healthTip" id="today"></li>
+		          <li class="tgreen_healthTip" id="weather">
+		          </li>
+		        </ul>
+		      </div>
+		    </div>
+		    <!--index_welcome_header end-->
+		    <!--index_welcome_main start-->
+		    <div class="index_welcome_main">
+		      <!--health_date start--> 
+		      <div class="health_date">
+		       <ul>
+		         <li class="tgreen_healthDate">健康状况</li>
+		         <li class="bloodPressure_date">
+		           <ul>
+		             <li class="tblack_date" id="last_bloodpressure"><span class="tblack_datemin">--</span></li>
+		             <li class="tgrey_time" id="last_bloodpressure_time">最近一次血压值</li>
+		           </ul>
+		         </li>
+		         <li class="bloodPressure_alarm">
+		           <ul>
+		             <li class="tblack_date" id="last_bloodalert"><span class="tblack_datemin">--</span></li>
+		             <li class="tgrey_time" id="last_bloodalert_time">血压异常记录</li>
+		           </ul>
+		         </li>
+		         <li class="heartRate_date">
+		           <ul>
+		             <li class="tblack_date" id="last_heartrate"><span class="tblack_datemin">--</span></li>
+		             
+		             <li class="tgrey_time" id="last_heartrate_time">最近一次脉率值</li>
+		             
+		           </ul>
+		         </li>
+		         <li class="heartRate_alarm">
+		           <ul>
+		             <li class="tblack_date" id="last_heartratealert"><span class="tblack_datemin">--</span></li>
+		             <li class="tgrey_time" id="last_heartratealert_time">心率异常记录</li>
+		           </ul>
+		         </li>
+		         <li class="oxygen_date">
+		           <ul>
+		             <li class="tblack_date"><span class="tblack_datemin">--</span></li>
+		             <li class="tgrey_time">最近一次血氧值</li>
+		           </ul>
+		         </li>
+		         <li class="sos_alarm">
+		           <ul>
+		             <li class="tblack_sosdate" id="last_island" ><span class="tblack_datemin">--</span></li>
+		             <li class="tgrey_time" id="last_sosalert">SOS异常记录</li>
+		           </ul>
+		         </li>
+		       </ul>
+		      </div>
+		      <!--health_date end-->
+		      <!--医生医嘱 -->
+			  	<div class="bpDiagnosis_results" id="doctorAdvice" style="display:block;margin-top:8px">
+		       		<div style="text-align: left;width:100%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;">最新医嘱</div>
+		       		<div class="bpDiagnosis_results_text"  style="font-size: 12px;width: 100%;">
+						<ul id="advice">
+							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">测压目标：</li>
+							<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="goal">暂无</li>
+							
+							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">测压方案：</li>
+							<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="plan">暂无</li>
+							
+							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">用药推荐：</li>
+							<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="medicine">暂无</li>
+							
+							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">保健建议：</li>
+		         			<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="suggestion">暂无</li>
+						</ul>
+					</div>
+			  	</div>
+		       	<div class="bpDiagnosis_results" id="consultative" style="display:block;margin-top:10px">
+		          	<div style="text-align: left;width:50%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;float: left;">最新咨询</div>
+		          	<div style="text-align: right;width:47%;color:#71A944;float: left;">
+		          		<a class='tgreen_results' style="font-size: 13px;text-decoration: underline;" href='./healthrecord/member_consult.jsp'  >会员咨询历史</a>
+					</div>
+		       		<div class="bpDiagnosis_results_text"  style="font-size: 12px;width: 100%;">
+		       			<ul id="advice">
+							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">咨询内容：</li>
+							<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="consult_cont">暂无</li>
+						</ul>
+		       		</div>
+		       	</div>
+		      <!--bpDiagnosis_results start-->
+		       
+		      <div class="bpDiagnosis_results">
+		        <div class="bpDiagnosis_results_trendChart" style="width: 310px;" id="container"></div> 
+		       	<div class="bpDiagnosis_results_trendChart"  id="container1" style="padding-left: 10px; width:310px; "></div>
+		       	<div style="float: right;font-size: 12px;margin-top: 10px;" id="bpmorning_what" class="tblack_results">
+		       		<a class='tgreen_results' style="font-size: 12px;text-decoration: underline;" href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a></div>
+		      </div>
+		      <!-- 晨峰血压 -->
+		       <div class="bpDiagnosis_results" id="morningBP" style="display:block;margin-top:0px">
+		       <div style="text-align: left;width:100%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;" id="histroy_bp_diagnose">血压等级分析</div>
+		       		<div class="bpDiagnosis_results_text"  style="font-size: 12px;">
+							<ul id="bpanalyse">
+							
+								<li class="tgreen_results" style="font-size: 16px; padding-left:20px">血压等级：</li>
+								<li class="tblack_results" id="pressure_level" style="font-size: 13px; padding-left:30px">暂无<br/>
+								<a href="javascript:void(0);" onclick="bloodPressureStandard();" style="font-size: 13px; text-decoration: underline;">高血压分级标准</a>
+								</li>
+								
+								<li class="tgreen_results" style="font-size: 16px; padding-left:20px">心血管风险分层：</li>
+								<li class="tblack_results" id="risk_level" style="font-size: 13px; padding-left:30px">暂无</li>
+								
+								<li class="tgreen_results" style="font-size: 16px; padding-left:20px">诊断依据：</li>
+								<li class="tblack_results" id="angiocarpy" style="font-size: 13px; padding-left:30px">暂无</li>
+								
+								<li class="tgreen_results" id="doctor_bpana" style="font-size: 16px; padding-left:20px;">医生分析</li>
+		          				<li class="tblack_results" id="doctor_bpreport" style="font-size: 13px; padding-left:30px;">暂无</li>
+								
+								<li class="tgreen_results" id="doctor_spana" style="font-size: 16px; padding-left:20px;">医生建议</li>
+		          				<li class="tblack_results" id="doctor_suggest" style="font-size: 13px; padding-left:30px;">暂无</li>
+		          				
+								<li class="tgreen_results" style="font-size: 16px; padding-left:20px">保健建议</li>
+		          				<li class="tblack_results" id="health_suggest" style="font-size: 13px; padding-left:30px">暂无</li>
+		
+							</ul>
+						</div>
+		       <div class="bpDiagnosis_results_text" id="bpDiagnos">
+		          <ul>
+		           
+		          </ul>
+		        </div>
+		       	 	<div class="bpDiagnosis_results_trendChart" style="padding-left: 10px;" id="container2"></div> 
+		       		<div class="tblack_results" id="container2_time"></div> 
+		       </div>    
+		      
+		      
+		      <!--bpDiagnosis_results end-->
+		      <!--hrDiagnosis_results start-->
+		      <div class="hrDiagnosis_results">
+		        <div class="hrDiagnosis_results_text">
+		          <ul>
+		            <li class="tgreen_results">心电医生回复：</li>
+		            <li class="tblack_results" id="doctor_report">暂无</li>
+		          </ul>
+		        </div>
+		        <div class="hrDiagnosis_results_sketchMap">
+		          <ul>
+		            <li class="tblack_sketchMap" id="reference_range">心率</li>
+		            <li class="tgrey_sketchMap" >参考正常范围：60 &lt; 心率  &lt; 100</li>
+		            <li class="sketchMap" id="image_heart_rate"><img style="margin-right: 150px;" src="../../images/health/top.png" /><img src="../../images/health/bottom.png" /></li>
+		          </ul>
+		        </div>
+		      </div>
+		    </div>
+     </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->
+<!--index_welcome_main end-->
     	
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -925,11 +923,8 @@
 </div>
 
 <div id="transparentDiv" ></div>
-
 <div id="transparentDiv2"></div>
 		
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -960,7 +955,6 @@
 </html>
 		
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

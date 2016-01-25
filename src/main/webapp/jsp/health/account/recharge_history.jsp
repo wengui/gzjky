@@ -30,6 +30,7 @@
   var startDate="";
   var endDate="";
   function startInit(){
+	  hideLoading();
 	  queryStart();
   }
   function queryStart(){
@@ -46,8 +47,9 @@
 		+"&pointerStart="+pointerStart+"&pageSize="+$.fn.page.settings.pagesize;
 	  var requestUrl="/packageAction/queryMemberRechargeHistory.action";
       
-	  showScreenProtectDiv(1);
+	  //showScreenProtectDiv(1);
 	  //showLoading();
+
 	  xmlHttp = $.ajax({
 			url: requestUrl,
 			async:true,
