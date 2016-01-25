@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!-- BEGIN SIDEBAR -->
 <script type="text/javascript">
+function activeMenu(folderName,menuName){
+	if(folderName != ""){
+		var folder = $("analyse");
+		folder.addClass("active");
+	}
+	if(menuName != ""){
+		var menu = $("bp");
+		menu.addClass("active");
+	}
+}
 </script>
  <aside class="left-side sidebar-offcanvas">
      <!-- sidebar: style can be found in sidebar.less -->
@@ -22,15 +32,15 @@
                      <i class="fa fa-dashboard"></i> <span>首页</span>
                  </a>
              </li>
-             <li class="treeview">
+             <li class="treeview" id="analyse">
                  <a href="#">
                      <i class="fa fa-bar-chart-o"></i>
                      <span>健康分析</span>
                      <i class="fa fa-angle-left pull-right"></i>
                  </a>
                  <ul class="treeview-menu">
-                     <li><a href="<c:url value='/jsp/health/analyse/bp.jsp'/>"><i class="fa fa-angle-double-right"></i>血压历史</a></li>
-                     <li><a href="<c:url value='/jsp/health/analyse/ecg.jsp'/>"><i class="fa fa-angle-double-right"></i>心电历史</a></li>
+                     <li id="bp"><a href="<c:url value='/jsp/health/analyse/bp.jsp'/>"><i class="fa fa-angle-double-right"></i>血压历史</a></li>
+                     <li id="ecg"><a href="<c:url value='/jsp/health/analyse/ecg.jsp'/>"><i class="fa fa-angle-double-right"></i>心电历史</a></li>
                  </ul>
              </li>
              <li class="treeview">

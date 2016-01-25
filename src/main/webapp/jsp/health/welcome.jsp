@@ -4,9 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_right.css'/>" rel="stylesheet" type="text/css" />
+<title>贵州健康云服务中心</title>
+
+
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
@@ -16,12 +16,9 @@
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
-
 <%@ include file="../shared/importCss.jsp"%>
 <%@ include file="../shared/importJs.jsp"%>
-
 <script type="text/JavaScript">
-
 	//初始化方法
 	function QueryHealth(){
 		//2016/1/13 liu test START 用
@@ -183,6 +180,11 @@
 				"医生："+memberConsult.doctorloginname+"</div>"+
 				"<div class='wordbreak'>内容："+memberConsult.result+"</div></div>";
 			$("#consult_cont").html(cont+report);
+			
+			$("#consultTime").html(create_time);
+			$("#consultContent").html(memberConsult.consultingcontent+"&nbsp;&nbsp;"+memberConsult.symptomname);
+			$("#replyTime").html("回复时间："+finish_time+"&nbsp;&nbsp;&nbsp;医生："+memberConsult.doctorloginname);
+			$("#replyContent").html(memberConsult.result);
 		}
 		
 	}
@@ -300,9 +302,9 @@
 			
 			//血压等级分析
 			if (report.bloodlevel == null||report.bloodlevel == ""||report.bloodlevel == "null") {
-				$("#pressure_level").html("暂无&nbsp;&nbsp;&nbsp;&nbsp;<br><a href='javascript:void(0);' style='font-size: 13px; text-decoration: underline;' onclick='bloodPressureStandard();'>高血压分级标准</a>");
+				$("#pressure_level").html("暂无&nbsp;&nbsp;&nbsp;&nbsp;<br>");
 			} else {
-				$("#pressure_level").html(report.bloodlevel+"&nbsp;&nbsp;<br><a href='javascript:void(0);' style='font-size: 13px; text-decoration: underline;' onclick='bloodPressureStandard();'>高血压分级标准</a>");
+				$("#pressure_level").html(report.bloodlevel+"&nbsp;&nbsp;<br>");
 			
 			}
 			//心血管分层
@@ -707,166 +709,370 @@
 	         <!-- Left side column. contains the logo and sidebar -->
 	<%@ include file="../shared/sidebarMenu.jsp"%>
 	<aside class="right-side">
-		  <div class="index_welcome">
-		    <!--index_welcome_header start-->
-		    <div class="index_welcome_header">
-		      <div class="notice">
-		        <ul>
-		          <li class="tgreen_notice">健康通告</li>
-		          <li class="tgrey_notice">Announcement</li>
-		        </ul>
-		      </div>
-		      <div class="health_tip">
-		        <ul>
-		          <li class="tgrey_healthTip" id="today"></li>
-		          <li class="tgreen_healthTip" id="weather">
-		          </li>
-		        </ul>
-		      </div>
-		    </div>
-		    <!--index_welcome_header end-->
-		    <!--index_welcome_main start-->
-		    <div class="index_welcome_main">
-		      <!--health_date start--> 
-		      <div class="health_date">
-		       <ul>
-		         <li class="tgreen_healthDate">健康状况</li>
-		         <li class="bloodPressure_date">
-		           <ul>
-		             <li class="tblack_date" id="last_bloodpressure"><span class="tblack_datemin">--</span></li>
-		             <li class="tgrey_time" id="last_bloodpressure_time">最近一次血压值</li>
-		           </ul>
-		         </li>
-		         <li class="bloodPressure_alarm">
-		           <ul>
-		             <li class="tblack_date" id="last_bloodalert"><span class="tblack_datemin">--</span></li>
-		             <li class="tgrey_time" id="last_bloodalert_time">血压异常记录</li>
-		           </ul>
-		         </li>
-		         <li class="heartRate_date">
-		           <ul>
-		             <li class="tblack_date" id="last_heartrate"><span class="tblack_datemin">--</span></li>
-		             
-		             <li class="tgrey_time" id="last_heartrate_time">最近一次脉率值</li>
-		             
-		           </ul>
-		         </li>
-		         <li class="heartRate_alarm">
-		           <ul>
-		             <li class="tblack_date" id="last_heartratealert"><span class="tblack_datemin">--</span></li>
-		             <li class="tgrey_time" id="last_heartratealert_time">心率异常记录</li>
-		           </ul>
-		         </li>
-		         <li class="oxygen_date">
-		           <ul>
-		             <li class="tblack_date"><span class="tblack_datemin">--</span></li>
-		             <li class="tgrey_time">最近一次血氧值</li>
-		           </ul>
-		         </li>
-		         <li class="sos_alarm">
-		           <ul>
-		             <li class="tblack_sosdate" id="last_island" ><span class="tblack_datemin">--</span></li>
-		             <li class="tgrey_time" id="last_sosalert">SOS异常记录</li>
-		           </ul>
-		         </li>
-		       </ul>
-		      </div>
-		      <!--health_date end-->
-		      <!--医生医嘱 -->
-			  	<div class="bpDiagnosis_results" id="doctorAdvice" style="display:block;margin-top:8px">
-		       		<div style="text-align: left;width:100%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;">最新医嘱</div>
-		       		<div class="bpDiagnosis_results_text"  style="font-size: 12px;width: 100%;">
-						<ul id="advice">
-							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">测压目标：</li>
-							<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="goal">暂无</li>
-							
-							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">测压方案：</li>
-							<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="plan">暂无</li>
-							
-							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">用药推荐：</li>
-							<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="medicine">暂无</li>
-							
-							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">保健建议：</li>
-		         			<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="suggestion">暂无</li>
-						</ul>
-					</div>
-			  	</div>
-		       	<div class="bpDiagnosis_results" id="consultative" style="display:block;margin-top:10px">
-		          	<div style="text-align: left;width:50%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;float: left;">最新咨询</div>
-		          	<div style="text-align: right;width:47%;color:#71A944;float: left;">
-		          		<a class='tgreen_results' style="font-size: 13px;text-decoration: underline;" href='./healthrecord/member_consult.jsp'  >会员咨询历史</a>
-					</div>
-		       		<div class="bpDiagnosis_results_text"  style="font-size: 12px;width: 100%;">
-		       			<ul id="advice">
-							<li class="tgreen_results" style="font-size: 16px; padding-left:20px">咨询内容：</li>
-							<li class="tblack_results" style="font-size: 13px; padding-left:30px" id="consult_cont">暂无</li>
-						</ul>
-		       		</div>
-		       	</div>
-		      <!--bpDiagnosis_results start-->
-		       
-		      <div class="bpDiagnosis_results">
-		        <div class="bpDiagnosis_results_trendChart" style="width: 310px;" id="container"></div> 
-		       	<div class="bpDiagnosis_results_trendChart"  id="container1" style="padding-left: 10px; width:310px; "></div>
-		       	<div style="float: right;font-size: 12px;margin-top: 10px;" id="bpmorning_what" class="tblack_results">
-		       		<a class='tgreen_results' style="font-size: 12px;text-decoration: underline;" href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a></div>
-		      </div>
-		      <!-- 晨峰血压 -->
-		       <div class="bpDiagnosis_results" id="morningBP" style="display:block;margin-top:0px">
-		       <div style="text-align: left;width:100%;color:#71A944;font:18px/30px '微软雅黑'; font-weight: bolder;" id="histroy_bp_diagnose">血压等级分析</div>
-		       		<div class="bpDiagnosis_results_text"  style="font-size: 12px;">
-							<ul id="bpanalyse">
-							
-								<li class="tgreen_results" style="font-size: 16px; padding-left:20px">血压等级：</li>
-								<li class="tblack_results" id="pressure_level" style="font-size: 13px; padding-left:30px">暂无<br/>
-								<a href="javascript:void(0);" onclick="bloodPressureStandard();" style="font-size: 13px; text-decoration: underline;">高血压分级标准</a>
-								</li>
-								
-								<li class="tgreen_results" style="font-size: 16px; padding-left:20px">心血管风险分层：</li>
-								<li class="tblack_results" id="risk_level" style="font-size: 13px; padding-left:30px">暂无</li>
-								
-								<li class="tgreen_results" style="font-size: 16px; padding-left:20px">诊断依据：</li>
-								<li class="tblack_results" id="angiocarpy" style="font-size: 13px; padding-left:30px">暂无</li>
-								
-								<li class="tgreen_results" id="doctor_bpana" style="font-size: 16px; padding-left:20px;">医生分析</li>
-		          				<li class="tblack_results" id="doctor_bpreport" style="font-size: 13px; padding-left:30px;">暂无</li>
-								
-								<li class="tgreen_results" id="doctor_spana" style="font-size: 16px; padding-left:20px;">医生建议</li>
-		          				<li class="tblack_results" id="doctor_suggest" style="font-size: 13px; padding-left:30px;">暂无</li>
-		          				
-								<li class="tgreen_results" style="font-size: 16px; padding-left:20px">保健建议</li>
-		          				<li class="tblack_results" id="health_suggest" style="font-size: 13px; padding-left:30px">暂无</li>
-		
-							</ul>
-						</div>
-		       <div class="bpDiagnosis_results_text" id="bpDiagnos">
-		          <ul>
-		           
-		          </ul>
-		        </div>
-		       	 	<div class="bpDiagnosis_results_trendChart" style="padding-left: 10px;" id="container2"></div> 
-		       		<div class="tblack_results" id="container2_time"></div> 
-		       </div>    
-		      
-		      
-		      <!--bpDiagnosis_results end-->
-		      <!--hrDiagnosis_results start-->
-		      <div class="hrDiagnosis_results">
-		        <div class="hrDiagnosis_results_text">
-		          <ul>
-		            <li class="tgreen_results">心电医生回复：</li>
-		            <li class="tblack_results" id="doctor_report">暂无</li>
-		          </ul>
-		        </div>
-		        <div class="hrDiagnosis_results_sketchMap">
-		          <ul>
-		            <li class="tblack_sketchMap" id="reference_range">心率</li>
-		            <li class="tgrey_sketchMap" >参考正常范围：60 &lt; 心率  &lt; 100</li>
-		            <li class="sketchMap" id="image_heart_rate"><img style="margin-right: 150px;" src="../../images/health/top.png" /><img src="../../images/health/bottom.png" /></li>
-		          </ul>
-		        </div>
-		      </div>
-		    </div>
+           <section class="content-header">
+              <h1>健康通告
+              	 <small id="today"></small>
+              	 <small id="weather"></small>
+              </h1>
+              <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                  <li class="active">Dashboard</li>
+              </ol>
+          </section>
+
+          <!-- Main content -->
+          <section class="content">
+              <!-- Small boxes (Stat box) -->
+              <div class="row">
+                  <div class="col-lg-4 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-aqua">
+                          <div class="inner">
+                              <h3 id="last_bloodpressure">
+                                  &nbsp;
+                              </h3>
+                              <p id="last_bloodpressure_time">
+                                  	最近一次血压值
+                              </p>
+                          </div>
+                          <div class="icon">
+                              <i class="ion ion-bag"></i>
+                          </div>
+                      </div>
+                  </div><!-- ./col -->
+                  
+                  <div class="col-lg-4 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-green">
+                          <div class="inner">
+                              <h3 id="last_bloodalert">
+                              	&nbsp;
+                              </h3>
+                              <p id="last_bloodalert_time">
+                                  	血压异常记录
+                              </p>
+                          </div>
+                          <div class="icon">
+                              <i class="ion ion-stats-bars"></i>
+                          </div>
+                      </div>
+                  </div><!-- ./col -->
+                  <div class="col-lg-4 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-yellow">
+                          <div class="inner">
+                              <h3 id="last_heartrate">
+                                  &nbsp;
+                              </h3>
+                              <p id="last_heartrate_time">
+                                                                                                                    最近一次脉率值
+                              </p>
+                          </div>
+                          <div class="icon">
+                              <i class="ion ion-person-add"></i>
+                          </div>
+                      </div>
+                  </div><!-- ./col -->
+              </div><!-- /.row -->
+              <div class="row">
+                  <div class="col-lg-4 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-red">
+                          <div class="inner">
+                              <h3 id="last_heartratealert">
+                                  &nbsp;
+                              </h3>
+                              <p id="last_heartratealert_time">
+                              	心率异常记录
+                              </p>
+                          </div>
+                          <div class="icon">
+                              <i class="ion ion-heart"></i>
+                          </div>
+                      </div>
+                  </div><!-- ./col -->
+                  
+                  <div class="col-lg-4 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-maroon">
+                          <div class="inner">
+                              <h3 >
+                                  &nbsp;
+                              </h3>
+                              <p id="last_heartratealert_time">
+                              	最近一次血氧值
+                              </p>
+                          </div>
+                          <div class="icon">
+                              <i class="ion ion-pie-graph"></i>
+                          </div>
+                      </div>
+                  </div><!-- ./col -->
+                  
+                  <div class="col-lg-4 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-purple">
+                          <div class="inner">
+                              <h3 id="last_island">
+                                  &nbsp;
+                              </h3>
+                              <p id="last_sosalert">
+                              	SOS异常记录
+                              </p>
+                          </div>
+                          <div class="icon">
+                              <i class="ion ion-alert"></i>
+                          </div>
+                      </div>
+                  </div><!-- ./col -->
+              </div><!-- /.row -->
+
+              <!-- top row -->
+              <div class="row">
+                  <div class="col-xs-12 connectedSortable">
+                      
+                  </div><!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+			  <div class="row">
+                        <div class="col-md-6" id="doctorAdvice">
+                            <div class="box box-danger">
+                                <div class="box-header">
+                                    <i class="fa fa-warning"></i>
+                                    <h3 class="box-title">最新医嘱</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body" id="advice">
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <i class="fa">测压目标</i>
+                                        <p id="goal">暂无</p>
+                                    </div>
+                                    <div class="alert alert-info alert-dismissable">
+                                        <i class="fa">测压方案</i>
+                                        <p id="plan">暂无</p>
+                                    </div>
+                                    <div class="alert alert-warning alert-dismissable">
+                                        <i class="fa">用药推荐</i>
+                                        <p id="medicine">暂无</p>
+                                    </div>
+                                    <div class="alert alert-success alert-dismissable">
+                                        <i class="fa">保健建议</i>
+                                        <p id="suggestion">暂无</p>
+                                    </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                        <div class="col-md-6">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-bullhorn"></i>
+                                    <h3 class="box-title">最新咨询</h3>
+                                    <a href='./healthrecord/member_consult.jsp' style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD"><i class="fa fa-angle-double-right"></i>会员咨询历史</a>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="callout callout-danger">
+                                        <h4>咨询时间</h4>
+                                        <p id="consultTime">暂无</p>
+                                    </div>
+                                    <div class="callout callout-info">
+                                        <h4>咨询内容</h4>
+                                        <p id="consultContent">暂无</p>
+                                    </div>
+                                    <div class="callout callout-warning">
+                                        <h4>医生/回复时间</h4>
+                                        <p id="replyTime"></p>
+                                    </div>
+                                     <div class="callout callout-success">
+                                        <h4>回复内容</h4>
+                                        <p id="replyContent"></p>
+                                    </div>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+              </div>
+
+              <!-- Main row -->
+              <div class="row">
+                  <!-- Left col -->
+                  <section class="col-lg-6 connectedSortable"> 
+                      <!-- Box (with bar chart) -->
+                      <div class="box box-danger" >
+                          <div class="box-header">
+                              <!-- tools box -->
+                              <i class="fa fa-cloud"></i>
+
+                              <h3 class="box-title">近期血压趋势图</h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body no-padding">
+                              <div class="row bpDiagnosis_results_trendChart">
+                                  <div class="col-sm-12">
+										<div class="bpDiagnosis_results_trendChart" id="container"></div> 
+                                  </div><!-- /.col -->
+                              </div><!-- /.row - inside box -->
+                          </div><!-- /.box-body -->
+                      </div><!-- /.box -->        
+                      
+                      <!-- Custom tabs (Charts with tabs)-->
+                  </section><!-- /.Left col -->
+                  <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                  <section class="col-lg-6 connectedSortable">
+                      <!-- Map box -->
+                      <div class="box box-primary">
+                          <div class="box-header">
+                              <i class="fa fa-map-marker"></i>
+                              <h3 class="box-title">
+                                  	近期晨峰血压趋势图
+                              </h3>
+                               <a style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;"  href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a></div>
+                          <div class="box-body no-padding">
+                             <div class="row bpDiagnosis_results_trendChart">
+                                  <div class="col-sm-12">
+										<div class="bpDiagnosis_results_trendChart"  id="container1" ></div> 
+                                  </div><!-- /.col -->
+                              </div><!-- /.row - inside box -->
+                          </div><!-- /.box-body-->
+                      </div><!-- /.box -->
+                   </section><!-- right col -->                     
+                      <div class="row">
+                        <div class="col-md-6" id="histroy_bp_diagnose">
+                            <div class="box box-danger">
+                                <div class="box-header">
+                                    <i class="fa fa-warning"></i>
+                                    <h3 class="box-title">血压等级分析</h3>
+                                    <a href='javascript:void(0);' style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;"  onclick='bloodPressureStandard();'>高血压分级标准</a>
+                                </div><!-- /.box-header -->
+								<div class="box-body">
+                                    <div class="box-group" id="accordion">
+                                        <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                                        <div class="panel box box-primary">
+                                            <div class="box-header">
+                                                <h4 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                        	血压等级
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse in">
+                                                <div class="box-body" id="pressure_level" >
+                                                		暂无
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel box box-danger">
+                                            <div class="box-header">
+                                                <h4 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                        	心血管风险分层
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo" class="panel-collapse collapse">
+                                                <div class="box-body" id="risk_level">
+                                                	暂无
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel box box-warning">
+                                            <div class="box-header">
+                                                <h4 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                        	诊断依据
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseThree" class="panel-collapse collapse">
+                                                <div class="box-body">
+														暂无
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel box box-info">
+                                        
+                                        <div class="box-header"  id="doctor_bpana">
+                                                <h4 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                        	医生分析
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseFour" class="panel-collapse collapse">
+                                                <div class="box-body" id="doctor_bpreport" >
+                                                		暂无
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel box box-success">
+                                            <div class="box-header">
+                                                <h4 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                        	医生建议
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseFive" class="panel-collapse collapse">
+                                                <div class="box-body" id="doctor_suggest">
+                                                	暂无
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel box box-primary"  id="doctor_spana">
+                                            <div class="box-header">
+                                                <h4 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                                        	保健建议
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseSix" class="panel-collapse collapse">
+                                                <div class="box-body" id="health_suggest">
+														暂无
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                        <div class="col-md-6">
+                            <div class="box box-info">
+                             <div class="box-header">
+                              <i class="fa fa-map-marker"></i>
+                              <h3 class="box-title">
+                                  	血压等级分析依据图
+                              </h3>
+ 	                          <div class="box-body no-padding">
+	                             <div class="row bpDiagnosis_results_trendChart">
+	                                  <div class="col-sm-12">
+											<div class="bpDiagnosis_results_trendChart"  id="container2" ></div> 
+	                                  </div><!-- /.col -->
+	                              </div><!-- /.row - inside box -->
+	                          </div><!-- /.box-body-->
+                            </div><!-- /.box -->
+                        	</div><!-- /.col -->
+             	 		</div>
+		              </div><!-- /.row (main row) -->
+
+					  <div class="box box-danger" >
+                                <div class="box-header" style="cursor: move;">
+                                    <!-- tools box -->
+                                    <i class="fa fa-cloud"></i>
+                                    <h3 class="box-title">心电医生回复</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body" style="padding-left:22px" id="doctor_report">
+                                  		  暂无<!-- /.row - inside box -->
+                                </div><!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                                            <div><h4 class="box-title">参考正常范围：60 &lt; 心率  &lt; 100</h4></div>
+                                        </div><!-- ./col -->
+                                        <div class="col-xs-4 text-center" id="image_heart_rate">
+											<img style="margin-right: 150px;" src="../../images/health/top.png" /><img src="../../images/health/bottom.png" />
+                                        </div><!-- ./col -->
+                                    </div><!-- /.row -->
+                                </div><!-- /.box-footer -->
+                            </div>
+          </section><!-- /.content -->
      </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
 <!--index_welcome_main end-->
