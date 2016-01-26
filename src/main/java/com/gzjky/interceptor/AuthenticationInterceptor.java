@@ -33,15 +33,14 @@ public class AuthenticationInterceptor extends AbstractInterceptor {
 			return invocation.invoke();
 		}
 
-//		// 判断session里user属性是否null
-//		if (invocation.getInvocationContext().getSession().get("user") != null) {
-//			// 如果验证通过则继续程序的正常流程
-//			return invocation.invoke();
-//		} else {
-//			// 如果验证失败，返回name为loginError的result
-//			return "loginError";
-//		}
-		return invocation.invoke();
+		// 判断session里user属性是否null
+		if (invocation.getInvocationContext().getSession().get("user") != null) {
+			// 如果验证通过则继续程序的正常流程
+			return invocation.invoke();
+		} else {
+			// 如果验证失败，返回name为loginError的result
+			return "loginError";
+		}
 	}
 
 }
