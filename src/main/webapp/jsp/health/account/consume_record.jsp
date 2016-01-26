@@ -4,10 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/account.css'/>" rel="stylesheet" type="text/css" />
+<title>消费记录</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
@@ -18,14 +17,7 @@
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
+
 
 <script type="text/javascript">
   var startDate="";
@@ -185,40 +177,59 @@
 </script>
 </head>
 
-<body onload="startInit()" style="background:#e8e3d7">
+<body onload="startInit()" class="skin-blue">
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+	<%@ include file="../../shared/sidebarMenu.jsp"%>
+	<aside class="right-side">
+           <section class="content-header">
+              <h1>消费记录
+              	 <small id="today"></small>
+              	 <small id="weather"></small>
+              </h1>
+              <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+                  <li >账户套餐</li>
+                  <li class="active">消费记录</li>
+              </ol>
+          </section>
+          <!-- Main content -->
+          <section class="content">
 <!--bp_history start-->
-<div class="transaction_record_main">
-  <div class="search">
-    <ul>
-      <li class="criteria_search">
-        <ul>
-          <li class="startTime">开始时间</li>
-          <li class="time_input"><input type="text"  id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
-          <li class="endTime">结束时间</li>
-          <li class="time_input"><input type="text"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
-          <li class="quick_search">快速查询：<a href="javascript:changeDate(3)" >最近三天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" >最近一月</a><a href="javascript:changeDate(365)">最近一年</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:void(0)" class="btn  btn_search" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>    
-    </ul>
-  </div>
-  <div class="index_table">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table" id="faceTable">
-      <colgroup>
-        <col width="30%" />
-        <col width="20%" />
-        <col width="20%" />
-        <col width="30%" />
-      </colgroup>
-      <tr>
-        <th>消费日期</th>
-        <th>消费金额(元)</th>
-        <th>消费类型</th>
-        <th>购买业务</th>
-      </tr>
-    </table>
-  </div>
-  
+
+			  <div class="search">
+			    <ul>
+			      <li class="criteria_search">
+			        <ul>
+			          <li class="startTime">开始时间</li>
+			          <li class="time_input"><input type="text"  id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
+			          <li class="endTime">结束时间</li>
+			          <li class="time_input"><input type="text"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
+			          <li class="quick_search">快速查询：<a href="javascript:changeDate(3)" >最近三天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" >最近一月</a><a href="javascript:changeDate(365)">最近一年</a></li>
+			        </ul>
+			      </li>
+			      <li><a href="javascript:void(0)" class="btn  btn_search" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>    
+			    </ul>
+			  </div>
+			  <div class="index_table">
+			    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table" id="faceTable">
+			      <colgroup>
+			        <col width="30%" />
+			        <col width="20%" />
+			        <col width="20%" />
+			        <col width="30%" />
+			      </colgroup>
+			      <tr>
+			        <th>消费日期</th>
+			        <th>消费金额(元)</th>
+			        <th>消费类型</th>
+			        <th>购买业务</th>
+			      </tr>
+			    </table>
+			  </div>
+          </section><!-- /.content -->
+     </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->     
   
 
 <script type="text/javascript">
@@ -325,7 +336,6 @@
 
 </body>
 </html>
- </div>
 <!--bp_history end-->
 </body>
 </html>

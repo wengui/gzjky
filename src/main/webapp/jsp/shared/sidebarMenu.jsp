@@ -88,7 +88,7 @@ function activeMenu(folderName,menuName){
                  </a>
                  <ul class="treeview-menu">
                      <li><a href="<c:url value='/jsp/health/account/account.jsp'/>"><i class="fa fa-angle-double-right"></i> 账户套餐</a></li>
-                     <li><a href="<c:url value='/jsp/health/account/recharge.jsp'/>"><i class="fa fa-angle-double-right"></i> 充值记录</a></li>
+                     <li><a href="<c:url value='/jsp/health/account/recharge_history.jsp'/>"><i class="fa fa-angle-double-right"></i> 充值记录</a></li>
                      <li><a href="<c:url value='/jsp/health/account/consume_record.jsp'/>"><i class="fa fa-angle-double-right"></i> 消费记录</a></li>
                  </ul>
              </li>

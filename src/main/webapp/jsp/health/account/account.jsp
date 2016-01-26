@@ -4,10 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/account.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
+<title>账户套餐</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
@@ -17,16 +16,7 @@
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript" ></script>
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
+
 <script type="text/javascript">
   $(function(){
 	var $div_trli = $("div.tab_menu ul li");
@@ -287,136 +277,125 @@
 </script>
 </head>
 
-<body onload="startInit()" style="background:#e8e3d7">
-  <div class="account">
-  
-    <div class="account_title">
-      <ul>
-        <li class="tgreen_title_BPhistory">账户/套餐</li>
-      </ul>
-    </div>
-    <div class="account_main">
-     <div class="my_meal">
-        <div class="title_myMeal">
-          <ul>
-            <li class="tLeft_myMeal">我的套餐</li>
-            <li class="tRight_myMeal"><a href="meal.jsp"><img src="../../../images/button/btn_buy.png" title="购买套餐"/></a></li>
-          </ul>
-        </div>
-        <div class="index_table">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table"  id="faceTable">
-            <colgroup>
-              <col width="35%" />
-              <col width="15%" />
-              <col width="20%" />
-              <col width="30%" />
-            </colgroup>
-            <tr>
-              <th>套餐名称</th>
-              <th>套餐类型</th>
-              <th>起始日期</th>
-              <th>结束日期</th>
-            </tr>
-          </table>
-        </div>
-
-<script type="text/javascript">
-		var reg = /^[1-9]{6,16}/; 
-		
-		function gotoPage(){
-			var num = $.trim($("#gopage").val());
-			if(num==''){
-				$.alert('请输入页码');
-				$("#gopage").focus();
-				return false;
-			}
-			if(!/^\d+$/.test(num)){
-				$.alert('页码中包括非数字字符');
-				$("#gopage").focus();
-				return false;
-			}
-			if(num == '0') {
-			    $.alert('页码不正确');
-			    return false;
-			}
-			if(parseInt(num)>$.fn.page.settings.pagecount)
-			{
-				$.alert('无效的页码');
-				$("#gopage").focus();
-				return false;
-			}
-			pageClick(num);
-		}
-	</script>
-
-<!-- 
-<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-<div id="fanye" >
-<input type="button" value="首页" class="button_fy page-first" />
-<input type="button" value="上一页" class="button_fy page-perv" />
-<input type="button" value="下一页" class="button_fy page-next" />
-<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
- 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-</div>
- -->
- 
-<div class="index_page">
-  <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
-    <li class="page_button">
-	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
-	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
-	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
-	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
-    </li>
-    <li class="page_select">
-    转<select id="gopage" onchange="gotoPage()">
-    	</select>页
-    </li>
-  </ul>
-</div>       
-<!--account_security start-->
-
-      <div class="my_meal">
-      <br> </br>
-        <div class="title_myMeal">
-          <ul>
-            <li class="tLeft_myMeal">我的余额：<span id="package_bill">0.00</span>元&nbsp;&nbsp;&nbsp;<a title="充值" class="btn" style="color:margin-left:20px; text-decoration: none;" href="recharge.jsp"><span style="color:#5a5a5a">立即充值</span></a></li>
-            <li class="tRight_myMeal"></li>
-          </ul>
-        </div>
-      </div>
-      
-      <!--account_security end-->
- 
-      <div class="transaction_record">
-          <div class="example-item alt-color gradient">
-				<div class="tabs_framed styled" >
-				    <div class="inner tab_menu">
-				        <ul class="tabs clearfix active_bookmark1">
-				            <li class="active"><a href="#rh" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">充值记录</a></li>
-				            <li ><a href="#cr" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">消费记录</a></li>
-				        </ul>
-				
-				        <div class="tab-content clearfix">
-				            <div class="tab-pane fade in active" id="rh">
-				              	<iframe id="recharge_history_iframe" src="recharge_history.jsp" frameborder="0" width="100%"  scrolling="no"  onload="sonIframeResize();"></iframe>
-				            </div>
-				            <div class="tab-pane fade" id="cr">
-				                <iframe id ="consume_record_iframe" src="consume_record.jsp" frameborder="0" width="100%"  scrolling="no" onload="sonIframeResize();"></iframe>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-		  </div>
-		</div>
-        </div>
-      </div>
-      <!--my_meal end-->
-      
-    </div>
-    
+<body onload="startInit()" class="skin-blue">
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+	         <!-- Left side column. contains the logo and sidebar -->
+	<%@ include file="../../shared/sidebarMenu.jsp"%>
+	<aside class="right-side">
+           <section class="content-header">
+              <h1>账户/套餐
+              	 <small id="today"></small>
+              	 <small id="weather"></small>
+              </h1>
+              <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+                  <li >账户套餐</li>
+                  <li class="active">账户/套餐</li>
+              </ol>
+          </section>
+          <!-- Main content -->
+          <section class="content">
+		    	<div class="account_main">
+			     <div class="my_meal">
+			        <div class="title_myMeal">
+			          <ul>
+			            <li class="tLeft_myMeal">我的套餐</li>
+			            <li class="tRight_myMeal"><a href="meal.jsp"><img src="../../../images/button/btn_buy.png" title="购买套餐"/></a></li>
+			          </ul>
+			        </div>
+			        <div class="index_table">
+			          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table"  id="faceTable">
+			            <colgroup>
+			              <col width="35%" />
+			              <col width="15%" />
+			              <col width="20%" />
+			              <col width="30%" />
+			            </colgroup>
+			            <tr>
+			              <th>套餐名称</th>
+			              <th>套餐类型</th>
+			              <th>起始日期</th>
+			              <th>结束日期</th>
+			            </tr>
+			          </table>
+			        </div>
+			
+			<script type="text/javascript">
+					var reg = /^[1-9]{6,16}/; 
+					
+					function gotoPage(){
+						var num = $.trim($("#gopage").val());
+						if(num==''){
+							$.alert('请输入页码');
+							$("#gopage").focus();
+							return false;
+						}
+						if(!/^\d+$/.test(num)){
+							$.alert('页码中包括非数字字符');
+							$("#gopage").focus();
+							return false;
+						}
+						if(num == '0') {
+						    $.alert('页码不正确');
+						    return false;
+						}
+						if(parseInt(num)>$.fn.page.settings.pagecount)
+						{
+							$.alert('无效的页码');
+							$("#gopage").focus();
+							return false;
+						}
+						pageClick(num);
+					}
+				</script>
+			
+			<!-- 
+			<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
+			<div id="fanye" >
+			<input type="button" value="首页" class="button_fy page-first" />
+			<input type="button" value="上一页" class="button_fy page-perv" />
+			<input type="button" value="下一页" class="button_fy page-next" />
+			<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
+			 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
+			<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
+			</div>
+			 -->
+			 
+			<div class="index_page">
+			  <ul>
+			    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
+			    <li class="page_button">
+				    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
+				    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
+				    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
+				    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
+			    </li>
+			    <li class="page_select">
+			    转<select id="gopage" onchange="gotoPage()">
+			    	</select>页
+			    </li>
+			  </ul>
+			</div>       
+			<!--account_security start-->
+			
+			      <div class="my_meal">
+			      <br> </br>
+			        <div class="title_myMeal">
+			          <ul>
+			            <li class="tLeft_myMeal">我的余额：<span id="package_bill">0.00</span>元&nbsp;&nbsp;&nbsp;<a title="充值" class="btn" style="color:margin-left:20px; text-decoration: none;" href="recharge.jsp"><span style="color:#5a5a5a">立即充值</span></a></li>
+			            <li class="tRight_myMeal"></li>
+			          </ul>
+			        </div>
+			      </div>
+			      
+			      <!--account_security end-->
+			        </div>
+			      </div>
+			      <!--my_meal end-->
+          </section><!-- /.content -->
+     </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->     
   	
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

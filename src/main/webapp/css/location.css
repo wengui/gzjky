@@ -22,8 +22,8 @@
 .bg_island_right a:hover{display:inline-block; width:37px; height:36px;line-height:36px;}
 */
 .map{width:670px; height:450px; position:absolute; top:210px; left:50%; margin-left:-335px; z-index:1;font-size:13px;}
-.btn_islandHistory{position:absolute; left:384px; top:0;width:36px; height:36px; float:left;z-index:3;}
-.bgblack{position:absolute; left:420px; top:0;width:250px; height:450px; float:left; background:url(../images/health/bg_transparent.png) no-repeat; padding:10px; z-index:3;}
+.btn_islandHistory{position:absolute; left:73%; top:0;width:36px; height:36px; float:left;z-index:3;}
+.bgblack{position:absolute; left:77%; top:0;width:250px; height:450px; float:left; background:url(../images/health/bg_transparent.png) no-repeat; padding:10px; z-index:3;}
 .map_History{position:absolute; left:384px; top:0;  width:286px; height:450px; z-index:3;}
 .map_search{width:260px; float:left; color:#fff; text-align:left;}
 .map_search li{float:left; padding:5px;margin: 4px;}

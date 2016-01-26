@@ -5,8 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>电子围栏</title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/location.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script type="text/javascript" src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>"></script>
@@ -24,17 +22,8 @@
 <script type="text/javascript" src="<c:url value='/js/lbs/pageFrame.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/lbs/safe_island1.js'/>"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
-
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 
 <script type="text/JavaScript"> 
 	var para = "";
@@ -634,79 +623,118 @@ function safe_island_del() {
 	}
 	
 </script>
-	
-
 </head>
-<body onload="initQuery();" style="background:#e8e3d7">
-	
- <div style="font-family:微软雅黑">
-       <div class="location">
-          <div class="tgreen_title_BPhistory">电子围栏</div>
-        </div>
-        <div class="">
-          <ul>
-            <li class="relocation" id="sel__dev_div"></li>
-            <li><a href="javascript:void(0);" class="btn  btn_relocation" onclick="position();"><span style="font-size:17px; font-weight:500;color:#5a5a5a">重新定位</span></a></li>
-          </ul>
-        </div>
-        <div class="bg_island">
-          <ul>
-            <li class="bg_island_left">
-              <ul>
-                <li style="float:left; margin-bottom:5px;">
-                  <ul>
-                    <li class="tgrey_island">安全岛中心：</li>
-                    <li class="tblack_island"><span  id="cur_center_addr" ></span></li>   
-                  </ul>
-                </li>
-                <li style="float:left;margin-bottom:5px;">
-                  <ul>
-                    <li class="tgrey_island">安全岛半径：</li>
-                    <li class="tblack_island" style="color: #5A5A5A;"><span  id="cur_center_radius" ></span>米</li>    
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class="bg_island_right">
-            	<a class="btn island_edit" title="设置安全岛" href="javascript:void(0);" onclick="showIsland();"><span style="color:#5a5a5a ">设置</span></a>
-            	<a class="btn island_del" title="删除安全岛" href="javascript:void(0);" onclick="safe_island_del();"><span style="color:#5a5a5a">清除</span></a>
-            </li>
-          </ul>
-        </div>
-        <div class="map">
-       	  <div id="map_canvas" style="width: 100%;height: 450px; position:absolute; top:0; left:0; z-index: 2"></div>
-       	  <div class="btn_islandHistory" id="show_location_button_close"><img title="定位历史查询" onclick="closeShowLocationHistoryDiv();" src="../../../images/icon/history.png" /></div>
-          
-             <div class="bgblack" id="show_location_history_div" >
-              <div class="map_search">
-                <ul>
-                  <li class="tmapSearch">开始时间</li>
-                  <li class="tmapSearch_input"><input type="text" name="startDate" id="startDate" style=" border:1px solid #ccc" onFocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
-                  <li class="tmapSearch">结束时间</li>
-                  <li class="tmapSearch_input"><input type="text" name="endDate" id="endDate" style="border:1px solid #ccc" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
-                  <li ><a href="javascript:void(0);" class="btn" style="width:215px" onclick="queryStart();"><span style="color:#5a5a5a">查询</span></a></li>
-                </ul>
-              </div>
-              <div class="map_queryResults" id="scrollBar" style="overflow-x:hidden;">
-              <!--   <ul>
-                  <li class="search_rapidPositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：快速定位</p></li>
-                  <li class="search_rapidPositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：快速定位</p></li>
-                  <li class="search_accuratePositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：精确定位</p></li>
-                  <li class="search_rapidPositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：快速定位</p></li>
-                  <li class="search_rapidPositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：快速定位</p></li>
-                </ul>-->
-							<div id="posmain">
-								<table width="90%" border="0" align="center" id="faceTable">
-								</table>
-								<p align="left" id="showPageArea" style="color:#fff;width: 300px;" ></p>
-							</div>
-				</div>
-            </div>
-           
-          
-        </div>
-      </div>
-       
+<body onload="initQuery();" class="skin-blue">
+
+	<!-- header logo: style can be found in header.less -->
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+	         <!-- Left side column. contains the logo and sidebar -->
+	<%@ include file="../../shared/sidebarMenu.jsp"%>
+	<aside class="right-side">
+           <section class="content-header">
+              <h1>电子围栏
+              	 <small id="today"></small>
+              	 <small id="weather"></small>
+              </h1>
+              <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+                  <li>终端定位</li>
+                  <li class="active">电子围栏</li>
+              </ol>
+          </section>
+
+          <!-- Main content -->
+          <section class="content">
+			 <div>
+		        <div class="row">
+                 <div class="col-md-6">
+	                 <div class="box box-primary">
+	                    <div class="box-header">
+	                        <h3 class="box-title">产品类型及编号：</h3>
+	                    </div>
+	                    <div class="box-body">
+	                        <!-- Date range -->
+	                        <div class="form-group">
+	                            <label>产品选择:</label>
+	                            <div class="input-group">
+	                                <div class="input-group-addon">
+	                                    <i class="fa  fa-location-arrow"></i>
+	                                </div>
+	                                <select class="form-control" id="device_sid_global" style="height:45px;width:300px"><option value="1">TE8000Y3(A10120144012757)</option></select>
+	                                <button class="btn btn-success btn-lg" style="margin-left:20px" onclick="position();">重新定位</button>
+	                            </div><!-- /.input group -->
+	                        </div><!-- /.form group -->
+	                   </div><!-- /.box-body -->
+	                </div>
+		        </div>
+		        <div class="col-md-6">
+		        	<div class="box box-success">
+	                    <div class="box-header">
+	                        <h3 class="box-title">安全岛设置：</h3>
+	                    </div>
+	                    <div class="box-body">
+	                        <div class="form-group">
+	                        	<label>安全岛中心：</label>
+	                            <label id="cur_center_addr" style="font-weight:normal">上海火车站</label>
+	                        </div><!-- /.form group -->
+	                        <div class="form-group">
+	                        	<label>安全岛半径：</label>
+	                            <label id="cur_center_radius" style="font-weight:normal">500米</label>
+	                            <button class="btn btn-success btn-sm" style="margin-left:150px" onclick="showIsland();">设置</button>
+	                            <button class="btn btn-success btn-sm" style="margin-left:20px" onclick="safe_island_del();">清除</button>
+	                        </div><!-- /.form group -->
+	                   </div><!-- /.box-body -->
+	                </div>
+		        </div>
+		        </div>
+		        <div class="row">
+			        <div class="col-md-12">
+			       	  <div id="map_canvas" style="width: 97%;height: 600px; position:absolute; top:0; left:15px; z-index: 2"></div>
+			       	  <div class="btn_islandHistory" id="show_location_button_close"><img title="定位历史查询" onclick="closeShowLocationHistoryDiv();" src="../../../images/icon/history.png" /></div>
+			          <div class="bgblack" id="show_location_history_div" >
+			              	<div class="form-group">
+	                            <label style="color:#fff">开始时间:</label>
+	                            <div class="input-group">
+	                                <div class="input-group-addon">
+	                                    <i class="fa  fa-calendar"></i>
+	                                </div>
+	                                <input type="text" name="startDate" id="startDate" style=" border:1px solid #ccc;height:28px;width:100%" onFocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
+	                            </div><!-- /.input group -->
+	                        </div><!-- /.form group -->
+							<div class="form-group">
+	                            <label style="color:#fff">结束时间:</label>
+	                            <div class="input-group">
+	                                <div class="input-group-addon">
+	                                    <i class="fa  fa-calendar"></i>
+	                                </div>
+	                                <input type="text" name="endDate" id="endDate" style="border:1px solid #ccc;height:28px;width:100%" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
+	                            </div><!-- /.input group -->
+	                        </div><!-- /.form group -->	
+	                        <div class="form-group">
+	                        	 <button class="btn btn-success btn-sm" style="width:100%" onclick="queryStart();">查询</button>
+			               	</div><!-- /.form group -->	
+			              <div class="map_queryResults" id="scrollBar" style="overflow-x:hidden;">
+			              <!--   <ul>
+			                  <li class="search_rapidPositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：快速定位</p></li>
+			                  <li class="search_rapidPositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：快速定位</p></li>
+			                  <li class="search_accuratePositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：精确定位</p></li>
+			                  <li class="search_rapidPositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：快速定位</p></li>
+			                  <li class="search_rapidPositioning"><h1>2014-04-30 18:18:18</h1><p>地址：浙江省杭州市西湖区天堂软件园E幢13楼</p><p>定位类型：快速定位</p></li>
+			                </ul>-->
+								<div id="posmain">
+									<table width="90%" border="0" align="center" id="faceTable">
+									</table>
+									<p align="left" id="showPageArea" style="color:#fff;width: 300px;" ></p>
+								</div>
+						  </div>
+		              </div>
+			        </div>
+		        </div>
+		      </div>
+          </section><!-- /.content -->
+     </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->       
 
 <div id="divloading">
 	<img src="../../../images/public/blue-loading.gif" />

@@ -5,8 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>贵州健康云服务中心</title>
-
-
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
@@ -932,10 +930,11 @@
                               </div><!-- /.row - inside box -->
                           </div><!-- /.box-body-->
                       </div><!-- /.box -->
-                   </section><!-- right col -->                     
-                      <div class="row">
-                        <div class="col-md-6" id="histroy_bp_diagnose">
-                            <div class="box box-danger">
+                   </section><!-- right col -->   
+              </div>                  
+              <div class="row">
+                        <section class="col-lg-6 connectedSortable"> 
+                            <div class="box box-danger" id="histroy_bp_diagnose">
                                 <div class="box-header">
                                     <i class="fa fa-warning"></i>
                                     <h3 class="box-title">血压等级分析</h3>
@@ -946,11 +945,11 @@
                                         <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
                                         <div class="panel box box-primary">
                                             <div class="box-header">
-                                                <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                <h5 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="font-size:18px">
                                                         	血压等级
                                                     </a>
-                                                </h4>
+                                                </h5>
                                             </div>
                                             <div id="collapseOne" class="panel-collapse collapse in">
                                                 <div class="box-body" id="pressure_level" >
@@ -961,7 +960,7 @@
                                         <div class="panel box box-danger">
                                             <div class="box-header">
                                                 <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="font-size:18px">
                                                         	心血管风险分层
                                                     </a>
                                                 </h4>
@@ -975,7 +974,7 @@
                                         <div class="panel box box-warning">
                                             <div class="box-header">
                                                 <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" style="font-size:18px">
                                                         	诊断依据
                                                     </a>
                                                 </h4>
@@ -990,7 +989,7 @@
                                         
                                         <div class="box-header"  id="doctor_bpana">
                                                 <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" style="font-size:18px">
                                                         	医生分析
                                                     </a>
                                                 </h4>
@@ -1004,7 +1003,7 @@
                                         <div class="panel box box-success">
                                             <div class="box-header">
                                                 <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" style="font-size:18px">
                                                         	医生建议
                                                     </a>
                                                 </h4>
@@ -1018,7 +1017,7 @@
                                         <div class="panel box box-primary"  id="doctor_spana">
                                             <div class="box-header">
                                                 <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" style="font-size:18px">
                                                         	保健建议
                                                     </a>
                                                 </h4>
@@ -1032,8 +1031,8 @@
                                     </div>
                                 </div>
                             </div><!-- /.box -->
-                        </div><!-- /.col -->
-                        <div class="col-md-6">
+                        </section><!-- /.Left col -->
+						<section class="col-lg-6 connectedSortable">
                             <div class="box box-info">
                              <div class="box-header">
                               <i class="fa fa-map-marker"></i>
@@ -1049,29 +1048,33 @@
 	                          </div><!-- /.box-body-->
                             </div><!-- /.box -->
                         	</div><!-- /.col -->
-             	 		</div>
+                   			</section><!-- right col -->   
 		              </div><!-- /.row (main row) -->
-
-					  <div class="box box-danger" >
-                                <div class="box-header" style="cursor: move;">
-                                    <!-- tools box -->
-                                    <i class="fa fa-cloud"></i>
-                                    <h3 class="box-title">心电医生回复</h3>
-                                </div><!-- /.box-header -->
-                                <div class="box-body" style="padding-left:22px" id="doctor_report">
-                                  		  暂无<!-- /.row - inside box -->
-                                </div><!-- /.box-body -->
-                                <div class="box-footer">
-                                    <div class="row">
-                                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                                            <div><h4 class="box-title">参考正常范围：60 &lt; 心率  &lt; 100</h4></div>
-                                        </div><!-- ./col -->
-                                        <div class="col-xs-4 text-center" id="image_heart_rate">
-											<img style="margin-right: 150px;" src="../../images/health/top.png" /><img src="../../images/health/bottom.png" />
-                                        </div><!-- ./col -->
-                                    </div><!-- /.row -->
-                                </div><!-- /.box-footer -->
-                            </div>
+					  
+					  <div class="row">
+                      	  <section class="col-lg-6 connectedSortable"> 
+						  <div class="box box-danger" >
+	                                <div class="box-header" style="cursor: move;">
+	                                    <!-- tools box -->
+	                                    <i class="fa fa-cloud"></i>
+	                                    <h3 class="box-title">心电医生回复</h3>
+	                                </div><!-- /.box-header -->
+	                                <div class="box-body" style="padding-left:22px" id="doctor_report">
+	                                  		  暂无<!-- /.row - inside box -->
+	                                </div><!-- /.box-body -->
+	                                <div class="box-footer">
+	                                    <div class="row">
+	                                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+	                                            <div><h5 class="box-body">参考正常范围：60 &lt; 心率  &lt; 100</h4></div>
+	                                        </div><!-- ./col -->
+	                                        <div class="col-xs-8 text-center" id="image_heart_rate">
+												<img style="margin-right: 150px;" src="../../images/health/top.png" /><img src="../../images/health/bottom.png" />
+	                                        </div><!-- ./col -->
+	                                    </div><!-- /.row -->
+	                                </div><!-- /.box-footer -->
+	                        </div>
+                        </section><!-- right col -->   
+	              	</div><!-- /.row (main row) -->
           </section><!-- /.content -->
      </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
@@ -1138,7 +1141,7 @@
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 </head>
 <body>
- <div class="popup" id="popWindow1" style="display:none;position:absolute;top:900px; left:100px;z-index: 30;">
+ <div class="popup" id="popWindow1" style="display:none;position:absolute;top:1000px; left:60%;z-index: 30;">
   <div class="popup_header">
     <ul>
       <li class="name_popupHeader">晨峰血压</li>
