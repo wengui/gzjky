@@ -5,14 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120健康服务中心</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_right.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 
 <!-- main JS libs -->
 <script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
 <script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
 <script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
 <!-- Style CSS -->

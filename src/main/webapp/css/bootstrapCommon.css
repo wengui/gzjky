@@ -1,0 +1,16 @@
+
+.display-input{
+			vertical-align: middle;
+			height:32px;
+			display: table-cell;
+			float: none;
+			padding: 6px 20px;
+			word-break: break-all;
+			border-bottom: 1px dashed @light-gray;
+			border-radius: 5px;
+}
+
+.form-span{
+		padding:5px 5px 5px 5px;
+		text-align£ºright;
+	}

@@ -5,9 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120健康服务中心</title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
+
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" type="text/css"/>
 <script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
@@ -23,14 +25,6 @@
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script src="<c:url value='/js/dictionaryInfo.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
    var edit_image = "<c:url value='/images/button/btn_editor.png'/>";
    var save_image = "<c:url value='/images/button/btn_preserve.png'/>";
@@ -239,7 +233,7 @@
         //var imgUrl = "http://v3.995120.cn/995120upload" + url + "?rand=" + Rand;
         
         document.getElementById("patientimage").src = "http://localhost:8080/gzjky/imageUploadAction/showHeadImage.do";
-        parent.parent.document.getElementById("memberHeadImg").src = "http://localhost:8080/gzjky/imageUploadAction/showHeadImage.do";
+        //parent.parent.document.getElementById("memberHeadImg").src = "http://localhost:8080/gzjky/imageUploadAction/showHeadImage.do";
         closeDiv();
     }
     
@@ -271,58 +265,45 @@
 </script>
 </head>
 
-<body style="background:#e8e3d7">
-<div class="information_modify">
-    <div class="tgreen_title_BPhistory">基本信息</div>
+<body class="skin-blue" >
+	<!-- header logo: style can be found in header.less -->
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!-- Left side column. contains the logo and sidebar -->
+	<%@ include file="../../shared/sidebarMenu.jsp"%>
+	<aside class="right-side">
+		<!-- Content Header (Page header) -->
+        <section class="content-header">
+             <h1>健康档案<small>基本信息</small></h1>
+             <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                  <li class="active">基本信息</li>
+             </ol>
+         </section>
+		<!--information_modify start-->
+	<div class="information_modify">
     <div class="information_modify_main"  id="main_div">
     <form id="memberBaseInfo_form" class="user_form formular">
       <!--basic_information start-->
       <div class="basic_information">
-        <div class="btn_title_informationModify">
-          <ul>
-            <li class="tLeft">基本信息</li>
-            <li class="tRight"><a href="javascript:void(0)" onclick="edit_baseinfo(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
+        <div class="row form-group btn_title_informationModify">
+          <div class="form-group">
+          	<label class="col-lg-4">基本信息</label>
+            <li class="col-lg-8"><a href="javascript:void(0)" onclick="edit_baseinfo(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
+           </div>
           </ul>
         </div>
-        <div class="informationModify_main" >
-          <ul>
-           <li class="tLeft_informationModify">
-             <ul>
-               <li class="tgrey_informationModify">*真实姓名：</li>
-               <li class="tblack_informationModify">
-               		<input class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[16]] " style="width:230px;height:28px" type="text"  id="patientname"  name="patientname" maxlength="16" />
-               </li>
-               <li class="tgrey_informationModify">*性别：</li>
-               <li class="tblack_informationModify">
-               	   <span class="select-style_baseinfo" >
-	               <select  class="selectMax_informationModify  text-input validate[required]"  id="dictSex"  name="dictSex">
-	                   <option value="">请选择</option>
-		               <option value="0">男</option>
-		               <option value="1">女</option>
-	               </select>
-	               </span>
-	           </li>
-               <li class="tgrey_informationModify">*出生日期：</li>
-               <li class="tblack_informationModify">
-               		<input class="inputMin_informationModify text-input validate[required]"  style="width:230px;height:28px" type="text"   id="patientbirthday"  name="patientbirthday"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d',errDealMode:2})" />
-               </li>
-               <li class="tgrey_informationModify">*手机号：</li>
-               <li class="tblack_informationModify">
-              		 <input class="inputMin_informationModify text-input validate[required,funcCall[mobilephone]]"  style="width:230px;height:28px" type="text"  id="patientphone"  name="patientphone"   />
-               </li>
-               <li class="tgrey_informationModify">*电子邮箱：</li>
-               <li class="tblack_informationModify">
-               		<input class="inputMin_informationModify text-input validate[required,custom[email]]"  style="width:230px;height:28px" type="text"  id="email"   name="email"   />
-               </li>
-             </ul>
-           </li>
-           <li class="tRight_informationModify">
-             <ul>
-               <li><img height="80" id="patientimage" src="<c:url value='/imageUploadAction/showHeadImage.do'/>" /></li>
-               <li class="thead_informationModify"><a href="javascript:void(0)" class="btn" onclick="edit_photo()"><span style="font-size:13px;color:#5a5a5a">修改头像</span></a></li>
-             </ul>
-           </li>
-          </ul>
+        <div class="row informationModify_main" >
+        <div class="col-lg-4 form-group">
+        	<span class="col-lg-4 form-span">*真实姓名：</span>
+        	<input class="col-lg-8 display-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[16]] " style="width:230px;height:28px" type="text"  id="patientname"  name="patientname" maxlength="16" />
+        </div>
+        <div class="col-lg-4">
+        	<span class="col-lg-4 form-span">*性别：</span>
+        	<select  class="col-lg-8 display-input selectMax_informationModify  validate[required]"  id="dictSex"  name="dictSex"></select>
+        </div>
+        </div>
+          
         </div> 
       </div>
       </form>
@@ -343,13 +324,6 @@
                 <li class="tblack_informationDetailed">
                 <span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify"  id="certiType"  name="certiType"  onchange="change_credentials_type(this)">
-	                    <option value="">请选择</option>
-	                	<option value="身份证">身份证</option>
-	                	<option value="驾驶证">驾驶证</option>
-	                	<option value="学生证">学生证</option>
-	                	<option value="护照">护照</option>
-	                	<option value="军官证">军官证</option>
-	                	<option value="港澳通行证">港澳通行证</option>
 	                </select>
 	                </span>
 	            </li>
@@ -357,8 +331,8 @@
                 <li class="tblack_informationDetailed">
                 <span class="select-style_baseinfo">
                 	<select class="selectMax_informationModify" id="issoldier"  name="issoldier">
-	                	<option value="1">是</option>
-	                	<option value="0">否</option>
+                	<option value="1">是</option>
+	                <option value="0">否</option>
 	                </select>
 	                </span>
                 </li>
@@ -373,124 +347,6 @@
 				<li class="tblack_informationDetailed">
 						<span class="select-style_baseinfo">
 						<select class="selectMax_informationModify" id="nationalityCodeDict"  name="nationalityCodeDict" >
-							<option value="">请选择</option>
-							
-							<option value="汉族">汉族</option>
-							
-							<option value="蒙古族">蒙古族</option>
-							
-							<option value="回族">回族</option>
-							
-							<option value="藏族">藏族</option>
-							
-							<option value="维吾尔族">维吾尔族</option>
-							
-							<option value="苗族">苗族</option>
-							
-							<option value="彝族">彝族</option>
-							
-							<option value="壮族">壮族</option>
-							
-							<option value="布依族">布依族</option>
-							
-							<option value="朝鲜族">朝鲜族</option>
-							
-							<option value="满族">满族</option>
-							
-							<option value="侗族">侗族</option>
-							
-							<option value="瑶族">瑶族</option>
-							
-							<option value="白族">白族</option>
-							
-							<option value="土家族">土家族</option>
-							
-							<option value="哈尼族">哈尼族</option>
-							
-							<option value="哈萨克族">哈萨克族</option>
-							
-							<option value="傣族">傣族</option>
-							
-							<option value="黎族">黎族</option>
-							
-							<option value="傈僳族">傈僳族</option>
-							
-							<option value="佤族">佤族</option>
-							
-							<option value="畲族">畲族</option>
-							
-							<option value="高山族">高山族</option>
-							
-							<option value="拉祜族">拉祜族</option>
-							
-							<option value="水族">水族</option>
-							
-							<option value="东乡族">东乡族</option>
-							
-							<option value="纳西族">纳西族</option>
-							
-							<option value="景颇族">景颇族</option>
-							
-							<option value="柯尔克孜族">柯尔克孜族</option>
-							
-							<option value="土族">土族</option>
-							
-							<option value="达斡尔族">达斡尔族</option>
-							
-							<option value="仫佬族">仫佬族</option>
-							
-							<option value="羌族">羌族</option>
-							
-							<option value="布朗族">布朗族</option>
-							
-							<option value="撒拉族">撒拉族</option>
-							
-							<option value="毛南族">毛南族</option>
-							
-							<option value="仡佬族">仡佬族</option>
-							
-							<option value="锡伯族">锡伯族</option>
-							
-							<option value="阿昌族">阿昌族</option>
-							
-							<option value="普米族">普米族</option>
-							
-							<option value="塔吉克族">塔吉克族</option>
-							
-							<option value="怒族">怒族</option>
-							
-							<option value="乌孜别克族">乌孜别克族</option>
-							
-							<option value="俄罗斯族">俄罗斯族</option>
-							
-							<option value="鄂温克族">鄂温克族</option>
-							
-							<option value="德昂族">德昂族</option>
-							
-							<option value="保安族">保安族</option>
-							
-							<option value="裕固族">裕固族</option>
-							
-							<option value="京族">京族</option>
-							
-							<option value="塔塔尔族">塔塔尔族</option>
-							
-							<option value="独龙族">独龙族</option>
-							
-							<option value="鄂伦春族">鄂伦春族</option>
-							
-							<option value="赫哲族">赫哲族</option>
-							
-							<option value="门巴族">门巴族</option>
-							
-							<option value="珞巴族">珞巴族</option>
-							
-							<option value="基诺族">基诺族</option>
-							
-							<option value="其它未识别民族">其它未识别民族</option>
-							
-							<option value="外国人入中国籍">外国人入中国籍</option>
-							
 						</select>
 						</span>
                 </li>
@@ -498,9 +354,6 @@
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="maritalStatusDict"  name="maritalStatusDict" >
-	                	<option value="0">未婚</option>
-	                	<option value="2">已婚</option>
-	                	<option value="1">离异</option>
 	                </select>
 	                </span>
                 </li>                     
@@ -508,17 +361,6 @@
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="userAcademic" name="userAcademic"  >
-		                <option value="">请选择</option>
-					    <option value="初中">初中</option>
-						<option value="高中">高中</option>
-						<option value="中技">中技</option>
-						<option value="中专">中专</option>
-						<option value="大专">大专</option>
-						<option value="本科">本科</option>
-						<option value="MBA">MBA</option>
-						<option value="硕士">硕士</option>
-						<option value="博士">博士</option>
-						<option value="其他">其他</option>
 	                </select>
 	                </span>
                 </li>
@@ -542,8 +384,8 @@
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
                 	<select class="selectMax_informationModify" id="isdisability"  name="isdisability" >
-                		<option value="0">否</option>
-	                	<option value="1">是</option>
+	                <option value="0">否</option>
+	                <option value="1">是</option>
 	                </select>
 	                </span>
                 </li>
@@ -559,9 +401,6 @@
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="censusRegDict"  name="censusRegDict" >
-			              <option value="">请选择</option>
-						  <option value="0">城市</option>
-						  <option value="1">农村</option>
 	                </select>
 	                </span>
                 </li>    
@@ -569,11 +408,6 @@
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="politicalAffiliatio"  name="politicalAffiliatio">
-	              		<option value="">请选择</option>
-						<option value="中共党员">中共党员</option>
-						<option value="共青团员">共青团员</option>
-						<option value="民主党派成员">民主党派成员</option>
-						<option value="群众">群众</option>
 	                </select>
 	                </span>
                 </li>                    
@@ -600,9 +434,6 @@
                 <li class="tblack_informationDetailed"> 
                 	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="workingyear" name="workingyear">
-	                	<option value="">请选择</option>
-						<option value="1-2年">1-2年</option>
-						<option value="3年以上">3年以上</option>
 	                </select>
 	                </span>
                 </li>
@@ -622,16 +453,6 @@
                 <li class="tblack_informationDetailed">
                 	<span class="select-style_baseinfo">
 	                <select class="selectMax_informationModify" id="moneyForYear"  name="moneyForYear">
-	                	<option value="">请选择</option>
-						<option value="1">2万以下</option>
-						<option value="2">2-5万</option>
-						<option value="3">5-8万</option>
-						<option value="4">8-10万</option>
-						<option value="5">10-15万</option>
-						<option value="6">15-30万</option>
-						<option value="7">30-50万</option>
-						<option value="8">50-100万</option>
-						<option value="9">100万以上</option>
 	                </select>
 	                </span>
                 </li>
@@ -721,7 +542,7 @@
 	
 	function changeImage(){
 		$("#patientimage").attr("src","<c:url value='/imageUploadAction/showHeadImage.do'/>");
-		parent.parent.document.getElementById("memberHeadImg").src = "<c:url value='/imageUploadAction/showHeadImage.do'/>";
+		//parent.parent.document.getElementById("memberHeadImg").src = "<c:url value='/imageUploadAction/showHeadImage.do'/>";
 	}
 	
 	function winload(){ 
@@ -753,7 +574,7 @@
   </div>
   </form>
  </div>
-
+</aside><!-- /.right-side -->
 </body>
 </html>
 </body>

@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120健康服务中心</title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_right.css'/>" rel="stylesheet" type="text/css" />
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
+<link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
@@ -17,9 +17,6 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
-
-<%@ include file="../../shared/importCss.jsp"%>
-<%@ include file="../../shared/importJs.jsp"%>
 
 <script type="text/javascript">
 
@@ -94,14 +91,12 @@ function showData(){
 		  clearFaceTable();
 		  var table = document.getElementById("faceTable");
 		  var table2 = document.getElementById("faceTable2");
-		  table.style.display = "block";
-		  table2.style.display = "none";
+		  $('#faceTable').show();
+		  $('#faceTable2').hide();
 	  }else if(heartType == 1){
 		  clearFaceTableByTableName("faceTable2");
-		  var table2 = document.getElementById("faceTable");
-		  var table = document.getElementById("faceTable2");
-		  table.style.display = "block";
-		  table2.style.display = "none";
+		  $('#faceTable').hide();
+		  $('#faceTable2').show();
 	  }
 	  for(var i=0;i<$.fn.page.settings.currentsize;i++){
 		  addrowtotable(table,i);
@@ -214,36 +209,39 @@ function showEcgDetail(obj,index){
 	<!-- header logo: style can be found in header.less -->
 	<%@ include file="../../shared/pageHeader.jsp"%>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
-	         <!-- Left side column. contains the logo and sidebar -->
+	<!-- Left side column. contains the logo and sidebar -->
 	<%@ include file="../../shared/sidebarMenu.jsp"%>
 	<aside class="right-side">
+	<!-- Content Header (Page header) -->
+        <section class="content-header">
+             <h1>心电历史</h1>
+             <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                  <li class="active">心电历史</li>
+             </ol>
+         </section>
 		<!--bp_history start-->
 		<div class="bp_history">
-		  <div class="title_BPhistory">
-		    <ul>
-		      <li class="tgreen_title_BPhistory"><span class="tgrey_title_BPhistory"  id="ecg_title">心电</span><span id="sub_title">历史</span></li>
-		      <li class="select_BPhistory"><span class="select-style"><select onchange="changeHeartType(this)"><option selected="selected" value="0">心电历史</option><option value="1">心率告警</option></select></span></li>
-		    </ul>
-		  </div>
 		  <div class="search">
 		    <ul>
 		      <li class="criteria_search">
 		        <ul>
 		          <li class="startTime">开始时间</li>
-		          <li class="time_input"><input type="text"   id="startDate" name="startDate" value='' onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
+		          <li class="time_input"><input type="text"  id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
 		          <li class="endTime">结束时间</li>
-		          <li class="time_input"><input type="text"  id="endDate" name="endDate"  value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
-		          <li class="quick_search"><!--  快速查询：<a href="javascript:void(0)" onclick="query_week()">最近一周</a><a href="javascript:void(0)" onclick="query_month()">最近一月</a><a href="javascript:void(0)" onclick="query_quarter()">最近一季</a><a href="javascript:void(0)" onclick="query_year()">最近一年</a>
-		          快速查询：<a href="javascript:query_lateTreeDay()">最新3天</a><a href="javascript:query_week(7)">最近一周</a><a href="javascript:query_month(30)" style="margin-right:8px;">最近30天</a><a href="javascript:query_year(365)" style="margin-right:2px;">最近一年</a>-->
-		          快速查询：<a href="javascript:changeDate(3)">最新3天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" style="margin-right:8px;">最近30天</a><a href="javascript:changeDate(365)" style="margin-right:2px;">最近一年</a>
+		          <li class="time_input"><input type="text"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
+		          <li class="startTime">心电历史</li>
+		          <li class="time_input"><span><select onchange="changeHeartType(this)"><option selected="selected" value="0">心电历史</option><option value="1">心率告警</option></select></span></li>
+		          <li> <a href="javascript:void(0)" class="btn-primary_select" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>
+		          <li class="quick_search">
+		                  快速查询：<a href="javascript:changeDate(3)">最新3天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" style="margin-right:8px;">最近30天</a><a href="javascript:changeDate(365)" style="margin-right:2px;">最近一年</a>
 		          </li>
 		        </ul>
 		      </li>
-		      <li><a href="javascript:void(0)" class="btn  btn_search" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>           
 		    </ul>
 		  </div>
 		  <div class="index_table">
-		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table"  id="faceTable">
+		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable">
 		      <colgroup>
 		        <col width="15%" />
 		        <col width="20%" />
@@ -261,7 +259,7 @@ function showEcgDetail(obj,index){
 		        <th>操作</th>
 		      </tr>
 		    </table>
-		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table"  id="faceTable2" style="display:none;">
+		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable2" style="display:none;">
 		      <colgroup>
 		        <col width="15%" />
 		        <col width="15%" />
@@ -308,18 +306,6 @@ function showEcgDetail(obj,index){
 				pageClick(num);
 			}
 		</script>
-		
-		<!-- 
-		<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-		<div id="fanye" >
-		<input type="button" value="首页" class="button_fy page-first" />
-		<input type="button" value="上一页" class="button_fy page-perv" />
-		<input type="button" value="下一页" class="button_fy page-next" />
-		<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
-		 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-		<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-		</div>
-		 -->
 		 
 		<div class="index_page">
 		  <ul>

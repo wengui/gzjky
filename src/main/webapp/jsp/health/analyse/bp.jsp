@@ -8,11 +8,9 @@
 
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
-<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
@@ -295,14 +293,21 @@
 	<!-- header logo: style can be found in header.less -->
 	<%@ include file="../../shared/pageHeader.jsp"%>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
-	         <!-- Left side column. contains the logo and sidebar -->
+	<!-- Left side column. contains the logo and sidebar -->
 	<%@ include file="../../shared/sidebarMenu.jsp"%>
 	<aside class="right-side">
+		<!-- Content Header (Page header) -->
+        <section class="content-header">
+             <h1>血压历史<small>Control panel</small></h1>
+             <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                  <li class="active">血压历史</li>
+             </ol>
+         </section>
 		<!--bp_history start-->
 		<div class="bp_history">
 		  <div class="search">
 		    <ul>
-		      
 		      <li class="criteria_search">
 		        <ul>
 		          <li class="startTime">开始时间</li>
@@ -399,12 +404,15 @@
 		<div id="transparentDiv" ></div>
 		<div id="transparentDiv2"></div>
 		  
+		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+		<html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title></title>
 		<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 		
 		</head>
+		<body><br />
 		 <div class="popup" id="bpRemarkWindow" style="display:none;position:absolute;top:40px; left:100px;z-index: 30;">
 		  <div class="popup_header">
 		    <ul>
@@ -444,6 +452,9 @@
 		   </form>
 		
 		 </div>
+		
+		</body>
+		</html>
 		 </div>
      </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->

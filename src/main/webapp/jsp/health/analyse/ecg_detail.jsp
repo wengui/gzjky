@@ -7,12 +7,8 @@
 <title>995120健康服务中心</title>
 <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/jquery/jquery-2.0.2.min.js'/>" type="text/javascript"></script>
 <script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
-<%
-	String id=request.getParameter("id"); 
-		id=new String(id.getBytes("UTF-8"),"UTF-8");  
-%>
 <script type="text/javascript">
    var hly_url=  "http://gzjky.sh-sdhr.com/upload/Electrocardiograms/";
 	function query(){
@@ -44,6 +40,8 @@
 							   $(obj).text(detail[obj_id]);
 						   }
 					   });
+				   }else{
+					   alert('无权限');
 				   }
 			 }
 		 });
