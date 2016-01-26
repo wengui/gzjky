@@ -651,12 +651,12 @@ function safe_island_del() {
                  <div class="col-md-6">
 	                 <div class="box box-primary">
 	                    <div class="box-header">
-	                        <h3 class="box-title">产品类型及编号：</h3>
+	                        <h3 class="box-title">终端定位：</h3>
 	                    </div>
 	                    <div class="box-body">
 	                        <!-- Date range -->
 	                        <div class="form-group">
-	                            <label>产品选择:</label>
+	                            <label>产品类型及编号选择:</label>
 	                            <div class="input-group">
 	                                <div class="input-group-addon">
 	                                    <i class="fa  fa-location-arrow"></i>

@@ -53,7 +53,7 @@
 .recharge_main li{float:left;}
 .tgrey_recharge{width:80px; text-align:right; font-size:14px; height:30px; line-height:30px;}
 .tblack_recharge{width:580px; text-align:left; font-size:14px; height:30px; line-height:30px; padding-left:10px}
-.Input_recharge{width:580px; text-align:left;height:45px; line-height:30px; padding-left:10px}
+.Input_recharge{width:580px; text-align:left;height:30px; line-height:30px; padding-left:10px}
 .inputMin_informationModify{width:218px; height:28px; border:1px solid #aeaeae; padding-left:10px; font:13px/28px "微软雅黑"; color:#000}
 .thirdParty_payment{width:670px; padding-top:10px;}
 .tgrey_thirdParty{width:80px; text-align:right; color:#aeaeae; font-size:13px; float:left; height:39px; line-height:13px;}

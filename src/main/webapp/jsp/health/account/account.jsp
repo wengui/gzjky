@@ -7,8 +7,9 @@
 <title>账户套餐</title>
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
+<link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
@@ -284,43 +285,48 @@
 	<%@ include file="../../shared/sidebarMenu.jsp"%>
 	<aside class="right-side">
            <section class="content-header">
-              <h1>账户/套餐
+              <h1>我的套餐
               	 <small id="today"></small>
               	 <small id="weather"></small>
               </h1>
               <ol class="breadcrumb">
                   <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
                   <li >账户套餐</li>
-                  <li class="active">账户/套餐</li>
+                  <li class="active">我的套餐</li>
               </ol>
           </section>
-          <!-- Main content -->
-          <section class="content">
-		    	<div class="account_main">
-			     <div class="my_meal">
-			        <div class="title_myMeal">
-			          <ul>
-			            <li class="tLeft_myMeal">我的套餐</li>
-			            <li class="tRight_myMeal"><a href="meal.jsp"><img src="../../../images/button/btn_buy.png" title="购买套餐"/></a></li>
-			          </ul>
-			        </div>
-			        <div class="index_table">
-			          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table"  id="faceTable">
-			            <colgroup>
-			              <col width="35%" />
-			              <col width="15%" />
-			              <col width="20%" />
-			              <col width="30%" />
-			            </colgroup>
-			            <tr>
-			              <th>套餐名称</th>
-			              <th>套餐类型</th>
-			              <th>起始日期</th>
-			              <th>结束日期</th>
-			            </tr>
-			          </table>
-			        </div>
-			
+          <div class="bp_accouint">
+		  <div class="box box-info">
+              <div class="box-header">
+                  <h3 class="box-title">已购套餐</h3>
+              </div>		
+              <div class="box-body">
+              <div class="row">
+	                 <div class="col-lg-12">
+		                  <a class="btn btn-success" style="margin-left:85%" href="meal.jsp">
+                                 <i class="fa fa-shopping-cart"></i>&nbsp;购买套餐
+                           </a>
+	                 </div><!-- /.col-lg-3 -->
+              </div>
+			  <div class="row">
+			  	<br/>
+			  	<div class="col-lg-11">          
+	          		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable">
+				            <colgroup>
+				              <col width="35%" />
+				              <col width="15%" />
+				              <col width="20%" />
+				              <col width="30%" />
+				            </colgroup>
+				            <tr>
+				              <th>套餐名称</th>
+				              <th>套餐类型</th>
+				              <th>起始日期</th>
+				              <th>结束日期</th>
+				            </tr>
+				          </table>
+				</div>
+			  </div>
 			<script type="text/javascript">
 					var reg = /^[1-9]{6,16}/; 
 					
@@ -350,50 +356,40 @@
 					}
 				</script>
 			
-			<!-- 
-			<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-			<div id="fanye" >
-			<input type="button" value="首页" class="button_fy page-first" />
-			<input type="button" value="上一页" class="button_fy page-perv" />
-			<input type="button" value="下一页" class="button_fy page-next" />
-			<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
-			 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-			<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-			</div>
-			 -->
-			 
-			<div class="index_page">
-			  <ul>
-			    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
-			    <li class="page_button">
-				    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
-				    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
-				    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
-				    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
-			    </li>
-			    <li class="page_select">
-			    转<select id="gopage" onchange="gotoPage()">
-			    	</select>页
-			    </li>
-			  </ul>
-			</div>       
+			<div class="row">
+				<br/>
+				<div class="col-lg-4" style="padding-left:25px">
+					共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
+				</div>
+				<div class="col-lg-4">
+					<a href="###" class="page-first" >首页</a>
+				    <a href="###" class="page-perv" style="margin-left:5px">上一页</a>
+				    <a href="###" class="page-next" style="margin-left:5px">下一页</a>
+				    <a href="###" class="page-last" style="margin-left:5px">末页</a>
+				</div>
+				<div class="col-lg-4" style="padding-left:18%">
+					 转<select id="gopage" onchange="gotoPage()"></select>页
+				</div>
+	
+			</div>     
 			<!--account_security start-->
-			
-			      <div class="my_meal">
+			<div class="row">
 			      <br> </br>
+			  	  <div class="col-lg-12" style="padding-left:25px">
 			        <div class="title_myMeal">
 			          <ul>
-			            <li class="tLeft_myMeal">我的余额：<span id="package_bill">0.00</span>元&nbsp;&nbsp;&nbsp;<a title="充值" class="btn" style="color:margin-left:20px; text-decoration: none;" href="recharge.jsp"><span style="color:#5a5a5a">立即充值</span></a></li>
+			            <li class="tLeft_myMeal">我的余额：<span id="package_bill">0.00</span>元&nbsp;&nbsp;&nbsp;
+			            <a class="btn btn-success" href="recharge.jsp">
+                                 <i class="fa fa-credit-card"></i>&nbsp;立即充值
+                        </a>
 			            <li class="tRight_myMeal"></li>
 			          </ul>
 			        </div>
 			      </div>
-			      
-			      <!--account_security end-->
-			        </div>
-			      </div>
-			      <!--my_meal end-->
-          </section><!-- /.content -->
+			 </div>     
+		</div>
+		</div>
+		</div>
      </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->     
   	

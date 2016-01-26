@@ -7,8 +7,9 @@
 <title>消费记录</title>
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
+<link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>" type="text/javascript"></script>
@@ -194,25 +195,48 @@
               </ol>
           </section>
           <!-- Main content -->
-          <section class="content">
-<!--bp_history start-->
+		<div class="bp_history">
+		  <div class="box box-success">
+              <div class="box-header">
+                  <h3 class="box-title">条件检索</h3>
+              </div>		
+              <div class="box-body">
+	              	<div class="row">
+		                 <div class="col-lg-3">
+			                  <div class="input-group">
+			                  	  <label>开始时间:</label>
+			                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			                      <input type="text" class="form-control" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
+			                  </div>
+		                 </div><!-- /.col-lg-3 -->
+		                <div class="col-lg-3">
+		                  <div class="input-group">
+			                  	  <label>结束时间:</label>
+			                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			                      <input type="text"  class="form-control"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
+			               </div>
+		               </div><!-- /.col-lg-3 -->
+		               <div class="col-lg-3">
+		               	 <button class="btn btn-success" style="margin-left:20px" onclick="queryStart();">查询</button>		               </div><!-- /.col-lg-3 -->
+		               <div class="col-lg-3">
+		               </div>
+	              </div><!-- /.box-body -->
+	              <div class="row">
+	              	<br/>
+	              	<div class="col-lg-6">
+	              		 <label>快速查询:</label>
+	              		 <a href="javascript:changeDate(3)" style="margin-left:20px;margin-right:15px;">最新3天</a>
+	              		 <a href="javascript:changeDate(7)" style="margin-right:15px;">最近一周</a>
+	              		 <a href="javascript:changeDate(30)" style="margin-right:15px;">最近30天</a>
+	              		 <a href="javascript:changeDate(365)">最近一年</a>
+	              	</div>
+	              </div>
+	      </div>		
 
-			  <div class="search">
-			    <ul>
-			      <li class="criteria_search">
-			        <ul>
-			          <li class="startTime">开始时间</li>
-			          <li class="time_input"><input type="text"  id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
-			          <li class="endTime">结束时间</li>
-			          <li class="time_input"><input type="text"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
-			          <li class="quick_search">快速查询：<a href="javascript:changeDate(3)" >最近三天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" >最近一月</a><a href="javascript:changeDate(365)">最近一年</a></li>
-			        </ul>
-			      </li>
-			      <li><a href="javascript:void(0)" class="btn  btn_search" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>    
-			    </ul>
-			  </div>
-			  <div class="index_table">
-			    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table" id="faceTable">
+		  <div class="row">
+		  	<br/>
+		  	<div class="col-lg-11">
+			    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable">
 			      <colgroup>
 			        <col width="30%" />
 			        <col width="20%" />
@@ -227,12 +251,9 @@
 			      </tr>
 			    </table>
 			  </div>
-          </section><!-- /.content -->
-     </aside><!-- /.right-side -->
-</div><!-- ./wrapper -->     
-  
+		  </div>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 		var reg = /^[1-9]{6,16}/; 
 		
 		function gotoPage(){
@@ -261,33 +282,23 @@
 		}
 	</script>
 
-<!-- 
-<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-<div id="fanye" >
-<input type="button" value="首页" class="button_fy page-first" />
-<input type="button" value="上一页" class="button_fy page-perv" />
-<input type="button" value="下一页" class="button_fy page-next" />
-<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
- 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-</div>
- -->
- 
-<div class="index_page">
-  <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
-    <li class="page_button">
-	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
-	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
-	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
-	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
-    </li>
-    <li class="page_select">
-    	转<select id="gopage" onchange="gotoPage()">
-    	</select>页
-    </li>
-  </ul>
-</div>
+
+	<div class="row">
+		<br/>
+		<div class="col-lg-4" style="padding-left:25px">
+			共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
+		</div>
+		<div class="col-lg-4">
+			<a href="###" class="page-first" >首页</a>
+		    <a href="###" class="page-perv" style="margin-left:5px">上一页</a>
+		    <a href="###" class="page-next" style="margin-left:5px">下一页</a>
+		    <a href="###" class="page-last" style="margin-left:5px">末页</a>
+		</div>
+		<div class="col-lg-4" style="padding-left:18%">
+			 转<select id="gopage" onchange="gotoPage()"></select>页
+		</div>
+
+	</div>
   
 
 <div id="divloading">
@@ -297,7 +308,10 @@
 <div id="transparentDiv" ></div>
 
 <div id="transparentDiv2"></div>
-  
+		</div>
+		</div>
+     </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->       
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

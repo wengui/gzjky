@@ -4,13 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/account.css'/>" rel="stylesheet" type="text/css" />
+<title>套餐一览</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
@@ -18,14 +17,7 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
+
 <script type="text/javascript" >
 	 var deviceBaseInfoList;
 	 var packageBaseinfoList;
@@ -248,36 +240,29 @@
 
 </head>
 
-<body onload="startInit()" style="background:#e8e3d7">
-  <div class="account">
-    <div class="account_title">
-      <ul>
-        <li class="tgreen_title_BPhistory">账户/套餐</li>
-      </ul>
-    </div>
-    <div class="recharge" id="show_list">
-      <!--account_security start-->
-     
-      <!--account_security end-->
-    </div>
-  </div>
-  <!-- <form style="display:none"  id="sendform" name="sendform" action="http://192.168.1.172:81/eps/payVerifyAndDirect/verifyDirect.htm" method="post" >
-    <input value="create_direct_pay_by_user" name="service" id="service" type="hidden"/>
-    <input value="FSN3235JG470NGFL" name="partner_id" id="partner_id" type="hidden"/>
-    <input value="" name="sign" id="sign" type="hidden"/>
-    <input value="UTF-8" name="input_charset" id="input_charset" type="hidden"/>
-    <input value="MD5" name="sign_type" id="sign_type" type="hidden"/>
-    <input value="" name="out_trade_no" id="out_trade_no" type="hidden"/>
-    <input value="" name="mobile" id="mobile" type="hidden"/>
-    <input value="" name="sysId" id="sysId" type="hidden"/>
-    <input value="" name="cutUerNo" id="cutUerNo" type="hidden"/>
-    <input value="4" name="out_trade_type" id="out_trade_type" type="hidden"/>
-    <input value="CNY" name="currency" id="currency" type="hidden"/>
-    <input value="" name="amount" id="amount" type="hidden"/>
-    <input value="1" name="product_type" id="product_type" type="hidden"/>
-    <input value="" name="subject" id="subject" type="hidden"/>
-   </form> -->
-  
+<body onload="startInit()" class="skin-blue">
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+	         <!-- Left side column. contains the logo and sidebar -->
+	<%@ include file="../../shared/sidebarMenu.jsp"%>
+	<aside class="right-side">
+           <section class="content-header">
+              <h1>购买套餐
+              	 <small id="today"></small>
+              	 <small id="weather"></small>
+              </h1>
+              <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+                  <li >账户套餐</li>
+                  <li class="active">购买套餐</li>
+              </ol>
+          </section>
+		  <div class="box box-warning bp_accouint">
+              <div class="box-header">
+                  <h3 class="box-title">套餐一览</h3>
+              </div>		
+              <div class="box-body">
+
 
 <div id="divloading">
 	<img src="../../../images/public/blue-loading.gif" />
@@ -286,7 +271,6 @@
 <div id="transparentDiv" ></div>
 
 <div id="transparentDiv2"></div>
-  
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -368,5 +352,10 @@
 </div>
 </body>
 </html>
+
+  		  </div>
+  		  </div>
+     </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->
 </body>
 </html>

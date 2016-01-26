@@ -307,7 +307,7 @@
          </section>
 		<!--bp_history start-->
 		<div class="bp_history">
-		  <div class="box box-info">
+		  <div class="box box-danger">
               <div class="box-header">
                   <h3 class="box-title">条件检索</h3>
               </div>
@@ -486,6 +486,7 @@
 		</body>
 		</html>
 		 </div>
+		  </div>
      </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
 <!--bp_history end-->
