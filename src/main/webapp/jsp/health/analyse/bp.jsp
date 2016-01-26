@@ -4,13 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
+<title>血压历史</title>
 
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
@@ -25,8 +26,7 @@
 
 
 <script type="text/javascript">
-
- var startDate="";
+  var startDate="";
   var endDate="";
   //var dateType=0;
   var bloodType = 0;
@@ -298,60 +298,89 @@
 	<aside class="right-side">
 		<!-- Content Header (Page header) -->
         <section class="content-header">
-             <h1>血压历史<small>Control panel</small></h1>
+             <h1>血压历史</h1>
              <ol class="breadcrumb">
-                  <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+                  <li>健康分析</li>
                   <li class="active">血压历史</li>
              </ol>
          </section>
 		<!--bp_history start-->
 		<div class="bp_history">
-		  <div class="search">
-		    <ul>
-		      <li class="criteria_search">
-		        <ul>
-		          <li class="startTime">开始时间</li>
-		          <li class="time_input"><input type="text"  id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
-		          <li class="endTime">结束时间</li>
-		          <li class="time_input"><input type="text"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
-		          <li class="startTime">血压历史</li>
-		          <li class="time_input"><span><select onchange="changeBloodType(this)"><option selected="selected" value="0">血压历史</option><option value="1">血压告警</option></select></span></li>
-		          <li> <a href="javascript:void(0)" class="btn-primary_select" onclick="queryStart()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">查询</span></a></li>
-		          <li class="quick_search">
-		                  快速查询：<a href="javascript:changeDate(3)">最新3天</a><a href="javascript:changeDate(7)">最近一周</a><a href="javascript:changeDate(30)" style="margin-right:8px;">最近30天</a><a href="javascript:changeDate(365)" style="margin-right:2px;">最近一年</a>
-		          </li>
-		        </ul>
-		      </li>
-		    </ul>
-		  </div>
-		  <div class="index_table">
-		    <table width="100%" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable">
-		      <tr>
-		        <th width="15%">设备编号</th>
-		        <th width="20%">设备类型</th>
-		        <th width="15%">测压时间</th>
-		        <th width="20%">收缩压/舒张压&nbsp;(mmHg)</th>
-		        <th width="10%">脉率</th>
-		        <th width="18%">操作</th>
-		      </tr>
-		    </table>
-		    
-		    <table width="100%"  cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable2" style="display:none;">
-		      <colgroup>
-		        <col width="15%" />
-		        <col width="20%" />
-		        <col width="25%" />
-		        <col width="20%" />
-		        <col width="20%" />
-		      </colgroup>
-		      <tr>
-		        <th>设备编号</th>
-		        <th>设备类型</th>
-		        <th>测压时间</th>
-		        <th>收缩压/舒张压&nbsp;(mmHg)</th>
-		        <th>操作</th>
-		      </tr>
-		    </table>
+		  <div class="box box-info">
+              <div class="box-header">
+                  <h3 class="box-title">条件检索</h3>
+              </div>
+              <div class="box-body">
+              	<div class="row">
+	                 <div class="col-lg-3">
+		                  <div class="input-group">
+		                  	  <label>开始时间:</label>
+		                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		                      <input type="text" class="form-control" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
+		                  </div>
+	                 </div><!-- /.col-lg-3 -->
+	                <div class="col-lg-3">
+	                  <div class="input-group">
+		                  	  <label>结束时间:</label>
+		                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		                      <input type="text"  class="form-control"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
+		               </div>
+	               </div><!-- /.col-lg-3 -->
+	               <div class="col-lg-3">
+	                  <div class="input-group">
+		                  	  <label>血压历史:</label>
+		                      <span class="input-group-addon"><i class="fa fa-bars"></i></span>
+		                      <select class="form-control" onchange="changeBloodType(this)"><option selected="selected" value="0">血压历史</option><option value="1">血压告警</option></select>
+		               </div>               
+	               </div><!-- /.col-lg-3 -->
+	               <div class="col-lg-3">
+	               	 <button class="btn btn-success" style="margin-left:20px" onclick="queryStart();">查询</button>
+	               </div>
+              </div><!-- /.box-body -->
+              <div class="row">
+              	<br/>
+              	<div class="col-lg-6">
+              		 <label>快速查询:</label>
+              		 <a href="javascript:changeDate(3)" style="margin-left:20px;margin-right:15px;">最新3天</a>
+              		 <a href="javascript:changeDate(7)" style="margin-right:15px;">最近一周</a>
+              		 <a href="javascript:changeDate(30)" style="margin-right:15px;">最近30天</a>
+              		 <a href="javascript:changeDate(365)">最近一年</a>
+              	</div>
+              </div>
+          </div>
+
+		  <div class="row">
+		  	<br/>
+		  	<div class="col-lg-11">
+			    <table width="100%" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable">
+			      <tr>
+			        <th width="15%">设备编号</th>
+			        <th width="20%">设备类型</th>
+			        <th width="15%">测压时间</th>
+			        <th width="20%">收缩压/舒张压&nbsp;(mmHg)</th>
+			        <th width="10%">脉率</th>
+			        <th width="18%">操作</th>
+			      </tr>
+			    </table>
+			    
+			    <table width="100%"  cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable2" style="display:none;">
+			      <colgroup>
+			        <col width="15%" />
+			        <col width="20%" />
+			        <col width="25%" />
+			        <col width="20%" />
+			        <col width="20%" />
+			      </colgroup>
+			      <tr>
+			        <th>设备编号</th>
+			        <th>设备类型</th>
+			        <th>测压时间</th>
+			        <th>收缩压/舒张压&nbsp;(mmHg)</th>
+			        <th>操作</th>
+			      </tr>
+			    </table>
+		    </div>
 		  </div>
 		
 		<script type="text/javascript">
@@ -383,20 +412,21 @@
 				}
 			</script>
 		
-		<div class="index_page">
-		  <ul>
-		    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
-		    <li class="page_button">
-			    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
-			    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
-			    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
-			    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
-		    </li>
-		    <li class="page_select">
-		    转<select id="gopage" onchange="gotoPage()">
-		    	</select>页
-		    </li>
-		  </ul>
+		<div class="row">
+			<br/>
+			<div class="col-lg-4" style="padding-left:25px">
+				共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
+			</div>
+			<div class="col-lg-4">
+				<a href="###" class="page-first" >首页</a>
+			    <a href="###" class="page-perv" style="margin-left:5px">上一页</a>
+			    <a href="###" class="page-next" style="margin-left:5px">下一页</a>
+			    <a href="###" class="page-last" style="margin-left:5px">末页</a>
+			</div>
+			<div class="col-lg-4" style="padding-left:18%">
+				 转<select id="gopage" onchange="gotoPage()"></select>页
+			</div>
+
 		</div>
 		<div id="divloading">
 			<img src="../../../images/public/blue-loading.gif" />

@@ -52,7 +52,7 @@
 
 /*----------------table_page---------------*/
 .index_table{margin:10px 15px 10px 15px;float:left;width:98%;}
-.bPhistory_table{float:left; text-align:left;font-family:"微软雅黑";width:100%;}
+.bPhistory_table{float:left; text-align:left;font-family:"微软雅黑";width:100%;margin-left:10px}
 .bPhistory_table a{color:#71A944; margin-right:15px; text-decoration:none;width:100%;}
 .bPhistory_table th{background-color:#f3f4f5; height:40px; padding-left:20px; line-height:40px;  text-align:left; font-size:14px}
 .bPhistory_table td{color:#5a5a5a; font-size:13px; padding:5px 0 5px 20px; line-height:18px;}

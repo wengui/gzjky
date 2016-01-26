@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>贵州健康云服务中心</title>
+<title>健康报告</title>
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
