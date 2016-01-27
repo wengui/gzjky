@@ -136,29 +136,33 @@
   	
   //关闭周报详情窗口
   function closeWeekReport() {
-	 $("#weekreport_detail").hide(200);
-	 hideScreenProtectDiv(1);
+	 //$("#weekreport_detail").hide(200);
+	 $("#weekreport_detail").modal('hide');
+	 //hideScreenProtectDiv(1);
   }
   //打开周报详情
   function openWeekReport(){
      $('#weekreport_detail').draggable({
 			disabled : false
 	 });
-	 $("#weekreport_detail").show(200);
-	 showScreenProtectDiv(1);
+	 //$("#weekreport_detail").show(200);
+	 $("#weekreport_detail").modal('show');
+	 //showScreenProtectDiv(1);
   }
   //关闭周报详情窗口
   function closeMonthReport() {
-	 $("#monthreport_detail").hide(200);
-	 hideScreenProtectDiv(1);
+	 //$("#monthreport_detail").hide(200);
+	 $("#monthreport_detail").modal('hide');
+	 //hideScreenProtectDiv(1);
   }
   //打开周报详情
   function openMonthReport(){
 	 $('#monthreport_detail').draggable({
 	 	disabled : false
 	 });
-	 $("#monthreport_detail").show(200);
-	 showScreenProtectDiv(1);
+	 //$("#monthreport_detail").show(200);
+	 $("#monthreport_detail").modal('show');
+	 //showScreenProtectDiv(1);
   }
 
   function showDetail(index){
@@ -345,15 +349,9 @@
 </body>
 </html>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>周报</title>
-<script type="text/javascript"
-	src="<c:url value='/js/highcharts/highcharts.js'/>"></script>
-<script type="text/javascript"
-	src="<c:url value='/js/highcharts/modules/exporting.js'/>"></script>
+
+<script type="text/javascript"	src="<c:url value='/js/highcharts/highcharts.js'/>"></script>
+<script type="text/javascript"	src="<c:url value='/js/highcharts/modules/exporting.js'/>"></script>
 <style>
 #secondview table {
 	width: 430px;
@@ -630,10 +628,8 @@
 		}
 	}
 </script>
-</head>
-<body>
-	<div class="popup" id="weekreport_detail"
-		style="display: none; position: absolute; top: 20px; left: 20px; z-index: 30; width: 630px;">
+<div class="modal fade" id="weekreport_detail" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%" >
+  <div class="modal-dialog">	
 		<div class="popup_header">
 			<ul>
 				<li class="name_popupHeader" id="detail_title">周报详情</li>
@@ -736,14 +732,8 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+</div>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120医生服务中心</title>
 <style>
 #plan_inadaptation, #plan_complete, #plan_unnormal, #plan_medicine,
 	#month_secondview table {
@@ -951,10 +941,8 @@ var version=0;//版本
 	}
 	
 </script>
-</head>
-<body>
-	<div class="popup" id="monthreport_detail"
-		style="display: none; position: absolute; top: 20px; left: 20px; z-index: 30; width: 630px;">
+<div class="modal fade" id="monthreport_detail" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%" >
+  <div class="modal-dialog">
 		<div class="popup_header">
 			<ul>
 				<li class="name_popupHeader" id="detail_monthreport">月报详情</li>
@@ -1093,7 +1081,6 @@ var version=0;//版本
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+</div>
 
 
