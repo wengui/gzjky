@@ -13,16 +13,9 @@
 <link rel="stylesheet" href="<c:url value='/css/index_common.css'/>" type="text/css" />
 
 
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-1.10.0.js'/>"></script>
-<script src="<c:url value='/js/libs/jquery-ui.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
+<%@ include file="shared/importCss.jsp"%>
+<%@ include file="shared/importJs.jsp"%>
 <!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 
 
 <script type="text/javascript" src="<c:url value='/js/jquery/jquery-1.4.2.min.js'/>"></script>
@@ -62,14 +55,6 @@
 			return false;
 		}
 		
-		/*
-		if(!regstr.test(login_id)){
-		    $("#errMessageArea").html("<font size='2' color='red'>账号格式不正确！</font>");
-		    setTimeout("autoClearErrorMsg();", 10000);
-		    $("#login_id").focus();
-		    return false;
-		}
-		*/
 		
 		if(!regstr1.test(passwd)){
 		    $("#errMessageArea").html("<font size='2' color='red'>密码格式不正确！</font>");
@@ -108,78 +93,67 @@
    }
    
 </script>
-
 </head>
-
 <body>
-  <div class="login">
-    <!--login_header start-->
-    <div class="login_header">
-      <div class="bg_top_login">
-        <div class="login_out">
-          <ul>
-           <li class="login_wechat"><a href="<c:url value='/jsp/health/index/wechat.jsp'/>" title="995120健康服务中心官方微信" target="_blank">官方微信</a></li>
-           <li class="login_bolg"><a href="http://weibo.com/5137507355/profile" title="995120健康服务中心官方微博" target="_blank">官方微博</a></li>
-           <li class="login_service_phone" title="客服电话">400-0785-120</li>
-           <li class="login_top"></li>
-           <li class="h6.foo"><a href="<c:url value='/jsp/register/protocol.jsp'/>" title="注册">立即注册</a></li> 
-          </ul>
-        </div>
-      </div>
-      <div class="logo_menu">
-        <div class="bg_logo">
-          <div class="login_menu">
-            <ul>
-              <li></li>
-              <li class="activation"><a href="login.jsp" title="首页">首页</a></li>
-              <li><a href="<c:url value='/jsp/download/download.jsp'/>" title="APP下载、Android、iOS" target="_blank">应用下载</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--login_header end-->
-    
-    <!--login_banner start-->
-    <div class="login_banner">
-      <div class="login_bannner_main">
-        <div class="login_bannner_gg"></div>
-        <div class="bg_login_mian">
-          <div class="login_main">
-          
-            
-            <form action="/gzjky/login/login.do" id="loginForm" name="loginForm" method="post" autocomplete="off">
-            <ul>
-              <li class="tBlue">登录</li>
-              <li class="taRegister">还没有注册？<a href="<c:url value='/jsp/register/protocol.jsp'/>" title="注册">点击此处注册</a></li>
-              <li class="tBlack">账号</li>
-              <li class="field_text" style="width: 285px"><input type="text" id="login_id" name="loginId" class="lInput" value="用户名/手机/邮箱" onclick="checkLoginInput('onclick')" onblur="checkLoginInput('onblur')"/></li>
-              <li class="tBlack">密码</li>
-              <li class="field_text" style="width: 285px"><input type="password" id="passwd" name="passwd" class="lInput" /></li>
-              <li class="tBlack" id="errMessageArea" style="color:#ff9600;">${errorMessage}</li>
-              <li class="tBlack" style="display:none;">验证码</li>
-              <li class="lCaptcha_input" style="display:none;"><input type="text" class="yInput" /></li>
-              <li class="login_captcha" style="display:none;"></li>
-              <li class="taBlack" style="display:none;"><a href="###">换一换</a></li>
-              <li ><a href="javascript:void(0)" onclick="login();" class="btn btn-large btn-green" style="width: 285px" title="登录"><span>登录</span></a></li>
-              <li class="taBlack2"><a href="<c:url value='/jsp/password/forget_pwd.jsp'/>" title="忘记密码">忘记密码？</a></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-            </form>
-            
-            
-          </div>
-        </div>
-      </div>  
-    </div>
-    <!--login_header end-->
-    
-  </div>
+	<div class="login_header" style="background:#F0F6F7">
+
+		<div class="bg_logo">	
+
+			<div class="login_menu" >
+	
+ 			<a href="index.html">
+		贵州健康云服务中心
+       </a>
+		
+			</div>
+		</div>
+	</div>
+
+	<!--login_banner start-->
+	<div class="login_banner">
+		<div class="login_bannner_main">
+			<div class="login_bannner_gg"></div>
+
+			<div class="login_main">
+				<div class="form-box" id="login-box">
+					<div class="header">登录您的帐户</div>
+					<form action="/gzjky/login/login.do" id="loginForm"
+						name="loginForm" method="post" autocomplete="off">
+
+						<div class="body bg-gray">
+							<div class="form-group">
+								<input type="text" id="login_id" name="loginId"
+									class="form-control" placeholder="用户名" />
+							</div>
+							<div class="form-group">
+								<input type="password" id="passwd" name="passwd"
+									class="form-control" placeholder="密码" />
+							</div>
+						</div>
+						<div class="footer">
+							<a href="javascript:void(0)" onclick="login();"
+								class="btn bg-olive btn-block" title="登录"><span>登录</span></a>
+
+							<p>
+								<a href="<c:url value='/jsp/password/forget_pwd.jsp'/>"
+									title="忘记密码">忘记密码？</a>
+							</p>
+							<p>
+								<a href="<c:url value='/jsp/register/protocol.jsp'/>" title="注册"
+									class="text-center">点击此处注册</a>
+							</p>
+							<p class="tBlack" id="errMessageArea" style="color: #ff9600;">${errorMessage}</p>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+			    <!--index_health_bottom start-->
+    	 <jsp:include page="/jsp/bottom.jsp" />
+    <!--index_health_bottom end-->
+
 </body>
 </html>
 
