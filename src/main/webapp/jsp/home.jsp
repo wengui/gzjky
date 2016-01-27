@@ -12,7 +12,8 @@
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
-
+<%@ include file="./shared/importCss.jsp"%>
+<%@ include file="./shared/importJs.jsp"%>
 <link rel="Shortcut Icon" href="/995120.ico" />
 <link rel="stylesheet" href="<c:url value='/css/common.css'/>"
 	type="text/css" />
@@ -32,8 +33,7 @@
 <script src="<c:url value='/js/common/balance.js'/>"
 	type="text/javascript"></script>
 
-<%@ include file="./shared/importCss.jsp"%>
-<%@ include file="./shared/importJs.jsp"%>
+
 
 <script type="text/JavaScript">
 

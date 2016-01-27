@@ -5,22 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120健康服务中心</title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/equipment.css'/>" rel="stylesheet" type="text/css" />
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
+<link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
-<script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
+<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
+<script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
+<script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
 
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet"/>
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet"/>
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
   $(function(){
     var $div_li = $("div.tab_menu ul li");
@@ -383,126 +386,53 @@
 </script>
 </head>
 
-<body onload="query();" >
-
-<!-- 
-	<div class="index_tab">
-   <div class="tab_menu">
-      <ul>
-        <li class="selected">&nbsp;我的设备</li>
-      </ul>
-   </div>
--->   
-<div class="example-item alt-color gradient">
-  <div class="tabs_framed styled" >
-    <div class="inner tab_menu">
-       <ul class="tabs clearfix active_bookmark1">
-            <li class="active"><a href="#eq" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">我的设备</a></li>
-       </ul>
-	   <div class="tab-content clearfix">
-	     <div class="tab-pane fade in active" id="eq">
-	       <div class="equipment">
-	         <div class="tgreen_title_BPhistory">我的设备</div>
-	         <div class="header_equipment" id="deviceInfo_head">
-	           <ul>
-	             <li class="tLeft_equipment">设备信息</li>
-	             <li class="tRight_equipment">
-	             <a href="./member_bind_device.jsp" class="btn"><span style="font-size:17px; font-weight:500;color:#5a5a5a">增加设备</span></a>
-	             </li>
-	           </ul>
-	         </div>
-	        <!--   <div class="equipment_main">
-	           <ul>
-	            <li class="tgrey_equipmentMain">设备类型：</li>
-	            <li class="tblack_equipmentMain">Te_8000Y3</li>
-	            <li class="tgrey_equipmentMain">设备编号：</li>
-	            <li class="tblack_equipmentMain">3021408120456<a href="###" class="pl_equipmentMain">解除绑定</a></li>
-	            <li class="tgrey_equipmentMain">SIM卡号：</li>
-	            <li class="tblack_equipmentMain">13863886388<a href="###" class="pl_equipmentMain">卡号修改</a></li>
-	            <li class="tgrey_equipmentMain">血压通知：</li>
-	            <li class="tblack_equipmentMain"><img src="/images/icon/btn_on.png" /></li>
-	            <li class="tgrey_equipmentMain">售后服务：</li>
-	            <li class="tblack_equipmentMain"><a href="###">申请报修/退换货</a></li>
-	            <li class="tgrey_equipmentMain">操作：</li>
-	            <li class="tblack_equipmentMain"><a href="###">修改配置</a></li>
-	           </ul>
-	         </div>
-	         <div class="equipment_main">
-	           <ul>
-	            <li class="tgrey_equipmentMain">设备类型：</li>
-	            <li class="tblack_equipmentMain">Te_8000Y3</li>
-	            <li class="tgrey_equipmentMain">设备编号：</li>
-	            <li class="tblack_equipmentMain">3021408120456<a href="###" class="pl_equipmentMain">解除绑定</a></li>
-	            <li class="tgrey_equipmentMain">SIM卡号：</li>
-	            <li class="tblack_equipmentMain">13863886388<a href="###" class="pl_equipmentMain">卡号修改</a></li>
-	            <li class="tgrey_equipmentMain">血压通知：</li>
-	            <li class="tblack_equipmentMain"><img src="/images/icon/btn_on.png" /></li>
-	            <li class="tgrey_equipmentMain">售后服务：</li>
-	            <li class="tblack_equipmentMain"><a href="###">申请报修/退换货</a></li>
-	            <li class="tgrey_equipmentMain">操作：</li>
-	            <li class="tblack_equipmentMain"><a href="###">修改配置</a></li>
-	           </ul>
-	         </div>-->
-	       </div>
-	     </div>
-	   </div>
-	 </div>
-</div>    	
-</div>
-<form id="addform"  style="display:none;">
-</form>
-</div>   
+<body class="skin-blue" onload="query();" >
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="/css/popup.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
- <div class="popup" id="popWindow" style="display:none;position:absolute;top:900px; left:100px;z-index: 30;">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader">血压分级标准</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv();">X</a></li>
-    </ul>
-  </div>
-  <div class="popup_main">
-    <ul>
-      <li class="tblack_bp">中国高血压防治指南2010年修订版</li>
-      <li class="tyellow_max_bp"><img src="/gzjky/images/icon/tyellow.png" class="img_color" />
-      低血压：<span class="tgrey_bp">收缩压小于</span>90<span class="tgrey_bp">，舒张压小于</span>60</li>
-      
-      <li class="tgreen_bp"><img src="/gzjky/images/icon/green.png" class="img_color" />
-      正常血压：<span class="tgrey_bp">收缩压小于</span>120<span class="tgrey_bp">，舒张压小于</span>80</li>
-      <li class="tblue_bp"><img src="/gzjky/images/icon/blue.png" class="img_color" />
-      正常高值：<span class="tgrey_bp">收缩压</span>120-139<span class="tgrey_bp">，舒张压</span>80-89</li>
-      <li class="tyellow_bp"><img src="/gzjky/images/icon/yellow.png" class="img_color" />
-      高于正常：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压大于等于</span>90</li>
-      <li class="torange_bp"><img src="/gzjky/images/icon/orange.png" class="img_color" />
-      高血压一级：<span class="tgrey_bp">收缩压</span>140-159<span class="tgrey_bp">，舒张压</span>90-99</li>
-      <li class="tbrown_bp"><img src="/gzjky/images/icon/brown.png" class="img_color" />
-      高血压二级：<span class="tgrey_bp">收缩压</span>160-179<span class="tgrey_bp">，舒张压</span>100-109</li>
-      <li class="tred_bp"><img src="/gzjky/images/icon/red.png" class="img_color" />
-      高血压三级：<span class="tgrey_bp">收缩压大于等于</span>180<span class="tgrey_bp">，舒张压大于等于</span>110</li>
-      
-       <li class="tred_orange_bp"><img src="/gzjky/images/icon/red_orange.png" class="img_color" />
-      单纯收缩期高血压：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压小于</span>90</li>
-      
-      <li class="tgreen_bpPrompt">注意：高压和低压分属于不同级别时，以较高分级为标准</li>
-    </ul>
-  </div>
- </div>
-
-</body>
-</html>
+	<!-- header logo: style can be found in header.less -->
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+		<!-- Left side column. contains the logo and sidebar -->
+		<%@ include file="../../shared/sidebarMenu.jsp"%>
+		<aside class="right-side">
 		
+	
+			<!-- Main content --> 
+			<section class="content"> <!-- START ALERTS AND CALLOUTS -->
+		<h2 class="page-header">我的设备</h2>
+		<div class="row">
+			<div class="col-md-13">
+				<div class="box box-danger">
+					<div class="box-header">
+						<i class="fa fa-bullhorn"></i>
+						<h3 class="box-title">设备信息</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<div class="callout callout-success">
 
-<div id="divloading">
-	<img src="../../../images/public/blue-loading.gif" />
-</div>
-<div id="transparentDiv2"></div>
+								<div class="header_equipment" id="deviceInfo_head">
+									
+								</div>
+
+
+						</div>
+				
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+
+		</div>
+		<!-- /.row --> </section>
+
+		</aside>
+
+
+		<form id="addform" style="display: none;"></form>
+	</div>
+
+
 </body>
 </html>
