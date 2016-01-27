@@ -29,7 +29,7 @@
                                 <li><!-- start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="img/avatar3.png" class="img-circle" alt="User Image"/>
+                                            <img src="../img/avatar3.png" class="img-circle" alt="User Image"/>
                                         </div>
                                         <h4>
                                             Support Team
@@ -41,7 +41,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                            <img src="../img/avatar2.png" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
                                             AdminLTE Design Team
@@ -53,7 +53,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="img/avatar.png" class="img-circle" alt="user image"/>
+                                            <img src="../img/avatar.png" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
                                             Developers
@@ -65,7 +65,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                            <img src="../img/avatar2.png" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
                                             Sales Department
@@ -77,7 +77,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="img/avatar.png" class="img-circle" alt="user image"/>
+                                            <img src="../img/avatar.png" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
                                             Reviewers
@@ -100,18 +100,31 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-light-blue">
-                            <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                            <img src="../img/avatar3.png" class="img-circle" alt="User Image" />
                             <p>
                                 Jane Doe - Web Developer
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
-                       
+                        <!-- Menu Body -->
+                        <li class="user-body">
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Followers</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Sales</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Friends</a>
+                            </div>
+                        </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                           
-                            <div class="pull-center">
-                                <a href="/gzjky/login/layout.do" class="btn btn-default btn-flat">注销</a>
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

@@ -921,14 +921,15 @@
                               <h3 class="box-title">
                                   	近期晨峰血压趋势图
                               </h3>
-                               <a style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;"  href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a></div>
-                          <div class="box-body no-padding">
-                             <div class="row bpDiagnosis_results_trendChart">
-                                  <div class="col-sm-12">
-										<div class="bpDiagnosis_results_trendChart"  id="container1" ></div> 
-                                  </div><!-- /.col -->
-                              </div><!-- /.row - inside box -->
-                          </div><!-- /.box-body-->
+                               <a style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;"  href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a>
+                      	</div>
+                       <div class="box-body no-padding">
+                          <div class="row bpDiagnosis_results_trendChart">
+                               <div class="col-sm-12">
+							<div class="bpDiagnosis_results_trendChart"  id="container1" ></div> 
+                               </div><!-- /.col -->
+                           </div><!-- /.row - inside box -->
+                       </div><!-- /.box-body-->
                       </div><!-- /.box -->
                    </section><!-- right col -->   
               </div>                  
@@ -1079,7 +1080,9 @@
      </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
 <!--index_welcome_main end-->
-    	
+	</div>
+</body>
+</html>   	
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -1159,7 +1162,6 @@
     </ul>
   </div>
  </div>
-
 </body>
 </html>
 		

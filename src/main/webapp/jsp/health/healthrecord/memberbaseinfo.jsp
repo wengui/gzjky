@@ -4,23 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
-
+<title>基本信息</title>
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" type="text/css"/>
-<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
+<link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet"  type="text/css"/>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
-<!-- <script type="text/javascript" src="<c:url value='/js/page/jquery.validate.js'/>"></script> -->
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="<c:url value='/js/page/validationEngine-additional-methods.js'/>"></script>
-<!-- <script type="text/javascript" src="<c:url value='/js/page/jquery.metadata.js'/>"></script> -->
+<script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
@@ -29,10 +26,11 @@
    var edit_image = "<a class='btn btn-success'><i class='fa fa-edit'></i> 编辑</a>";
    var save_image = "<a class='btn btn-success'><i class='fa fa-save'></i> 保存</a>";
    var basic_form_id =  "memberBaseInfo_form";
-    var detail_form_id = "detail_form";
-    var workinfo_form_id = "workinfo_form";
+   var detail_form_id = "detail_form";
+   var workinfo_form_id = "workinfo_form";
     
-    $(function(){
+   function startInit(){
+	   
     	$("#"+basic_form_id+" :input").attr("disabled",true);
     	$("#"+detail_form_id+" :input").attr("disabled",true);
     	$("#"+workinfo_form_id+" :input").attr("disabled",true);
@@ -67,7 +65,7 @@
     				//showArrow:false,
     			}
     	);
-    })
+    }
     function query_memberBaseInfo(){
     	var requestUrl = "/gzjky/healthRecordAction/queryMemberBaseInfo.do";
     	var para = "unit_id=" + window.parent.member_unit_id + "&cluster_id=" + window.parent.member_cluster_id + "&unit_type=" + window.parent.member_unit_type;
@@ -139,6 +137,16 @@
 		    			//left_memberName.title = memberName;
 			    	}
 	    			
+			    	obj.onclick = function(){
+			    		if(formId == "memberBaseInfo_form"){
+			    			edit_baseinfo(obj);
+			    		}else if(formId == "detail_form"){
+			    			edit_detail(obj);
+			    		}else if(formId == "workinfo_form"){
+			    			edit_workinfo(obj);
+			    		}
+			    	};
+			    	
 			    	//按钮变成编辑图标，元素变成不可以编辑
 			    	$("#"+formId+" :input").attr("disabled",true);
 			    	
@@ -269,7 +277,7 @@
 </script>
 </head>
 
-<body class="skin-blue" >
+<body class="skin-blue" onload="startInit()" >
 	<!-- header logo: style can be found in header.less -->
 	<%@ include file="../../shared/pageHeader.jsp"%>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
@@ -278,215 +286,200 @@
 	<aside class="right-side">
 		<!-- Content Header (Page header) -->
         <section class="content-header">
-             <h1>健康档案<small>基本信息</small></h1>
+             <h1>基本信息</h1>
              <ol class="breadcrumb">
-                  <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+                  <li>健康档案</li>
                   <li class="active">基本信息</li>
              </ol>
          </section>
-		<!--information_modify start-->
-	<div class="information_modify">
-    <div class="information_modify_main"  id="main_div">
-    <form id="memberBaseInfo_form" class="user_form formular">
-      <!--basic_information start-->
-      <div class="basic_information">
-        <div class="row form-group btn_title_informationModify">
-          	<label class="col-lg-9 form-title">基本信息</label>
-          	<div class="col-lg-2" id="saveImage" href="javascript:void(0)" onclick="edit_baseinfo(this)">
-          		<a class="btn btn-success">
-                   <i class="fa fa-edit"></i> 编辑
-             	</a>
-            </div>
-        </div>
-        <div class="row informationModify_main" >
-        <div class="col-lg-8">
-        	<div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">*真实姓名：</span>
-		        	<input class="col-lg-8 display-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[16]] " type="text"  id="patientname"  name="patientname" maxlength="16" />
-		        </div>
-		        <div class="col-lg-6">
-		        	<lable class="col-lg-4 text-right form-span">*性别：</lable>
-		        	<select  class="col-lg-8 display-input selectMax_informationModify  validate[required]"  id="dictSex"  name="dictSex"></select>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">*出生日期：</span>
-		        	<input class="col-lg-8 display-input validate[required]"  type="text"   id="patientbirthday"  name="patientbirthday"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d',errDealMode:2})" />
-		        </div>
-		        <div class="col-lg-6">
-		        	<lable class="col-lg-4 text-right form-span">*手机号：</lable>
-		        	<input class="col-lg-8 display-input validate[required,funcCall[mobilephone]]"  type="text"  id="patientphone"  name="patientphone"   />
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">*电子邮箱：</span>
-		        	<input class="col-lg-8 display-input validate[required,custom[email]]" type="text"  id="email"   name="email"   />
-		        </div>
-		        <div class="col-lg-6">&nbsp;</div>
-	        </div>
-        </div>
-        <div class="col-lg-4">
-        <ul>
-               <li><div calss="image-detail"><img height="100" id="patientimage" src="<c:url value='/imageUploadAction/showHeadImage.do'/>" /></div></li>
-               <li class="thead_informationModify"><a href="javascript:void(0)" class="btn" onclick="edit_photo()"><span style="font-size:13px;color:#5a5a5a">修改头像</span></a></li>
-         </ul>
-        
-        </div>
-        </div>
-          
-        </div> 
-      </div>
-      </form>
-      <form id="detail_form">
-      <!--detailed_information start-->
-      <div class="detailed_information">
-         <div class="row form-group btn_title_informationModify">
-          	<label class="col-lg-9 form-title">详细信息</label>
-          	<div class="col-lg-2" id="detailImage" href="javascript:void(0)" onclick="edit_detail(this)">
-          		<a class="btn btn-success">
-                   <i class="fa fa-edit"></i> 编辑
-             	</a>
-            </div>
-        </div>
-        <div class="row informationModify_main " >
-          <div class="col-lg-8">
-        	<div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">证件类型：</span>
-		        	<select class="col-lg-8 display-input selectMax_informationModify"  id="certiType"  name="certiType"  onchange="change_credentials_type(this)">
-	                </select>
-		        </div>
-		        <div class="col-lg-6">
-		        	<lable class="col-lg-4 text-right form-span">证件号码：</lable>
-		        	<input class="col-lg-8 display-input validate[funcCall[includespecialchar]]"  type="text"  maxlength="18" id="cardnum" name="cardnum"  />
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">是否军人：</span>
-		        	<select class="col-lg-8 display-input selectMax_informationModify" id="issoldier"  name="issoldier">
-                	<option value="1">是</option>
-	                <option value="0">否</option>
-	                </select>
-		        </div>
-		        <div class="col-lg-6">
-		        	<lable class="col-lg-4 text-right form-span">是否残疾：</lable>
-		        	<select class="col-lg-8 display-input selectMax_informationModify" id="isdisability"  name="isdisability" >
-	                <option value="0">否</option>
-	                <option value="1">是</option>
-	                </select>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">身高(cm)：</span>
-		        	<input class="col-lg-8 display-input inputMin_informationModify validate[funcCall[pyheight]]"  type="text"  id="height"   name="height"  maxlength="3" />
-		        </div>
-		        <div class="col-lg-6">
-		        	<lable class="col-lg-4 text-right form-span">体重(kg)：</lable>
-		        	<input class="col-lg-8 display-input inputMin_informationModify validate[funcCall[pyweight]]" type="text"  id="weight" name="weight"  maxlength="3" />
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">民族：</span>
-					<select class="col-lg-8 display-input selectMax_informationModify" id="nationalityCodeDict"  name="nationalityCodeDict" >
-					</select>
-		        </div>
-		        <div class="col-lg-6">
-		        	<lable class="col-lg-4 text-right form-span">籍贯：</lable>
-		        	<input class="col-lg-8 display-input inputMin_informationModify validate[funcCall[chinese]]" type="text" id="nativeplace"  name="nativeplace" maxlength="64" />
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">婚姻状况：</span>
-		        	<select class="col-lg-8 display-input selectMax_informationModify" id="maritalStatusDict"  name="maritalStatusDict" >
-	                </select>
-		        </div>
-		        <div class="col-lg-6">
-		        	<lable class="col-lg-4 text-right form-span">户籍类型：</lable>
-		        	<select class="col-lg-8 display-input selectMax_informationModify" id="censusRegDict"  name="censusRegDict" >
-	                </select>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">学历：</span>
-		        	<select class="col-lg-8 display-input selectMax_informationModify" id="userAcademic" name="userAcademic"  >
-	                </select>
-		        </div>
-		        <div class="col-lg-6">
-		        	<lable class="col-lg-4 text-right form-span">政治面貌：</lable>
-		        	<select class="col-lg-8 display-input selectMax_informationModify" id="politicalAffiliatio"  name="politicalAffiliatio">
-	                </select>
-		        </div>
-	        </div>
-	        <div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">家庭电话：</span>
-		        	<input class="col-lg-8 display-input inputMin_informationModify text-input validate[funcCall[telephone]]" type="text" id="telephone"  name="telephone"  />
-		        </div>
-		        <div class="col-lg-6">&nbsp;</div>
-	        </div>
-	        <div class="form-group">
-		        <div  class="col-lg-12">
-		        	<span class="col-lg-2 text-right">家庭地址：</span>
-		        	<input class="col-lg-10 display-input inputMax_informationModify text-input validate[funcCall[includespecialchar]]" type="text"  id="homeaddress"  name="homeaddress"  maxlength="128"  />
-		        </div>
-	        </div>
-        </div>
-        </div>
-      </div>
-      </form>
-      <form id="workinfo_form">
-      <!--job_information start-->
-      <div class="detailed_information">
-          <div class="row form-group btn_title_informationModify">
-          	<label class="col-lg-9 form-title">工作信息</label>
-          	<div class="col-lg-2" id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)">
-          		<a class="btn btn-success">
-                   <i class="fa fa-edit"></i> 编辑
-             	</a>
-            </div>
-        </div>
-        
-        <div class="row informationModify_main" >
-          <div class="col-lg-8">
-        	<div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">工作年限：</span>
-		        	 <select class="col-lg-8 display-input selectMax_informationModify" id="workingyear" name="workingyear">
-	                </select>
-		        </div>
-		        <div class="col-lg-6">
-		        	<lable class="col-lg-4 text-right form-span">薪酬：</lable>
-		        	<select class="col-lg-8 display-input selectMax_informationModify" id="moneyForYear"  name="moneyForYear">
-	                </select>
-		        </div>
-	        </div>
-	        
-	        <div class="form-group">
-		        <div class="col-lg-6">
-		        	<span class="col-lg-4 text-right  form-span">公司名称：</span>
-		        	<input class="col-lg-8 display-input inputMax_informationModify validate[funcCall[includespecialchar]]" type="text"  id="companyname"  name="companyname"  maxlength="64" />
-		        </div>
-		        <div class="col-lg-6">&nbsp;</div>
-	        </div>
-	        <div class="form-group">
-		        <div class="col-lg-12 form-div-add">
-		        	<span class="col-lg-2 text-right form-span">公司地址：</span>
-		        	<input class="display-input text-input inputMax_informationModify validate[funcCall[includespecialchar]]" style="width:83%" type="text"  id="companyaddress"  name="companyaddress"  maxlength="120"  />
-		        </div>
-	        </div>
-        </div>
-        </div>
-      </div>
-      <!--job_information end-->
-      </form>
+	<div class="bp_accouint">
+		  <div class="box box-success">
+              <div class="box-header">
+                  <h3 class="box-title">基本信息</h3>
+              </div>		
+              <div class="box-body">
+				    <div  id="main_div">
+					    <form id="memberBaseInfo_form" class="user_form formular">
+					      <!--basic_information start-->
+					        <div class="row form-group btn_title_informationModify">
+					          	<div class="col-lg-8 text-right" id="saveImage" href="javascript:void(0)" onclick="edit_baseinfo(this)">
+					          		<a class="btn btn-success">
+					                   <i class="fa fa-edit"></i> 编辑
+					             	</a>
+					            </div>
+					        </div>
+					        <div class="row" >
+					        <div class="col-lg-8">
+					        	<div class="form-group">
+							        <div class="col-lg-6">
+							        	<span class="col-lg-4 text-right  form-span">*真实姓名：</span>
+							        	<input class="col-lg-8 display-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[16]] " type="text"  id="patientname"  name="patientname" maxlength="16" />
+							        	<lable class="col-lg-4 text-right form-span">*性别：</lable>
+							        	<select  class="col-lg-8 display-input selectMax_informationModify  validate[required]"  id="dictSex"  name="dictSex"></select>
+							        	<span class="col-lg-4 text-right  form-span">*出生日期：</span>
+							        	<input class="col-lg-8 display-input validate[required]"  type="text"   id="patientbirthday"  name="patientbirthday"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d',errDealMode:2})" />
+							        	<lable class="col-lg-4 text-right form-span">*手机号：</lable>
+							        	<input class="col-lg-8 display-input validate[required,funcCall[mobilephone]]"  type="text"  id="patientphone"  name="patientphone"   />
+							        	<span class="col-lg-4 text-right  form-span">*电子邮箱：</span>
+							        	<input class="col-lg-8 display-input validate[required,custom[email]]" type="text"  id="email"   name="email"   />
+
+							        </div>
+							        <div class="col-lg-6">
+							           <ul class="text-center">
+							               <li><div calss="image-detail"><img height="200px" id="patientimage" src="<c:url value='/imageUploadAction/showHeadImage.do'/>" /></div></li>
+							               <li class="thead_informationModify"><a href="javascript:void(0)" class="btn btn-success" onclick="edit_photo()">修改头像</a></li>
+					         		   </ul>
+							        </div>
+						        </div>
+					        </div>
+				        </div>
+			      </form>
+			  </div>
+			</div>
+		</div>
+			<div class="box box-info ">
+              <div class="box-header">
+                  <h3 class="box-title">详细信息</h3>
+              </div>		
+              <div class="box-body">
+			      <form id="detail_form">
+
+				         <div class="row form-group btn_title_informationModify">
+					          	<div class="col-lg-8 text-right" id="detailImage" href="javascript:void(0)" onclick="edit_detail(this)">
+					          		<a class="btn btn-success">
+					                   <i class="fa fa-edit"></i> 编辑
+					             	</a>
+					            </div>
+ 						</div>
+	 			         <div class="row">
+					         <div class="col-lg-8">
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span" >证件类型：</span>
+						        	<select class="display-input selectMax_informationModify col-lg-8"  id="certiType"  name="certiType"  onchange="change_credentials_type(this)">
+					                </select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">证件号码：</lable>
+						        	<input class="col-lg-8 display-input validate[funcCall[includespecialchar]]"  type="text"  maxlength="18" id="cardnum" name="cardnum"  />
+						        </div>
+
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span">是否军人：</span>
+						        	<select class="col-lg-8 display-input selectMax_informationModify" id="issoldier"  name="issoldier">
+				                	<option value="1">是</option>
+					                <option value="0">否</option>
+					                </select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">是否残疾：</lable>
+						        	<select class="col-lg-8 display-input selectMax_informationModify" id="isdisability"  name="isdisability" >
+					                <option value="0">否</option>
+					                <option value="1">是</option>
+					                </select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right form-span">身高(cm)：</span>
+						        	<input class="col-lg-8 display-input inputMin_informationModify validate[funcCall[pyheight]]"  type="text"  id="height"   name="height"  maxlength="3" />
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">体重(kg)：</lable>
+						        	<input class="col-lg-8 display-input inputMin_informationModify validate[funcCall[pyweight]]" type="text"  id="weight" name="weight"  maxlength="3" />
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span">民族：</span>
+									<select class="col-lg-8 display-input selectMax_informationModify" id="nationalityCodeDict"  name="nationalityCodeDict" >
+									</select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">籍贯：</lable>
+						        	<input class="col-lg-8 display-input inputMin_informationModify validate[funcCall[chinese]]" type="text" id="nativeplace"  name="nativeplace" maxlength="64" />
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span">婚姻状况：</span>
+						        	<select class="col-lg-8 display-input selectMax_informationModify" id="maritalStatusDict"  name="maritalStatusDict" >
+					                </select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">户籍类型：</lable>
+						        	<select class="col-lg-8 display-input selectMax_informationModify" id="censusRegDict"  name="censusRegDict" >
+					                </select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span">学历：</span>
+						        	<select class="col-lg-8 display-input selectMax_informationModify" id="userAcademic" name="userAcademic"  >
+					                </select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">政治面貌：</lable>
+						        	<select class="col-lg-8 display-input selectMax_informationModify" id="politicalAffiliatio"  name="politicalAffiliatio">
+					                </select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right form-span">家庭电话：</span>
+						        	<input class="col-lg-8 display-input inputMin_informationModify text-input validate[funcCall[telephone]]" type="text" id="telephone"  name="telephone"  />
+						        </div>
+						        <div class="col-lg-6">&nbsp;</div>
+						        <div  class="col-lg-12">
+						        	<span class="col-lg-2 text-right form-span">家庭地址：</span>
+						        	<input class="col-lg-10 display-input inputMax_informationModify text-input validate[funcCall[includespecialchar]]" type="text"  id="homeaddress"  name="homeaddress"  maxlength="128"  />
+						        </div>
+				        </div>
+			        </div>
+			      </form>
+			   </div>
+			</div>
+			<div class="box box-warning">
+              <div class="box-header">
+                  <h3 class="box-title">工作信息</h3>
+              </div>		
+              <div class="box-body">
+			      <form id="workinfo_form">
+			      <!--job_information start-->
+			      <div class="detailed_information">
+			          <div class="row form-group btn_title_informationModify">
+			          	<div class="col-lg-8 text-right" id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)">
+			          		<a class="btn btn-success">
+			                   <i class="fa fa-edit"></i> 编辑
+			             	</a>
+			            </div>
+			        </div>
+			        
+			        <div class="row informationModify_main" >
+			          <div class="col-lg-8">
+			        	<div class="form-group">
+					        <div class="col-lg-6">
+					        	<span class="col-lg-4 text-right form-span">工作年限：</span>
+					        	 <select class="col-lg-8 display-input selectMax_informationModify" id="workingyear" name="workingyear">
+				                </select>
+					        </div>
+					        <div class="col-lg-6">
+					        	<lable class="col-lg-4 text-right form-span">薪酬：</lable>
+					        	<select class="col-lg-8 display-input selectMax_informationModify" id="moneyForYear"  name="moneyForYear">
+				                </select>
+					        </div>
+				        </div>
+				        
+				        <div class="form-group">
+					        <div class="col-lg-6">
+					        	<span class="col-lg-4 text-right  form-span">公司名称：</span>
+					        	<input class="col-lg-8 display-input inputMax_informationModify validate[funcCall[includespecialchar]]" type="text"  id="companyname"  name="companyname"  maxlength="64" />
+					        </div>
+					        <div class="col-lg-6">&nbsp;</div>
+				        </div>
+				        <div class="form-group">
+					        <div class="col-lg-12 form-div-add">
+					        	<span class="col-lg-2 text-right form-span">公司地址：</span>
+					        	<input class="display-input text-input inputMax_informationModify validate[funcCall[includespecialchar]]" style="width:83%" type="text"  id="companyaddress"  name="companyaddress"  maxlength="120"  />
+					        </div>
+				        </div>
+			        </div>
+			        </div>
+			      </div>
+			      <!--job_information end-->
+			      </form>
+			   </div>
+			</div>
     </div>
 </div>
  

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,14 +14,12 @@
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>"	type="text/javascript"></script>
+<script src="<c:url value='/js/page/jquery.page.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/common.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
-
-
 <script type="text/javascript">
 
   var startDate="";
@@ -203,133 +202,146 @@
 	<!-- header logo: style can be found in header.less -->
 	<%@ include file="../../shared/pageHeader.jsp"%>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
-	         <!-- Left side column. contains the logo and sidebar -->
-	<%@ include file="../../shared/sidebarMenu.jsp"%>
-	<aside class="right-side">
-           <section class="content-header">
-              <h1>医生报告
-              	 <small id="today"></small>
-              	 <small id="weather"></small>
-              </h1>
-              <ol class="breadcrumb">
-                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
-                  <li >医生报告</li>
-                  <li class="active">医生报告</li>
-              </ol>
-          </section>
+		<!-- Left side column. contains the logo and sidebar -->
+		<%@ include file="../../shared/sidebarMenu.jsp"%>
+		<aside class="right-side"> <section class="content-header">
+		<h1>
+			医生报告 <small id="today"></small> <small id="weather"></small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+			<li>医生报告</li>
+			<li class="active">医生报告</li>
+		</ol>
+		</section>
 		<div class="bp_history">
-		  <div class="box box-danger">
-              <div class="box-header">
-                  <h3 class="box-title">条件检索</h3>
-              </div>		
-              <div class="box-body">
-	              	<div class="row">
-		                 <div class="col-lg-3">
-			                  <div class="input-group">
-			                  	  <label>开始时间:</label>
-			                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-			                      <input type="text" class="form-control" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
-			                  </div>
-		                 </div><!-- /.col-lg-3 -->
-		                <div class="col-lg-3">
-		                  <div class="input-group">
-			                  	  <label>结束时间:</label>
-			                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-			                      <input type="text"  class="form-control"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
-			               </div>
-		               </div><!-- /.col-lg-3 -->
-		               <div class="col-lg-3">
-		               	 <button class="btn btn-success" style="margin-left:20px" onclick="queryStart();">查询</button>		               </div><!-- /.col-lg-3 -->
-		               <div class="col-lg-3">
-		               </div>
-	              </div><!-- /.box-body -->
-	              <div class="row">
-	              	<br/>
-	              	<div class="col-lg-6">
-	              		 <label>快速查询:</label>
-	              		 <a href="javascript:changeDate(3)" style="margin-left:20px;margin-right:15px;">最新3天</a>
-	              		 <a href="javascript:changeDate(7)" style="margin-right:15px;">最近一周</a>
-	              		 <a href="javascript:changeDate(30)" style="margin-right:15px;">最近30天</a>
-	              		 <a href="javascript:changeDate(365)">最近一年</a>
-	              	</div>
-	              </div>
-	      	  </div>
-		      <div class="row">
-			  	<br/>
-			  	<div class="col-lg-11">
-				    <table width="100%" style="border: none;" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable">
-				      <colgroup>
-				        <col width="25%" />
-				        <col width="15%" />
-				        <col width="30%" />
-				        <col width="20%" />
-				        <col width="10%" />
-				      </colgroup>
-				      <tr >
-				        <th>创建日期</th>
-				        <th>报告类型</th>
-				        <th>分析医院</th>
-				        <th>分析医生</th>
-				        <th>操作</th>
-				      </tr>
-				    </table>
-				  </div>
-				</div>				
-				<script type="text/javascript">
-						var reg = /^[1-9]{6,16}/; 
-						
-						function gotoPage(){
-							var num = $.trim($("#gopage").val());
-							if(num==''){
-								$.alert('请输入页码');
-								$("#gopage").focus();
-								return false;
-							}
-							if(!/^\d+$/.test(num)){
-								$.alert('页码中包括非数字字符');
-								$("#gopage").focus();
-								return false;
-							}
-							if(num == '0') {
-							    $.alert('页码不正确');
-							    return false;
-							}
-							if(parseInt(num)>$.fn.page.settings.pagecount)
-							{
-								$.alert('无效的页码');
-								$("#gopage").focus();
-								return false;
-							}
-							pageClick(num);
-						}
-					</script>
-					<div class="row">
-						<br/>
-						<div class="col-lg-4" style="padding-left:25px">
-							共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
-						</div>
-						<div class="col-lg-4">
-							<a href="###" class="page-first" >首页</a>
-						    <a href="###" class="page-perv" style="margin-left:5px">上一页</a>
-						    <a href="###" class="page-next" style="margin-left:5px">下一页</a>
-						    <a href="###" class="page-last" style="margin-left:5px">末页</a>
-						</div>
-						<div class="col-lg-4" style="padding-left:18%">
-							 转<select id="gopage" onchange="gotoPage()"></select>页
-						</div>
-				
-					</div>
-
+			<div class="box box-danger">
+				<div class="box-header">
+					<h3 class="box-title">条件检索</h3>
 				</div>
+				<div class="box-body">
+					<div class="row">
+						<div class="col-lg-3">
+							<div class="input-group">
+								<label>开始时间:</label> <span class="input-group-addon"><i
+									class="fa fa-calendar"></i></span> <input type="text"
+									class="form-control" id="startDate" name="startDate"
+									onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})" />
+							</div>
+						</div>
+						<!-- /.col-lg-3 -->
+						<div class="col-lg-3">
+							<div class="input-group">
+								<label>结束时间:</label> <span class="input-group-addon"><i
+									class="fa fa-calendar"></i></span> <input type="text"
+									class="form-control" id="endDate" name="endDate"
+									onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})" />
+							</div>
+						</div>
+						<!-- /.col-lg-3 -->
+						<div class="col-lg-3">
+							<button class="btn btn-success" style="margin-left: 20px"
+								onclick="queryStart();">查询</button>
+						</div>
+						<!-- /.col-lg-3 -->
+						<div class="col-lg-3"></div><!-- /.col-lg-3 -->
+					</div>
+					<!-- /row -->
+					<div class="row">
+						<br />
+						<div class="col-lg-6">
+							<label>快速查询:</label> <a href="javascript:changeDate(3)"
+								style="margin-left: 20px; margin-right: 15px;">最新3天</a> <a
+								href="javascript:changeDate(7)" style="margin-right: 15px;">最近一周</a>
+							<a href="javascript:changeDate(30)" style="margin-right: 15px;">最近30天</a>
+							<a href="javascript:changeDate(365)">最近一年</a>
+						</div>
+						<!-- /.col-lg-6 -->
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /.box-body -->
+				<div class="row">
+					<br />
+					<div class="col-lg-11">
+						<table width="100%" style="border: none;" border="0"
+							cellspacing="0" cellpadding="0"
+							class="table-bordered bPhistory_table" id="faceTable">
+							<colgroup>
+								<col width="25%" />
+								<col width="15%" />
+								<col width="30%" />
+								<col width="20%" />
+								<col width="10%" />
+							</colgroup>
+							<tr>
+								<th>创建日期</th>
+								<th>报告类型</th>
+								<th>分析医院</th>
+								<th>分析医生</th>
+								<th>操作</th>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<script type="text/javascript">
+					var reg = /^[1-9]{6,16}/; 
+					
+					function gotoPage(){
+						var num = $.trim($("#gopage").val());
+						if(num==''){
+							$.alert('请输入页码');
+							$("#gopage").focus();
+							return false;
+						}
+						if(!/^\d+$/.test(num)){
+							$.alert('页码中包括非数字字符');
+							$("#gopage").focus();
+							return false;
+						}
+						if(num == '0') {
+						    $.alert('页码不正确');
+						    return false;
+						}
+						if(parseInt(num)>$.fn.page.settings.pagecount)
+						{
+							$.alert('无效的页码');
+							$("#gopage").focus();
+							return false;
+						}
+						pageClick(num);
+					}
+				</script>
+				<div class="row">
+					<br />
+					<div class="col-lg-4" style="padding-left: 25px">
+						共<span id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span
+							id="showpagecount"></span>页
+					</div>
+					<div class="col-lg-4">
+						<a href="###" class="page-first">首页</a> <a href="###"
+							class="page-perv" style="margin-left: 5px">上一页</a> <a href="###"
+							class="page-next" style="margin-left: 5px">下一页</a> <a href="###"
+							class="page-last" style="margin-left: 5px">末页</a>
+					</div>
+					<div class="col-lg-4" style="padding-left: 18%">
+						转<select id="gopage" onchange="gotoPage()"></select>页
+					</div>
+				</div>
+				<!-- /。row -->
 			</div>
-     </aside><!-- /.right-side -->
-</div><!-- ./wrapper -->      
-
-<div id="divloading">
-	<img src="../../../images/public/blue-loading.gif" />
-</div>
-<div id="transparentDiv" ></div>
-<div id="transparentDiv2"></div>
+			<!-- /。box box-danger -->
+		</div>
+		<!-- /.bp_history -->
+		</aside>
+		<!-- /.right-side -->
+	</div>
+	<!-- ./wrapper -->
+	<div id="divloading">
+		<img src="../../../images/public/blue-loading.gif" />
+	</div>
+	<div id="transparentDiv"></div>
+	<div id="transparentDiv2"></div>
 </body>
 </html>
 
@@ -337,13 +349,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120医生服务中心</title>
-<script type="text/javascript" src="<c:url value='/js/highcharts/highcharts.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/highcharts/modules/exporting.js'/>"></script>
+<title>周报</title>
+<script type="text/javascript"
+	src="<c:url value='/js/highcharts/highcharts.js'/>"></script>
+<script type="text/javascript"
+	src="<c:url value='/js/highcharts/modules/exporting.js'/>"></script>
 <style>
-#secondview table{width:430px; border:1px solid #aeaeae; border-collapse: collapse;margin-left: 20px;}
-#secondview th{text-align:center; border-bottom:1px solid #aeaeae; }
-#secondview td{border-bottom:1px solid #aeaeae; border-right:1px solid #aeaeae; padding:5px;vertical-align: top;}
+#secondview table {
+	width: 430px;
+	border: 1px solid #aeaeae;
+	border-collapse: collapse;
+	margin-left: 20px;
+}
+
+#secondview th {
+	text-align: center;
+	border-bottom: 1px solid #aeaeae;
+}
+
+#secondview td {
+	border-bottom: 1px solid #aeaeae;
+	border-right: 1px solid #aeaeae;
+	padding: 5px;
+	vertical-align: top;
+}
 </style>
 <script type="text/javascript">
 	//第二版周报解析
@@ -602,86 +631,111 @@
 	}
 </script>
 </head>
-<body >
- <div class="popup" id="weekreport_detail" style="display:none;position:absolute;top:20px; left:20px;z-index: 30;width: 630px;">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader" id="detail_title">周报详情</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeWeekReport();">X</a></li>
-    </ul>
-  </div>
-  
-  <div class="popup_main">       
-  <div  id="container" style="width: 600px;height: 200px;" class="bpDiagnosis_results_trendChart" >
-     </div>
-      <!-- 周报第二版展示 -->
-       <div class="bpDiagnosis_results_text" id="secondview" style="float: left;width: 600px;display: none;" >
-          <ul>
-           <li class="tgreen_results">创建日期：<span class="tblack_results" id="week_tracking_date" ></span></li>
-            <li class="tgreen_results">统计区间：<span class="tblack_results" id="week_interval"></span></li>
-            <li class="tgreen_results">降压目标：<span class="tblack_results" id="bp_target" ></span></li>
-            <li class="tgreen_results">血压分级：<span class="tblack_results" id="bp_hype_type"></span></li>
-            <li class="tgreen_results">风险分层：<span class="tblack_results" id="risk_level"></span></li>
-               <li class="tgreen_results" >心血管风险因素：</span>
-            </li>
-             <li class="tblack_results"><span class="tblack_results" id="cv_risk"></li>
-            <li class="tgreen_results" >靶器官损害：</li>
-            <li class="tblack_results"><span class="tblack_results" id="target_organ_damage"></span></li>
-            <li class="tgreen_results" >伴临床疾患：</li>
-            <li class="tblack_results"><span class="tblack_results" id="clinical"></span></li>
-            
-            <li class="tgreen_results">血压数据统计表：</li>
-            <li class="tblack_results">
-	            <table class="detailtable" id="week_bp_static" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	            <tr><td>时间 </td><td>收缩压</td><td>舒张压</td><td>脉压</td><td>平均动脉压</td><td>心律</td></tr>
-	            </table>
-            </li>
-            <li class="tgreen_results">血压总体分析：</li>
-            <li class="tblack_results" id="mean_bp"></li>
-            <li class="tblack_results" id="bp_load"></li>
-            <li class="tblack_results" id="cv"></li>
-            <li class="tblack_results" id="sbp"></li>
-            <li class="tblack_results" id="dbp"></li>
-           
-            
-             <li class="tgreen_results">测压异常事件情况：</li>
-            <li class="tblack_results">
-	            <table class="detailtable"  id="week_plan_unnormal" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	            <tr><td width="15%">血压值 </td><td width="45%">测压时间</td><td width="40%">反馈</td></tr>
-	            </table>
-            </li>
-             <li class="tgreen_results">服用药物情况：</li>
-            <li class="tblack_results">
-	            <table class="detailtable"  id="week_plan_medicine" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	            <tr><td>通用名称</td><td>剂量</td><td>服用时间</td></tr>
-	            </table>
-            </li>
-            
-             <li class="tgreen_results">不适应症情况：</li>
-            <li class="tblack_results">
-            	<span id="week_plan_inadaptation" style="border: 0px;">
-	           
-	            </span>
-           
-            </li>
-             <li class="tgreen_results">测压方案完成情况：</li><li class="tblack_results" ><span id="measure_compliance" ></span></li>
-            <li class="tgreen_results">总结：</li>
-            <li class="tblack_results" id="conclusion"></li>
-            <li class="tgreen_results">保健建议：</li>
-            <li class="tblack_results" id="suggestion"></li>
-           	
-          </ul>
-        </div>
-        <!-- 医生分析结果 -->
-        <div class="tgreen_results">
-      	 医生分析结果：
-        <span class="tblack_results" id="detail_doctor_report"></span>
-        </div>
-        <div class="tgreen_results">医生建议：
-        <span class="tblack_results" id="detail_doctor_suggest"></span>
-        </div>
-  </div>
-  </div>
+<body>
+	<div class="popup" id="weekreport_detail"
+		style="display: none; position: absolute; top: 20px; left: 20px; z-index: 30; width: 630px;">
+		<div class="popup_header">
+			<ul>
+				<li class="name_popupHeader" id="detail_title">周报详情</li>
+				<li class="close_popupHeader"><a href="javascript:void(0)"
+					onclick="closeWeekReport();">X</a></li>
+			</ul>
+		</div>
+
+		<div class="popup_main">
+			<div id="container" style="width: 600px; height: 200px;"
+				class="bpDiagnosis_results_trendChart"></div>
+			<!-- 周报第二版展示 -->
+			<div class="bpDiagnosis_results_text" id="secondview"
+				style="float: left; width: 600px; display: none;">
+				<ul>
+					<li class="tgreen_results">创建日期：<span class="tblack_results"
+						id="week_tracking_date"></span></li>
+					<li class="tgreen_results">统计区间：<span class="tblack_results"
+						id="week_interval"></span></li>
+					<li class="tgreen_results">降压目标：<span class="tblack_results"
+						id="bp_target"></span></li>
+					<li class="tgreen_results">血压分级：<span class="tblack_results"
+						id="bp_hype_type"></span></li>
+					<li class="tgreen_results">风险分层：<span class="tblack_results"
+						id="risk_level"></span></li>
+					<li class="tgreen_results">心血管风险因素：</span>
+					</li>
+					<li class="tblack_results"><span class="tblack_results"
+						id="cv_risk"></span></li>
+					<li class="tgreen_results">靶器官损害：</li>
+					<li class="tblack_results"><span class="tblack_results"
+						id="target_organ_damage"></span></li>
+					<li class="tgreen_results">伴临床疾患：</li>
+					<li class="tblack_results"><span class="tblack_results"
+						id="clinical"></span></li>
+
+					<li class="tgreen_results">血压数据统计表：</li>
+					<li class="tblack_results">
+						<table class="detailtable" id="week_bp_static"
+							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
+							<tr>
+								<td>时间</td>
+								<td>收缩压</td>
+								<td>舒张压</td>
+								<td>脉压</td>
+								<td>平均动脉压</td>
+								<td>心律</td>
+							</tr>
+						</table>
+					</li>
+					<li class="tgreen_results">血压总体分析：</li>
+					<li class="tblack_results" id="mean_bp"></li>
+					<li class="tblack_results" id="bp_load"></li>
+					<li class="tblack_results" id="cv"></li>
+					<li class="tblack_results" id="sbp"></li>
+					<li class="tblack_results" id="dbp"></li>
+
+
+					<li class="tgreen_results">测压异常事件情况：</li>
+					<li class="tblack_results">
+						<table class="detailtable" id="week_plan_unnormal"
+							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
+							<tr>
+								<td width="15%">血压值</td>
+								<td width="45%">测压时间</td>
+								<td width="40%">反馈</td>
+							</tr>
+						</table>
+					</li>
+					<li class="tgreen_results">服用药物情况：</li>
+					<li class="tblack_results">
+						<table class="detailtable" id="week_plan_medicine"
+							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
+							<tr>
+								<td>通用名称</td>
+								<td>剂量</td>
+								<td>服用时间</td>
+							</tr>
+						</table>
+					</li>
+
+					<li class="tgreen_results">不适应症情况：</li>
+					<li class="tblack_results"><span id="week_plan_inadaptation"
+						style="border: 0px;"> </span></li>
+					<li class="tgreen_results">测压方案完成情况：</li>
+					<li class="tblack_results"><span id="measure_compliance"></span></li>
+					<li class="tgreen_results">总结：</li>
+					<li class="tblack_results" id="conclusion"></li>
+					<li class="tgreen_results">保健建议：</li>
+					<li class="tblack_results" id="suggestion"></li>
+
+				</ul>
+			</div>
+			<!-- 医生分析结果 -->
+			<div class="tgreen_results">
+				医生分析结果： <span class="tblack_results" id="detail_doctor_report"></span>
+			</div>
+			<div class="tgreen_results">
+				医生建议： <span class="tblack_results" id="detail_doctor_suggest"></span>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
 
@@ -691,9 +745,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120医生服务中心</title>
 <style>
-#plan_inadaptation,#plan_complete,#plan_unnormal,#plan_medicine,#month_secondview table{width:430px; border:1px solid #aeaeae; border-collapse: collapse;margin-left: 20px;}
- table th{text-align:center; border-bottom:1px solid #aeaeae; }
- .detailtable tr td{border-bottom:1px solid #aeaeae; border-right:1px solid #aeaeae; padding:5px;vertical-align: top;}
+#plan_inadaptation, #plan_complete, #plan_unnormal, #plan_medicine,
+	#month_secondview table {
+	width: 430px;
+	border: 1px solid #aeaeae;
+	border-collapse: collapse;
+	margin-left: 20px;
+}
+
+table th {
+	text-align: center;
+	border-bottom: 1px solid #aeaeae;
+}
+
+.detailtable tr td {
+	border-bottom: 1px solid #aeaeae;
+	border-right: 1px solid #aeaeae;
+	padding: 5px;
+	vertical-align: top;
+}
 </style>
 <script type="text/javascript">
 var bprecords ="";//测压完成情况集合
@@ -789,24 +859,6 @@ var version=0;//版本
         }
 		//医生总结
 		$("#doctor_result").html(bpMonthReport.doctorSummary);
-// 		var conclusion = bpMonthReport.summary;
-// 		if(conclusion!=null){
-// 			var tr = "";
-// 			for(var i=0;i<conclusion.length;i++){
-// 				 tr += "("+(i+1)+")"+conclusion[i];
-// 			}
-// 			$("#month_conclusion").html(tr);
-// 		}
-// 		//建议
-// 		var suggestion = bpMonthReport.suggestion;
-// 		if(suggestion!=null){
-// 			var tr = "";
-// 			for(var i=0;i<suggestion.length;i++){
-// 				 tr += "("+(i+1)+")"+suggestion[i];
-// 			}
-// 			$("#month_suggestion").html(tr);
-// 		}
-		
 	}
 	function drawPlan(start,end){
 		$("#plan_unnormal2 tr").eq(0).nextAll().remove();
@@ -899,117 +951,149 @@ var version=0;//版本
 	}
 	
 </script>
-
 </head>
+<body>
+	<div class="popup" id="monthreport_detail"
+		style="display: none; position: absolute; top: 20px; left: 20px; z-index: 30; width: 630px;">
+		<div class="popup_header">
+			<ul>
+				<li class="name_popupHeader" id="detail_monthreport">月报详情</li>
+				<li class="close_popupHeader"><a href="javascript:void(0)"
+					onclick="closeMonthReport();">X</a></li>
+			</ul>
+		</div>
 
-<body >
- <div class="popup" id="monthreport_detail" style="display:none;position:absolute;top:20px; left:20px;z-index: 30;width: 630px;">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader" id="detail_monthreport">月报详情</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeMonthReport();">X</a></li>
-    </ul>
-  </div>
-  
-  <div class="popup_main">
-	  <!-- 月报第二版展示 -->
-	   <div class="bpDiagnosis_results_text" id="month_secondview" style="float: left;width: 600px;display: none;" >
-	    <ul>
-	      <li class="tgreen_results">创建日期：<span class="tblack_results" id="month_tracking_date" ></span></li>
-	      <li class="tgreen_results">统计区间：<span class="tblack_results" id="month_interval"></span></li>
-	      <li class="tgreen_results">降压目标：<span class="tblack_results" id="month_bp_target" ></span></li>
-	      <li class="tgreen_results">血压分级：<span class="tblack_results" id="month_bp_hype_type"></span></li>
-	      <li class="tgreen_results">风险分层：<span class="tblack_results" id="month_risk_level"></span></li>
-	      <li class="tgreen_results" >心血管风险因素：</span>
-	      </li>
-	       <li class="tblack_results"><span class="tblack_results" id="month_cv_risk"></li>
-	      <li class="tgreen_results" >靶器官损害：</li>
-	      <li class="tblack_results"><span class="tblack_results" id="month_target_organ_damage"></span></li>
-	      <li class="tgreen_results" >伴临床疾患：</li>
-	      <li class="tblack_results"><span class="tblack_results" id="month_clinical"></span></li>
-	      <li class="tgreen_results">血压数据统计表：</li>
-	      <li class="tblack_results">
-	       <table class="detailtable" id="month_bp_static" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	       <tr><td>时间 </td><td>收缩压</td><td>舒张压</td><td>脉压</td><td >平均动脉压</td><td>心率</td></tr>
-	       </table>
-	      </li>
-	      <li class="tgreen_results">血压总体分析：</li>
-	      <li class="tblack_results" id="month_mean_bp"></li>
-	      <li class="tblack_results" id="month_bp_load"></li>
-	      <li class="tblack_results" id="month_cv"></li>
-	      <li class="tblack_results" id="month_sbp"></li>
-	      <li class="tblack_results" id="month_dbp"></li>
-	     
-	      
-	       <li class="tgreen_results">测压异常事件情况：</li>
-	      <li class="tblack_results">
-	       <table class="detailtable"  id="plan_unnormal2" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	        <tr><td width="15%">血压值 </td><td width="35%">测压时间</td><td width="50%">反馈</td></tr>
-	       </table>
-	      </li>
-	       <li class="tgreen_results">服用药物情况：</li>
-	      <li class="tblack_results">
-	       <table class="detailtable"  id="plan_medicine2" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	       <tr><td>通用名称</td><td>剂量</td><td>服用时间</td></tr>
-	       </table>
-	      </li>
-	      <!--  
+		<div class="popup_main">
+			<!-- 月报第二版展示 -->
+			<div class="bpDiagnosis_results_text" id="month_secondview"
+				style="float: left; width: 600px; display: none;">
+				<ul>
+					<li class="tgreen_results">创建日期：<span class="tblack_results"
+						id="month_tracking_date"></span></li>
+					<li class="tgreen_results">统计区间：<span class="tblack_results"
+						id="month_interval"></span></li>
+					<li class="tgreen_results">降压目标：<span class="tblack_results"
+						id="month_bp_target"></span></li>
+					<li class="tgreen_results">血压分级：<span class="tblack_results"
+						id="month_bp_hype_type"></span></li>
+					<li class="tgreen_results">风险分层：<span class="tblack_results"
+						id="month_risk_level"></span></li>
+					<li class="tgreen_results">心血管风险因素：</span>
+					</li>
+					<li class="tblack_results"><span class="tblack_results"
+						id="month_cv_risk"></li>
+					<li class="tgreen_results">靶器官损害：</li>
+					<li class="tblack_results"><span class="tblack_results"
+						id="month_target_organ_damage"></span></li>
+					<li class="tgreen_results">伴临床疾患：</li>
+					<li class="tblack_results"><span class="tblack_results"
+						id="month_clinical"></span></li>
+					<li class="tgreen_results">血压数据统计表：</li>
+					<li class="tblack_results">
+						<table class="detailtable" id="month_bp_static"
+							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
+							<tr>
+								<td>时间</td>
+								<td>收缩压</td>
+								<td>舒张压</td>
+								<td>脉压</td>
+								<td>平均动脉压</td>
+								<td>心率</td>
+							</tr>
+						</table>
+					</li>
+					<li class="tgreen_results">血压总体分析：</li>
+					<li class="tblack_results" id="month_mean_bp"></li>
+					<li class="tblack_results" id="month_bp_load"></li>
+					<li class="tblack_results" id="month_cv"></li>
+					<li class="tblack_results" id="month_sbp"></li>
+					<li class="tblack_results" id="month_dbp"></li>
+
+
+					<li class="tgreen_results">测压异常事件情况：</li>
+					<li class="tblack_results">
+						<table class="detailtable" id="plan_unnormal2"
+							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
+							<tr>
+								<td width="15%">血压值</td>
+								<td width="35%">测压时间</td>
+								<td width="50%">反馈</td>
+							</tr>
+						</table>
+					</li>
+					<li class="tgreen_results">服用药物情况：</li>
+					<li class="tblack_results">
+						<table class="detailtable" id="plan_medicine2"
+							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
+							<tr>
+								<td>通用名称</td>
+								<td>剂量</td>
+								<td>服用时间</td>
+							</tr>
+						</table>
+					</li>
+					<!--  
 	      <li class="tgreen_results">服用药物后血压变化：</li>
 	      <li class="tblack_results">
 	       <table class="detailtable"  id="month_medicine_effect" style="width:430px; border:1px solid #aeaeae; border-collapse: collapse;margin-left: 80px;">
 	       <tr><td>商品名称 </td><td>开始服用日期</td><td>血压值</td></tr>
 	       </table>
 	      </li>-->
-	        <li class="tgreen_results">心电监护结果：</li>
-	      <li class="tblack_results">
-	       <table class="detailtable"  id="month_ecg_report" style="width:560px; border:1px solid #aeaeae; border-collapse: collapse;">
-	       <tr><td width="25%">采集时间 </td><td width="12%">采集时长</td><td width="12%">平均心率</td><td width="51%">分析结果</td></tr>
-	       </table>
-	      </li>
-	       <li class="tgreen_results">不适应症情况：</li>
-	      <li class="tblack_results">
-	      	<span id="plan_inadaptation2" style="border: 0px;">
-	      
-	       </span>
-	     
-	      </li>
-	       <li class="tgreen_results">测压方案完成情况：</li><li class="tblack_results" ><span id="month_measure_compliance" ></span></li>
-	      
-	      <li class="tgreen_results">总结：</li>
-	      <li class="tblack_results" id="month_conclusion"></li>
-	      <li class="tgreen_results">保健建议：</li>
-	      <li class="tblack_results" id="month_suggestion"></li>
-	     	
-	    </ul>
-	  </div>
-    <div class="ecg_main">
-	<ul>
-      <li>
-      <div class="tGrey_ecgname" style="width: 300px;margin-top:10px;text-align: left;float: left;">
-     	 评估等级：<select id="assessment_level" disabled="disabled">
-     	 		<option value="高">高</option>
-     	 		<option value="中">中</option>
-     	 		<option value="低">低</option>
-     	 		</select>
-      </div>
-      <div class="tGrey_ecgname" style="width: 370px;margin-top:10px;text-align: left;float: left;">
-     	用户状态： 	<select id="user_state" disabled="disabled">
-     	 		<option value="恢复迅速">恢复迅速</option>
-     	 		<option value="有好转">有好转</option>
-     	 		<option value="无好转">无好转</option>
-     	 		<option value="更严重">更严重</option>
-     	 		</select>	
-      </div>
-      <div style="width: 600px;">
-      <span class="tGrey_ecgname" id="doctor_result" >总结：</span>
-      </div>
-      </li>  
-    </ul>
-    </div>
-  </div>
-  </div>
+					<li class="tgreen_results">心电监护结果：</li>
+					<li class="tblack_results">
+						<table class="detailtable" id="month_ecg_report"
+							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
+							<tr>
+								<td width="25%">采集时间</td>
+								<td width="12%">采集时长</td>
+								<td width="12%">平均心率</td>
+								<td width="51%">分析结果</td>
+							</tr>
+						</table>
+					</li>
+					<li class="tgreen_results">不适应症情况：</li>
+					<li class="tblack_results"><span id="plan_inadaptation2"
+						style="border: 0px;"> </span></li>
+					<li class="tgreen_results">测压方案完成情况：</li>
+					<li class="tblack_results"><span
+						id="month_measure_compliance"></span></li>
+
+					<li class="tgreen_results">总结：</li>
+					<li class="tblack_results" id="month_conclusion"></li>
+					<li class="tgreen_results">保健建议：</li>
+					<li class="tblack_results" id="month_suggestion"></li>
+
+				</ul>
+			</div>
+			<div class="ecg_main">
+				<ul>
+					<li>
+						<div class="tGrey_ecgname"
+							style="width: 300px; margin-top: 10px; text-align: left; float: left;">
+							评估等级：<select id="assessment_level" disabled="disabled">
+								<option value="高">高</option>
+								<option value="中">中</option>
+								<option value="低">低</option>
+							</select>
+						</div>
+						<div class="tGrey_ecgname"
+							style="width: 370px; margin-top: 10px; text-align: left; float: left;">
+							用户状态： <select id="user_state" disabled="disabled">
+								<option value="恢复迅速">恢复迅速</option>
+								<option value="有好转">有好转</option>
+								<option value="无好转">无好转</option>
+								<option value="更严重">更严重</option>
+							</select>
+						</div>
+						<div style="width: 600px;">
+							<span class="tGrey_ecgname" id="doctor_result">总结：</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
 
 
-	
