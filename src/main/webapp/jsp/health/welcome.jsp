@@ -921,12 +921,12 @@
                               <h3 class="box-title">
                                   	近期晨峰血压趋势图
                               </h3>
-                               <a style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;"  href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a>
+                               <a style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;"  data-toggle="modal" href="#popWindow1">晨峰血压是什么？</a>
                       	</div>
                        <div class="box-body no-padding">
                           <div class="row bpDiagnosis_results_trendChart">
                                <div class="col-sm-12">
-							<div class="bpDiagnosis_results_trendChart"  id="container1" ></div> 
+								<div class="bpDiagnosis_results_trendChart"  id="container1" ></div> 
                                </div><!-- /.col -->
                            </div><!-- /.row - inside box -->
                        </div><!-- /.box-body-->
@@ -939,7 +939,7 @@
                                 <div class="box-header">
                                     <i class="fa fa-warning"></i>
                                     <h3 class="box-title">血压等级分析</h3>
-                                    <a href='javascript:void(0);' style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;"  onclick='bloodPressureStandard();'>高血压分级标准</a>
+                                    <a style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;" data-toggle="modal" href="#bloodstandard">高血压分级标准</a>
                                 </div><!-- /.box-header -->
 								<div class="box-body">
                                     <div class="box-group" id="accordion">
@@ -1080,117 +1080,86 @@
      </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
 <!--index_welcome_main end-->
-	</div>
-</body>
-</html>   	
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-</head>
-<body >
- <div class="popup" id="popWindow" style="display:none;position:absolute;top:900px; left:100px;z-index: 30;">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader">血压分级标准</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv();">X</a></li>
-    </ul>
+<div class="modal fade" id="popWindow1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%">
+  <div class="modal-dialog">	
+	 <div class="popup_header">
+	   <ul>
+	     <li class="name_popupHeader">晨峰血压</li>
+	     <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+	   </ul>
+	 </div>
+	 <div class="popup_main">
+	   <ul>
+	     <li class="tgreen_bpPrompt" style="height: 250px;">
+	       1.定义：<span style="color:#5a5a5a;">血压在一天中是波动的，存在血压变异。正常人的收缩压及舒张压呈明显的昼夜节律。人体由睡眠状态转为清醒并开始活动，血压从相对较低水平迅速上升至较高水平，这种现象即为“血压晨峰”。用户在规定的测压时间内测压2—3次，取其平均值作为该日的晨峰血压值。</span><br/>
+	     	2.意义：<span style="color:#5a5a5a;">清晨血压急剧升高或者异常血压晨峰现象，与心血管疾病发生有密切的关系。所以，晨峰血压是医生查看患者血压数据的重要指标。</span><br/>
+	       3.测压时间：<span style="color:#5a5a5a;">新疆地区早上8点—11点，中国其它地区早上6点—9点。</span><br/>
+	       4.测压频率：<span style="color:#5a5a5a;">每天在规定时间内测压2—3次。</span>
+	     </li>
+	   </ul>
+	 </div>
   </div>
-  <div class="popup_main" >
-    <ul>
-      <li class="tblack_bp">中国高血压防治指南2010年修订版</li>
-      <li class="tyellow_max_bp"><img src="../../images/icon/tyellow.png" class="img_color" />
-      低血压：<span class="tgrey_bp">收缩压小于</span>90<span class="tgrey_bp">，舒张压小于</span>60</li>
-      
-      <li class="tgreen_bp"><img src="../../images/icon/green.png" class="img_color" />
-      正常血压：<span class="tgrey_bp">收缩压小于</span>120<span class="tgrey_bp">，舒张压小于</span>80</li>
-      <li class="tblue_bp"><img src="../../images/icon/blue.png" class="img_color" />
-      正常高值：<span class="tgrey_bp">收缩压</span>120-139<span class="tgrey_bp">，舒张压</span>80-89</li>
-      <li class="tyellow_bp"><img src="../../images/icon/yellow.png" class="img_color" />
-      高于正常：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压大于等于</span>90</li>
-      <li class="torange_bp"><img src="../../images/icon/orange.png" class="img_color" />
-      高血压一级：<span class="tgrey_bp">收缩压</span>140-159<span class="tgrey_bp">，舒张压</span>90-99</li>
-      <li class="tbrown_bp"><img src="../../images/icon/brown.png" class="img_color" />
-      高血压二级：<span class="tgrey_bp">收缩压</span>160-179<span class="tgrey_bp">，舒张压</span>100-109</li>
-      <li class="tred_bp"><img src="../../images/icon/red.png" class="img_color" />
-      高血压三级：<span class="tgrey_bp">收缩压大于等于</span>180<span class="tgrey_bp">，舒张压大于等于</span>110</li>
-      
-       <li class="tred_orange_bp"><img src="../../images/icon/red_orange.png" class="img_color" />
-      单纯收缩期高血压：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压小于</span>90</li>
-      
-      <li class="tgreen_bpPrompt">注意：高压和低压分属于不同级别时，以较高分级为标准</li>
-    </ul>
-  </div>
- </div>
-
-</body>
-</html>
-		
-
-<div id="divloading">
-	<img src="../../images/public/blue-loading.gif" />
 </div>
 
+
+<div class="modal fade" id="bloodstandard" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%" >
+  <div class="modal-dialog">	
+	 <div class="popup_header">
+	   <ul>
+	     <li class="name_popupHeader">血压分级标准</li>
+	     <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+	   </ul>
+	 </div>
+	 <div class="popup_main" >
+	   <ul>
+	     <li class="tblack_bp">中国高血压防治指南2010年修订版</li>
+	     <li class="tyellow_max_bp"><img src="../../images/icon/tyellow.png" class="img_color" />
+	     低血压：<span class="tgrey_bp">收缩压小于</span>90<span class="tgrey_bp">，舒张压小于</span>60</li>
+	     
+	     <li class="tgreen_bp"><img src="../../images/icon/green.png" class="img_color" />
+	     正常血压：<span class="tgrey_bp">收缩压小于</span>120<span class="tgrey_bp">，舒张压小于</span>80</li>
+	     <li class="tblue_bp"><img src="../../images/icon/blue.png" class="img_color" />
+	     正常高值：<span class="tgrey_bp">收缩压</span>120-139<span class="tgrey_bp">，舒张压</span>80-89</li>
+	     <li class="tyellow_bp"><img src="../../images/icon/yellow.png" class="img_color" />
+	     高于正常：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压大于等于</span>90</li>
+	     <li class="torange_bp"><img src="../../images/icon/orange.png" class="img_color" />
+	     高血压一级：<span class="tgrey_bp">收缩压</span>140-159<span class="tgrey_bp">，舒张压</span>90-99</li>
+	     <li class="tbrown_bp"><img src="../../images/icon/brown.png" class="img_color" />
+	     高血压二级：<span class="tgrey_bp">收缩压</span>160-179<span class="tgrey_bp">，舒张压</span>100-109</li>
+	     <li class="tred_bp"><img src="../../images/icon/red.png" class="img_color" />
+	     高血压三级：<span class="tgrey_bp">收缩压大于等于</span>180<span class="tgrey_bp">，舒张压大于等于</span>110</li>
+	     
+	      <li class="tred_orange_bp"><img src="../../images/icon/red_orange.png" class="img_color" />
+	     单纯收缩期高血压：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压小于</span>90</li>
+	     
+	     <li class="tgreen_bpPrompt">注意：高压和低压分属于不同级别时，以较高分级为标准</li>
+	   </ul>
+	 </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="popWindow2"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%">
+  <div class="modal-dialog">	
+	 <div class="popup_header" >
+	   <ul >
+	     <li class="name_popupHeader" >心电图</li>
+	     <li class="close_popupHeader" ><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+	   </ul>
+	 </div>
+	 <div class="popup_main">
+	   <ul>
+	     <li>
+	       <div style="height:600px;overflow:auto"><img id="ecg_image" /></div>
+	     </li>
+	   </ul>
+	 </div>
+ </div>
+</div>
+
+<div id="divloading"><img src="../../images/public/blue-loading.gif" /></div>
 <div id="transparentDiv" ></div>
 <div id="transparentDiv2"></div>
-		
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-</head>
-<body>
- <div class="popup" id="popWindow1" style="display:none;position:absolute;top:1000px; left:60%;z-index: 30;">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader">晨峰血压</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv1();">X</a></li>
-    </ul>
-  </div>
-  <div class="popup_main">
-    <ul>
-      <li class="tgreen_bpPrompt" style="height: 250px;">
-        1.定义：<span style="color:#5a5a5a;">血压在一天中是波动的，存在血压变异。正常人的收缩压及舒张压呈明显的昼夜节律。人体由睡眠状态转为清醒并开始活动，血压从相对较低水平迅速上升至较高水平，这种现象即为“血压晨峰”。用户在规定的测压时间内测压2—3次，取其平均值作为该日的晨峰血压值。</span><br/>
-      	2.意义：<span style="color:#5a5a5a;">清晨血压急剧升高或者异常血压晨峰现象，与心血管疾病发生有密切的关系。所以，晨峰血压是医生查看患者血压数据的重要指标。</span><br/>
-        3.测压时间：<span style="color:#5a5a5a;">新疆地区早上8点—11点，中国其它地区早上6点—9点。</span><br/>
-        4.测压频率：<span style="color:#5a5a5a;">每天在规定时间内测压2—3次。</span>
-      </li>
-    </ul>
-  </div>
- </div>
-</body>
-</html>
-		
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-</head>
-<body>
- <div class="popup" id="popWindow2" style="width: 650px;display:none;position:absolute;top:900px; left:100px;z-index: 30;">
-  <div class="popup_header" >
-    <ul >
-      <li class="name_popupHeader" >心电图</li>
-      <li class="close_popupHeader" ><a href="javascript:void(0)" onclick="closeDiv2();">X</a></li>
-    </ul>
-  </div>
-  <div class="popup_main">
-    <ul>
-      <li>
-        <div style="height:600px;overflow:auto"><img id="ecg_image" /></div>
-      </li>
-    </ul>
-  </div>
- </div>
-
-</body>
-</html>
-	</div>
 </body>
 </html>

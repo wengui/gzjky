@@ -202,7 +202,7 @@ function changeHeartType(obj){
 
 function showEcgDetail(obj,index){
 	var id = recordList[index].id;
-	obj.target = "mainFrame";
+	//obj.target = "mainFrame";
 	obj.href = "./ecg_detail.jsp?id="+id;
 }
 </script>
@@ -219,7 +219,7 @@ function showEcgDetail(obj,index){
         <section class="content-header">
              <h1>心电历史</h1>
              <ol class="breadcrumb">
-                  <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
                   <li>健康分析</li>
                   <li class="active">心电历史</li>
              </ol>

@@ -13,7 +13,7 @@
 .bp_history{ float:left; margin-top:24px;font-family:"微软雅黑";}
 .bp_accouint{ margin-top:24px;font-family:"微软雅黑";}
 .title_BPhistory{ float:left;}
-.tgreen_title_BPhistory{font-size:30px;float:left; text-align:left; font-weight:500; color:#71A944; height:48px; line-height:48px; width:320px;font-family:"微软雅黑"}
+.tgreen_title_BPhistory{font-size:30px;float:left; text-align:left; font-weight:500; color:#00a65a; height:48px; line-height:48px; width:320px;font-family:"微软雅黑"}
 .select_BPhistory{float:left; text-align:right; padding-top:10px; height:45px;}
 .select_PhoneFamily{width:345px; float:left; text-align:right; padding-top:10px; height:45px;}
 .select-style{ position:absolute; overflow:hidden;}
@@ -54,7 +54,7 @@
 /*----------------table_page---------------*/
 .index_table{margin:10px 15px 10px 15px;float:left;width:98%;}
 .bPhistory_table{float:left; text-align:left;font-family:"微软雅黑";width:100%;margin-left:10px}
-.bPhistory_table a{color:#71A944; margin-right:15px; text-decoration:none;width:100%;}
+.bPhistory_table a{color:#00a65a; margin-right:15px; text-decoration:none;width:100%;}
 .bPhistory_table th{background-color:#f3f4f5; height:40px; padding-left:20px; line-height:40px;  text-align:left; font-size:14px}
 .bPhistory_table td{color:#5a5a5a; font-size:13px; padding:5px 0 5px 20px; line-height:18px;}
 .even{background:#f7f7f7}
@@ -69,29 +69,29 @@
 /*----------------ecg---------------*/
 .ecg{width:670px;margin:0 auto; font-family:"微软雅黑"}
 .ecg_title{width:670px;float:left;text-align:left;}
-.ecg_titleGreen{font-size:24px; color:#71A944; height:30px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #71A944; width:120px; float:left}
-.ecg_titleGray{font-size:14px; color:#71A944;border-bottom:2px solid #71A944; width:550px;height:20px; padding-top:23px; padding-bottom:5px;float:left; text-align:right}
+.ecg_titleGreen{font-size:24px; color:#00a65a; height:30px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #00a65a; width:120px; float:left}
+.ecg_titleGray{font-size:14px; color:#00a65a;border-bottom:2px solid #00a65a; width:550px;height:20px; padding-top:23px; padding-bottom:5px;float:left; text-align:right}
 .ecg_titleGray a{text-decoration:none; color:#aeaeae; margin:0 5px;}
 .ecg_titleGray a:hover{text-decoration:underline}
 .ecg_main{width:670px;float:left;text-align:left;}
 .ecg_main li{float:left;line-height:30px;}
 .img_ecg{background:url(../images/health/ecg.jpg) no-repeat; height:312px; width:670px; margin:20px 0;}
-.tgreen_ecg{font-size:18px; font-weight:500; color:#71A944;width:670px;}
+.tgreen_ecg{font-size:18px; font-weight:500; color:#00a65a;width:670px;}
 .tgrey_ecg{color:#5a5a5a}
 .tGrey_ecgname{width:75px; color:#aeaeae; font-size:14px; text-align:right}
 .tblack_ecgname{width:585px; color:#5a5a5a; font-size:14px; text-align:left; padding-left:10px;}
 
 .btn_goback{width:69%; height:30px; line-height:30px;float:left; }
-.btn_goback a{height:30px; background:#71A944; line-height:30px; color:#fff; text-align: center; width:88px; display: block; text-decoration: none}
+.btn_goback a{height:30px; background:#00a65a; line-height:30px; color:#fff; text-align: center; width:88px; display: block; text-decoration: none}
 
 
-.family_disease_relation a{text-decoration:none; color:#71A944; margin:0 5px;}
+.family_disease_relation a{text-decoration:none; color:#00a65a; margin:0 5px;}
 .family_disease_relation a:hover{text-decoration:underline}=======
 
 /*-------------------advice_detail---------------------*/
 .advice{width:670px;margin:0 auto; font-family:"微软雅黑"}
 .advice_title{width:670px;float:left;text-align:left;}
-.advice_titleGreen{font-size:24px; color:#71A944; height:30px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #71A944; width:120px; float:left}
+.advice_titleGreen{font-size:24px; color:#00a65a; height:30px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #00a65a; width:120px; float:left}
 .advice_titleGray{font-size:14px; color:#aeaeae;border-bottom:2px solid #aeaeae; width:550px;height:20px; padding-top:23px; padding-bottom:5px;float:left; text-align:right}
 .advice_titleGray a{text-decoration:none; color:#aeaeae; margin:0 5px;}
 .advice_titleGray a:hover{text-decoration:underline}
@@ -184,11 +184,11 @@ span.method{line-height: 28px;}
 	font: 13px/26px "微软雅黑";
 	color: #5a5a5a;}
 .medicine .med_tab{text-align: right;width: 100%;border-bottom: 1px solid #aeaeae ;height: 23px;}
-.med_tab a{padding-right: 5px;line-height: 23px;color: #71A944;font: 13px/26px "微软雅黑";}
-.med_table a{color: #71A944;font: 13px/26px "微软雅黑";}
-.med_table2 a{color: #71A944;font: 13px/26px "微软雅黑";}
+.med_tab a{padding-right: 5px;line-height: 23px;color: #00a65a;font: 13px/26px "微软雅黑";}
+.med_table a{color: #00a65a;font: 13px/26px "微软雅黑";}
+.med_table2 a{color: #00a65a;font: 13px/26px "微软雅黑";}
 
-.family_disease_relation a{text-decoration:none; color:#71A944; margin:0 5px;}
+.family_disease_relation a{text-decoration:none; color:#00a65a; margin:0 5px;}
 .family_disease_relation a:hover{text-decoration:underline}
 
 .time_input select {

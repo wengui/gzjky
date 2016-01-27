@@ -9,6 +9,7 @@
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
@@ -244,8 +245,8 @@
   		$("#bpRemarkWindow").draggable({
 			disabled : true
 		});
-		$("#bpRemarkWindow").show(200);
-		showScreenProtectDiv(1);
+		$("#bpRemarkWindow").modal('show');
+		//showScreenProtectDiv(1);
   }
   
   function addRemark(){
@@ -283,7 +284,8 @@
   }
   
   function closeDiv() {
-		$("#bpRemarkWindow").hide(200);
+		//$("#bpRemarkWindow").hide(200);
+		$("#bpRemarkWindow").modal('hide');
 		hideScreenProtectDiv(1);
 	}
 </script>
@@ -434,20 +436,12 @@
 		<div id="transparentDiv" ></div>
 		<div id="transparentDiv2"></div>
 		  
-		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-		<html xmlns="http://www.w3.org/1999/xhtml">
-		<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title></title>
-		<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-		
-		</head>
-		<body><br />
-		 <div class="popup" id="bpRemarkWindow" style="display:none;position:absolute;top:40px; left:100px;z-index: 30;">
+<div class="modal fade" id="bpRemarkWindow"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%">
+  <div class="modal-dialog">	
 		  <div class="popup_header">
 		    <ul>
 		      <li class="name_popupHeader">血压备注</li>
-		      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv();">X</a></li>
+		      <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
 		    </ul>
 		  </div>
 		      <form id="bpRemarkform" method="post">
@@ -472,22 +466,20 @@
 			            </li>            
 			  		</ul>
 			  		<ul>
-			            <li class="btn_popup_confirm2" >
-			                &nbsp;&nbsp;
-			            	<a href="javascript:void(0)" class="btn" onclick="addRemark();"><span style="color:#5a5a5a">确定</span></a>
-					        <a href="javascript:void(0)" class="btn" onclick="closeDiv();"><span style="color:#5a5a5a">取消</span></a>
+			            <li class="btn_popup_confirm2 text-right">
+			                
+			            	<a href="javascript:void(0)" class="btn btn-success"  onclick="addRemark();">确定</a>
+			            	&nbsp;&nbsp;
+					        <a href="javascript:void(0)" class="btn btn-success"  data-dismiss="modal">取消</a>
 			            </li>     
 			  		</ul>
 			  </div>
 		   </form>
 		
 		 </div>
-		
-		</body>
-		</html>
 		 </div>
-		  </div>
-     </aside><!-- /.right-side -->
+</div>
+</aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
 <!--bp_history end-->
 </body>
