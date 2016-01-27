@@ -25,6 +25,7 @@ var startDate="";
 var endDate="";
 //var dateType=0;
 var heartType = 0;
+menuId = "#ecg";
 $.fn.page.settings.currentnum = 1;
 function startInit(){
 	  	
