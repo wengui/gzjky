@@ -5,43 +5,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120医生服务中心</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 
-var edit_image = "<c:url value='/images/button/btn_editor.png'/>";
-var save_image = "<c:url value='/images/button/btn_preserve.png'/>";
+var edit_image = "<a class='btn btn-success'><i class='fa fa-edit'></i> 编辑</a>";
+var save_image = "<a class='btn btn-success'><i class='fa fa-save'></i> 保存</a>";
 
-$(function(){
-	var $div_hrli = $("div.healthRecords_menu_yuan ul li");
+function startInit(){
+	var $div_hrli = $(".safePage");
 	//健康病史页签
 	var tab_map = {0:1};
 	//健康病史页签加载函数
 	//var function_map = {0:"query_memberBaseInfo",1:"queryMemberHabit",2:"queryMemberFamilyDisease",
 	//								3:"queryMemberHtComplication",4:"queryMemberIllnessHistory",5:"queryMemberHtSpecial",6:"queryMemberMedicalExaminationList"};
-	var iframe_map = {0:"memberHabitIframe",1:"memberFamilyDiseaseIframe",
-									2:"memberHtComplicationIframe",3:"memberIllnessHistoryIframe",4:"memberHtSpecialIframe",
-									5:"memberMedicalExamintaionIframe",6:"healthTestIframe"};
-	var page_map = {0:"memberhabit",1:"memberfamilydisease",
-									2:"memberhtcomplication",3:"memberIllnessHistory",4:"memberhtspecial",
-									5:"medicalexamination",6:""};
+	var iframe_map = {"memberhabit":"memberHabitIframe","memberfamilydisease":"memberFamilyDiseaseIframe",
+			"memberhtcomplication":"memberHtComplicationIframe","memberIllnessHistory":"memberIllnessHistoryIframe","memberhtspecial":"memberHtSpecialIframe",
+			"memberhtspecial":"memberMedicalExamintaionIframe","check":"healthTestIframe"};
+	var page_map = {"memberhabit":"memberhabit","memberfamilydisease":"memberfamilydisease",
+									"memberhtcomplication":"memberhtcomplication","memberIllnessHistory":"memberIllnessHistory","memberhtspecial":"memberhtspecial",
+									"memberhtspecial":"medicalexamination","check":"check"};
 									//5:"medicalexamination",6:"http://zijin.995120.cn/jktj/hasControl/index.htm?patientId=24913"};
 	$div_hrli.click(function(){	
-	   $(this).addClass("selected_healthRecords_yuan").siblings().removeClass("selected_healthRecords_yuan");
+		//alert($(this).attr('id'));
 	   var index = $div_hrli.index(this);
 	   $("div.tab_healthRecords_box > div").eq(index).show().siblings().hide(); 
 
@@ -50,22 +42,25 @@ $(function(){
 			   
 		}else{
 		    //var fn = function_map[index];
-		   var frame_sel = iframe_map[index];
-		    var page = page_map[index];
-		    if(index == 6){
-		    	document.getElementById(frame_sel).src = page;
-		    }else{
-		    	document.getElementById(frame_sel).src = "./"+page+".jsp";
-		    }
+		    var frame_sel = "";
+		    var page = "";
+		   frame_sel = iframe_map[$(this).attr('id')];
+		   page = page_map[$(this).attr('id')];
 		    
-		    tab_map[index] = 1;
+		    if(page !=null || page !=""){
+		    	if(page == "check"){
+		    		document.getElementById(frame_sel).src = "";
+		    	}else{
+		    		document.getElementById(frame_sel).src = "./"+page+".jsp";
+		    	}
+		    }
 		 }
 	});
 
    //$("table.bPhistory_table tr:even").addClass("even");
    //$("table.bPhistory_table tr:odd").addClass("odd");
    
-   })
+   }
   
   
 	var formdic = {"memberBaseInfo_form":1,"detail_form":1,"workinfo_form":1}
@@ -114,7 +109,6 @@ $(function(){
 			    	};
 			    	//按钮变成编辑图标，元素变成不可以编辑
 			    	$(document.getElementById(iframeId).contentWindow.document).find("#"+formId+" :input").attr("disabled",true);
-					$(obj).find("img").attr("src",edit_image);
 					$.alert("修改成功");
 			    }else{
 			    	$.alert("修改失败");
@@ -138,22 +132,138 @@ $(function(){
 </script>
 </head>
 
-<body style="background:#e8e3d7">
-<div class="health_records">
-  <div class="tgreen_title_BPhistory">健康病历</div>
+<body onload="startInit()"  class="skin-blue">
+	<!-- header logo: style can be found in header.less -->
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!-- Left side column. contains the logo and sidebar -->
+	<%@ include file="../../shared/sidebarMenu.jsp"%>
+	<aside class="right-side">
+	<!-- Content Header (Page header) -->
+        <section class="content-header">
+             <h1>健康病历</h1>
+             <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                  <li>健康档案</li>
+                  <li class="active">健康病历</li>
+             </ol>
+         </section>
+         
+<div class="">
   <!--tab_healthRecords start-->
-  <div class="tab_healthRecords">
-	<div class="healthRecords_menu_yuan">
-           <ul>
-             <li title="生活习惯" class="selected_healthRecords_yuan" ><img src="<c:url value='/images/health/habit.png'/>"><span>生活习惯</span></li>
-             <li title="家族遗传史"><img src="<c:url value='/images/health/family.png'/>"><span>家族遗传史</span></li>
-             <li title="当前并发症"><img src="<c:url value='/images/health/cp.png'/>"><span>当前并发症</span></li>
-             <li title="疾病史"><img src="<c:url value='/images/health/disease.png'/>"><span>疾病史</span></li>
-             <li title="高血压专项"><img src="<c:url value='/images/health/bp.png'/>"><span>高血压专项</span></li>
-             <li title="健康检查"><img src="<c:url value='/images/health/health.png'/>"><span>健康检查</span></li>
-			 <li style="margin-right: -25px" title="健康体检"><img src="<c:url value='/images/health/icon_physical_z.jpg'/>"><span>健康体检</span></li>            
-           </ul>
-	 </div>
+  <div class="">
+		<div class="row">
+           <div class="col-lg-2 col-xs-6 safePage" id="memberhabit">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+            <div class="inner">
+                <h4>生活习惯</h4>
+             </div>
+             <div class="icon  text-center">
+                  <i class="ion ion-bag"></i>
+             </div>
+             <a href="#" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+             </a>
+             </div>
+            </div><!-- ./col -->
+            <div class="col-lg-2 col-xs-6 safePage" id="memberfamilydisease">
+               <!-- small box -->
+               <div class="small-box bg-green">
+                    <div class="inner">
+                    <h4>家族遗传史</h4>
+                    </div>
+                    <div class="icon">
+                         <i class="ion ion-stats-bars"></i>
+                    </div>
+                   <a href="#" class="small-box-footer">
+                	More info <i class="fa fa-arrow-circle-right"></i>
+             		</a>
+               </div>
+            </div><!-- ./col -->
+         <div class="col-lg-2 col-xs-6 safePage" id="memberhtcomplication">
+             <!-- small box -->
+             <div class="small-box bg-yellow">
+                 <div class="inner">
+                     <h4>当前并发症</h4>
+                 </div>
+                 <div class="icon">
+                     <i class="ion ion-person-add"></i>
+                 </div>
+                    <a href="#" class="small-box-footer">
+                	More info <i class="fa fa-arrow-circle-right"></i>
+             		</a>
+             </div>
+         </div><!-- ./col -->
+         <div class="col-lg-2 col-xs-6 safePage" id="memberIllnessHistory">
+             <!-- small box -->
+             <div class="small-box bg-red">
+                 <div class="inner">
+                     <h4>疾病史</h4>
+                 </div>
+                 <div class="icon">
+                     <i class="ion ion-pie-graph"></i>
+                 </div>
+                   <a href="#" class="small-box-footer">
+                	More info <i class="fa fa-arrow-circle-right"></i>
+             		</a>
+             </div>
+         </div><!-- ./col -->
+         <div class="col-lg-2 col-xs-6 safePage" id="memberhtspecial">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+            <div class="inner">
+                <h4>高血压专项</h4>
+             </div>
+             <div class="icon">
+                  <i class="ion ion-bag"></i>
+             </div>
+             <a href="#" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+             </a>
+             </div>
+            </div><!-- ./col -->
+            <div class="col-lg-2 col-xs-6 safePage" id="medicalexamination">
+               <!-- small box -->
+               <div class="small-box bg-green">
+                    <div class="inner">
+                    <h4>健康检查</h4>
+                    </div>
+                    <div class="icon">
+                         <i class="ion ion-stats-bars"></i>
+                    </div>
+                   <a href="#" class="small-box-footer">
+                	More info <i class="fa fa-arrow-circle-right"></i>
+             		</a>
+               </div>
+            </div><!-- ./col -->
+       </div><!-- /.row -->
+		<div class="row">
+           
+         <div class="col-lg-2 col-xs-6 safePage" id="check">
+             <!-- small box -->
+             <div class="small-box bg-yellow">
+                 <div class="inner">
+                     <h4>健康体检</h4>
+                 </div>
+                 <div class="icon">
+                     <i class="ion ion-person-add"></i>
+                 </div>
+                    <a href="#" class="small-box-footer">
+                	More info <i class="fa fa-arrow-circle-right"></i>
+             		</a>
+             </div>
+         </div><!-- ./col -->
+         <div class="col-lg-3 col-xs-6">&nbsp;</div><!-- ./col -->
+       </div><!-- /.row -->
+       <!-- top row -->
+       <div class="row">
+           <div class="col-xs-12 connectedSortable">
+               
+           </div><!-- /.col -->
+       </div>
+       <!-- /.row -->
+       
     <div class="tab_healthRecords_box">
        	
       <div>
@@ -184,5 +294,7 @@ $(function(){
   </div>
   <!--tab_healthRecords end-->
 </div>
+</div>
+</aside>
 </body>
 </html>

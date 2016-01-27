@@ -31,6 +31,7 @@
   var endDate="";
   //var dateType=0;
   var bloodType = 0;
+  menuId = "#bp";
   function startInit(){
 	  queryStart();
 	  jQuery('#bpRemarkform').validationEngine("attach",
@@ -43,6 +44,7 @@
     				//showArrow:false,
     			}
    	   ); 
+
   }
   function queryStart(){
 	  $.fn.page.settings.currentnum = 1;

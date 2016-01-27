@@ -4,14 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
@@ -23,20 +22,12 @@
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 	var family_form = "family_form";
 	var save_image = window.parent.save_image;
-	$(function(){
+	function startInit(){
 		queryMemberFamilyDisease();
-	});
+	};
 	
 	function queryMemberFamilyDisease(){
     	var requestUrl = "/gzjky/healthRecordAction/queryMemberFamilyDisease.do";
@@ -518,83 +509,85 @@
 </script>
 
 </head>
-<body  style="background:#e8e3d7">
+<body  onload="startInit()"  class="skin-blue">
 <div style="font-size:13px;font-family:微软雅黑">
 <form id="family_form">
         <!--basic_information start-->
-        <div class="basic_information">
-          <div class="btn_title_informationModify">
-            <ul>
-              <li class="tLeft" style="font-size:17px; font-weight:500;">家族遗传史</li>
-              <li class="tRight"><a href="javascript:void(0)" onclick="edit_family(this)"><img src="../../../images/button/btn_editor.png" /></a></li>
-            </ul>
-          </div>
-          <div class="informationModify_main2" style="overflow-y:auto;position:relative;height: 500px;">
-            <ul>
-             <li class="tLeft_informationModify">
-               <ul>         	
-                 <li class="tgrey_informationModify">高血压：</li>
-                 <li class="tblack_informationModify">
-                 	 <span class="select-style_familydisease">
-	                 <select class="selectMax_informationModify" id="heighBloodPressure"  name="heighBloodPressure" onchange="changeHeighBloodPressure()">
-				            <option value="0">无</option>
-				            <option value="1">有</option>
-	                 </select>
-	                 </span>
-                 </li>
-                 <div class="family_disease_relation" id="heighBloodPressure_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
-                        
-                 <li class="tgrey_informationModify">高血脂：</li>
-                 <li class="tblack_informationModify">
-                 	<span class="select-style_familydisease">
-	                 <select class="selectMax_informationModify" id="heighBloodFat"  name="heighBloodFat"  onchange="changeHeighBloodFat()">
-				            <option value="0">无</option>
-				            <option value="1">有</option>
-	                 </select>    
-	                 </span>             
-                 </li>
-                 <div class="family_disease_relation" id="heighBloodFat_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
-                
-                
-                 <li class="tgrey_informationModify">糖尿病：</li>
-                 <li class="tblack_informationModify">
-                 <span class="select-style_familydisease">
-	                 <select class="selectMax_informationModify" id="diabetesMellitus"  name="diabetesMellitus" onchange="changeDiabetesMellitus()">
-				            <option value="0">无</option>
-				            <option value="1">有</option>
-	                 </select>   
-	                 </span>                 
-                 </li>
-                 <div class="family_disease_relation" id="diabetesMellitus_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
-                 
-                 
-                 <li class="tgrey_informationModify">冠心病：</li>
-                 <li class="tblack_informationModify">
-                 <span class="select-style_familydisease">
-	                 <select class="selectMax_informationModify" id="coronaryDisease"  name="coronaryDisease"  onchange="changeCoronaryDisease()">
-				            <option value="0">无</option>
-				            <option value="1">有</option>
-	                 </select>      
-	                 </span>             
-                 </li>
-                 <div class="family_disease_relation" id="coronaryDisease_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
-                 
-                 
-                 <li class="tgrey_informationModify">脑血管意外：</li>
-                 <li class="tblack_informationModify">
-                 <span class="select-style_familydisease">
-	                 <select class="selectMax_informationModify" id="cardiovascularAccident"  name="cardiovascularAccident" onchange="changeCardiovascularAccident()">
-				            <option value="0">无</option>
-				            <option value="1">有</option>
-	                 </select>         
-	                 </span>          
-                 </li>
-                 <div class="family_disease_relation" id="cardiovascularAccident_relation" align="left"  style="margin-left:80px;padding-top:40px"></div>
-                 
-               </ul>
-             </li>
-            </ul>
-          </div> 
+        <div>
+        <div class="box box-info">
+              <div class="box-header">
+                  <h3 class="box-title">家族遗传史</h3>
+              </div>		
+              <div class="box-body">
+				         <div class="row form-group btn_title_informationModify">
+					          	<div class="col-lg-8 text-right" id="editImage" href="javascript:void(0)" onclick="edit_family(this)">
+					          		<a class="btn btn-success">
+					                   <i class="fa fa-edit"></i> 编辑
+					             	</a>
+					            </div>
+ 							</div>
+	 			         <div class="row">
+					         <div class="col-lg-8">
+						        <div class="col-lg-10">
+						        	<span class="col-lg-4 text-right  form-span" >高血压：</span>
+						        	<li class="col-lg-8">
+					            	<span class="col-lg-12">
+	                 					<select class="col-lg-12 display-input" id="heighBloodPressure"  name="heighBloodPressure" onchange="changeHeighBloodPressure()">
+				            				<option value="0">无</option>
+				            				<option value="1">有</option>
+	                 					</select>
+	                 				</span>
+	                 				</li>
+						        </div>
+						        <div class="col-lg-10">
+						        	<lable class="col-lg-4 text-right form-span">高血脂：</lable>
+						        	<li class="tblack_informationModify">
+						        	<span class="select-style_familydisease">
+	                 					<select class="col-lg-12 display-input" id="heighBloodFat"  name="heighBloodFat"  onchange="changeHeighBloodFat()">
+				            				<option value="0">无</option>
+				            				<option value="1">有</option>
+	                 					</select>    
+	                 				</span>
+	                 				</li>  
+						        </div>
+
+						        <div class="col-lg-10">
+						        	<span class="col-lg-4 text-right  form-span">糖尿病：</span>
+						        	<li class="tblack_informationModify">
+						        	<span class="select-style_familydisease">
+	                 					<select class="col-lg-12 display-input" id="diabetesMellitus"  name="diabetesMellitus" onchange="changeDiabetesMellitus()">
+				            				<option value="0">无</option>
+				            				<option value="1">有</option>
+	                 					</select>   
+	                 				</span>
+	                 				</li>
+						        </div>
+						        <div class="col-lg-10">
+						        	<lable class="col-lg-4 text-right form-span">冠心病：</lable>
+						        	<li class="tblack_informationModify">
+                 					<span class="select-style_familydisease">
+	                 					<select class="col-lg-12 display-input" id="coronaryDisease"  name="coronaryDisease"  onchange="changeCoronaryDisease()">
+				            				<option value="0">无</option>
+				            				<option value="1">有</option>
+	                 					</select>      
+	                 				</span>             
+                 					</li>
+						        </div>
+						        <div class="col-lg-10">
+						        	<span class="col-lg-4 text-right form-span">脑血管意外：</span>
+						        	<li class="tblack_informationModify">
+                 					<span class="select-style_familydisease">
+	                 					<select class="selectMax_informationModify" id="cardiovascularAccident"  name="cardiovascularAccident" onchange="changeCardiovascularAccident()">
+				            				<option value="0">无</option>
+				            				<option value="1">有</option>
+	                 					</select>         
+	                 				</span>          
+                 					</li>
+						        </div>
+				        </div>
+			        </div>
+			     </div>
+			    </div>
         </div>
         <!--basic_information start-->
 </form>
