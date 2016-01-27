@@ -16,9 +16,7 @@ td {
 </style>
 <%@ include file="../shared/importCss.jsp"%>
 <%@ include file="../shared/importJs.jsp"%>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
+
 <!-- Style CSS -->
 
 
