@@ -23,8 +23,8 @@
   var startDate="";
   var endDate="";
   function startInit(){
-	  hideLoading();
-	  queryStart();
+	  //hideLoading();
+	  //queryStart();
   }
   function queryStart(){
 	  $.fn.page.settings.currentnum = 1;
@@ -227,17 +227,18 @@
 			
 				</div>
 				
-				<div id="divloading">
-					<img src="../../../images/public/blue-loading.gif" />
-				</div>
-				
-				<div id="transparentDiv" ></div>
-				
-				<div id="transparentDiv2"></div>
+
 				 </div>
 				<!--bp_history end-->
 		</div>
      </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->     
 </body>
+<div id="divloading">
+	<img src="../../../images/public/blue-loading.gif" />
+</div>
+
+<div id="transparentDiv" ></div>
+
+<div id="transparentDiv2"></div>
 </html>

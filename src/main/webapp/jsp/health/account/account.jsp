@@ -43,8 +43,8 @@
   var endDate="";  
   
   function startInit(){
-	  queryStart();
-	  queryBalance();
+	  //queryStart();
+	  //queryBalance();
   }
  
   
