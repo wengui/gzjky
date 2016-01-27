@@ -17,9 +17,6 @@
 <%@ include file="shared/importJs.jsp"%>
 <!-- scripts -->
 
-
-<script type="text/javascript" src="<c:url value='/js/jquery/jquery-1.4.2.min.js'/>"></script>
-
 <script type="text/JavaScript">
 
 

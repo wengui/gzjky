@@ -5,11 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>995120健康服务中心</title>
-<%@ include file="./shared/importCss.jsp"%>
-
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/password.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_bottom.css'/>" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
