@@ -293,13 +293,13 @@
                   <li class="active">基本信息</li>
              </ol>
          </section>
-	<div class="bp_accouint">
+	<div class="bp_accouint" id="main_div">
 		  <div class="box box-success">
               <div class="box-header">
                   <h3 class="box-title">基本信息</h3>
               </div>		
               <div class="box-body">
-				    <div  id="main_div">
+				    <div>
 					    <form id="memberBaseInfo_form" class="user_form formular">
 					      <!--basic_information start-->
 					        <div class="row form-group btn_title_informationModify">
