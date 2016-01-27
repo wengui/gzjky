@@ -23,16 +23,6 @@
 	type="text/css" />
 <link rel="stylesheet"
 	href="<c:url value='/js/artDialog/skins/default.css'/>" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>"
-	type="text/javascript"></script>
-<script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>"
-	type="text/javascript"></script>
-<script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>"
-	type="text/javascript"></script>
-<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/common/balance.js'/>"
-	type="text/javascript"></script>
-
 
 
 <script type="text/JavaScript">
