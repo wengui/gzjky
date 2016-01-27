@@ -24,7 +24,7 @@
 	 var platformServiceList;
 	 
 	 function startInit(){
-	  	queryStart();
+	  	//queryStart();
 	 }
 	 
 	 function queryStart(){

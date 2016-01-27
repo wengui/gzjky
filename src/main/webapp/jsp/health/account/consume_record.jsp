@@ -25,7 +25,7 @@
   var endDate="";
   var recordList;
   function startInit(){	
-	  queryStart();
+	  //queryStart();
   }
   function queryStart(){
 	  $.fn.page.settings.currentnum = 1;  
