@@ -29,6 +29,8 @@
 <!-- scripts -->
 <script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
+	menuId = "#equipmentBind";
+	
 	$.metadata.setType("attr", "validate");
 	$(function(){$("#memberBindDevice_form").validate({
 		messages:{

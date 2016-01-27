@@ -23,6 +23,8 @@
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script src="<c:url value='/js/dictionaryInfo.js'/>" type="text/javascript"></script>
 <script type="text/javascript">
+
+   menuId = "#baseinfo";
    var edit_image = "<a class='btn btn-success'><i class='fa fa-edit'></i> 编辑</a>";
    var save_image = "<a class='btn btn-success'><i class='fa fa-save'></i> 保存</a>";
    var basic_form_id =  "memberBaseInfo_form";

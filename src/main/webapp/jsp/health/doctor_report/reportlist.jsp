@@ -22,6 +22,7 @@
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script type="text/javascript">
 
+  menuId = "#report";
   var startDate="";
   var endDate="";
   var recordList = null;

@@ -19,6 +19,7 @@
 <script type="text/javascript" src="<c:url value='/js/common/date.js'/>"></script>
 
 <script type="text/javascript">
+	menuId = "#sos";
 	//设备型号数组
 	var parameter=[
 				

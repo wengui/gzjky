@@ -19,8 +19,10 @@
 <script src="<c:url value='/js/page/jquery.metadata.js'/>" type="text/javascript"></script>
 
 <script type="text/javascript">
+
 	$.metadata.setType("attr", "validate");
 	var validator;
+	menuId = "#recharge";
 	$(function(){
 	    $("#errMessageArea").empty();
 		validator = $("#addform").validate({

@@ -31,6 +31,7 @@
 <script src="<c:url value='/js/general.js'/>"></script>
 
 <script type="text/javascript">
+menuId = "#pwd";
 	$(function(){
 		jQuery('#changePwd_form').validationEngine("attach",
 		    	{
