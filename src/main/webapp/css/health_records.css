@@ -36,7 +36,7 @@
 .tab_healthRecords_menu ul{margin:0;padding:0px; height:95px;}
 .tab_healthRecords_menu li{width:220px; margin-right:2px; float:left; background:#f7f7f7;height:93px; line-height:93px; display:block; cursor:pointer; border:1px solid #f7f7f7}
 .tab_healthRecords_menu li.selected_healthRecords{border:1px solid #71A944}
-.tab_healthRecords_box{width:670px; float:left;}
+.tab_healthRecords_box{width:100%; float:left;}
 .hide_healthRecords{display:none;}
 .tgreenPrompt{width:660px; float:left; height:30px; line-height:30px; text-align:left; color:#71A944; background:#f7f7f7; padding-left:10px;}
 .tblackPrompt{color:#5a5a5a}

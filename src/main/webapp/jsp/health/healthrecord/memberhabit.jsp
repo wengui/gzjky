@@ -4,10 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
@@ -16,22 +16,15 @@
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/dictionaryInfo.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
+		var edit_image = window.parent.edit_image;
 		var save_image = window.parent.save_image;
 		var habit_form = "habit_form";
-		$(function(){
+		function startInit(){
 			$("#"+habit_form+" :input").attr("disabled",true);
 			queryDictionaryInfo("memberHabit");
 			queryMemberHabit();
-		});
+		};
 		
 		function queryMemberHabit(){
 			var requestUrl = "/gzjky/healthRecordAction/queryMemberHabit.do";
@@ -87,7 +80,8 @@
 			  }
 			
 			obj.onclick = function(){save_habit(obj);};
-			$(obj).find("img").attr("src",save_image);
+			$("#editImage").empty();
+	    	$("#editImage").html(save_image);
 		}
 		function save_habit(obj){
 			var url = "/gzjky/healthRecordAction/editMemberHabit.do";
@@ -130,182 +124,125 @@
 	    function get_requestPara(formId){
 	    	return window.parent.get_requestPara("memberHabitIframe",formId);
 	    }
-	    function send_request_forDisease(formId,obj,requestUrl,para){
-	    	window.parent.send_request_forDisease("memberHabitIframe",formId,obj,requestUrl,para)
-	    }
+	    
+	 	/*
+		id为div的id,obj按钮对象
+		*/
+		function send_request_forDisease(formId,obj,requestUrl,para){
+			showScreenProtectDiv(1);
+			   showLoading();
+			xmlHttp = $.ajax({
+				url: requestUrl,
+				async:true,
+				data:para,
+				dataType:"json",
+				type:"POST",
+				complete:function(){
+				    hideScreenProtectDiv(1);
+			        hideLoading();
+				},
+				error:function(){
+					$.alert('无权限');
+				},success:function(response){
+				    var state = response.updateFlag;
+				    if(state == "1"){
+				    	obj.onclick = function(){
+				    		edit_habit(obj);
+				    	};
+				    	//按钮变成编辑图标，元素变成不可以编辑
+			    		$("#"+formId+" :input").attr("disabled",true);
+			    		$("#editImage").empty();
+				    	$("#editImage").html(edit_image);
+						$.alert("修改成功");
+				    }else{
+				    	$.alert("修改失败");
+				    }
+				}
+			});
+		}
 </script>
 </head>
-<body style="background:#e8e3d7">
+<body onload="startInit()"  class="skin-blue">
 <div style="font-size:13px;font-family:微软雅黑">
+
 <form id="habit_form">
    <!--detailed_information start-->
-   <div class="detailed_information">
-     <div class="btn_title_informationModify">
-       <ul>
-         <li class="tLeft" style="font-size:17px; font-weight:500;">生活习惯</li>
-         <li class="tRight"><a href="javascript:void(0)" onclick="edit_habit(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
-       </ul>
-     </div>
-     <div class="informationModify_main">
-       <ul>
-         <li class="detailed_information_left">
-           <ul>
-             <li class="tgrey_informationDetailed">工作类型：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-              <select class="selectMax_informationModify" id="workType"  name="workType" >
-		           <option value="脑力">脑力</option>
-		           <option value="体力">体力</option>
-		           <option value="脑力+体力">脑力+体力</option>
-              </select>
-              </span>
-          </li>
-             <li class="tgrey_informationDetailed">血型：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" > 
-             <select class="selectMax_informationModify" id="aboBloodTypeDict"  name="aboBloodTypeDict" >
-		          <option value="A">A</option>
-		          <option value="B">B</option>
-		          <option value="AB">AB</option>
-		          <option value="O">O</option>
-             </select>
-              </span>    
-             </li>
-             <li class="tgrey_informationDetailed">腰围：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-              <select class="selectMax_informationModify" id="Waistline"  name="Waistline" >
-		           <option value="正常">正常</option>
-		           <option value="非正常">非正常</option>option>
-              </select>
-               </span>    
-          </li>
-             <li class="tgrey_informationDetailed">吸烟频次：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-              <select class="selectMax_informationModify" id="SmokeNum"  name="SmokeNum" >
-		           <option value="1-5根/天">1-5根/天</option>
-		           <option value="5-10根/天">5-10根/天</option>
-		           <option value="10-20根/天">10-20根/天</option>
-		           <option value="20根以上/天">20根以上/天</option>
-              </select>
-               </span>    
-             </li>
-             <li class="tgrey_informationDetailed">饮酒类型：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-              <select class="selectMax_informationModify" id="alcoholTypeDict"  name="alcoholTypeDict" >
-		           <option value="白酒">白酒</option>
-		           <option value="红酒">红酒</option>
-		           <option value="黄酒">黄酒</option>
-		           <option value="啤酒">啤酒</option>
-              </select>
-               </span>    
-             </li>
-             <li class="tgrey_informationDetailed">运动时长：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" > 
-              <select class="selectMax_informationModify"   id="SportTime"  name="SportTime">
-		           <option value="15分钟以下">15分钟以下</option>
-		           <option value="15-30分钟">15-30分钟</option>
-		           <option value="30-45分钟">30-45分钟</option>
-		           <option value="45-60分钟">45-60分钟</option>
-		           <option value="60-90分钟">60-90分钟</option>
-		           <option value="90分钟以上">90分钟以上</option>
-              </select>
-               </span>    
-             </li>
-             <li class="tgrey_informationDetailed">降压药：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-              <select class="selectMax_informationModify" id="Hypotensor"  name="Hypotensor" >
-	               <option value="从来不吃">从来不吃</option>
-	               <option value="按时服用">按时服用</option>
-              </select>
-               </span>    
-             </li>
-           </ul>
-         </li>
-         <li class="detailed_information_right">
-           <ul>
-             <li class="tgrey_informationDetailed">工作压力：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-              <select class="selectMax_informationModify"  id="workPressure"  name="workPressure" >
-		           <option value="高">高</option>
-		           <option value="中">中</option>
-		           <option value="低">低</option>
-              </select>
-               </span>    
-             </li>
-             <li class="tgrey_informationDetailed">体重：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-              <select class="selectMax_informationModify"  id="Weight"  name="Weight">
-		           <option value="未超重">未超重</option>
-		           <option value="超重">超重</option>
-              </select>    
-               </span>                  	
-             </li>
-             <li class="tgrey_informationDetailed">吸烟年限：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-             	  <select class="selectMax_informationModify"  id="SmokeTime"  name="SmokeTime" onchange="changeSmokingTime(this)">
-			           <option value="不吸烟">不吸烟</option>
-			           <option value="1-3年">1-3年</option>
-			           <option value="3-5年">3-5年</option>
-			           <option value="5-10年">5-10年</option>
-			           <option value="10年以上">10年以上</option>
-               </select> 
-                </span>      
-             </li>
-             <li class="tgrey_informationDetailed">饮酒频次：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-             	  <select class="selectMax_informationModify"  id="drinkFreqCodeDict"  name="drinkFreqCodeDict" onchange="changeDrinkingRate(this)">
-			           <option value="不饮酒">不饮酒</option>
-			           <option value="1-50ml/天">1-50ml/天</option>
-			           <option value="50-100ml/天">50-100ml/天</option>
-			           <option value="100-300ml/天">100-300ml/天</option>
-			           <option value="300ml以上/天">300ml以上/天</option>
-               </select>  
-                </span>                      		
-             </li>
-             <li class="tgrey_informationDetailed">运动频次：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-              	  <select class="selectMax_informationModify"  id="SportNum"  name="SportNum" onchange="changeSportRate(this)">
-			           <option value="不运动">不运动</option>
-			           <option value="1天/周">1天/周</option>
-			           <option value="2天/周">2天/周</option>
-			           <option value="3天/周">3天/周</option>
-			           <option value="4天/周">4天/周</option>
-			           <option value="5天/周">5天/周</option>
-			           <option value="6天/周">6天/周</option>
-               </select>  
-                </span>                      		
-             </li>
-             <li class="tgrey_informationDetailed">睡眠时长：</li>
-             <li class="tblack_informationDetailed">
-             <span class="select-style_habit" >
-              	  <select class="selectMax_informationModify"  id="SleepTime"  name="SleepTime">
-			           <option value="0-1小时">0-1小时</option>
-			           <option value="1-2小时">1-2小时</option>
-			           <option value="2-3小时">2-3小时</option>
-			           <option value="3-4小时">3-4小时</option>
-			           <option value="4-5小时">4-5小时</option>
-			           <option value="5-6小时">5-6小时</option>
-			           <option value="6-7小时">6-7小时</option>
-			           <option value="7-8小时">7-8小时</option>
-			           <option value="8小时以上">8小时以上</option>
-               </select>
-               </span>                   
-             </li>   
-           </ul>
-         </li>
-       </ul>
-     </div>
+   <div>
+     	<div class="box box-info">
+              <div class="box-header">
+                  <h3 class="box-title">生活习惯</h3>
+              </div>		
+              <div class="box-body">
+				         <div class="row form-group btn_title_informationModify">
+					          	<div class="col-lg-8 text-right" id="editImage" href="javascript:void(0)" onclick="edit_habit(this)">
+					          		<a class="btn btn-success">
+					                   <i class="fa fa-edit"></i> 编辑
+					             	</a>
+					            </div>
+ 							</div>
+	 			         <div class="row">
+					         <div class="col-lg-8">
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span" >工作类型：</span>
+					            <select class="display-input col-lg-8 selectMax_informationModify" id="workType"  name="workType" >
+             					</select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">工作压力：</lable>
+						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="workPressure"  name="workPressure" ></select>
+						        </div>
+
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span">血型：</span>
+						        	<select class="display-input col-lg-8 selectMax_informationModify" id="aboBloodTypeDict"  name="aboBloodTypeDict" ></select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">体重：</lable>
+						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="Weight"  name="Weight"></select>  
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right form-span">腰围：</span>
+						        	<select class="display-input col-lg-8 selectMax_informationModify" id="Waistline"  name="Waistline" ></select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right form-span">睡眠时长：</span>
+						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="SleepTime"  name="SleepTime"></select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">吸烟年限：</lable>
+						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="SmokeTime"  name="SmokeTime" onchange="changeSmokingTime(this)"></select> 
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span">吸烟频次：</span>
+									<select class="display-input col-lg-8 selectMax_informationModify" id="SmokeNum"  name="SmokeNum" ></select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">饮酒类型：</lable>
+						        	<select class="display-input col-lg-8 selectMax_informationModify" id="alcoholTypeDict"  name="alcoholTypeDict" ></select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span">饮酒频次：</span>
+						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="drinkFreqCodeDict"  name="drinkFreqCodeDict" onchange="changeDrinkingRate(this)"></select>  
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">运动时长：</lable>
+						        	<select class="display-input col-lg-8 selectMax_informationModify"   id="SportTime"  name="SportTime"></select>
+						        </div>
+						        <div class="col-lg-6">
+						        	<span class="col-lg-4 text-right  form-span">运动频次：</span>
+						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="SportNum"  name="SportNum" onchange="changeSportRate(this)"></select> 
+						        </div>
+						        <div class="col-lg-6">
+						        	<lable class="col-lg-4 text-right form-span">降压药：</lable>
+						        	<select class="display-input col-lg-8 selectMax_informationModify" id="Hypotensor"  name="Hypotensor" ></select>
+						        </div>
+						        <div class="col-lg-6">&nbsp;</div>
+				        </div>
+			        </div>
+			     </div>
+			    </div>
    </div>
+
 </form>
 </div>
  
