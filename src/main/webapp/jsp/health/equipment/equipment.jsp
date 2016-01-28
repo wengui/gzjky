@@ -94,53 +94,59 @@
 					||dia_bottom==null||dia_bottom==""){
 				isExistBlood = true;
 			}
-		
-			 div+="<div class='equipment_main' id='device_div_id_"+i+"'>"+
-           "<ul>"+
-            "<li class='tgrey_equipmentMain'>设备类型：</li>"+
-            "<li class='tblack_equipmentMain'>"+deviceType+"</li>"+
-            "<li class='tgrey_equipmentMain'>设备编号：</li>"+
-            "<li class='tblack_equipmentMain' id='serial_id_"+i+"'>"+serial_id+"<a href='javascript:void(0)' onclick='unbind("+i+")' title='解除绑定' class='pl_equipmentMain'>解除绑定</a></li>"+
-            "<li class='tgrey_equipmentMain'>SIM卡号：</li>"+
-            "<li class='tblack_equipmentMain' id='sim_"+i+"'>"+sim+"<a href='javascript:void(0)' class='pl_equipmentMain'><span title='SIM卡号修改' onclick='editSim("+i+");'>卡号修改</span></a></li>";
+			if(i%2==0){
+				 div+="<div class='callout callout-success' id='device_div_id_"+i+"'>"
+			}
+			else{
+				 div+="<div class='callout callout-info' id='device_div_id_"+i+"'>"
+			}
+			div+="<dl class='dl-horizontal'>"+
+			//div+="<ul>"+
+            "<dt>设备类型：</dt>"+
+            "<dd>"+deviceType+"</dd>"+
+            "<dt>设备编号：</dt>"+
+            "<dd id='serial_id_"+i+"'>"+serial_id+"<a href='javascript:void(0)' onclick='unbind("+i+")' title='解除绑定' class='pl_equipmentMain'>   解除绑定</a></dd>"+
+            "<dt>SIM卡号：</dt>"+
+            "<dd id='sim_"+i+"'>"+sim+"<a href='javascript:void(0)' class='pl_equipmentMain'><span title='SIM卡号修改' onclick='editSim("+i+");'>   卡号修改</span></a></dd>";
             //301设备
             if(flag){
-            div+="<li class='tgrey_equipmentMain'>远程定位：</li>"+
-            "<li class='tblack_equipmentMain'><img id='position_"+i+"' onclick=\"position('"+i+"');\" src='/gzjky/images/icon/quick.png' title='远程定位'/></li>";
+            div+="<dt>远程定位：</dt>"+
+            "<dd><img id='position_"+i+"' onclick=\"position('"+i+"');\" src='/gzjky/images/icon/quick.png' title='远程定位'/></dd>";
             }
             //是否有血压通知
             if(notice == 0){
-             div+="<li class='tgrey_equipmentMain' >血压通知：</li>"+
-            "<li class='tblack_equipmentMain' ><img title='点击开启测压通知' onclick=\"switchingPic('img_notice','"+i+"');\"  id='img_notice_"+i+"' src='/gzjky/images/icon/btn_off.png' /><span>已关闭血压检测短信通知服务</span></li>";
+             div+="<dt>血压通知：</dt>"+
+            "<dd><img title='点击开启测压通知' onclick=\"switchingPic('img_notice','"+i+"');\"  id='img_notice_"+i+"' src='/gzjky/images/icon/btn_off.png' /><span>已关闭血压检测短信通知服务</span></dd>";
             }else{
-             div+="<li class='tgrey_equipmentMain'>血压通知：</li>"+
-            "<li class='tblack_equipmentMain'><img title='点击关闭测压通知' id='img_notice_"+i+"' onclick=\"switchingPic('img_notice','"+i+"');\" src='/gzjky/images/icon/btn_on.png' /><span>已开启血压检测短信通知服务</span></li>";
+             div+="<dt>血压通知：</dt>"+
+            "<dd class='tblack_equipmentMain'><img title='点击关闭测压通知' id='img_notice_"+i+"' onclick=\"switchingPic('img_notice','"+i+"');\" src='/gzjky/images/icon/btn_on.png' /><span>已开启血压检测短信通知服务</span></dd>";
             }
            
            //301设备是操作,108血压设置
             if(flag){
-            div+= "<li class='tgrey_equipmentMain'>操作：</li>"+
-            "<li class='tblack_equipmentMain'><a href='javascript:void(0)'><span title='修改配置' onclick='updateConfiguration("+i+");'>修改配置</span></a></li>";
+            div+= "<dt>操作：</dt>"+
+            "<dd><a href='javascript:void(0)'><span title='修改配置' onclick='updateConfiguration("+i+");'>修改配置</span></a></dd>";
             }else{
-            div+= "<li class='tgrey_equipmentMain'>血压设置：</li>"
+            div+= "<dt>血压设置：</dt>"
             	if(isExistBlood){
-            		div+="<li class='tblack_equipmentMain' id='blood_set_"+i+"' >您暂未设置直传血压计的阈值"
+            		div+="<dd id='blood_set_"+i+"' >您暂未设置直传血压计的阈值"
           	  	}else{
-            		div+="<li class='tblack_equipmentMain' id='blood_set_"+i+"' >收缩压："+shr_bottom+"-"+shr_top+"mmHg,舒张压："+dia_bottom+"-"+dia_top+"mmHg"
+            		div+="<dd id='blood_set_"+i+"' >收缩压："+shr_bottom+"-"+shr_top+"mmHg,舒张压："+dia_bottom+"-"+dia_top+"mmHg"
             	}
             
             if(isExistBlood){
-            	div+="<a href='javascript:void(0)' class='pl_equipmentMain'><span title='阈值设置' onclick='eidtBlood("+i+","+0+","+0+","+0+","+0+");'>阈值设置</span></a></li ><li></li><li  style='color:red;padding-left:90px;'>系统默认的正常血压范围（收缩压：90-140mmHg,舒张压：60-90mmHg）</li>";
+            	div+="<a href='javascript:void(0)' class='pl_equipmentMain'><span title='阈值设置' onclick='eidtBlood("+i+","+0+","+0+","+0+","+0+");'>阈值设置</span></a><dd  style='color:red'>系统默认的正常血压范围（收缩压：90-140mmHg,舒张压：60-90mmHg）</dd>";
             }
             else{
-            	div+="<a href='javascript:void(0)' class='pl_equipmentMain'><span title='阈值设置' onclick='eidtBlood("+i+","+shr_bottom+","+shr_top+","+dia_bottom+","+dia_top+");'>阈值设置</span></a></li ><li></li><li  style='color:red;padding-left:90px;'>系统默认的正常血压范围（收缩压：90-140mmHg,舒张压：60-90mmHg）</li>";
+            	div+="<a href='javascript:void(0)' class='pl_equipmentMain'><span title='阈值设置' onclick='eidtBlood("+i+","+shr_bottom+","+shr_top+","+dia_bottom+","+dia_top+");'>阈值设置</span></a><dd  style='color:red'>系统默认的正常血压范围（收缩压：90-140mmHg,舒张压：60-90mmHg）</dd>";
             }
             	
             
             }
            
-           div+="</ul>"+
-         "</div>"
+           //div+="</ul>"+
+         	div+="</dl>"+
+           "</div>"
 			}
 		}
 		$('#deviceInfo_head').after(div);
@@ -315,7 +321,7 @@
 				$.alert("发生异常");
 			},
 			success : function(response) {
-				var state = modelMap.result;
+				var state = response.result;
 				if(state =='1'){
 					$.alert('操作成功');
 				}
@@ -406,17 +412,17 @@
 					<div class="box-header">
 						<i class="fa fa-bullhorn"></i>
 						<h3 class="box-title">设备信息</h3>
+						<a href="./member_bind_device.jsp"><h3 class="btn btn-primary btn-sm" style="float:right;margin:4px">增加设备</h3></a>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
-						<div class="callout callout-success">
+								
 
 								<div class="header_equipment" id="deviceInfo_head">
 									
 								</div>
 
 
-						</div>
 				
 					</div>
 					<!-- /.box-body -->
