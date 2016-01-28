@@ -470,9 +470,9 @@
 			  		<ul>
 			            <li class="btn_popup_confirm2 text-right">
 			                
-			            	<a href="javascript:void(0)" class="btn btn-success"  onclick="addRemark();">确定</a>
+			            	<a href="javascript:void(0)" class="btn btn-info"  onclick="addRemark();">确定</a>
 			            	&nbsp;&nbsp;
-					        <a href="javascript:void(0)" class="btn btn-success"  data-dismiss="modal">取消</a>
+					        <a href="javascript:void(0)" class="btn btn-info"  data-dismiss="modal">取消</a>
 			            </li>     
 			  		</ul>
 			  </div>

@@ -15,7 +15,6 @@
 <%@ include file="./shared/importCss.jsp"%>
 <%@ include file="./shared/importJs.jsp"%>
 <link rel="Shortcut Icon" href="/995120.ico" />
-<link rel="stylesheet" href="<c:url value='/css/common.css'/>"
 	type="text/css" />
 <link rel="stylesheet" href="<c:url value='/css/index_common.css'/>"
 	type="text/css" />

@@ -75,7 +75,7 @@
          </section>
 		<!--bp_history start-->
 		<div class="bp_accouint">
-		  <div class="box box-success">
+		  <div class="box box-info">
               <div class="box-header">
                   <h3 class="box-title">心电详情</h3>
               </div>	

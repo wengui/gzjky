@@ -10,6 +10,7 @@
 <script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet"  type="text/css"/>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
@@ -216,16 +217,16 @@
 	}
 	
 	function edit_photo() {
-		$('#popWindow').draggable({
+		$('#selectImage').draggable({
 			disabled : true
 		});
-		$("#popWindow").show(200);
-		showScreenProtectDiv(1);
+		$("#selectImage").modal('show');
+		//showScreenProtectDiv(1);
 		$("#filePath").val("");
 	}
 	function closeDiv() {
-		$("#popWindow").hide(200);
-		hideScreenProtectDiv(1);
+		$("#selectImage").modal('hide');
+		//hideScreenProtectDiv(1);
 	}
 	
 	
@@ -494,13 +495,6 @@
 
 <div id="transparentDiv2"></div> 
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	function upload(){
 		var filePath = document.getElementById("filePath").value;
@@ -568,33 +562,29 @@
 		setTimeout("window.location.reload(true)",1500);
 
 		}
-	
-	
 </script>
-</head>
-<body>
- <div class="popup" id="popWindow" style="display:none;position:absolute;top:200px; left:100px;z-index: 30;height:300">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader">上传头像</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv();">X</a></li>
-    </ul>
-  </div>
-  <form id="upload_form" action="/gzjky/imageUploadAction/uploadHeadImage.do" method="post"  enctype="multipart/form-data"  target="hidden_frame">
-  <div class="popup_main">
-    <ul>
-      <li class="img_upload">
-      	<input type="file" id="filePath" name="filePath" ><br/>
-      </li>
-      <li class="btn_upload"><a href="javascript:void(0)"  class="btn" onclick="upload()"><span style="font-size:13px;color:#5a5a5a">上传</span></a></li>  
-      <li class="tgreen_bpPrompt">图像文件类型只限JPG、PNG、GIF、BMP等常见格式，大小不超过2M</li>
-      <li><iframe name='hidden_frame' id="hidden_frame" style='display:none'></iframe></li>
-    </ul>
-  </div>
-  </form>
+<div class="modal fade" id="selectImage" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%" >
+  <div class="modal-dialog">	
+	  <div class="popup_header">
+	    <ul>
+	      <li class="name_popupHeader">上传头像</li>
+	      <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+	    </ul>
+	  </div>
+	  <form id="upload_form" action="/gzjky/imageUploadAction/uploadHeadImage.do" method="post"  enctype="multipart/form-data"  target="hidden_frame">
+	  <div class="popup_main">
+	    <ul>
+	      <li class="img_upload">
+	      	<input type="file" class="btn btn-info" id="filePath" name="filePath" >
+	      </li>
+	      <li class="tgreen_bpPrompt">图像文件类型只限JPG、PNG、GIF、BMP等常见格式，大小不超过1M</li><br/><br/>
+	      <li class="btn_upload"><a href="javascript:void(0)"  class="btn btn-info"  onclick="upload()">上传</a></li>  
+	      <li><iframe name='hidden_frame' id="hidden_frame" style='display:none'></iframe></li>
+	    </ul>
+	  </div>
+  	</form>
  </div>
+</div>
 </aside><!-- /.right-side -->
-</body>
-</html>
 </body>
 </html>
