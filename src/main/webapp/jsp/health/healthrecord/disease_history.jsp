@@ -24,14 +24,12 @@ function startInit(){
 	//健康病史页签
 	var tab_map = {0:1};
 	//健康病史页签加载函数
-	//var function_map = {0:"query_memberBaseInfo",1:"queryMemberHabit",2:"queryMemberFamilyDisease",
-	//								3:"queryMemberHtComplication",4:"queryMemberIllnessHistory",5:"queryMemberHtSpecial",6:"queryMemberMedicalExaminationList"};
 	var iframe_map = {"memberhabit":"memberHabitIframe","memberfamilydisease":"memberFamilyDiseaseIframe",
 			"memberhtcomplication":"memberHtComplicationIframe","memberIllnessHistory":"memberIllnessHistoryIframe","memberhtspecial":"memberHtSpecialIframe",
-			"memberhtspecial":"memberMedicalExamintaionIframe","check":"healthTestIframe"};
+			"medicalexamination":"memberMedicalExamintaionIframe","check":"healthTestIframe"};
 	var page_map = {"memberhabit":"memberhabit","memberfamilydisease":"memberfamilydisease",
 									"memberhtcomplication":"memberhtcomplication","memberIllnessHistory":"memberIllnessHistory","memberhtspecial":"memberhtspecial",
-									"memberhtspecial":"medicalexamination","check":"check"};
+									"medicalexamination":"medicalexamination","check":"check"};
 									//5:"medicalexamination",6:"http://zijin.995120.cn/jktj/hasControl/index.htm?patientId=24913"};
 	$div_hrli.click(function(){	
 		//alert($(this).attr('id'));

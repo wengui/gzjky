@@ -4,10 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
@@ -24,21 +24,13 @@
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/dictionaryInfo.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 <style type="text/css">
 .advice_main table tr td span{float: right;text-align: right;}
 </style>
 <script type="text/javascript">
 		var save_image = window.parent.save_image;
 		var edit_image = window.parent.edit_image;
-		$(function(){
+		function startInit(){
 			queryDictionaryInfo("memberHtspecial");
 			queryHtspecial();
 	    	jQuery('#htspecialForm').validationEngine("attach",
@@ -47,12 +39,11 @@
 	    				maxErrorsPerField:1,
 	    				scroll:false,
 	    				focusFirstField:false
-	    				//binded:false,
-	    				//showArrow:false,
 	    			}
 	    	);
 			
-		});
+		};
+		
 		function queryHtspecial(){
 			var requestUrl = "/gzjky/healthRecordAction/queryMemberHtSpecial.do";
 			var para = '';
@@ -87,7 +78,6 @@
 			$("#htspecialForm").jsonForForm({data:obj,isobj:true});
 			$("input[name='isUseMedicine'][value='"+obj.isUseMedicine+"']").attr("checked",true);
 			var medicalDetailTable = document.getElementById("med_table");
-			//clearMedicalDetailTable(medicalDetailTable);
 			var medicineTakenItems = obj.medicineTakenItems;
 			if(medicineTakenItems != null){
 				for(var k=0;k<medicineTakenItems.length;k++){
@@ -97,8 +87,6 @@
 			}
 			
 			$("#htspecialForm"+" :input").attr("disabled",true);
-			//$("#htspecialForm .med_tab").find("a").attr("disabled",true);
-			//$("#htspecialForm").find("#med_table a").attr("disabled",true);
 			$("#htspecialForm .med_tab").find("a").css("display","none");
 			$("#htspecialForm").find("#med_table a").css("display","none");
 		}
@@ -427,198 +415,129 @@
 		
 </script>
 </head>
-<body style="background:#e8e3d7">
-<div  style="display:none;height:500px;float:left; margin-top:24px;font-size:13px;font-family:微软雅黑;color:#5a5a5a;" id="htspecial_record" >
- <div class="search">
-    <ul>
-      <li class="criteria_search" style="height: 40px;font-size:17px; ">高血压专项</li>
-      <li class="btn_search" style="height: 40px;"><a href="javascript:void(0)" onclick="showAddspecial()"> 返回</a></li> 
-    </ul>
-  </div>
-  <div class="index_table">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table"  id="htspecialTable">
-      <colgroup>
-        <col width="10%" />
-        <col width="20%" />
-        <col width="10%" />
-        <col width="10%" />
-        <col width="10%" />
-        <col width="40%" />
-      </colgroup>
-      <tr>
-      	<th nowrap="nowrap">序号</th>
-        <th nowrap="nowrap" >患高血压日期</th>
-        <th nowrap="nowrap" >是否接受过降压治疗</th>
-        <th nowrap="nowrap" >最高收缩压</th>
-        <th nowrap="nowrap" >最高舒张压</th>
-        <th nowrap="nowrap" >操作</th>
-      </tr>
-    </table>
-  </div>
-  
+<body onload="startInit()"  class="skin-blue">
+<div  id="" >
 
-<script type="text/javascript">
-		var reg = /^[1-9]{6,16}/; 
-		
-		function gotoPage(){
-			var num = $.trim($("#gopage").val());
-			if(num==''){
-				$.alert('请输入页码');
-				$("#gopage").focus();
-				return false;
-			}
-			if(!/^\d+$/.test(num)){
-				$.alert('页码中包括非数字字符');
-				$("#gopage").focus();
-				return false;
-			}
-			if(num == '0') {
-			    $.alert('页码不正确');
-			    return false;
-			}
-			if(parseInt(num)>$.fn.page.settings.pagecount)
-			{
-				$.alert('无效的页码');
-				$("#gopage").focus();
-				return false;
-			}
-			pageClick(num);
-		}
-	</script>
- 
-<div class="index_page">
-  <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，当前：第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
-    <li class="page_button">
-	    <a href="###" class="page-first">首页</a>
-	    <a href="###" class="page-perv">上一页</a>
-	    <a href="###" class="page-next">下一页</a>
-	    <a href="###" class="page-last">末页</a>
-    </li>
-    <li class="page_select">
-    转<select id="gopage" onchange="gotoPage()">
-    	</select>页
-    </li>
-  </ul>
-</div>
-</div>
-
-<div  id="add_htspecial" >
-<div class="detailed_information"  style="font-size:13px;font-family:微软雅黑">
-     <div class="btn_title_informationModify">
-       <ul>
-         <li class="tLeft" ><span style="font-size:17px">高血压专项</span></li>
-         <li class="tRight">
-         	<a href="javascript:void(0)" onclick="edit_htSpecial(this)" id="editHtspecialBtn"><img src="../../../images/button/btn_editor.png" /></a>
-         	<!-- <a href="javascript:void(0)" onclick="showHtspecialRecord()"><img src="/images/button/btn_his.png" /></a> -->
-         </li>
-       </ul>
-	</div>
-</div>
-
-<div class="bp_history"  >
+<div class=""  >
 <form id="htspecialForm" > 
   	<input type="hidden" name="id"  id="id"  />
+  	<!-- box box-info start -->
+	<div class="box box-info">
+              <div class="box-header">
+                  <h3 class="box-title">高血压专项</h3>
+              </div>		
+              <div class="box-body">
+				         <div class="row form-group btn_title_informationModify">
+					          	<div class="col-lg-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_htSpecial(this)" id="editHtspecialBtn">
+					          		<a class="btn btn-success">
+					                   <i class="fa fa-edit"></i> 编辑
+					             	</a>
+					            </div>
+ 							</div>
+	 			         <div class="row">
+					         <div class="col-lg-11">
+					         	<div class="col-lg-12">
+					         	<div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-8">
+						        	<span class="col-lg-4 text-right form-span" >*患高血压日期：</span>
+						        	<input class="col-lg-6 display-input validate[required]" type="text"  id="havaBloodDate"  name="havaBloodDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-prompt-position="centerRight:0,-5"/>
+						        </div>
+						        <div class="col-lg-2">&nbsp;</div>
+						        </div>
+						        <div class="col-lg-12">
+					         	<div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-8">
+						        	<lable class="col-lg-4 text-right form-span">*是否用药：</lable>
+	                 				<input type="radio" class="col-lg-2 text-right form-span" name="isUseMedicine" value="1" checked="checked" >是</input>
+		            				<input type="radio" class="col-lg-2 text-right form-span" name="isUseMedicine" value="0">否</input>
+						        </div>
+						        <div class="col-lg-2">&nbsp;</div>
+						        </div>
 
-	<div class="advice"  >
-    <div class="advice_main" >
-    	<table cellpadding="0" cellspacing="0" width="100%" class="adviceInfo" style="height: 600px;padding-left: 10px">
-    		
-    		<tr>
-    			<td width="130px"><span>*患高血压日期：</span></td>
-    			<td align="left">
-    			<input class="inputMin_informationModify text-input validate[required]" type="text"  id="havaBloodDate"  name="havaBloodDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-prompt-position="centerRight:0,-5"/>
-    			</td>
-    		</tr>
-    		<tr>
-    			<td width="130px"><span class="method">*是否用药：</span></td>
-    			<td>
-    				<input type="radio" name="isUseMedicine" value="1" checked="checked" />是
-		            <input type="radio" name="isUseMedicine" value="0"/>否
-    			</td>
-    		</tr>
-    		<tr>
-    			<td width="130px"><span class="method">*疗效及副作用：</span></td>
-    			<td>
-	              		<textarea rows="10" cols="10" id="effect"  name="effect"  class="text-input validate[required,funcCall[includespecialchar]]"  data-prompt-position="topRight:-200,0"></textarea>
-    			</td>
-    		</tr>    		
-    		<tr>
-    			<td width="130px"><span class="method">*最高收缩压：</span></td>
-    			<td>
-					<input class="inputMin_informationModify text-input validate[required,funcCall[number2]]"  type="text"   id="sbp"  name="sbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg
-    			</td>
-    		</tr>     	
-    		<tr>
-    			<td width="130px"><span class="method">*最高舒张压：</span></td>
-    			<td>
-						<input class="inputMin_informationModify text-input validate[required,funcCall[number2]]"  type="text"   id="dbp"  name="dbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg
-    			</td>
-    		</tr>     
-    		<tr >
-    			<td width="130px"><span class="method">血压等级：</span></td>
-    			<td>
-    					<span class="select-style_htspecial">
-						<select id="BPLevel" style="width:100px">
-
-						</select>
-						</span>
-    			</td>
-    		</tr>
-    		<tr >
-    			<td width="130px"><span class="method">风险等级：</span></td>
-    			<td>
-    					<span class="select-style_htspecial">
-						<select id="RiskLevel" style="width:100px">
-
-						</select>
-						</span>
-    			</td>
-    		</tr>  			
-    		<tr>
-    			<td width="130px" valign="top"><span class="method">*当前服用药物：</span></td>
-    			<td>
-    				<div class="medicine"  style="overflow-y:auto;position:relative;height: 350px">
-    					<div class="med_tab">
-    						<a href="javascript:void(0)" onclick="addMed()">继续添加</a> 
-    					</div>
-    					<table cellpadding="0" cellspacing="0" width="100%" class="med_table2" id="med_table">
-    						<colgroup>
-						        <col width="20%" />
-						        <col width="30%" />
-						        <col width="30%" />
-						        <col width="20%" />
-						    </colgroup>
-    						<tr>
-    							<th>*药物名称</th>
-    							<th>*剂量(mg或g)</th>
-    							<th>*用药时间</th>
-    							<th>&nbsp;</th>
-    						</tr>
-    					</table>
-    				</div>
-    			</td>
-    		</tr>
-    		<tr>
-    			<td width="130px">&nbsp;</td>
-    			<td>&nbsp;</td>
-    		</tr>
-    		<!-- 
-    		<tr>
-    			<td colspan="2">
-    				<ul>
-    					<li class="btn_search" style="float: left;"><a href="javascript:void(0)" onclick="saveHtspecial()">保存</a></li>
-    					<li class="btn_search" style="float: left;"><a href="javascript:void(0)" onclick="showHtspecialRecord()">返回列表</a></li> 
-    				</ul>
-    			</td>
-    		</tr>
-    		-->
-    	</table>
-    </div>
-  </div>                        
+								<div class="col-lg-12">
+					         	<div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-8">
+						        	<span class="col-lg-4 text-right  form-span">*疗效及副作用：</span>
+	                 				<textarea rows="10" cols="10" id="effect"  name="effect"  class="col-lg-6 display-textarea validate[required,funcCall[includespecialchar]]"  data-prompt-position="topRight:-200,0"></textarea>    
+						        </div>
+						        <div class="col-lg-2">&nbsp;</div>
+						        </div>
+						        
+						        <div class="col-lg-12">
+					         	<div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-8">
+						        	<lable class="col-lg-4 text-right form-span">*最高收缩压：</lable>
+	                 				<input class="col-lg-6 display-input validate[required,funcCall[number2]]"  type="text"   id="sbp"  name="sbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg      
+						        </div>
+						        <div class="col-lg-1">&nbsp;</div>
+						        </div>
+						        
+						        <div class="col-lg-12">
+					         	<div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-8">
+						        	<span class="col-lg-4 text-right form-span">*最高舒张压：</span>
+	                 				<input class="col-lg-6 display-input validate[required,funcCall[number2]]"  type="text"   id="dbp"  name="dbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg          
+                 					
+						        </div>
+						        <div class="col-lg-1">&nbsp;</div>
+						        </div>
+						        <div class="col-lg-12">
+					         	<div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-8">
+						        	<span class="col-lg-4 text-right form-span">血压等级：</span>
+						        	<select id="BPLevel" class="col-lg-6 display-input" ></select>
+						        </div>
+						        <div class="col-lg-2">&nbsp;</div>
+						        </div>
+						        <div class="col-lg-12">
+					         	<div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-8">
+						        	<span class="col-lg-4 text-right form-span">风险等级：</span>
+						        	<select id="RiskLevel" class="col-lg-6 display-input" ></select>
+						        </div>
+						        <div class="col-lg-2">&nbsp;</div>
+						        </div>
+						        <div class="col-lg-12">
+						        <div class="col-lg-12">
+						        <div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-8">
+						        	<span class="col-lg-4 text-right form-span">*当前服用药物：</span>
+						        	<span class="col-lg-6">&nbsp;</span>
+						        </div>
+						        <div class="col-lg-2">&nbsp;</div>
+						        </div>
+						        <div class="col-lg-12">
+						        	<div class="col-lg-3">&nbsp;</div>
+						        	<div class="col-lg-8 table-medicine">
+    								<div class="med_tab">
+    									<a href="javascript:void(0)" onclick="addMed()">继续添加</a> 
+    								</div>
+    								<table cellpadding="0" cellspacing="0" width="100%" class="med_table2" id="med_table">
+    									<colgroup>
+						        			<col width="20%" />
+						        			<col width="30%" />
+						        			<col width="30%" />
+						        			<col width="20%" />
+						    			</colgroup>
+    									<tr>
+    										<th>*药物名称</th>
+    										<th>*剂量(mg或g)</th>
+    										<th>*用药时间</th>
+    										<th>&nbsp;</th>
+    									</tr>
+    								</table>
+    								</div>
+    							</div>
+						        </div>
+						        
+				        </div>
+			        </div>
+			     </div>
+			     <!-- box box-info End -->
+			    </div>
   </form>
  </div> 
- </div>
+</div>
 
 
 <div id="divloading">

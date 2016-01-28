@@ -378,76 +378,7 @@
 </div>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 
-<style type="text/css">
-
-.tgrey_popup{width:16%;float:left; height:30px; line-height:30px; text-align:right; color:#aeaeae; margin-bottom: 10px}
-.tblack_popup{width:84%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left; color:#aeaeae;margin-bottom: 10px}
-
-</style>
-
-</head>
-<body>
- <div class="popup" id="medicalExaminationWindow" style="width:600px;display:none;position:absolute;top:20px; left:10px;z-index: 30;height:300">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader"  id="pop_medicalExaminationTitle">增加亲情号码</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_medicalExamination();">X</a></li>
-    </ul>
-  </div>
-  <form id="medicalExaminationForm" >
-  		<input type="hidden" name="id"  id="id"  />
-	   <div class="popup_main">
-	         <ul>
-	              <li class="tgrey_popup2">*餐后血糖(餐后2小时内)：</li>
-	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,20]]]" style="width:230px" type="text"  id="chxt"  name="chxt" maxlength="5" />
-	              		mmol/L
-	              </li>
-	              <li class="tgrey_popup2">*空腹全血血糖：</li>
-	              <li class="tblack_popup2">
-		              <input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,20]]]" style="width:230px" type="text"  id="kfqxxt"  name="kfqxxt"  maxlength="5" />
-		              mmol/L
-	           	   </li>
-	              <li class="tgrey_popup2">*总胆固醇：</li>
-	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,20]]]" style="width:230px" type="text"   id="zdgc"  name="zdgc"  maxlength="5" />
-	              		mmol/L
-	              </li>
-	              <li class="tgrey_popup2">*高密度脂蛋白胆固醇：</li>
-	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,10]]]" style="width:230px" type="text"   id="gmdzdbdgc"  name="gmdzdbdgc"  maxlength="5" />
-		             	mmol/L
-	              </li>
-	              <li class="tgrey_popup2">*低密度脂蛋白胆固醇：</li>
-	              <li class="tblack_popup2">
-						<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,10]]]"  type="text" style="width:230px" id="dmdzdbdgc"  name="dmdzdbdgc"  maxlength="5" />
-	              		mmol/L
-	              </li>
-	             <li class="tgrey_popup2">*血清肌酐：</li>
-	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[1,200]]]" style="width:230px" type="text"   id="xqjq"  name="xqjq" maxlength="5" />
-	              		μmol/L
-	              </li>
-	             <li class="tgrey_popup2">*微量尿白蛋白：</li>
-	              <li class="tblack_popup2">
-	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,100]]]" style="width:230px" type="text"   id="wlnbdb"  name="wlnbdb" maxlength="5" />
-	              		mg/24h
-	              </li>			              
-	              <li class="btn_popup_confirm2"><a href="javascript:void(0)" class="btn" onclick="saveMedicalExamination()"><span style="color:#5a5a5a">保存</span></a></li>                                       
-	         </ul>
-	      </div>                 
-  </form>
- </div>
-
-</body>
-</html>
 </div>
 </body>
 </html>
