@@ -35,7 +35,7 @@
 .select-style_familydisease select{ width:230px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
     background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
 .select-style_relation{ overflow:hidden; width:200px;}
-.select-style_relation select{ width:56px;height:18px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
+.select-style_relation select{ width:75px;height:32px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
     background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}      
 /*----------------search---------------*/
 .search{width:630px; padding:20px;float:left; margin-top:10px; }

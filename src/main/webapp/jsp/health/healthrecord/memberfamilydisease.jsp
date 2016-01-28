@@ -26,6 +26,7 @@
 	var family_form = "family_form";
 	var save_image = window.parent.save_image;
 	function startInit(){
+		$(".no-print").remove();
 		queryMemberFamilyDisease();
 	};
 	
@@ -76,9 +77,9 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							heighBloodPressureRelationNum++;
-							str+="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodPressureRelationName"+heighBloodPressureRelationNum+"'>";
+							str+="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='heighBloodPressureRelationName"+heighBloodPressureRelationNum+"'>";
 							str+=relation_name_str+"</select>";
-							str+="&nbsp;&nbsp;患病年份:<select id='heighBloodPressureRelationYear"+heighBloodPressureRelationNum+"'>";
+							str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='heighBloodPressureRelationYear"+heighBloodPressureRelationNum+"'>";
 							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#heighBloodPressure_relation").html(str);
@@ -101,9 +102,9 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							heighBloodFatRelationNum++;
-							str+="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodFatRelationName"+heighBloodFatRelationNum+"'>";
+							str+="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='heighBloodFatRelationName"+heighBloodFatRelationNum+"'>";
 							str+=relation_name_str+"</select>";
-							str+="&nbsp;&nbsp;患病年份:<select id='heighBloodFatRelationYear"+heighBloodFatRelationNum+"'>";
+							str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='heighBloodFatRelationYear"+heighBloodFatRelationNum+"'>";
 							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#heighBloodFat_relation").html(str);
@@ -126,9 +127,9 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							diabetesMellitusRelationNum++;
-							str+="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='diabetesMellitusRelationName"+diabetesMellitusRelationNum+"'>";
+							str+="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='diabetesMellitusRelationName"+diabetesMellitusRelationNum+"'>";
 							str+=relation_name_str+"</select>";
-							str+="&nbsp;&nbsp;患病年份:<select id='diabetesMellitusRelationYear"+diabetesMellitusRelationNum+"'>";
+							str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='diabetesMellitusRelationYear"+diabetesMellitusRelationNum+"'>";
 							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#diabetesMellitus_relation").html(str);
@@ -151,9 +152,9 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							coronaryDiseaseRelationNum++;
-							str+="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='coronaryDiseaseRelationName"+coronaryDiseaseRelationNum+"'>";
+							str+="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='coronaryDiseaseRelationName"+coronaryDiseaseRelationNum+"'>";
 							str+=relation_name_str+"</select>";
-							str+="&nbsp;&nbsp;患病年份:<select id='coronaryDiseaseRelationYear"+coronaryDiseaseRelationNum+"'>";
+							str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='coronaryDiseaseRelationYear"+coronaryDiseaseRelationNum+"'>";
 							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#coronaryDisease_relation").html(str);
@@ -176,9 +177,9 @@
 						var str="";
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){
 							cardiovascularAccidentRelationNum++;
-							str+="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='cardiovascularAccidentRelationName"+cardiovascularAccidentRelationNum+"'>";
+							str+="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='cardiovascularAccidentRelationName"+cardiovascularAccidentRelationNum+"'>";
 							str+=relation_name_str+"</select>";
-							str+="&nbsp;&nbsp;患病年份:<select id='cardiovascularAccidentRelationYear"+cardiovascularAccidentRelationNum+"'>";
+							str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='cardiovascularAccidentRelationYear"+cardiovascularAccidentRelationNum+"'>";
 							str+=relation_year_str+"</select></span></div>";			
 						}
 						$("#cardiovascularAccident_relation").html(str);
@@ -322,9 +323,9 @@
 		if(heighBloodPressure==1){
 
 			heighBloodPressureRelationNum++;
-			var str="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'>亲属关系:<span class='select-style_relation'><select id='heighBloodPressureRelationName"+heighBloodPressureRelationNum+"'>";
+			var str="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'>亲属关系:&nbsp;&nbsp;<span class='select-style_relation'><select id='heighBloodPressureRelationName"+heighBloodPressureRelationNum+"'>";
 			str+=relation_name_str+"</select></span>";
-			str+="&nbsp;&nbsp;患病年份:<span class='select-style_relation'><select id='heighBloodPressureRelationYear"+heighBloodPressureRelationNum+"'>";
+			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<span class='select-style_relation'><select id='heighBloodPressureRelationYear"+heighBloodPressureRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addHeighBloodPressureRelation_button' onclick='addHeighBloodPressureRelation()' class='relation_button'>+继续添加</a>";
@@ -341,9 +342,9 @@
 		heighBloodPressureRelationNum++;	
 		
 		
-		var str="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodPressureRelationName"+heighBloodPressureRelationNum+"'>";
+		var str="<div id='heighBloodPressure_relation"+heighBloodPressureRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='heighBloodPressureRelationName"+heighBloodPressureRelationNum+"'>";
 		str+=relation_name_str+"</select>";
-		str+="&nbsp;&nbsp;患病年份:<select id='heighBloodPressureRelationYear"+heighBloodPressureRelationNum+"'>";
+		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='heighBloodPressureRelationYear"+heighBloodPressureRelationNum+"'>";
 		str+=relation_year_str+"</select>";
 		str+="<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='relation_button'>删除</a></div>";
 		str+="<a href='javascript:void(0)' id='addHeighBloodPressureRelation_button' onclick='addHeighBloodPressureRelation()' class='relation_button'>+继续添加</a>";
@@ -362,9 +363,9 @@
 		var heighBloodFat=$("#heighBloodFat").val();
 		if(heighBloodFat==1){
 			heighBloodFatRelationNum++;
-			var str="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodFatRelationName"+heighBloodFatRelationNum+"'>";
+			var str="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='heighBloodFatRelationName"+heighBloodFatRelationNum+"'>";
 			str+=relation_name_str+"</select>";
-			str+="&nbsp;&nbsp;患病年份:<select id='heighBloodFatRelationYear"+heighBloodFatRelationNum+"'>";
+			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='heighBloodFatRelationYear"+heighBloodFatRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='relation_button'>+继续添加</a>";
@@ -379,9 +380,9 @@
 		$("#addHeighBloodFatRelation_button").remove();
 		$("#delHeighBloodFatRelation_button").remove();
 		heighBloodFatRelationNum++;	
-		var str="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='heighBloodFatRelationName"+heighBloodFatRelationNum+"'>";
+		var str="<div id='heighBloodFat_relation"+heighBloodFatRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='heighBloodFatRelationName"+heighBloodFatRelationNum+"'>";
 		str+=relation_name_str+"</select>";
-		str+="&nbsp;&nbsp;患病年份:<select id='heighBloodFatRelationYear"+heighBloodFatRelationNum+"'>";
+		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='heighBloodFatRelationYear"+heighBloodFatRelationNum+"'>";
 		str+=relation_year_str+"</select></span>";
 		str+="<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='relation_button'>删除</a></div>";
 		str+="<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='relation_button'>+继续添加</a>";
@@ -400,9 +401,9 @@
 		var diabetesMellitus=$("#diabetesMellitus").val();
 		if(diabetesMellitus==1){
 			diabetesMellitusRelationNum++;
-			var str="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='diabetesMellitusRelationName"+diabetesMellitusRelationNum+"'>";
+			var str="<div class='' id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='diabetesMellitusRelationName"+diabetesMellitusRelationNum+"'>";
 			str+=relation_name_str+"</select>";
-			str+="&nbsp;&nbsp;患病年份:<select id='diabetesMellitusRelationYear"+diabetesMellitusRelationNum+"'>";
+			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='diabetesMellitusRelationYear"+diabetesMellitusRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='relation_button'>+继续添加</a>";
@@ -417,9 +418,9 @@
 		$("#addDiabetesMellitusRelation_button").remove();
 		$("#delDiabetesMellitusRelation_button").remove();
 		diabetesMellitusRelationNum++;	
-		var str="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='diabetesMellitusRelationName"+diabetesMellitusRelationNum+"'>";
+		var str="<div id='diabetesMellitus_relation"+diabetesMellitusRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='diabetesMellitusRelationName"+diabetesMellitusRelationNum+"'>";
 		str+=relation_name_str+"</select>";
-		str+="&nbsp;&nbsp;患病年份:<select id='diabetesMellitusRelationYear"+diabetesMellitusRelationNum+"'>";
+		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='diabetesMellitusRelationYear"+diabetesMellitusRelationNum+"'>";
 		str+=relation_year_str+"</select></span>";
 		str+="<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='relation_button'>删除</a></div>";
 		str+="<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='relation_button'>+继续添加</a>";
@@ -438,9 +439,9 @@
 		var coronaryDisease=$("#coronaryDisease").val();
 		if(coronaryDisease==1){
 			coronaryDiseaseRelationNum++;
-			var str="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='coronaryDiseaseRelationName"+coronaryDiseaseRelationNum+"'>";
+			var str="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='coronaryDiseaseRelationName"+coronaryDiseaseRelationNum+"'>";
 			str+=relation_name_str+"</select>";
-			str+="&nbsp;&nbsp;患病年份:<select id='coronaryDiseaseRelationYear"+coronaryDiseaseRelationNum+"'>";
+			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='coronaryDiseaseRelationYear"+coronaryDiseaseRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='relation_button'>+继续添加</a>";
@@ -455,9 +456,9 @@
 		$("#addCoronaryDiseaseRelation_button").remove();
 		$("#delCoronaryDiseaseRelation_button").remove();
 		coronaryDiseaseRelationNum++;	
-		var str="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='coronaryDiseaseRelationName"+coronaryDiseaseRelationNum+"'>";
+		var str="<div id='coronaryDisease_relation"+coronaryDiseaseRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='coronaryDiseaseRelationName"+coronaryDiseaseRelationNum+"'>";
 		str+=relation_name_str+"</select>";
-		str+="&nbsp;&nbsp;患病年份:<select id='coronaryDiseaseRelationYear"+coronaryDiseaseRelationNum+"'>";
+		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='coronaryDiseaseRelationYear"+coronaryDiseaseRelationNum+"'>";
 		str+=relation_year_str+"</select></sapn>";
 		str+="<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='relation_button'>删除</a></div>";
 		str+="<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='relation_button'>+继续添加</a>";
@@ -476,9 +477,9 @@
 		var cardiovascularAccident=$("#cardiovascularAccident").val();
 		if(cardiovascularAccident==1){
 			cardiovascularAccidentRelationNum++;
-			var str="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='cardiovascularAccidentRelationName"+cardiovascularAccidentRelationNum+"'>";
+			var str="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='cardiovascularAccidentRelationName"+cardiovascularAccidentRelationNum+"'>";
 			str+=relation_name_str+"</select>";
-			str+="&nbsp;&nbsp;患病年份:<select id='cardiovascularAccidentRelationYear"+cardiovascularAccidentRelationNum+"'>";
+			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='cardiovascularAccidentRelationYear"+cardiovascularAccidentRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
 			str+="<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='relation_button'>删除</a></div>";
 			str+="<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='relation_button'>+继续添加</a>";
@@ -493,9 +494,9 @@
 		$("#addCardiovascularAccidentRelation_button").remove();
 		$("#delCardiovascularAccidentRelation_button").remove();
 		cardiovascularAccidentRelationNum++;	
-		var str="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'><span class='select-style_relation'>亲属关系:<select id='cardiovascularAccidentRelationName"+cardiovascularAccidentRelationNum+"'>";
+		var str="<div id='cardiovascularAccident_relation"+cardiovascularAccidentRelationNum+"'><span class='select-style_relation'>亲属关系:&nbsp;&nbsp;<select id='cardiovascularAccidentRelationName"+cardiovascularAccidentRelationNum+"'>";
 		str+=relation_name_str+"</select>";
-		str+="&nbsp;&nbsp;患病年份:<select id='cardiovascularAccidentRelationYear"+cardiovascularAccidentRelationNum+"'>";
+		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='cardiovascularAccidentRelationYear"+cardiovascularAccidentRelationNum+"'>";
 		str+=relation_year_str+"</select></span>";
 		str+="<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='relation_button'>删除</a></div>";
 		str+="<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='relation_button'>+继续添加</a>";
@@ -520,71 +521,76 @@
               </div>		
               <div class="box-body">
 				         <div class="row form-group btn_title_informationModify">
-					          	<div class="col-lg-8 text-right" id="editImage" href="javascript:void(0)" onclick="edit_family(this)">
+					          	<div class="col-lg-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_family(this)">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
  							</div>
 	 			         <div class="row">
+	 			         	<div class="col-lg-2">&nbsp;</div>
 					         <div class="col-lg-8">
 						        <div class="col-lg-10">
-						        	<span class="col-lg-4 text-right  form-span" >高血压：</span>
-						        	<li class="col-lg-8">
-					            	<span class="col-lg-12">
-	                 					<select class="col-lg-12 display-input" id="heighBloodPressure"  name="heighBloodPressure" onchange="changeHeighBloodPressure()">
+						        	<span class="col-lg-4 text-right form-span" >高血压：</span>
+	                 				<select class="col-lg-8 display-input-add" id="heighBloodPressure"  name="heighBloodPressure" onchange="changeHeighBloodPressure()">
 				            				<option value="0">无</option>
 				            				<option value="1">有</option>
-	                 					</select>
-	                 				</span>
-	                 				</li>
+	                 				</select>
+	                 				<div class="form-group">
+	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 family_disease_relation" id="heighBloodPressure_relation" align="left"></div>
+	                 				</div>
 						        </div>
 						        <div class="col-lg-10">
 						        	<lable class="col-lg-4 text-right form-span">高血脂：</lable>
-						        	<li class="tblack_informationModify">
-						        	<span class="select-style_familydisease">
-	                 					<select class="col-lg-12 display-input" id="heighBloodFat"  name="heighBloodFat"  onchange="changeHeighBloodFat()">
-				            				<option value="0">无</option>
-				            				<option value="1">有</option>
-	                 					</select>    
-	                 				</span>
-	                 				</li>  
+	                 				<select class="col-lg-8 display-input-add" id="heighBloodFat"  name="heighBloodFat"  onchange="changeHeighBloodFat()">
+				            			<option value="0">无</option>
+				            			<option value="1">有</option>
+	                 				</select>
+	                 				<div class="form-group">
+	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 family_disease_relation" id="heighBloodFat_relation" align="left"></div>
+	                 				</div>    
+	                 				<div class="family_disease_relation" id="heighBloodFat_relation" align="left"  style="margin-left:80px;padding-top:40px"></div> 
 						        </div>
 
 						        <div class="col-lg-10">
 						        	<span class="col-lg-4 text-right  form-span">糖尿病：</span>
-						        	<li class="tblack_informationModify">
-						        	<span class="select-style_familydisease">
-	                 					<select class="col-lg-12 display-input" id="diabetesMellitus"  name="diabetesMellitus" onchange="changeDiabetesMellitus()">
-				            				<option value="0">无</option>
-				            				<option value="1">有</option>
-	                 					</select>   
-	                 				</span>
-	                 				</li>
+	                 				<select class="col-lg-8 display-input-add" id="diabetesMellitus"  name="diabetesMellitus" onchange="changeDiabetesMellitus()">
+				            			<option value="0">无</option>
+				            			<option value="1">有</option>
+	                 				</select>
+	                 				<div class="form-group">
+	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 family_disease_relation" id="diabetesMellitus_relation" align="left"></div>
+	                 				</div>    
 						        </div>
 						        <div class="col-lg-10">
 						        	<lable class="col-lg-4 text-right form-span">冠心病：</lable>
-						        	<li class="tblack_informationModify">
-                 					<span class="select-style_familydisease">
-	                 					<select class="col-lg-12 display-input" id="coronaryDisease"  name="coronaryDisease"  onchange="changeCoronaryDisease()">
-				            				<option value="0">无</option>
-				            				<option value="1">有</option>
-	                 					</select>      
-	                 				</span>             
-                 					</li>
+	                 				<select class="col-lg-8 display-input-add" id="coronaryDisease"  name="coronaryDisease"  onchange="changeCoronaryDisease()">
+				            			<option value="0">无</option>
+				            			<option value="1">有</option>
+	                 				</select>
+	                 				<div class="form-group">
+	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 family_disease_relation" id="coronaryDisease_relation" align="left"></div>
+	                 				</div>       
+                 					
 						        </div>
 						        <div class="col-lg-10">
 						        	<span class="col-lg-4 text-right form-span">脑血管意外：</span>
-						        	<li class="tblack_informationModify">
-                 					<span class="select-style_familydisease">
-	                 					<select class="selectMax_informationModify" id="cardiovascularAccident"  name="cardiovascularAccident" onchange="changeCardiovascularAccident()">
-				            				<option value="0">无</option>
-				            				<option value="1">有</option>
-	                 					</select>         
-	                 				</span>          
-                 					</li>
+	                 				<select class="col-lg-8 display-input-add selectMax_informationModify" id="cardiovascularAccident"  name="cardiovascularAccident" onchange="changeCardiovascularAccident()">
+				            			<option value="0">无</option>
+				            			<option value="1">有</option>
+	                 				</select>
+	                 				<div class="form-group">
+	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 family_disease_relation" id="cardiovascularAccident_relation" align="left"></div>
+	                 				</div>          
+                 					
 						        </div>
 				        </div>
+				        <div class="col-lg-2">&nbsp;</div>
 			        </div>
 			     </div>
 			    </div>
