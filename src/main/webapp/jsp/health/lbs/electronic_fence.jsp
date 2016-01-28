@@ -26,6 +26,8 @@
 <%@ include file="../../shared/importJs.jsp"%>
 
 <script type="text/JavaScript"> 
+
+	menuId = "#electronic";
 	var para = "";
  	var xmlHttp;
  	var response;

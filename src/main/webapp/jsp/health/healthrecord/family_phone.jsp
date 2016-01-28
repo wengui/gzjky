@@ -30,6 +30,8 @@
 <!-- scripts -->
 <script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
+
+	menuId = "#phone";
 	$(function(){
 		/*
 		validator_familyPhone = $("#addFamilyPhoneForm").validate({

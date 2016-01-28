@@ -16,10 +16,8 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript" ></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
-
 <script type="text/javascript">
-
-<script type="text/javascript">
+  menuId = "#recharge";
   var startDate="";
   var endDate="";
   function startInit(){

@@ -19,6 +19,7 @@
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 
 <script type="text/javascript">
+  menuId = "#account";
   $(function(){
 	var $div_trli = $("div.tab_menu ul li");
 	

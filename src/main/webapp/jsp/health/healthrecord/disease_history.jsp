@@ -14,7 +14,7 @@
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script type="text/javascript">
-
+menuId = "#records";
 var edit_image = "<a class='btn btn-success'><i class='fa fa-edit'></i> 编辑</a>";
 var save_image = "<a class='btn btn-success'><i class='fa fa-save'></i> 保存</a>";
 
@@ -271,7 +271,7 @@ function startInit(){
       </div>
       
       <div class="hide_healthRecords">
-			<iframe id="memberFamilyDiseaseIframe"  name = "memberFamilyDiseaseIframe" src=""  frameborder="0" width="100%"  scrolling="no"   height="600px" ></iframe>
+			<iframe id="memberFamilyDiseaseIframe" class="form-div-add" name = "memberFamilyDiseaseIframe" src=""  frameborder="0" width="100%"  scrolling="no"></iframe>
       </div>
       
       <div class="hide_healthRecords">

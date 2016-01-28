@@ -57,7 +57,7 @@ body {height:100%; margin:0; overflow:hidden;overflow-x:hidden}
 <link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet"/>
 <link href="/js/artDialog/skins/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
-	
+	menuId = "#equipment";
 	$(function(){
 		$('textarea').maxlength({});
 	});

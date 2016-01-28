@@ -21,6 +21,7 @@
 
 
 <script type="text/javascript">
+  menuId = "#consume";
   var startDate="";
   var endDate="";
   var recordList;

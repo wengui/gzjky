@@ -43,8 +43,8 @@
                      <i class="fa fa-angle-left pull-right"></i>
                  </a>
                  <ul class="treeview-menu">
-                     <li><a href="<c:url value='/jsp/health/lbs/electronic_fence.jsp'/>"><i class="fa fa-angle-double-right"></i> 电子围栏</a></li>
-                     <li><a href="<c:url value='/jsp/health/lbs/sos_alert.jsp'/>"><i class="fa fa-angle-double-right"></i> SOS报警</a></li>
+                     <li id="electronic" ><a href="<c:url value='/jsp/health/lbs/electronic_fence.jsp'/>"><i class="fa fa-angle-double-right"></i> 电子围栏</a></li>
+                     <li id="sos" ><a href="<c:url value='/jsp/health/lbs/sos_alert.jsp'/>"><i class="fa fa-angle-double-right"></i> SOS报警</a></li>
                  </ul>
              </li>
              <li class="treeview">
@@ -53,10 +53,10 @@
                      <i class="fa fa-angle-left pull-right"></i>
                  </a>
                  <ul class="treeview-menu">
-                     <li><a href="<c:url value='/jsp/health/healthrecord/memberbaseinfo.jsp'/>"><i class="fa fa-angle-double-right"></i> 基本信息</a></li>
-                     <li><a href="<c:url value='/jsp/health/healthrecord/disease_history.jsp'/>"><i class="fa fa-angle-double-right"></i> 健康病例</a></li>
-                     <li><a href="<c:url value='/jsp/health/healthrecord/family_phone.jsp'/>"><i class="fa fa-angle-double-right"></i> 亲情号码</a></li>
-                     <li><a href="<c:url value='/jsp/health/healthrecord/modify_password.jsp'/>"><i class="fa fa-angle-double-right"></i> 密码修改</a></li>
+                     <li id="baseinfo"><a href="<c:url value='/jsp/health/healthrecord/memberbaseinfo.jsp'/>"><i class="fa fa-angle-double-right"></i> 基本信息</a></li>
+                     <li id="records"><a href="<c:url value='/jsp/health/healthrecord/disease_history.jsp'/>"><i class="fa fa-angle-double-right"></i> 健康病例</a></li>
+                     <li id="phone"><a href="<c:url value='/jsp/health/healthrecord/family_phone.jsp'/>"><i class="fa fa-angle-double-right"></i> 亲情号码</a></li>
+                     <li id="pwd"><a href="<c:url value='/jsp/health/healthrecord/modify_password.jsp'/>"><i class="fa fa-angle-double-right"></i> 密码修改</a></li>
                  </ul>
              </li>
              <li class="treeview">
@@ -65,8 +65,8 @@
                      <i class="fa fa-angle-left pull-right"></i>
                  </a>
                  <ul class="treeview-menu">
-                     <li><a href="<c:url value='/jsp/health/equipment/equipment.jsp'/>"><i class="fa fa-angle-double-right"></i> 我的设备</a></li>
-                     <li><a href="<c:url value='/jsp/health/equipment/member_bind_device.jsp'/>"><i class="fa fa-angle-double-right"></i> 设备绑定</a></li>
+                     <li id="equipment"><a href="<c:url value='/jsp/health/equipment/equipment.jsp'/>"><i class="fa fa-angle-double-right"></i> 我的设备</a></li>
+                     <li id="equipmentBind"><a href="<c:url value='/jsp/health/equipment/member_bind_device.jsp'/>"><i class="fa fa-angle-double-right"></i> 设备绑定</a></li>
                  </ul>
              </li>
              <li class="treeview">
@@ -75,9 +75,9 @@
                      <i class="fa fa-angle-left pull-right"></i>
                  </a>
                  <ul class="treeview-menu">
-                     <li><a href="<c:url value='/jsp/health/account/account.jsp'/>"><i class="fa fa-angle-double-right"></i> 账户套餐</a></li>
-                     <li><a href="<c:url value='/jsp/health/account/recharge_history.jsp'/>"><i class="fa fa-angle-double-right"></i> 充值记录</a></li>
-                     <li><a href="<c:url value='/jsp/health/account/consume_record.jsp'/>"><i class="fa fa-angle-double-right"></i> 消费记录</a></li>
+                     <li id="account"><a href="<c:url value='/jsp/health/account/account.jsp'/>"><i class="fa fa-angle-double-right"></i> 账户套餐</a></li>
+                     <li id="recharge"><a href="<c:url value='/jsp/health/account/recharge_history.jsp'/>"><i class="fa fa-angle-double-right"></i> 充值记录</a></li>
+                     <li id="consume"><a href="<c:url value='/jsp/health/account/consume_record.jsp'/>"><i class="fa fa-angle-double-right"></i> 消费记录</a></li>
                  </ul>
              </li>
              <li class="treeview">
@@ -86,7 +86,7 @@
                      <i class="fa fa-angle-left pull-right"></i>
                  </a>
                  <ul class="treeview-menu">
-                     <li><a href="<c:url value='/jsp/health/doctor_report/reportlist.jsp'/>"><i class="fa fa-angle-double-right"></i> 医生报告</a></li>
+                     <li id="report"><a href="<c:url value='/jsp/health/doctor_report/reportlist.jsp'/>"><i class="fa fa-angle-double-right"></i> 医生报告</a></li>
                  </ul>
              </li>
          </ul>

@@ -19,6 +19,7 @@
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
 
 <script type="text/javascript" >
+     menuId = "#account";
 	 var deviceBaseInfoList;
 	 var packageBaseinfoList;
 	 var platformServiceList;
