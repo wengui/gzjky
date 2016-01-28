@@ -2,10 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
@@ -23,14 +24,6 @@
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/ztree/jquery.ztree.all-3.1.min.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 <style type="text/css">
 	ul.ztree {margin-top: 10px;border: 1px solid #617775;background: #f0f6e4;width:220px;height:360px;overflow-y:scroll;overflow-x:auto;}
 </style>
@@ -61,7 +54,8 @@
 	var memberIllnessHistoryList;
 	$.fn.page.settings.pagesize=10;
 	
-	$(function(){
+	function startInit(){
+			$(".no-print").remove();
 			queryStart();
 	    	jQuery('#addMemberIllnessHistory').validationEngine("attach",
 	    			{
@@ -73,7 +67,8 @@
 	    				//showArrow:false,
 	    			}
 	    	);
-		});
+	    	
+		};
 
 	function queryStart(){
 			$("#show_history").attr("style","display");
@@ -120,6 +115,8 @@
 		for (var i = 0; i < $.fn.page.settings.currentsize; i++){	 
 			 addrowtotable(i);
 		}
+		  $("table.bPhistory_table tr:even").addClass("even");
+		  $("table.bPhistory_table tr:odd").addClass("odd");
     }
     
     function addrowtotable(i){
@@ -424,41 +421,10 @@
 			}
 		}); 
 		}
-
 		$(function(){
 			reloadTree() ;
 		});
 </SCRIPT>
-
-<body style="background:#e8e3d7">
-<div style="font-size:13px;font-family:微软雅黑;color:#5a5a5a;">
-<!--bp_history start-->
-<div class="bp_history" id="show_history">
-  <div class="width:670px">
-    <ul>
-      <li style="font-size:17px; font-weight:500;color:#5a5a5a;text-align:cener;float:left;width:530px;text-align:left;padding-left:20px">疾病史</li>
-      <li class="btn" style="height: 40px;"><a href="javascript:void(0)" onclick="toAddMemberIllnessHistory()"><span style="font-size:14px; font-weight:500;color:#5a5a5a">新建疾病史</span></a></li>           
-    </ul>
-  </div>
-  <div class="index_table">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table"  id="faceTable">
-      <colgroup>
-        <col width="10%" />
-        <col width="20%" />
-        <col width="20%" />
-        <col width="20%" />
-        <col width="20%" />
-      </colgroup>
-      <tr>
-        <th>序号</th>
-        <th>疾病名称</th>
-        <th>发生日期</th>
-        <th>结束日期</th>
-        <th>操作</th>
-      </tr>
-    </table>
-  </div>
-  
 
 <script type="text/javascript">
 		var reg = /^[1-9]{6,16}/; 
@@ -488,114 +454,116 @@
 			pageClick(num);
 		}
 	</script>
- 
-<div class="index_page">
-  <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
-    <li class="page_button">
-	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
-	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
-	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
-	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
-    </li>
-    <li class="page_select">
-    转<select id="gopage" onchange="gotoPage()">
-    	</select>页
-    </li>
-  </ul>
-</div>
 
-</div>
-<div class="bp_history" id="add_history" style="display:none;">
-	<div class="index_table" style="background:#fff">
-	<form id="addMemberIllnessHistory"  method="post" style="height: 300px">
+<body onload="startInit()"  class="skin-blue">
+<div style="font-size:13px;font-family:微软雅黑;color:#5a5a5a;">
+<!--bp_history start-->
+  <div class="box box-info">
+<div class="" id="show_history">
+
+              <div class="box-header">
+                 <h3 class="box-title">疾病史</h3>
+              </div>		
+              <div class="box-body">
+				         <div class="row form-group">
+					          	<div class="col-lg-11 text-right" id="editImage" href="javascript:void(0)" onclick="toAddMemberIllnessHistory()">
+					          		<a class="btn btn-success">
+					                   <i class="fa fa-edit"></i> 新建疾病史
+					             	</a>
+					            </div>
+ 							</div>
+ 					<div class="row">
+ 						<br/>
+		  				<div class="col-lg-11">
+		  				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable">
+      					<colgroup>
+        					<col width="10%" />
+        					<col width="20%" />
+        					<col width="20%" />
+        					<col width="20%" />
+        					<col width="20%" />
+      					</colgroup>
+      					<tr>
+        					<th>序号</th>
+        					<th>疾病名称</th>
+        					<th>发生日期</th>
+        					<th>结束日期</th>
+        					<th>操作</th>
+      					</tr>
+    					</table>
+		  				</div>
+ 					</div>
+ 					
+ 					<div class="row">
+						<br/>
+						<div class="col-lg-4" style="padding-left:25px">
+							共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
+						</div>
+						<div class="col-lg-4">
+							<a href="###" class="page-first" >首页</a>
+						    <a href="###" class="page-perv" style="margin-left:5px">上一页</a>
+						    <a href="###" class="page-next" style="margin-left:5px">下一页</a>
+						    <a href="###" class="page-last" style="margin-left:5px">末页</a>
+						</div>
+						<div class="col-lg-4" style="padding-left:18%">
+							 转<select id="gopage" onchange="gotoPage()"></select>页
+						</div>
+						</div>
+			     </div>
+  
+</div><!--bp_history end-->
+
+<div class="row" id="add_history" style="display:none;">
+	<div class="box-header form-margin-left">
+      <h3 class="box-title">疾病史详细</h3>
+	</div>
+	<div class="col-lg-2">&nbsp;</div>
+	<div class="col-lg-8">
+	<form id="addMemberIllnessHistory"  method="post" >
 		<input type="text"  id="diseaseId"  name="diseaseId" maxlength=32  style="display:none"/>
-	 	
-	 	<div class="informationModify_main2" >
-          <ul>
-          
-           <li class="tLeft_informationModify">            
-             <ul>
-               <li class="tgrey_informationModify" style="height:40px;">*疾病名称：</li>
-               <li class="tblack_informationModify">
-               		<div class="family_disease_relation">
-               		<input class="inputMin_informationModify text-input validate[required] " type="text" style="width:230px" id="diseaseName"  name="diseaseName" maxlength=32  readonly="readonly"/>
-               		<a id="search_diseaseBtn" href="javascript:void(0)" onclick="search_showMenu(); return false;">选择疾病</a>              		
-               		</div>
-               </li>
-             </ul>
-             </li>
-             
-             <li>
-             <ul>
-               <li class="tgrey_informationModify">*开始日期：</li>
-               <li class="tblack_informationModify">
-               		<input type="text"   id="startTime" name="startTime" value='' onfocus="var startTime=$dp.$('startTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){startTime.focus();},maxDate:'#F{$dp.$D(\'startTime\') || \'%y-%M-%d\'}' })" class="inputMin_informationModify text-input validate[required,date]" style="width:230px"/>
-               </li>
-             </ul>
-             </li>
-             
-             <li>
-             <ul>
-               <li class="tgrey_informationModify">结束日期：</li>
-               <li class="tblack_informationModify">
-               		<input type="text"   id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'endTime\')}',maxDate:'%y-%M-%d'})" class="inputMin_informationModify text-input validate[date]" style="width:230px"/>
-               </li>
-             </ul>
+	 <div class="row">
+		 <div class="col-lg-8" id="diseaseNameList">
+		 	<span class="col-lg-4 text-right  form-span" >*疾病名称：</span>
+            <input class="col-lg-6 display-input inputMin_informationModify validate[required] " type="text" id="diseaseName"  name="diseaseName" maxlength=32  readonly="readonly"/>
+            <a class="btn btn-success" id="search_diseaseBtn" href="javascript:void(0)" onclick="search_showMenu(); return false;">选择疾病</a>              		
+		 </div>
+		 <div class="col-lg-8">
+		 	<lable class="col-lg-4 text-right form-span">*开始日期：</lable>
+		 	<input type="text" class="col-lg-6 display-input inputMin_informationModify validate[required,date]"  id="startTime" name="startTime" value='' onfocus="var startTime=$dp.$('startTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){startTime.focus();},maxDate:'#F{$dp.$D(\'startTime\') || \'%y-%M-%d\'}' })" />
+		 </div>
 
-             </li>
-             
-             <li>
-             <ul style="height:110px;">
-               <li class="tgrey_informationModify">住院情况：</li>
-               <li class="tblack_informationModify" style="width:300px;height:80px;">
-               		<textarea rows="5" cols="40" name="hospitalRecord"  id="hospitalRecord"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:12px" ></textarea>
-               </li>
-             </ul>
-
-             </li>
-             
-             <li>
-             <ul style="height:110px;">
-               <li class="tgrey_informationModify">转归情况：</li>
-               <li class="tblack_informationModify" style="width:300px;height:80px;">
-               		<textarea rows="5" cols="40" name="recoverRecord"  id="recoverRecord" class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:12px" ></textarea>
-               </li>
-             </ul>
-
-             </li>
-             
-             <li>
-             <ul style="height:110px;">
-
-               <li class="tgrey_informationModify">备注：</li>
-               <li class="tblack_informationModify" style="width:300px;height:80px;">
-               		<textarea rows="5" cols="40" name="comment"  id="comment"  class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:12px" ></textarea>
-               </li>
-             </ul>
-
-             </li>
-             
-             <li>
-
-             <ul>
-             	<!-- <li class="tgrey_informationModify"></li> -->
-	 			<li style="height: 40px;margin-left:80px"><a href="javascript:void(0)"  class="btn" onclick="addMemberIllnessHistory()" id="save_button"><span style="font-size:14px; color:#5a5a5a;width:110px">保存</span></a></li>
-	 			<li style="height: 40px;"><a href="javascript:void(0)"  class="btn" onclick="showMemberIllnessHistory()"><span style="font-size:14px; color:#5a5a5a;width:110px">返回列表</span></a></li>
-	 		 </ul>
-	 		 </li>
-            </li>
-          </ul>
-        </div>
+		 <div class="col-lg-8">
+		 	<span class="col-lg-4 text-right  form-span">结束日期：</span>
+		 	<input type="text"  class="col-lg-6 display-input inputMin_informationModify text-input validate[date]" id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'endTime\')}',maxDate:'%y-%M-%d'})"/>
+		 </div>
+		 <div class="col-lg-8">
+		 	<lable class="col-lg-4 text-right form-span">住院情况：</lable>
+		 	<textarea rows="5" cols="40" name="hospitalRecord"  id="hospitalRecord"  class="col-lg-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
+		 </div>
+		 <div class="col-lg-8">
+		 	<span class="col-lg-4 text-right form-span">转归情况：</span>
+		 	<textarea rows="5" cols="40" name="recoverRecord"  id="recoverRecord" class="col-lg-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
+		 </div>
+		 <div class="col-lg-8">
+		 	<lable class="col-lg-4 text-right form-span">备注：</lable>
+		 	<textarea rows="5" cols="40" name="comment"  id="comment"  class="col-lg-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
+		 </div>
+		 <div class="col-lg-8">
+		 	<div class="col-lg-6 text-right"><a href="javascript:void(0)"  class="btn btn-success" onclick="addMemberIllnessHistory()" id="save_button">保存</a></div>
+		 	<div class="col-lg-6 text-left"><a href="javascript:void(0)"  class="btn btn-success" onclick="showMemberIllnessHistory()">返回列表</a></div>
+		 </div>
+		</div>
         
         <div id="search_menuContent" class="menuContent" style="display:none; position: absolute;">
 			<ul id="search_menu_tree" class="ztree" style="margin-top:1px; width:220px;"></ul>
  		</div>  	
 	</form> 
 	</div>
+	<div class="col-lg-2">&nbsp;</div>
 	
 </div>
-	
+<!-- box box-info end -->
+</div>	
 
 <div id="divloading">
 	<img src="../../../images/public/blue-loading.gif" />
