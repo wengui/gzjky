@@ -4,13 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
+<title>会员咨询</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
@@ -21,20 +22,13 @@
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
+
 <style type="text/css">
 
 .popup_main ul li.huanhang{width:100%;float:left;   }
 .huanhang li input{height:20px; line-height: 20px; }
-.tgrey_popup1{width:16%;float:left; text-align:right; color:#aeaeae;  padding:5px 0; margin:-15px 0; }
-.tblack_popup1{width:83%; padding_left:1%;float:left; text-align:left; color:#aeaeae;padding:5px 0;margin:-15px 0;}
+.tgrey_popup1{width:16%;float:left; text-align:right;padding:5px 0; margin:-15px 0; }
+.tblack_popup1{width:83%; padding_left:1%;float:left; text-align:left;padding:5px 0;margin:-15px 0;}
 
 </style>
 <script type="text/javascript" >
@@ -135,7 +129,8 @@
   
   
   function showDialog(){
-		$("#addMemberConsultForm :checkbox").attr("checked",false);
+		//$("#addMemberConsultForm :checkbox").attr("checked",false);
+		$("#addMemberConsultForm :checkbox").iCheck('uncheck');
 		$("#addMemberConsultForm").find("#content").val("");
 		jQuery('#addMemberConsultForm').validationEngine("hide");
 	   var tt = "增加会员咨询";
@@ -143,20 +138,21 @@
 			disabled : true
 		});
 		$("#pop_memberConsultTitle").text(tt);
-		$("#memberConsultWindow").show(200);
-		showScreenProtectDiv(1);
+		$("#memberConsultWindow").modal('show');
+		//showScreenProtectDiv(1);
   }
   
   function showDialogDetail(index){
 	   var tt = "会员咨询详情";
-	   $("#memberConsultDetailForm :checkbox").attr("checked",false);
+	   //$("#memberConsultDetailForm :checkbox").attr("checked",false);
+	   $("#memberConsultDetailForm :checkbox").iCheck('uncheck');
 	   var content = recordList[index].content;
 	   var content_arr = content.split(" ");
 	   var symptomStrs = new Array();
 	   if(recordList[index].symptom != '' && recordList[index].symptom != null){
 		   symptomStrs = recordList[index].symptom.split(",");
 		   for(var i=0;i<symptomStrs.length;i++){
-			   $("#memberConsultDetailForm input[name='symptomId'][value='"+symptomStrs[i]+"']").attr("checked",true);
+			   $("#memberConsultDetailForm input[name='symptomId'][value='"+symptomStrs[i]+"']").iCheck('check');
 		   }
 	   }
 	   $("#memberConsultDetailForm").find("#content").val(content_arr[0]);
@@ -169,8 +165,8 @@
 			disabled : true
 		});
 		$("#pop_memberConsultDetailTitle").text(tt);
-		$("#memberConsultDetailWindow").show(200);
-		showScreenProtectDiv(1);
+		$("#memberConsultDetailWindow").modal('show');
+		//showScreenProtectDiv(1);
 }
   
   
@@ -225,174 +221,160 @@
   }
   
   function closeDiv_memberConsult() {
-		$("#memberConsultWindow").hide(200);
-		hideScreenProtectDiv(1);
+		$("#memberConsultWindow").modal('hide');
+		//hideScreenProtectDiv(1);
 	}
   
   function closeDiv_memberConsultDetail(){
-		$("#memberConsultDetailWindow").hide(200);
-		hideScreenProtectDiv(1);
+		$("#memberConsultDetailWindow").modal('hide');
+		//hideScreenProtectDiv(1);
   }
 </script>
 </head>
 
-<body onload="startInit()" style="height:500px;background:#e8e3d7">
-<!--bp_history start-->
-<div class="bp_history">
-  <div class="title_BPhistory">
-    <ul>
-      <li class="tgreen_title_BPhistory"  ><span class="tgrey_title_BPhistory" >会员</span><span id="sub_title">咨询</span></li>
-    </ul>
-  </div>
-  <div class="search">
-    <ul style="float: right">
-      <!-- 
-      <li class="criteria_search">
-        <ul>
-          <li class="startTime">开始时间</li>
-          <li class="time_input"><input type="text"  id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/></li>
-          <li class="endTime">结束时间</li>
-          <li class="time_input"><input type="text"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/></li>
-        </ul>
-      </li>
-       
-      <li class="btn_search"><a href="javascript:void(0)" onclick="queryStart()">查询</a></li>     
-      -->  
-      <li class="btn btn_search"><a href="javascript:void(0)" onclick="showDialog()"><span style="font-size:17px; font-weight:500;color:#5a5a5a">新增</span></a></li>               
-    </ul>
-  </div>
-  <div class="index_table">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table" id="faceTable" >
-      <colgroup>
-        <col width="28%" />
-        <col width="24%" />
-        <col width="28%" />
-        <col width="10%" />
-        <col width="10%" />
-      </colgroup>
-      <tr>
-        <th nowrap="nowrap">咨询内容</th>
-        <th nowrap="nowrap">咨询时间</th>
-        <th nowrap="nowrap">医生回复</th>
-        <th nowrap="nowrap">状态</th>
-        <th nowrap="nowrap">操作</th>
-      </tr>
-    </table>
-  </div>
-  
+<body onload="startInit()" class="skin-blue">
+	<!-- header logo: style can be found in header.less -->
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!-- Left side column. contains the logo and sidebar -->
+	<%@ include file="../../shared/sidebarMenu.jsp"%>
+	<aside class="right-side">
+		<!-- Content Header (Page header) -->
+        <section class="content-header">
+             <h1>会员咨询</h1>
+             <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+                  <li>健康分析</li>
+                  <li class="active">会员咨询</li>
+             </ol>
+         </section>
+			<!--bp_history start-->
+			<div >
+			  <div class="box box-info">
+	              <div class="box-header">
+	                  <h3 class="box-title">咨询历史</h3>
+	              </div>
+              	  <div class="box-body">
+              	  <div class="row col-lg-11">
+					<a href="javascript:void(0)" class="btn btn-success" style="margin-left:10px" onclick="showDialog()">新增</a>               
+				  </div>
+				  <div class="row">
+				  <br/>
+				  <br/>
+				  <div class="col-lg-11">
+				    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable" >
+				      <colgroup>
+				        <col width="28%" />
+				        <col width="24%" />
+				        <col width="28%" />
+				        <col width="10%" />
+				        <col width="10%" />
+				      </colgroup>
+				      <tr>
+				        <th nowrap="nowrap">咨询内容</th>
+				        <th nowrap="nowrap">咨询时间</th>
+				        <th nowrap="nowrap">医生回复</th>
+				        <th nowrap="nowrap">状态</th>
+				        <th nowrap="nowrap">操作</th>
+				      </tr>
+				    </table>
+				  </div>
+				  </div>
+			  
+			
+			<script type="text/javascript">
+					var reg = /^[1-9]{6,16}/; 
+					
+					function gotoPage(){
+						var num = $.trim($("#gopage").val());
+						if(num==''){
+							$.alert('请输入页码');
+							$("#gopage").focus();
+							return false;
+						}
+						if(!/^\d+$/.test(num)){
+							$.alert('页码中包括非数字字符');
+							$("#gopage").focus();
+							return false;
+						}
+						if(num == '0') {
+						    $.alert('页码不正确');
+						    return false;
+						}
+						if(parseInt(num)>$.fn.page.settings.pagecount)
+						{
+							$.alert('无效的页码');
+							$("#gopage").focus();
+							return false;
+						}
+						pageClick(num);
+					}
+				</script>
+			<div class="row">
+				<br/>
+				<div class="col-lg-4" style="padding-left:25px">
+					共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
+				</div>
+				<div class="col-lg-4">
+					<a href="###" class="page-first" >首页</a>
+				    <a href="###" class="page-perv" style="margin-left:5px">上一页</a>
+				    <a href="###" class="page-next" style="margin-left:5px">下一页</a>
+				    <a href="###" class="page-last" style="margin-left:5px">末页</a>
+				</div>
+				<div class="col-lg-4" style="padding-left:18%">
+					 转<select id="gopage" onchange="gotoPage()"></select>页
+				</div>
 
-<script type="text/javascript">
-		var reg = /^[1-9]{6,16}/; 
-		
-		function gotoPage(){
-			var num = $.trim($("#gopage").val());
-			if(num==''){
-				$.alert('请输入页码');
-				$("#gopage").focus();
-				return false;
-			}
-			if(!/^\d+$/.test(num)){
-				$.alert('页码中包括非数字字符');
-				$("#gopage").focus();
-				return false;
-			}
-			if(num == '0') {
-			    $.alert('页码不正确');
-			    return false;
-			}
-			if(parseInt(num)>$.fn.page.settings.pagecount)
-			{
-				$.alert('无效的页码');
-				$("#gopage").focus();
-				return false;
-			}
-			pageClick(num);
-		}
-	</script>
-
-<!-- 
-<div id="sjxx">共 <span style="font-weight:bold; color:#000;" id="showcount"></span> 条信息，当前：第 <span style="font-weight:bold;color:#000;" id="showcurrentnum"></span> 页 ，共 <span style="font-weight:bold;color:#000;" id="showpagecount"></span> 页</div>
-<div id="fanye" >
-<input type="button" value="首页" class="button_fy page-first" />
-<input type="button" value="上一页" class="button_fy page-perv" />
-<input type="button" value="下一页" class="button_fy page-next" />
-<input type="button" value="末页" class="button_fy page-last" style="margin-right:15px;" /> 
- 转到<input id="gopage" type="text" style="border:1px solid #bababa; width:30px; height:18px; margin:0 3px;text-align: center;" />
-<input type="button" value="跳" class="button_fy" onclick="gotoPage()"/>
-</div>
- -->
- 
-<div class="index_page">
-  <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
-    <li class="page_button">
-	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
-	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
-	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
-	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
-    </li>
-    <li class="page_select">
-    转<select id="gopage" onchange="gotoPage()">
-    	</select>页
-    </li>
-  </ul>
-</div>
+			</div>
+		</div>
+	</div>
+ </div>
+ <div class="modal fade" id="memberConsultWindow"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%">
+  <div class="modal-dialog">	
+	  <div class="popup_header">
+	    <ul>
+	      <li class="name_popupHeader" id="pop_memberConsultTitle">增加亲情号码</li>
+	      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_memberConsult();">X</a></li>
+	    </ul>
+	  </div>
+	  <form id="addMemberConsultForm" >
+			<div class="popup_main">
+		         <ul>
+		         	<li class="huanhang">
+		              <ul>
+			              <li class="tgrey_popup1">症状：</li>
+			              <li class="tblack_popup1"  >
+		             			<input type="checkbox" name="symptomId"  style="margin-bottom:-5px; margin-right:2px;"   value="1"/>发烧
+		             			<input type="checkbox" name="symptomId"  style="margin-bottom:-5px; margin-right:2px;"   value="2"/>感冒
+			              </li>
+		              </ul>
+		              </li>
+		            <li class="huanhang">
+		              <ul>
+			              <li class="tgrey_popup1">*咨询内容：</li>
+			              <li class="tblack_popup1">
+		              	  <textarea class="inputMin_informationModify validate[required]"  name="content" id="content" rows="5" cols="70" style="border: 1px solid #ccc"></textarea>
+		           	   	  </li>	
+		           	  </ul>
+		           	</li>
+		            <li class="text-center"><a href="javascript:void(0)" class="btn btn-info " onclick="saveMemberConsult()">保存</a></li>                                       
+		         </ul>
+		      </div> 
+	  </form>
+ 	</div>
  </div>
  
- <div class="popup" id="memberConsultWindow" style="width:600px;display:none;position:absolute;top:10px; left:30px;z-index: 30;height:500">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader" id="pop_memberConsultTitle">增加亲情号码</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_memberConsult();">X</a></li>
-    </ul>
-  </div>
-  <form id="addMemberConsultForm" >
-		<div class="popup_main">
-	         <ul>
-	         	  <li class="huanhang">
-	              <ul>
-	              <li class="tgrey_popup1">症状：</li>
-	              <li class="tblack_popup1"  >
-	              		
-	              			
-	              			<input type="checkbox" name="symptomId"  style="margin-bottom:-5px; margin-right:2px;"   value="1"/>发烧
-	              			
-	              		
-	              			
-	              			<input type="checkbox" name="symptomId"  style="margin-bottom:-5px; margin-right:2px;"   value="2"/>感冒
-	              			
-	              		
-	              </li>
-	              </ul>
-	              </li>
-	              
-	              
-	              <li class="huanhang">
-	              <ul>
-	              <li class="tgrey_popup1">*咨询内容：</li>
-	              <li class="tblack_popup1">
-	              <textarea class="inputMin_informationModify validate[required]"  name="content" id="content" rows="5" cols="30" style="border: 1px solid #ccc"></textarea>
-	           	   </li>	
-	           	   </ul>
-	           	   </li>
-	           	   		              
-	           	   <li>&nbsp;&nbsp;</li>
-	              <li class="btn_popup_confirm"><a href="javascript:void(0)" onclick="saveMemberConsult()">保存</a></li>                                       
-	         </ul>
-	      </div> 
-  </form>
- </div>
- 
- <div class="popup" id="memberConsultDetailWindow" style="width:600px;display:none;position:absolute;top:10px; left:30px;z-index: 30;height:500">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader" id="pop_memberConsultDtailTitle">会员咨询详情</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_memberConsultDetail();">X</a></li>
-    </ul>
-  </div>
-  <form id="memberConsultDetailForm" >
-		<div class="popup_main">
-	         <ul>
+<div class="modal fade" id="memberConsultDetailWindow"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%">
+  <div class="modal-dialog">	
+	  <div class="popup_header">
+	    <ul>
+	      <li class="name_popupHeader" id="pop_memberConsultDtailTitle">会员咨询详情</li>
+	      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_memberConsultDetail();">X</a></li>
+	    </ul>
+	  </div>
+	  <form id="memberConsultDetailForm" >
+			<div class="popup_main">
+		         <ul>
 	         
 	              <li class="huanhang">
 	              <ul>
@@ -408,7 +390,7 @@
 	              <ul>
 	              <li class="tgrey_popup1">咨询内容：</li>
 	              <li class="tblack_popup1">
-	              <textarea  name="content" id="content"  class="inputMin_informationModify" rows="5" cols="30" disabled="disabled" style="border: 1px solid #ccc"></textarea>
+	              <textarea  name="content" id="content"  class="inputMin_informationModify" rows="5" cols="70" disabled="disabled" style="border: 1px solid #ccc"></textarea>
 	           	   </li>
 	           	   </ul>
 	           	   </li>
@@ -426,7 +408,7 @@
 	              <ul>             
 	              <li class="tgrey_popup1">医生回复：</li>
 	              <li class="tblack_popup1">
-	              		<textarea  name="report" id="report"  class="inputMin_informationModify" rows="5" cols="30" disabled="disabled"  style="border: 1px solid #ccc"></textarea>
+	              		<textarea  name="report" id="report"  class="inputMin_informationModify" rows="5" cols="70" disabled="disabled"  style="border: 1px solid #ccc"></textarea>
 	              </li>
 	              </ul>
 	              </li>              
@@ -452,6 +434,7 @@
 	         </ul>
 	      </div> 
 	      </form>
+	 </div>
  </div>
    
 
