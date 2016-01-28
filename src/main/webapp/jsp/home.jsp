@@ -15,13 +15,9 @@
 <%@ include file="./shared/importCss.jsp"%>
 <%@ include file="./shared/importJs.jsp"%>
 <link rel="Shortcut Icon" href="/995120.ico" />
-	type="text/css" />
-<link rel="stylesheet" href="<c:url value='/css/index_common.css'/>"
-	type="text/css" />
-<link rel="stylesheet" href="<c:url value='/css/popup.css'/>"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<c:url value='/js/artDialog/skins/default.css'/>" type="text/css" />
+<link rel="stylesheet" href="<c:url value='/css/index_common.css'/>"	type="text/css" />
+<link rel="stylesheet" href="<c:url value='/css/popup.css'/>"	type="text/css" />
+<link rel="stylesheet"	href="<c:url value='/js/artDialog/skins/default.css'/>" type="text/css" />
 
 
 <script type="text/JavaScript">
