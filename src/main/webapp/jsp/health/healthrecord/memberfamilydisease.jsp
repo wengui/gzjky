@@ -24,6 +24,7 @@
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script type="text/javascript">
 	var family_form = "family_form";
+	var edit_image = window.parent.edit_image;
 	var save_image = window.parent.save_image;
 	function startInit(){
 		$(".no-print").remove();
@@ -203,7 +204,8 @@
 	function edit_family(obj){
 		obj.onclick = function(){save_family(obj);};
 		$("#"+family_form+" :input").attr("disabled",false);
-		$(obj).find("img").attr("src",save_image);
+		$("#editImage").empty();
+    	$("#editImage").html(save_image);
 		$(".relation_button").attr("style","display");
 	}
 	function save_family(obj){
@@ -299,10 +301,42 @@
     function get_requestPara(formId){
     	return window.parent.get_requestPara("memberFamilyDiseaseIframe",formId);
     }
-    function send_request_forDisease(formId,obj,requestUrl,para){
-    	window.parent.send_request_forDisease("memberFamilyDiseaseIframe",formId,obj,requestUrl,para);
-    	$(".relation_button").attr("style","display:none");
-    }
+    
+ 	/*
+	id为div的id,obj按钮对象
+	*/
+	function send_request_forDisease(formId,obj,requestUrl,para){
+		showScreenProtectDiv(1);
+		   showLoading();
+		xmlHttp = $.ajax({
+			url: requestUrl,
+			async:true,
+			data:para,
+			dataType:"json",
+			type:"POST",
+			complete:function(){
+			    hideScreenProtectDiv(1);
+		        hideLoading();
+			},
+			error:function(){
+				$.alert('无权限');
+			},success:function(response){
+			    var state = response.updateFlag;
+			    if(state == "1"){
+			    	obj.onclick = function(){
+			    		edit_family(obj);
+			    	};
+			    	//按钮变成编辑图标，元素变成不可以编辑
+		    		$("#"+formId+" :input").attr("disabled",true);
+		    		$("#editImage").empty();
+			    	$("#editImage").html(edit_image);
+					$.alert("修改成功");
+			    }else{
+			    	$.alert("修改失败");
+			    }
+			}
+		});
+	}
   
 </script>
 

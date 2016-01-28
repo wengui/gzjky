@@ -9,6 +9,7 @@
 <%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
@@ -271,7 +272,7 @@ function startInit(){
       </div>
       
       <div class="hide_healthRecords">
-			<iframe id="memberFamilyDiseaseIframe" class="form-div-add" name = "memberFamilyDiseaseIframe" src=""  frameborder="0" width="100%"  scrolling="no"></iframe>
+			<iframe id="memberFamilyDiseaseIframe" class="form-div-add" name = "memberFamilyDiseaseIframe" src=""  frameborder="0" width="100%"  scrolling="no" ></iframe>
       </div>
       
       <div class="hide_healthRecords">

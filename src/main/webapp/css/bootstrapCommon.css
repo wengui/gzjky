@@ -37,7 +37,28 @@
 	margin-left: 57px;
 	font-weight:bold;
 }
-	
+.form-font-bold{
+	font-weight:bold;
+}
+.form-li{
+	margin-bottom:10px;
+}
+
+.form-li > span{
+	padding: 5px;
+}
+
+.form-font-size{
+	margin-bottom:7px;
+	font-size:small;
+}
+
 .form-div-add{
 	min-height: 1000px;
+}
+
+.form-input-checkbox{
+	margin: 8px 0 0; 
+    height: 16px;
+    width: 16px;
 }

@@ -18,6 +18,7 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script type="text/javascript">
 	var complication_form = "complication_form";
+	var edit_image = window.parent.edit_image;
 	var save_image = window.parent.save_image;
 
 	function startInit(){
@@ -67,7 +68,7 @@
 	function edit_complication(obj){
 		obj.onclick = function(){save_complication(obj);};
 		$("#"+complication_form+" :input").attr("disabled",false);
-		$(obj).find("img").attr("src",save_image);
+		$("#editImage").html(save_image);
 	}
 	function save_complication(obj){
 		var url = "/gzjky/healthRecordAction/editMemberHtComplication.do";
@@ -96,9 +97,42 @@
 		return para.substring(0,para.length);
 	}
 	
-    function send_request_forDisease(formId,obj,requestUrl,para){
-    	window.parent.send_request_forDisease("memberHtComplicationIframe",formId,obj,requestUrl,para)
-    }
+    
+ 	/*
+	id为div的id,obj按钮对象
+	*/
+	function send_request_forDisease(formId,obj,requestUrl,para){
+		showScreenProtectDiv(1);
+		   showLoading();
+		xmlHttp = $.ajax({
+			url: requestUrl,
+			async:true,
+			data:para,
+			dataType:"json",
+			type:"POST",
+			complete:function(){
+			    hideScreenProtectDiv(1);
+		        hideLoading();
+			},
+			error:function(){
+				$.alert('无权限');
+			},success:function(response){
+			    var state = response.updateFlag;
+			    if(state == "1"){
+			    	obj.onclick = function(){
+			    		edit_complication(obj);
+			    	};
+			    	//按钮变成编辑图标，元素变成不可以编辑
+		    		$("#"+formId+" :input").attr("disabled",true);
+		    		$("#editImage").empty();
+			    	$("#editImage").html(edit_image);
+					$.alert("修改成功");
+			    }else{
+			    	$.alert("修改失败");
+			    }
+			}
+		});
+	}
     
     function reloadCheckBox() {
 		para='';
@@ -137,12 +171,12 @@
 		for (var i = 0; i < recordList.length; i++){	
 			
 			var $htmlUlStart = $("<li class='input-group col-lg-9'><ul id = li_ul"+i+">"); // 创建DOM对象 ul			
-			var $htmlLiId = $("<li class='col-lg-3 text-right'>"+recordList[i].diseasename+"：</li>"); // 创建DOM对象 疾病类别
+			var $htmlLiId = $("<li class='col-lg-3 form-li form-font-bold text-right'>"+recordList[i].diseasename+"：</li>"); // 创建DOM对象 疾病类别
 			var $htmlLiName = '';
 			if(recordList[i].comment == null || recordList[i].comment == ''){
-				$htmlLiName = $("<div class='icheckbox_minimal-red checked' aria-checked='false' aria-disabled='false' style='position: relative;'><li class='col-lg-4'><input id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+recordList[i].diseasesubname+"</li></div>"); // 创建DOM对象 li
+				$htmlLiName = $("<li class='col-lg-4 form-li'><input class='form-input-checkbox' id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" /><span class='form-font-size'>"+recordList[i].diseasesubname+"</span></li>"); // 创建DOM对象 li
 			}else{
-				$htmlLiName = $("<li class='col-lg-4'><input id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+
+				$htmlLiName = $("<li class='col-lg-4 form-li'><input class='form-input-checkbox' id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+
 						 "<a href='javascript:void(0)' title="+recordList[i].comment+">"+recordList[i].diseasesubname+"</a></li>"); // 创建DOM对象 li
 			}
 			 
@@ -190,7 +224,7 @@
  							</div>
  						<div class="row" id="health_examination">
             					<ul class="col-lg-12" id="health_ul">
-            
+																		
             					</ul>
             			</div>
 			     </div>
