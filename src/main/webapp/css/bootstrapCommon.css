@@ -7,7 +7,19 @@
 			padding: 6px 5px;
 			word-break: break-all;
 			border-bottom: 1px dashed @light-gray;
-			margin-bottom:15px
+			margin-bottom:15px;
+}
+
+.display-input-add{
+			vertical-align: middle;
+			height:32px;
+			display: table-cell;
+			float: none;
+			padding: 6px 5px;
+			word-break: break-all;
+			border-bottom: 1px dashed @light-gray;
+			margin-bottom:7px;
+			margin-top:7px;
 }
 
 .form-span{
@@ -27,5 +39,5 @@
 }
 	
 .form-div-add{
-	margin-bottom:20px;
+	min-height: 1000px;
 }

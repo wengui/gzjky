@@ -4,9 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_common.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
@@ -18,12 +19,14 @@
 <script type="text/javascript">
 	var complication_form = "complication_form";
 	var save_image = window.parent.save_image;
-	$(function(){
+
+	function startInit(){
+		$(".no-print").remove();
 		reloadCheckBox() ;
 		
 		$("#"+complication_form+" :input").attr("disabled",true);
 		queryMemberHtComplication();
-	});
+	};
 
 	function queryMemberHtComplication(){
 		var requestUrl = "/gzjky/healthRecordAction/queryMemberHtComplication.do";
@@ -133,13 +136,13 @@
 		var count = 0;
 		for (var i = 0; i < recordList.length; i++){	
 			
-			var $htmlUlStart = $("<li class='tright_healthExamination'><ul id = li_ul"+i+">"); // 创建DOM对象 ul			
-			var $htmlLiId = $("<li class='tleft_healthExamination'>"+recordList[i].diseasename+"：</li>"); // 创建DOM对象 li
+			var $htmlUlStart = $("<li class='input-group col-lg-9'><ul id = li_ul"+i+">"); // 创建DOM对象 ul			
+			var $htmlLiId = $("<li class='col-lg-3 text-right'>"+recordList[i].diseasename+"：</li>"); // 创建DOM对象 疾病类别
 			var $htmlLiName = '';
 			if(recordList[i].comment == null || recordList[i].comment == ''){
-				$htmlLiName = $("<li class='tright_healthExamination_check8'><input id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+recordList[i].diseasesubname+"</li>"); // 创建DOM对象 li
+				$htmlLiName = $("<div class='icheckbox_minimal-red checked' aria-checked='false' aria-disabled='false' style='position: relative;'><li class='col-lg-4'><input id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+recordList[i].diseasesubname+"</li></div>"); // 创建DOM对象 li
 			}else{
-				$htmlLiName = $("<li class='tright_healthExamination_check8 tright_healthExamination'><input id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+
+				$htmlLiName = $("<li class='col-lg-4'><input id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+
 						 "<a href='javascript:void(0)' title="+recordList[i].comment+">"+recordList[i].diseasesubname+"</a></li>"); // 创建DOM对象 li
 			}
 			 
@@ -169,20 +172,29 @@
     
 </script>
 </head>
-<body style="background:#e8e3d7">
+<body onload="startInit()"  class="skin-blue">
 <div style="font-size:13px;font-family:微软雅黑">
 <form id="complication_form">
-        <div class="tgreenPrompt"><span class="tblackPrompt">温馨提示：</span>项目字体为深色的，表明该项目有提示内容，请将鼠标放于项目上，提示内容自动显示。</div>
-        <div class="btn_title_informationModify">
-            <ul>
-              <li class="tLeft">当前并发症</li>
-              <li class="tRight"><a href="javascript:void(0)" onclick="edit_complication(this)"><img src="<c:url value='/images/button/btn_editor.png'/>" /></a></li>
-            </ul>
-         </div>
-        <div class="health_examination" id="health_examination">
-            <ul id="health_ul">
+ <div>
+        <div class="box box-info">
+              <div class="box-header">
+                 <h3 class="box-title">当前并发症</h3>
+              </div>		
+              <div class="box-body">
+				         <div class="row form-group btn_title_informationModify">
+					          	<div class="col-lg-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_complication(this)">
+					          		<a class="btn btn-success">
+					                   <i class="fa fa-edit"></i> 编辑
+					             	</a>
+					            </div>
+ 							</div>
+ 						<div class="row" id="health_examination">
+            					<ul class="col-lg-12" id="health_ul">
             
-            </ul>
+            					</ul>
+            			</div>
+			     </div>
+			    </div>
         </div>
 </form>
 </div>
