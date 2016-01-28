@@ -372,6 +372,16 @@
 	padding: 5px;
 	vertical-align: top;
 }
+.weekli_disc{
+	list-style-type:disc;
+}
+.weekli_decimal{
+	list-style-type:decimal;
+}
+
+.weekli_margin{
+	margin-left:10px;
+}
 </style>
 <script type="text/javascript">
 	//第二版周报解析
@@ -426,11 +436,11 @@
 		//伴临床疾患
 		$("#clinical").html(bpWeekReport.clinicalDisease);
 		//血压总体分析
-		$("#mean_bp").html("平均血压:收缩压:"+bpWeekReport.meanBloodPressureOfSBP+"mmhg,舒张压:"+bpWeekReport.meanBloodPressureOfDBP+"mmhg");
-		$("#bp_load").html("血压负荷:收缩压:"+bpWeekReport.bloodPressureLoadOfSBP+"舒张压:"+bpWeekReport.bloodPressureLoadOfDBP+";平均动脉压:"+bpWeekReport.bloodPressureLoadOfMAP+",心律:"+bpWeekReport.bloodPressureLoadOfHR);
+		$("#mean_bp").html("平均血压:  收缩压:"+bpWeekReport.meanBloodPressureOfSBP+"mmhg,  舒张压:"+bpWeekReport.meanBloodPressureOfDBP+"mmhg");
+		$("#bp_load").html("血压负荷:  收缩压:"+bpWeekReport.bloodPressureLoadOfSBP+"舒张压:"+bpWeekReport.bloodPressureLoadOfDBP+";平均动脉压:"+bpWeekReport.bloodPressureLoadOfMAP+",心律:"+bpWeekReport.bloodPressureLoadOfHR);
 		$("#cv").html("血压变异性:"+bpWeekReport.sdMean);
-		$("#sbp").html("最大SBP:"+bpWeekReport.maxSBP+",发生时间:"+bpWeekReport.maxSBPTime+";最小SBP:"+bpWeekReport.minSBP+",发生时间:"+bpWeekReport.minSBPTime);
-		$("#dbp").html("最大DBP:"+bpWeekReport.maxDBP+",发生时间:"+bpWeekReport.maxDBPTime+";最小DBP:"+bpWeekReport.minDBP+",发生时间:"+bpWeekReport.minDBPTime);
+		$("#sbp").html("最大SBP:"+bpWeekReport.maxSBP+",  发生时间:"+bpWeekReport.maxSBPTime+";  最小SBP:"+bpWeekReport.minSBP+",  发生时间:"+bpWeekReport.minSBPTime);
+		$("#dbp").html("最大DBP:"+bpWeekReport.maxDBP+",  发生时间:"+bpWeekReport.maxDBPTime+";  最小DBP:"+bpWeekReport.minDBP+",  发生时间:"+bpWeekReport.minDBPTime);
 		//不适症状
 		$("#week_plan_inadaptation").html(bpWeekReport.noIndication);
 		//测压方案完成情况
@@ -629,121 +639,127 @@
 		}
 	}
 </script>
-<div class="modal fade" id="weekreport_detail" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%" >
-  <div class="modal-dialog">	
+<div class="modal fade" id="weekreport_detail" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:5%" >
+  <div class="modal-dialog" style="width:1100px">
 		<div class="popup_header">
 			<ul>
 				<li class="name_popupHeader" id="detail_title">周报详情</li>
-				<li class="close_popupHeader"><a href="javascript:void(0)"
-					onclick="closeWeekReport();">X</a></li>
+				<li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
 			</ul>
 		</div>
 
-		<div class="popup_main">
-			<div id="container" style="width: 600px; height: 200px;"
-				class="bpDiagnosis_results_trendChart"></div>
-			<!-- 周报第二版展示 -->
-			<div class="bpDiagnosis_results_text" id="secondview"
-				style="float: left; width: 600px; display: none;">
-				<ul>
-					<li class="tgreen_results">创建日期：<span class="tblack_results"
-						id="week_tracking_date"></span></li>
-					<li class="tgreen_results">统计区间：<span class="tblack_results"
-						id="week_interval"></span></li>
-					<li class="tgreen_results">降压目标：<span class="tblack_results"
-						id="bp_target"></span></li>
-					<li class="tgreen_results">血压分级：<span class="tblack_results"
-						id="bp_hype_type"></span></li>
-					<li class="tgreen_results">风险分层：<span class="tblack_results"
-						id="risk_level"></span></li>
-					<li class="tgreen_results">心血管风险因素：</span>
-					</li>
-					<li class="tblack_results"><span class="tblack_results"
-						id="cv_risk"></span></li>
-					<li class="tgreen_results">靶器官损害：</li>
-					<li class="tblack_results"><span class="tblack_results"
-						id="target_organ_damage"></span></li>
-					<li class="tgreen_results">伴临床疾患：</li>
-					<li class="tblack_results"><span class="tblack_results"
-						id="clinical"></span></li>
-
-					<li class="tgreen_results">血压数据统计表：</li>
-					<li class="tblack_results">
-						<table class="detailtable" id="week_bp_static"
-							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
-							<tr>
-								<td>时间</td>
-								<td>收缩压</td>
-								<td>舒张压</td>
-								<td>脉压</td>
-								<td>平均动脉压</td>
-								<td>心律</td>
-							</tr>
-						</table>
-					</li>
-					<li class="tgreen_results">血压总体分析：</li>
-					<li class="tblack_results" id="mean_bp"></li>
-					<li class="tblack_results" id="bp_load"></li>
-					<li class="tblack_results" id="cv"></li>
-					<li class="tblack_results" id="sbp"></li>
-					<li class="tblack_results" id="dbp"></li>
-
-
-					<li class="tgreen_results">测压异常事件情况：</li>
-					<li class="tblack_results">
-						<table class="detailtable" id="week_plan_unnormal"
-							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
-							<tr>
-								<td width="15%">血压值</td>
-								<td width="45%">测压时间</td>
-								<td width="40%">反馈</td>
-							</tr>
-						</table>
-					</li>
-					<li class="tgreen_results">服用药物情况：</li>
-					<li class="tblack_results">
-						<table class="detailtable" id="week_plan_medicine"
-							style="width: 560px; border: 1px solid #aeaeae; border-collapse: collapse;">
-							<tr>
-								<td>通用名称</td>
-								<td>剂量</td>
-								<td>服用时间</td>
-							</tr>
-						</table>
-					</li>
-
-					<li class="tgreen_results">不适应症情况：</li>
-					<li class="tblack_results"><span id="week_plan_inadaptation"
-						style="border: 0px;"> </span></li>
-					<li class="tgreen_results">测压方案完成情况：</li>
-					<li class="tblack_results"><span id="measure_compliance"></span></li>
-					<li class="tgreen_results">总结：</li>
-					<li class="tblack_results" id="conclusion"></li>
-					<li class="tgreen_results">保健建议：</li>
-					<li class="tblack_results" id="suggestion"></li>
-
-				</ul>
+		<div class="popup_main" id="secondview" style="display: none;">
+			<div class="row" >
+				<div class="col-lg-12">
+					 <div class="box box-success">
+                        <div class="box-header">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <h3 class="box-title">血压趋势图</h3>
+                    	</div><!-- /.box-header -->
+						<div class="box-body">
+							<div class="row bpDiagnosis_results_trendChart">
+								<div class="col-sm-12">
+									<div id="container" style="height:250px;width:50%"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<!-- 医生分析结果 -->
-			<div class="tgreen_results">
-				医生分析结果： <span class="tblack_results" id="detail_doctor_report"></span>
+		    <div class="row" >
+                  <div class="col-lg-6">
+	                <div class="box box-success">
+                          <div class="box-header">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <h3 class="box-title">分析结果</h3>
+                    	</div><!-- /.box-header -->
+						<div class="box-body">
+						<!-- 周报第二版展示 -->
+						<ul>
+							<li class="weekli_disc weekli_margin">创建日期：<span class="tblack_results" id="week_tracking_date"></span></li>
+							<li class="weekli_disc weekli_margin">统计区间：<span class="tblack_results" id="week_interval"></span></li>
+							<li class="weekli_disc weekli_margin">降压目标：<span class="tblack_results" id="bp_target"></span></li>
+							<li class="weekli_disc weekli_margin">血压分级：<span class="tblack_results" id="bp_hype_type"></span></li>
+							<li class="weekli_disc weekli_margin">风险分层：<span class="tblack_results" id="risk_level"></span></li>
+							<li class="weekli_disc weekli_margin">心血管风险因素：</li>
+							<li class="weekli_margin"><span class="tblack_results"	id="cv_risk"></span></li>
+							<li class="weekli_disc weekli_margin">靶器官损害：</li>
+							<li class="weekli_margin"><span class="tblack_results"	id="target_organ_damage"></span></li>
+							<li class="weekli_disc weekli_margin">伴临床疾患：</li>
+							<li class="weekli_margin"><span class="tblack_results"	id="clinical"></span></li>
+							<li class="weekli_disc weekli_margin">血压总体分析：</li>
+							<li class="weekli_margin" id="mean_bp"></li>
+							<li class="weekli_margin" id="bp_load"></li>
+							<li class="weekli_margin" id="cv"></li>
+							<li class="weekli_margin" id="sbp"></li>
+							<li class="weekli_margin" id="dbp"></li>
+							<li class="weekli_disc weekli_margin">不适应症情况：</li>
+							<li class="weekli_margin"><span id="week_plan_inadaptation"style="border: 0px;"> </span></li>
+							<li class="weekli_disc weekli_margin">测压方案完成情况：</li>
+							<li class="weekli_margin"><span id="measure_compliance"></span></li>
+							<li class="weekli_disc weekli_margin">总结：</li>
+							<li class="weekli_margin" id="conclusion"></li>
+							<li class="weekli_disc weekli_margin">保健建议：</li>
+							<li class="weekli_margin" id="suggestion"></li>
+							<li>医生分析结果： <span class="tblack_results" id="detail_doctor_report"></span>	</li>
+							<li class="weekli_disc weekli_margin">医生建议： <span class="tblack_results" id="detail_doctor_suggest"></span></li>
+						</ul>
+	               		</div>
+	           		</div>
+	           </div>
+               <div class="col-lg-6">
+					<div class="box box-success">
+	                     <div class="box-header">
+	                       <i class="fa fa-book"></i>
+	                       <h3 class="box-title">数据统计</h3>
+	                     </div><!-- /.box-header -->
+						<div class="box-body">					
+							<ul>
+								<li class="weekli_disc weekli_margin">血压数据统计表：</li>
+								<li class="weekli_margin">
+									<table class="detailtable table table-bordered table-striped dataTable" id="week_bp_static" >
+										<tr>
+											<td>时间</td>
+											<td>收缩压</td>
+											<td>舒张压</td>
+											<td>脉压</td>
+											<td>平均动脉压</td>
+											<td>心律</td>
+										</tr>
+									</table>
+								</li>
+								<li class="weekli_disc weekli_margin">测压异常事件情况：</li>
+								<li class="weekli_margin">
+									<table class="detailtable table table-bordered table-striped dataTable" id="week_plan_unnormal">
+										<tr>
+											<td width="15%">血压值</td>
+											<td width="45%">测压时间</td>
+											<td width="40%">反馈</td>
+										</tr>
+									</table>
+								</li>
+								<li class="weekli_disc weekli_margin">服用药物情况：</li>
+								<li class="weekli_margin">
+									<table class="detailtable table table-bordered table-striped dataTable" id="week_plan_medicine" >
+										<tr>
+											<td>通用名称</td>
+											<td>剂量</td>
+											<td>服用时间</td>
+										</tr>
+									</table>
+								</li>																
+							</ul>
+						</div>
+					</div>
+               </div>
+               <!-- col-lg-6 -->
 			</div>
-			<div class="tgreen_results">
-				医生建议： <span class="tblack_results" id="detail_doctor_suggest"></span>
-			</div>
+			<!-- row -->
 		</div>
 	</div>
 </div>
 
 <style>
-#plan_inadaptation, #plan_complete, #plan_unnormal, #plan_medicine,
-	#month_secondview table {
-	width: 430px;
-	border: 1px solid #aeaeae;
-	border-collapse: collapse;
-	margin-left: 20px;
-}
-
 table th {
 	text-align: center;
 	border-bottom: 1px solid #aeaeae;
@@ -754,6 +770,16 @@ table th {
 	border-right: 1px solid #aeaeae;
 	padding: 5px;
 	vertical-align: top;
+}
+.monthli_disc{
+	list-style-type:disc;
+}
+.monthli_decimal{
+	list-style-type:decimal;
+}
+
+.monthli_margin{
+	margin-left:10px;
 }
 </style>
 <script type="text/javascript">
@@ -821,11 +847,11 @@ var version=0;//版本
 		//伴临床疾患
 		$("#month_clinical").html(bpMonthReport.clinicalDisease);
 		//血压总体分析
-		$("#month_mean_bp").html("平均血压:收缩压:"+bpMonthReport.meanBloodPressureOfSBP+"mmhg,舒张压:"+bpMonthReport.meanBloodPressureOfDBP+"mmhg");
-		$("#month_bp_load").html("血压负荷:收缩压:"+bpMonthReport.bloodPressureLoadOfSBP+"舒张压:"+bpMonthReport.bloodPressureLoadOfDBP+";平均动脉压:"+bpMonthReport.bloodPressureLoadOfMAP+",心律:"+bpMonthReport.bloodPressureLoadOfHR);
+		$("#month_mean_bp").html("平均血压:  收缩压:"+bpMonthReport.meanBloodPressureOfSBP+"mmhg,  舒张压: "+bpMonthReport.meanBloodPressureOfDBP+"mmhg");
+		$("#month_bp_load").html("血压负荷:  收缩压:"+bpMonthReport.bloodPressureLoadOfSBP+"  舒张压:"+bpMonthReport.bloodPressureLoadOfDBP+";  平均动脉压:"+bpMonthReport.bloodPressureLoadOfMAP+"  心律:"+bpMonthReport.bloodPressureLoadOfHR);
 		$("#month_cv").html("血压变异性:"+bpMonthReport.sdMean);
-		$("#month_sbp").html("最大SBP:"+bpMonthReport.maxSBP+",发生时间:"+bpMonthReport.maxSBPTime+";最小SBP:"+bpMonthReport.minSBP+",发生时间:"+bpMonthReport.minSBPTime);
-		$("#month_dbp").html("最大DBP:"+bpMonthReport.maxDBP+",发生时间:"+bpMonthReport.maxDBPTime+";最小DBP:"+bpMonthReport.minDBP+",发生时间:"+bpMonthReport.minDBPTime);
+		$("#month_sbp").html("最大SBP:"+bpMonthReport.maxSBP+",  发生时间:"+bpMonthReport.maxSBPTime+";  最小SBP:"+bpMonthReport.minSBP+",  发生时间:"+bpMonthReport.minSBPTime);
+		$("#month_dbp").html("最大DBP:"+bpMonthReport.maxDBP+",  发生时间:"+bpMonthReport.maxDBPTime+";  最小DBP:"+bpMonthReport.minDBP+",  发生时间:"+bpMonthReport.minDBPTime);
 		//不适症状
 		$("#plan_inadaptation2").html(bpMonthReport.noIndication);
 		//测压方案完成情况
@@ -943,133 +969,122 @@ var version=0;//版本
 	
 </script>
 <div class="modal fade" id="monthreport_detail" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:5%" >
-  <div class="modal-dialog" style="width:1000px">
+  <div class="modal-dialog" style="width:1100px">
 		<div class="popup_header">
 			<ul>
 				<li class="name_popupHeader" id="detail_monthreport">月报详情</li>
-				<li class="close_popupHeader"><a href="javascript:void(0)"
-					onclick="closeMonthReport();">X</a></li>
+				<li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
 			</ul>
 		</div>
 
 		<div class="popup_main">
 		    <div class="row" id="month_secondview" style="display: none;">
                   <div class="col-lg-6">
-                  	<div class="bpDiagnosis_results_text">
-						<ul>
-							<li class="tgreen_results">创建日期：<span class="tblack_results"
-								id="month_tracking_date"></span></li>
-							<li class="tgreen_results">统计区间：<span class="tblack_results"
-								id="month_interval"></span></li>
-							<li class="tgreen_results">降压目标：<span class="tblack_results"
-								id="month_bp_target"></span></li>
-							<li class="tgreen_results">血压分级：<span class="tblack_results"
-								id="month_bp_hype_type"></span></li>
-							<li class="tgreen_results">风险分层：<span class="tblack_results"
-								id="month_risk_level"></span></li>
-							<li class="tgreen_results">心血管风险因素：</span>
-							</li>
-							<li class="tblack_results"><span class="tblack_results"
-								id="month_cv_risk"></li>
-							<li class="tgreen_results">靶器官损害：</li>
-							<li class="tblack_results"><span class="tblack_results"
-								id="month_target_organ_damage"></span></li>
-							<li class="tgreen_results">伴临床疾患：</li>
-							<li class="tblack_results"><span class="tblack_results"
-								id="month_clinical"></span></li>
-							<li class="tgreen_results">血压总体分析：</li>
-							<li class="tblack_results" id="month_mean_bp"></li>
-							<li class="tblack_results" id="month_bp_load"></li>
-							<li class="tblack_results" id="month_cv"></li>
-							<li class="tblack_results" id="month_sbp"></li>
-							<li class="tblack_results" id="month_dbp"></li>
-							<li class="tgreen_results">不适应症情况：</li>
-							<li class="tblack_results"><span id="plan_inadaptation2"
-								style="border: 0px;"> </span></li>
-							<li class="tgreen_results">测压方案完成情况：</li>
-							<li class="tblack_results"><span
-								id="month_measure_compliance"></span></li>
-		
-							<li class="tgreen_results">总结：</li>
-							<li class="tblack_results" id="month_conclusion"></li>
-							<li class="tgreen_results">保健建议：</li>
-							<li class="tblack_results" id="month_suggestion"></li>
-		
-						</ul>
-					</div>
-					<div class="ecg_main">
-						<ul>
-							<li>
-								<div class="tGrey_ecgname" style="width: 300px; margin-top: 10px; text-align: left; float: left;">
-									评估等级：<select id="assessment_level" disabled="disabled">
-										<option value="高">高</option>
-										<option value="中">中</option>
-										<option value="低">低</option>
-									</select>
-								</div>
-								<div class="tGrey_ecgname"style="width: 370px; margin-top: 10px; text-align: left; float: left;">
-									用户状态： <select id="user_state" disabled="disabled">
-										<option value="恢复迅速">恢复迅速</option>
-										<option value="有好转">有好转</option>
-										<option value="无好转">无好转</option>
-										<option value="更严重">更严重</option>
-									</select>
-								</div>
-								<div style="width: 600px;">
-									总结：<span class="tGrey_ecgname" id="doctor_result"></span>
-								</div>
-							</li>
-						</ul>
-					</div>
+	                  <div class="box box-info">
+                          <div class="box-header">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <h3 class="box-title">分析结果</h3>
+                          </div><!-- /.box-header -->
+						<div class="box-body">
+							<ul>
+								<li class="monthli_disc monthli_margin">创建日期：<span class="tblack_results" id="month_tracking_date"></span></li>
+								<li class="monthli_disc monthli_margin">统计区间：<span class="tblack_results" id="month_interval"></span></li>
+								<li class="monthli_disc monthli_margin">降压目标：<span class="tblack_results" id="month_bp_target"></span></li>
+								<li class="monthli_disc monthli_margin">血压分级：<span class="tblack_results" id="month_bp_hype_type"></span></li>
+								<li class="monthli_disc monthli_margin">风险分层：<span class="tblack_results" id="month_risk_level"></span></li>
+								<li class="monthli_disc monthli_margin">心血管风险因素：</li>
+								<li class="monthli_margin"><span class="tblack_results" id="month_cv_risk"></span> </li>
+								<li class="monthli_disc monthli_margin">靶器官损害：</li>
+								<li class="monthli_margin"><span class="tblack_results"	id="month_target_organ_damage"></span></li>
+								<li class="monthli_disc monthli_margin">伴临床疾患：</li>
+								<li class="monthli_margin"><span class="tblack_results" id="month_clinical"></span></li>
+								<li class="monthli_disc monthli_margin">血压总体分析：</li>
+								<li class="monthli_margin" id="month_mean_bp"></li>
+								<li class="monthli_margin" id="month_bp_load"></li>
+								<li class="monthli_margin" id="month_cv"></li>
+								<li class="monthli_margin" id="month_sbp"></li>
+								<li class="monthli_margin" id="month_dbp"></li>
+								<li class="monthli_disc monthli_margin">不适应症情况：</li>
+								<li class="monthli_margin"><span id="plan_inadaptation2"style="border: 0px;"> </span></li>
+								<li class="monthli_disc monthli_margin">测压方案完成情况：</li>
+								<li class="monthli_margin"><span id="month_measure_compliance"></span></li>
+			
+								<li class="monthli_disc monthli_margin">总结：</li>
+								<li class="monthli_margin" id="month_conclusion"></li>
+								<li class="monthli_disc monthli_margin">保健建议：</li>
+								<li class="monthli_margin" id="month_suggestion"></li>
+								<li class="monthli_disc monthli_margin">评估等级：<select id="assessment_level" disabled="disabled">
+											<option value="高">高</option>
+											<option value="中">中</option>
+											<option value="低">低</option>
+										</select>
+										用户状态： <select id="user_state" disabled="disabled">
+											<option value="恢复迅速">恢复迅速</option>
+											<option value="有好转">有好转</option>
+											<option value="无好转">无好转</option>
+											<option value="更严重">更严重</option>
+										</select>
+								</li>
+								<li class="monthli_disc monthli_margin">总结：<span class="tGrey_ecgname" id="doctor_result"></span>
+								</li>
+							</ul>
+						</div>
+                  	</div>
                   </div>
                   <div class="col-lg-6">
-					<div class="bpDiagnosis_results_text">
-						<ul>
-							<li class="tgreen_results">血压数据统计表：</li>
-							<li class="tblack_results">
-								<table class="detailtable table table-bordered table-striped dataTable" id="month_bp_static">
-									<tr>
-										<td >时间</td>
-										<td>收缩压</td>
-										<td>舒张压</td>
-										<td>脉压</td>
-										<td>平均动脉压</td>
-										<td>心率</td>
-									</tr>
-								</table>
-							</li>
-							<li class="tgreen_results">测压异常事件情况：</li>
-							<li class="tblack_results">
-								<table class="detailtable table table-bordered table-striped dataTable" id="month_bp_static"id="plan_unnormal2">
-									<tr>
-										<td width="15%">血压值</td>
-										<td width="35%">测压时间</td>
-										<td width="50%">反馈</td>
-									</tr>
-								</table>
-							</li>
-							<li class="tgreen_results">服用药物情况：</li>
-							<li class="tblack_results">
-								<table class="detailtable table table-bordered table-striped dataTable" id="plan_medicine2">
-									<tr>
-										<td>通用名称</td>
-										<td>剂量</td>
-										<td>服用时间</td>
-									</tr>
-								</table>
-							</li>
-							<li class="tgreen_results">心电监护结果：</li>
-							<li class="tblack_results">
-								<table class="detailtable table table-bordered table-striped dataTable" id="month_ecg_report">
-									<tr>
-										<td width="25%">采集时间</td>
-										<td width="12%">采集时长</td>
-										<td width="12%">平均心率</td>
-										<td width="51%">分析结果</td>
-									</tr>
-								</table>
-							</li>
-						</ul>
+				   <div class="box box-info">
+                        <div class="box-header">
+                          <i class="fa fa-book"></i>
+                          <h3 class="box-title">数据统计</h3>
+                        </div><!-- /.box-header -->
+						<div class="box-body">
+							<ul>
+								<li class="monthli_disc monthli_margin">血压数据统计表：</li>
+								<li class="tblack_results monthli_margin">
+									<table class="detailtable table table-bordered table-striped dataTable" id="month_bp_static">
+										<tr>
+											<td >时间</td>
+											<td>收缩压</td>
+											<td>舒张压</td>
+											<td>脉压</td>
+											<td>平均动脉压</td>
+											<td>心率</td>
+										</tr>
+									</table>
+								</li>
+								<li class="monthli_disc monthli_margin">测压异常事件情况：</li>
+								<li class="tblack_results monthli_margin">
+									<table class="detailtable table table-bordered table-striped dataTable" id="month_bp_static"id="plan_unnormal2">
+										<tr>
+											<td width="15%">血压值</td>
+											<td width="35%">测压时间</td>
+											<td width="50%">反馈</td>
+										</tr>
+									</table>
+								</li>
+								<li class="monthli_disc monthli_margin">服用药物情况：</li>
+								<li class="tblack_results monthli_margin">
+									<table class="detailtable table table-bordered table-striped dataTable" id="plan_medicine2">
+										<tr>
+											<td>通用名称</td>
+											<td>剂量</td>
+											<td>服用时间</td>
+										</tr>
+									</table>
+								</li>
+								<li class="monthli_disc monthli_margin">心电监护结果：</li>
+								<li class="tblack_results monthli_margin">
+									<table class="detailtable table table-bordered table-striped dataTable" id="month_ecg_report">
+										<tr>
+											<td width="25%">采集时间</td>
+											<td width="12%">采集时长</td>
+											<td width="12%">平均心率</td>
+											<td width="51%">分析结果</td>
+										</tr>
+									</table>
+								</li>
+							</ul>
+						</div>
 					</div>
                   </div>
                   <!-- col-lg-7 -->
