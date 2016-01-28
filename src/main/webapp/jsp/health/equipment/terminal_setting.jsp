@@ -81,35 +81,35 @@
 		var setting_flag_test_blood_pressure_notice = deviceSettingCommon.setting_flag_test_blood_pressure_notice;
 		var setting_flag_send_data_interval = deviceSettingCommon.setting_flag_send_data_interval;
 		if(setting_flag_simcard=="2")
-			$("#setting_flag_simcard").prop({checked:true});
+			$("#setting_flag_simcard").iCheck('check');
 		else
-			$("#setting_flag_simcard").prop('checked',false);
+			$("#setting_flag_simcard").iCheck('uncheck');
 			
 		if(setting_flag_heartrate_alert=="2")
-			$("#setting_flag_heartrate_alert").prop({checked:true});
+			$("#setting_flag_heartrate_alert").iCheck('check');
 		else
-			$("#setting_flag_heartrate_alert").prop('checked',false);
+			$("#setting_flag_heartrate_alert").iCheck('uncheck');
 			
 		if(setting_flag_blood_pressure_alert=="2")
-			$("#setting_flag_blood_pressure_alert").prop({checked:true});
+			$("#setting_flag_blood_pressure_alert").iCheck('check');
 		else
-			$("#setting_flag_blood_pressure_alert").prop('checked',false);
+			$("#setting_flag_blood_pressure_alert").iCheck('uncheck');
 			
 
 		if(setting_flag_take_medicine_notice=="2")
-			$("#setting_flag_take_medicine_notice").prop("checked",true);
+			$("#setting_flag_take_medicine_notice").iCheck('check');
 		else
-			$("#setting_flag_take_medicine_notice").prop("checked",false);
+			$("#setting_flag_take_medicine_notice").iCheck('uncheck');
 			
 		if(setting_flag_test_blood_pressure_notice=="2")
-			$("#setting_flag_test_blood_pressure_notice").prop("checked",true);
+			$("#setting_flag_test_blood_pressure_notice").iCheck('check');
 		else
-			$("#setting_flag_test_blood_pressure_notice").prop("checked",false);
+			$("#setting_flag_test_blood_pressure_notice").iCheck('uncheck');
 			
 		if(setting_flag_send_data_interval=="2")
-			$("#setting_flag_send_data_interval").prop("checked",true);
+			$("#setting_flag_send_data_interval").iCheck('check');
 		else
-			$("#setting_flag_send_data_interval").prop("checked",false);
+			$("#setting_flag_send_data_interval").iCheck('uncheck');
 		
 	}
 	//初始化用药提醒
@@ -782,7 +782,7 @@
                                                      </ul>
                                                 </div>
                                             </div>
-                                            
+                        			  </div>
                 
                                        <div class="panel box box-primary">
                                             <div class="box-header">
