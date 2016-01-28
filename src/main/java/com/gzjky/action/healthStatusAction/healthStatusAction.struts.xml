@@ -18,5 +18,6 @@
 
 	<action name="queryDoctorReport" class="com.gzjky.action.healthStatusAction.QueryDoctorReportAction" method="getDoctorReport"/>	
 
+	<action name="queryEcgHeartRateAndReport" class="com.gzjky.action.healthStatusAction.QueryEcgDetailAction" method="getEcgDetail"/>
 	</package>
 </struts>

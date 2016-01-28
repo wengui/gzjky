@@ -21,7 +21,7 @@
 
 
 <script type="text/JavaScript">
-
+	menuId = "#home";
 	function reinitIframe() {
 		var iframe = document.getElementById("mainFrame");
 		try {

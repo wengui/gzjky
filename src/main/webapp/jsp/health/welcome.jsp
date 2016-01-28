@@ -17,6 +17,7 @@
 <%@ include file="../shared/importCss.jsp"%>
 <%@ include file="../shared/importJs.jsp"%>
 <script type="text/JavaScript">
+	menuId = "#notice";
 	//初始化方法
 	function QueryHealth(){
 		//2016/1/13 liu test START 用
@@ -200,7 +201,7 @@
 			dataType:"json",
 			type:"POST",
 			error:function(){
-				//$.alert("发生异常3","请注意");
+				$.alert("发生异常","请注意");
 			},
 			success:function(response) {
 				var headTitle="近期血压趋势图";
@@ -209,58 +210,7 @@
 				var modelMap = response.outBeanList;
 				var bloodPressureRecordList = modelMap[0];
 				var morningSurgeBpList = modelMap[1];
-				
-// 				var modelMap = response.modelMap;
-// 				var bloodPressureRecordList = modelMap.bloodPressureRecordList;//最新血压趋势数据
-// 				var morningSurgeBpList = modelMap.morningSurgeBpList;//最新晨峰血压趋势数据
-// 				var bloodPressureDiagnoseVo = modelMap.bloodPressureDiagnoseVo;
-// 				var bpcompleted = modelMap.bpcompleted;//最新医生血压回复
-// 				var typeLvl=null;//血压等级
-// 				var suggestionList=new Array();
-// 				var riskLvl=null;//心血管分层
-// 				var angiocarpyList=null;//判断依据
-// 				var moringBpRecord=null;//近期晨峰压记录
-// 				var diagnose_time="";//历史血压分析时间
-// 				var versio="";
-// 				var angiocarpyNewList=""
-// 				if(bloodPressureDiagnoseVo!=null){
-// 					//心血管分层
-// 					riskLvl=bloodPressureDiagnoseVo.risk;
-// 					//心血管诊断依据
-// 					angiocarpyList=bloodPressureDiagnoseVo.basis;
-// 					angiocarpyNewList=bloodPressureDiagnoseVo.cv_risk;
-// 					//晨峰血压数据
-// 					moringBpRecord=bloodPressureDiagnoseVo.records;
-// 					//血压等级
-// 					typeLvl=bloodPressureDiagnoseVo.hype_type;
-// 					//保健建议
-// 		    		suggestionList=bloodPressureDiagnoseVo.suggestionList;
-// 		    		//历史血压分析时间
-// 		    		diagnose_time=bloodPressureDiagnoseVo.diagnose_time;
-// 		    		//版本
-// 		    		versio=bloodPressureDiagnoseVo.version;
-// 				}
-// 				if(diagnose_time==""||diagnose_time==null){
-// 					$("#histroy_bp_diagnose").html("血压等级分析");
-// 				}else{
-// 					$("#histroy_bp_diagnose").html("血压等级分析("+diagnose_time.substring(0,19)+")");
-// 				}
-				
-// 				//保健建议、血压诊断，治疗方案等的显示。如果没有则显示暂无
-// 				showDiagnose(typeLvl,suggestionList,riskLvl,angiocarpyList,angiocarpyNewList,bpcompleted,versio);
-// 				if(bloodPressureRecordList == null){
-// 					headTitle="近期血压趋势图(暂无数据)";	
-// 				}
-//				if(moringBpRecord==null || moringBpRecord==""){
-//					morningHeadTitle="血压等级分析依据图(暂无数据)";
-//				}else{
-//					var max = moringBpRecord.length-1;
-//					$("#container2_time").text(moringBpRecord[max].take_time.substring(0,11)+"~"+moringBpRecord[0].take_time.substring(0,11));
-//				}
-//				if(morningSurgeBpList==null){
-//					newMorningHeadTitle="近期晨峰血压趋势图(暂无数据)";
-//					$("#bpmorning_what").html("无晨峰血压数据，请查看<a class='tgreen_results' style='font-size: 12px;' href='javascript:void(0);' onclick='moringBp();'>晨峰血压是什么？</a>正确测量晨峰血压");
-//				}
+
 				//显示最新血压趋势图
 				bloodPressureCharts(bloodPressureRecordList,headTitle,"0");
 				
@@ -580,37 +530,36 @@
 	}
 
 	//查询心电信息 
-	var hly_url=  "http://v3.995120.cn:7090/hly_svr";
+	var hly_url=  "http://gzjky.sh-sdhr.com/upload/Electrocardiograms/";
 	function queryEcg(){
 		$.ajax({
-			url:"/healthStatus/queryEcgHeartRateAndReport.action",
+			url:"/gzjky/healthStatus/queryEcgHeartRateAndReport.do",
 			async:true,
 			data:null,
 			dataType:"json",
 			type:"POST",
 			error:function(){
-				//$.alert("发生异常2","请注意");
+				$.alert("发生异常","请注意");
 			},
 			success:function(response) {
-				var modelMap = response.modelMap;
-				var ecgRecordVo=modelMap.ecgRecordVo;
+				var ecgRecordVo=response.result
 				if(ecgRecordVo == null){
-					$('#doctor_report').text("暂无");
+					$('#doctor_report').html("暂无");
 					$('#image_heart_rate').html("<img src='../../images/health/bottom.png' />");
 				}else{
-					$('#doctor_report').text(ecgRecordVo.report);
-					$('#reference_range').html("您的心率值为"+ecgRecordVo.heart_rate+"<a class='tblack_results' href='javascript:void(0);' onclick='ecgPic();'>心电图</a>");
-					$("#ecg_image").attr("src",hly_url+ecgRecordVo.file_storage_path.replace("/helowindata/tomcat/webapps/hly_svr","")+"-I.jpg");
-					if(ecgRecordVo.heart_rate>=100){
-						$('#image_heart_rate').
-						html("<img style='margin-right: "+(20-(ecgRecordVo.heart_rate-100))+"px;' src='../../images/health/top.png'/><img src='../../images/health/bottom.png' />");
-					}else if(ecgRecordVo.heart_rate<=60){
-						$('#image_heart_rate').
-							html("<img style='margin-right: "+(150+(60-ecgRecordVo.heart_rate)*2)+"px;' src='../../images/health/top.png'/><img src='../../images/health/bottom.png' />");
-					}else{
-						$('#image_heart_rate').
-							html("<img style='margin-right: "+(150-(ecgRecordVo.heart_rate-60)*3.25)+"px;' src='../../images/health/top.png'/><img src='../../images/health/bottom.png' />");
-					}
+					$('#doctor_report').html(ecgRecordVo.analyseResult);
+					$('#reference_range').html("您的心率值为"+ecgRecordVo.heartRate+"&nbsp;&nbsp;<a class='tblack_results'style='text-decoration: underline;' data-toggle='modal' href='#ecgDiagram'>心电图</a>");
+					$("#ecg_image").attr("src",hly_url+ecgRecordVo.ecgImage.replace("~/upload/Electrocardiograms/",""));
+ 					if(ecgRecordVo.heartRate>=100){
+ 						$('#image_heart_rate').
+ 						html("<div><img style='margin-right: "+(-165-(ecgRecordVo.heartRate-100)*2.6)+"px;' src='../../images/health/top.png'/></div><div><img src='../../images/health/bottom.png' /></div>");
+ 					}else if(ecgRecordVo.heartRate<=60){
+ 						$('#image_heart_rate').
+ 							html("<div><img style='margin-right: "+(95+(60-ecgRecordVo.heartRate)*2.6)+"px;' src='../../images/health/top.png'/></div><div><img src='../../images/health/bottom.png' /></div>");
+ 					}else{
+ 						$('#image_heart_rate').
+ 							html("<div><img style='margin-right: "+(95-(ecgRecordVo.heartRate-60)*6.75)+"px;' src='../../images/health/top.png'/></div><div><img src='../../images/health/bottom.png' /></div>");
+ 					}
 				}
 				
 			}
@@ -662,38 +611,6 @@
 		});
 		$("#popWindow").show(200);
 		showScreenProtectDiv(1);
-	}
-	//关闭血压分级标准窗口
-	function closeDiv() {
-		$("#popWindow").hide(200);
-		hideScreenProtectDiv(1);
-	}
-	
-	//弹出晨峰血压
-	function moringBp() {
-		$('#popWindow1').draggable({
-			disabled : true
-		});
-		$("#popWindow1").show(200);
-		showScreenProtectDiv(1);
-	}
-	//关闭晨峰血压
-	function closeDiv1() {
-		$("#popWindow1").hide(200);
-		hideScreenProtectDiv(1);
-	}
-	//弹出心电图
-	function ecgPic() {
-		$('#popWindow2').draggable({
-			disabled : true
-		});
-		$("#popWindow2").show(200);
-		showScreenProtectDiv(1);
-	}
-	//关闭心电图
-	function closeDiv2() {
-		$("#popWindow2").hide(200);
-		hideScreenProtectDiv(1);
 	}
 </script>
 
@@ -1060,16 +977,25 @@
 	                                    <i class="fa fa-cloud"></i>
 	                                    <h3 class="box-title">心电医生回复</h3>
 	                                </div><!-- /.box-header -->
-	                                <div class="box-body" style="padding-left:22px" id="doctor_report">
-	                                  		  暂无<!-- /.row - inside box -->
+	                                <div class="box-body" style="padding-left:22px" >
+	                                 <div id="doctor_report"> 暂无</div><!-- /.row - inside box -->
 	                                </div><!-- /.box-body -->
 	                                <div class="box-footer">
 	                                    <div class="row">
 	                                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-	                                            <div><h5 class="box-body">参考正常范围：60 &lt; 心率  &lt; 100</h4></div>
+	                                        	<div><h4 class="box-body" id="reference_range"></h4></div>
+	                                            <div><h5 class="box-body">参考正常范围：60 &lt; 心率  &lt; 100</h5></div>
 	                                        </div><!-- ./col -->
-	                                        <div class="col-xs-8 text-center" id="image_heart_rate">
-												<img style="margin-right: 150px;" src="../../images/health/top.png" /><img src="../../images/health/bottom.png" />
+	                                        <div class="col-xs-8 text-center">
+	                                        	<li class="sketchMap" id="image_heart_rate">
+	                                        		<div>
+													<img style="margin-right: 150px;" src="../../images/health/top.png" />
+													</div>
+													
+													<div>
+													<img src="../../images/health/bottom.png" />
+													</div>
+	                                        	</li>
 	                                        </div><!-- ./col -->
 	                                    </div><!-- /.row -->
 	                                </div><!-- /.box-footer -->
@@ -1139,8 +1065,7 @@
   </div>
 </div>
 
-
-<div class="modal fade" id="popWindow2"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%">
+<div class="modal fade" id="ecgDiagram" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:5%" >
   <div class="modal-dialog">	
 	 <div class="popup_header" >
 	   <ul >

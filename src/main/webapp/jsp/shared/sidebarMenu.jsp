@@ -15,12 +15,12 @@
          </div>
          <!-- sidebar menu: : style can be found in sidebar.less -->
          <ul class="sidebar-menu">
-             <li>
+             <li id="home">
                  <a href="<c:url value='/jsp/home.jsp'/>">
                      <i class="fa fa-home"></i> <span>首页</span>
                  </a>
              </li>
-             <li>
+             <li id="notice">
                  <a href="<c:url value='/jsp/health/welcome.jsp'/>">
                      <i class="fa fa-dashboard"></i> <span>健康报告</span>
                  </a>
@@ -82,7 +82,7 @@
              </li>
              <li class="treeview">
                  <a href="#">
-                     <i class="fa fa-folder"></i> <span>医生报告</span>
+                     <i class="fa fa-folder-o"></i> <span>医生报告</span>
                      <i class="fa fa-angle-left pull-right"></i>
                  </a>
                  <ul class="treeview-menu">
