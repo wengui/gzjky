@@ -734,7 +734,7 @@
                               </p>
                           </div>
                           <div class="icon">
-                              <i class="ion ion-bag"></i>
+                              <i class="ion ion-waterdrop"></i>
                           </div>
                       </div>
                   </div><!-- ./col -->
@@ -897,7 +897,7 @@
                       <div class="box box-danger" >
                           <div class="box-header">
                               <!-- tools box -->
-                              <i class="fa fa-cloud"></i>
+                              <i class="fa fa-bar-chart-o"></i>
 
                               <h3 class="box-title">近期血压趋势图</h3>
                           </div><!-- /.box-header -->
@@ -917,7 +917,7 @@
                       <!-- Map box -->
                       <div class="box box-primary">
                           <div class="box-header">
-                              <i class="fa fa-map-marker"></i>
+                              <i class="fa fa-bar-chart-o"></i>
                               <h3 class="box-title">
                                   	近期晨峰血压趋势图
                               </h3>
@@ -937,7 +937,7 @@
                         <section class="col-lg-6 connectedSortable"> 
                             <div class="box box-danger" id="histroy_bp_diagnose">
                                 <div class="box-header">
-                                    <i class="fa fa-warning"></i>
+                                    <i class="fa fa-map-marker"></i>
                                     <h3 class="box-title">血压等级分析</h3>
                                     <a style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;" data-toggle="modal" href="#bloodstandard">高血压分级标准</a>
                                 </div><!-- /.box-header -->
@@ -1036,7 +1036,7 @@
 						<section class="col-lg-6 connectedSortable">
                             <div class="box box-info">
                              <div class="box-header">
-                              <i class="fa fa-map-marker"></i>
+                              <i class="fa fa-bar-chart-o"></i>
                               <h3 class="box-title">
                                   	血压等级分析依据图
                               </h3>
