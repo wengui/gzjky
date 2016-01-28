@@ -32,6 +32,10 @@
 		margin-left: 30px;
 		font-weight:bold;
 	}
+.form-margin-left{
+		margin-left: 15px;
+	}
+	
 .form-span-add{
 	height:32px;
 	margin-left: 57px;
@@ -61,4 +65,15 @@
 	margin: 8px 0 0; 
     height: 16px;
     width: 16px;
+}
+.display-textarea{
+	height:80px;
+	padding: 6px 5px;
+	word-break: break-all;
+	border-bottom: 1px dashed @light-gray;
+	margin-bottom:15px;
+}
+
+#diseaseNameList > a{
+	margin-bottom:15px;
 }
