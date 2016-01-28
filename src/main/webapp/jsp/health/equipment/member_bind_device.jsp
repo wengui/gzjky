@@ -4,30 +4,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
+<title>995120健康服务中心</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
+<link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/page/jquery.validate.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/page/hwin-additional-methods.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/page/jquery.metadata.js'/>" type="text/javascript" ></script>
-<script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
+<script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
+<script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
 
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet"/>
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet"/>
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 <script type="text/javascript">
 	menuId = "#equipmentBind";
 	
@@ -202,59 +198,70 @@
 	}
 </script>
 </head>
-<body>
-<div class="example-item alt-color gradient">
-  <div class="tabs_framed styled" >
-    <div class="inner tab_menu">
-       <ul class="tabs clearfix active_bookmark1">
-            <li class="active"><a href="#mb" data-toggle="tab" hidefocus="true" class="gradient" style="outline: none;">我的设备</a></li>
-       </ul>
-	   <div class="tab-content clearfix">
-	     <div class="tab-pane fade in active" id="eq">
-      	<div class="">
-      	<form id="memberBindDevice_form">
-	        <div class="password_information">
-	          <div class="tgreen_title_BPhistory">绑定设备</div>
-	          <div class="password_informationMain">
-	            <ul>
-	              <li>设备序列号：</li>
-	              <li class="register_input">
-	              	<input type="text"  id="device_sid" name="device_sid"  onblur="queryVersion()"  maxlength="16"  validate="required:true"/>
-	              </li>
-	              
-	              
-	              <li>设备绑定码：</li>
-	              <li class="register_input">
-	              	<input type="text"  name="device_bind_code"   id="device_bind_code" maxlength="6" validate="required:true,alphanumeric:true,rangelength:[6,6]"/>
-	              </li>
-	              
-	              <div id="new_user" name="new_user" >
-	              
-	              </div>              
-	              <li><a href="javascript:void(0)" class="btn" onclick="deviceBinding()"><span style="font-size:17px; font-weight:500;color:#5a5a5a;width:140px">提交</span></a>
-                  	 <a class="btn"href="javascript:void(0)" onclick="returnEquipment()"><span style="font-size:17px; font-weight:500;color:#5a5a5a;width:140px">返回</span></a></li>
-	              <!-- <li class="btn_reguster"><a href="javascript:void(0)" onclick="deviceBinding()">提交</a></li>
+
+<body class="skin-blue">
+
+	<!-- header logo: style can be found in header.less -->
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+		<!-- Left side column. contains the logo and sidebar -->
+		<%@ include file="../../shared/sidebarMenu.jsp"%>
+
+		<form id="memberBindDevice_form">
+			<aside class="right-side"> <!-- Main content --> <section
+				class="content"> <!-- START ALERTS AND CALLOUTS -->
+			<h2 class="page-header">我的设备</h2>
+			<div class="row">
+				<div class="col-md-13">
+					<div class="box box-danger">
+						<div class="box-header">
+							<i class="fa fa-bullhorn"></i>
+							<h3 class="box-title">绑定设备</h3>
+						</div>
+						<!-- /.box-header -->
+						<div class="box-body">
+							<ul>
+								<div class="form-group">
+									<li>设备序列号：</li>
+									<li class="register_input"><input type="text"
+										id="device_sid" name="device_sid" onblur="queryVersion()"
+										maxlength="16" validate="required:true" /></li>
+								</div>
+								<div class="form-group">
+									<li>设备绑定码：</li>
+									<li class="register_input"><input type="text"
+										name="device_bind_code" id="device_bind_code" maxlength="6"
+										validate="required:true,alphanumeric:true,rangelength:[6,6]" />
+									</li>
+								</div>
+								<div class="form-group">
+									<div id="new_user" name="new_user"></div>
+								</div>
+								<li><a href="javascript:void(0)" class="btn btn-success"
+									onclick="deviceBinding()"><span>提交</span></a> <a
+									class="btn btn-success" href="javascript:void(0)"
+									onclick="returnEquipment()"><span>返回</span></a></li>
+								<!-- <li class="btn_reguster"><a href="javascript:void(0)" onclick="deviceBinding()">提交</a></li>
 	              <li class="btn_reguster"><a href="javascript:void(0)" onclick="returnEquipment()">返回</a></li> -->
-	            </ul>
-	          </div>
-	          
-	        </div>
-        </form>
-      </div>
-      <!--password_modification end-->
-	   </div> 
-	  </div>
-    </div>
-  </div>
-</div>
-  
+							</ul>
 
-<div id="divloading">
-	<img src="../../../images/public/blue-loading.gif" />
-</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<!-- /.box -->
+				</div>
+			</div>
+			<!-- /.row --> </section> </aside>
+		</form>
+	</div>
+	<div id="divloading">
+		<img src="../../../images/public/blue-loading.gif" />
+	</div>
 
-<div id="transparentDiv" ></div>
+	<div id="transparentDiv"></div>
 
-<div id="transparentDiv2"></div>   
+	<div id="transparentDiv2"></div>
+
 </body>
+
 </html>
