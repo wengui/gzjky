@@ -69,7 +69,8 @@
 				    	$("#RiskLevel").val(memberHtSpecial.riskLevel);
 				    }else{    	
 				    	$("#htspecialForm"+" :input").attr("disabled",true);
-				    	$("#htspecialForm .med_tab").find("a").css("display","none");
+				    	$("#htspecialForm .from-med-tab").find("a").attr("disabled",true);
+				    	$("#htspecialForm .from-med-table2").find("a").attr("disabled",true);
 				    }
 				}
 			});
@@ -87,8 +88,8 @@
 			}
 			
 			$("#htspecialForm"+" :input").attr("disabled",true);
-			$("#htspecialForm .med_tab").find("a").css("display","none");
-			$("#htspecialForm").find("#med_table a").css("display","none");
+			$("#htspecialForm .from-med-tab").find("a").attr("disabled",true);
+	    	$("#htspecialForm .from-med-table2").find("a").attr("disabled",true);
 		}
 		
 
@@ -129,7 +130,7 @@
 				 
 				 td=tr.insertCell(5);
 				 td.nowrap="nowrap";
-				 td.innerHTML =  "<a href='javascript:void(0)' onclick='updateHtspecial("+i+")'>查看</a>";
+				 td.innerHTML =  "<a href='javascript:void(0)' class='btn btn-success' onclick='updateHtspecial("+i+")'>查看</a>";
 			}catch(e){
 	    		$.alert('数据加载错误');
 	   		}
@@ -152,7 +153,7 @@
 			 td.innerHTML = '<input type="text" onclick="showHours(this)" class="med_hour validate[required]" name="medicine_taken.hours"  readonly="readonly" value="'+obj.takeTime+'" data-prompt-position="topLeft:45,0" onblur="validateControl(this)"/>';
 			
 			 td=tr.insertCell(3);
-			 td.innerHTML = '<a href="javascript:void(0)" onclick="deleteMed(this)">删除</a>';
+			 td.innerHTML = '<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="deleteMed(this)" style="display: block;">删除</a>';
 			 td.nowrap="nowrap" ;
 		}
 		
@@ -179,8 +180,8 @@
 			}
 			
 			$("#htspecialForm"+" :input").attr("disabled",true);
-			$("#htspecialForm .med_tab").find("a").attr("disabled",true);
-			$("#htspecialForm").find("#med_table a").attr("disabled",true);
+			$("#htspecialForm .from-med-tab").find("a").attr("disabled",false);
+	    	$("#htspecialForm .from-med-table2").find("a").attr("disabled",false);
 			
 			var btn_obj = document.getElementById("editHtspecialBtn");
 			btn_obj.onclick = function(){edit_htSpecial(btn_obj);};
@@ -253,10 +254,8 @@
 							$.fn.page.settings.currentnum = 1;
 							
 							$("#htspecialForm"+" :input").attr("disabled",true);
-							//$("#htspecialForm .med_tab").find("a").attr("disabled",true);
-							//$("#htspecialForm").find("#med_table a").attr("disabled",true);
-							$("#htspecialForm .med_tab").find("a").css("display","none");
-							$("#htspecialForm").find("#med_table a").css("display","none");
+							$("#htspecialForm .from-med-tab").find("a").attr("disabled",true);
+					    	$("#htspecialForm .from-med-table2").find("a").attr("disabled",true);
 							obj.onclick = function(){edit_htSpecial(obj);};
 							$(obj).find("img").attr("src",edit_image);
 				    	//}
@@ -283,7 +282,7 @@
 				return false;
 			}
 			
-			var delBtn='<a href="javascript:void(0)" onclick="deleteMed(this)">删除</a>';
+			var delBtn='<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="deleteMed(this)" style="display: block;">删除</a>';
 			$("#med_table").append('<tr>'
 							+'<td>'
 								+'<input type="text" onclick="showMedicine(this)" class="med_hour validate[required]" name="medicine_taken.name" readonly="readonly" data-prompt-position="topLeft:0,0" onblur="validateControl(this)"/>'
@@ -405,10 +404,8 @@
 		
 		function edit_htSpecial(obj){
 			$("#htspecialForm"+" :input").attr("disabled",false);
-			//$("#htspecialForm .med_tab").find("a").attr("disabled",false);
-			//$("#htspecialForm").find("#med_table a").attr("disabled",false);
-			$("#htspecialForm .med_tab").find("a").css("display","block");
-			$("#htspecialForm").find("#med_table a").css("display","block");
+			$("#htspecialForm .from-med-tab").find("a").attr("disabled",false);
+	    	$("#htspecialForm .from-med-table2").find("a").attr("disabled",false);
 			obj.onclick = function(){saveHtspecial(obj);};
 			$(obj).find("img").attr("src",save_image);
 		}
@@ -448,8 +445,12 @@
 					         	<div class="col-lg-2">&nbsp;</div>
 						        <div class="col-lg-8">
 						        	<lable class="col-lg-4 text-right form-span">*是否用药：</lable>
-	                 				<input type="radio" class="col-lg-2 text-right form-span" name="isUseMedicine" value="1" checked="checked" >是</input>
-		            				<input type="radio" class="col-lg-2 text-right form-span" name="isUseMedicine" value="0">否</input>
+						        	<label class="checkbox-inline col-lg-2">
+	                 				<input type="radio" class="col-lg-10 text-right form-span" name="isUseMedicine" value="1" checked="checked" >是</input>
+	                 				</label>
+	                 				<label class="checkbox-inline col-lg-2">
+		            				<input type="radio" class="col-lg-10 text-right form-span" name="isUseMedicine" value="0">否</input>
+		            				</label>
 						        </div>
 						        <div class="col-lg-2">&nbsp;</div>
 						        </div>
@@ -509,15 +510,15 @@
 						        <div class="col-lg-12">
 						        	<div class="col-lg-3">&nbsp;</div>
 						        	<div class="col-lg-8 table-medicine">
-    								<div class="med_tab">
-    									<a href="javascript:void(0)" onclick="addMed()">继续添加</a> 
+    								<div class="from-med-tab">
+    									<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="addMed()">继续添加</a> 
     								</div>
-    								<table cellpadding="0" cellspacing="0" width="100%" class="med_table2" id="med_table">
+    								<table cellpadding="0" cellspacing="0" width="100%" class="from-med-table2" id="med_table">
     									<colgroup>
-						        			<col width="20%" />
 						        			<col width="30%" />
 						        			<col width="30%" />
-						        			<col width="20%" />
+						        			<col width="30%" />
+						        			<col width="10%" />
 						    			</colgroup>
     									<tr>
     										<th>*药物名称</th>

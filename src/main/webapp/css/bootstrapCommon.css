@@ -84,3 +84,22 @@
 	border-right: 1px solid #aeaeae;
 	border-bottom: 1px solid #aeaeae;
 }
+
+.from-med-tab{
+	text-align: right;
+	border-bottom: 1px solid #aeaeae ;
+}
+
+.from-med-tab a {
+    padding-right: 5px;
+    width: 15%;
+}
+
+.from-med-table2 a {
+	padding-right: 5px;
+    height: 32px;
+}
+
+.from-med-table2 td {
+	padding-bottom:10px;
+}
