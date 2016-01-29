@@ -174,69 +174,83 @@
               </div>		
               <div class="box-body">
 				         <div class="row form-group btn_title_informationModify">
-					          	<div class="col-lg-8 text-right" id="editImage" href="javascript:void(0)" onclick="edit_habit(this)">
+					          	<div class="col-lg-8 col-xs-8 text-right" id="editImage" href="javascript:void(0)" onclick="edit_habit(this)">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
  							</div>
 	 			         <div class="row">
-					         <div class="col-lg-8">
-						        <div class="col-lg-6">
-						        	<span class="col-lg-4 text-right  form-span" >工作类型：</span>
-					            <select class="display-input col-lg-8 selectMax_informationModify" id="workType"  name="workType" >
-             					</select>
+					         <div class="col-lg-8 col-xs-8">
+					         <div class="col-lg-12 col-xs-12">
+							        <div class="col-lg-6 col-xs-6">
+							        	<span class="col-lg-4 col-xs-4 text-right  form-span" >工作类型：</span>
+						            <select class="display-input col-lg-8 col-xs-8 selectMax_informationModify" id="workType"  name="workType" >
+	             					</select>
+							        </div>
+							        <div class="col-lg-6 col-xs-6">
+							        	<lable class="col-lg-4 col-xs-4 text-right form-span">工作压力：</lable>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify"  id="workPressure"  name="workPressure" ></select>
+							        </div>
+								</div>
+								<div class="col-lg-12 col-xs-12">
+							        <div class="col-lg-6 col-xs-6">
+							        	<span class="col-lg-4 col-xs-4 text-right  form-span">血型：</span>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify" id="aboBloodTypeDict"  name="aboBloodTypeDict" ></select>
+							        </div>
+							        <div class="col-lg-6 col-xs-6">
+							        	<lable class="col-lg-4 col-xs-4 text-right form-span">体重：</lable>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify"  id="Weight"  name="Weight"></select>  
+							        </div>
 						        </div>
-						        <div class="col-lg-6">
-						        	<lable class="col-lg-4 text-right form-span">工作压力：</lable>
-						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="workPressure"  name="workPressure" ></select>
+						        
+						        <div class="col-lg-12 col-xs-12">
+							        <div class="col-lg-6 col-xs-6">
+							        	<span class="col-lg-4 col-xs-4 text-right form-span">腰围：</span>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify" id="Waistline"  name="Waistline" ></select>
+							        </div>
+							        <div class="col-lg-6 col-xs-6">
+							        	<span class="col-lg-4 col-xs-4 text-right form-span">睡眠时长：</span>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify"  id="SleepTime"  name="SleepTime"></select>
+							        </div>
 						        </div>
-
-						        <div class="col-lg-6">
-						        	<span class="col-lg-4 text-right  form-span">血型：</span>
-						        	<select class="display-input col-lg-8 selectMax_informationModify" id="aboBloodTypeDict"  name="aboBloodTypeDict" ></select>
+						        <div class="col-lg-12 col-xs-12">
+							        <div class="col-lg-6 col-xs-6">
+							        	<lable class="col-lg-4 col-xs-4 text-right form-span">吸烟年限：</lable>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify"  id="SmokeTime"  name="SmokeTime" onchange="changeSmokingTime(this)"></select> 
+							        </div>
+							        <div class="col-lg-6 col-xs-6">
+							        	<span class="col-lg-4 col-xs-4 text-right  form-span">吸烟频次：</span>
+										<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify" id="SmokeNum"  name="SmokeNum" ></select>
+							        </div>
 						        </div>
-						        <div class="col-lg-6">
-						        	<lable class="col-lg-4 text-right form-span">体重：</lable>
-						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="Weight"  name="Weight"></select>  
+						        <div class="col-lg-12 col-xs-12">
+							        <div class="col-lg-6 col-xs-6">
+							        	<lable class="col-lg-4 col-xs-4 text-right form-span">饮酒类型：</lable>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify" id="alcoholTypeDict"  name="alcoholTypeDict" ></select>
+							        </div>
+							        <div class="col-lg-6 col-xs-6">
+							        	<span class="col-lg-4 col-xs-4 text-right  form-span">饮酒频次：</span>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify"  id="drinkFreqCodeDict"  name="drinkFreqCodeDict" onchange="changeDrinkingRate(this)"></select>  
+							        </div>
 						        </div>
-						        <div class="col-lg-6">
-						        	<span class="col-lg-4 text-right form-span">腰围：</span>
-						        	<select class="display-input col-lg-8 selectMax_informationModify" id="Waistline"  name="Waistline" ></select>
+						        <div class="col-lg-12 col-xs-12">
+							        <div class="col-lg-6 col-xs-6">
+							        	<lable class="col-lg-4 col-xs-4 text-right form-span">运动时长：</lable>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify"   id="SportTime"  name="SportTime"></select>
+							        </div>
+							        <div class="col-lg-6 col-xs-6">
+							        	<span class="col-lg-4 col-xs-4 text-right  form-span">运动频次：</span>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify"  id="SportNum"  name="SportNum" onchange="changeSportRate(this)"></select> 
+							        </div>
 						        </div>
-						        <div class="col-lg-6">
-						        	<span class="col-lg-4 text-right form-span">睡眠时长：</span>
-						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="SleepTime"  name="SleepTime"></select>
+						        <div class="col-lg-12 col-xs-12">
+							        <div class="col-lg-6 col-xs-6">
+							        	<lable class="col-lg-4 col-xs-4 text-right form-span">降压药：</lable>
+							        	<select class="display-input col-lg-8 col-xs-8 selectMax_informationModify" id="Hypotensor"  name="Hypotensor" ></select>
+							        </div>
+							        <div class="col-lg-6">&nbsp;</div>
 						        </div>
-						        <div class="col-lg-6">
-						        	<lable class="col-lg-4 text-right form-span">吸烟年限：</lable>
-						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="SmokeTime"  name="SmokeTime" onchange="changeSmokingTime(this)"></select> 
-						        </div>
-						        <div class="col-lg-6">
-						        	<span class="col-lg-4 text-right  form-span">吸烟频次：</span>
-									<select class="display-input col-lg-8 selectMax_informationModify" id="SmokeNum"  name="SmokeNum" ></select>
-						        </div>
-						        <div class="col-lg-6">
-						        	<lable class="col-lg-4 text-right form-span">饮酒类型：</lable>
-						        	<select class="display-input col-lg-8 selectMax_informationModify" id="alcoholTypeDict"  name="alcoholTypeDict" ></select>
-						        </div>
-						        <div class="col-lg-6">
-						        	<span class="col-lg-4 text-right  form-span">饮酒频次：</span>
-						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="drinkFreqCodeDict"  name="drinkFreqCodeDict" onchange="changeDrinkingRate(this)"></select>  
-						        </div>
-						        <div class="col-lg-6">
-						        	<lable class="col-lg-4 text-right form-span">运动时长：</lable>
-						        	<select class="display-input col-lg-8 selectMax_informationModify"   id="SportTime"  name="SportTime"></select>
-						        </div>
-						        <div class="col-lg-6">
-						        	<span class="col-lg-4 text-right  form-span">运动频次：</span>
-						        	<select class="display-input col-lg-8 selectMax_informationModify"  id="SportNum"  name="SportNum" onchange="changeSportRate(this)"></select> 
-						        </div>
-						        <div class="col-lg-6">
-						        	<lable class="col-lg-4 text-right form-span">降压药：</lable>
-						        	<select class="display-input col-lg-8 selectMax_informationModify" id="Hypotensor"  name="Hypotensor" ></select>
-						        </div>
-						        <div class="col-lg-6">&nbsp;</div>
 				        </div>
 			        </div>
 			     </div>

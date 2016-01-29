@@ -215,7 +215,6 @@
 				<div class="col-md-13">
 					<div class="box box-danger">
 						<div class="box-header">
-							<i class="fa fa-bullhorn"></i>
 							<h3 class="box-title">绑定设备</h3>
 						</div>
 						<!-- /.box-header -->

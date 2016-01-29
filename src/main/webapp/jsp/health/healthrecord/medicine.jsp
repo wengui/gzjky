@@ -4,11 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="<c:url value='/css/index_right.css'/>" rel="stylesheet" type="text/css" />
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/index_common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
@@ -18,14 +17,6 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 <title>995120健康服务中心</title>
 <style type="text/css">
 .med_table1 {
@@ -62,17 +53,15 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 	color:#5a5a5a; 
 	border-bottom:1px dotted #aeaeae;
 }
-#typeId{height: 28px;}
-#commonName{border: 1px solid #aeaeae;height: 28px;width:180px}
 </style>
 <script type="text/javascript">
-		$(function(){
+		function startInit(){
 			if(name==""){
 				$("#commonName").val(window.dialogArguments);
 			}
 			startInit();
 			
-		});
+		};
 		function startInit(){
 			initType();
 			query();
@@ -132,7 +121,7 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 			 //tr.ondblclick = function(){tr_click(tr)};
 			 tr.name = recordList[index].commonName;
 			 var i = 0;
-			 recordList[index].id = '<input type="checkbox" value="'+recordList[index].commonName+'" name="med_id" />';
+			 recordList[index].id = '<input type="checkbox" class="form-input-checkbox" value="'+recordList[index].commonName+'" name="med_id" />';
 			 var st=recordList[index].priority;
 			 if(st=='1'||st==1){
 			 	recordList[index].priority="一线药物";
@@ -219,36 +208,33 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 </script>
 </head>
 
-<body>
-<div class="bp_history" >
- <div class="search"  >
-    <ul>
-   		<li class="med_search">
- 					<table width="100%" cellpadding="0" cellspacing="0" border="0" class="med_table1">
- 						<tr>
- 							<td>
- 								<span class="select-style_medcine">
- 								&nbsp;&nbsp;药品类目: <select class="typeId" id="typeId">
- 								</select>
- 								</span>
- 							</td>
- 							<td>
- 								<span style="margin-left:200px">
- 								药品名称: <input class="commonName" id="commonName" type="text" />
- 								</span>
- 							</td>
- 							<td>
- 								<span style="margin-left:10px">
- 								<a href="javascript:void(0)" class="btn  btn_search" onclick="query()"><span style="font-size:14px; color:#5a5a5a">查询</span></a>
- 								</span>
- 							</td>
- 						</tr>
- 					</table>
-  			</li>
-    </ul>
-  </div>
-  <div class="index_table">
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table"  id="faceTable">
+<body onload="startInit()"  class="skin-blue">
+<div class="" >
+	<div class="box box-danger">
+              <div class="box-header">
+                  <h3 class="box-title">药品一览</h3>
+              </div>
+              <!-- box-body start -->
+              <div class="box-body">
+              	<div class="row">
+	                 <div class="col-lg-4 col-xs-4">
+		                  <label class="col-lg-4 col-xs-4  text-right form-span">药品类目:</label>
+		                  <select class="col-lg-8 col-xs-8 display-input typeId" id="typeId"></select>
+	                 </div>
+	                <div class="col-lg-4 col-xs-4">
+		                 <label class="col-lg-4 col-xs-4  text-right form-span">药品名称:</label>
+		                 <input class="col-lg-8 col-xs-8 display-input commonName" id="commonName" type="text" />
+	               </div>
+	               <div class="col-lg-3 col-xs-3">
+	               	 <button class="btn btn-success" onclick="queryStart();">查询</button>
+	               </div>
+              </div>
+
+    
+  <div class="row">
+  <br/>      
+  <div class="col-lg-11 col-xs-11">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable">
     	<colgroup>
 	        <col width="5%" />
 	        <col width="24%" />
@@ -265,6 +251,7 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
       	</tr>
     </table> 	
   </div>
+ 
   
 
 <script type="text/javascript">
@@ -296,21 +283,22 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 		}
 	</script>
 
-<div class="index_page">
-  <ul>
-    <li class="page_information">共<span  id="showcount"></span>条信息，第<span  id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页</li>
-    <li class="page_button">
-	    <a href="###" class="btn page-first"><span style="color:#5a5a5a">首页</span></a>
-	    <a href="###" class="btn page-perv"><span style="color:#5a5a5a">上一页</span></a>
-	    <a href="###" class="btn page-next"><span style="color:#5a5a5a">下一页</span></a>
-	    <a href="###" class="btn page-last"><span style="color:#5a5a5a">末页</span></a>
-    </li>
-    <li class="page_select">
-    转<select id="gopage" onchange="gotoPage()">
-    	</select>页
-    </li>
-  </ul>
-</div>
+		<div class="col-lg-11 col-xs-11">
+			<br/>
+			<div class="col-lg-4 col-xs-4" style="padding-left:25px">
+				共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
+			</div>
+			<div class="col-lg-4 col-xs-4">
+				<a href="###" class="page-first" >首页</a>
+			    <a href="###" class="page-perv" style="margin-left:5px">上一页</a>
+			    <a href="###" class="page-next" style="margin-left:5px">下一页</a>
+			    <a href="###" class="page-last" style="margin-left:5px">末页</a>
+			</div>
+			<div class="col-lg-4 col-xs-4" style="padding-left:18%">
+				 转<select id="gopage" onchange="gotoPage()"></select>页
+			</div>
+
+		</div>
   
 
 <div id="divloading">
@@ -324,10 +312,16 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
     	<ul>
     			<li>&nbsp;</li>
 		   		<li class="btn_popup_confirm" style="width: 65%;padding-left: 35%">
-		   			<a id="closeTips" href="javascript:void(0)"  class="btn" onclick="confirmMedicine();"><span style="color:#5a5a5a">确定</span></a>
-		   			<a id="closeDiv" href="javascript:void(0)" class="btn"  onclick="closeMedicine();"><span style="color:#5a5a5a">取消</span></a>
+		   			<a id="closeTips" href="javascript:void(0)"  class="btn btn-success" onclick="confirmMedicine();"><span>确定</span></a>
+		   			<a id="closeDiv" href="javascript:void(0)" class="btn btn-success"  onclick="closeMedicine();"><span>取消</span></a>
 		   		</li>
 		</ul>   		
+  </div>
+  <!-- row start -->
+  </div>
+  <!-- box-body end -->
+  </div>
+  <!-- box end -->
   </div>
 </div>
 </body>

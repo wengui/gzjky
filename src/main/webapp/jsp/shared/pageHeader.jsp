@@ -29,7 +29,7 @@
                                 <li><!-- start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/avatar3.png" class="img-circle" alt="User Image"/>
+                                            <img src="<c:url value='/img/avatar3.png'/>" class="img-circle" alt="User Image"/>
                                         </div>
                                         <h4>
                                             Support Team
@@ -41,7 +41,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/avatar2.png" class="img-circle" alt="user image"/>
+                                            <img src="<c:url value='/img/avatar2.png'/>" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
                                             AdminLTE Design Team
@@ -53,7 +53,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/avatar.png" class="img-circle" alt="user image"/>
+                                            <img src="<c:url value='/img/avatar.png'/>" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
                                             Developers
@@ -65,7 +65,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/avatar2.png" class="img-circle" alt="user image"/>
+                                            <img src="<c:url value='/img/avatar2.png'/>" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
                                             Sales Department
@@ -77,7 +77,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/avatar.png" class="img-circle" alt="user image"/>
+                                            <img src="<c:url value='/img/avatar.png'/>" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
                                             Reviewers
@@ -97,16 +97,16 @@
                         <i class="glyphicon glyphicon-user"></i>
                         <span>${sessionScope.Patient.uname} <i class="caret"></i></span>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="width:160px">
                         <!-- User image -->
-                        <li class="user-header bg-light-blue">
-                            <img src="../img/avatar3.png" class="img-circle" alt="User Image" />
+                        <li class="user-header bg-light-blue" style="height:110px">
+                            <img src="<c:url value='/img/avatar3.png'/>" class="img-circle" alt="User Image" />
                         
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">         
                             <div class="pull-center">
-                                <a href="/gzjky/login/layout.do" class="btn btn-default btn-flat">注销</a>
+                                <a href="/gzjky/login/layout.do" class="btn btn-default">注销</a>
                             </div>
                         </li>
                     </ul>

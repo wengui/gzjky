@@ -549,7 +549,10 @@
 				}else{
 					$('#doctor_report').html(ecgRecordVo.analyseResult);
 					$('#reference_range').html("您的心率值为"+ecgRecordVo.heartRate+"&nbsp;&nbsp;<a class='tblack_results'style='text-decoration: underline;' data-toggle='modal' href='#ecgDiagram'>心电图</a>");
-					$("#ecg_image").attr("src",hly_url+ecgRecordVo.ecgImage.replace("~/upload/Electrocardiograms/",""));
+					if(ecgRecordVo.ecgImage != null && ecgRecordVo.ecgImage != ""){
+						$("#ecg_image").attr("src",hly_url+ecgRecordVo.ecgImage.replace("~/upload/Electrocardiograms/",""));
+					}
+					
  					if(ecgRecordVo.heartRate>=100){
  						$('#image_heart_rate').
  						html("<div><img style='margin-right: "+(-165-(ecgRecordVo.heartRate-100)*2.6)+"px;' src='../../images/health/top.png'/></div><div><img src='../../images/health/bottom.png' /></div>");

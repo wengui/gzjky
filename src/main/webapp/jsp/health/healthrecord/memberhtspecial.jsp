@@ -185,7 +185,8 @@
 			
 			var btn_obj = document.getElementById("editHtspecialBtn");
 			btn_obj.onclick = function(){edit_htSpecial(btn_obj);};
-			$(btn_obj).find("img").attr("src",edit_image);
+			$("#editImage").empty();
+			$("#editImage").html(edit_image);
 		}
 		function addHtspecial(){
 			//window.location.href = "modify_htspecial.jsp";
@@ -257,7 +258,8 @@
 							$("#htspecialForm .from-med-tab").find("a").attr("disabled",true);
 					    	$("#htspecialForm .from-med-table2").find("a").attr("disabled",true);
 							obj.onclick = function(){edit_htSpecial(obj);};
-							$(obj).find("img").attr("src",edit_image);
+							$("#editImage").empty();
+							$("#editImage").html(edit_image);
 				    	//}
 				    	//closeDiv_htspecial();
 				    	//showHtspecialRecord();
@@ -407,7 +409,8 @@
 			$("#htspecialForm .from-med-tab").find("a").attr("disabled",false);
 	    	$("#htspecialForm .from-med-table2").find("a").attr("disabled",false);
 			obj.onclick = function(){saveHtspecial(obj);};
-			$(obj).find("img").attr("src",save_image);
+			$("#editImage").empty();
+			$("#editImage").html(save_image);
 		}
 		
 </script>
@@ -425,91 +428,91 @@
               </div>		
               <div class="box-body">
 				         <div class="row form-group btn_title_informationModify">
-					          	<div class="col-lg-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_htSpecial(this)" id="editHtspecialBtn">
+					          	<div class="col-lg-10 col-xs-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_htSpecial(this)" id="editHtspecialBtn">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
  							</div>
 	 			         <div class="row">
-					         <div class="col-lg-11">
-					         	<div class="col-lg-12">
-					         	<div class="col-lg-2">&nbsp;</div>
-						        <div class="col-lg-8">
-						        	<span class="col-lg-4 text-right form-span" >*患高血压日期：</span>
-						        	<input class="col-lg-6 display-input validate[required]" type="text"  id="havaBloodDate"  name="havaBloodDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-prompt-position="centerRight:0,-5"/>
+					         <div class="col-lg-11 col-xs-11">
+					         	<div class="col-lg-12 col-xs-12">
+					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
+						        <div class="col-lg-8 col-xs-8">
+						        	<span class="col-lg-4 col-xs-4 text-right form-span" >*患高血压日期：</span>
+						        	<input class="col-lg-6 col-xs-6 display-input validate[required]" type="text"  id="havaBloodDate"  name="havaBloodDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-prompt-position="centerRight:0,-5"/>
 						        </div>
-						        <div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
 						        </div>
-						        <div class="col-lg-12">
-					         	<div class="col-lg-2">&nbsp;</div>
-						        <div class="col-lg-8">
-						        	<lable class="col-lg-4 text-right form-span">*是否用药：</lable>
-						        	<label class="checkbox-inline col-lg-2">
-	                 				<input type="radio" class="col-lg-10 text-right form-span" name="isUseMedicine" value="1" checked="checked" >是</input>
+						        <div class="col-lg-12 col-xs-12">
+					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
+						        <div class="col-lg-8 col-xs-8">
+						        	<lable class="col-lg-4 col-xs-4 text-right form-span">*是否用药：</lable>
+						        	<label class="checkbox-inline col-lg-2 col-xs-2">
+	                 				<input type="radio" class="col-lg-10 col-xs-10 text-right form-span" name="isUseMedicine" value="1" checked="checked" >是</input>
 	                 				</label>
-	                 				<label class="checkbox-inline col-lg-2">
-		            				<input type="radio" class="col-lg-10 text-right form-span" name="isUseMedicine" value="0">否</input>
+	                 				<label class="checkbox-inline col-lg-2 col-xs-2">
+		            				<input type="radio" class="col-lg-10 col-xs-10 text-right form-span" name="isUseMedicine" value="0">否</input>
 		            				</label>
 						        </div>
-						        <div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
 						        </div>
 
-								<div class="col-lg-12">
-					         	<div class="col-lg-2">&nbsp;</div>
-						        <div class="col-lg-8">
-						        	<span class="col-lg-4 text-right  form-span">*疗效及副作用：</span>
-	                 				<textarea rows="10" cols="10" id="effect"  name="effect"  class="col-lg-6 display-textarea validate[required,funcCall[includespecialchar]]"  data-prompt-position="topRight:-200,0"></textarea>    
+								<div class="col-lg-12 col-xs-12">
+					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
+						        <div class="col-lg-8 col-xs-8">
+						        	<span class="col-lg-4 col-xs-4 text-right  form-span">*疗效及副作用：</span>
+	                 				<textarea rows="10" cols="10" id="effect"  name="effect"  class="col-lg-6 col-xs-6 display-textarea validate[required,funcCall[includespecialchar]]"  data-prompt-position="topRight:-200,0"></textarea>    
 						        </div>
-						        <div class="col-lg-2">&nbsp;</div>
-						        </div>
-						        
-						        <div class="col-lg-12">
-					         	<div class="col-lg-2">&nbsp;</div>
-						        <div class="col-lg-8">
-						        	<lable class="col-lg-4 text-right form-span">*最高收缩压：</lable>
-	                 				<input class="col-lg-6 display-input validate[required,funcCall[number2]]"  type="text"   id="sbp"  name="sbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg      
-						        </div>
-						        <div class="col-lg-1">&nbsp;</div>
+						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
 						        </div>
 						        
-						        <div class="col-lg-12">
-					         	<div class="col-lg-2">&nbsp;</div>
-						        <div class="col-lg-8">
-						        	<span class="col-lg-4 text-right form-span">*最高舒张压：</span>
-	                 				<input class="col-lg-6 display-input validate[required,funcCall[number2]]"  type="text"   id="dbp"  name="dbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg          
+						        <div class="col-lg-12 col-xs-12">
+					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
+						        <div class="col-lg-8 col-xs-8">
+						        	<lable class="col-lg-4 col-xs-4 text-right form-span">*最高收缩压：</lable>
+	                 				<input class="col-lg-6 col-xs-6 display-input validate[required,funcCall[number2]]"  type="text"   id="sbp"  name="sbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg      
+						        </div>
+						        <div class="col-lg-1 col-xs-1">&nbsp;</div>
+						        </div>
+						        
+						        <div class="col-lg-12 col-xs-12">
+					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
+						        <div class="col-lg-8 col-xs-8">
+						        	<span class="col-lg-4 col-xs-4 text-right form-span">*最高舒张压：</span>
+	                 				<input class="col-lg-6 col-xs-6 display-input validate[required,funcCall[number2]]"  type="text"   id="dbp"  name="dbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg          
                  					
 						        </div>
-						        <div class="col-lg-1">&nbsp;</div>
+						        <div class="col-lg-1 col-xs-1">&nbsp;</div>
 						        </div>
-						        <div class="col-lg-12">
-					         	<div class="col-lg-2">&nbsp;</div>
-						        <div class="col-lg-8">
-						        	<span class="col-lg-4 text-right form-span">血压等级：</span>
-						        	<select id="BPLevel" class="col-lg-6 display-input" ></select>
+						        <div class="col-lg-12 col-xs-12">
+					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
+						        <div class="col-lg-8 col-xs-8">
+						        	<span class="col-lg-4 col-xs-4 text-right form-span">血压等级：</span>
+						        	<select id="BPLevel" class="col-lg-6 col-xs-6 display-input" ></select>
 						        </div>
-						        <div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
 						        </div>
-						        <div class="col-lg-12">
-					         	<div class="col-lg-2">&nbsp;</div>
-						        <div class="col-lg-8">
-						        	<span class="col-lg-4 text-right form-span">风险等级：</span>
-						        	<select id="RiskLevel" class="col-lg-6 display-input" ></select>
+						        <div class="col-lg-12 col-xs-12">
+					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
+						        <div class="col-lg-8 col-xs-8">
+						        	<span class="col-lg-4 col-xs-4 text-right form-span">风险等级：</span>
+						        	<select id="RiskLevel" class="col-lg-6 col-xs-6 display-input" ></select>
 						        </div>
-						        <div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
 						        </div>
-						        <div class="col-lg-12">
-						        <div class="col-lg-12">
-						        <div class="col-lg-2">&nbsp;</div>
-						        <div class="col-lg-8">
-						        	<span class="col-lg-4 text-right form-span">*当前服用药物：</span>
-						        	<span class="col-lg-6">&nbsp;</span>
+						        <div class="col-lg-12 col-xs-12">
+						        <div class="col-lg-12 col-xs-12">
+						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
+						        <div class="col-lg-8 col-xs-8">
+						        	<span class="col-lg-4 col-xs-4 text-right form-span">*当前服用药物：</span>
+						        	<span class="col-lg-6 col-xs-6">&nbsp;</span>
 						        </div>
-						        <div class="col-lg-2">&nbsp;</div>
+						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
 						        </div>
-						        <div class="col-lg-12">
-						        	<div class="col-lg-3">&nbsp;</div>
-						        	<div class="col-lg-8 table-medicine">
+						        <div class="col-lg-12 col-xs-12">
+						        	<div class="col-lg-3 col-xs-3">&nbsp;</div>
+						        	<div class="col-lg-8 col-xs-8 table-medicine">
     								<div class="from-med-tab">
     									<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="addMed()">继续添加</a> 
     								</div>
@@ -596,7 +599,7 @@ function closeHoursDiv(){
 <body>
 	<input type="hidden" id="rowIndex" />
 	<div class="popup" id="med_hours" style="display:none;position:absolute;top:300px; left:100px;z-index: 6000;">
-		<div class="popup_header">
+		<div class="popup_header btn-info">
 			<ul>
 	      		<li class="name_popupHeader">用药时间</li>
 	      		<li class="close_popupHeader"><a href="javascript:void(0)" onclick=""></a></li>
@@ -634,8 +637,8 @@ function closeHoursDiv(){
    					</div>
     			</li>
 		   		<li class="btn_popup_confirm" style="width: 65%;padding-left: 35%">
-		   			<a id="closeTips" href="javascript:void(0)" onclick="closeHours();">确定</a>
-		   			<a id="closeDiv" href="javascript:void(0)" onclick="closeHoursDiv();">取消</a>
+		   			<a id="closeTips" class="btn btn-info" href="javascript:void(0)" onclick="closeHours();">确定</a>
+		   			<a id="closeDiv" class="btn btn-info" href="javascript:void(0)" onclick="closeHoursDiv();">取消</a>
 		   		</li>
 			</ul>
 	  	</div>
