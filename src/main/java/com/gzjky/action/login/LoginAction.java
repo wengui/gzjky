@@ -106,7 +106,7 @@ public class LoginAction extends ActionSupport {
                 }
                 
                
-                online=DateUtil.formatYMDHMS(now);
+                online=DateUtil.formatYMDHMS(historyOnline.getLogintime().toDate());
                 return "success";
             }
             else{
