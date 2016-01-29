@@ -68,6 +68,7 @@
 	function edit_complication(obj){
 		obj.onclick = function(){save_complication(obj);};
 		$("#"+complication_form+" :input").attr("disabled",false);
+		$("#editImage").empty();
 		$("#editImage").html(save_image);
 	}
 	function save_complication(obj){
