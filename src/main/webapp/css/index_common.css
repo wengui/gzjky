@@ -21,8 +21,8 @@ body{background:#ededed}
 .index_menu{width:460px; float:right; font:18px/100px "微软雅黑"}
 .index_menu li{width:88px; float:left; margin-left:12px; display:inline; text-align:center; height:100px;}
 .index_menu li a{color:#5a5a5a; text-decoration:none; font-weight:500; display:block;width:88px;}
-.index_menu li a:hover{color:#71A944; text-decoration:none; font-weight:500;border-bottom:2px solid #71A944}
-.index_menu .activation a{color:#71A944; text-decoration:none; font-weight:500;border-bottom:2px solid #71A944}
+.index_menu li a:hover{color:#3d9970; text-decoration:none; font-weight:500;border-bottom:2px solid #3d9970}
+.index_menu .activation a{color:#3d9970; text-decoration:none; font-weight:500;border-bottom:2px solid #3d9970}
 
 /*----------------indexMenu_secondary---------------*/
 .indexMenu_secondary{width:100%; height:52px; float:left; margin-top:5px;}
@@ -43,7 +43,7 @@ body{background:#ededed}
 .wInformation_img{width:80px; height:80px; margin-right:10px; display:inline}
 .tGrayMax{width:150px; height:28px; text-align:left; color:#aeaeae; font-size:24px; font-weight:500; line-height:28px;}
 .tGrayMin{width:150px; height:20px; text-align:left; color:#aeaeae; font-size:13px;line-height:24px;}
-.wMedical a{width:117px; height:38px; display:block; background:#71A944; color:#fff; font-size:14px; line-height:38px; text-decoration:none; margin:20px 6px 20px 0;}
+.wMedical a{width:117px; height:38px; display:block; background:#3d9970; color:#fff; font-size:14px; line-height:38px; text-decoration:none; margin:20px 6px 20px 0;}
 .wMedical a:hover{width:117px; height:38px; display:block; background:#049892; color:#fff; font-size:14px; line-height:38px;}
 .wHome a{width:117px; height:38px; display:block; background:#ff9600; color:#fff; font-size:14px; line-height:38px; text-decoration:none; margin:20px 0;}
 .wHome a:hover{width:117px; height:38px; display:block; background:#e78801; color:#fff; font-size:14px; line-height:38px; }
@@ -53,21 +53,21 @@ body{background:#ededed}
 .wMoney{color:#5a5a5a; font-size:20px; font-weight:500; padding-right:5px;}
 .tGray{color:#aeaeae; font-size:13px; text-align:left;  line-height:30px; margin-top:15px;width:240px;} 
 .wtBlack{color:#5a5a5a; font-size:13px;text-align:left; height:20px; line-height:20px; width:240px;}
-.title_info a{color:#71A944;text-decoration: underline;margin-left:20px;}
+.title_info a{color:#3d9970;text-decoration: underline;margin-left:20px;}
 .title_info a:HOVER{cursor: pointer;color:#ff9600}
 .wtaGreen{width:240px; text-align:left; padding-top:15px; padding-bottom:10px; border-bottom:1px solid #aeaeae;}
-.wtaGreen a{color:#71A944; font-size:13px; text-decoration: underline; }
+.wtaGreen a{color:#3d9970; font-size:13px; text-decoration: underline; }
 .wtaGreen a:HOVER{cursor: pointer;color:#ff9600}
 
 /*----------------index_bottom---------------*/
-.index_health_bottom{width:100%; height:280px; padding-top:50px; float:left; background:#000; margin-top:20px; font-family:"微软雅黑"; color:#5a5a5a}
+.index_health_bottom{width:100%; height:280px; padding-top:30px; float:left; background:#000; margin-top:10px; font-family:"微软雅黑"; color:#5a5a5a}
 .bottom_main{width:1000px; margin:0 auto;}
 .bottom_contact,.bottom_concern{width:300px; float:left; text-align:left}
 .tWhite{color:#fff; font-size:13px; padding-bottom:10px; width:300px;}
 .tGray_bottom{width:300px; font-size:12px; text-align:left; height:25px; line-height:25px;}
 
 
-.tGreen{width:140px; height:32px; text-align:left; color:#71A944; font-size:24px; font-weight:500; line-height:30px; padding-right:10px}
+.tGreen{width:140px; height:32px; text-align:left; color:#3d9970; font-size:24px; font-weight:500; line-height:30px; padding-right:10px}
 .bottom_help{width:300px; float:left; text-align:left; display:inline; margin:0 50px;}
 .bottom_help li,.bottom_concern li{float:left;}
 .bottom_help li a{font-size:13px; text-decoration:none; color:#5a5a5a}

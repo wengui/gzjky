@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="<c:url value='/css/common.css'/>" type="text/css" />
 <link rel="stylesheet" href="<c:url value='/css/login.css'/>" type="text/css" />
 <link rel="stylesheet" href="<c:url value='/css/index_common.css'/>" type="text/css" />
-
+<link rel="stylesheet" href="<c:url value='/css/register.css'/>" type="text/css" />
 
 <%@ include file="shared/importCss.jsp"%>
 <%@ include file="shared/importJs.jsp"%>
@@ -94,16 +94,18 @@
 </script>
 </head>
 <body>
-	<div class="login_header" style="background:#F0F6F7">
+	<div class="login_header" >
 
-		<div class="bg_logo">	
+		<div class="register_header">
+			<div class="bgTop_register">
 
-			<div class="login_menu" >
-	
- 			<a href="index.html">
-		贵州健康云服务中心
-       </a>
-		
+				<div class="logo_menu">
+					<div class="bgLogo_register">
+						<ul>
+							<li class="tGraymax" style="width:350px">欢迎使用贵州健康云服务平台</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -128,20 +130,17 @@
 								<input type="password" id="passwd" name="passwd"
 									class="form-control" placeholder="密码" />
 							</div>
+							<div id="errMessageArea" style="color: #ff9600;height:20px;text-align:left">
+								${errorMessage}
+							</div>
 						</div>
 						<div class="footer">
 							<a href="javascript:void(0)" onclick="login();"
 								class="btn bg-olive btn-block" title="登录"><span>登录</span></a>
-
-							<p>
-								<a href="<c:url value='/jsp/password/forget_pwd.jsp'/>"
-									title="忘记密码">忘记密码？</a>
-							</p>
-							<p>
-								<a href="<c:url value='/jsp/register/protocol.jsp'/>" title="注册"
-									class="text-center">点击此处注册</a>
-							</p>
-							<p class="tBlack" id="errMessageArea" style="color: #ff9600;">${errorMessage}</p>
+								<p>
+								<a href="<c:url value='/jsp/password/forget_pwd.jsp'/>"	title="忘记密码" class="text-left" style="text-decoration: underline;float: left;width:250px">忘记密码？</a>
+								<a href="<c:url value='/jsp/register/protocol.jsp'/>" title="注册" class="text-right" style="text-decoration: underline;">新用户注册</a>
+								</p>
 						</div>
 					</form>
 				</div>
@@ -149,8 +148,8 @@
 
 		</div>
 	</div>
-			    <!--index_health_bottom start-->
-    	 <jsp:include page="/jsp/bottom.jsp" />
+	<!--index_health_bottom start-->
+   <jsp:include page="/jsp/bottom.jsp" />
     <!--index_health_bottom end-->
 
 </body>

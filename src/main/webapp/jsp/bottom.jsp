@@ -16,7 +16,7 @@
         <div class="bottom_contact">
           <ul>
             <li class="tWhite">
-            <span class="tGreen" title="联系我们">Contact us</span>联系我们
+            <span class="tGreen" title="联系我们">联系我们</span>
             </li>
             <li class="tGray_bottom" title="地址">地址：浙江省杭州市西湖区西斗门路天堂软件园E幢13楼</li>
             <li class="tGray_bottom" title="客服热线">客服热线：400-0785-120</li>
@@ -51,12 +51,8 @@
           </ul>
         </div>
         <div class="copyright">
-        
-        
         Copyright © 2010-2014 浙江好络维物联网络技术有限公司版权所有  浙ICP备10212076号-1
         <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000351579'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000351579%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>    
- 
-        
         </div>
       </div>
     </div>

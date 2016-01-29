@@ -14,10 +14,10 @@ body{background:#ededed}
 .login_top{width:70px; text-align:right;}
 .login_register{width:80px;text-align:right;}
 .logo_menu{width:100%; height:100px; float:left;background:#fff;}
-.bgLogo_register{background:url(../images/icon/logo.jpg)/*tpa=http://www.995120.cn/images/icon/logo.jpg*/ left center no-repeat; width:1000px; height:100px; margin:0 auto;}
+.bgLogo_register{background:url(../images/icon/logo.jpg) left center no-repeat; width:1000px; height:90px; margin:0 auto;}
 .bgLogo_register li{float:left; font-family:"微软雅黑";}
 .tGraymax{text-align:left; width:205px; height:40px; font-size:24px; font-weight:500; color:#5a5a5a; line-height:40px; border-left:1px solid #aeaeae; margin:30px 0 30px 270px; display:inline; padding-left:25px;}
-.bgLogo_register a{font-size:14px; color:#71A944; text-decoration:none;}
+.bgLogo_register a{font-size:14px; color:#3d9970; text-decoration:none;}
 .goHome{width:499px;text-align:right; line-height:120px;}
 
 /*----------------register_main---------------*/
@@ -26,19 +26,18 @@ body{background:#ededed}
 .step_agreement{background:url(../images/registration/step01.png)/*tpa=http://www.995120.cn/images/registration/step01.png*/ top center no-repeat; width:1000px; height:100px; margin-bottom:20px; float:left} 
 .bg_register{width:1000px; height:600px; padding:40px; float:left; background:#fff}
 .bg_register li{float:left;}
-.tgreen_agreement{font-size:24px; height:30px; font-weight:500; color:#71A944; margin-bottom:20px; width:920px;}
+.tgreen_agreement{font-size:24px; height:30px; font-weight:500; color:#3d9970; margin-bottom:20px; width:920px;}
 .agreement_main{background:url(../images/registration/bg_agreement.png)/*tpa=http://www.995120.cn/images/registration/bg_agreement.png*/ repeat; height:400px; width:878px; padding:20px; border:1px solid #aeaeae; text-align:left; overflow-y:auto;}
 .agreement_main h1{font-size:14px; font-weight:500; color:#5a5a5a;line-height:24px; float:left; width:100%}
 .agreement_main h2{font-size:12px; color:#aeaeae; line-height:24px; float:left; width:100%}
 .btn_agreement{width:920px; text-align:center; font-size:16px; font-weight:500; height:45px; padding-top:20px;}
-.btn_agree{background:#71A944; width:131px; height:41px; line-height:41px; color:#fff; text-decoration:none; display:block; float:left; margin-left:320px} 
+.btn_agree{background:#3d9970; width:131px; height:41px; line-height:41px; color:#fff; text-decoration:none; display:block; float:left; margin-left:320px} 
 .btn_disagree{background:url(../images/button/btn_register_disagree.png)/*tpa=http://www.995120.cn/images/button/btn_register_disagree.png*/ no-repeat;width:131px; height:41px; line-height:41px; color:#5a5a5a; text-decoration:none; display:block; float:left; margin-left:20px}
 
 /*----------------step_register---------------*/ 
 .step_register{background:url(../images/registration/step02.png)/*tpa=http://www.995120.cn/images/registration/step02.png*/ top center no-repeat; width:1000px; height:100px; margin-bottom:20px; float:left} 
 .register_title{width:920px; float:left;}
 .register_title li{float:left; text-align:left}
-.titleGreen{font-size:24px; color:#71A944; height:40px; padding-top:13px; padding-bottom:5px; font-weight:500; border-bottom:2px solid #71A944; width:125px; font-family:"微软雅黑";}
 .titleGray{font-size:16px; color:#aeaeae; font-weight:500; border-bottom:2px solid #aeaeae; width:795px;height:40px; padding-top:23px; padding-bottom:5px;}
 .register_write{width:920px; float:left; margin-top:40px;}
 .register_write_left{width:669px; float:left; border-right:1px solid #ddd}
@@ -52,12 +51,12 @@ body{background:#ededed}
 .password_rank{width:660px; height:40px; background:url(../images/registration/password_rank.png)/*tpa=http://www.995120.cn/images/registration/password_rank.png*/ left center no-repeat; display:none}
 .imgWrong_hidden{background:url(../images/icon/wrong.png)/*tpa=http://www.995120.cn/images/icon/wrong.png*/ left center no-repeat; height:44px;font-size:13px; line-height:44px; color:#aeaeae; text-align:left; width:262px; padding-left:38px; display:none;}
 .captcha{width:110px; height:44px;font-size:13px;}
-.captcha a{background:#71A944;width:114px; height:44px; display:block; font:14px/44px "微软雅黑"; color: #fff; text-decoration:none;}
-.captcha a:hover{background:#71A944; color:#5a5a5a;}
+.captcha a{background:#3d9970;width:114px; height:44px; display:block; font:14px/44px "微软雅黑"; color: #fff; text-decoration:none;}
+.captcha a:hover{background:#3d9970; color:#5a5a5a;}
 .captcha_prompt{width:660px; height:30px; font:13px/30px "微软雅黑"; color:#aeaeae; text-align:left}
-.tBlue{color:#71A944}
+.tBlue{color:#3d9970}
 .btn_reguster{width:660px; height:44px; margin-top:15px;}
-.btn_reguster a{background:#71A944; width:359px; height:49px; display:block; color:#fff; text-decoration:none; font:500 18px/49px "微软雅黑"}
+.btn_reguster a{background:#3d9970; width:359px; height:49px; display:block; color:#fff; text-decoration:none; font:500 18px/49px "微软雅黑"}
 .register_write_right{width:230px; float:left; padding-left:20px;}
 .register_write_right li{float:left}
 .login_prompt{font:13px/30px "微软雅黑"; color:#aeaeae; width:230px; height:30px; text-align:left}
@@ -66,7 +65,7 @@ body{background:#ededed}
 /*----------------step_register_success---------------*/ 
 .step_register_success{background:url(../images/registration/step03.png)/*tpa=http://www.995120.cn/images/registration/step03.png*/ top center no-repeat; width:1000px; height:100px; margin-bottom:20px; float:left}
 .register_success{background:url(../images/icon/success.png)/*tpa=http://www.995120.cn/images/icon/success.png*/ left top no-repeat; height:100px; width:330px; padding-left:100px; margin-left:290px; margin-top:200px;}
-.tgreen_success{width:330px; float:left; font:500 36px/60px "微软雅黑";color:#71A944; text-align:left}
+.tgreen_success{width:330px; float:left; font:500 36px/60px "微软雅黑";color:#3d9970; text-align:left}
 .register_success a{text-decoration:none; font:14px/30px "微软雅黑"; color:#5a5a5a}
 .register_success a:hover{text-decoration:underline;}
 .line_success{margin-left:10px; margin-right:10px; font:14px/30px "微软雅黑"; color:#5a5a5a}
