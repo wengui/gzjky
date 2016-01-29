@@ -341,7 +341,7 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					 <small>最近登录 : 2016-01-06 09:57:38</small>
+					 <small>最近登录 : <%=request.getParameter("onlinetime")%></small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>

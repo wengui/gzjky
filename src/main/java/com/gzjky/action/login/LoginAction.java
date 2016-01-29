@@ -1,18 +1,23 @@
 package com.gzjky.action.login;
 
+import java.net.InetAddress;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
-
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.gzjky.base.util.date.DateUtil;
 import com.gzjky.base.util.password.PwdUtil;
 import com.gzjky.bean.extend.UserinfoAndPatientinfoBean;
-
+import com.gzjky.bean.gen.Onlines;
 import com.gzjky.bean.gen.UserInfo;
+import com.gzjky.dao.readdao.OnlinesReadMapper;
 import com.gzjky.dao.readdao.UserAndPatientReadMapper;
 import com.gzjky.dao.readdao.UserInfoReadMapper;
+import com.gzjky.dao.writedao.OnlinesWriteMapper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -32,6 +37,11 @@ public class LoginAction extends ActionSupport {
 	private UserInfoReadMapper userInfoReadMapper;
 	@Autowired
 	private UserAndPatientReadMapper userAndPatientReadMapper;
+	@Autowired
+	private OnlinesWriteMapper onlinesWriteMapper;
+	
+	@Autowired
+	private OnlinesReadMapper onlinesReadMapper;
 	
 	private String loginId;
 	
@@ -39,16 +49,13 @@ public class LoginAction extends ActionSupport {
 	
 	private String errorMessage;
 	
+	private String online;
+	
 	/*
 	 * 用户登录系统
 	 */
 	public String login() throws Exception{
 		
-		//页面参数取得
-        HttpServletRequest request = ServletActionContext.getRequest();
-        
-        loginId = request.getParameter("loginId");
-        passwd = request.getParameter("passwd");
 
         //通过用户名，手机，邮箱查找用户信息
 		UserInfo userInfo = userInfoReadMapper.selectBy(loginId, loginId, loginId);		
@@ -59,17 +66,47 @@ public class LoginAction extends ActionSupport {
 		if (userInfo!= null)
 		{
             if(PwdUtil.ComparePasswords(userInfo.getPassword(), passwd)){
+            	
+            	//Online表数据插入
+            	Onlines record = new Onlines();
+            	Date now = new Date();
+            	InetAddress addr=null;  
+            	String ip="";  
+            	addr=InetAddress.getLocalHost();  
+                ip=addr.getHostAddress().toString();//获得本机IP　
+                //IP地址
+            	record.setIpadddress(ip);
+            	//登录时间
+            	record.setLogintime(new DateTime(now));
+            	//更新时间
+            	record.setUpdatetime(new DateTime(now));
+            	//UserID
+            	record.setUserid(userInfo.getId());
+            	
+            	Onlines historyOnline = new Onlines();
+            	historyOnline=onlinesReadMapper.selectByUserID(userInfo.getId());
+            	if(historyOnline==null){
+            		onlinesWriteMapper.insertSelective(record);
+            	}
+            	else{
+            		onlinesWriteMapper.updateByByUserId(record,userInfo.getId());
+            	}
+            	
+            	
                 //session中设置userInfoBean
                 ActionContext.getContext().getSession().put("user",userInfo);
                 List<UserinfoAndPatientinfoBean> userinfoAndPatientinfoList = null ;
                 userinfoAndPatientinfoList = userAndPatientReadMapper.selectUserAndPatientinfoByUserId(userInfo.getId());
                 //session中添加PatientList信息
                 ActionContext.getContext().getSession().put("PatientList",userinfoAndPatientinfoList);
-              //session中添加默认Patient信息 
+                //session中添加默认Patient信息 
                 if(userinfoAndPatientinfoList.size()!=0){
                 	ActionContext.getContext().getSession().put("Patient",userinfoAndPatientinfoList.get(0));
                 	ActionContext.getContext().getSession().put("PatientID",userinfoAndPatientinfoList.get(0).getPid());
-                }             
+                }
+                
+               
+                online=DateUtil.formatYMDHMS(now);
                 return "success";
             }
             else{
@@ -120,6 +157,14 @@ public class LoginAction extends ActionSupport {
 
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
+	}
+
+	public String getOnline() {
+		return online;
+	}
+
+	public void setOnline(String online) {
+		this.online = online;
 	}
 
 }
