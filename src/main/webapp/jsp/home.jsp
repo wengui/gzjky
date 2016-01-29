@@ -435,24 +435,6 @@
 		<!-- /.right-side -->
 	</div>
 	<!-- ./wrapper -->
-
-	<div class="information_push">
-		<div class="information_push_main" id="pushMsgDetailDiv">
-			<ul>
-				<li class="information_push_mainBG">
-					<ul id="pushMsgList">
-						<li class="information_push_title">消息窗口</li>
-					</ul>
-				</li>
-				<li class="information_push_bottomBG"></li>
-			</ul>
-		</div>
-		<div class="information_push_button">
-			<a href="javascript:void(0)" onclick="showPushMsgDetailDiv()"><img
-				title="推送消息" src="../images/icon/alarm_clock.png"
-				class="img_alarm_clock" /><span id="pushMsgCount">0</span></a>
-		</div>
-	</div>
 </html>
 
 

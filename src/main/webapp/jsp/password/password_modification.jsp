@@ -4,11 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
-<%@ include file="../shared/importCss.jsp"%>
+<title>贵州健康云服务中心 | 找回密码</title>
+
 <%@ include file="../shared/importJs.jsp"%>
 <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
+
 <link href="<c:url value='/css/register.css'/>" rel="stylesheet" type="text/css" />
+<%@ include file="../shared/importCss.jsp"%>
 <link href="<c:url value='/css/password.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_bottom.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
@@ -175,7 +177,19 @@
 <body>
   <div class="register">
        <!--register_header start--> 
-     <jsp:include page="/jsp/head.jsp" />
+   <div class="register_header">
+			<div class="bgTop_register">
+
+				<div class="logo_menu">
+					<div class="bgLogo_register">
+						<ul>
+							<li class="tGraymax">找回密码</li>
+							<li class="goHome"><a href="../login.jsp">返回首页</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	</div>
    
     <!--register_header end-->
     <!--register_middle start-->
