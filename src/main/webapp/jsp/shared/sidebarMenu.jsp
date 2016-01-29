@@ -22,7 +22,7 @@
              </li>
              <li id="notice">
                  <a href="<c:url value='/jsp/health/welcome.jsp'/>">
-                     <i class="fa fa-dashboard"></i> <span>健康报告</span>
+                     <i class="fa fa-dashboard"></i> <span>健康通告</span>
                  </a>
              </li>
              <li class="treeview" id="analyse">

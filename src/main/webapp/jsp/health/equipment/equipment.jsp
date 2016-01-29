@@ -25,6 +25,7 @@
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
 
 <script type="text/javascript">
+  menuId = "#equipment";
   $(function(){
     var $div_li = $("div.tab_menu ul li");
 	
@@ -410,7 +411,6 @@
 			<div class="col-md-13">
 				<div class="box box-danger">
 					<div class="box-header">
-						<i class="fa fa-bullhorn"></i>
 						<h3 class="box-title">设备信息</h3>
 						<a href="./member_bind_device.jsp"><h3 class="btn btn-primary btn-sm" style="float:right;margin:4px">增加设备</h3></a>
 					</div>
