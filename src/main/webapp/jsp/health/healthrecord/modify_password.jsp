@@ -4,31 +4,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
+<title>995120健康服务中心</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
+<link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
 
 <script type="text/javascript">
 menuId = "#pwd";
@@ -79,36 +74,68 @@ menuId = "#pwd";
 	  }
 </script>
 </head>
-<body style="background:#e8e3d7">
-<div style="margin-top:24px">
-<form id="changePwd_form" style="background:#e8e3d7">
-       <div class="password_information" style="font-family: '微软雅黑'">
-         <div class="tgreen_title_BPhistory">密码修改</div>
-         <div class="password_informationMain">
-           <ul>
-             <li>旧密码：</li>
-             <li class="register_input"><input type="password"  id="oldPwd" name="oldPwd" class="validate[required,minSize[6],maxSize[20],funcCall[filterSpecialSign]]" style="height:42px"/>
-             </li>
-             <li>新密码：</li>
-             <li class="register_input"><input type="password"  id="newPwd"  name="newPwd"   class= "validate[required,minSize[6],maxSize[20],funcCall[password]]" style="height:42px"/>
-             </li>
-             <li>确认新密码：</li>
-             <li class="register_input"><input type="password"  id="confirmPwd"  name="confirmPwd"   class="validate[required,minSize[6],maxSize[20],equals[newPwd],funcCall[password]]" style="height:42px"/>
-             </li>
-             <li class="btn_reguster"><a onclick="changePwd()" class="btn" style="cursor: pointer;"><span style="font-size:17px; font-weight:500;color:#5a5a5a; width:320px;">确定</span></a></li>
-           </ul>
-         </div>
-       </div>
- </form>
- </div>
-   
+<body class="skin-blue">
+	<!-- header logo: style can be found in header.less -->
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+		<!-- Left side column. contains the logo and sidebar -->
+		<%@ include file="../../shared/sidebarMenu.jsp"%>
 
-<div id="divloading">
-	<img src="../../../images/public/blue-loading.gif" />
-</div>
 
-<div id="transparentDiv" ></div>
+			<aside class="right-side"> <!-- Main content --> <section
+				class="content"> <!-- START ALERTS AND CALLOUTS -->
+			<h2 class="page-header">密码修改</h2>
+			<div class="row">
+				<div class="col-md-13">
+					<div class="box box-danger">
+						<div class="box-header">
+							<i class="fa fa-bullhorn"></i>
+							<h3 class="box-title">密码修改</h3>
+						</div>
+						<!-- /.box-header -->
+						<div class="box-body">
+							<form id="changePwd_form">
+								
+									<div class="box-group">
+										<ul>
+											<li>旧密码：</li>
+											<li class="register_input"><input type="password"
+												id="oldPwd" name="oldPwd"
+												class="validate[required,minSize[6],maxSize[20],funcCall[filterSpecialSign]]" style="margin-top: 10px"
+												 /></li>
+											<li style="margin-top: 10px">新密码：</li>
+											<li class="register_input"><input type="password"
+												id="newPwd" name="newPwd"
+												class="validate[required,minSize[6],maxSize[20],funcCall[password]]" 
+												 /></li>
+											<li style="margin-top: 10px">确认新密码：</li>
+											<li class="register_input"><input type="password"
+												id="confirmPwd" name="confirmPwd"
+												class="validate[required,minSize[6],maxSize[20],equals[newPwd],funcCall[password]]" 
+												/></li>
+											<li style="margin-top: 10px" class="btn_reguster"  ><a onclick="changePwd()" 
+												class="btn btn-success" style="cursor: pointer;"><span
+													>确定</span></a></li>
+										</ul>
+									</div>
+							
+							</form>
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<!-- /.box -->
+				</div>
+			</div>
+			<!-- /.row --> </section> </aside>
 
-<div id="transparentDiv2"></div>   
+	</div>
+
+	<div id="divloading">
+		<img src="../../../images/public/blue-loading.gif" />
+	</div>
+
+	<div id="transparentDiv"></div>
+
+	<div id="transparentDiv2"></div>
 </body>
 </html>

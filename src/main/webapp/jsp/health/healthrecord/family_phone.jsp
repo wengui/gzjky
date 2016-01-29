@@ -4,31 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css" />
+<title>995120健康服务中心</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/css/health_records.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet"  type="text/css"/>
-<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
+<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/common/date.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
-<script src="<c:url value='/js/page/jquery.hwin.js'/>" type="text/javascript"></script>
-<!-- main JS libs -->
-<script src="<c:url value='/js/libs/modernizr.min.js'/>"></script>
-<script src="<c:url value='/js/libs/bootstrap.min.js'/>"></script>
-<!-- Style CSS -->
-<link href="<c:url value='/css/bootstrap.css'/>" media="screen" rel="stylesheet">
-<link href="<c:url value='/style.css'/>" media="screen" rel="stylesheet">
-<!-- scripts -->
-<script src="<c:url value='/js/general.js'/>"></script>
+<script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
+
 <script type="text/javascript">
 
 	menuId = "#phone";
@@ -109,7 +105,13 @@
 			}
 			
 			cell = row.insertCell(j++);
-			cell.innerHTML = '<a href="javascript:void(0)" onclick="edit_familyPhone('+i+')"><img src="../../../images/icon/phone_editor.png" />编辑</a><a href="javascript:void(0)" onclick="delete_familyPhone('+i+')"><img src="../../../images/icon/phone_del.png" />删除</a>';
+			cell.innerHTML = '<a href="javascript:void(0)" class="btn btn-success" style="color:#fff;width:78px" onclick="edit_familyPhone('+i+
+					')"> <i class="fa fa-edit"></i>编辑</a>'+
+					'<a href="javascript:void(0)" class="btn btn-success" style="color:#fff;width:78px"  onclick="delete_familyPhone('+i+
+							')"> <i class="fa fa-fw fa-trash-o"></i>删除</a>';
+		
+	
+		
 		}
 	}
 	
@@ -218,135 +220,150 @@
 			disabled : true
 		});
 		$("#pop_familyPhoneTitle").text(tt);
-		$("#familyPhoneWindow").show(200);
+		//$("#familyPhoneWindow").show(200);
+		$("#familyPhoneWindow").modal('show');
 		showScreenProtectDiv(1);
 	}
 	function closeDiv_familyPhone() {
-		$("#familyPhoneWindow").hide(200);
+		//$("#familyPhoneWindow").hide(200);
+		$("#familyPhoneWindow").modal('hide');
 		hideScreenProtectDiv(1);
 	}
 </script>
 </head>
-<body  style="background:#e8e3d7">
-<!--bp_history start-->
-<div class="bp_history" style="height:650px;background:#e8e3d7" >
-  <div class="title_BPhistory">
-    <ul>
-      <li class="tgreen_title_BPhistory">亲情号码</li>
-      <li class="select_PhoneFamily"><a href="javascript:void(0)" onclick="add_familyPhone()"><img src="<c:url value='/images/button/phone_add.png'/>" /></a></li>
-    </ul>
-  </div>
-  <div class="index_table">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bPhistory_table" id="familyPhoneTable">
-      <colgroup>
-        <col width="10%" />
-        <col width="15%" />
-        <col width="25%" />
-        <col width="25%" />
-        <col width="25%" />
-      </colgroup>
-      <tr>
-        <th>序号</th>
-        <th>姓名</th>
-        <th>手机号码</th>
-        <th>亲属关系</th>
-        <th>操作</th>
-      </tr>
-    </table>
-  </div>
-</div>
-<!--bp_history end-->
- 
-
-<div id="divloading">
-	<img src="<c:url value='/images/public/blue-loading.gif'/>" />
-</div>
-
-<div id="transparentDiv" ></div>
-
-<div id="transparentDiv2"></div> 
+<body class="skin-blue">
+	<!-- header logo: style can be found in header.less -->
+	<%@ include file="../../shared/pageHeader.jsp"%>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+		<!-- Left side column. contains the logo and sidebar -->
+		<%@ include file="../../shared/sidebarMenu.jsp"%>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
-<style type="text/css">
-.tgrey_popup{width:16%;float:left; height:30px; line-height:30px; text-align:right; margin-bottom: 10px;font-family:"微软雅黑"}
-.tblack_popup{width:84%; padding_left:1%;float:left; height:30px; line-height:30px; text-align:left;margin-bottom: 10px;font-family:"微软雅黑"}
-</style>
+		<aside class="right-side"> <!-- Main content --> <section
+			class="content"> <!-- START ALERTS AND CALLOUTS -->
+		<h2 class="page-header">亲情号码</h2>
+		<div class="row">
+			<div class="col-md-13">
+				<div class="box box-danger">
+					<div class="box-header">
+						<i class="fa fa-bullhorn"></i>
+						<h3 class="box-title">亲情号码</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+<div class="row">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0"
+							class="table-bordered bPhistory_table" id="familyPhoneTable">
+							<colgroup>
+								<col width="10%" />
+								<col width="15%" />
+								<col width="25%" />
+								<col width="25%" />
+								<col width="25%" />
+							</colgroup>
+							<tr>
+								<th>序号</th>
+								<th>姓名</th>
+								<th>手机号码</th>
+								<th>亲属关系</th>
+								<th>操作</th>
+							</tr>
+						</table>
+						<div class="modal fade" id="familyPhoneWindow" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true"
+							style="margin-top: 10%">
+							<div class="modal-dialog">
+								<div class="popup_header">
+									<ul>
+										<li class="name_popupHeader" id="pop_familyPhoneTitle">增加亲情号码</li>
 
-</head>
-<body  style="background:#e8e3d7">
- <div class="popup" id="familyPhoneWindow" style="width:600px;display:none;position:absolute;top:50px; left:10px;z-index: 30;height:300">
-  <div class="popup_header">
-    <ul>
-      <li class="name_popupHeader" id="pop_familyPhoneTitle">增加亲情号码</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_familyPhone();">X</a></li>
-    </ul>
-  </div>
-  <form id="addFamilyPhoneForm" >
-  		<input type="hidden" name="id" id="id"/>
-  		<input type="hidden" name="member_unit_id" id="member_unit_id"/>
-  		<input type="hidden" name="member_cluster_id" id="member_cluster_id"/>
-  		<input type="hidden" name="member_unit_type" id="member_unit_type"/>
-		<div class="popup_main">
-	         <ul>
-	              <li class="tgrey_popup" >*真实姓名：</li>
-	              <li class="tblack_popup" >
-	              		<input class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer]]" style="width:230px" type="text"  id="name"  name="name" maxlength="32" />
-	              </li>
-	              <li class="tgrey_popup">固定电话：</li>
-	              <li class="tblack_popup">
-	              <input class="inputMin_informationModify text-input validate[funcCall[telephone]]" style="width:230px" type="text"  id="phone"  name="phone" />
-	           	   </li>
-	              <li class="tgrey_popup">*手机号码：</li>
-	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[required,funcCall[Internationalmobilephone]]" style="width:230px"  type="text"   id="cellphone"  name="cellphone" />
-	              </li>
-	              <li class="tgrey_popup">*诊断报告：</li>
-	              <li class="tblack_popup">
-	              		<span class="select-style_habit">
-		             	<select  class="selectMax_informationModify text-input validate[required]"  id="report"  name="report" >
-		                    <option value="">请选择</option>
-		            		<option value="1">接收</option>
-		            		<option value="0">不接收</option>
-		               </select>
-		               </span>
-	              </li>
-	              <li class="tgrey_popup">*亲属关系：</li>
-	              <li class="tblack_popup">
-	              		<span class="select-style_habit">
-	              		<select  class="selectMax_informationModify text-input validate[required]"  id="relationship"  name="relationship" >
-		                    <option value="">请选择</option>
-		            		<option value="家庭成员" selected="selected">家庭成员</option>
-		            		<option value="朋友">朋友</option>
-		            		<option value="同事">同事</option>
-		            		<option value="其他">其他</option>
-		               </select>
-		               </span>
-	              </li>
-	             <li class="tgrey_popup">单位：</li>
-	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"  style="width:230px" type="text"   id="company"  name="company" maxlength="128" />
-	              </li>
-	             <li class="tgrey_popup">邮箱：</li>
-	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[custom[email]]"  style="width:230px" type="text"   id="email"  name="email" />
-	              </li>
-	             <li class="tgrey_popup">家庭地址：</li>
-	              <li class="tblack_popup">
-	              		<input class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"  style="width:230px" type="text"   id="homeAddress"  name="homeAddress" maxlength="256" />
-	              </li>			              
-	              <li class="btn_popup_confirm"><a href="javascript:void(0)" class="btn" onclick="saveFamilyPhone()"><span style="color:#5a5a5a">保存</span></a></li>                                            
-	         </ul>
-	      </div> 
-  </form>
- </div>
+										<li class="close_popupHeader"><a
+											href="javascript:void(0)" onclick="closeDiv_familyPhone();"
+											data-dismiss="modal">X</a></li>
+									</ul>
+								</div>
+								<form id="addFamilyPhoneForm">
+									<input type="hidden" name="id" id="id" /> <input type="hidden"
+										name="member_unit_id" id="member_unit_id" /> <input
+										type="hidden" name="member_cluster_id" id="member_cluster_id" />
+									<input type="hidden" name="member_unit_type"
+										id="member_unit_type" />
+									<div class="popup_main">
+										<ul>
+											<li class="tgrey_popup">*真实姓名：</li>
+											<li class="tblack_popup"><input
+												class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer]]"
+												style="width: 230px" type="text" id="name" name="name"
+												maxlength="32" /></li>
+											<li class="tgrey_popup">固定电话：</li>
+											<li class="tblack_popup"><input
+												class="inputMin_informationModify text-input validate[funcCall[telephone]]"
+												style="width: 230px" type="text" id="phone" name="phone" />
+											</li>
+											<li class="tgrey_popup">*手机号码：</li>
+											<li class="tblack_popup"><input
+												class="inputMin_informationModify text-input validate[required,funcCall[Internationalmobilephone]]"
+												style="width: 230px" type="text" id="cellphone"
+												name="cellphone" /></li>
+											<li class="tgrey_popup">*诊断报告：</li>
+											<li class="tblack_popup"><span
+												class="select-style_habit"> <select
+													class="selectMax_informationModify text-input validate[required]"
+													id="report" name="report">
+														<option value="">请选择</option>
+														<option value="1">接收</option>
+														<option value="0">不接收</option>
+												</select>
+											</span></li>
+											<li class="tgrey_popup">*亲属关系：</li>
+											<li class="tblack_popup"><span
+												class="select-style_habit"> <select
+													class="selectMax_informationModify text-input validate[required]"
+													id="relationship" name="relationship">
+														<option value="">请选择</option>
+														<option value="家庭成员" selected="selected">家庭成员</option>
+														<option value="朋友">朋友</option>
+														<option value="同事">同事</option>
+														<option value="其他">其他</option>
+												</select>
+											</span></li>
+											<li class="tgrey_popup">单位：</li>
+											<li class="tblack_popup"><input
+												class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"
+												style="width: 230px" type="text" id="company" name="company"
+												maxlength="128" /></li>
+											<li class="tgrey_popup">邮箱：</li>
+											<li class="tblack_popup"><input
+												class="inputMin_informationModify text-input validate[custom[email]]"
+												style="width: 230px" type="text" id="email" name="email" />
+											</li>
+											<li class="tgrey_popup">家庭地址：</li>
+											<li class="tblack_popup"><input
+												class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"
+												style="width: 230px" type="text" id="homeAddress"
+												name="homeAddress" maxlength="256" /></li>
+											<li class="btn_popup_confirm"><a
+												href="javascript:void(0)" class="btn"
+												onclick="saveFamilyPhone()"><span style="color: #5a5a5a">保存</span></a></li>
+										</ul>
+									</div>
+								</form>
+							</div>
+						</div>
+						</div>
+					</div>
 
-</body>
-</html>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+		</div>
+		<!-- /.row --> </section> </aside>
+	</div>
+	<div id="divloading">
+		<img src="../../../images/public/blue-loading.gif" />
+	</div>
+	<div id="transparentDiv"></div>
+	<div id="transparentDiv2"></div>
 </body>
 </html>
