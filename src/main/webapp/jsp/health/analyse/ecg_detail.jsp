@@ -7,9 +7,11 @@
 <title>心电详情</title>
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
+<link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
+<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script type="text/javascript">
    var hly_url=  "http://gzjky.sh-sdhr.com/upload/Electrocardiograms/";
 	function query(){

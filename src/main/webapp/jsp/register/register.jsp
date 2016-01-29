@@ -20,7 +20,7 @@
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>"  type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>"  type="text/javascript"></script>
-
+<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 
 
 <script type="text/javascript">
