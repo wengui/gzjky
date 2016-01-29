@@ -84,6 +84,7 @@
 	margin-bottom:15px;
 }
 
+
 #diseaseNameList > a{
 	margin-bottom:15px;
 }
@@ -115,5 +116,10 @@
 }
 
 .from-a{
-	padding-left:100px;
+	margin-left:15px;
+}
+
+.from-float{
+	float:left;
+	margin-bottom: 15px;
 }

@@ -98,7 +98,7 @@
 				 var wlnbdb = recordList[i].wlnbdb;
 				 tr.name = i;
 				 td=tr.insertCell(0);
-				 td.innerHTML = '<input type="checkbox" id="selectCheckbox" name="selectCheckbox" onclick="selectCheckBox(this)" value="'+id+'"/>'+'&nbsp;&nbsp;'+(($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize + (i+1));
+				 td.innerHTML = '<input type="checkbox" id="selectCheckbox" class="form-input-checkbox" name="selectCheckbox" onclick="selectCheckBox(this)" value="'+id+'"/>'+'&nbsp;&nbsp;'+(($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize + (i+1));
 				 td=tr.insertCell(1);
 				 td.innerHTML = chxt+"mmol/L";
 				 
@@ -283,14 +283,11 @@
               <div class="box-body">
               	<div class="col-lg-11 col-xs-11 text-right">
 	                 <div class="col-lg-6 col-xs-6">&nbsp;</div>
-	                <div class="col-lg-6 col-xs-6">
-	                	 <div class="col-lg-6 col-xs-6">&nbsp;</div>
-	                	 <div class="col-lg-6 col-xs-6">
-		                 <a href="javascript:void(0)" class="btn btn-success text-left col-lg-4 col-xs-4" onclick="showMedicalExamintionDialog()"><span>增加</span></a>
-		                 <a href="javascript:void(0)" class="btn btn-success text-left col-lg-4 col-xs-4" onclick="showMedicalExamintionDialog(1)"><span>修改</span></a>
-		                 <a href="javascript:void(0)" class="btn btn-success text-left col-lg-4 col-xs-4"  onclick="deleteMedicalExamination()"><span>删除</span></a>
-	               		 </div>
-	               </div>
+	                <div class="col-lg-6 col-xs-6 from-float">
+		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-3 col-xs-3" onclick="showMedicalExamintionDialog()"><span>增加</span></a>
+		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-3 col-xs-3" onclick="showMedicalExamintionDialog(1)"><span>修改</span></a>
+		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-3 col-xs-3"  onclick="deleteMedicalExamination()"><span>删除</span></a>
+	                </div>
               </div>
               
   <div class="row">

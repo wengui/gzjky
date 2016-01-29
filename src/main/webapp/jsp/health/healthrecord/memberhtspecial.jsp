@@ -144,16 +144,16 @@
 			 var rowcount=table.rows.length;
 			 var tr=table.insertRow(rowcount);
 			 var td=tr.insertCell(0);
-			 td.innerHTML = 	'<input type="text" onclick="showMedicine(this)" class="med_hour validate[required]" name="medicine_taken.name" readonly="readonly" data-prompt-position="topLeft:0,0" onblur="validateControl(this)"/>';
+			 td.innerHTML = 	'<input type="text" onclick="showMedicine(this)" class="col-lg-8 col-xs-8 validate[required]" name="medicine_taken.name" readonly="readonly" data-prompt-position="topLeft:0,0" onblur="validateControl(this)"/>';
 			 
 			 $('input[name="medicine_taken.name"]',td).val(obj.name);
 			 td=tr.insertCell(1);
-			 td.innerHTML = '<input type="text" class="med_dosage validate[required,minSize[2],maxSize[12]]" name="medicine_taken.dosage" value="'+obj.dosage+'" data-prompt-position="topLeft:25,0" onblur="validateControl(this)"/>' ;
+			 td.innerHTML = '<input type="text" class="col-lg-8 col-xs-8 validate[required,minSize[2],maxSize[12]]" name="medicine_taken.dosage" value="'+obj.dosage+'" data-prompt-position="topLeft:25,0" onblur="validateControl(this)"/>' ;
 			 td=tr.insertCell(2);
-			 td.innerHTML = '<input type="text" onclick="showHours(this)" class="med_hour validate[required]" name="medicine_taken.hours"  readonly="readonly" value="'+obj.takeTime+'" data-prompt-position="topLeft:45,0" onblur="validateControl(this)"/>';
+			 td.innerHTML = '<input type="text" onclick="showHours(this)" class="col-lg-8 col-xs-8 validate[required]" name="medicine_taken.hours"  readonly="readonly" value="'+obj.takeTime+'" data-prompt-position="topLeft:45,0" onblur="validateControl(this)"/>';
 			
 			 td=tr.insertCell(3);
-			 td.innerHTML = '<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="deleteMed(this)" style="display: block;">删除</a>';
+			 td.innerHTML = '<a href="javascript:void(0)" class="btn btn-success col-lg-12 col-xs-12 del-show-status" onclick="deleteMed(this)" style="display: block;">删除</a>';
 			 td.nowrap="nowrap" ;
 		}
 		
@@ -284,16 +284,16 @@
 				return false;
 			}
 			
-			var delBtn='<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="deleteMed(this)" style="display: block;">删除</a>';
+			var delBtn='<a href="javascript:void(0)" class="col-lg-12 col-xs-12 btn btn-success del-show-status" onclick="deleteMed(this)" style="display: block;">删除</a>';
 			$("#med_table").append('<tr>'
 							+'<td>'
-								+'<input type="text" onclick="showMedicine(this)" class="med_hour validate[required]" name="medicine_taken.name" readonly="readonly" data-prompt-position="topLeft:0,0" onblur="validateControl(this)"/>'
+								+'<input type="text" onclick="showMedicine(this)" class="col-lg-8 col-xs-8 validate[required]" name="medicine_taken.name" readonly="readonly" data-prompt-position="topLeft:0,0" onblur="validateControl(this)"/>'
 							+'</td>'
 							+'<td>'
-								+'<input type="text" class="med_dosage validate[required,minSize[2],maxSize[12]]" name="medicine_taken.dosage" data-prompt-position="topLeft:25,0" onblur="validateControl(this)"/>' 
+								+'<input type="text" class="col-lg-8 col-xs-8 validate[required,minSize[2],maxSize[12]]" name="medicine_taken.dosage" data-prompt-position="topLeft:25,0" onblur="validateControl(this)"/>' 
 							+'</td>'
 							+'<td>'
-								+'<input type="text" onclick="showHours(this)" class="med_hour validate[required]" name="medicine_taken.hours"  readonly="readonly" data-prompt-position="topLeft:45,0" onblur="validateControl(this)"/>'
+								+'<input type="text" onclick="showHours(this)" class="col-lg-8 col-xs-8 validate[required]" name="medicine_taken.hours"  readonly="readonly" data-prompt-position="topLeft:45,0" onblur="validateControl(this)"/>'
 							+'</td>'
 							+'<td nowrap="nowrap" >'
 								+delBtn	
@@ -449,10 +449,10 @@
 						        <div class="col-lg-8 col-xs-8">
 						        	<lable class="col-lg-4 col-xs-4 text-right form-span">*是否用药：</lable>
 						        	<label class="checkbox-inline col-lg-2 col-xs-2">
-	                 				<input type="radio" class="col-lg-10 col-xs-10 text-right form-span" name="isUseMedicine" value="1" checked="checked" >是</input>
+	                 				<input type="radio" class="col-lg-8 col-xs-8 text-right form-span" name="isUseMedicine" value="1" checked="checked" >是</input>
 	                 				</label>
 	                 				<label class="checkbox-inline col-lg-2 col-xs-2">
-		            				<input type="radio" class="col-lg-10 col-xs-10 text-right form-span" name="isUseMedicine" value="0">否</input>
+		            				<input type="radio" class="col-lg-8 col-xs-8 text-right form-span" name="isUseMedicine" value="0">否</input>
 		            				</label>
 						        </div>
 						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
