@@ -5,15 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>电子围栏</title>
+<%@ include file="../../shared/importCss.jsp"%>
+<%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/location.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
-<script type="text/javascript" src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>"></script>
-<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <link href="<c:url value='/js/artDialog/skins/default.css'/>" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<c:url value='/js/base.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>"></script>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript" ></script>
+<script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript" ></script>
+<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/base.js'/>" type="text/javascript" ></script>
+<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript" ></script>
 <!--百度相关的js文件-->
 <script type="text/javascript" src="http://api.map.baidu.com/api?key=057b7037c8fb7eeaa6984870a1a63603&v=1.3&services=true"></script>
 <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script><!--google或GPS转百度坐标的js-->
@@ -22,9 +24,6 @@
 <script type="text/javascript" src="<c:url value='/js/lbs/pageFrame.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/lbs/safe_island1.js'/>"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script>
-<%@ include file="../../shared/importCss.jsp"%>
-<%@ include file="../../shared/importJs.jsp"%>
-
 <script type="text/JavaScript"> 
 
 	menuId = "#electronic";
@@ -555,13 +554,13 @@ function safe_island_del() {
 		$('#ShowLogin').draggable({
 			disabled : true
 		});
-		$("#ShowLogin").show(200);
-		showScreenProtectDiv(1);
+		$("#ShowLogin").modal('show');
+		//showScreenProtectDiv(1);
 	}
 	//关闭设置安全岛
 	function closeDiv() {
-		$("#ShowLogin").hide(200);
-		hideScreenProtectDiv(1);
+		$("#ShowLogin").modal('hide');
+		//hideScreenProtectDiv(1);
 	}
 	   //半径匹配
 	function radiuscheck(s){
@@ -682,7 +681,7 @@ function safe_island_del() {
 	                        </div><!-- /.form group -->
 	                        <div class="form-group">
 	                        	<label>安全岛半径：</label>
-	                            <label id="cur_center_radius" style="font-weight:normal">500米</label>
+	                            <label id="cur_center_radius" style="font-weight:normal">500</label><label style="font-weight:normal">米</label>
 	                            <button class="btn btn-success btn-sm" style="margin-left:150px" onclick="showIsland();">设置</button>
 	                            <button class="btn btn-success btn-sm" style="margin-left:20px" onclick="safe_island_del();">清除</button>
 	                        </div><!-- /.form group -->
@@ -759,7 +758,8 @@ function safe_island_del() {
 </style>
 </head>
 <body>
- <div class="popup"  id="ShowLogin"  style="display:none;position:absolute;top:350px; left:100px;z-index: 30;">
+<div class="modal fade" id="ShowLogin"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%">
+  <div class="modal-dialog">	
   <div class="popup_header">
     <ul>
       <li class="name_popupHeader">安全岛中心设置</li>
@@ -790,14 +790,17 @@ function safe_island_del() {
           <tr>
             <td></td>
             <td >
-            	<a href="javascript:void(0);" class="btn" onclick="addSafeIsland();"><span style="color:#5a5a5a ">确&nbsp;&nbsp;定</span></a>
-            	<a href="javascript:void(0);" class="btn" onclick="clearLastMessage();"><span style="color:#5a5a5a ">重&nbsp;&nbsp;置</span></a>
+            	<br/>
+            	<a href="javascript:void(0);" class="btn btn-info"  onclick="addSafeIsland();">确&nbsp;&nbsp;定</a>
+            	&nbsp;&nbsp;
+            	&nbsp;&nbsp;
+            	<a href="javascript:void(0);" class="btn btn-info"  onclick="clearLastMessage();">重&nbsp;&nbsp;置</a>
             </td>
           </tr>
         </table>
   </div>
  </div>
-
+</div>
 </body>
 </html>
       
