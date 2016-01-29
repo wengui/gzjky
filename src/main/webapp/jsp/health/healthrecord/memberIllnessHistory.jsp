@@ -466,7 +466,7 @@
               </div>		
               <div class="box-body">
 				         <div class="row form-group">
-					          	<div class="col-lg-11 text-right" id="editImage" href="javascript:void(0)" onclick="toAddMemberIllnessHistory()">
+					          	<div class="col-lg-11 col-xs-11 text-right" id="editImage" href="javascript:void(0)" onclick="toAddMemberIllnessHistory()">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 新建疾病史
 					             	</a>
@@ -474,7 +474,7 @@
  							</div>
  					<div class="row">
  						<br/>
-		  				<div class="col-lg-11">
+		  				<div class="col-lg-11 col-xs-11">
 		  				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable">
       					<colgroup>
         					<col width="10%" />
@@ -496,16 +496,16 @@
  					
  					<div class="row">
 						<br/>
-						<div class="col-lg-4" style="padding-left:25px">
+						<div class="col-lg-4 col-xs-4" style="padding-left:25px">
 							共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
 						</div>
-						<div class="col-lg-4">
+						<div class="col-lg-4 col-xs-4">
 							<a href="###" class="page-first" >首页</a>
 						    <a href="###" class="page-perv" style="margin-left:5px">上一页</a>
 						    <a href="###" class="page-next" style="margin-left:5px">下一页</a>
 						    <a href="###" class="page-last" style="margin-left:5px">末页</a>
 						</div>
-						<div class="col-lg-4" style="padding-left:18%">
+						<div class="col-lg-4 col-xs-4" style="padding-left:18%">
 							 转<select id="gopage" onchange="gotoPage()"></select>页
 						</div>
 						</div>
@@ -517,40 +517,40 @@
 	<div class="box-header form-margin-left">
       <h3 class="box-title">疾病史详细</h3>
 	</div>
-	<div class="col-lg-2">&nbsp;</div>
-	<div class="col-lg-8">
+	<div class="col-lg-2 col-xs-2">&nbsp;</div>
+	<div class="col-lg-8 col-xs-8">
 	<form id="addMemberIllnessHistory"  method="post" >
 		<input type="text"  id="diseaseId"  name="diseaseId" maxlength=32  style="display:none"/>
 	 <div class="row">
-		 <div class="col-lg-8" id="diseaseNameList">
-		 	<span class="col-lg-4 text-right  form-span" >*疾病名称：</span>
-            <input class="col-lg-6 display-input inputMin_informationModify validate[required] " type="text" id="diseaseName"  name="diseaseName" maxlength=32  readonly="readonly"/>
-            <a class="btn btn-success" id="search_diseaseBtn" href="javascript:void(0)" onclick="search_showMenu(); return false;">选择疾病</a>              		
+		 <div class="col-lg-8 col-xs-8" id="diseaseNameList">
+		 	<span class="col-lg-4 col-xs-4 text-right  form-span" >*疾病名称：</span>
+            <input class="col-lg-6 col-xs-6 display-input-dieasename  validate[required] " type="text" id="diseaseName"  name="diseaseName" maxlength=32  readonly="readonly"/>
+            <span class="col-lg-2 col-xs-2" ><a class="btn btn-success" id="search_diseaseBtn" href="javascript:void(0)" onclick="search_showMenu(); return false;">选择疾病</a></span>       		
 		 </div>
-		 <div class="col-lg-8">
-		 	<lable class="col-lg-4 text-right form-span">*开始日期：</lable>
-		 	<input type="text" class="col-lg-6 display-input inputMin_informationModify validate[required,date]"  id="startTime" name="startTime" value='' onfocus="var startTime=$dp.$('startTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){startTime.focus();},maxDate:'#F{$dp.$D(\'startTime\') || \'%y-%M-%d\'}' })" />
+		 <div class="col-lg-8 col-xs-8">
+		 	<lable class="col-lg-4 col-xs-4 text-right form-span">*开始日期：</lable>
+		 	<input type="text" class="col-lg-6 col-xs-6 display-input  validate[required,date]"  id="startTime" name="startTime" value='' onfocus="var startTime=$dp.$('startTime');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){startTime.focus();},maxDate:'#F{$dp.$D(\'startTime\') || \'%y-%M-%d\'}' })" />
 		 </div>
 
-		 <div class="col-lg-8">
-		 	<span class="col-lg-4 text-right  form-span">结束日期：</span>
-		 	<input type="text"  class="col-lg-6 display-input inputMin_informationModify text-input validate[date]" id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'endTime\')}',maxDate:'%y-%M-%d'})"/>
+		 <div class="col-lg-8 col-xs-8">
+		 	<span class="col-lg-4 col-xs-4 text-right  form-span">结束日期：</span>
+		 	<input type="text"  class="col-lg-6 col-xs-6 display-input  text-input validate[date]" id="endTime" name="endTime" value='' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'endTime\')}',maxDate:'%y-%M-%d'})"/>
 		 </div>
-		 <div class="col-lg-8">
-		 	<lable class="col-lg-4 text-right form-span">住院情况：</lable>
-		 	<textarea rows="5" cols="40" name="hospitalRecord"  id="hospitalRecord"  class="col-lg-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
+		 <div class="col-lg-8 col-xs-8">
+		 	<lable class="col-lg-4 col-xs-4 text-right form-span">住院情况：</lable>
+		 	<textarea rows="5" cols="40" name="hospitalRecord"  id="hospitalRecord"  class="col-lg-8 col-xs-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
 		 </div>
-		 <div class="col-lg-8">
-		 	<span class="col-lg-4 text-right form-span">转归情况：</span>
-		 	<textarea rows="5" cols="40" name="recoverRecord"  id="recoverRecord" class="col-lg-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
+		 <div class="col-lg-8 col-xs-8">
+		 	<span class="col-lg-4 col-xs-4 text-right form-span">转归情况：</span>
+		 	<textarea rows="5" cols="40" name="recoverRecord"  id="recoverRecord" class="col-lg-8 col-xs-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
 		 </div>
-		 <div class="col-lg-8">
-		 	<lable class="col-lg-4 text-right form-span">备注：</lable>
-		 	<textarea rows="5" cols="40" name="comment"  id="comment"  class="col-lg-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
+		 <div class="col-lg-8 col-xs-8">
+		 	<lable class="col-lg-4 col-xs-4 text-right form-span">备注：</lable>
+		 	<textarea rows="5" cols="40" name="comment"  id="comment"  class="col-lg-8 col-xs-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
 		 </div>
-		 <div class="col-lg-8">
-		 	<div class="col-lg-6 text-right"><a href="javascript:void(0)"  class="btn btn-success" onclick="addMemberIllnessHistory()" id="save_button">保存</a></div>
-		 	<div class="col-lg-6 text-left"><a href="javascript:void(0)"  class="btn btn-success" onclick="showMemberIllnessHistory()">返回列表</a></div>
+		 <div class="col-lg-8 col-xs-8">
+		 	<div class="col-lg-6 col-xs-6 text-right"><a href="javascript:void(0)"  class="btn btn-success" onclick="addMemberIllnessHistory()" id="save_button">保存</a></div>
+		 	<div class="col-lg-6 col-xs-6 text-left"><a href="javascript:void(0)"  class="btn btn-success" onclick="showMemberIllnessHistory()">返回列表</a></div>
 		 </div>
 		</div>
         
@@ -559,7 +559,7 @@
  		</div>  	
 	</form> 
 	</div>
-	<div class="col-lg-2">&nbsp;</div>
+	<div class="col-lg-2 col-xs-2">&nbsp;</div>
 	
 </div>
 <!-- box box-info end -->

@@ -159,7 +159,7 @@ function startInit(){
                 <h4>生活习惯</h4>
              </div>
              <div class="icon  text-center">
-                  <i class="ion ion-bag"></i>
+                  <i class="ion ion-person-add"></i>
              </div>
              <a href="#" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
@@ -173,7 +173,7 @@ function startInit(){
                     <h4>家族遗传史</h4>
                     </div>
                     <div class="icon">
-                         <i class="ion ion-stats-bars"></i>
+                         <i class="ion ion-person-add"></i>
                     </div>
                    <a href="#" class="small-box-footer">
                 	More info <i class="fa fa-arrow-circle-right"></i>
@@ -201,7 +201,7 @@ function startInit(){
                      <h4>疾病史</h4>
                  </div>
                  <div class="icon">
-                     <i class="ion ion-pie-graph"></i>
+                     <i class="ion ion-person-add"></i>
                  </div>
                    <a href="#" class="small-box-footer">
                 	More info <i class="fa fa-arrow-circle-right"></i>
@@ -210,12 +210,12 @@ function startInit(){
          </div><!-- ./col -->
          <div class="col-lg-2 col-xs-6 safePage" id="memberhtspecial">
             <!-- small box -->
-            <div class="small-box bg-aqua">
+            <div class="small-box bg-blue">
             <div class="inner">
                 <h4>高血压专项</h4>
              </div>
              <div class="icon">
-                  <i class="ion ion-bag"></i>
+                  <i class="ion ion-person-add"></i>
              </div>
              <a href="#" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
@@ -224,12 +224,12 @@ function startInit(){
             </div><!-- ./col -->
             <div class="col-lg-2 col-xs-6 safePage" id="medicalexamination">
                <!-- small box -->
-               <div class="small-box bg-green">
+               <div class="small-box bg-purple">
                     <div class="inner">
                     <h4>健康检查</h4>
                     </div>
                     <div class="icon">
-                         <i class="ion ion-stats-bars"></i>
+                         <i class="ion ion-person-add"></i>
                     </div>
                    <a href="#" class="small-box-footer">
                 	More info <i class="fa fa-arrow-circle-right"></i>
@@ -241,7 +241,7 @@ function startInit(){
            
          <div class="col-lg-2 col-xs-6 safePage" id="check">
              <!-- small box -->
-             <div class="small-box bg-yellow">
+             <div class="small-box bg-teal">
                  <div class="inner">
                      <h4>健康体检</h4>
                  </div>

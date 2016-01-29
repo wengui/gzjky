@@ -10,6 +10,16 @@
 			margin-bottom:15px;
 }
 
+.display-input-dieasename{
+			vertical-align: middle;
+			height:32px;
+			display: table-cell;
+			padding: 6px 5px;
+			word-break: break-all;
+			border-bottom: 1px dashed @light-gray;
+			margin-bottom:15px;
+}
+
 .display-input-add{
 			vertical-align: middle;
 			height:32px;

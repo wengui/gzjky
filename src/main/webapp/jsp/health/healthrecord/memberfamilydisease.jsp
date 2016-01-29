@@ -555,76 +555,76 @@
               </div>		
               <div class="box-body">
 				         <div class="row form-group btn_title_informationModify">
-					          	<div class="col-lg-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_family(this)">
+					          	<div class="col-lg-10 col-xs-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_family(this)">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
  							</div>
 	 			         <div class="row">
-	 			         	<div class="col-lg-2">&nbsp;</div>
-					         <div class="col-lg-8">
-						        <div class="col-lg-10">
-						        	<span class="col-lg-4 text-right form-span" >高血压：</span>
-	                 				<select class="col-lg-8 display-input-add" id="heighBloodPressure"  name="heighBloodPressure" onchange="changeHeighBloodPressure()">
+	 			         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
+					         <div class="col-lg-8 col-xs-8">
+						        <div class="col-lg-10 col-xs-10">
+						        	<span class="col-lg-4 col-xs-4 text-right form-span" >高血压：</span>
+	                 				<select class="col-lg-8 col-xs-8 display-input-add" id="heighBloodPressure"  name="heighBloodPressure" onchange="changeHeighBloodPressure()">
 				            				<option value="0">无</option>
 				            				<option value="1">有</option>
 	                 				</select>
 	                 				<div class="form-group">
-	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 family_disease_relation" id="heighBloodPressure_relation" align="left"></div>
+	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="heighBloodPressure_relation" align="left"></div>
 	                 				</div>
 						        </div>
-						        <div class="col-lg-10">
-						        	<lable class="col-lg-4 text-right form-span">高血脂：</lable>
-	                 				<select class="col-lg-8 display-input-add" id="heighBloodFat"  name="heighBloodFat"  onchange="changeHeighBloodFat()">
+						        <div class="col-lg-10 col-xs-10">
+						        	<lable class="col-lg-4 col-xs-4 text-right form-span">高血脂：</lable>
+	                 				<select class="col-lg-8 col-xs-8 display-input-add" id="heighBloodFat"  name="heighBloodFat"  onchange="changeHeighBloodFat()">
 				            			<option value="0">无</option>
 				            			<option value="1">有</option>
 	                 				</select>
 	                 				<div class="form-group">
-	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 family_disease_relation" id="heighBloodFat_relation" align="left"></div>
+	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="heighBloodFat_relation" align="left"></div>
 	                 				</div>    
 	                 				<div class="family_disease_relation" id="heighBloodFat_relation" align="left"  style="margin-left:80px;padding-top:40px"></div> 
 						        </div>
 
-						        <div class="col-lg-10">
-						        	<span class="col-lg-4 text-right  form-span">糖尿病：</span>
-	                 				<select class="col-lg-8 display-input-add" id="diabetesMellitus"  name="diabetesMellitus" onchange="changeDiabetesMellitus()">
+						        <div class="col-lg-10 col-xs-10">
+						        	<span class="col-lg-4 col-xs-4 text-right  form-span">糖尿病：</span>
+	                 				<select class="col-lg-8 col-xs-8 display-input-add" id="diabetesMellitus"  name="diabetesMellitus" onchange="changeDiabetesMellitus()">
 				            			<option value="0">无</option>
 				            			<option value="1">有</option>
 	                 				</select>
 	                 				<div class="form-group">
-	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 family_disease_relation" id="diabetesMellitus_relation" align="left"></div>
+	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="diabetesMellitus_relation" align="left"></div>
 	                 				</div>    
 						        </div>
-						        <div class="col-lg-10">
-						        	<lable class="col-lg-4 text-right form-span">冠心病：</lable>
-	                 				<select class="col-lg-8 display-input-add" id="coronaryDisease"  name="coronaryDisease"  onchange="changeCoronaryDisease()">
+						        <div class="col-lg-10 col-xs-10">
+						        	<lable class="col-lg-4 col-xs-4 text-right form-span">冠心病：</lable>
+	                 				<select class="col-lg-8 col-xs-8 display-input-add" id="coronaryDisease"  name="coronaryDisease"  onchange="changeCoronaryDisease()">
 				            			<option value="0">无</option>
 				            			<option value="1">有</option>
 	                 				</select>
 	                 				<div class="form-group">
-	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 family_disease_relation" id="coronaryDisease_relation" align="left"></div>
+	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="coronaryDisease_relation" align="left"></div>
 	                 				</div>       
                  					
 						        </div>
-						        <div class="col-lg-10">
-						        	<span class="col-lg-4 text-right form-span">脑血管意外：</span>
-	                 				<select class="col-lg-8 display-input-add selectMax_informationModify" id="cardiovascularAccident"  name="cardiovascularAccident" onchange="changeCardiovascularAccident()">
+						        <div class="col-lg-10 col-xs-10">
+						        	<span class="col-lg-4 col-xs-4 text-right form-span">脑血管意外：</span>
+	                 				<select class="col-lg-8 col-xs-8 display-input-add selectMax_informationModify" id="cardiovascularAccident"  name="cardiovascularAccident" onchange="changeCardiovascularAccident()">
 				            			<option value="0">无</option>
 				            			<option value="1">有</option>
 	                 				</select>
 	                 				<div class="form-group">
-	                 					<span class="col-lg-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 family_disease_relation" id="cardiovascularAccident_relation" align="left"></div>
+	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
+	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="cardiovascularAccident_relation" align="left"></div>
 	                 				</div>          
                  					
 						        </div>
 				        </div>
-				        <div class="col-lg-2">&nbsp;</div>
+				        <div class="col-lg-2 col-xs-2">&nbsp;</div>
 			        </div>
 			     </div>
 			    </div>

@@ -171,13 +171,13 @@
 		var count = 0;
 		for (var i = 0; i < recordList.length; i++){	
 			
-			var $htmlUlStart = $("<li class='input-group col-lg-9'><ul id = li_ul"+i+">"); // 创建DOM对象 ul			
-			var $htmlLiId = $("<li class='col-lg-3 form-li form-font-bold text-right'>"+recordList[i].diseasename+"：</li>"); // 创建DOM对象 疾病类别
+			var $htmlUlStart = $("<li class='input-group col-lg-9 col-xs-9'><ul id = li_ul"+i+">"); // 创建DOM对象 ul			
+			var $htmlLiId = $("<li class='col-lg-3 col-xs-3 form-li form-font-bold text-right'>"+recordList[i].diseasename+"：</li>"); // 创建DOM对象 疾病类别
 			var $htmlLiName = '';
 			if(recordList[i].comment == null || recordList[i].comment == ''){
-				$htmlLiName = $("<li class='col-lg-4 form-li'><input class='form-input-checkbox' id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" /><span class='form-font-size'>"+recordList[i].diseasesubname+"</span></li>"); // 创建DOM对象 li
+				$htmlLiName = $("<li class='col-lg-4 col-xs-4 form-li'><input class='form-input-checkbox' id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" /><span class='form-font-size'>"+recordList[i].diseasesubname+"</span></li>"); // 创建DOM对象 li
 			}else{
-				$htmlLiName = $("<li class='col-lg-4 form-li'><input class='form-input-checkbox' id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+
+				$htmlLiName = $("<li class='col-lg-4 col-xs-4 form-li'><input class='form-input-checkbox' id="+recordList[i].diseaseidvalue+" name="+recordList[i].diseaseidvalue+" type='checkbox' value="+recordList[i].diseaseidvalue+" />"+
 						 "<a href='javascript:void(0)' title="+recordList[i].comment+">"+recordList[i].diseasesubname+"</a></li>"); // 创建DOM对象 li
 			}
 			 
@@ -217,14 +217,14 @@
               </div>		
               <div class="box-body">
 				         <div class="row form-group btn_title_informationModify">
-					          	<div class="col-lg-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_complication(this)">
+					          	<div class="col-lg-10 col-xs-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_complication(this)">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
  							</div>
  						<div class="row" id="health_examination">
-            					<ul class="col-lg-12" id="health_ul">
+            					<ul class="col-lg-12 col-xs-12" id="health_ul">
 																		
             					</ul>
             			</div>
