@@ -111,9 +111,9 @@
 						var text = '';
 						var bind_type=hosDocInfoList[i].bind_type;
 						
-						text = hosDocInfoList[i].hName + "(" + hosDocInfoList[i].dName + ")";
-
-						str += "<li class=''>" + text + "</li>";
+						//text = hosDocInfoList[i].hName + "(" + hosDocInfoList[i].dName + ")";
+						str += "<li class=''>" + "医院："+ hosDocInfoList[i].hName + "</li>";
+						str += "<li class=''>" + "医生："+  hosDocInfoList[i].dName + "</li>";
 					}
 					$("#hosDocListUL").html(str);
 					
@@ -343,19 +343,26 @@
 								<div class="callout callout-danger">
 									<h4>我的家庭成员：</h4>
 									<ul>
-										<li class="tGray" id="family">
-										<c:forEach items="${sessionScope.PatientList}" var="pa">
+										<li class="tGray" id="family"><c:forEach
+												items="${sessionScope.PatientList}" var="pa">
 
-										<ul>
-										<a href="javascript:void(0)" onclick="patientChange(this)"
-											id="${pa.pid}"> <c:out value="${pa.pname}" /></a>
-										</ul>
-										
-									</c:forEach>
-									</li>
-									<li class='wtaGreen'></li>
+												<ul>
+													<c:choose>
+														<c:when test="${sessionScope.PatientID == pa.pid}">
+															<c:out value="${pa.pname}" />
+
+														</c:when>
+														<c:otherwise>
+															<a href="javascript:void(0)"
+																onclick="patientChange(this)" id="${pa.pid}"> <c:out
+																	value="${pa.pname}" /></a>
+														</c:otherwise>
+													</c:choose>
+												</ul>
+											</c:forEach></li>
+										<li class='wtaGreen'></li>
 									</ul>
-									
+
 								</div>
 								<div class="callout callout-info">
 									<h4>我的医院医生：</h4>
@@ -364,7 +371,7 @@
 									</ul>
 
 								</div>
-							
+
 
 							</div>
 							<!-- /.box-body -->
