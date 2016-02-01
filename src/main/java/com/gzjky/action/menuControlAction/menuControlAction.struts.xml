@@ -102,5 +102,10 @@
 			<result name="success">/jsp/health/account/recharge.jsp</result>
 		</action>
 		
+		<!-- 设备修改配置-->
+		<action name="modifyEquipmentSet" class="com.gzjky.action.menuControlAction.EquipmentSetAction" method="getequipment">
+			<result name="success">/jsp/health/equipment/terminal_setting.jsp</result>
+		</action>
+		
 	</package>
 </struts>

@@ -78,7 +78,7 @@
 				} else {
 				    $("#deviceListUL").html("<li class=''>暂无</li>");
 				}
-		        $("#deviceListUL").append("<li class='wtaGreen'><a href='/gzjky/menuControlAction/memberBindDevice.do' target='mainFrame' title='增加设备'>增加设备</a></li>"); 
+		        $("#deviceListUL").append("<li class='wtaGreen'><a href='/gzjky/menuControlAction/memberBindDevice.do' title='增加设备'>增加设备</a></li>"); 
 				
 			}
 		});
@@ -283,7 +283,7 @@
 	}
 	function goToAccountMeal(obj){
 		activeHelathMenu(5);
-		obj.href = "/jsp/health/account/meal.jsp" ;
+		document.location.href = "/gzjky/menuControlAction/boughtMeal.do" ;
 	}
 	function goToRecharge(obj){
 		activeHelathMenu(5);
@@ -398,7 +398,7 @@
 									<h4>我的套餐</h4>
 									<ul>
 										<li class='wtBlack'>暂无</li>
-										<li class='wtaGreen'><a onclick='goToAccountMeal(this)' target='mainFrame'  title='增加套餐'>增加套餐</a></li>
+										<li class='wtaGreen'><a onclick='goToAccountMeal(this)'  title='增加套餐'>增加套餐</a></li>
 									</ul>
 
 								</div>
