@@ -204,7 +204,7 @@ function changeHeartType(obj){
 function showEcgDetail(obj,index){
 	var id = recordList[index].id;
 	//obj.target = "mainFrame";
-	obj.href = "./ecg_detail.jsp?id="+id;
+	obj.href = "/gzjky/menuControlAction/showEcgDetail.do?id="+id;
 }
 </script>
 </head>
