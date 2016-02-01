@@ -17,26 +17,19 @@
 .select_BPhistory{float:left; text-align:right; padding-top:10px; height:45px;}
 .select_PhoneFamily{width:345px; float:left; text-align:right; padding-top:10px; height:45px;}
 .select-style{ position:absolute; overflow:hidden;}
-.select-style select{ margin-left:230px;width:118px;height:28px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
-    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
+.select-style select{ margin-left:230px;width:118px;height:28px;padding-left:10px;font-family:"微软雅黑";}
 .select-style_baseinfo{ position:absolute; overflow:hidden;}
-.select-style_baseinfo select{ width:230px;height:28px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
-    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
+.select-style_baseinfo select{ width:230px;height:28px;padding-left:10px;font-family:"微软雅黑";background:}
 .select-style_habit{ position:absolute; overflow:hidden;}
-.select-style_habit select{ width:230px;height:28px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
-    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
+.select-style_habit select{ width:230px;height:28px;padding-left:10px;font-family:"微软雅黑";}
 .select-style_htspecial{ position:absolute; overflow:hidden;}
-.select-style_htspecial select{ width:230px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
-    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}    
+.select-style_htspecial select{ width:230px;padding-left:10px;font-family:"微软雅黑";}    
 .select-style_medcine{ position:absolute; overflow:hidden;}
-.select-style_medcine select{ width:120px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
-    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
+.select-style_medcine select{ width:120px;padding-left:10px;font-family:"微软雅黑";}
 .select-style_familydisease{ position:absolute; overflow:hidden;}
-.select-style_familydisease select{ width:230px;padding-left:10px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
-    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}
+.select-style_familydisease select{ width:230px;padding-left:10px;font-family:"微软雅黑";}
 .select-style_relation{ overflow:hidden; width:200px;}
-.select-style_relation select{ width:75px;height:32px;font-family:"微软雅黑";background: linear-gradient(to bottom, rgba(244,241,235,1) 0%,rgba(207,198,177,1) 94%,rgba(191,176,159,1) 100%);
-    background-image: linear-gradient(rgb(230, 225, 215) 0%, rgb(207, 198, 177) 94%, rgb(191, 176, 159) 100%);border-radius:0.3em;}      
+.select-style_relation select{ width:75px;height:32px;font-family:"微软雅黑";}      
 /*----------------search---------------*/
 .search{width:630px; padding:20px;float:left; margin-top:10px; }
 .search li{float:left; text-align:left}

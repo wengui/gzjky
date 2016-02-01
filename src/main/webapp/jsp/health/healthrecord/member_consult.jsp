@@ -354,7 +354,7 @@
 		              <ul>
 			              <li class="tgrey_popup1">*咨询内容：</li>
 			              <li class="tblack_popup1">
-		              	  <textarea class="inputMin_informationModify validate[required]"  name="content" id="content" rows="5" cols="70" style="border: 1px solid #ccc"></textarea>
+		              	  <textarea class="inputMin_informationModify validate[required]"  name="content" id="content" rows="5" cols="50" style="border: 1px solid #ccc"></textarea>
 		           	   	  </li>	
 		           	  </ul>
 		           	</li>
@@ -391,7 +391,7 @@
 	              <ul>
 	              <li class="tgrey_popup1">咨询内容：</li>
 	              <li class="tblack_popup1">
-	              <textarea  name="content" id="content"  class="inputMin_informationModify" rows="5" cols="70" disabled="disabled" style="border: 1px solid #ccc"></textarea>
+	              <textarea  name="content" id="content"  class="inputMin_informationModify" rows="5" cols="50" disabled="disabled" style="border: 1px solid #ccc"></textarea>
 	           	   </li>
 	           	   </ul>
 	           	   </li>
@@ -409,7 +409,7 @@
 	              <ul>             
 	              <li class="tgrey_popup1">医生回复：</li>
 	              <li class="tblack_popup1">
-	              		<textarea  name="report" id="report"  class="inputMin_informationModify" rows="5" cols="70" disabled="disabled"  style="border: 1px solid #ccc"></textarea>
+	              		<textarea  name="report" id="report"  class="inputMin_informationModify" rows="5" cols="50" disabled="disabled"  style="border: 1px solid #ccc"></textarea>
 	              </li>
 	              </ul>
 	              </li>              

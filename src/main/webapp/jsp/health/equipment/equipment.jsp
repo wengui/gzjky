@@ -408,22 +408,16 @@
 			<section class="content"> <!-- START ALERTS AND CALLOUTS -->
 		<h2 class="page-header">我的设备</h2>
 		<div class="row">
-			<div class="col-md-13">
+			<div class="col-md-12">
 				<div class="box box-danger">
 					<div class="box-header">
 						<h3 class="box-title">设备信息</h3>
-						<a href="./member_bind_device.jsp"><h3 class="btn btn-primary btn-sm" style="float:right;margin:4px">增加设备</h3></a>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
-								
-
-								<div class="header_equipment" id="deviceInfo_head">
-									
-								</div>
-
-
-				
+						<a href="./member_bind_device.jsp"><h3 class="btn btn-success">增加设备</h3></a>
+						<div class="header_equipment" id="deviceInfo_head">
+						</div>
 					</div>
 					<!-- /.box-body -->
 				</div>

@@ -246,14 +246,13 @@
 			<div class="col-md-13">
 				<div class="box box-danger">
 					<div class="box-header">
-						<i class="fa fa-bullhorn"></i>
 						<h3 class="box-title">亲情号码</h3>
 
-						<a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-primary btn-sm" style="float:right;margin:4px">增加</h3></a>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
-<div class="row">
+						<a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-success" >增加</h3></a>
+						<div class="row">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0"
 							class="table-bordered bPhistory_table" id="familyPhoneTable">
 							<colgroup> 	
@@ -345,7 +344,7 @@
 												style="width: 230px" type="text" id="homeAddress"
 												name="homeAddress" maxlength="256" /></li>
 											<li class="btn_popup_confirm"><a
-												href="javascript:void(0)" class="btn btn-success" 
+												href="javascript:void(0)" class="btn btn-info" 
 												onclick="saveFamilyPhone()"><i class="fa fa-save"></i>保存</a></li>
 												
 
