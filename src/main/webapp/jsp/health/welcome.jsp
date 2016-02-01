@@ -545,7 +545,7 @@
 				var ecgRecordVo=response.result
 				if(ecgRecordVo == null){
 					$('#doctor_report').html("暂无");
-					$('#image_heart_rate').html("<img src='../../images/health/bottom.png' />");
+					$('#image_heart_rate').html("<div><img src='<c:url value='/images/health/bottom.png'/>' /></div>");
 				}else{
 					$('#doctor_report').html(ecgRecordVo.analyseResult);
 					$('#reference_range').html("您的心率值为"+ecgRecordVo.heartRate+"&nbsp;&nbsp;<a class='tblack_results'style='text-decoration: underline;' data-toggle='modal' href='#ecgDiagram'>心电图</a>");
@@ -555,13 +555,13 @@
 					
  					if(ecgRecordVo.heartRate>=100){
  						$('#image_heart_rate').
- 						html("<div><img style='margin-right: "+(-165-(ecgRecordVo.heartRate-100)*2.6)+"px;' src='../../images/health/top.png'/></div><div><img src='../../images/health/bottom.png' /></div>");
+ 						html("<div><img style='margin-right: "+(-165-(ecgRecordVo.heartRate-100)*2.6)+"px;' src='<c:url value='/images/health/top.png'/>'/></div><div><img src='<c:url value='/images/health/bottom.png'/>' /></div>");
  					}else if(ecgRecordVo.heartRate<=60){
  						$('#image_heart_rate').
- 							html("<div><img style='margin-right: "+(95+(60-ecgRecordVo.heartRate)*2.6)+"px;' src='../../images/health/top.png'/></div><div><img src='../../images/health/bottom.png' /></div>");
+ 							html("<div><img style='margin-right: "+(95+(60-ecgRecordVo.heartRate)*2.6)+"px;' src='<c:url value='/images/health/top.png'/>'/></div><div><img src='<c:url value='/images/health/bottom.png'/>' /></div>");
  					}else{
  						$('#image_heart_rate').
- 							html("<div><img style='margin-right: "+(95-(ecgRecordVo.heartRate-60)*6.75)+"px;' src='../../images/health/top.png'/></div><div><img src='../../images/health/bottom.png' /></div>");
+ 							html("<div><img style='margin-right: "+(95-(ecgRecordVo.heartRate-60)*6.75)+"px;' src='<c:url value='/images/health/top.png'/>'/></div><div><img src='<c:url value='/images/health/bottom.png'/>' /></div>");
  					}
 				}
 				
@@ -798,11 +798,11 @@
                                     </div>
                                     <div class="callout callout-warning">
                                         <h4>医生/回复时间</h4>
-                                        <p id="replyTime"></p>
+                                        <p id="replyTime">暂无</p>
                                     </div>
                                      <div class="callout callout-success">
                                         <h4>回复内容</h4>
-                                        <p id="replyContent"></p>
+                                        <p id="replyContent">暂无</p>
                                     </div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
@@ -992,11 +992,11 @@
 	                                        <div class="col-xs-8 text-center">
 	                                        	<li class="sketchMap" id="image_heart_rate">
 	                                        		<div>
-													<img style="margin-right: 150px;" src="../../images/health/top.png" />
+													<img style="margin-right: 150px;" src="<c:url value='/images/health/top.png'/>" />
 													</div>
 													
 													<div>
-													<img src="../../images/health/bottom.png" />
+													<img src="<c:url value='/images/health/bottom.png'/>" />
 													</div>
 	                                        	</li>
 	                                        </div><!-- ./col -->
@@ -1043,23 +1043,23 @@
 	 <div class="popup_main" >
 	   <ul>
 	     <li class="tblack_bp">中国高血压防治指南2010年修订版</li>
-	     <li class="tyellow_max_bp"><img src="../../images/icon/tyellow.png" class="img_color" />
+	     <li class="tyellow_max_bp"><img src="<c:url value='/images/icon/tyellow.png'/>" class="img_color" />
 	     低血压：<span class="tgrey_bp">收缩压小于</span>90<span class="tgrey_bp">，舒张压小于</span>60</li>
 	     
-	     <li class="tgreen_bp"><img src="../../images/icon/green.png" class="img_color" />
+	     <li class="tgreen_bp"><img src="<c:url value='/images/icon/green.png'/>" class="img_color" />
 	     正常血压：<span class="tgrey_bp">收缩压小于</span>120<span class="tgrey_bp">，舒张压小于</span>80</li>
-	     <li class="tblue_bp"><img src="../../images/icon/blue.png" class="img_color" />
+	     <li class="tblue_bp"><img src="<c:url value='/images/icon/blue.png'/>" class="img_color" />
 	     正常高值：<span class="tgrey_bp">收缩压</span>120-139<span class="tgrey_bp">，舒张压</span>80-89</li>
-	     <li class="tyellow_bp"><img src="../../images/icon/yellow.png" class="img_color" />
+	     <li class="tyellow_bp"><img src="<c:url value='/images/icon/yellow.png'/>" class="img_color" />
 	     高于正常：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压大于等于</span>90</li>
-	     <li class="torange_bp"><img src="../../images/icon/orange.png" class="img_color" />
+	     <li class="torange_bp"><img src="<c:url value='/images/icon/orange.png'/>" class="img_color" />
 	     高血压一级：<span class="tgrey_bp">收缩压</span>140-159<span class="tgrey_bp">，舒张压</span>90-99</li>
-	     <li class="tbrown_bp"><img src="../../images/icon/brown.png" class="img_color" />
+	     <li class="tbrown_bp"><img src="<c:url value='/images/icon/brown.png'/>" class="img_color" />
 	     高血压二级：<span class="tgrey_bp">收缩压</span>160-179<span class="tgrey_bp">，舒张压</span>100-109</li>
-	     <li class="tred_bp"><img src="../../images/icon/red.png" class="img_color" />
+	     <li class="tred_bp"><img src="<c:url value='/images/icon/red.png'/>" class="img_color" />
 	     高血压三级：<span class="tgrey_bp">收缩压大于等于</span>180<span class="tgrey_bp">，舒张压大于等于</span>110</li>
 	     
-	      <li class="tred_orange_bp"><img src="../../images/icon/red_orange.png" class="img_color" />
+	      <li class="tred_orange_bp"><img src="<c:url value='/images/icon/red_orange.png'/>" class="img_color" />
 	     单纯收缩期高血压：<span class="tgrey_bp">收缩压大于等于</span>140<span class="tgrey_bp">，舒张压小于</span>90</li>
 	     
 	     <li class="tgreen_bpPrompt">注意：高压和低压分属于不同级别时，以较高分级为标准</li>
@@ -1086,7 +1086,7 @@
  </div>
 </div>
 
-<div id="divloading"><img src="../../images/public/blue-loading.gif" /></div>
+<div id="divloading"><img src="<c:url value='/images/public/blue-loading.gif'/>" /></div>
 <div id="transparentDiv" ></div>
 <div id="transparentDiv2"></div>
 </body>
