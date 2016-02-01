@@ -342,7 +342,7 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					 <small>最近登录 : <%=request.getParameter("onlinetime")%></small>
+					 <small>最近登录 : ${sessionScope.online}</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>

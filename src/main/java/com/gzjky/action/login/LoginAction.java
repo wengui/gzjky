@@ -104,9 +104,9 @@ public class LoginAction extends ActionSupport {
                 	ActionContext.getContext().getSession().put("Patient",userinfoAndPatientinfoList.get(0));
                 	ActionContext.getContext().getSession().put("PatientID",userinfoAndPatientinfoList.get(0).getPid());
                 }
-                
-               
-                online=DateUtil.formatYMDHMS(historyOnline.getLogintime().toDate());
+                //存储上次登录时间
+                ActionContext.getContext().getSession().put("online",DateUtil.formatYMDHMS(historyOnline.getLogintime().toDate()));
+
                 return "success";
             }
             else{
