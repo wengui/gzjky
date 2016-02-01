@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
+<title>亲情号码</title>
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
@@ -251,7 +251,7 @@
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
-						<a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-success" >增加</h3></a>
+						<a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-success" ><i class="fa fa-plus-square"></i> 增加</h3></a>
 						<div class="row">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0"
 							class="table-bordered bPhistory_table" id="familyPhoneTable">
@@ -345,7 +345,7 @@
 												name="homeAddress" maxlength="256" /></li>
 											<li class="btn_popup_confirm"><a
 												href="javascript:void(0)" class="btn btn-info" 
-												onclick="saveFamilyPhone()"><i class="fa fa-save"></i>保存</a></li>
+												onclick="saveFamilyPhone()"><i class="fa fa-save"></i> 保存</a></li>
 												
 
 										</ul>

@@ -284,9 +284,9 @@
               	<div class="col-lg-11 col-xs-11 text-right">
 	                 <div class="col-lg-6 col-xs-6">&nbsp;</div>
 	                <div class="col-lg-6 col-xs-6 from-float">
-		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-3 col-xs-3" onclick="showMedicalExamintionDialog()"><span>增加</span></a>
-		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-3 col-xs-3" onclick="showMedicalExamintionDialog(1)"><span>修改</span></a>
-		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-3 col-xs-3"  onclick="deleteMedicalExamination()"><span>删除</span></a>
+		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-2 col-xs-2" onclick="showMedicalExamintionDialog()"><i class="fa fa-plus-square"></i> 增加</a>
+		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-2 col-xs-2" onclick="showMedicalExamintionDialog(1)"><i class="fa fa-edit"></i> 修改</a>
+		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-2 col-xs-2"  onclick="deleteMedicalExamination()"><i class="fa fa-trash-o"></i> 删除</a>
 	                </div>
               </div>
               

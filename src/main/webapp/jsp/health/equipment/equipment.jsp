@@ -415,7 +415,7 @@
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
-						<a href="./member_bind_device.jsp"><h3 class="btn btn-success">增加设备</h3></a>
+						<a href="./member_bind_device.jsp"><h3 class="btn btn-success"><i class="fa fa-plus-square"></i> 增加设备</h3></a>
 						<div class="header_equipment" id="deviceInfo_head">
 						</div>
 					</div>

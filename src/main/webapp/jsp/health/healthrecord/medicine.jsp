@@ -17,7 +17,7 @@
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>" type="text/javascript"></script>
-<title>995120健康服务中心</title>
+<title>药物选择</title>
 <style type="text/css">
 .med_table1 {
 	float: left;
@@ -226,7 +226,7 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 		                 <input class="col-lg-8 col-xs-8 display-input commonName" id="commonName" type="text" />
 	               </div>
 	               <div class="col-lg-3 col-xs-3">
-	               	 <button class="btn btn-success" onclick="queryStart();">查询</button>
+	               	 <button class="btn btn-success" onclick="queryStart();"><i class="fa fa-search"></i> 查询</button>
 	               </div>
               </div>
 

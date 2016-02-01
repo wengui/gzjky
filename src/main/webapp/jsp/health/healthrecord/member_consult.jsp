@@ -257,7 +257,7 @@
 	              </div>
               	  <div class="box-body">
               	  <div class="row col-lg-11">
-					<a href="javascript:void(0)" class="btn btn-success" style="margin-left:10px" onclick="showDialog()">新增</a>               
+					<a href="javascript:void(0)" class="btn btn-success" style="margin-left:10px" onclick="showDialog()"><i class="fa fa-plus-square"></i> 新增</a>               
 				  </div>
 				  <div class="row">
 				  <br/>

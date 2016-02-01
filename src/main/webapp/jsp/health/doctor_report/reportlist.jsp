@@ -246,7 +246,7 @@
 						<!-- /.col-lg-3 -->
 						<div class="col-lg-3">
 							<button class="btn btn-success" style="margin-left: 20px"
-								onclick="queryStart();">查询</button>
+								onclick="queryStart();"><i class="fa fa-search"></i> 查询</button>
 						</div>
 						<!-- /.col-lg-3 -->
 						<div class="col-lg-3"></div><!-- /.col-lg-3 -->

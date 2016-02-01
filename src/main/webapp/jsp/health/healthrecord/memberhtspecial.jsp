@@ -154,7 +154,7 @@
 			 td.innerHTML = '<input type="text" onclick="showHours(this)" class="col-lg-8 col-xs-8 validate[required]" name="medicine_taken.hours"  readonly="readonly" value="'+obj.takeTime+'" data-prompt-position="topLeft:45,0" onblur="validateControl(this)"/>';
 			
 			 td=tr.insertCell(3);
-			 td.innerHTML = '<a href="javascript:void(0)" class="btn btn-success col-lg-12 col-xs-12 del-show-status" onclick="deleteMed(this)" style="display: block;">删除</a>';
+			 td.innerHTML = '<a href="javascript:void(0)" class="btn btn-success col-lg-12 col-xs-12 del-show-status" onclick="deleteMed(this)" style="display: block;"><i class="fa fa-trash-o"></i> 删除 </a>';
 			 td.nowrap="nowrap" ;
 		}
 		
@@ -285,7 +285,7 @@
 				return false;
 			}
 			
-			var delBtn='<a href="javascript:void(0)" class="col-lg-12 col-xs-12 btn btn-success del-show-status" onclick="deleteMed(this)" style="display: block;">删除</a>';
+			var delBtn='<a href="javascript:void(0)" class="col-lg-12 col-xs-12 btn btn-success del-show-status" onclick="deleteMed(this)" style="display: block;"><i class="fa fa-trash-o"></i> 删除 </a>';
 			$("#med_table").append('<tr>'
 							+'<td>'
 								+'<input type="text" onclick="showMedicine(this)" class="col-lg-8 col-xs-8 validate[required]" name="medicine_taken.name" readonly="readonly" data-prompt-position="topLeft:0,0" onblur="validateControl(this)"/>'
@@ -515,7 +515,7 @@
 						        	<div class="col-lg-3 col-xs-3">&nbsp;</div>
 						        	<div class="col-lg-8 col-xs-8 table-medicine">
     								<div class="from-med-tab">
-    									<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="addMed()">继续添加</a> 
+    									<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="addMed()"><i class="fa fa-plus-square"></i> 继续添加 </a> 
     								</div>
     								<table cellpadding="0" cellspacing="0" width="100%" class="from-med-table2" id="med_table">
     									<colgroup>

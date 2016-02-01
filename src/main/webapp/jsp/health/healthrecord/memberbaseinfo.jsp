@@ -341,7 +341,7 @@
 							        <div class="col-lg-6 col-xs-6">
 							           <ul class="text-center">
 							               <li><div calss="image-detail"><img height="200px" id="patientimage" src="<c:url value='/imageUploadAction/showHeadImage.do'/>" /></div></li>
-							               <li class="thead_informationModify"><a href="javascript:void(0)" class="btn btn-success" onclick="edit_photo()">修改头像</a></li>
+							               <li class="thead_informationModify"><a href="javascript:void(0)" class="btn btn-success" onclick="edit_photo()"><i class="fa  fa-user"></i> 修改头像</a></li>
 					         		   </ul>
 							        </div>
 						        </div>
