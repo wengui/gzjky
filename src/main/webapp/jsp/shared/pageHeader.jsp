@@ -46,39 +46,62 @@
         <div class="navbar-right">
             <ul class="nav navbar-nav">
                   <li class="dropdown messages-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-users"></i>
-						<c:set var="len" value="0"/>
-                        <c:forEach items="${sessionScope.PatientList}" >
-                        	<c:set var="len" value="${len+1}"/>
-                        </c:forEach>
-                        <span class="label label-success">${len}</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header">家庭成员</li>
-                        <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu" style="height:100px">
-                            
-                            <c:forEach items="${sessionScope.PatientList}" var="pa">
-                                                             
-                                <li ><!-- start message -->
-                                    <a href="javascript:void(0)" onclick="patientChange(this)"
-											id="${pa.pid}" style="line-height:10px">
-                                        <i class="fa fa-user" style="color:#428BCA"></i>
-                                      
-                                            <p> <c:out value="${pa.pname}" /></p>
-                                
-                                    </a>
-                                </li><!-- end message -->
-									
-							</c:forEach>
-               
-                            </ul>
-                        </li>
-                    
-                    </ul>
-                </li>
+                    <a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"> <i class="fa fa-users"></i> <c:set
+							var="len" value="0" /> <c:forEach
+							items="${sessionScope.PatientList}">
+							<c:set var="len" value="${len+1}" />
+						</c:forEach> <span class="label label-success">${len}</span>
+				</a>
+					<ul class="dropdown-menu">
+						<li class="header">家庭成员切换</li>
+						<li>
+							<!-- inner menu: contains the actual data -->
+							<ul class="menu">
+
+								<c:forEach items="${sessionScope.PatientList}" var="pa">
+
+									<li>
+										<!-- start message --> <c:choose>
+											<c:when test="${sessionScope.PatientID == pa.pid}">
+
+												<a href="javascript:void(0)" 
+													id="${pa.pid}" style="line-height: 10px">
+													<div class="pull-left">
+														<img src="<c:url value='/imageUploadAction/showHeadImage.do'/>" class="img-circle" alt="User Image" />
+													</div>
+													<h4 style="color:#ccc">
+														<c:out value="${pa.pname}" />(当前账户)
+													</h4>
+
+													</a>
+											</c:when>
+											<c:otherwise>
+
+												<a href="javascript:void(0)" onclick="patientChange(this)"
+													id="${pa.pid}" style="line-height: 10px">
+													<div class="pull-left">
+														<img src="<c:url value='/imageUploadAction/showHeadImage.do'/>" class="img-circle" alt="User Image" />
+													</div>
+
+													<h4>
+														<c:out value="${pa.pname}" />
+													</h4>
+
+												</a>
+											</c:otherwise>
+										</c:choose>
+
+									</li>
+									<!-- end message -->
+
+								</c:forEach>
+
+							</ul>
+						</li>
+ 						<li class="footer"><a href="#">添加家庭成员</a></li>
+					</ul>
+				</li>
                 <!-- Messages: style can be found in dropdown.less-->               
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
