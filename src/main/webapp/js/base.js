@@ -18,7 +18,8 @@ function showScreenProtectDiv(type){
 	if(type == 1) div = $("#transparentDiv");
 	if(type == 2) div = $("#transparentDiv2");
 	div.css("width","100%");
-	div.css("height","100%");
+	div.height(document.body.scrollHeight);
+	//div.css("height","100%");
 	div.show();
 }
 

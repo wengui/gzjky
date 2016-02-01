@@ -100,8 +100,7 @@
                     <ul class="dropdown-menu" style="width:160px">
                         <!-- User image -->
                         <li class="user-header bg-light-blue" style="height:110px">
-                            <img src="<c:url value='/img/avatar3.png'/>" class="img-circle" alt="User Image" />
-                        
+                            <img src="<c:url value='/images/health/default_head.gif'/>" class="img-circle" alt="User Image" />
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">         
