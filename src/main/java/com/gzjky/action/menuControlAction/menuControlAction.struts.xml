@@ -107,5 +107,10 @@
 			<result name="success">/jsp/health/equipment/terminal_setting.jsp</result>
 		</action>
 		
+		<!-- 设备修改配置-->
+		<action name="showEcgDetail" class="com.gzjky.action.menuControlAction.EcgShowDetailAction" method="getEcgDetail">
+			<result name="success">/jsp/health/analyse/ecg_detail.jsp</result>
+		</action>
+		
 	</package>
 </struts>
