@@ -208,11 +208,16 @@
 		<%@ include file="../../shared/sidebarMenu.jsp"%>
 
 		<form id="memberBindDevice_form">
-			<aside class="right-side"> <!-- Main content --> <section
-				class="content"> <!-- START ALERTS AND CALLOUTS -->
-			<h2 class="page-header">我的设备</h2>
-			<div class="row">
-				<div class="col-md-13">
+			<aside class="right-side"> <!-- Main content --> 
+			<section class="content-header">
+	             <h1>设备绑定</h1>
+	             <ol class="breadcrumb">
+	                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+	                  <li>健康档设备</li>
+	                  <li class="active">设备绑定</li>
+	             </ol>
+	         </section> 
+			<div class="bp_accouint">
 					<div class="box box-danger">
 						<div class="box-header">
 							<h3 class="box-title">绑定设备</h3>
@@ -248,9 +253,8 @@
 						<!-- /.box-body -->
 					</div>
 					<!-- /.box -->
-				</div>
 			</div>
-			<!-- /.row --> </section> </aside>
+		</aside>
 		</form>
 	</div>
 	<div id="divloading">

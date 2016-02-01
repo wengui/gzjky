@@ -237,136 +237,144 @@
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 		<!-- Left side column. contains the logo and sidebar -->
 		<%@ include file="../../shared/sidebarMenu.jsp"%>
-
-
-		<aside class="right-side"> <!-- Main content --> <section
-			class="content"> <!-- START ALERTS AND CALLOUTS -->
-		<h2 class="page-header">亲情号码</h2>
-		<div class="row">
-			<div class="col-md-13">
-				<div class="box box-danger">
-					<div class="box-header">
-						<h3 class="box-title">亲情号码</h3>
-
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body">
-						<a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-success" ><i class="fa fa-plus-square"></i> 增加</h3></a>
-						<div class="row">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0"
-							class="table-bordered bPhistory_table" id="familyPhoneTable">
-							<colgroup> 	
-								<col width="10%" />
-								<col width="15%" />
-								<col width="25%" />
-								<col width="25%" />
-								<col width="25%" />
-							</colgroup>
-							<tr>
-								<th>序号</th>
-								<th>姓名</th>
-								<th>手机号码</th>
-								<th>亲属关系</th>
-								<th>操作</th>
-							</tr>
-						</table>
-						<div class="modal fade" id="familyPhoneWindow" role="dialog"
-							aria-labelledby="myModalLabel" aria-hidden="true"
-							style="margin-top: 10%">
-							<div class="modal-dialog">
-								<div class="popup_header">
-									<ul>
-										<li class="name_popupHeader" id="pop_familyPhoneTitle">增加亲情号码</li>
-
-										<li class="close_popupHeader"><a
-											href="javascript:void(0)" onclick="closeDiv_familyPhone();"
-											data-dismiss="modal">X</a></li>
-									</ul>
-								</div>
-								<form id="addFamilyPhoneForm">
-									<input type="hidden" name="id" id="id" /> <input type="hidden"
-										name="member_unit_id" id="member_unit_id" /> <input
-										type="hidden" name="member_cluster_id" id="member_cluster_id" />
-									<input type="hidden" name="member_unit_type"
-										id="member_unit_type" />
-									<div class="popup_main">
-										<ul>
-											<li class="tgrey_popup">*真实姓名：</li>
-											<li class="tblack_popup"><input
-												class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer]]"
-												style="width: 230px" type="text" id="name" name="name"
-												maxlength="32" /></li>
-											<li class="tgrey_popup">固定电话：</li>
-											<li class="tblack_popup"><input
-												class="inputMin_informationModify text-input validate[funcCall[telephone]]"
-												style="width: 230px" type="text" id="phone" name="phone" />
-											</li>
-											<li class="tgrey_popup">*手机号码：</li>
-											<li class="tblack_popup"><input
-												class="inputMin_informationModify text-input validate[required,funcCall[Internationalmobilephone]]"
-												style="width: 230px" type="text" id="cellphone"
-												name="cellphone" /></li>
-											<li class="tgrey_popup">*诊断报告：</li>
-											<li class="tblack_popup"><span
-												class="select-style_habit"> <select
-													class="selectMax_informationModify text-input validate[required]"
-													id="report" name="report">
-														<option value="">请选择</option>
-														<option value="1">接收</option>
-														<option value="0">不接收</option>
-												</select>
-											</span></li>
-											<li class="tgrey_popup">*亲属关系：</li>
-											<li class="tblack_popup"><span
-												class="select-style_habit"> <select
-													class="selectMax_informationModify text-input validate[required]"
-													id="relationship" name="relationship">
-														<option value="">请选择</option>
-														<option value="家庭成员" selected="selected">家庭成员</option>
-														<option value="朋友">朋友</option>
-														<option value="同事">同事</option>
-														<option value="其他">其他</option>
-												</select>
-											</span></li>
-											<li class="tgrey_popup">单位：</li>
-											<li class="tblack_popup"><input
-												class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"
-												style="width: 230px" type="text" id="company" name="company"
-												maxlength="128" /></li>
-											<li class="tgrey_popup">邮箱：</li>
-											<li class="tblack_popup"><input
-												class="inputMin_informationModify text-input validate[custom[email]]"
-												style="width: 230px" type="text" id="email" name="email" />
-											</li>
-											<li class="tgrey_popup">家庭地址：</li>
-											<li class="tblack_popup"><input
-												class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"
-												style="width: 230px" type="text" id="homeAddress"
-												name="homeAddress" maxlength="256" /></li>
-											<li class="btn_popup_confirm"><a
-												href="javascript:void(0)" class="btn btn-info" 
-												onclick="saveFamilyPhone()"><i class="fa fa-save"></i> 保存</a></li>
-												
-
-										</ul>
-									</div>
-								</form>
+		<aside class="right-side"> <!-- Main content -->
+			 <section class="content-header">
+	             <h1>亲情号码</h1>
+	             <ol class="breadcrumb">
+	                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+	                  <li>健康档案</li>
+	                  <li class="active">亲情号码</li>
+	             </ol>
+	         </section> 
+	        <div class="bp_accouint">
+					<div class="box box-danger">
+						<div class="box-header">
+							<h3 class="box-title">亲情号码</h3>
+						</div>
+						<!-- /.box-header -->
+						<div class="box-body col-lg-11">
+							<div class="col-lg-11">
+								<a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-success" ><i class="fa fa-plus-square"></i> 增加</h3></a>
 							</div>
+						</div><!-- /.box-body -->
+						<div class="row " style="padding-bottom:15px">
+							<div class="col-lg-8">
+						    <table width="100%" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="familyPhoneTable">
+								<colgroup> 	
+									<col width="10%" />
+									<col width="15%" />
+									<col width="25%" />
+									<col width="25%" />
+									<col width="25%" />
+								</colgroup>
+								<tr>
+									<th>序号</th>
+									<th>姓名</th>
+									<th>手机号码</th>
+									<th>亲属关系</th>
+									<th>操作</th>
+								</tr>
+							</table>
+							</div>
+							<br/>
+							
+							<br/>
+							<br/>
 						</div>
-						</div>
-					</div>
 
-					<!-- /.box-body -->
-				</div>
-				<!-- /.box -->
+					</div><!-- /.box -->
 			</div>
+		</aside>
+</div>
+<div class="modal fade" id="familyPhoneWindow" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true"
+	style="margin-top: 10%">
+	<div class="modal-dialog">
+		<div class="popup_header">
+			<ul>
+				<li class="name_popupHeader" id="pop_familyPhoneTitle">增加亲情号码</li>
+
+				<li class="close_popupHeader"><a
+					href="javascript:void(0)" onclick="closeDiv_familyPhone();"
+					data-dismiss="modal">X</a></li>
+			</ul>
 		</div>
-		<!-- /.row --> </section> </aside>
+		<form id="addFamilyPhoneForm">
+			<input type="hidden" name="id" id="id" /> <input type="hidden"
+				name="member_unit_id" id="member_unit_id" /> <input
+				type="hidden" name="member_cluster_id" id="member_cluster_id" />
+			<input type="hidden" name="member_unit_type"
+				id="member_unit_type" />
+			<div class="popup_main">
+				<ul>
+					<li class="tgrey_popup">*真实姓名：</li>
+					<li class="tblack_popup"><input
+						class="inputMin_informationModify text-input validate[required,funcCall[chinaornumer]]"
+						style="width: 230px" type="text" id="name" name="name"
+						maxlength="32" /></li>
+					<li class="tgrey_popup">固定电话：</li>
+					<li class="tblack_popup"><input
+						class="inputMin_informationModify text-input validate[funcCall[telephone]]"
+						style="width: 230px" type="text" id="phone" name="phone" />
+					</li>
+					<li class="tgrey_popup">*手机号码：</li>
+					<li class="tblack_popup"><input
+						class="inputMin_informationModify text-input validate[required,funcCall[Internationalmobilephone]]"
+						style="width: 230px" type="text" id="cellphone"
+						name="cellphone" /></li>
+					<li class="tgrey_popup">*诊断报告：</li>
+					<li class="tblack_popup"><span
+						class="select-style_habit"> <select
+							class="selectMax_informationModify text-input validate[required]"
+							id="report" name="report">
+								<option value="">请选择</option>
+								<option value="1">接收</option>
+								<option value="0">不接收</option>
+						</select>
+					</span></li>
+					<li class="tgrey_popup">*亲属关系：</li>
+					<li class="tblack_popup"><span
+						class="select-style_habit"> <select
+							class="selectMax_informationModify text-input validate[required]"
+							id="relationship" name="relationship">
+								<option value="">请选择</option>
+								<option value="家庭成员" selected="selected">家庭成员</option>
+								<option value="朋友">朋友</option>
+								<option value="同事">同事</option>
+								<option value="其他">其他</option>
+						</select>
+					</span></li>
+					<li class="tgrey_popup">单位：</li>
+					<li class="tblack_popup"><input
+						class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"
+						style="width: 230px" type="text" id="company" name="company"
+						maxlength="128" /></li>
+					<li class="tgrey_popup">邮箱：</li>
+					<li class="tblack_popup"><input
+						class="inputMin_informationModify text-input validate[custom[email]]"
+						style="width: 230px" type="text" id="email" name="email" />
+					</li>
+					<li class="tgrey_popup">家庭地址：</li>
+					<li class="tblack_popup"><input
+						class="inputMin_informationModify text-input validate[funcCall[includespecialchar]]"
+						style="width: 230px" type="text" id="homeAddress"
+						name="homeAddress" maxlength="256" /></li>
+					<li class="btn_popup_confirm"><a
+						href="javascript:void(0)" class="btn btn-info" 
+						onclick="saveFamilyPhone()"><i class="fa fa-save"></i> 保存</a></li>
+							
+
+					</ul>
+				</div>
+			</form>
 	</div>
-	<div id="divloading">
-		<img src="../../../images/public/blue-loading.gif" />
-	</div>
-	<div id="transparentDiv"></div>
-	<div id="transparentDiv2"></div>
+</div>
+
+
+<div id="divloading">
+	<img src="../../../images/public/blue-loading.gif" />
+</div>
+<div id="transparentDiv"></div>
+<div id="transparentDiv2"></div>
 </body>
 </html>

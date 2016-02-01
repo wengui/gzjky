@@ -405,34 +405,32 @@
 		
 	
 			<!-- Main content --> 
-			<section class="content"> <!-- START ALERTS AND CALLOUTS -->
-		<h2 class="page-header">我的设备</h2>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="box box-danger">
-					<div class="box-header">
-						<h3 class="box-title">设备信息</h3>
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body">
-						<a href="/gzjky/menuControlAction/memberBindDevice.do"><h3 class="btn btn-success">增加设备</h3></a>
-						<div class="header_equipment" id="deviceInfo_head">
+			 <section class="content-header">
+	             <h1>我的设备</h1>
+	             <ol class="breadcrumb">
+	                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+	                  <li>健康设备</li>
+	                  <li class="active">我的设备</li>
+	             </ol>
+	         </section> 
+			<div class="bp_accouint">
+					<div class="box box-danger">
+						<div class="box-header">
+							<h3 class="box-title">设备信息</h3>
 						</div>
+						<!-- /.box-header -->
+						<div class="box-body">
+							<a href="/gzjky/menuControlAction/memberBindDevice.do"> <h3 class="btn btn-success"><i class="fa fa-plus-square"></i> 增加设备</h3></a>
+							<div class="header_equipment" style="margin-top:10px" id="deviceInfo_head">
+							</div>
+						</div>
+						<!-- /.box-body -->
 					</div>
-					<!-- /.box-body -->
-				</div>
-				<!-- /.box -->
+					<!-- /.box -->
 			</div>
-
-		</div>
-		<!-- /.row --> </section>
-
 		</aside>
-
-
-		<form id="addform" style="display: none;"></form>
-	</div>
-
+	<form id="addform" style="display: none;"></form>
+</div>
 
 </body>
 </html>

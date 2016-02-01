@@ -358,7 +358,7 @@
 		           	   	  </li>	
 		           	  </ul>
 		           	</li>
-		            <li class="text-center"><a href="javascript:void(0)" class="btn btn-info " onclick="saveMemberConsult()">保存</a></li>                                       
+		            <li class="text-center"><a href="javascript:void(0)" class="btn btn-info " onclick="saveMemberConsult()"><i class='fa fa-edit'></i> 保存</a></li>                                       
 		         </ul>
 		      </div> 
 	  </form>

@@ -82,12 +82,17 @@ menuId = "#pwd";
 		<%@ include file="../../shared/sidebarMenu.jsp"%>
 
 
-			<aside class="right-side"> <!-- Main content --> <section
-				class="content"> <!-- START ALERTS AND CALLOUTS -->
-			<h2 class="page-header">密码修改</h2>
-			<div class="row">
-				<div class="col-md-13">
-					<div class="box box-danger">
+			<aside class="right-side"> <!-- Main content --> 
+			 <section class="content-header">
+	             <h1>密码修改</h1>
+	             <ol class="breadcrumb">
+	                  <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
+	                  <li>健康档案</li>
+	                  <li class="active">密码修改</li>
+	             </ol>
+	         </section> 
+	         <div class="bp_accouint">
+					<div class="box box-info">
 						<div class="box-header">
 							<h3 class="box-title">密码修改</h3>
 						</div>
@@ -123,18 +128,13 @@ menuId = "#pwd";
 						<!-- /.box-body -->
 					</div>
 					<!-- /.box -->
-				</div>
 			</div>
-			<!-- /.row --> </section> </aside>
-
+		</aside>
 	</div>
-
 	<div id="divloading">
 		<img src="../../../images/public/blue-loading.gif" />
 	</div>
-
 	<div id="transparentDiv"></div>
-
 	<div id="transparentDiv2"></div>
 </body>
 </html>
