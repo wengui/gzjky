@@ -1,11 +1,16 @@
 package com.gzjky.action.imageUploadAction;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang.math.NumberUtils;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.gzjky.base.util.imageUpload.IImageUpload;
 import com.gzjky.bean.extend.HeadImageBean;
 import com.gzjky.dao.readdao.PatientInfoReadMapper;
 import com.opensymphony.xwork2.ActionContext;
@@ -23,9 +28,14 @@ public class ShowHeadImageAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = -1387412125933799439L;
+	
+	// 默认头像
+	private static String DEFAULT_HEAD_IMAGE = "/images/health/default_head.gif";
 
 	@Autowired
 	private PatientInfoReadMapper readMapper;
+	@Autowired
+	private IImageUpload imageUpload;
 
 	// 图片流
 	private ByteArrayInputStream headImage;
@@ -40,6 +50,15 @@ public class ShowHeadImageAction extends ActionSupport {
 
 		try {
 
+			// request取得
+			HttpServletRequest request = ServletActionContext.getRequest();
+	        
+	        // 	取得相对路径
+	        String basePath = request.getSession().getServletContext().getRealPath("/");
+	        
+	        // 默认头像设定
+	        File file = new File(basePath + DEFAULT_HEAD_IMAGE);
+			
 			// 患者ID取得
 			int patientId = NumberUtils.toInt(ActionContext.getContext().getSession().get("PatientID").toString());
 
@@ -48,6 +67,8 @@ public class ShowHeadImageAction extends ActionSupport {
 			if (result.getHeadImage().length > 0) {
 
 				headImage = convertBytesToStream(result.getHeadImage());
+			}else{
+				headImage = imageUpload.getImageBinary(file);
 			}
 
 		} catch (Exception e) {
