@@ -58,17 +58,17 @@
                         <li class="header">家庭成员</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
+                            <ul class="menu" style="height:100px">
                             
                             <c:forEach items="${sessionScope.PatientList}" var="pa">
                                                              
-                                <li><!-- start message -->
+                                <li ><!-- start message -->
                                     <a href="javascript:void(0)" onclick="patientChange(this)"
-											id="${pa.pid}">
+											id="${pa.pid}" style="line-height:10px">
                                         <i class="fa fa-user" style="color:#428BCA"></i>
-                                        <h4>
-                                             <c:out value="${pa.pname}" />
-                                        </h4>
+                                      
+                                            <p> <c:out value="${pa.pname}" /></p>
+                                
                                     </a>
                                 </li><!-- end message -->
 									
