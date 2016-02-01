@@ -78,7 +78,7 @@
 				} else {
 				    $("#deviceListUL").html("<li class=''>暂无</li>");
 				}
-		        $("#deviceListUL").append("<li class='wtaGreen'><a href='/gzjky/menuControlAction/memberBindDevice.do' target='mainFrame' title='增加设备'>增加设备</a></li>"); 
+		        $("#deviceListUL").append("<li class='wtaGreen'><a href='/gzjky/menuControlAction/memberBindDevice.do' title='增加设备'>增加设备</a></li>"); 
 				
 			}
 		});
@@ -111,9 +111,9 @@
 						var text = '';
 						var bind_type=hosDocInfoList[i].bind_type;
 						
-						text = hosDocInfoList[i].hName + "(" + hosDocInfoList[i].dName + ")";
-
-						str += "<li class=''>" + text + "</li>";
+						//text = hosDocInfoList[i].hName + "(" + hosDocInfoList[i].dName + ")";
+						str += "<li class=''>" + "医院："+ hosDocInfoList[i].hName + "</li>";
+						str += "<li class=''>" + "医生："+  hosDocInfoList[i].dName + "</li>";
 					}
 					$("#hosDocListUL").html(str);
 					
@@ -283,7 +283,7 @@
 	}
 	function goToAccountMeal(obj){
 		activeHelathMenu(5);
-		obj.href = "/jsp/health/account/meal.jsp" ;
+		document.location.href = "/gzjky/menuControlAction/boughtMeal.do" ;
 	}
 	function goToRecharge(obj){
 		activeHelathMenu(5);
@@ -297,34 +297,7 @@
 		});
 		return true;
 	}
-	
-	//Patient切换 
-	function patientChange(obj) {
-		var family=obj.id;
-		var para="family="+family;
-		if(family!=="${sessionScope.Patient.pid}"){
-			$.ajax({
-				url:"/gzjky/home/patientChange.do",
-				async:true,
-				data:para,
-				dataType:"json",
-				type:"POST",
-				error:function(){
-					$.alert("发生异常","请注意");
-				},
-				success:function(response) {
 
-					if(response.result=="1"){	
-						window.location.href="../jsp/home.jsp";
-					}
-					else{
-						$.alert("发生异常","请注意");
-					}
-				}
-			});
-		}
-		
-	}
 </script>
 
 
@@ -370,19 +343,26 @@
 								<div class="callout callout-danger">
 									<h4>我的家庭成员：</h4>
 									<ul>
-										<li class="tGray" id="family">
-										<c:forEach items="${sessionScope.PatientList}" var="pa">
+										<li class="tGray" id="family"><c:forEach
+												items="${sessionScope.PatientList}" var="pa">
 
-										<ul>
-										<a href="javascript:void(0)" onclick="patientChange(this)"
-											id="${pa.pid}"> <c:out value="${pa.pname}" /></a>
-										</ul>
-										
-									</c:forEach>
-									</li>
-									<li class='wtaGreen'></li>
+												<ul>
+													<c:choose>
+														<c:when test="${sessionScope.PatientID == pa.pid}">
+															<c:out value="${pa.pname}" />
+
+														</c:when>
+														<c:otherwise>
+															<a href="javascript:void(0)"
+																onclick="patientChange(this)" id="${pa.pid}"> <c:out
+																	value="${pa.pname}" /></a>
+														</c:otherwise>
+													</c:choose>
+												</ul>
+											</c:forEach></li>
+										<li class='wtaGreen'></li>
 									</ul>
-									
+
 								</div>
 								<div class="callout callout-info">
 									<h4>我的医院医生：</h4>
@@ -391,7 +371,7 @@
 									</ul>
 
 								</div>
-							
+
 
 							</div>
 							<!-- /.box-body -->
@@ -418,7 +398,7 @@
 									<h4>我的套餐</h4>
 									<ul>
 										<li class='wtBlack'>暂无</li>
-										<li class='wtaGreen'><a onclick='goToAccountMeal(this)' target='mainFrame'  title='增加套餐'>增加套餐</a></li>
+										<li class='wtaGreen'><a onclick='goToAccountMeal(this)'  title='增加套餐'>增加套餐</a></li>
 									</ul>
 
 								</div>

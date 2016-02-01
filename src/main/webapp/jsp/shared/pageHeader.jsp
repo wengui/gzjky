@@ -1,4 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script type="text/JavaScript">
+	//Patient切换 
+	function patientChange(obj) {
+		var family=obj.id;
+		var para="family="+family;
+		if(family!=="${sessionScope.Patient.pid}"){
+			$.ajax({
+				url:"/gzjky/home/patientChange.do",
+				async:true,
+				data:para,
+				dataType:"json",
+				type:"POST",
+				error:function(){
+					$.alert("发生异常","请注意");
+				},
+				success:function(response) {
+
+					if(response.result=="1"){	
+						window.location.href="/gzjky/jsp/home.jsp";
+					}
+					else{
+						$.alert("发生异常","请注意");
+					}
+				}
+			});
+		}
+		
+	}
+
+</script>
 <header class="header">
     <a href="index.html" class="logo">
         <!-- Add the class icon to your logo image or logo icon to add the margining -->
@@ -15,7 +45,41 @@
         </a>
         <div class="navbar-right">
             <ul class="nav navbar-nav">
-                <!-- Messages: style can be found in dropdown.less-->
+                  <li class="dropdown messages-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-users"></i>
+						<c:set var="len" value="0"/>
+                        <c:forEach items="${sessionScope.PatientList}" >
+                        	<c:set var="len" value="${len+1}"/>
+                        </c:forEach>
+                        <span class="label label-success">${len}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">家庭成员</li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu" style="height:100px">
+                            
+                            <c:forEach items="${sessionScope.PatientList}" var="pa">
+                                                             
+                                <li ><!-- start message -->
+                                    <a href="javascript:void(0)" onclick="patientChange(this)"
+											id="${pa.pid}" style="line-height:10px">
+                                        <i class="fa fa-user" style="color:#428BCA"></i>
+                                      
+                                            <p> <c:out value="${pa.pname}" /></p>
+                                
+                                    </a>
+                                </li><!-- end message -->
+									
+							</c:forEach>
+               
+                            </ul>
+                        </li>
+                    
+                    </ul>
+                </li>
+                <!-- Messages: style can be found in dropdown.less-->               
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope"></i>
