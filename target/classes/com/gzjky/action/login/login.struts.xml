@@ -10,6 +10,7 @@
 	<!-- 用户登录 -->
 	<action name="login" class="com.gzjky.action.login.LoginAction" method="login">
      	<result name="success">/jsp/home.jsp</result>
+
      	<result name="error">/jsp/login.jsp</result>
 	</action>
 	

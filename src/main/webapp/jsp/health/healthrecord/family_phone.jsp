@@ -28,7 +28,7 @@
 <script type="text/javascript">
 
 	menuId = "#phone";
-	$(function(){
+	function startInit(){
 		/*
 		validator_familyPhone = $("#addFamilyPhoneForm").validate({
 			messages: {
@@ -56,7 +56,7 @@
     			}
     	);
     	queryFamilyPhone();
-	});
+	};
 
 	function queryFamilyPhone(){
 		var requestUrl = "/gzjky/healthRecordAction/queryMemberFamilyPhone.do";
@@ -231,7 +231,7 @@
 	}
 </script>
 </head>
-<body class="skin-blue">
+<body onload="startInit()" class="skin-blue">
 	<!-- header logo: style can be found in header.less -->
 	<%@ include file="../../shared/pageHeader.jsp"%>
 	<div class="wrapper row-offcanvas row-offcanvas-left">

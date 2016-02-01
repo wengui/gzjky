@@ -785,7 +785,7 @@
                                 <div class="box-header">
                                     <i class="fa fa-bullhorn"></i>
                                     <h3 class="box-title">最新咨询</h3>
-                                    <a href='./healthrecord/member_consult.jsp' style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD"><i class="fa fa-angle-double-right"></i>会员咨询历史</a>
+                                    <a href='<c:url value='/menuControlAction/memberConsult.do'/>' style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD"><i class="fa fa-angle-double-right"></i>会员咨询历史</a>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="callout callout-danger">

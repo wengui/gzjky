@@ -304,7 +304,7 @@
               <div class="box-body">
               <div class="row">
 	                 <div class="col-lg-12">
-		                  <a class="btn btn-success" style="margin-left:85%" href="meal.jsp">
+		                  <a class="btn btn-success" style="margin-left:85%" href="/gzjky/menuControlAction/boughtMeal.do">
                                  <i class="fa fa-shopping-cart"></i>&nbsp;购买套餐
                            </a>
 	                 </div><!-- /.col-lg-3 -->
@@ -380,7 +380,7 @@
 			        <div class="title_myMeal">
 			          <ul>
 			            <li class="tLeft_myMeal">我的余额：<span id="package_bill">0.00</span>元&nbsp;&nbsp;&nbsp;
-			            <a class="btn btn-success" href="recharge.jsp">
+			            <a class="btn btn-success" href="/gzjky/menuControlAction/recharge.do">
                                  <i class="fa fa-credit-card"></i>&nbsp;立即充值
                         </a>
 			            <li class="tRight_myMeal"></li>
