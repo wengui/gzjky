@@ -297,34 +297,7 @@
 		});
 		return true;
 	}
-	
-	//Patient切换 
-	function patientChange(obj) {
-		var family=obj.id;
-		var para="family="+family;
-		if(family!=="${sessionScope.Patient.pid}"){
-			$.ajax({
-				url:"/gzjky/home/patientChange.do",
-				async:true,
-				data:para,
-				dataType:"json",
-				type:"POST",
-				error:function(){
-					$.alert("发生异常","请注意");
-				},
-				success:function(response) {
 
-					if(response.result=="1"){	
-						window.location.href="../jsp/home.jsp";
-					}
-					else{
-						$.alert("发生异常","请注意");
-					}
-				}
-			});
-		}
-		
-	}
 </script>
 
 
