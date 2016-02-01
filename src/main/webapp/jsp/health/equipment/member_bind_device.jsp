@@ -194,7 +194,7 @@
 	}
 	
 	function returnEquipment(){
-		window.location.href="equipment.jsp";
+		window.location.href="/gzjky/menuControlAction/equipment.do";
 	}
 </script>
 </head>

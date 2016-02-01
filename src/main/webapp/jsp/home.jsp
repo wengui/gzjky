@@ -78,7 +78,7 @@
 				} else {
 				    $("#deviceListUL").html("<li class=''>暂无</li>");
 				}
-		        $("#deviceListUL").append("<li class='wtaGreen'><a href='../jsp/health/equipment/member_bind_device.jsp' target='mainFrame' title='增加设备'>增加设备</a></li>"); 
+		        $("#deviceListUL").append("<li class='wtaGreen'><a href='/gzjky/menuControlAction/memberBindDevice.do' target='mainFrame' title='增加设备'>增加设备</a></li>"); 
 				
 			}
 		});

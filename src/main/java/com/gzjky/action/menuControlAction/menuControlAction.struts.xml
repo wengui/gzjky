@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="menuControlAction" extends="struts-base" namespace="/menuControlAction">
+
+		<!-- menu跳转首页 -->
+		<action name="home" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/home.jsp</result>
+		</action>
+		
+		<!-- menu跳转Welcome -->
+		<action name="welcome" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/welcome.jsp</result>
+		</action>
+		
+		<!-- menu跳转血压 -->
+		<action name="bpAction" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/analyse/bp.jsp</result>
+		</action>
+		
+		<!-- menu跳转心电 -->
+		<action name="ecgAction" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/analyse/ecg.jsp</result>
+		</action>
+		
+		<!-- menu跳转电子围栏-->
+		<action name="electronicAction" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/lbs/electronic_fence.jsp</result>
+		</action>
+		
+		<!-- menu跳转SOS报警-->
+		<action name="sosAction" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/lbs/sos_alert.jsp</result>
+		</action>
+		
+		<!-- menu跳转基本信息-->
+		<action name="memberbaseinfo" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/healthrecord/memberbaseinfo.jsp</result>
+		</action>
+
+		<!-- menu跳转健康病例-->
+		<action name="diseaseHistory" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/healthrecord/disease_history.jsp</result>
+		</action>
+		
+		<!-- menu跳转亲情号码-->
+		<action name="familyPhone" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/healthrecord/family_phone.jsp</result>
+		</action>
+		
+		<!-- menu跳转修改密码-->
+		<action name="modifyPassword" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/healthrecord/modify_password.jsp</result>
+		</action>
+		
+		<!-- menu跳转我的设备-->
+		<action name="equipment" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/equipment/equipment.jsp</result>
+		</action>
+		
+		<!-- menu跳转设备绑定-->
+		<action name="memberBindDevice" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/equipment/member_bind_device.jsp</result>
+		</action>
+		
+		<!-- menu跳转账户套餐-->
+		<action name="account" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/account/account.jsp</result>
+		</action>
+		
+		<!-- menu跳转充值记录-->
+		<action name="rechargeHistory" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/account/recharge_history.jsp</result>
+		</action>
+		
+		<!-- menu跳转消费记录-->
+		<action name="consumeRecord" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/account/consume_record.jsp</result>
+		</action>
+		
+		<!-- menu跳转医生报告-->
+		<action name="reportlist" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/doctor_report/reportlist.jsp</result>
+		</action>
+		
+		<!-- welcome画面跳转咨询历史查询-->
+		<action name="memberConsult" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/healthrecord/member_consult.jsp</result>
+		</action>
+		
+		<!-- welcome画面跳转咨询历史查询-->
+		<action name="boughtMeal" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/account/meal.jsp</result>
+		</action>
+		
+		<!-- welcome画面跳转咨询历史查询-->
+		<action name="recharge" class="com.gzjky.action.menuControlAction.MenuControlAction" method="menuControl">
+			<result name="success">/jsp/health/account/recharge.jsp</result>
+		</action>
+		
+	</package>
+</struts>

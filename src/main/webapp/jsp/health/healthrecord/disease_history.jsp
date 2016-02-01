@@ -51,7 +51,8 @@ function startInit(){
 		    	if(page == "check"){
 		    		document.getElementById(frame_sel).src = "";
 		    	}else{
-		    		document.getElementById(frame_sel).src = "./"+page+".jsp";
+		    		var pageurl = "/gzjky/jsp/health/healthrecord/"+page+".jsp";
+		    		document.getElementById(frame_sel).src = "<c:url value='"+pageurl+"'/>";
 		    	}
 		    }
 		 }
@@ -267,7 +268,7 @@ function startInit(){
     <div class="tab_healthRecords_box">
        	
       <div>
-      		<iframe id="memberHabitIframe"  name = "memberHabitIframe" src="./memberhabit.jsp"  frameborder="0" width="100%"  scrolling="no"   height="600px" ></iframe>
+      		<iframe id="memberHabitIframe"  name = "memberHabitIframe" src="<c:url value='/jsp/health/healthrecord/memberhabit.jsp'/>"  frameborder="0" width="100%"  scrolling="no"   height="600px" ></iframe>
       </div>
       
       <div class="hide_healthRecords">
