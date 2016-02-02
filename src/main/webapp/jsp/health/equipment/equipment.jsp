@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我的设备</title>
+<title>995120健康服务中心</title>
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
@@ -75,6 +75,7 @@
 			var deviceType = '';
 			var serial_id = '';
 			var sim = List[i].sim==null?'无':List[i].sim;
+			var nickname = List[i].nickname==""?'无':List[i].nickname;
 			if(List[i].num == null || List[i].num == -1 || List[i].num == 0){
 				serial_id = "未绑定";
 			}else{
@@ -107,6 +108,8 @@
             "<dd>"+deviceType+"</dd>"+
             "<dt>设备编号：</dt>"+
             "<dd id='serial_id_"+i+"'>"+serial_id+"<a href='javascript:void(0)' onclick='unbind("+i+")' title='解除绑定' class='pl_equipmentMain'>   解除绑定</a></dd>"+
+            "<dt>设备别名：</dt>"+
+            "<dd id='nickname_"+i+"'>"+nickname+"<a href='javascript:void(0)' class='pl_equipmentMain'><span title='设备别名修改' onclick='editNickname("+i+");'>   设备别名修改</span></a></dd>"+
             "<dt>SIM卡号：</dt>"+
             "<dd id='sim_"+i+"'>"+sim+"<a href='javascript:void(0)' class='pl_equipmentMain'><span title='SIM卡号修改' onclick='editSim("+i+");'>   卡号修改</span></a></dd>";
             //301设备
@@ -238,6 +241,15 @@
 		+"<a href='javascript:void(0)' class='pl_equipmentMain'><span onclick='editSimCode("+i+");'>保存</span></a>");
 		$("#simCode_"+i).focus();
 	}
+	//编辑sim卡
+	function editNickname(i){
+		var nickname = deviceBaseInfoList[i].nickname==null?'':deviceBaseInfoList[i].nickname;
+		$("#nickname_"+i).html("<input type='input'  value='"+nickname+"' style='height:20px;border:1px solid #bbb' id='dbnickname_"+i+"'/>"
+		+"<a href='javascript:void(0)' class='pl_equipmentMain'><span onclick='DbeditNickname("+i+");'>保存</span></a>");
+		$("#simCode_"+i).focus();
+	}
+	
+	
 	function editSim1(i,sim){
 		$("#sim_"+i).html("<input type='input'  value='"+sim+"' style='height:20px;border:1px solid #bbb' id='simCode_"+i+"'/>"
 		+"<a href='javascript:void(0)' class='pl_equipmentMain'><span onclick='editSimCode("+i+");'>保存</span></a>");
@@ -390,6 +402,33 @@
 		});
 	});
 	}
+	
+	function DbeditNickname(i){
+		
+		var nick=$("#dbnickname_"+i).val();
+		var para="epId="+deviceBaseInfoList[i].epId+"&nickname="+nick;
+		
+		$.confirm('你确认将设备别名改为：'+nick, function() {
+				xmlHttp = $.ajax({
+				url:"/gzjky/device/UpdateNickname.do",
+				async:true,
+				data:para,
+				dataType:"json",
+				type:"POST",
+				error:function(){
+					$.alert("设备别名设置失败！");
+				},success:function(response) {
+					$.alert("设备别名设置成功！",function(){location.reload();});					
+				}
+		});
+	});
+	}
+	
+	
+	
+	$('input').on('ifChecked', function(event){  
+		  alert(event.type + ' callback');  
+		});  
 </script>
 </head>
 

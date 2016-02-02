@@ -139,6 +139,8 @@ public class deviceAction extends ActionSupport {
 		String eId = request.getParameter("device_id");
 		String device_ver= request.getParameter("device_ver");
 		
+		String nickname=request.getParameter("device_nickname");
+		
 		// 获取当前Patient信息
 		UserinfoAndPatientinfoBean userinfoAndPatientinfo = (UserinfoAndPatientinfoBean) ActionContext.getContext()
 				.getSession().get("Patient");
@@ -170,9 +172,10 @@ public class deviceAction extends ActionSupport {
 		else{
 			quipmentAndPatient.setPatienttype(1);
 		}
-		
+		//设备别名设置
+		quipmentAndPatient.setNickname(nickname);
 
-		if ((equipmentAndPatientWriteMapper.insert(quipmentAndPatient)) == 1) {
+		if ((equipmentAndPatientWriteMapper.insertSelective(quipmentAndPatient)) == 1) {
 			message = "绑定成功！";
 		} else {
 			message = "绑定失败";
@@ -313,6 +316,52 @@ public class deviceAction extends ActionSupport {
 		
 
 	}
+	
+	
+	/*
+	 * 阈值信息录入
+	 */
+	public String UpdateNickname() {
+		
+		int result;
+		
+		// 页面参数取得
+		HttpServletRequest request = ServletActionContext.getRequest();
+		// 设备用户关系信息
+		String fid = request.getParameter("epId");
+		// 设备别名
+		String nickname = request.getParameter("nickname");
+		
+		
+		
+		result=equipmentAndPatientWriteMapper.updateNicknameByPrimaryKey(Integer.parseInt(fid),nickname);
+
+		try {			
+			ModelMap modelMap = new ModelMap();
+			modelMap.setResult(result);
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out = null;
+			out = response.getWriter();
+			// 将java对象转成json对象
+			JSONObject jsonObject = JSONObject.fromObject(modelMap);// 将list转换为json数组
+			out.print(jsonObject);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "success";
+		
+
+	}
+	
+	
+	
+	
 	
 
 	/*

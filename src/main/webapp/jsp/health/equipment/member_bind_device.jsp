@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>设备绑定</title>
+<title>995120健康服务中心</title>
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
@@ -27,29 +27,19 @@
 <script type="text/javascript">
 	menuId = "#equipmentBind";
 	
-	$.metadata.setType("attr", "validate");
-	$(function(){$("#memberBindDevice_form").validate({
-		messages:{
-        	'member_login_id':{
-			required:"新用户不能为空.",
-			alphanumeric:"只能输入字母，数字与下划线."
-        	},'member_login_id1':{
-			required:"新用户不能为空.",
-			alphanumeric:"只能输入字母，数字与下划线."
-        	},'member_login_id2':{
-			alphanumeric:"只能输入字母，数字与下划线."
-        	},'device_bind_code':{
-        	required:"绑定码不能为空.",
-        	rangelength:"绑定码有效长度为6位.",
-			alphanumeric:"只能输入字母，数字与下划线."
-       		}
-      	},
-      	errorPlacement: function(error, element) { 
-      	     error.appendTo(element.parent()); 
-      	}
-	});
-	}); 
-	
+
+	$(function(){
+    	jQuery('#memberBindDevice_form').validationEngine("attach",
+    	{
+    				promptPosition:"topRight",
+    				maxErrorsPerField:1,
+    				scroll:false,
+    				autoPositionUpdate:"true"
+    				//binded:false,
+    				//showArrow:false,
+    		}
+    	);
+   });
 	
 	var device_sid;
 	var device_bind_code;
@@ -152,10 +142,11 @@
 			$.alert("请检查设备序列号！");
 			return false;
 		}
-		if(!$("#memberBindDevice_form").valid()){
-			return false;
-		} 
 		
+		if(!jQuery('#memberBindDevice_form').validationEngine("validate")){
+			return false;
+	    }	
+	
 		if($("#member_login_id1").val()==undefined){
 			return false;
 		} 
@@ -163,9 +154,10 @@
 		var member_login_id;
 		device_sid=$("#device_sid").val();		
 		device_bind_code=$("#device_bind_code").val();
-		
+		device_nickname=$("#device_nickname").val();
 
-		var para="device_sid="+device_sid+"&device_bind_code="+device_bind_code+"&count="+devicebind_count +"&device_id="+device_id+"&device_ver="+device_ver;
+		var para="device_sid="+device_sid+"&device_bind_code="+device_bind_code+"&count="+devicebind_count +"&device_id="+device_id+"&device_ver="+device_ver
+		+"&device_nickname="+device_nickname;
 	
 		showScreenProtectDiv(1); 
 		showLoading();
@@ -229,15 +221,23 @@
 									<li>设备序列号：</li>
 									<li class="register_input"><input type="text"
 										id="device_sid" name="device_sid" onblur="queryVersion()"
-										maxlength="16" validate="required:true" /></li>
+										maxlength="16" class="validate[required]" /></li>
 								</div>
 								<div class="form-group">
 									<li>设备绑定码：</li>
 									<li class="register_input"><input type="text"
 										name="device_bind_code" id="device_bind_code" maxlength="6"
-										validate="required:true,alphanumeric:true,rangelength:[6,6]" />
+										class="validate[required,alphanumeric,rangelength[6,6]]" />
 									</li>
 								</div>
+								
+								<div class="form-group">
+									<li>设备别名：</li>
+									<li class="register_input"><input type="text"
+										name="device_nickname" id="device_nickname" />
+									</li>
+								</div>
+								
 								<div class="form-group">
 									<div id="new_user" name="new_user"></div>
 								</div>

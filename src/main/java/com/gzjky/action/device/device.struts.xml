@@ -56,5 +56,10 @@
 	</action>
 	
 	
+	<!-- 设备别名更新-->
+	<action name="UpdateNickname" class="com.gzjky.action.device.deviceAction" method="UpdateNickname">
+
+	</action>
+	
 	</package>
 </struts>
