@@ -7,6 +7,8 @@
 <title>基本信息</title>
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
+
+<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
@@ -15,7 +17,7 @@
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet"  type="text/css"/>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
+
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>

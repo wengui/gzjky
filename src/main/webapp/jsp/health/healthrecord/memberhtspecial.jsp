@@ -6,12 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="../../shared/importCss.jsp"%>
 <%@ include file="../../shared/importJs.jsp"%>
+<script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
@@ -23,7 +23,6 @@
 <script src="<c:url value='/js/common.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script src="<c:url value='/js/dictionaryInfo.js'/>" type="text/javascript"></script>
 <style type="text/css">
 .advice_main table tr td span{float: right;text-align: right;}
@@ -78,7 +77,8 @@
 		}
 		function init_memberHtSpecial(obj){
 			$("#htspecialForm").jsonForForm({data:obj,isobj:true});
-			$("input[name='isUseMedicine'][value='"+obj.isUseMedicine+"']").attr("checked",true);
+			//$("input[name='isUseMedicine'][value='"+obj.isUseMedicine+"']").attr("checked",true);
+			$("input[name='isUseMedicine'][value='"+obj.isUseMedicine+"']").iCheck("checked");
 			var medicalDetailTable = document.getElementById("med_table");
 			var medicineTakenItems = obj.medicineTakenItems;
 			if(medicineTakenItems != null){
@@ -207,8 +207,8 @@
 		function closeDiv_htspecial() {
 			$("#htspecialWindow").hide(200);
 			$("#medicine").hide(200);
-			$("#med_hours").hide(200);
-			hideScreenProtectDiv(1);
+			$("#med_hours").modal('hide');
+			//hideScreenProtectDiv(1);
 		}
 		
 		function showHtspecialRecord(){
@@ -331,8 +331,8 @@
 	  		$("#med_hours").draggable({
 				disabled : false
 			});
-			$("#med_hours").show(200);
-			showScreenProtectDiv(1);
+			$("#med_hours").modal('show');
+			//showScreenProtectDiv(1);
 		}
 		
 		//关闭窗口
@@ -350,8 +350,8 @@
 	        		$(this).val(hours);
 	        	}
 	        });
-			$("#med_hours").hide(200);
-			hideScreenProtectDiv(1);
+			$("#med_hours").modal('hide');
+			//hideScreenProtectDiv(1);
 		}
 		
 		//关闭窗口
@@ -450,10 +450,10 @@
 						        <div class="col-lg-8 col-xs-8">
 						        	<lable class="col-lg-4 col-xs-4 text-right form-span">*是否用药：</lable>
 						        	<label class="checkbox-inline col-lg-2 col-xs-2">
-	                 				<input type="radio" class="col-lg-8 col-xs-8 text-right form-span" name="isUseMedicine" value="1" checked="checked" >是</input>
+	                 				<input type="radio" name="isUseMedicine" value="1" checked >是</input>
 	                 				</label>
 	                 				<label class="checkbox-inline col-lg-2 col-xs-2">
-		            				<input type="radio" class="col-lg-8 col-xs-8 text-right form-span" name="isUseMedicine" value="0">否</input>
+		            				<input type="radio"  name="isUseMedicine" value="0">否</input>
 		            				</label>
 						        </div>
 						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
@@ -544,21 +544,12 @@
  </div> 
 </div>
 
-
 <div id="divloading">
 	<img src="../../../images/public/blue-loading.gif" />
 </div>
-
 <div id="transparentDiv" ></div>
-
 <div id="transparentDiv2"></div>
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>995120健康服务中心</title>
 <style type="text/css">
 .tgreen_bp{
 	background:url(../images/icon/greenMax.png) right center no-repeat;
@@ -591,27 +582,26 @@ function closeHours() {
 	closeHoursDiv();
 }
 function closeHoursDiv(){
-	$("#med_hours").hide(200);
-	hideScreenProtectDiv(1);
+	$("#med_hours").modal('hide');
+	//hideScreenProtectDiv(1);
 }
 </script>
-</head>
 
-<body>
+<div class="modal fade" id="med_hours" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:15%" >
+  <div class="modal-dialog">	
 	<input type="hidden" id="rowIndex" />
-	<div class="popup" id="med_hours" style="display:none;position:absolute;top:300px; left:100px;z-index: 6000;">
 		<div class="popup_header btn-info">
 			<ul>
 	      		<li class="name_popupHeader">用药时间</li>
-	      		<li class="close_popupHeader"><a href="javascript:void(0)" onclick=""></a></li>
+	      		<li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
 	    	</ul>
 	  	</div>
 	  
 	  	<div class="popup_main">
 	    	<ul>
 		   		<li class="tgreen_bp" >
-   					<div class="hour" id="hour_med">
-   						<input type="checkbox" value="00:00"/> 00:00 &nbsp;
+   					<div class="" id="hour_med">
+   						<input type="checkbox"/> 00:00 &nbsp;
    						<input type="checkbox" value="01:00"/> 01:00 &nbsp;
    						<input type="checkbox" value="02:00"/> 02:00 &nbsp;
    						<input type="checkbox" value="03:00"/> 03:00 &nbsp;
@@ -643,9 +633,8 @@ function closeHoursDiv(){
 		   		</li>
 			</ul>
 	  	</div>
-	</div>
-</body>
-</html>
+	 </div>
+</div>
 
 </body>
 </html>
