@@ -701,7 +701,7 @@
 							<li class="weekli_margin" id="conclusion"></li>
 							<li class="weekli_disc weekli_margin">保健建议：</li>
 							<li class="weekli_margin" id="suggestion"></li>
-							<li>医生分析结果： <span class="tblack_results" id="detail_doctor_report"></span>	</li>
+							<li class="weekli_disc weekli_margin">医生分析结果： <span class="tblack_results" id="detail_doctor_report"></span>	</li>
 							<li class="weekli_disc weekli_margin">医生建议： <span class="tblack_results" id="detail_doctor_suggest"></span></li>
 						</ul>
 	               		</div>
