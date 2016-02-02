@@ -106,7 +106,7 @@
     		}
     	});
     }
-
+  
     /*
     	id为div的id,obj按钮对象
     */
@@ -319,7 +319,7 @@
 							        <div class="col-lg-6">
 							        <div class="col-lg-12 col-xs-12">
 							        	<span class="col-lg-4 col-xs-4 text-right  form-span">*真实姓名：</span>
-							        	<input class="col-lg-8 col-xs-8 display-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[16]] " type="text"  id="patientname"  name="patientname" maxlength="16" />
+							        	<input class="col-lg-8 col-xs-8 display-input validate[required,funcCall[chinaornumer],minSize[1],maxSize[50]] " type="text"  id="patientname"  name="patientname" maxlength="16" />
 							        </div>	
 							        <div class="col-lg-12 col-xs-12">
 							        	<lable class="col-lg-4 col-xs-4 text-right form-span">*性别：</lable>
