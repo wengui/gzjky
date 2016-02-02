@@ -315,33 +315,36 @@
               <div class="box-header">
                   <h3 class="box-title">条件检索</h3>
               </div>
-              <div class="box-body">
+              <div class="box-body col-lg-12">
               	<div class="row">
-	                 <div class="col-lg-3">
-		                  <div class="input-group">
-		                  	  <label>开始时间:</label>
-		                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-		                      <input type="text" class="form-control" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
+	                 <div class="col-lg-4">
+	                 <div class="input-group">
+	                 	  <label style="width:70px">开始时间:</label>
+	                      <span class="input-group-addon" style="width:0px"><i class="fa fa-calendar"></i></span>
+	                      <input type="text" class="form-control" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
 		                  </div>
 	                 </div><!-- /.col-lg-3 -->
-	                <div class="col-lg-3">
+	                <div class="col-lg-4">
 	                  <div class="input-group">
-		                  	  <label>结束时间:</label>
-		                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		                  	  <label style="width:70px">结束时间:</label>
+		                      <span class="input-group-addon" style="width:0px"><i class="fa fa-calendar"></i></span>
 		                      <input type="text"  class="form-control"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
 		               </div>
 	               </div><!-- /.col-lg-3 -->
-	               <div class="col-lg-2">
+	            </div><!-- /.row -->
+	            <br/>
+                <div class="row">
+	               <div class="col-lg-4">
 	                  <div class="input-group">
-		                  	  <label>血压历史:</label>
-		                      <span class="input-group-addon"><i class="fa fa-bars"></i></span>
+		                  	  <label style="width:70px">血压历史:</label>
+		                      <span class="input-group-addon" style="width:0px"><i class="fa fa-bars"></i></span>
 		                      <select class="form-control" onchange="changeBloodType(this)"><option selected="selected" value="0">血压历史</option><option value="1">血压告警</option></select>
 		               </div>               
 	               </div><!-- /.col-lg-3 -->
 	               <div class="col-lg-3">
-	               	 <button class="btn btn-success" style="margin-left:20px" onclick="queryStart();"><i class="fa fa-search"></i> 查询</button>
+	               	 <button class="btn btn-success"  onclick="queryStart();"><i class="fa fa-search"></i> 查询</button>
 	               </div>
-              </div><!-- /.box-body -->
+              </div><!-- /.row -->
               <div class="row">
               	<br/>
               	<div class="col-lg-6">

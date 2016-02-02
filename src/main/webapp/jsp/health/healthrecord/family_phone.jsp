@@ -105,9 +105,9 @@
 			}
 			
 			cell = row.insertCell(j++);
-			cell.innerHTML = '<a href="javascript:void(0)" class="btn btn-success" style="color:#fff;width:78px" onclick="edit_familyPhone('+i+
+			cell.innerHTML = '<a href="javascript:void(0)" class="btn btn-info" style="color:#fff;width:78px" onclick="edit_familyPhone('+i+
 					')"> <i class="fa fa-edit"></i>编辑</a>'+
-					'<a href="javascript:void(0)" class="btn btn-success" style="color:#fff;width:78px"  onclick="delete_familyPhone('+i+
+					'<a href="javascript:void(0)" class="btn btn-info" style="color:#fff;width:78px"  onclick="delete_familyPhone('+i+
 							')"> <i class="fa fa-fw fa-trash-o"></i>删除</a>';
 		
 	

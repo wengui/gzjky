@@ -127,16 +127,16 @@
               </div>		
               <div class="box-body">
 	              	<div class="row">
-		                 <div class="col-lg-3">
+		                 <div class="col-lg-4">
 			                  <div class="input-group">
-			                  	  <label>开始时间:</label>
+			                  	  <label style="width:70px">开始时间:</label>
 			                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 			                      <input type="text" class="form-control" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
 			                  </div>
 		                 </div><!-- /.col-lg-3 -->
-		                <div class="col-lg-3">
+		                <div class="col-lg-4">
 		                  <div class="input-group">
-			                  	  <label>结束时间:</label>
+			                  	  <label style="width:70px">结束时间:</label>
 			                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 			                      <input type="text"  class="form-control"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
 			               </div>
