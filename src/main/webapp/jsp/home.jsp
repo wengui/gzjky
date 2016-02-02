@@ -343,7 +343,7 @@
 								<div class="callout callout-danger">
 									<h4>我的家庭成员：</h4>
 									<ul>
-										<li class="tGray" id="family"><c:forEach
+										<li id="family"><c:forEach
 												items="${sessionScope.PatientList}" var="pa">
 
 												<ul>
@@ -367,7 +367,7 @@
 								<div class="callout callout-info">
 									<h4>我的医院医生：</h4>
 									<ul>
-										<li class="tGray" id="hos_doc">：</li>
+										<li id="hos_doc">：</li>
 									</ul>
 
 								</div>
@@ -391,13 +391,13 @@
 								<div class="callout callout-warning">
 									<h4>我的设备：</h4>
 									<ul>
-										<li class="tGray" id="device">我的设备：
+										<li id="device">我的设备：
 									</ul>
 								</div>
 									<div class="callout callout-success">
 									<h4>我的套餐</h4>
 									<ul>
-										<li class='wtBlack'>暂无</li>
+										<li >暂无</li>
 										<li class='wtaGreen'><a onclick='goToAccountMeal(this)'  title='增加套餐'>增加套餐</a></li>
 									</ul>
 
