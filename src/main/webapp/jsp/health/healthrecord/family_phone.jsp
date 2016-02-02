@@ -246,19 +246,22 @@
 	                  <li class="active">亲情号码</li>
 	             </ol>
 	         </section> 
-	        <div class="bp_accouint">
+	        	<div >
 					<div class="box box-danger">
 						<div class="box-header">
 							<h3 class="box-title">亲情号码</h3>
 						</div>
 						<!-- /.box-header -->
-						<div class="box-body col-lg-11">
-							<div class="col-lg-11">
+						<div class="box-body">
+							<div class="row col-lg-11">
 								<a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-success" ><i class="fa fa-plus-square"></i> 增加</h3></a>
 							</div>
 						</div><!-- /.box-body -->
-						<div class="row " style="padding-bottom:15px">
-							<div class="col-lg-8">
+       				    <div class="row" >
+						  <br/>
+						  <br/>
+						  <br/>
+						  <div class="col-lg-11">
 						    <table width="100%" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="familyPhoneTable">
 								<colgroup> 	
 									<col width="10%" />
@@ -275,17 +278,12 @@
 									<th>操作</th>
 								</tr>
 							</table>
-							</div>
-							<br/>
-							
-							<br/>
-							<br/>
+						  </div>
 						</div>
-
-					</div><!-- /.box -->
-			</div>
+					</div>
+				</div><!-- /.box -->
 		</aside>
-</div>
+	</div>
 <div class="modal fade" id="familyPhoneWindow" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true"
 	style="margin-top: 10%">
