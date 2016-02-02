@@ -36,6 +36,7 @@
 			query();
 		};
 		function query(){
+		 	$('#selAll').iCheck('uncheck');
 			var pointerStart = ($.fn.page.settings.currentnum-1) * $.fn.page.settings.pagesize;
 			if(pointerStart<0)
 	    		pointerStart = 0;
@@ -269,6 +270,7 @@
 			});
 			$("#selAll").attr("checked",flag);
 		}
+
 </script>
 </head>
 <body onload="startInit()"  class="skin-blue" >
@@ -303,7 +305,7 @@
         <!-- <col width="20%" /> -->
       </colgroup>
       <tr>
-      	<th nowrap="nowrap"><div class="rowCheckbox"><input type="checkbox" name="chkall" id="selAll"  onclick="selectAll(this)"  /><label for="chkall">选择</label></div></th>
+      	<th nowrap="nowrap"><div class="rowCheckbox"><input type="checkbox" name="chkall" id="selAll" /><label for="chkall">选择</label></div></th>
         <th nowrap="nowrap" title="餐后血糖(餐后2小时内)">餐后血糖</th>
         <th nowrap="nowrap" title="空腹全血血糖">空腹血糖</th>
         <th nowrap="nowrap" title="总胆固醇">总胆固醇</th>
@@ -431,6 +433,14 @@
 	      </div>                 
   </form>
  </div>
+ <script>
+	$('#selAll').on('ifChecked', function(event){
+		$("#medicalExaminationTable input[name='selectCheckbox']").attr("checked",true);
+	});
+	$('#selAll').on('ifUnchecked', function(event){
+		$("#medicalExaminationTable input[name='selectCheckbox']").attr("checked",false);
+	});
+ </script>
 </div>
   <!-- row start -->
   </div>
