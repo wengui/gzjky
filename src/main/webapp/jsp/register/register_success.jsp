@@ -11,17 +11,29 @@
 <%@ include file="../shared/importCss.jsp"%>
 <link href="<c:url value='/css/register.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/index_bottom.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/general.js'/>"></script>
+
 <script type="text/javascript">
 	document.onkeydown=function() {  
 		if (window.event.keyCode==13) {
 		    window.location.href="../login.jsp";
 		}
 	};
+	var i = 5; //倒计时变量  
+	function reloadView()  
+	{                                  
+	    document.getElementById("tag").innerHTML=i;  
+	    if(i == 0)  
+	    {  
+	        window.location.href="/gzjky/jsp/login.jsp";  
+	    }  
+	    i -= 1;  
+	    window.setTimeout("reloadView()",1000);  
+	}  
+
 </script>
 </head>
 
-<body>
+<body onload="reloadView();">
   <div class="register">
     <!--register_header start--> 
    <div class="register_header">
@@ -47,11 +59,17 @@
             <ul>
               <li class="tgreen_success">恭喜您，注册成功！</li>
               <li><a href="../login.jsp" title="立即登录">立即登录</a><span class="line_success">|</span><a href="../login.jsp" title="返回首页">返回首页</a></li>
+              <li>
+               <span id="tag" style="color: red;font-size: 25">5</span>  
+   						秒钟之后，自动<a href="view.jsp" title="立即跳转">跳转</a>  
+              </li>
             </ul>
           </div>  
         </div>
       </div>  
     </div>
+
+</script></span>  
     <!--register_middle end-->
     <!--index_health_bottom start-->
 <style>

@@ -23,11 +23,22 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 		    window.location.href="/login.html";
 		}
 	};
+	var i = 5; //倒计时变量  
+	function reloadView()  
+	{                                  
+	    document.getElementById("tag").innerHTML=i;  
+	    if(i == 0)  
+	    {  
+	        window.location.href="/gzjky/jsp/login.jsp";  
+	    }  
+	    i -= 1;  
+	    window.setTimeout("reloadView()",1000);  
+	}  
 
 </script>
 </head>
 
-<body>
+<body onload="reloadView();">
   <div class="register">
     <!--register_header start--> 
      <jsp:include page="/jsp/head.jsp" />
@@ -41,6 +52,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             <ul>
               <li class="tgreen_success">密码修改成功</li>
               <li><a href="../login.jsp" title="立即登录">立即登录</a><span class="line_success">|</span><a href="/login.html" title="返回首页">返回首页</a></li>
+              <li>
+               <span id="tag" style="color: red;font-size: 25">5</span>  
+   						秒钟之后，自动<a href="view.jsp" title="立即跳转">跳转</a>  
+              </li>
             </ul>
           </div>  
         </div>
