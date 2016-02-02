@@ -522,8 +522,8 @@
 	function upload(){
 		var filePath = document.getElementById("filePath").value;
 		var obj_file = document.getElementById("filePath");  
-		var maxsize = 512*512;//500k  
-        var errMsg = "上传的附件文件不能超过500K！！！";  
+		var maxsize = 1024*1024;//1M  
+        var errMsg = "上传的附件文件不能超过1M！！！";  
         var tipMsg = "您的浏览器暂不支持计算上传文件的大小，确保上传文件不要超过500K，建议使用IE、FireFox、Chrome浏览器。";  
 		
 		var headImageReflag = false;
@@ -597,7 +597,7 @@
  				// 更新成功
  				if(state == '1'){
  					$.alert('头像更新成功。');
- 					window.location.reload(true);
+ 					winload();
  				}else{
  					$.alert('头像更新失败。');
  				}

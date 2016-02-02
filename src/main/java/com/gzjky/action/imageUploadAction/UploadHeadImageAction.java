@@ -95,7 +95,8 @@ public class UploadHeadImageAction extends ActionSupport {
         	File[] files = wrapper.getFiles("file");
 
         	for(File file : files){
-        		image = imageUpload.imageToByte(file);
+        		// 对图片进行压缩
+        		image = imageUpload.zipImageFile(file);
         	}
         	
         	
