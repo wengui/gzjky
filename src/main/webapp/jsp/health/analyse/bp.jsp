@@ -114,7 +114,7 @@
 	  	$("table.bPhistory_table tr:even").addClass("even");
 	  	$("table.bPhistory_table tr:odd").addClass("odd");
   	}
-  var columnArray = ["deviceSerialId","deviceVersion","takeTime","pressure_value"];
+  var columnArray = ["deviceSerialId","takeTime","pressure_value"];
   function addrowtotable(table,index){
 	 var rowcount=table.rows.length;
 	 var tr=table.insertRow(rowcount);
@@ -138,14 +138,14 @@
 	 for(var k=0;k<columnArray.length;k++){
 		  var td = tr.insertCell(i);
 		  //td.style="word-break:break-all;";
-		  if(columnArray[k] == "deviceSerialId" || columnArray[k] == "deviceVersion"){
+		  if(columnArray[k] == "deviceSerialId"){
 			  if(recordList[index][columnArray[k]] == "" || recordList[index][columnArray[k]] == null || recordList[index][columnArray[k]]=="null"){
 				  td.innerHTML = "--";
 			  }else{
-				  if(columnArray[k] == "deviceSerialId"){
-				  	  td.innerHTML = recordList[index][columnArray[k]];
+				  if("" == recordList[index]['nickname'] || null == recordList[index]['nickname']){
+					  td.innerHTML = recordList[index]["deviceVersion"];
 				  }else{
-					  td.innerHTML = recordList[index][columnArray[k]];
+					  td.innerHTML =  recordList[index]["nickname"];
 				  }
 			  }
 		  }else{
@@ -362,8 +362,7 @@
 		  	<div class="col-lg-11">
 			    <table width="100%" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable">
 			      <tr>
-			        <th width="15%">设备编号</th>
-			        <th width="20%">设备类型</th>
+			        <th width="20%" class="text-center">设备</th>
 			        <th width="15%">测压时间</th>
 			        <th width="20%">收缩压/舒张压&nbsp;(mmHg)</th>
 			        <th width="10%">脉率</th>
@@ -373,15 +372,13 @@
 			    
 			    <table width="100%"  cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable2" style="display:none;">
 			      <colgroup>
-			        <col width="15%" />
 			        <col width="20%" />
 			        <col width="25%" />
 			        <col width="20%" />
 			        <col width="20%" />
 			      </colgroup>
 			      <tr>
-			        <th>设备编号</th>
-			        <th>设备类型</th>
+			        <th class="text-center">设备</th>
 			        <th>测压时间</th>
 			        <th>收缩压/舒张压&nbsp;(mmHg)</th>
 			        <th>操作</th>

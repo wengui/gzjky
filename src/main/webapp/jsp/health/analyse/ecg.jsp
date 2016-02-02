@@ -108,7 +108,7 @@ function showData(){
 	  $("table.bPhistory_table tr:even").addClass("even");
 	  $("table.bPhistory_table tr:odd").addClass("odd");
 }
-var columnArray = ["deviceSerialId","deviceVersion","takeTime","heartRate","timeLength"];
+var columnArray = ["deviceSerialId","takeTime","heartRate","timeLength"];
 function addrowtotable(table,index){
 	 var rowcount=table.rows.length;
 	 var tr=table.insertRow(rowcount);
@@ -128,14 +128,14 @@ function addrowtotable(table,index){
 				  td.innerHTML = recordList[index][columnArray[k]];  
 			  }
 			  
-		  }else if(columnArray[k] == "deviceSerialId" || columnArray[k] == "deviceVersion"){
+		  }else if(columnArray[k] == "deviceSerialId"){
 			  if(recordList[index][columnArray[k]] == "" || recordList[index][columnArray[k]] == null || recordList[index][columnArray[k]]=="null"){
 				  td.innerHTML = "--";
 			  }else{
-				  if(columnArray[k] == "deviceSerialId"){
-				  	  td.innerHTML = recordList[index][columnArray[k]];
+				  if("" == recordList[index]['nickname'] || null == recordList[index]['nickname']){
+					  td.innerHTML = recordList[index]["deviceVersion"];
 				  }else{
-					  td.innerHTML = recordList[index][columnArray[k]];
+					  td.innerHTML =  recordList[index]["nickname"];
 				  }
 			  }
 			   
@@ -279,7 +279,6 @@ function showEcgDetail(obj,index){
 		  	<div class="col-lg-11">
 		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable">
 		      <colgroup>
-		        <col width="15%" />
 		        <col width="20%" />
 		        <col width="25%" />
 		        <col width="11%" />
@@ -287,8 +286,7 @@ function showEcgDetail(obj,index){
 		        <col width="20%" />
 		      </colgroup>
 		      <tr>
-		        <th>设备编号</th>
-		        <th>设备类型</th>
+		        <th>设备</th>
 		        <th>采集时间</th>
 		        <th nowrap="nowrap">心率(次/分)</th>
 		        <th nowrap="nowrap">时间长度(秒)</th>
@@ -297,15 +295,13 @@ function showEcgDetail(obj,index){
 		    </table>
 		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable2" style="display:none;">
 		      <colgroup>
-		        <col width="15%" />
-		        <col width="15%" />
+		        <col width="20%" />
 		        <col width="25%" />
 		        <col width="13%" />
 		        <col width="12%" />
 		      </colgroup>
 		      <tr>
-		        <th>设备编号</th>
-		        <th>设备类型</th>
+		        <th>设备</th>
 		        <th>采集时间</th>
 		        <th nowrap="nowrap">心率(次/分)</th>
 		        <th>状态</th>
