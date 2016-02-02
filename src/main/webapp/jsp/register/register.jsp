@@ -276,7 +276,7 @@
 					<div class="step_register"></div>
 					<div class="bg_register">
 						<div class="register_title">
-							<div class="header">Register New Membership</div>
+							<div class="header">注册成为新用户</div>
 						</div>
 						<div class="register_write">
 							<div class="register_write_left">

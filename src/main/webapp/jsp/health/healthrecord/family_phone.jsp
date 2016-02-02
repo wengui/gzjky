@@ -222,12 +222,12 @@
 		$("#pop_familyPhoneTitle").text(tt);
 		//$("#familyPhoneWindow").show(200);
 		$("#familyPhoneWindow").modal('show');
-		showScreenProtectDiv(1);
+		//showScreenProtectDiv(1);
 	}
 	function closeDiv_familyPhone() {
 		//$("#familyPhoneWindow").hide(200);
 		$("#familyPhoneWindow").modal('hide');
-		hideScreenProtectDiv(1);
+		//hideScreenProtectDiv(1);
 	}
 </script>
 </head>
@@ -295,7 +295,7 @@
 				<li class="name_popupHeader" id="pop_familyPhoneTitle">增加亲情号码</li>
 
 				<li class="close_popupHeader"><a
-					href="javascript:void(0)" onclick="closeDiv_familyPhone();"
+					href="javascript:void(0)" 
 					data-dismiss="modal">X</a></li>
 			</ul>
 		</div>
