@@ -231,7 +231,7 @@
 								<label>开始时间:</label> <span class="input-group-addon"><i
 									class="fa fa-calendar"></i></span> <input type="text"
 									class="form-control" id="startDate" name="startDate"
-									onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})" />
+									onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})" />
 							</div>
 						</div>
 						<!-- /.col-lg-3 -->
@@ -240,7 +240,7 @@
 								<label>结束时间:</label> <span class="input-group-addon"><i
 									class="fa fa-calendar"></i></span> <input type="text"
 									class="form-control" id="endDate" name="endDate"
-									onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})" />
+									onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'startDate\')}'})" />
 							</div>
 						</div>
 						<!-- /.col-lg-3 -->
