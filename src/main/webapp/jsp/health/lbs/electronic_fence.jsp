@@ -692,7 +692,7 @@ function safe_island_del() {
 		        <div class="row">
 			        <div class="col-md-12">
 			       	  <div id="map_canvas" style="width: 97%;height: 600px; position:absolute; top:0; left:15px; z-index: 2"></div>
-			       	  <div class="btn_islandHistory" id="show_location_button_close"><img title="定位历史查询" onclick="closeShowLocationHistoryDiv();" src="../../../images/icon/history.png" /></div>
+			       	  <div class="btn_islandHistory" id="show_location_button_close"><img title="定位历史查询" onclick="closeShowLocationHistoryDiv();" src="<c:url value='/images/icon/history.png'/>" /></div>
 			          <div class="bgblack" id="show_location_history_div" >
 			              	<div class="form-group">
 	                            <label style="color:#fff">开始时间:</label>
