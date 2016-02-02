@@ -87,14 +87,16 @@ jQuery.fn.jsonForForm = function (options) {
 				if(isnotnull(j))
 					jQuery("#"+id+" input[id=" + i + "][value=" + j + "]").attr("checked", "checked");
 		} else if (type == "checkbox") {
-			jQuery("#"+id+" :checkbox[id=" + i + "]").attr("checked", "");
-			jQuery("#"+id+" :checkbox[id=" + i + "]").each(function (s, t) {
-			for (var v in j) {
-				if (this.value == j[v]) {
-				jQuery(this).attr("checked", "checked");
-				}
-			}
-			});
+			//jQuery("#"+id+" :checkbox[id=" + i + "]").attr("checked", "");
+//			jQuery("#"+id+" :checkbox[id=" + i + "]").iCheck('uncheck');
+//			jQuery("#"+id+" :checkbox[id=" + i + "]").each(function (s, t) {
+//			for (var v in j) {
+//				if (this.value == j[v]) {
+//				//jQuery(this).attr("checked", "checked");
+//				jQuery(this).iCheck('check');
+//				}
+//			}
+//			});
 		} else if (type == "select-multiple") {
 			jQuery("#"+id+" [id=" + i + "] option").attr("selected", "");
 			jQuery("#"+id+" [id=" + i + "] option").each(function (s, t) {

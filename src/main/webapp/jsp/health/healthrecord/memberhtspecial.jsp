@@ -78,7 +78,7 @@
 		function init_memberHtSpecial(obj){
 			$("#htspecialForm").jsonForForm({data:obj,isobj:true});
 			//$("input[name='isUseMedicine'][value='"+obj.isUseMedicine+"']").attr("checked",true);
-			$("input[name='isUseMedicine'][value='"+obj.isUseMedicine+"']").iCheck("checked");
+			$("input[name='isUseMedicine'][value='"+obj.isUseMedicine+"']").iCheck("check");
 			var medicalDetailTable = document.getElementById("med_table");
 			var medicineTakenItems = obj.medicineTakenItems;
 			if(medicineTakenItems != null){
@@ -450,7 +450,7 @@
 						        <div class="col-lg-8 col-xs-8">
 						        	<lable class="col-lg-4 col-xs-4 text-right form-span">*是否用药：</lable>
 						        	<label class="checkbox-inline col-lg-2 col-xs-2">
-	                 				<input type="radio" name="isUseMedicine" value="1" checked >是</input>
+	                 				<input type="radio" name="isUseMedicine" value="1" >是</input>
 	                 				</label>
 	                 				<label class="checkbox-inline col-lg-2 col-xs-2">
 		            				<input type="radio"  name="isUseMedicine" value="0">否</input>
