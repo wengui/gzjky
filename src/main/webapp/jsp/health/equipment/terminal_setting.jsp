@@ -702,23 +702,23 @@
                                                     			<!--绑定号码设置-->
 										<ul>
 									
-											<li class="list_main" id="li_82H">
-												
-													号码可以为手机或固定电话，固话前请加区号如0571
-													
-												
-												<div id="bt02" class="form-group">
-													号码1：<input name="sim1" id="sim1" type="text"
-														class="sr01 simcard" maxlength="12" /><br /> 号码2：<input
-														name="sim2" id="sim2" type="text" class="sr01 simcard"
-														maxlength="12" /><br /> 号码3：<input name="sim3" id="sim3"
-														type="text" class="sr01 simcard" maxlength="12" />
-														<input type="button" value="提 交" class="btn btn-success" style="float:right"
-														onclick="generateH82()" />
-														
-												</div>
-						
-											</li>
+											<li class="list_main" id="li_82H">号码可以为手机或固定电话，固话前请加区号如0571
+
+
+													<div id="bt02" class="form-group">
+														号码1：<input name="sim1" id="sim1" type="text"
+															class="sr01 simcard" maxlength="12" style="margin: 2px" /><br /> 
+														号码2：<input name="sim2" id="sim2" type="text"
+															class="sr01 simcard" maxlength="12" style="margin:2px"/><br /> 
+														号码3：<input
+															name="sim3" id="sim3" type="text" class="sr01 simcard"
+															maxlength="12" style="margin:2px"/> <input type="button" value="提 交"
+															class="btn btn-success" style="float: right"
+															onclick="generateH82()" />
+
+													</div>
+
+												</li>
 										</ul>
                                                 </div>
                                             </div>
@@ -769,11 +769,11 @@
 												<div id="bt02"  class="form-group">
 													心率上限值：<input name="heartrate_alert_threshold_top"
 														id="heartrate_alert_threshold_top" type="text"
-														class="sr01" maxlength="3" /><span
+														class="sr01" maxlength="3" style="margin: 2px" /><span
 														style="color: #aeaeae; margin-left: 10px">(单位：次/分)</span><br />
 													心率下限值：<input name="heartrate_alert_threshold_bottom"
 														id="heartrate_alert_threshold_bottom" type="text"
-														class="sr01" maxlength="3" /><span
+														class="sr01" maxlength="3" style="margin: 2px" /><span
 														style="color: #aeaeae; margin-left: 10px">(单位：次/分)</span>
 														<input type="button" value="提 交" onclick="generateH86()" style="float:right"
 														class="btn btn-success" />
@@ -804,22 +804,22 @@
 													收缩压上限值：<input
 														name="blood_pressure_alert_shrink_threshold_top"
 														id="blood_pressure_alert_shrink_threshold_top" type="text"
-														class="sr01" maxlength="3" /><span
+														class="sr01" maxlength="3" style="margin: 2px" /><span
 														style="color: #aeaeae; margin-left: 10px">(单位：毫米汞柱)</span><br />
 													收缩压下限值：<input
 														name="blood_pressure_alert_shrink_threshold_bottom"
 														id="blood_pressure_alert_shrink_threshold_bottom"
-														type="text" class="sr01" maxlength="3" /><span
+														type="text" class="sr01" maxlength="3" style="margin: 2px" /><span
 														style="color: #aeaeae; margin-left: 10px">(单位：毫米汞柱)</span><br />
 													舒张压上限值：<input
 														name="blood_pressure_alert_diastole_threshold_top"
 														id="blood_pressure_alert_diastole_threshold_top"
-														type="text" class="sr01" maxlength="3" /><span
+														type="text" class="sr01" maxlength="3" style="margin: 2px" /><span
 														style="color: #aeaeae; margin-left: 10px">(单位：毫米汞柱)</span><br />
 													舒张压下限值：<input
 														name="blood_pressure_alert_diastole_threshold_bottom"
 														id="blood_pressure_alert_diastole_threshold_bottom"
-														type="text" class="sr01" maxlength="3" /><span
+														type="text" class="sr01" maxlength="3" style="margin: 2px" /><span
 														style="color: #aeaeae; margin-left: 10px">(单位：毫米汞柱)</span>
 														<input type="button" value="提 交" class="btn btn-success" style="float:right"
 														onclick="generateH87()" />
