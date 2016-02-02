@@ -51,9 +51,9 @@ public class QueryMemberHtSpecialAction extends ActionSupport {
 			
 			if(!VaildateUtils.isNull(result)){
 				takeDrugsBeanList = takingDrugsReadMapper.selectByHighbloodinfoId(NumberUtils.toInt(result.getId()));
+				
+				result.setMedicineTakenItems(takeDrugsBeanList);
 			}
-			
-			result.setMedicineTakenItems(takeDrugsBeanList);
 
 			ModelMap modelMap = new ModelMap();
 			
