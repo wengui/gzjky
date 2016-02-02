@@ -10,7 +10,7 @@
              </div>
              <div class="pull-left info">
                  <p>您好, ${sessionScope.Patient.pname}</p>
-                 <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+                 <i class="fa fa-circle text-success"></i> 在线
              </div>
          </div>
          <!-- sidebar menu: : style can be found in sidebar.less -->
