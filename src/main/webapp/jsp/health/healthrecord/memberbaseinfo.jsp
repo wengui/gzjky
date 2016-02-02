@@ -522,9 +522,9 @@
 	function upload(){
 		var filePath = document.getElementById("filePath").value;
 		var obj_file = document.getElementById("filePath");  
-		var maxsize = 1024*1024;//1M  
-        var errMsg = "上传的附件文件不能超过1M！！！";  
-        var tipMsg = "您的浏览器暂不支持计算上传文件的大小，确保上传文件不要超过1M，建议使用IE、FireFox、Chrome浏览器。";  
+		var maxsize = 512*512;//500k  
+        var errMsg = "上传的附件文件不能超过500K！！！";  
+        var tipMsg = "您的浏览器暂不支持计算上传文件的大小，确保上传文件不要超过500K，建议使用IE、FireFox、Chrome浏览器。";  
 		
 		var headImageReflag = false;
 		
@@ -567,22 +567,51 @@
 			document.getElementById("filePath").focus();
 			return false;
 		}
-		//$("#upload_form").submit(); 
-		var upload_form = document.getElementById("upload_form");
-		upload_form.submit();
-		winload();
+		// 头像异步上传
+	    query_memberImage();
         callback(1);
+        // 关闭上传框
         closeDiv();
         
 	}
 	
+	function query_memberImage(){
+		var formData = new FormData();
+		formData.append('file', $('#filePath')[0].files[0]);
+        var requestUrl = "/gzjky/imageUploadAction/uploadHeadImage.do";
+        var para = "filePath="+filePath ;
+        xmlHttp = $.ajax({
+ 			url: requestUrl,
+ 			data:formData,
+ 			dataType:"json",
+ 			type:"POST",
+ 			async: false,
+ 			cache: false,
+ 			contentType: false,
+ 			processData: false,
+ 			error:function(){
+ 				$.alert('无权限');
+ 			},success:function(response){
+ 				var state = response.updateFlag;
+ 				
+ 				// 更新成功
+ 				if(state == '1'){
+ 					$.alert('头像更新成功。');
+ 					window.location.reload(true);
+ 				}else{
+ 					$.alert('头像更新失败。');
+ 				}
+ 				
+ 			}
+ 		});
+     }
+	
 	function changeImage(){
 		$("#patientimage").attr("src","<c:url value='/imageUploadAction/showHeadImage.do'/>");
-		//parent.parent.document.getElementById("memberHeadImg").src = "<c:url value='/imageUploadAction/showHeadImage.do'/>";
 	}
 	
 	function winload(){ 
-		setTimeout("window.location.reload(true)",1500);
+		setTimeout("window.location.reload(true)",1000);
 
 		}
 </script>
@@ -594,7 +623,7 @@
 	      <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
 	    </ul>
 	  </div>
-	  <form id="upload_form" action="/gzjky/imageUploadAction/uploadHeadImage.do" method="post"  enctype="multipart/form-data"  target="hidden_frame">
+	  <form id="upload_form" action="" method="post" name="upload_form"  enctype="multipart/form-data"  target="hidden_frame">
 	  <div class="popup_main">
 	    <ul>
 	      <li class="img_upload">
