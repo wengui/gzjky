@@ -317,14 +317,14 @@
               </div>
               <div class="box-body col-lg-12">
               	<div class="row">
-	                 <div class="col-lg-3">
+	                 <div class="col-lg-4">
 	                 <div class="input-group">
 	                 	  <label style="width:70px">开始时间:</label>
 	                      <span class="input-group-addon" style="width:0px"><i class="fa fa-calendar"></i></span>
 	                      <input type="text" class="form-control" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
 		                  </div>
 	                 </div><!-- /.col-lg-3 -->
-	                <div class="col-lg-3">
+	                <div class="col-lg-4">
 	                  <div class="input-group">
 		                  	  <label style="width:70px">结束时间:</label>
 		                      <span class="input-group-addon" style="width:0px"><i class="fa fa-calendar"></i></span>
@@ -334,7 +334,7 @@
 	            </div><!-- /.row -->
 	            <br/>
                 <div class="row">
-	               <div class="col-lg-3">
+	               <div class="col-lg-4">
 	                  <div class="input-group">
 		                  	  <label style="width:70px">血压历史:</label>
 		                      <span class="input-group-addon" style="width:0px"><i class="fa fa-bars"></i></span>
