@@ -1973,17 +1973,13 @@ Component: timeline
 .alert > .fa,
 .alert > .glyphicon {
   position: absolute;
-  left: -15px;
+  left: -1px;
   top: -18px;
   width: 75px;
   height: 35px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
   line-height: 35px;
   text-align: center;
   background: inherit;
-  border: inherit;
 }
 /*
     Component: Navs

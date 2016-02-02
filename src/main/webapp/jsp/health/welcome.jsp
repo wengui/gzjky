@@ -642,10 +642,13 @@
           <section class="content">
               <!-- Small boxes (Stat box) -->
               <div class="row">
-                  <div class="col-lg-4 col-xs-6">
+                  <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="small-box bg-aqua">
                           <div class="inner">
+                           	  <h3>
+                                 	血压值
+                              </h3>
                               <h3 id="last_bloodpressure">
                                   &nbsp;
                               </h3>
@@ -659,10 +662,13 @@
                       </div>
                   </div><!-- ./col -->
                   
-                  <div class="col-lg-4 col-xs-6">
+                  <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="small-box bg-green">
                           <div class="inner">
+                          	  <h3>
+                                 	血压异常值
+                              </h3>
                               <h3 id="last_bloodalert">
                               	&nbsp;
                               </h3>
@@ -675,10 +681,15 @@
                           </div>
                       </div>
                   </div><!-- ./col -->
-                  <div class="col-lg-4 col-xs-6">
+              </div><!-- /.row -->
+              <div class="row">
+                  <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="small-box bg-yellow">
                           <div class="inner">
+                          	  <h3>
+                                                                                                                   心率/脉率值
+                              </h3>
                               <h3 id="last_heartrate">
                                   &nbsp;
                               </h3>
@@ -691,12 +702,14 @@
                           </div>
                       </div>
                   </div><!-- ./col -->
-              </div><!-- /.row -->
-              <div class="row">
-                  <div class="col-lg-4 col-xs-6">
+
+                  <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="small-box bg-red">
                           <div class="inner">
+                          	  <h3>
+                                                                                                                   心率异常值
+                              </h3>
                               <h3 id="last_heartratealert">
                                   &nbsp;
                               </h3>
@@ -709,11 +722,15 @@
                           </div>
                       </div>
                   </div><!-- ./col -->
-                  
-                  <div class="col-lg-4 col-xs-6">
+              </div><!-- /.row -->
+              <div class="row">    
+                  <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="small-box bg-maroon">
                           <div class="inner">
+                          	  <h3>
+                                                                                                                   血氧值
+                              </h3>
                               <h3 >
                                   &nbsp;
                               </h3>
@@ -727,10 +744,13 @@
                       </div>
                   </div><!-- ./col -->
                   
-                  <div class="col-lg-4 col-xs-6">
+                  <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="small-box bg-purple">
                           <div class="inner">
+                          	  <h3>
+                                 SOS异常
+                              </h3>
                               <h3 id="last_island">
                                   &nbsp;
                               </h3>
@@ -754,7 +774,7 @@
               <!-- /.row -->
 
 			  <div class="row">
-                        <div class="col-md-6" id="doctorAdvice">
+                        <div class="col-md-12" id="doctorAdvice">
                             <div class="box box-danger">
                                 <div class="box-header">
                                     <i class="fa fa-warning"></i>
@@ -780,7 +800,9 @@
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div><!-- /.col -->
-                        <div class="col-md-6">
+                </div>
+                <div class="row">
+                        <div class="col-md-12">
                             <div class="box box-info">
                                 <div class="box-header">
                                     <i class="fa fa-bullhorn"></i>
@@ -812,7 +834,7 @@
               <!-- Main row -->
               <div class="row">
                   <!-- Left col -->
-                  <section class="col-lg-6 connectedSortable"> 
+                  <section class="col-lg-12 connectedSortable"> 
                       <!-- Box (with bar chart) -->
                       <div class="box box-danger" >
                           <div class="box-header">
@@ -833,7 +855,9 @@
                       <!-- Custom tabs (Charts with tabs)-->
                   </section><!-- /.Left col -->
                   <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                  <section class="col-lg-6 connectedSortable">
+               </div>
+               <div class="row">   
+                  <section class="col-lg-12 connectedSortable">
                       <!-- Map box -->
                       <div class="box box-primary">
                           <div class="box-header">
@@ -854,7 +878,7 @@
                    </section><!-- right col -->   
               </div>                  
               <div class="row">
-                        <section class="col-lg-6 connectedSortable"> 
+                        <section class="col-lg-12 connectedSortable"> 
                             <div class="box box-danger" id="histroy_bp_diagnose">
                                 <div class="box-header">
                                     <i class="fa fa-map-marker"></i>
@@ -886,7 +910,7 @@
                                                     </a>
                                                 </h4>
                                             </div>
-                                            <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div id="collapseTwo" class="panel-collapse collapse in">
                                                 <div class="box-body" id="risk_level">
                                                 	暂无
                                                 </div>
@@ -900,7 +924,7 @@
                                                     </a>
                                                 </h4>
                                             </div>
-                                            <div id="collapseThree" class="panel-collapse collapse">
+                                            <div id="collapseThree" class="panel-collapse collapse in">
                                                 <div class="box-body">
 														暂无
                                                 </div>
@@ -915,7 +939,7 @@
                                                     </a>
                                                 </h4>
                                             </div>
-                                            <div id="collapseFour" class="panel-collapse collapse">
+                                            <div id="collapseFour" class="panel-collapse collapse in">
                                                 <div class="box-body" id="doctor_bpreport" >
                                                 		暂无
                                                 </div>
@@ -929,7 +953,7 @@
                                                     </a>
                                                 </h4>
                                             </div>
-                                            <div id="collapseFive" class="panel-collapse collapse">
+                                            <div id="collapseFive" class="panel-collapse collapse in">
                                                 <div class="box-body" id="doctor_suggest">
                                                 	暂无
                                                 </div>
@@ -943,7 +967,7 @@
                                                     </a>
                                                 </h4>
                                             </div>
-                                            <div id="collapseSix" class="panel-collapse collapse">
+                                            <div id="collapseSix" class="panel-collapse collapse in">
                                                 <div class="box-body" id="health_suggest">
 														暂无
                                                 </div>
@@ -953,7 +977,9 @@
                                 </div>
                             </div><!-- /.box -->
                         </section><!-- /.Left col -->
-						<section class="col-lg-6 connectedSortable">
+                </div>
+                <div class="row">       
+						<section class="col-lg-12 connectedSortable">
                             <div class="box box-info">
                              <div class="box-header">
                               <i class="fa fa-bar-chart-o"></i>
@@ -970,10 +996,10 @@
                             </div><!-- /.box -->
                         	</div><!-- /.col -->
                    			</section><!-- right col -->   
-		              </div><!-- /.row (main row) -->
-					  
-					  <div class="row">
-                      	  <section class="col-lg-6 connectedSortable"> 
+		        </div><!-- /.row (main row) -->
+				  
+				<div class="row">
+                      	  <section class="col-lg-12 connectedSortable"> 
 						  <div class="box box-danger" >
 	                                <div class="box-header" style="cursor: move;">
 	                                    <!-- tools box -->
