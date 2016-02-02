@@ -245,7 +245,7 @@
              <h1>会员咨询</h1>
              <ol class="breadcrumb">
                   <li><a href="#"><i class="fa fa-home"></i> 首页</a></li>
-                  <li>健康报告</li>
+                  <li>健康通告</li>
                   <li class="active">会员咨询</li>
              </ol>
          </section>

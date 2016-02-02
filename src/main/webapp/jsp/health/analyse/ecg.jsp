@@ -247,7 +247,7 @@ function showEcgDetail(obj,index){
 			                      <input type="text"  class="form-control"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
 			               </div>
 		               </div><!-- /.col-lg-3 -->
-		               <div class="col-lg-3">
+		               <div class="col-lg-2">
 		                  <div class="input-group">
 			                  	  <label>心电历史:</label>
 			                      <span class="input-group-addon"><i class="fa fa-bars"></i></span>
