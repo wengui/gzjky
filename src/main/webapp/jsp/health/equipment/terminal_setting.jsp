@@ -681,7 +681,7 @@
 			
 			<h2 class="page-header">设备配置</h2>
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                             <div class="box box-solid">
                                 <div class="box-header">
                                     <h3 class="box-title">配置信息</h3>
@@ -847,8 +847,8 @@
 													<table width="100%" border="0" cellspacing="0"
 														cellpadding="0">
 														<tr>
-															<td width="45%" height="25">提醒时间： <select
-																name="hour" id="hour" style="height: 20px; width: 70px;">
+															<td >提醒时间： <select
+																name="hour" id="hour"  style="margin: 2px">
 
 																	<option value="0">0</option>
 
@@ -899,8 +899,7 @@
 																	<option value="23">23</option>
 
 															</select> <span style="color: #aeaeae;; margin: 0 5px">时</span> <select
-																name="minute" id="minute"
-																style="height: 20px; width: 70px;">
+																name="minute" id="minute">
 
 																	<option value="0">0</option>
 
@@ -1042,8 +1041,8 @@
 															</td>
 														</tr>
 														<tr>
-															<td height="25">提醒周期： <select name="notice_interval"
-																id="notice_interval" style="height: 20px; width: 118px;">
+															<td >提醒周期： <select name="notice_interval"
+																id="notice_interval" style="margin: 2px" >
 																	<option value="一天">一天</option>
 																	<option value="一周">一周</option>
 																	<option value="一月">一月</option>
@@ -1095,9 +1094,9 @@
 												<table width="100%" border="0" cellspacing="0"
 														cellpadding="0">
 														<tr>
-															<td width="45%" height="25">开始时间： <select
+															<td>开始时间： <select
 																name="start_time" id="start_time"
-																style="height: 20px; width: 180px; margin: 3px 0;">
+																style="width: 180px; margin: 3px 0;">
 
 																	<option value="0">0</option>
 
@@ -1168,7 +1167,7 @@
 														</tr>
 														<tr>
 															<td>结束时间： <select name="end_time" id="end_time"
-																style="height: 20px; width: 180px; margin: 3px 0;">
+																style="width: 180px; margin: 3px 0;">
 
 																	<option value="1">1</option>
 

@@ -162,10 +162,10 @@
 			var dia_bottom = dia_bottom==null?'':dia_bottom;
 			var dia_top = dia_top==null?'':dia_top;
 			
-		$("#blood_set_"+i).html('收缩压：<input type="input" style="width:25px;height:20px;border:1px solid #bbb" value="'+shr_bottom+'"  id="shrl_'+i+'"/>-'
-				+'<input type="input" style="width:25px;height:20px;border:1px solid #bbb" value="'+shr_top+'"  id="shrh_'+i+'"/>mmHg,'
-				+'舒张压：<input type="input" style="width:25px;height:20px;border:1px solid #bbb" value="'+dia_bottom+'"  id="dial_'+i+'"/>-'
-				+'<input type="input" style="width:25px;height:20px;border:1px solid #bbb"  value="'+dia_top+'"  id="diah_'+i+'"/>mmHg'
+		$("#blood_set_"+i).html('收缩压：<input type="input" style="width:25px;height:30px;border:1px solid #bbb" value="'+shr_bottom+'"  id="shrl_'+i+'"/>-'
+				+'<input type="input" style="width:25px;height:30px;border:1px solid #bbb" value="'+shr_top+'"  id="shrh_'+i+'"/>mmHg,'
+				+'舒张压：<input type="input" style="width:25px;height:30px;border:1px solid #bbb" value="'+dia_bottom+'"  id="dial_'+i+'"/>-'
+				+'<input type="input" style="width:25px;height:30px;border:1px solid #bbb"  value="'+dia_top+'"  id="diah_'+i+'"/>mmHg'
 				+"<a href='javascript:void(0)' class='pl_equipmentMain'><span onclick='editThreshold("+i+");'>保存</span></a>");
 	}
 	var regx = /^\d+$/;
@@ -237,21 +237,21 @@
 	//编辑sim卡
 	function editSim(i){
 		var sim = deviceBaseInfoList[i].sim==null?'':deviceBaseInfoList[i].sim;
-		$("#sim_"+i).html("<input type='input'  value='"+sim+"' style='height:20px;border:1px solid #bbb' id='simCode_"+i+"'/>"
+		$("#sim_"+i).html("<input type='input'  value='"+sim+"' style='height:30px;border:1px solid #bbb' id='simCode_"+i+"'/>"
 		+"<a href='javascript:void(0)' class='pl_equipmentMain'><span onclick='editSimCode("+i+");'>保存</span></a>");
 		$("#simCode_"+i).focus();
 	}
 	//编辑sim卡
 	function editNickname(i){
 		var nickname = deviceBaseInfoList[i].nickname==null?'':deviceBaseInfoList[i].nickname;
-		$("#nickname_"+i).html("<input type='input'  value='"+nickname+"' style='height:20px;border:1px solid #bbb' id='dbnickname_"+i+"'/>"
+		$("#nickname_"+i).html("<input type='input'  value='"+nickname+"' style='height:30px;border:1px solid #bbb' id='dbnickname_"+i+"'/>"
 		+"<a href='javascript:void(0)' class='pl_equipmentMain'><span onclick='DbeditNickname("+i+");'>保存</span></a>");
 		$("#simCode_"+i).focus();
 	}
 	
 	
 	function editSim1(i,sim){
-		$("#sim_"+i).html("<input type='input'  value='"+sim+"' style='height:20px;border:1px solid #bbb' id='simCode_"+i+"'/>"
+		$("#sim_"+i).html("<input type='input'  value='"+sim+"' style='height:30px;border:1px solid #bbb' id='simCode_"+i+"'/>"
 		+"<a href='javascript:void(0)' class='pl_equipmentMain'><span onclick='editSimCode("+i+");'>保存</span></a>");
 		$("#simCode_"+i).focus();
 	}
