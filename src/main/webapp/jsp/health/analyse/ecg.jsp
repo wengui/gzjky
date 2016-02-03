@@ -10,6 +10,7 @@
 <script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
@@ -231,52 +232,57 @@ function showEcgDetail(obj,index){
               <div class="box-header">
                   <h3 class="box-title">条件检索</h3>
               </div>		
-              <div class="box-body  col-lg-12">
-	              	<div class="row">
-		                 <div class="col-lg-4">
-			                  <div class="input-group">
-			                  	  <label style="width:70px">开始时间:</label>
-			                      <span class="input-group-addon" style="width:0px"><i class="fa fa-calendar"></i></span>
-			                      <input type="text" class="form-control" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
+              <div class="box-body  col-lg-12 col-xs-12">
+	              	<div class="col-lg-12 col-xs-12 form-font-size">
+		                 <div class="col-lg-6 col-xs-6">
+			                  <div>
+			                  	  <label class="col-lg-4 col-xs-4 text-right">开始时间:</label>
+			                  	  <div class="col-lg-8 col-xs-8 input-group">
+			                      <span class="input-group-addon col-lg-2 col-xs-2"><i class="fa fa-calendar"></i></span>
+			                      <input type="text" class="col-lg-8 col-xs-8" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
+			                  	  </div>
 			                  </div>
 		                 </div><!-- /.col-lg-4 -->
-		                <div class="col-lg-4">
-		                  <div class="input-group">
-			                  	  <label style="width:70px">结束时间:</label>
-			                      <span class="input-group-addon" style="width:0px"><i class="fa fa-calendar"></i></span>
-			                      <input type="text"  class="form-control"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
+		                <div class="col-lg-6 col-xs-6">
+		                  <div>
+			                  	  <label class="col-lg-3 col-xs-3 text-right">结束时间:</label>
+			                  	  <div class="col-lg-8 col-xs-8 input-group">
+			                      <span class="input-group-addon col-lg-2 col-xs-2"><i class="fa fa-calendar"></i></span>
+			                      <input type="text"  class="col-lg-8 col-xs-8"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
+			               		  </div>
 			               </div>
 		               </div><!-- /.col-lg-4 -->
 		      		</div><!-- /.row -->
 	            		<br/>
-                	<div class="row">
-		               <div class="col-lg-4">
-		                  <div class="input-group">
-			                  	  <label style="width:70px">心电历史:</label>
-			                      <span class="input-group-addon" style="width:0px"><i class="fa fa-bars"></i></span>
-			                      <select class="form-control" onchange="changeHeartType(this)"><option selected="selected" value="0">心电历史</option><option value="1">心率告警</option></select>
+                	<div class="col-lg-12 col-xs-12 form-font-size">
+		               <div class="col-lg-6 col-xs-6">
+		                  <div>
+			                  	  <label class="col-lg-4 col-xs-4 text-right">心电历史:</label>
+			                  	  <div class="col-lg-8 col-xs-8 input-group">
+			                      <span class="input-group-addon col-lg-2 col-xs-2"><i class="fa fa-bars"></i></span>
+			                      <select class="col-lg-8 col-xs-8" onchange="changeHeartType(this)"><option selected="selected" value="0">心电历史</option><option value="1">心率告警</option></select>
+			               		  </div>
 			               </div>               
-		               </div><!-- /.col-lg-2 -->
-		               <div class="col-lg-3">
-		               	 <button class="btn btn-success" onclick="queryStart();"><i class="fa fa-search"></i> 查询</button>
-		            	</div>
+		               </div><!-- /.col-lg-6 -->
+		               <div class="col-lg-6 col-xs-6">&nbsp;</div>
 	              </div><!-- /.row -->
-	              <div class="row">
-	              	<br/>
-	              	<div class="col-lg-6">
-	              		 <label>快速查询:</label>
-	              		 <a href="javascript:changeDate(3)" style="margin-left:20px;margin-right:15px;">最新3天</a>
-	              		 <a href="javascript:changeDate(7)" style="margin-right:15px;">最近一周</a>
-	              		 <a href="javascript:changeDate(30)" style="margin-right:15px;">最近30天</a>
-	              		 <a href="javascript:changeDate(365)">最近一年</a>
+	              <div class="col-lg-12 col-xs-12">
+	              	<div class="col-lg-8 col-xs-8 text-right">
+	              		 <span class="col-lg-3 col-xs-3">快速查询:</span>
+	              		 <a href="javascript:changeDate(3)" class="col-lg-2 col-xs-2">最新3天</a>
+	              		 <a href="javascript:changeDate(7)" class="col-lg-2 col-xs-2">最近一周</a>
+	              		 <a href="javascript:changeDate(30)" class="col-lg-2 col-xs-2">最近30天</a>
+	              		 <a href="javascript:changeDate(365)" class="col-lg-2 col-xs-2">最近一年</a>
 	              	</div>
-
+					<div class="col-lg-3 col-xs-3 text-right">
+		               	 <button class="btn btn-success" onclick="queryStart();"><i class="fa fa-search"></i> 查询</button>
+		            </div>
 	              </div>
 	      </div>		
 
 		  <div class="row">
 		  	<br/>
-		  	<div class="col-lg-11">
+		  	<div class="col-lg-11 col-xs-11">
 		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable">
 		      <colgroup>
 		        <col width="30%" />
@@ -341,7 +347,7 @@ function showEcgDetail(obj,index){
 		 
 		<div class="row">
 			<br/>
-			<div class="col-lg-4" style="padding-left:25px">
+			<div class="col-lg-4 col-xs-4" style="padding-left:25px">
 				共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
 			</div>
 			<div class="col-lg-4">
@@ -350,7 +356,7 @@ function showEcgDetail(obj,index){
 			    <a href="###" class="page-next" style="margin-left:5px">下一页</a>
 			    <a href="###" class="page-last" style="margin-left:5px">末页</a>
 			</div>
-			<div class="col-lg-4" style="padding-left:18%">
+			<div class="col-lg-4 col-xs-4" style="padding-left:18%">
 				 转<select id="gopage" onchange="gotoPage()"></select>页
 			</div>
 
