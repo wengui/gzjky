@@ -138,7 +138,8 @@
 							<a href="javascript:void(0)" onclick="login();"
 								class="btn bg-olive btn-block" title="登录"><span>登录</span></a>
 								<p>
-								<a href="<c:url value='/jsp/password/forget_pwd.jsp'/>"	title="忘记密码" class="text-left" style="text-decoration: underline;float: left;width:250px">忘记密码？</a>
+								<a href="<c:url value='/jsp/password/forget_pwd.jsp'/>"	title="忘记密码" class="text-left" style="text-decoration: underline;float: left;width:220px">忘记密码？</a>
+								
 								<a href="<c:url value='/jsp/register/protocol.jsp'/>" title="注册" class="text-right" style="text-decoration: underline;">新用户注册</a>
 								</p>
 						</div>
