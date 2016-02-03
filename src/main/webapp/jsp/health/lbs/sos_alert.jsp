@@ -60,6 +60,8 @@
   var endDate="";
   var dateType=0;
   function startInit(){
+	  $('.commonPage').hide();
+	  $('.massage').show();
 	  queryStart();
   }
   function queryStart(){
@@ -93,6 +95,12 @@
 			},success:function(response){
 			    var modelMap = response.modelMap;
 			    	recordList = modelMap.sosAlertList;
+			    	// 没有查到结果
+			    	if(recordList.length == 0){
+						$('.commonPage').hide();
+						$('.massage').show();
+					}
+			    	
 				$.fn.page.settings.count = modelMap.recordTotal;
 				page($.fn.page.settings.currentnum);
 			}
@@ -242,6 +250,7 @@ function query_year(){
 			                <th>报警地址</th>
 			              </tr>
 			            </table>
+			            <div class="massage text-center col-lg-11 col-xs-11" style="color: red;">对不起，没有数据。</div>
 			       </div>
 	        </div>  
 
@@ -274,7 +283,7 @@ function query_year(){
 					}
 				</script>
 		
-				<div class="row">
+				<div class="row commonPage">
 					<br/>
 					<div class="col-lg-4 col-xs-4" style="padding-left:25px">
 						共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页

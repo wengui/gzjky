@@ -34,6 +34,7 @@
   var bloodType = 0;
   menuId = "#bp";
   function startInit(){
+	  $('.massage').hide();
 	  queryStart();
 	  jQuery('#bpRemarkform').validationEngine("attach",
     			{
@@ -84,6 +85,11 @@
 			    
 				// 数据取得
 				recordList = response.outBeanList;
+				
+				if(recordList.length == 0){
+					$('.commonPage').hide();
+					$('.massage').show();
+				}
 				
 				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
@@ -391,7 +397,9 @@
 			        <th>操作</th>
 			      </tr>
 			    </table>
+			    <div class="massage text-center col-lg-11 col-xs-11" style="color: red; display:none;">对不起，没有数据。</div>
 		    </div>
+		    
 		  </div>
 		
 		<script type="text/javascript">
@@ -423,7 +431,7 @@
 				}
 			</script>
 		
-		<div class="row">
+		<div class="row commonPage">
 			<br/>
 			<div class="col-lg-4 col-xs-4" style="padding-left:25px">
 				共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
