@@ -320,12 +320,19 @@
 			if(hour!=null&&hour!=""){
 				var hours=hour.split("/");
 				for(var i=0;i<hours.length;i++){
-					var lis=$("#hour_med input");
+					 var lis=$("#hour_med input");
 					for(var j=0;j<lis.length;j++){
 						if(lis[j].value==hours[i]){
-							lis[j].checked="checked";
+							//lis[j].checked='true';
+							//$("#hour_med input")[j].iCheck("uncheck");
+							$('#med_hours input[type="checkbox"]').each(function(index){
+							    if(index == j){
+							    	$(this).iCheck("check");
+							    }
+							  });
 						}
-					}
+					} 
+					
 				}
 			}//文本框赋值
 	  		$("#med_hours").draggable({
