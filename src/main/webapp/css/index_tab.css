@@ -49,7 +49,7 @@
 .bPhistory_table{float:left; text-align:left;font-family:"微软雅黑";width:100%;margin-left:10px}
 .bPhistory_table a{color:#3c8dbc; margin-right:15px; text-decoration:none;width:100%;}
 .bPhistory_table th{background-color:#f3f4f5; height:40px; padding-left:20px; line-height:40px;  text-align:left; font-size:14px}
-.bPhistory_table td{color:#5a5a5a; font-size:13px; padding:5px 0 5px 20px; line-height:18px;}
+.bPhistory_table td{color:#5a5a5a; padding:5px 0 5px 20px; line-height:18px;}
 .even{background:#f7f7f7}
 .odd{background:#fff}
 .abnormal td{color:#ff9600}
@@ -163,12 +163,6 @@ span.method{line-height: 28px;}
 	border: 1px solid #aeaeae;
 	}
 	
-.right-side{
-
-	overflow-y:hidden;
-	overflow-x:hidden;
-
-	}
 	
 .medicine{border-left: 1px solid #aeaeae;border-top: 1px solid #aeaeae;border-right: 1px solid #aeaeae;width: 99%;}
 .medicine table tr th,.medicine table tr td{

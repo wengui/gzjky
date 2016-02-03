@@ -279,11 +279,11 @@ function showEcgDetail(obj,index){
 		  	<div class="col-lg-11">
 		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable">
 		      <colgroup>
-		        <col width="20%" />
+		        <col width="30%" />
 		        <col width="25%" />
 		        <col width="11%" />
 		        <col width="11%" />
-		        <col width="20%" />
+		        <col width="15%" />
 		      </colgroup>
 		      <tr>
 		        <th>设备</th>
@@ -295,7 +295,7 @@ function showEcgDetail(obj,index){
 		    </table>
 		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable2" style="display:none;">
 		      <colgroup>
-		        <col width="20%" />
+		        <col width="30%" />
 		        <col width="25%" />
 		        <col width="13%" />
 		        <col width="12%" />

@@ -209,7 +209,6 @@
 </script>
 </head>
 <body onload="startInit()"  class="skin-blue">
-<div style="font-size:13px;font-family:微软雅黑">
 <form id="complication_form">
  <div>
         <div class="box box-info">
@@ -233,7 +232,6 @@
 			    </div>
         </div>
 </form>
-</div>
  
 
 <div id="divloading">

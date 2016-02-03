@@ -12,6 +12,7 @@
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
@@ -315,23 +316,25 @@
               <div class="box-header">
                   <h3 class="box-title">条件检索</h3>
               </div>
-              <div class="box-body col-lg-12">
-              	<div class="row">
-	                 <div class="col-lg-4">
-	                 <div class="input-group">
-	                 	  <label style="width:70px">开始时间:</label>
-	                      <span class="input-group-addon" style="width:0px"><i class="fa fa-calendar"></i></span>
-	                      <input type="text" class="form-control" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
+              <div class="box-body col-lg-12 col-xs-12">
+              	<div class="col-lg-12 col-xs-12">
+	                 <div class="col-lg-6 col-xs-6">
+	                 <div class="">
+	                 	  <label class="col-lg-4 col-xs-4">开始时间:</label>
+	                 	  <div class="col-lg-8 col-xs-8 input-group">
+	                 	  <span class="input-group-addon col-lg-2 col-xs-2"><i class="fa fa-calendar"></i></span>
+	                      <input type="text" class="col-lg-8" id="startDate" name="startDate" onfocus="var endDate=$dp.$('endDate');WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
+	                 	  </div>
 		                  </div>
 	                 </div><!-- /.col-lg-3 -->
-	                <div class="col-lg-4">
+	                <div class="col-lg-6">
 	                  <div class="input-group">
 		                  	  <label style="width:70px">结束时间:</label>
 		                      <span class="input-group-addon" style="width:0px"><i class="fa fa-calendar"></i></span>
 		                      <input type="text"  class="form-control"  id="endDate" name="endDate"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"/>
 		               </div>
 	               </div><!-- /.col-lg-3 -->
-	            </div><!-- /.row -->
+	            </div><!-- /.col-lg-12 -->
 	            <br/>
                 <div class="row">
 	               <div class="col-lg-4">
@@ -362,8 +365,8 @@
 		  	<div class="col-lg-11">
 			    <table width="100%" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable">
 			      <tr>
-			        <th width="20%" class="text-center">设备</th>
-			        <th width="15%">测压时间</th>
+			        <th width="30%" class="text-center">设备</th>
+			        <th width="25%">测压时间</th>
 			        <th width="20%">收缩压/舒张压&nbsp;(mmHg)</th>
 			        <th width="10%">脉率</th>
 			        <th width="18%">操作</th>
@@ -372,7 +375,7 @@
 			    
 			    <table width="100%"  cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable2" style="display:none;">
 			      <colgroup>
-			        <col width="20%" />
+			        <col width="30%" />
 			        <col width="25%" />
 			        <col width="20%" />
 			        <col width="20%" />
@@ -464,7 +467,7 @@
 			         <ul>
 			            <li class="tgrey_Packagedetails_left2">备注：</li>
 			            <li class="tblack_Packagedetails_right2" >
-			            	<textarea class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;font-size:13px" id="feedback" name="feedback" rows="5" cols="35" maxlength="100"></textarea>
+			            	<textarea class="validate[funcCall[includespecialchar]]" style="border: solid 1px gray;" id="feedback" name="feedback" rows="5" cols="35" maxlength="100"></textarea>
 			            </li>            
 			  		</ul>
 			  		<ul>

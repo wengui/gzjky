@@ -9,9 +9,9 @@ li{list-style-type:none;}
 .name_popupHeader{width:72%; padding-left:3%; text-align:left; font-size:18px; font-weight:500; float:left}
 .close_popupHeader{width:22%; padding-right:3%; text-align:right; float:left}
 .close_popupHeader a{color:#fff; text-decoration:none; font-size:20px;}
-.popup_main{width:100%; float:left; padding:4%; background:#fff; font-size:13px;text-align:left;}
+.popup_main{width:100%; float:left; padding:4%; background:#fff; text-align:left;}
 .popup_main li{padding:10px 0;}
-.popup_main2{width:100%; float:left; padding:4%; background:#fff; font-size:13px;text-align:left;}
+.popup_main2{width:100%; float:left; padding:4%; background:#fff; text-align:left;}
 .popup_main2 li{padding:3px 0;}
 /*----------------bp---------------*/
 .tblack_bp{width:100%; float:left; height:30px; line-height:30px; text-align:left; color:#5a5a5a}
@@ -27,10 +27,10 @@ li{list-style-type:none;}
 .img_color{margin-right:10px;}
 .tgrey_bp{color:#aeaeae }
 
-.tgrey_Packagedetails_left{width:20%; float:left; padding-left:4%;text-align: left; font-size:13px; color:#aeaeae;margin-bottom:10px;}
-.tblack_Packagedetails_right{width:76%; float:left; text-align: left; font-size:13px; color:#5a5a5a;margin-bottom:10px;}
-.tgrey_Packagedetails_left2{width:25%; float:left; padding-left:4%;text-align: right; font-size:13px; color:#aeaeae;margin-bottom:10px;}
-.tblack_Packagedetails_right2{width:70%; float:left; text-align: left; font-size:13px; color:#5a5a5a;margin-bottom:10px;}
+.tgrey_Packagedetails_left{width:20%; float:left; padding-left:4%;text-align: left;  color:#aeaeae;margin-bottom:10px;}
+.tblack_Packagedetails_right{width:76%; float:left; text-align: left;  color:#5a5a5a;margin-bottom:10px;}
+.tgrey_Packagedetails_left2{width:28%; float:left; padding-left:4%;text-align: right;  color:#aeaeae;margin-bottom:10px;}
+.tblack_Packagedetails_right2{width:70%; float:left; text-align: left;  color:#5a5a5a;margin-bottom:10px;}
 #package_name{color:#00a65a;}
 
 .tgrey_popup{width:30%;float:left; height:30px; line-height:30px; text-align:right; margin-bottom: 10px}

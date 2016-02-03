@@ -164,8 +164,6 @@
 </script>
 </head>
 <body onload="startInit()"  class="skin-blue">
-<div style="font-size:13px;font-family:微软雅黑">
-
 <form id="habit_form">
    <!--detailed_information start-->
    <div>
@@ -259,7 +257,6 @@
    </div>
 
 </form>
-</div>
  
 
 <div id="divloading">

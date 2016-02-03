@@ -456,7 +456,6 @@
 	</script>
 
 <body onload="startInit()"  class="skin-blue">
-<div style="font-size:13px;font-family:微软雅黑;color:#5a5a5a;">
 <!--bp_history start-->
   <div class="box box-info">
 <div class="" id="show_history">
@@ -572,6 +571,5 @@
 <div id="transparentDiv" ></div>
 
 <div id="transparentDiv2"></div> 
-</div>
 </body>
 </html>

@@ -545,7 +545,6 @@
 
 </head>
 <body  onload="startInit()"  class="skin-blue">
-<div style="font-size:13px;font-family:微软雅黑">
 <form id="family_form">
         <!--basic_information start-->
         <div>
@@ -640,6 +639,5 @@
 <div id="transparentDiv" ></div>
 
 <div id="transparentDiv2"></div> 
-</div>
 </body>
 </html>

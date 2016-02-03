@@ -274,7 +274,6 @@
 </script>
 </head>
 <body onload="startInit()"  class="skin-blue" >
-<div style="font-size:13px;font-family:微软雅黑">
 <div>
   
   	<div class="box box-danger">
@@ -449,6 +448,5 @@
   <!-- box end -->
   </div>
   </div>
-</div>
 </body>
 </html>

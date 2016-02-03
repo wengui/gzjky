@@ -154,11 +154,12 @@ function startInit(){
   <!--tab_healthRecords start-->
   <div class="">
 		<div class="row">
-           <div class="col-lg-2 col-xs-6 safePage" id="memberhabit">
+		 <div class="col-lg-12 col-xs-12">
+           <div class="col-lg-6 col-xs-6 safePage" id="memberhabit">
             <!-- small box -->
             <div class="small-box bg-aqua">
             <div class="inner">
-                <h4>生活习惯</h4>
+                <h3>生活习惯</h3>
              </div>
              <div class="icon  text-center">
                   <i class="ion ion-person-add"></i>
@@ -168,11 +169,11 @@ function startInit(){
              </a>
              </div>
             </div><!-- ./col -->
-            <div class="col-lg-2 col-xs-6 safePage" id="memberfamilydisease">
+            <div class="col-lg-6 col-xs-6 safePage" id="memberfamilydisease">
                <!-- small box -->
                <div class="small-box bg-green">
                     <div class="inner">
-                    <h4>家族遗传史</h4>
+                    <h3>家族遗传史</h3>
                     </div>
                     <div class="icon">
                          <i class="ion ion-person-add"></i>
@@ -182,11 +183,13 @@ function startInit(){
              		</a>
                </div>
             </div><!-- ./col -->
-         <div class="col-lg-2 col-xs-6 safePage" id="memberhtcomplication">
+           </div>
+         <div class="col-lg-12 col-xs-12">
+         	<div class="col-lg-6 col-xs-6 safePage" id="memberhtcomplication">
              <!-- small box -->
              <div class="small-box bg-yellow">
                  <div class="inner">
-                     <h4>当前并发症</h4>
+                     <h3>当前并发症</h3>
                  </div>
                  <div class="icon">
                      <i class="ion ion-person-add"></i>
@@ -196,11 +199,11 @@ function startInit(){
              		</a>
              </div>
          </div><!-- ./col -->
-         <div class="col-lg-2 col-xs-6 safePage" id="memberIllnessHistory">
+         <div class="col-lg-6 col-xs-6 safePage" id="memberIllnessHistory">
              <!-- small box -->
              <div class="small-box bg-red">
                  <div class="inner">
-                     <h4>疾病史</h4>
+                     <h3>疾病史</h3>
                  </div>
                  <div class="icon">
                      <i class="ion ion-person-add"></i>
@@ -210,11 +213,13 @@ function startInit(){
              		</a>
              </div>
          </div><!-- ./col -->
-         <div class="col-lg-2 col-xs-6 safePage" id="memberhtspecial">
+        </div>
+        <div class="col-lg-12 col-xs-12">
+         <div class="col-lg-6 col-xs-6 safePage" id="memberhtspecial">
             <!-- small box -->
             <div class="small-box bg-blue">
             <div class="inner">
-                <h4>高血压专项</h4>
+                <h3>高血压专项</h3>
              </div>
              <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -224,11 +229,11 @@ function startInit(){
              </a>
              </div>
             </div><!-- ./col -->
-            <div class="col-lg-2 col-xs-6 safePage" id="medicalexamination">
+            <div class="col-lg-6 col-xs-6 safePage" id="medicalexamination">
                <!-- small box -->
                <div class="small-box bg-purple">
                     <div class="inner">
-                    <h4>健康检查</h4>
+                    <h3>健康检查</h3>
                     </div>
                     <div class="icon">
                          <i class="ion ion-person-add"></i>
@@ -238,14 +243,15 @@ function startInit(){
              		</a>
                </div>
             </div><!-- ./col -->
+           </div>
        </div><!-- /.row -->
 		<div class="row">
-           
-         <div class="col-lg-2 col-xs-6 safePage" id="check">
+          <div class="col-lg-12 col-xs-12"> 
+         <div class="col-lg-6 col-xs-6 safePage" id="check">
              <!-- small box -->
              <div class="small-box bg-teal">
                  <div class="inner">
-                     <h4>健康体检</h4>
+                     <h3>健康体检</h3>
                  </div>
                  <div class="icon">
                      <i class="ion ion-person-add"></i>
@@ -255,7 +261,8 @@ function startInit(){
              		</a>
              </div>
          </div><!-- ./col -->
-         <div class="col-lg-3 col-xs-6">&nbsp;</div><!-- ./col -->
+         <div class="col-lg-6 col-xs-6">&nbsp;</div><!-- ./col -->
+        </div>
        </div><!-- /.row -->
        <!-- top row -->
        <div class="row">
