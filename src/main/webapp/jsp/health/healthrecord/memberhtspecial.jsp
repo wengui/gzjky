@@ -582,6 +582,7 @@ function closeHours() {
 	closeHoursDiv();
 }
 function closeHoursDiv(){
+	$('#med_hours input[type="checkbox"]').iCheck("uncheck");
 	$("#med_hours").modal('hide');
 	//hideScreenProtectDiv(1);
 }
