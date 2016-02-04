@@ -389,7 +389,7 @@
 
 </style>
 <div class="modal fade" id="medicalExaminationWindow"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%">
- <div class="modal-dialog">	
+ <div class="modal-dialog"  style="width:750px">	
   <div class="popup_header">
     <ul>
       <li class="name_popupHeader"  id="pop_medicalExaminationTitle">增加亲情号码</li>
