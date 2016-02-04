@@ -309,7 +309,7 @@
 					    <form id="memberBaseInfo_form" class="user_form formular">
 					      <!--basic_information start-->
 					        <div class="row form-group btn_title_informationModify">
-					          	<div class="col-lg-8 col-xs-8 text-right" id="saveImage" href="javascript:void(0)" onclick="edit_baseinfo(this)">
+					          	<div class="col-lg-10 col-xs-10 text-right" id="saveImage" href="javascript:void(0)" onclick="edit_baseinfo(this)">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
@@ -361,14 +361,14 @@
 			      <form id="detail_form">
 
 				         <div class="row form-group btn_title_informationModify">
-					          	<div class="col-lg-8 col-xs-8 text-right" id="detailImage" href="javascript:void(0)" onclick="edit_detail(this)">
+					          	<div class="col-lg-10 col-xs-10 text-right" id="detailImage" href="javascript:void(0)" onclick="edit_detail(this)">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
  						</div>
 	 			         <div class="row">
-					         <div class="col-lg-8 col-xs-8">
+					         <div class="col-lg-10 col-xs-10">
 					         	<div class="col-lg-12 col-xs-12">
 							        <div class="col-lg-6 col-xs-6">
 							        	<span class="col-lg-4 col-xs-4 text-right  form-span" >证件类型：</span>
@@ -466,7 +466,7 @@
 			      <!--job_information start-->
 			      <div class="detailed_information">
 			          <div class="row form-group btn_title_informationModify">
-			          	<div class="col-lg-8 col-xs-8 text-right" id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)">
+			          	<div class="col-lg-10 col-xs-10 text-right" id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)">
 			          		<a class="btn btn-success">
 			                   <i class="fa fa-edit"></i> 编辑
 			             	</a>
@@ -474,7 +474,7 @@
 			        </div>
 			        
 			        <div class="row informationModify_main" >
-			          <div class="col-lg-8 col-xs-8">
+			          <div class="col-lg-10 col-xs-10">
 			        	<div class="col-lg-12 col-xs-12">
 					        <div class="col-lg-6 col-xs-6">
 					        	<span class="col-lg-4 col-xs-4 text-right form-span">工作年限：</span>
