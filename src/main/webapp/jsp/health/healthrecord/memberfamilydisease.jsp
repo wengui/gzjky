@@ -11,6 +11,7 @@
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
+<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
 <script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
@@ -328,6 +329,7 @@
 			    	};
 			    	//按钮变成编辑图标，元素变成不可以编辑
 		    		$("#"+formId+" :input").attr("disabled",true);
+		    		$(".relation_button").attr("style","display:none");
 		    		$("#editImage").empty();
 			    	$("#editImage").html(edit_image);
 					$.alert("修改成功");

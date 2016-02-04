@@ -9,9 +9,9 @@
  <!-- jvectormap -->
  <script src="<c:url value='/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'/>" type="text/javascript"></script>
  <script src="<c:url value='/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'/>" type="text/javascript"></script>
- <!-- Morris.js charts -->
+ <!-- Morris.js charts
  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
- <script src="<c:url value='/js/plugins/morris/morris.min.js'/>" type="text/javascript"></script>
+ <script src="<c:url value='/js/plugins/morris/morris.min.js'/>" type="text/javascript"></script> -->
  <!-- fullCalendar -->
  <script src="<c:url value='/js/plugins/fullcalendar/fullcalendar.min.js'/>" type="text/javascript"></script>
  <!-- jQuery Knob Chart -->
@@ -25,4 +25,4 @@
  <!-- AdminLTE App -->
  <script src="<c:url value='/js/AdminLTE/app.js'/>" type="text/javascript"></script>
  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
- <script src="<c:url value='/js/AdminLTE/dashboard.js'/>" type="text/javascript"></script>        
+  
