@@ -411,7 +411,7 @@ body > .header .logo .icon {
 }
 .right-side > .content-header {
   position: relative;
-  padding: 15px 15px 10px 20px;
+  padding: 15px 15px 10px 15px;
 }
 .right-side > .content-header > h1 {
   margin: 0;
@@ -428,7 +428,7 @@ body > .header .logo .icon {
   background: transparent;
   margin-top: 0px;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 18px;
   padding: 7px 5px;
   position: absolute;
   top: 15px;
@@ -540,7 +540,7 @@ body > .header .logo .icon {
 .sidebar .sidebar-menu .treeview-menu > li > a {
   padding: 5px 5px 5px 15px;
   display: block;
-  font-size: 16px;
+  font-size: 18px;
   margin: 0px 0px;
 }
 .sidebar .sidebar-menu .treeview-menu > li > a > .fa,
@@ -1311,7 +1311,7 @@ body > .header .logo .icon {
 .box .box-header > .ion,
 .box .box-header .box-title {
   display: inline-block;
-  padding: 10px 0px 10px 10px;
+  padding: 10px 0px 10px 15px;
   margin: 0;
   font-size: 20px;
   font-weight: 400;
