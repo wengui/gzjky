@@ -290,7 +290,7 @@
 										style="margin-top: 10px"><span class='tBluev'>*</span>长度为5-30个字符，只能由字母、数字以及“_”组成。
 									</li>
 									<li class="register_input" style="margin-top: 10px"><input
-										type="text"  style="display: block;" name="passwdv"
+										type="password"  style="display: block;" name="passwdv"
 										id="passwdv" maxlength="20" placeholder="密码"
 										class="validate[required, minSize[6], maxSize[20]]" /> <input
 										type="password" value="" style="display: none;" name="passwd"
@@ -310,7 +310,7 @@
 									</li>
 									<li class="password_rank"></li>
 									<li class="register_input" style="margin-top: 10px"><input
-										type="text"  style="display: block;"
+										type="password"  style="display: block;"
 										name="re_passwdv" id="re_passwdv" maxlength="20"
 										 placeholder="重复密码"
 										class="validate[required, minSize[6], maxSize[20]]" /> <input
