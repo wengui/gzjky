@@ -17,7 +17,7 @@ body{background:#ededed}
 .bgLogo_register{background:url(../images/icon/logo.jpg) left center no-repeat; width:1000px; height:90px; margin:0 auto;}
 .bgLogo_register li{float:left; font-family:"微软雅黑";}
 .tGraymax{text-align:left; width:205px; height:40px; font-size:24px; font-weight:500; color:#5a5a5a; line-height:40px; border-left:1px solid #aeaeae; margin:30px 0 30px 270px; display:inline; padding-left:25px;}
-.bgLogo_register a{font-size:14px; color:#3d9970; text-decoration:none;}
+.bgLogo_register a{font-size:16px; color:#3d9970; text-decoration:none;}
 .goHome{width:499px;text-align:right; line-height:120px;}
 
 /*----------------register_main---------------*/
