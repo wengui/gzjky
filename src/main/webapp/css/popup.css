@@ -16,14 +16,14 @@ li{list-style-type:none;}
 /*----------------bp---------------*/
 .tblack_bp{width:100%; float:left; height:30px; line-height:30px; text-align:left; color:#5a5a5a}
 .tgreen_bpPrompt{width:100%; float:left; height:30px; line-height:30px; text-align:left; color:#3c8dbc}
-.tgreen_bp{background:url(../images/icon/greenMax.png)/*tpa=http://www.995120.cn/images/icon/greenMax.png*/ right center no-repeat;width:100%;text-align:left; float:left;  line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
-.tblue_bp{background:url(../images/icon/blueMax.png)/*tpa=http://www.995120.cn/images/icon/blueMax.png*/ right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
-.tyellow_bp{background:url(../images/icon/yellowMax.png)/*tpa=http://www.995120.cn/images/icon/yellowMax.png*/ right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
-.torange_bp{background:url(../images/icon/orangeMax.png)/*tpa=http://www.995120.cn/images/icon/orangeMax.png*/ right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
-.tbrown_bp{background:url(../images/icon/brownMax.png)/*tpa=http://www.995120.cn/images/icon/brownMax.png*/ right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
-.tred_bp{background:url(../images/icon/redMax.png)/*tpa=http://www.995120.cn/images/icon/redMax.png*/ right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
-.tyellow_max_bp{background:url(../images/icon/tyellowMax.png)/*tpa=http://www.995120.cn/images/icon/tyellowMax.png*/ right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
-.tred_orange_bp{background:url(../images/icon/red_orangeMax.png)/*tpa=http://www.995120.cn/images/icon/red_orangeMax.png*/ right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
+.tgreen_bp{background:url(../images/icon/greenMax.png) right center no-repeat;width:100%;text-align:left; float:left;  line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
+.tblue_bp{background:url(../images/icon/blueMax.png) right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
+.tyellow_bp{background:url(../images/icon/yellowMax.png) right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
+.torange_bp{background:url(../images/icon/orangeMax.png)right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
+.tbrown_bp{background:url(../images/icon/brownMax.png) right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
+.tred_bp{background:url(../images/icon/redMax.png) right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
+.tyellow_max_bp{background:url(../images/icon/tyellowMax.png) right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
+.tred_orange_bp{background:url(../images/icon/red_orangeMax.png) right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
 .img_color{margin-right:10px;}
 .tgrey_bp{color:#aeaeae }
 

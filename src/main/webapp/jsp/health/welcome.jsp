@@ -1046,7 +1046,7 @@
 	 </div>
 	 <div class="popup_main">
 	   <ul>
-	     <li class="tgreen_bpPrompt" style="height: 250px;">
+	     <li class="tgreen_bpPrompt" style="height: 350px;">
 	       1.定义：<span style="color:#5a5a5a;">血压在一天中是波动的，存在血压变异。正常人的收缩压及舒张压呈明显的昼夜节律。人体由睡眠状态转为清醒并开始活动，血压从相对较低水平迅速上升至较高水平，这种现象即为“血压晨峰”。用户在规定的测压时间内测压2—3次，取其平均值作为该日的晨峰血压值。</span><br/>
 	     	2.意义：<span style="color:#5a5a5a;">清晨血压急剧升高或者异常血压晨峰现象，与心血管疾病发生有密切的关系。所以，晨峰血压是医生查看患者血压数据的重要指标。</span><br/>
 	       3.测压时间：<span style="color:#5a5a5a;">新疆地区早上8点—11点，中国其它地区早上6点—9点。</span><br/>
@@ -1059,7 +1059,7 @@
 
 
 <div class="modal fade" id="bloodstandard" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:10%" >
-  <div class="modal-dialog">	
+  <div class="modal-dialog"  style="width:750px">	
 	 <div class="popup_header">
 	   <ul>
 	     <li class="name_popupHeader">血压分级标准</li>

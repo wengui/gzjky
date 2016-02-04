@@ -26,9 +26,8 @@
 <style type="text/css">
 
 .popup_main ul li.huanhang{width:100%;float:left;   }
-.huanhang li input{height:20px; line-height: 20px; }
-.tgrey_popup1{width:16%;float:left; text-align:right;padding:5px 0; margin:-15px 0; }
-.tblack_popup1{width:83%; padding_left:1%;float:left; text-align:left;padding:5px 0;margin:-15px 0;}
+.tgrey_popup1{width:20%;float:left; text-align:right;padding:5px 0; margin:-15px 0; }
+.tblack_popup1{width:70%; padding_left:1%;float:left; text-align:left;padding:5px 0;margin:-15px 0;}
 
 </style>
 <script type="text/javascript" >
@@ -354,7 +353,7 @@
 		              <ul>
 			              <li class="tgrey_popup1">*咨询内容：</li>
 			              <li class="tblack_popup1">
-		              	  <textarea class="inputMin_informationModify validate[required]"  name="content" id="content" rows="5" cols="50" style="border: 1px solid #ccc"></textarea>
+		              	  <textarea class="inputMin_informationModify validate[required]"  name="content" id="content" rows="5" cols="40" style="border: 1px solid #ccc"></textarea>
 		           	   	  </li>	
 		           	  </ul>
 		           	</li>
@@ -391,7 +390,7 @@
 	              <ul>
 	              <li class="tgrey_popup1">咨询内容：</li>
 	              <li class="tblack_popup1">
-	              <textarea  name="content" id="content"  class="inputMin_informationModify" rows="5" cols="50" disabled="disabled" style="border: 1px solid #ccc"></textarea>
+	              <textarea  name="content" id="content"  class="inputMin_informationModify" rows="5" cols="40" disabled="disabled" style="border: 1px solid #ccc"></textarea>
 	           	   </li>
 	           	   </ul>
 	           	   </li>
@@ -409,7 +408,7 @@
 	              <ul>             
 	              <li class="tgrey_popup1">医生回复：</li>
 	              <li class="tblack_popup1">
-	              		<textarea  name="report" id="report"  class="inputMin_informationModify" rows="5" cols="50" disabled="disabled"  style="border: 1px solid #ccc"></textarea>
+	              		<textarea  name="report" id="report"  class="inputMin_informationModify" rows="5" cols="40" disabled="disabled"  style="border: 1px solid #ccc"></textarea>
 	              </li>
 	              </ul>
 	              </li>              
