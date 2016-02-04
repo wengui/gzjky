@@ -30,6 +30,12 @@
 	function startInit(){
 		$(".no-print").remove();
 		queryMemberFamilyDisease();
+		
+		$(window.parent.document).find("#memberFamilyDiseaseIframe").load(function(){
+			var main = $(window.parent.document).find("#memberFamilyDiseaseIframe");
+			var thisheight = $(document).height()+30;
+			main.height(thisheight);
+			});
 	};
 	
 	function queryMemberFamilyDisease(){
