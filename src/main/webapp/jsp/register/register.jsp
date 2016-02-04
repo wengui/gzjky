@@ -45,7 +45,7 @@
 		var login_id=$("#login_id").val();
 		if(login_id==""){
 			//$("#login_id").attr("style","color:#ccc;");
-			$("#login_id").val("用户名");
+			//$("#login_id").val("用户名");
 		}
 	}
 	
@@ -160,14 +160,14 @@
 			var cell_phone=$("#cell_phone").val();
 			if(cell_phone==""){
 				//$("#cell_phone").attr("style","color:#ccc;");
-				$("#cell_phone").val("手机号码");
+				//$("#cell_phone").val("手机号码");
 			}		
 	} 
 	function checkEmail(){
 		var email=$("#email").val();
 		if(email==""){
 			//$("#email").attr("style","color:#ccc;");
-			$("#email").val("邮箱");
+			//$("#email").val("邮箱");
 		}		
 	} 
 	
@@ -183,7 +183,7 @@
 		var check_code=$("#check_code").val();
 		if(check_code==""){
 			//$("#check_code").attr("style","color:#ccc;");
-			$("#check_code").val("验证码");
+			//$("#check_code").val("验证码");
 		}	
 	} 
 	
@@ -262,7 +262,7 @@
 </script>
 
 </head>
-<body>
+<body class="skin-blue">
 	<div class="register">
 	    <!--register_header start--> 
      <jsp:include page="/jsp/head.jsp" />
@@ -282,16 +282,16 @@
 							<div class="register_write_left">
 								<ul>
 									<li class="register_input" style="margin-top: 10px"><input
-										type="text" value="用户名" name="login_id" id="login_id"
+										type="text"  name="login_id" id="login_id"
 										maxlength="30"
 										class="validate[required, minSize[5], maxSize[30], funcCall[alphanumeric]]"
-										onblur="checkLoginId()" onfocus="showLoginIdPoint()" /></li>
+										onblur="checkLoginId()" placeholder="用户名" /></li>
 									<li class="register_prompt" id="login_id_point"
 										style="margin-top: 10px"><span class='tBluev'>*</span>长度为5-30个字符，只能由字母、数字以及“_”组成。
 									</li>
 									<li class="register_input" style="margin-top: 10px"><input
-										type="text" value="密码" style="display: block;" name="passwdv"
-										id="passwdv" maxlength="20" onfocus="showPasswdPoint()"
+										type="text"  style="display: block;" name="passwdv"
+										id="passwdv" maxlength="20" placeholder="密码"
 										class="validate[required, minSize[6], maxSize[20]]" /> <input
 										type="password" value="" style="display: none;" name="passwd"
 										id="passwd" maxlength="20"
@@ -310,9 +310,9 @@
 									</li>
 									<li class="password_rank"></li>
 									<li class="register_input" style="margin-top: 10px"><input
-										type="text" value="重复密码" style="display: block;"
+										type="text"  style="display: block;"
 										name="re_passwdv" id="re_passwdv" maxlength="20"
-										onfocus="showRePasswdPoint()"
+										 placeholder="重复密码"
 										class="validate[required, minSize[6], maxSize[20]]" /> <input
 										type="password" value="" style="display: none;"
 										name="re_passwd" id="re_passwd" maxlength="20"
@@ -322,15 +322,15 @@
 									
 									
 									<li class="register_input" style="margin-top: 10px"><input
-										type="text" value="邮箱" name="email" id="email"
+										type="text"  name="email" id="email"
 										class="validate[required, funcCall[email]]"
-										onfocus="showEmailPoint();" onblur="checkEmail();"
+										 onblur="checkEmail();"placeholder="邮箱"
 										maxlength="20" /></li>
 									
 									<li class="register_input" style="margin-top: 10px"><input
-										type="text" value="手机号码" name="cell_phone" id="cell_phone"
-										class="validate[required, funcCall[worldtelephone2]]"
-										onfocus="showCellPhonePoint();" onblur="checkCellPhone();"
+										type="text"  name="cell_phone" id="cell_phone"
+										class="validate[required, funcCall[worldtelephone2]]" placeholder="手机号码"
+										 onblur="checkCellPhone();"
 										maxlength="20" /></li>
 										
 										
@@ -339,9 +339,9 @@
 										id="send_check_code" title="发送验证码">发送验证码</a></li>
 									<!-- <li class="captcha_prompt" id="cell_phone_point">验证码已发送到您的手机，请注意查收，<span class="tBlue">60秒后重新发送</span></li> -->
 									<li class="register_input" style="margin-top: 10px"><input
-										type="text" value="验证码" name="check_code" id="check_code"
-										class="validate[required, funcCall[number]]"
-										onfocus="showCodePoint();" onblur="checkCode();" maxlength="8" /></li>
+										type="text" name="check_code" id="check_code"
+										class="validate[required, funcCall[number]]"placeholder="验证码"
+										 onblur="checkCode();" maxlength="8" /></li>
 									<!-- <li class="register_prompt" id="check_code_point"></li> -->
 									<li class="btn_reguster"><a href="javascript:void(0)"
 										href="javascript:void(0)" onclick="registerMember()"
