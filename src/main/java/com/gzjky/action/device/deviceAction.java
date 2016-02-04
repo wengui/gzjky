@@ -35,6 +35,7 @@ import com.gzjky.dao.readdao.JcXlbjSetReadMapper;
 import com.gzjky.dao.readdao.JcXybjSetReadMapper;
 import com.gzjky.dao.readdao.JcYytxSetReadMapper;
 import com.gzjky.dao.writedao.EquipmentAndPatientWriteMapper;
+import com.gzjky.dao.writedao.EquipmentWriteMapper;
 import com.gzjky.dao.writedao.JcBdhmSetWriteMapper;
 import com.gzjky.dao.writedao.JcCytxSetWriteMapper;
 import com.gzjky.dao.writedao.JcDsscSetWriteMapper;
@@ -64,6 +65,8 @@ public class deviceAction extends ActionSupport {
 	
 	@Autowired
 	EquipmentReadMapper equipmentReadMapper;
+	@Autowired
+	EquipmentWriteMapper equipmentWriteMapper;
 	@Autowired
 	EquipmentAndPatientReadMapper equipmentAndPatientReadMapper;
 	@Autowired
@@ -319,7 +322,7 @@ public class deviceAction extends ActionSupport {
 	
 	
 	/*
-	 * 阈值信息录入
+	 * 设备别名修改
 	 */
 	public String UpdateNickname() {
 		
@@ -359,7 +362,46 @@ public class deviceAction extends ActionSupport {
 
 	}
 	
-	
+	/*
+	 * sim卡号修改
+	 */
+	public String updateDeviceSim() {
+		
+		int result;
+		
+		// 页面参数取得
+		HttpServletRequest request = ServletActionContext.getRequest();
+		// 设备用户关系信息
+		String id = request.getParameter("device_id");
+		// 设备别名
+		String sim = request.getParameter("sim");
+		
+		//sim卡是否已被占用查询
+		
+		result=equipmentWriteMapper.updateSimByPrimarKey(Integer.valueOf(id), sim);
+
+		try {			
+			ModelMap modelMap = new ModelMap();
+			modelMap.setResult(result);
+			// 将java对象转成json对象
+			HttpServletResponse response = ServletActionContext.getResponse();
+			// 以下代码从JSON.java中拷过来的
+			response.setContentType("text/html");
+			PrintWriter out = null;
+			out = response.getWriter();
+			// 将java对象转成json对象
+			JSONObject jsonObject = JSONObject.fromObject(modelMap);// 将list转换为json数组
+			out.print(jsonObject);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "success";
+		
+
+	}
 	
 	
 	
