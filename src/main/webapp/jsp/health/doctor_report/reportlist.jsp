@@ -29,10 +29,8 @@
   var recordList = null;
   var type="";
   function startInit(){
-	// 分页框
-	  $('.commonPage').hide();
 	  // 提示信息
-	  $('.massage').show();
+	  $('.massage').hide();
 	  queryStart();
   }
   function queryStart(){
@@ -66,6 +64,10 @@
 			success:function(response){
 				// 数据取得
 				recordList = response.outBeanList;
+				if(recordList.length == 0){
+					$('.commonPage').hide();
+					$('.massage').show();
+				}
 				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
 			}
