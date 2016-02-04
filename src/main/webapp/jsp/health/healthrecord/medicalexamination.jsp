@@ -23,7 +23,8 @@
 <script src="<c:url value='/js/common.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script type="text/javascript">
-		function startInit(){
+
+function startInit(){
 			$('.massage').hide();
 	    	jQuery('#medicalExaminationForm').validationEngine("attach",
 	    			{

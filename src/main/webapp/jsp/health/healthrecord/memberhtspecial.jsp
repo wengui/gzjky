@@ -479,7 +479,7 @@
 					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
 						        <div class="col-lg-8 col-xs-8">
 						        	<lable class="col-lg-4 col-xs-4 text-right form-span">*最高收缩压：</lable>
-	                 				<input class="col-lg-6 col-xs-6 display-input validate[required,funcCall[number2]]"  type="text"   id="sbp"  name="sbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg      
+	                 				<input class="col-lg-6 col-xs-6 display-input validate[required,funcCall[number2]]"  type="text" placeholder="单位 mmHg"  id="sbp"  name="sbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>
 						        </div>
 						        <div class="col-lg-1 col-xs-1">&nbsp;</div>
 						        </div>
@@ -488,8 +488,7 @@
 					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
 						        <div class="col-lg-8 col-xs-8">
 						        	<span class="col-lg-4 col-xs-4 text-right form-span">*最高舒张压：</span>
-	                 				<input class="col-lg-6 col-xs-6 display-input validate[required,funcCall[number2]]"  type="text"   id="dbp"  name="dbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>mmHg          
-                 					
+	                 				<input class="col-lg-6 col-xs-6 display-input validate[required,funcCall[number2]]"  type="text" placeholder="单位 mmHg" id="dbp"  name="dbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>
 						        </div>
 						        <div class="col-lg-1 col-xs-1">&nbsp;</div>
 						        </div>
