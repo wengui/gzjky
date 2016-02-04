@@ -41,7 +41,7 @@
 		var login_id=$("#login_id").val();
 		if(login_id==""){
 			//$("#login_id").attr("style","color:#ccc;");
-			$("#login_id").val("用户名");
+			//$("#login_id").val("用户名");
 		}
 		if(login_id.length<5||login_id.length>30){
 			$("#login_id_point").html("<span class='tRed'>*</span>用户名长度在5-30之间！");			
@@ -83,7 +83,7 @@
 			
 			if(mail==""){
 				//$("#mail").attr("style","color:#ccc;");
-				$("#mail").val("绑定邮箱地址");
+				//$("#mail").val("绑定邮箱地址");
 				$("#mail_point").html("<span class='tRed'>*</span>请输入绑定邮箱地址！");
 				return false;
 			}
@@ -115,7 +115,7 @@
 			var cell_phone=$("#cell_phone").val();
 			if(cell_phone==""){
 				//$("#cell_phone").attr("style","color:#ccc;");
-				$("#cell_phone").val("绑定手机号码");
+				//$("#cell_phone").val("绑定手机号码");
 				return false;
 			}
 			if(!c.test(cell_phone)){
@@ -187,7 +187,7 @@
 		var check_code=$("#check_code").val();
 		if(check_code==""){
 			//$("#check_code").attr("style","color:#ccc;");
-			$("#check_code").val("验证码");
+			//$("#check_code").val("验证码");
 		}
 		if(!c.test(check_code)){
 			$("#check_code_point").html("<span class='tRed'>*</span>请输入正确的验证码！");
