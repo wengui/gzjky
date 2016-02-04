@@ -411,7 +411,7 @@
 		function showMedicine(obj){
 			var url = "medicine.jsp";
 			medical_obj = obj
-			window.open( url ,'eeeee','fullscreen=no, resizable=no, status=no, z-look=yes, titlebar=no, scrollbars=no, toolbar=no, menubar=no, location=no, top=200, left=200, width=750, height=550') ;
+			window.open( url ,'eeeee','fullscreen=no, resizable=no, status=no, z-look=yes, titlebar=no, scrollbars=no, toolbar=no, menubar=no, location=no, top=200, left=200, width=900, height=800') ;
 		}
 		
 		function edit_htSpecial(obj){
