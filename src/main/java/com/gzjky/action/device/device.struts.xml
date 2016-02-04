@@ -60,6 +60,11 @@
 	<action name="UpdateNickname" class="com.gzjky.action.device.deviceAction" method="UpdateNickname">
 
 	</action>
+	<!-- sim卡更新-->
+	<action name="updateDeviceSim" class="com.gzjky.action.device.deviceAction" method="updateDeviceSim">
+
+	</action>
+	
 	
 	</package>
 </struts>

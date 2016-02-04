@@ -41,7 +41,7 @@
 		var login_id=$("#login_id").val();
 		if(login_id==""){
 			//$("#login_id").attr("style","color:#ccc;");
-			$("#login_id").val("用户名");
+			//$("#login_id").val("用户名");
 		}
 		if(login_id.length<5||login_id.length>30){
 			$("#login_id_point").html("<span class='tRed'>*</span>用户名长度在5-30之间！");			
@@ -83,7 +83,7 @@
 			
 			if(mail==""){
 				//$("#mail").attr("style","color:#ccc;");
-				$("#mail").val("绑定邮箱地址");
+				//$("#mail").val("绑定邮箱地址");
 				$("#mail_point").html("<span class='tRed'>*</span>请输入绑定邮箱地址！");
 				return false;
 			}
@@ -115,7 +115,7 @@
 			var cell_phone=$("#cell_phone").val();
 			if(cell_phone==""){
 				//$("#cell_phone").attr("style","color:#ccc;");
-				$("#cell_phone").val("绑定手机号码");
+				//$("#cell_phone").val("绑定手机号码");
 				return false;
 			}
 			if(!c.test(cell_phone)){
@@ -187,7 +187,7 @@
 		var check_code=$("#check_code").val();
 		if(check_code==""){
 			//$("#check_code").attr("style","color:#ccc;");
-			$("#check_code").val("验证码");
+			//$("#check_code").val("验证码");
 		}
 		if(!c.test(check_code)){
 			$("#check_code_point").html("<span class='tRed'>*</span>请输入正确的验证码！");
@@ -348,20 +348,20 @@
             <div class="password_choice_left"></div>
             <div class="password_choice_right">
               <ul>
-                <li class="register_input"><input type="text" value="用户名" name="login_id" style="height:42px" id="login_id"   maxlength="30" onblur="checkLoginId()" onfocus="showPoint(this)"/></li>
+                <li class="register_input"><input type="text" placeholder="用户名" name="login_id" style="height:42px" id="login_id"   maxlength="30" onblur="checkLoginId()" onfocus="showPoint(this)"/></li>
                 <li class="register_prompt"  id="login_id_point"></li>
                 <li class="register_input"><select name="back_way" id="back_way" onchange="changeBackWay()"><option selected="selected" value="0">通过手机找回密码</option><option value="1">通过邮箱找回密码</option>
                 </select></li>
                 <div id="password_phone" style="">
-	                <li class="register_input"><input type="text" value="绑定手机号码" name="cell_phone" style="height:42px"  id="cell_phone" onblur="checkCellPhone()" onfocus="showPoint(this)"  maxlength="20"/></li>
+	                <li class="register_input"><input type="text" placeholder="绑定手机号码" name="cell_phone" style="height:42px"  id="cell_phone" onblur="checkCellPhone()" onfocus="showPoint(this)"  maxlength="20"/></li>
 	                <li class="captcha"><a href="javascript:void(0)" onclick="sendCellPhone(this);" id="send_check_code" title="发送验证码">发送验证码</a></li>
 	                <li class="captcha_prompt" id="cell_phone_point"></li>
-	                <li class="register_input"><input type="text" value="验证码"  name="check_code" style="height:42px"  id="check_code" onblur="checkCheckCode()" onfocus="showPoint(this)" maxlength="8"/></li>
+	                <li class="register_input"><input type="text"  placeholder="验证码" name="check_code" style="height:42px"  id="check_code" onblur="checkCheckCode()" onfocus="showPoint(this)" maxlength="8"/></li>
 	                <li class="register_prompt" id="check_code_point"></li>
 	            </div>
                 <!-- <li class="register_prompt"></li> -->
                 <div id="password_mail" style="display:none">
-	                <li class="register_input"><input type="text" value="绑定邮箱地址" name="mail" style="height:42px"  id="mail" onblur="checkMail()" onfocus="showPoint(this)"/></li>
+	                <li class="register_input"><input type="text"  placeholder="绑定邮箱地址" name="mail" style="height:42px"  id="mail" onblur="checkMail()" onfocus="showPoint(this)"/></li>
 	                <li class="register_prompt" id="mail_point"></li>
 	                <li class="captcha_prompt" id="result_point"></li>
 	            </div>

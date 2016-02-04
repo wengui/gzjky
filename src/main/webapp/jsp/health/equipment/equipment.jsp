@@ -162,10 +162,10 @@
 			var dia_bottom = dia_bottom==null?'':dia_bottom;
 			var dia_top = dia_top==null?'':dia_top;
 			
-		$("#blood_set_"+i).html('收缩压：<input type="input" style="width:25px;height:30px;border:1px solid #bbb" value="'+shr_bottom+'"  id="shrl_'+i+'"/>-'
-				+'<input type="input" style="width:25px;height:30px;border:1px solid #bbb" value="'+shr_top+'"  id="shrh_'+i+'"/>mmHg,'
-				+'舒张压：<input type="input" style="width:25px;height:30px;border:1px solid #bbb" value="'+dia_bottom+'"  id="dial_'+i+'"/>-'
-				+'<input type="input" style="width:25px;height:30px;border:1px solid #bbb"  value="'+dia_top+'"  id="diah_'+i+'"/>mmHg'
+		$("#blood_set_"+i).html('收缩压：<input type="input" style="width:40px;height:30px;border:1px solid #bbb" value="'+shr_bottom+'"  id="shrl_'+i+'"/>-'
+				+'<input type="input" style="width:40px;height:30px;border:1px solid #bbb" value="'+shr_top+'"  id="shrh_'+i+'"/>mmHg,'
+				+'舒张压：<input type="input" style="width:40px;height:30px;border:1px solid #bbb" value="'+dia_bottom+'"  id="dial_'+i+'"/>-'
+				+'<input type="input" style="width:40px;height:30px;border:1px solid #bbb"  value="'+dia_top+'"  id="diah_'+i+'"/>mmHg'
 				+"<a href='javascript:void(0)' class='pl_equipmentMain'><span onclick='editThreshold("+i+");'>保存</span></a>");
 	}
 	var regx = /^\d+$/;
@@ -262,9 +262,9 @@
 			$.alert("你输入的sim卡格式不对");
 			return;
 		}
-		var paramt="sim="+code+"&unit_id="+deviceBaseInfoList[i].unit_id+"&cluster_id="+deviceBaseInfoList[i].cluster_id+"&unit_type="+deviceBaseInfoList[i].unit_type;
+		var paramt="sim="+code+"&device_id="+deviceBaseInfoList[i].id;
 			xmlHttp =$.ajax({
-			url : "/deviceBaseInfo/updateDeviceSim.action",
+			url : "/gzjky/device/updateDeviceSim.do",
 			async : true,
 			data : paramt,
 			dataType : "json",
@@ -273,9 +273,9 @@
 				$.alert("发生异常");
 			},
 			success : function(response) {
-				var modelMap = response.modelMap;
-				var state = modelMap.state;
-				if(state!='0'){
+				//var modelMap = response.modelMap;
+				var state = response.result;
+				if(state!='1'){
 					$.alert("该sim卡已被使用，请输入新的sim卡");
 				}else{
 					$.alert('操作成功');

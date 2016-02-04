@@ -55,8 +55,8 @@
 			return false;
 		}
 		
-		showScreenProtectDiv(1); 
-		showLoading(); 
+		showScreenProtectDiv(1);
+		showLoading();
 
 		var para="device_sid="+device_sid;
 		$.ajax({
@@ -78,6 +78,7 @@
 				devicebind_count=list.length;
 				if(deviceBaseInfo==null){
 					$.alert("设备序列号不存在！");		
+					$("#commit").attr("disabled",true); 
 				}
 	
 				else{				
@@ -86,7 +87,8 @@
 					device_id = deviceBaseInfo.id;	
 					if(device_ver=="108"){	
 						if(list.length >1){
-							$.alert("该设备已绑定两个账户！");		
+							$.alert("该设备已绑定两个账户！");	
+							$("#commit").attr("disabled",true); 
 						}	
 						else if(list.length == 0){
 							var str="";
@@ -95,10 +97,12 @@
 							str+="<input type='text' readonly='readonly' "+"value="+ "${sessionScope.Patient.pname}"+" id='member_login_id1'  name='member_login_id1'   maxlength='30' />";	
 							str+="</li>";
 							$("#new_user").html(str);	
+							$("#commit").attr("disabled",false); 
 						}
 						else if(list.length == 1){
 							if("${sessionScope.Patient.pid}"==list[0].id){
 								$.alert("该设备已被绑定！");	
+								$("#commit").attr("disabled",true); 
 							}
 							else{
 								var str="";
@@ -110,13 +114,15 @@
 								str+="<li class='register_input'>";
 								str+="<input type='text' readonly='readonly'"+"value="+"${sessionScope.Patient.pname}"+" id='member_login_id2'  name='member_login_id2' maxlength='30'  />";
 								str+="</li>";
-								$("#new_user").html(str);	
+								$("#new_user").html(str);
+								$("#commit").attr("disabled",false); 
 							}						
 						}						    
 					}                                    		              
 					else{
 						if(list.length >0){
-							$.alert("该设备已绑定一个账户！");		
+							$.alert("该设备已绑定一个账户！");	
+							$("#commit").attr("disabled",true); 
 						}
 						else{
 							
@@ -127,7 +133,7 @@
 								str+="</li>";
 								$("#new_user").html(str);	
 						
-							
+								$("#commit").attr("disabled",false); 
 						}
 						  
 					} 
@@ -241,7 +247,7 @@
 								<div class="form-group">
 									<div id="new_user" name="new_user"></div>
 								</div>
-								<li><a href="javascript:void(0)" class="btn btn-success"
+								<li><a href="javascript:void(0)" id="commit" class="btn btn-success" disabled=true
 									onclick="deviceBinding()"><span>提交</span></a> <a
 									class="btn btn-success" href="javascript:void(0)"
 									onclick="returnEquipment()"><span>返回</span></a></li>
@@ -258,7 +264,7 @@
 		</form>
 	</div>
 	<div id="divloading">
-		<img src="../../../images/public/blue-loading.gif" />
+		<img src="/gzjky/images/public/blue-loading.gif" />
 	</div>
 
 	<div id="transparentDiv"></div>
