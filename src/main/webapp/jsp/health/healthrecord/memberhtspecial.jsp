@@ -44,6 +44,12 @@
 	    			}
 	    	);
 			
+	    	$(window.parent.document).find("#memberHtSpecialIframe").load(function(){
+				var main = $(window.parent.document).find("#memberHtSpecialIframe");
+				var thisheight = $(document).height()+30;
+				main.height(thisheight);
+				});
+	    	
 		};
 		
 		function queryHtspecial(){
