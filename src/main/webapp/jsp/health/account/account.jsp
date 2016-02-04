@@ -44,6 +44,10 @@
   var endDate="";  
   
   function startInit(){
+	  // 分页框
+	  $('.commonPage').hide();
+	  // 提示信息
+	  $('.massage').show();
 	  //queryStart();
 	  //queryBalance();
   }
@@ -311,7 +315,7 @@
               </div>
 			  <div class="row">
 			  	<br/>
-			  	<div class="col-lg-11">          
+			  	<div class="col-lg-11 col-xs-11">          
 	          		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="faceTable">
 				            <colgroup>
 				              <col width="35%" />
@@ -326,6 +330,7 @@
 				              <th>结束日期</th>
 				            </tr>
 				          </table>
+				          <div class="massage text-center col-lg-11 col-xs-11" style="color: red;display:none;">对不起，没有数据。</div>
 				</div>
 			  </div>
 			<script type="text/javascript">
@@ -357,7 +362,7 @@
 					}
 				</script>
 			
-			<div class="row">
+			<div class="row commonPage">
 				<br/>
 				<div class="col-lg-4" style="padding-left:25px">
 					共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页

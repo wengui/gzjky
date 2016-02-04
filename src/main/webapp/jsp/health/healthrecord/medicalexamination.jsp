@@ -24,6 +24,7 @@
 <script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
 <script type="text/javascript">
 		function startInit(){
+			$('.massage').hide();
 	    	jQuery('#medicalExaminationForm').validationEngine("attach",
 	    			{
 	    				promptPosition:"centerRight:0,-10",
@@ -64,6 +65,10 @@
 				},success:function(response){
 					
 					recordList = response.outBeanList;
+					if(recordList.length == 0){
+						$('.commonPage').hide();
+						$('.massage').show();
+					}
 					$.fn.page.settings.count = response.recordTotal;
 					page($.fn.page.settings.currentnum);
 				}
@@ -201,6 +206,8 @@
 							$.fn.page.settings.currentnum = 1;
 							//pagemodify("add");
 				    	}
+				    	$('.commonPage').show();
+						$('.massage').hide();
 				    	closeDiv_medicalExamination();
 				    	query();
 				    }else if(status == "0"){
@@ -314,6 +321,7 @@
         <!-- <th nowrap="nowrap" title="微量尿白蛋白">微量尿白蛋白</th> -->
       </tr>
     </table>
+    <div class="massage text-center col-lg-11 col-xs-11" style="color: red;display:none;">对不起，没有数据。</div>
   </div>
   
 
@@ -346,7 +354,7 @@
 		}
 	</script>
 
-		<div class="col-lg-11 col-xs-11">
+		<div class="col-lg-11 col-xs-11 commonPage">
 			<br/>
 			<div class="col-lg-4 col-xs-4" style="padding-left:25px">
 				共<span  id="showcount"></span>条信息，第<span id="showcurrentnum"></span>页，共<span  id="showpagecount"></span>页
