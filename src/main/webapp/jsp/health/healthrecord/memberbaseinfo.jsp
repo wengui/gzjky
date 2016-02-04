@@ -551,10 +551,7 @@
             var obj_img = document.getElementById('tempimg');  
             obj_img.dynsrc=obj_file.value;  
             filesize = obj_img.fileSize;  
-        }else{  
-            alert(tipMsg);  
-        return false;  
-        }  
+        }
         
         if(filesize>maxsize){  
             alert(errMsg);  
@@ -579,7 +576,6 @@
 		var formData = new FormData();
 		formData.append('file', $('#filePath')[0].files[0]);
         var requestUrl = "/gzjky/imageUploadAction/uploadHeadImage.do";
-        var para = "filePath="+filePath ;
         xmlHttp = $.ajax({
  			url: requestUrl,
  			data:formData,
