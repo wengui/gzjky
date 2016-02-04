@@ -208,7 +208,7 @@
             <div class="password_choice_right">
               <ul>
                 <li class="register_input">
-                	<input type="text" value="新密码"  style="display:block;" name="passwdv" id="passwdv" maxlength="20" onfocus="showPasswdPoint()"/>
+                	<input type="text"  style="display:block;" name="passwdv" id="passwdv" maxlength="20" onfocus="showPasswdPoint()"/ placeholder="新密码">
                 	<input type="password"  value=""  style="display:none;"  name="passwd" id="passwd" maxlength="20" onkeyup="pwdStatusCheck()" onblur="checkPasswd()"/>
                 	<div id="pwdTips" class="tips" style="position:relative">
 						<div id="pwdStatus" class="pswState pswState-poor" style="display:none;">
@@ -222,7 +222,7 @@
                 <li class="register_prompt" id="passwd_point"></li>
                 <li class="password_rank"></li>
                 <li class="register_input">
-                	<input type="text"  value="重复新密码" style="display:block;" name="re_passwdv" id="re_passwdv" maxlength="20" onfocus="showRePasswdPoint()"/>
+                	<input type="text" style="display:block;" name="re_passwdv" id="re_passwdv" maxlength="20" onfocus="showRePasswdPoint()" placeholder="重复新密码"/>
                 	<input type="password" value=""  name="re_passwd" style="display:none;"  id="re_passwd" maxlength="20" onblur="checkRePasswd()"/> 	
                 </li>
                 <li class="register_prompt" id="re_passwd_point"></li>
