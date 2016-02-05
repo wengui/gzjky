@@ -14,6 +14,7 @@
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script type="text/javascript">
    var hly_url=  "http://gzjky.sh-sdhr.com/upload/Electrocardiograms/";
+   menuId = "#ecg";
 	function query(){
 		var url = "/gzjky/historyAction/queryEcgRecordDetail.do";
 		var para = "id=" + ${param.id};

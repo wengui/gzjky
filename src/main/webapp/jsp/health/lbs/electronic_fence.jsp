@@ -646,7 +646,7 @@ function safe_island_del() {
           </section>
 
           <!-- Main content -->
-          <section class="content">
+          <section class="">
 			 <div>
 		        <div class="row">
                  <div class="col-md-6">
