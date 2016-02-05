@@ -296,7 +296,7 @@ function startInit(){
       		<iframe id="memberIllnessHistoryIframe"  name = "memberIllnessHistoryIframe" src=""  frameborder="0" width="100%"  scrolling="no"  height="600px" ></iframe>
       </div>
       <div class="hide_healthRecords">
-      		<iframe id="memberHtSpecialIframe"  name = "memberHtSpecialIframe" src=""  frameborder="0" width="100%" scrolling="auto"></iframe>
+      		<iframe id="memberHtSpecialIframe"  name = "memberHtSpecialIframe" src=""  frameborder="0" width="100%" scrolling="no" height="800px" ></iframe>
       </div>
       
       <div class="hide_healthRecords">

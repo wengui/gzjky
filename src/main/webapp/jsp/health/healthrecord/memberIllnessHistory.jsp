@@ -155,7 +155,7 @@
 		  
 		    
 		    td=tr.insertCell(4);
-		    td.innerHTML =  "<a href='javascript:void(0)' onclick='showMemberIllness("+i+")'>查看</a>|&nbsp;&nbsp;<a href='javascript:void(0)' onclick='deleteMemberIllnessHistory("+i+")'>删除</a>";
+		    td.innerHTML =  "<a href='javascript:void(0)' class='btn btn-info' onclick='showMemberIllness("+i+")'><i class='fa fa-fw fa-eye'></i>查看</a><a href='javascript:void(0)' class='btn btn-info' onclick='deleteMemberIllnessHistory("+i+")'><i class='fa fa-fw fa-trash-o'></i>删除</a>";
 		   
 		    
 	   } catch(e){	   

@@ -440,28 +440,22 @@
   	<!-- box box-info start -->
 	<div class="box box-info">
 	
-			<div class="col-lg-12 col-xs-12">
-              	<span class="col-lg-2 col-xs-2 div-padding-title" style="padding-left:5px;">高血压专项</span>
-              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:45px;">
-					 <div class="col-lg-10 col-xs-10 text-right">
-					      <a class="btn btn-success" id="editImage" href="javascript:void(0)" onclick="edit_htSpecial(this)()" id="editHtspecialBtn"><i class="fa fa-edit"></i> 编辑</a>
-					  </div>
-				</div>
-              </div>	
+			<div class="box-header">
+					<h3 class="box-title">高血压专项</h3>
+					<a id="editImage" href="javascript:void(0)" onclick="edit_htSpecial(this)" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+					<h3 class="btn btn-success"><i class="fa fa-edit"></i> 编辑</h3></a>
+			</div>
+				
               <div class="box-body">
-	 			         <div class="row">
-					         <div class="col-lg-11 col-xs-11">
-					         	<div class="col-lg-12 col-xs-12">
-					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        <div class="col-lg-8 col-xs-8">
-						        	<span class="col-lg-4 col-xs-4 text-right form-span" >*患高血压日期：</span>
-						        	<input class="col-lg-6 col-xs-6 display-input validate[required]" type="text"  id="havaBloodDate"  name="havaBloodDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-prompt-position="centerRight:0,-5"/>
-						        </div>
-						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        </div>
+					         <div class="row">
+					         	<div class="col-lg-6 col-xs-6" style="padding-top:35px;">
+					         	
 						        <div class="col-lg-12 col-xs-12">
-					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        <div class="col-lg-8 col-xs-8">
+						        	<span class="col-lg-4 col-xs-4 text-right form-span" >*患高血压日期：</span>
+						        	<input class="col-lg-8 col-xs-8 display-input validate[required]" type="text"  id="havaBloodDate"  name="havaBloodDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-prompt-position="centerRight:0,-5"/>
+						        </div>
+						        
+						        <div class="col-lg-12 col-xs-12">
 						        	<lable class="col-lg-4 col-xs-4 text-right form-span">*是否用药：</lable>
 						        	<label class="checkbox-inline col-lg-2 col-xs-2">
 	                 				<input type="radio" name="isUseMedicine" value="1" >是</input>
@@ -470,65 +464,42 @@
 		            				<input type="radio"  name="isUseMedicine" value="0">否</input>
 		            				</label>
 						        </div>
-						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        </div>
+						        
 
-								<div class="col-lg-12 col-xs-12">
-					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        <div class="col-lg-8 col-xs-8">
+						        <div class="col-lg-12 col-xs-12">
 						        	<span class="col-lg-4 col-xs-4 text-right  form-span">*疗效及副作用：</span>
-	                 				<textarea rows="10" cols="10" id="effect"  name="effect"  class="col-lg-6 col-xs-6 display-textarea validate[required,funcCall[includespecialchar]]"  data-prompt-position="topRight:-200,0"></textarea>    
-						        </div>
-						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
+	                 				<textarea rows="10" cols="10" id="effect"  name="effect"  class="col-lg-8 col-xs-8 display-textarea validate[required,funcCall[includespecialchar]]"  data-prompt-position="topRight:-200,0"></textarea>    
 						        </div>
 						        
 						        <div class="col-lg-12 col-xs-12">
-					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        <div class="col-lg-8 col-xs-8">
 						        	<lable class="col-lg-4 col-xs-4 text-right form-span">*最高收缩压：</lable>
-	                 				<input class="col-lg-6 col-xs-6 display-input validate[required,funcCall[number2]]"  type="text" placeholder="单位 mmHg"  id="sbp"  name="sbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>
-						        </div>
-						        <div class="col-lg-1 col-xs-1">&nbsp;</div>
+	                 				<input class="col-lg-8 col-xs-8 display-input validate[required,funcCall[number2]]"  type="text" placeholder="单位 mmHg"  id="sbp"  name="sbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>
 						        </div>
 						        
 						        <div class="col-lg-12 col-xs-12">
-					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        <div class="col-lg-8 col-xs-8">
 						        	<span class="col-lg-4 col-xs-4 text-right form-span">*最高舒张压：</span>
-	                 				<input class="col-lg-6 col-xs-6 display-input validate[required,funcCall[number2]]"  type="text" placeholder="单位 mmHg" id="dbp"  name="dbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>
+	                 				<input class="col-lg-8 col-xs-8 display-input validate[required,funcCall[number2]]"  type="text" placeholder="单位 mmHg" id="dbp"  name="dbp"  maxlength="9"  data-prompt-position="centerRight:40,-5"/>
 						        </div>
-						        <div class="col-lg-1 col-xs-1">&nbsp;</div>
-						        </div>
+						        
 						        <div class="col-lg-12 col-xs-12">
-					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        <div class="col-lg-8 col-xs-8">
 						        	<span class="col-lg-4 col-xs-4 text-right form-span">血压等级：</span>
-						        	<select id="BPLevel" class="col-lg-6 col-xs-6 display-input" ></select>
+						        	<select id="BPLevel" class="col-lg-8 col-xs-8 display-input" ></select>
 						        </div>
-						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        </div>
+						        
 						        <div class="col-lg-12 col-xs-12">
-					         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        <div class="col-lg-8 col-xs-8">
 						        	<span class="col-lg-4 col-xs-4 text-right form-span">风险等级：</span>
-						        	<select id="RiskLevel" class="col-lg-6 col-xs-6 display-input" ></select>
+						        	<select id="RiskLevel" class="col-lg-8 col-xs-8 display-input" ></select>
 						        </div>
-						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
 						        </div>
+						        
+						        <div class="col-lg-6 col-xs-6" style="padding-top:0px;">
 						        <div class="col-lg-12 col-xs-12">
-						        <div class="col-lg-12 col-xs-12">
-						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        <div class="col-lg-8 col-xs-8">
-						        	<span class="col-lg-4 col-xs-4 text-right form-span">*当前服用药物：</span>
-						        	<span class="col-lg-6 col-xs-6">&nbsp;</span>
+						        	<span class="col-lg-12 col-xs-12 text-center form-span">*当前服用药物：</span>
 						        </div>
-						        <div class="col-lg-2 col-xs-2">&nbsp;</div>
-						        </div>
-						        <div class="col-lg-12 col-xs-12">
-						        	<div class="col-lg-3 col-xs-3">&nbsp;</div>
-						        	<div class="col-lg-8 col-xs-8 table-medicine">
+						        
+						        	<div class="col-lg-12 col-xs-12 table-medicine">
     								<div class="from-med-tab">
-    									<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="addMed()"><i class="fa fa-plus-square"></i> 继续添加 </a> 
+    									<a href="javascript:void(0)" class="btn btn-success del-show-status" onclick="addMed()"><i class="fa fa-plus-square"></i> 新增 </a> 
     								</div>
     								<table cellpadding="0" cellspacing="0" width="100%" class="from-med-table2" id="med_table">
     									<colgroup>
@@ -545,11 +516,8 @@
     									</tr>
     								</table>
     								</div>
-    							</div>
 						        </div>
-						        
 				        </div>
-			        </div>
 			     </div>
 			     <!-- box box-info End -->
 			    </div>
