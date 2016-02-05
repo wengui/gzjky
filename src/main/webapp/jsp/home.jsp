@@ -18,8 +18,6 @@
 <link rel="stylesheet" href="<c:url value='/css/index_common.css'/>"	type="text/css" />
 <link rel="stylesheet" href="<c:url value='/css/popup.css'/>"	type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
-
 
 <script type="text/JavaScript">
 	menuId = "#home";
@@ -314,9 +312,7 @@
 		<aside class="right-side">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>
-					 <small>最近登录 : ${sessionScope.online}</small>
-				</h1>
+				<h1>最近登录 : ${sessionScope.online}</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
 					<li class="active">个人信息</li>
