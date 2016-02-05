@@ -10,8 +10,6 @@
 .hide{display:none;}
 
 /*----------------bloodPressure_history---------------*/
-.bp_history{ margin-top:24px;font-family:"微软雅黑";}
-.bp_accouint{ font-family:"微软雅黑";}
 .title_BPhistory{ float:left;}
 .tgreen_title_BPhistory{font-size:30px;float:left; text-align:left; font-weight:500; color:#00a65a; height:48px; line-height:48px; width:320px;font-family:"微软雅黑"}
 .select_BPhistory{float:left; text-align:right; padding-top:10px; height:45px;}
@@ -47,8 +45,8 @@
 /*----------------table_page---------------*/
 .index_table{margin:10px 15px 10px 15px;float:left;width:98%;}
 .bPhistory_table{float:left; text-align:left;font-family:"微软雅黑";width:100%;margin-left:10px}
-.bPhistory_table a{color:#3c8dbc; margin-right:15px; text-decoration:none;width:100%;}
-.bPhistory_table th{background-color:#f3f4f5; height:40px; padding-left:20px; line-height:40px;  text-align:left; font-size:18px}
+.bPhistory_table a{color:#fff;width:78px; margin-right:5px; text-decoration:none;}
+.bPhistory_table th{background-color:#f3f4f5; height:40px; padding-left:20px; line-height:40px;  text-align:left;font-size:20px}
 .bPhistory_table td{color:#5a5a5a; padding:5px 0 5px 20px; line-height:18px;}
 .even{background:#f7f7f7}
 .odd{background:#fff}
