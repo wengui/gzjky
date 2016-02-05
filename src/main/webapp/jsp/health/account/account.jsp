@@ -304,15 +304,10 @@
 		  <div class="box box-info">
               <div class="box-header">
                   <h3 class="box-title">已购套餐</h3>
+               	  <a href="/gzjky/menuControlAction/boughtMeal.do" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+				  <h3 class="btn btn-success"><i class="fa fa-shopping-cart"></i> 购买套餐</h3></a>
               </div>		
               <div class="box-body">
-              <div class="row">
-	                 <div class="col-lg-12">
-		                  <a class="btn btn-success" style="margin-left:85%" href="/gzjky/menuControlAction/boughtMeal.do">
-                                 <i class="fa fa-shopping-cart"></i>&nbsp;购买套餐
-                           </a>
-	                 </div><!-- /.col-lg-3 -->
-              </div>
 			  <div class="row">
 			  	<br/>
 			  	<div class="col-lg-11 col-xs-11">          

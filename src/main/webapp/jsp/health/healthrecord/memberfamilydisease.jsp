@@ -11,31 +11,19 @@
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
-<script src="<c:url value='/js/jquery/jquery-1.8.2.min.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/validationEngine/languages/jquery.validationEngine-zh_CN.js'/>" type="text/javascript" charset="utf-8"></script>
-<script src="<c:url value='/js/validationEngine/jquery.validationEngine.js'/>" type="text/javascript" charset="utf-8"></script>
-<script src="<c:url value='/js/page/validationEngine-additional-methods.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.ui.draggable.js'/>" type="text/javascript"></script><!-- 拖动函数，不需要可以去掉 -->
 <script src="<c:url value='/js/base.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
-<script src="<c:url value='/js/page/jquery.page.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
-<script src="<c:url value='/js/page/jquery.hwin.js'/>"  type="text/javascript"></script>
+<script src="<c:url value='/js/dictionaryInfo.js'/>" type="text/javascript"></script>
 <script type="text/javascript">
 	var family_form = "family_form";
-	var edit_image = window.parent.edit_image;
-	var save_image = window.parent.save_image;
+	var edit_image = "<h3 class='btn btn-success'><i class='fa fa-edit'></i> 编辑</h3>";
+	var save_image = "<h3 class='btn btn-success'><i class='fa fa-save'></i> 保存</h3>";
 	function startInit(){
 		$(".no-print").remove();
 		queryMemberFamilyDisease();
-		
-		$(window.parent.document).find("#memberFamilyDiseaseIframe").load(function(){
-			var main = $(window.parent.document).find("#memberFamilyDiseaseIframe");
-			var thisheight = $(document).height()+30;
-			main.height(thisheight);
-			});
+
 	};
 	
 	function queryMemberFamilyDisease(){
@@ -557,18 +545,19 @@
         <!--basic_information start-->
         <div>
         <div class="box box-info">
-             <div class="col-lg-12 col-xs-12">
-              	<span class="col-lg-2 col-xs-2 div-padding-title">家族遗传史</span>
-              	<div class="form-group col-lg-8 col-xs-8 text-right div-padding-top" style="padding-right:3px;">
-					 <div class="col-lg-10 col-xs-10 text-right">
-					      <a class="btn btn-success" id="editImage" href="javascript:void(0)" onclick="edit_family(this)"><i class="fa fa-edit"></i> 编辑</a>
-					  </div>
-				</div>
-              </div>	
+        
+        	<div class="box-header">
+							<h3 class="box-title">家族遗传史</h3>
+							
+						<a  id="editImage" href="javascript:void(0)" onclick="edit_family(this)" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+							 <h3 class='btn btn-success'><i class="fa fa-edit"></i>编辑 </h3></a>
+						
+						</div>
+			<!-- /.box-header -->
+           
               <div class="box-body">
 	 			         <div class="row">
-	 			         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
-					         <div class="col-lg-8 col-xs-8">
+
 						        <div class="col-lg-10 col-xs-10">
 						        	<span class="col-lg-4 col-xs-4 text-right form-span" >高血压：</span>
 	                 				<select class="col-lg-8 col-xs-8 display-input-add" id="heighBloodPressure"  name="heighBloodPressure" onchange="changeHeighBloodPressure()">
@@ -628,10 +617,10 @@
 	                 				</div>          
                  					
 						        </div>
-				        </div>
+				   
 				        <div class="col-lg-2 col-xs-2">&nbsp;</div>
 			        </div>
-			     </div>
+
 			    </div>
         </div>
         <!--basic_information start-->

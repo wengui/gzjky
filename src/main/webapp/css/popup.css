@@ -29,7 +29,7 @@ li{list-style-type:none;}
 
 .tgrey_Packagedetails_left{width:20%; float:left; padding-left:4%;text-align: left;  color:#aeaeae;margin-bottom:10px;}
 .tblack_Packagedetails_right{width:76%; float:left; text-align: left;  color:#5a5a5a;margin-bottom:10px;}
-.tgrey_Packagedetails_left2{width:28%; float:left; padding-left:4%;text-align: right;  color:#aeaeae;margin-bottom:10px;}
+.tgrey_Packagedetails_left2{width:28%; float:left; padding-left:4%;text-align: right;margin-bottom:10px;}
 .tblack_Packagedetails_right2{width:70%; float:left; text-align: left;  color:#5a5a5a;margin-bottom:10px;}
 #package_name{color:#00a65a;}
 
