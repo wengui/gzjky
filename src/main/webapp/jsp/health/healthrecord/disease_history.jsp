@@ -172,7 +172,7 @@ function startInit(){
                   <i class="ion ion-person-add"></i>
              </div>
              <a href="#" class="small-box-footer">
-                More info <i class="fa fa-arrow-circle-right"></i>
+                更多 <i class="fa fa-arrow-circle-right"></i>
              </a>
              </div>
             </div><!-- ./col -->
@@ -186,7 +186,7 @@ function startInit(){
                          <i class="ion ion-person-add"></i>
                     </div>
                    <a href="#" class="small-box-footer">
-                	More info <i class="fa fa-arrow-circle-right"></i>
+                	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
                </div>
             </div><!-- ./col -->
@@ -202,7 +202,7 @@ function startInit(){
                      <i class="ion ion-person-add"></i>
                  </div>
                     <a href="#" class="small-box-footer">
-                	More info <i class="fa fa-arrow-circle-right"></i>
+                	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
              </div>
          </div><!-- ./col -->
@@ -216,7 +216,7 @@ function startInit(){
                      <i class="ion ion-person-add"></i>
                  </div>
                    <a href="#" class="small-box-footer">
-                	More info <i class="fa fa-arrow-circle-right"></i>
+                	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
              </div>
          </div><!-- ./col -->
@@ -232,7 +232,7 @@ function startInit(){
                   <i class="ion ion-person-add"></i>
              </div>
              <a href="#" class="small-box-footer">
-                More info <i class="fa fa-arrow-circle-right"></i>
+                更多 <i class="fa fa-arrow-circle-right"></i>
              </a>
              </div>
             </div><!-- ./col -->
@@ -246,7 +246,7 @@ function startInit(){
                          <i class="ion ion-person-add"></i>
                     </div>
                    <a href="#" class="small-box-footer">
-                	More info <i class="fa fa-arrow-circle-right"></i>
+                	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
                </div>
             </div><!-- ./col -->
@@ -264,7 +264,7 @@ function startInit(){
                      <i class="ion ion-person-add"></i>
                  </div>
                     <a href="#" class="small-box-footer">
-                	More info <i class="fa fa-arrow-circle-right"></i>
+                	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
              </div>
          </div><!-- ./col -->

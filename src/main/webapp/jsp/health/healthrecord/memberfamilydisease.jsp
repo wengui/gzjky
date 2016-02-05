@@ -80,9 +80,9 @@
 						}
 						$("#heighBloodPressure_relation").html(str);
 						if(heighBloodPressureRelationNum>0){
-							$("#heighBloodPressure_relation"+heighBloodPressureRelationNum).append("<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='relation_button'>删除</a>");
+							$("#heighBloodPressure_relation"+heighBloodPressureRelationNum).append("<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 						}
-						$("#heighBloodPressure_relation").append("<a href='javascript:void(0)' id='addHeighBloodPressureRelation_button' onclick='addHeighBloodPressureRelation()' class='relation_button'>+继续添加</a>");		
+						$("#heighBloodPressure_relation").append("<a href='javascript:void(0)' id='addHeighBloodPressureRelation_button' onclick='addHeighBloodPressureRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>");		
 						
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){		
 							$("#heighBloodPressureRelationName"+(j+1)).val(familyDiseaseRelationShips[j].name);
@@ -105,9 +105,9 @@
 						}
 						$("#heighBloodFat_relation").html(str);
 						if(heighBloodFatRelationNum>0){
-							$("#heighBloodFat_relation"+heighBloodFatRelationNum).append("<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='relation_button'>删除</a>");
+							$("#heighBloodFat_relation"+heighBloodFatRelationNum).append("<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 						}
-						$("#heighBloodFat_relation").append("<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='relation_button'>+继续添加</a>");		
+						$("#heighBloodFat_relation").append("<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>");		
 						
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){		
 							$("#heighBloodFatRelationName"+(j+1)).val(familyDiseaseRelationShips[j].name);
@@ -130,9 +130,9 @@
 						}
 						$("#diabetesMellitus_relation").html(str);
 						if(diabetesMellitusRelationNum>0){
-							$("#diabetesMellitus_relation"+diabetesMellitusRelationNum).append("<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='relation_button'>删除</a>");
+							$("#diabetesMellitus_relation"+diabetesMellitusRelationNum).append("<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 						}
-						$("#diabetesMellitus_relation").append("<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='relation_button'>+继续添加</a>");		
+						$("#diabetesMellitus_relation").append("<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>");		
 						
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){		
 							$("#diabetesMellitusRelationName"+(j+1)).val(familyDiseaseRelationShips[j].name);
@@ -155,9 +155,9 @@
 						}
 						$("#coronaryDisease_relation").html(str);
 						if(coronaryDiseaseRelationNum>0){
-							$("#coronaryDisease_relation"+coronaryDiseaseRelationNum).append("<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='relation_button'>删除</a>");
+							$("#coronaryDisease_relation"+coronaryDiseaseRelationNum).append("<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 						}
-						$("#coronaryDisease_relation").append("<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='relation_button'>+继续添加</a>");		
+						$("#coronaryDisease_relation").append("<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>");		
 						
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){		
 							$("#coronaryDiseaseRelationName"+(j+1)).val(familyDiseaseRelationShips[j].name);
@@ -180,9 +180,9 @@
 						}
 						$("#cardiovascularAccident_relation").html(str);
 						if(cardiovascularAccidentRelationNum>0){
-							$("#cardiovascularAccident_relation"+cardiovascularAccidentRelationNum).append("<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='relation_button'>删除</a>");
+							$("#cardiovascularAccident_relation"+cardiovascularAccidentRelationNum).append("<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 						}
-						$("#cardiovascularAccident_relation").append("<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='relation_button'>+继续添加</a>");		
+						$("#cardiovascularAccident_relation").append("<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>");		
 						
 						for(var j=0;j<familyDiseaseRelationShips.length;j++){		
 							$("#cardiovascularAccidentRelationName"+(j+1)).val(familyDiseaseRelationShips[j].name);
@@ -357,8 +357,8 @@
 			str+=relation_name_str+"</select></span>";
 			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<span class='select-style_relation'><select id='heighBloodPressureRelationYear"+heighBloodPressureRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
-			str+="<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='relation_button'>删除</a></div>";
-			str+="<a href='javascript:void(0)' id='addHeighBloodPressureRelation_button' onclick='addHeighBloodPressureRelation()' class='relation_button'>+继续添加</a>";
+			str+="<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+			str+="<a href='javascript:void(0)' id='addHeighBloodPressureRelation_button' onclick='addHeighBloodPressureRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 			$("#heighBloodPressure_relation").html(str);
 		}
 		else{
@@ -376,15 +376,15 @@
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='heighBloodPressureRelationYear"+heighBloodPressureRelationNum+"'>";
 		str+=relation_year_str+"</select>";
-		str+="<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='relation_button'>删除</a></div>";
-		str+="<a href='javascript:void(0)' id='addHeighBloodPressureRelation_button' onclick='addHeighBloodPressureRelation()' class='relation_button'>+继续添加</a>";
+		str+="<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+		str+="<a href='javascript:void(0)' id='addHeighBloodPressureRelation_button' onclick='addHeighBloodPressureRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 		$("#heighBloodPressure_relation").append(str);	
 	}
 	function delHeighBloodPressureRelation(){
 		$("#heighBloodPressure_relation"+heighBloodPressureRelationNum).remove();	
 
 		heighBloodPressureRelationNum--;	
-		$("#heighBloodPressure_relation"+heighBloodPressureRelationNum).append("<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='relation_button'>删除</a>");
+		$("#heighBloodPressure_relation"+heighBloodPressureRelationNum).append("<a href='javascript:void(0)' id='delHeighBloodPressureRelation_button' onclick='delHeighBloodPressureRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 	}
 	
 	//高血脂
@@ -397,8 +397,8 @@
 			str+=relation_name_str+"</select>";
 			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='heighBloodFatRelationYear"+heighBloodFatRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
-			str+="<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='relation_button'>删除</a></div>";
-			str+="<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='relation_button'>+继续添加</a>";
+			str+="<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+			str+="<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 			$("#heighBloodFat_relation").html(str);
 		}
 		else{
@@ -414,14 +414,14 @@
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='heighBloodFatRelationYear"+heighBloodFatRelationNum+"'>";
 		str+=relation_year_str+"</select></span>";
-		str+="<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='relation_button'>删除</a></div>";
-		str+="<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='relation_button'>+继续添加</a>";
+		str+="<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+		str+="<a href='javascript:void(0)' id='addHeighBloodFatRelation_button' onclick='addHeighBloodFatRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 		$("#heighBloodFat_relation").append(str);	
 	}
 	function delHeighBloodFatRelation(){
 		$("#heighBloodFat_relation"+heighBloodFatRelationNum).remove();
 		heighBloodFatRelationNum--;	
-		$("#heighBloodFat_relation"+heighBloodFatRelationNum).append("<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='relation_button'>删除</a>");
+		$("#heighBloodFat_relation"+heighBloodFatRelationNum).append("<a href='javascript:void(0)' id='delHeighBloodFatRelation_button' onclick='delHeighBloodFatRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 	}
 	
 	
@@ -435,8 +435,8 @@
 			str+=relation_name_str+"</select>";
 			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='diabetesMellitusRelationYear"+diabetesMellitusRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
-			str+="<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='relation_button'>删除</a></div>";
-			str+="<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='relation_button'>+继续添加</a>";
+			str+="<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+			str+="<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 			$("#diabetesMellitus_relation").html(str);
 		}
 		else{
@@ -452,14 +452,14 @@
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='diabetesMellitusRelationYear"+diabetesMellitusRelationNum+"'>";
 		str+=relation_year_str+"</select></span>";
-		str+="<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='relation_button'>删除</a></div>";
-		str+="<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='relation_button'>+继续添加</a>";
+		str+="<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+		str+="<a href='javascript:void(0)' id='addDiabetesMellitusRelation_button' onclick='addDiabetesMellitusRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 		$("#diabetesMellitus_relation").append(str);	
 	}
 	function delDiabetesMellitusRelation(){
 		$("#diabetesMellitus_relation"+diabetesMellitusRelationNum).remove();
 		diabetesMellitusRelationNum--;	
-		$("#diabetesMellitus_relation"+diabetesMellitusRelationNum).append("<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='relation_button'>删除</a>");
+		$("#diabetesMellitus_relation"+diabetesMellitusRelationNum).append("<a href='javascript:void(0)' id='delDiabetesMellitusRelation_button' onclick='delDiabetesMellitusRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 	}
 	
 	
@@ -473,8 +473,8 @@
 			str+=relation_name_str+"</select>";
 			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='coronaryDiseaseRelationYear"+coronaryDiseaseRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
-			str+="<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='relation_button'>删除</a></div>";
-			str+="<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='relation_button'>+继续添加</a>";
+			str+="<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+			str+="<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 			$("#coronaryDisease_relation").html(str);
 		}
 		else{
@@ -490,14 +490,14 @@
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='coronaryDiseaseRelationYear"+coronaryDiseaseRelationNum+"'>";
 		str+=relation_year_str+"</select></sapn>";
-		str+="<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='relation_button'>删除</a></div>";
-		str+="<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='relation_button'>+继续添加</a>";
+		str+="<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+		str+="<a href='javascript:void(0)' id='addCoronaryDiseaseRelation_button' onclick='addCoronaryDiseaseRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 		$("#coronaryDisease_relation").append(str);	
 	}
 	function delCoronaryDiseaseRelation(){
 		$("#coronaryDisease_relation"+coronaryDiseaseRelationNum).remove();
 		coronaryDiseaseRelationNum--;	
-		$("#coronaryDisease_relation"+coronaryDiseaseRelationNum).append("<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()'  class='relation_button'>删除</a>");
+		$("#coronaryDisease_relation"+coronaryDiseaseRelationNum).append("<a href='javascript:void(0)' id='delCoronaryDiseaseRelation_button' onclick='delCoronaryDiseaseRelation()'  class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 	}
 	
 	
@@ -511,8 +511,8 @@
 			str+=relation_name_str+"</select>";
 			str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='cardiovascularAccidentRelationYear"+cardiovascularAccidentRelationNum+"'>";
 			str+=relation_year_str+"</select></span>";
-			str+="<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='relation_button'>删除</a></div>";
-			str+="<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='relation_button'>+继续添加</a>";
+			str+="<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+			str+="<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 			$("#cardiovascularAccident_relation").html(str);
 		}
 		else{
@@ -528,14 +528,14 @@
 		str+=relation_name_str+"</select>";
 		str+="&nbsp;&nbsp;患病年份:&nbsp;&nbsp;<select id='cardiovascularAccidentRelationYear"+cardiovascularAccidentRelationNum+"'>";
 		str+=relation_year_str+"</select></span>";
-		str+="<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='relation_button'>删除</a></div>";
-		str+="<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='relation_button'>+继续添加</a>";
+		str+="<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a></div>";
+		str+="<a href='javascript:void(0)' id='addCardiovascularAccidentRelation_button' onclick='addCardiovascularAccidentRelation()' class='btn btn-success relation_button'><i class='fa fa-plus-square'></i> 新增</a>";
 		$("#cardiovascularAccident_relation").append(str);	
 	}
 	function delCardiovascularAccidentRelation(){
 		$("#cardiovascularAccident_relation"+cardiovascularAccidentRelationNum).remove();
 		cardiovascularAccidentRelationNum--;	
-		$("#cardiovascularAccident_relation"+cardiovascularAccidentRelationNum).append("<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='relation_button'>删除</a>");
+		$("#cardiovascularAccident_relation"+cardiovascularAccidentRelationNum).append("<a href='javascript:void(0)' id='delCardiovascularAccidentRelation_button' onclick='delCardiovascularAccidentRelation()' class='btn btn-success relation_button'><i class='fa fa-trash-o'></i> 删除</a>");
 	}
 </script>
 
