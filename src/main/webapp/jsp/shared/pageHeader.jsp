@@ -68,7 +68,7 @@
 												<a href="javascript:void(0)" 
 													id="${pa.pid}" style="line-height: 10px">
 													<div class="pull-left">
-														<img src="<c:url value='/imageUploadAction/showHeadImage.do'/>" class="img-circle" alt="User Image" />
+														<img src="<c:url value='/imageUploadAction/showHeadImageByPid.do?pid=${pa.pid}'/>" class="img-circle" alt="User Image" />
 													</div>
 													<h4 style="color:#3c8dbc">
 														<c:out value="${pa.pname}" />(当前账户)
@@ -81,7 +81,7 @@
 												<a href="javascript:void(0)" onclick="patientChange(this)"
 													id="${pa.pid}" style="line-height: 10px">
 													<div class="pull-left">
-														<img src="<c:url value='/imageUploadAction/showHeadImage.do'/>" class="img-circle" alt="User Image" />
+														<img src="<c:url value='/imageUploadAction/showHeadImageByPid.do?pid=${pa.pid}'/>" class="img-circle" alt="User Image" />
 													</div>
 
 													<h4>

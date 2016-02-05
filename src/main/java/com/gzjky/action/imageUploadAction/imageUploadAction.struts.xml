@@ -21,5 +21,14 @@
             </result> 
 	</action>
 
+
+	<!-- 2進制图片顯示 -->
+	<action name="showHeadImageByPid" class="com.gzjky.action.imageUploadAction.ShowHeadImageAction" method="showHeadImageByPid">
+			<result name="success" type="stream">  
+                <param name="contentType">image/jpeg</param>  
+               <param name="inputName">headImage</param>  
+               <param name="bufferSize">1024</param>  
+            </result> 
+	</action>
 	</package>
 </struts>

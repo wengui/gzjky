@@ -81,6 +81,46 @@ public class ShowHeadImageAction extends ActionSupport {
 	}
 
 	/**
+	 * 头像显示(患者ID)
+	 * 
+	 * @return
+	 * @throws IOException
+	 */
+	public String showHeadImageByPid() {
+
+		try {
+
+			// request取得
+			HttpServletRequest request = ServletActionContext.getRequest();
+	        
+	        // 	取得相对路径
+	        String basePath = request.getSession().getServletContext().getRealPath("/");
+	        
+	        // 默认头像设定
+	        File file = new File(basePath + DEFAULT_HEAD_IMAGE);
+			
+			// 患者ID取得
+			int patientId = NumberUtils.toInt(request.getParameter("pid"));
+
+			HeadImageBean result = readMapper.selectHeadImageByPatientId(patientId);
+
+			if (result.getHeadImage().length > 0) {
+
+				headImage = convertBytesToStream(result.getHeadImage());
+			}else{
+				headImage = imageUpload.getImageBinary(file);
+			}
+
+		} catch (Exception e) {
+			// return null;
+			e.printStackTrace();
+		}
+
+		return SUCCESS;
+
+	}
+
+	/**
 	 * 将byte[]转换成ByteArrayInputStream
 	 * 
 	 * @param image
