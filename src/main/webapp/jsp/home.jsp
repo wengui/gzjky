@@ -338,7 +338,7 @@
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body">
-								<div class="callout callout-danger">
+								<div class="callout callout-danger" style="height:220px">
 									<h4>我的家庭成员：</h4>
 									<ul>
 										<li id="family"><c:forEach
@@ -362,7 +362,7 @@
 									</ul>
 
 								</div>
-								<div class="callout callout-info">
+								<div class="callout callout-info" style="height:220px">
 									<h4>我的医院医生：</h4>
 									<ul>
 										<li id="hos_doc">：</li>
@@ -386,17 +386,17 @@
 							<!-- /.box-header -->
 							<div class="box-body">
 
-								<div class="callout callout-warning">
+								<div class="callout callout-warning" style="height:220px">
 									<h4>我的设备：</h4>
 									<ul>
 										<li id="device">我的设备：
 									</ul>
 								</div>
-									<div class="callout callout-success">
+									<div class="callout callout-success" style="height:220px">
 									<h4>我的套餐</h4>
 									<ul>
 										<li >暂无</li>
-										<li class='wtaGreen'><a onclick='goToAccountMeal(this)'  title='增加套餐'>增加套餐</a></li>
+										<li class='wtaGreen'><a onclick='goToAccountMeal(this)'  title='订购套餐'>订购套餐</a></li>
 									</ul>
 
 								</div>
