@@ -99,6 +99,9 @@
 			    	if(recordList.length == 0){
 						$('.commonPage').hide();
 						$('.massage').show();
+					}else{
+						$('.commonPage').show();
+						$('.massage').hide();
 					}
 			    	
 				$.fn.page.settings.count = modelMap.recordTotal;
