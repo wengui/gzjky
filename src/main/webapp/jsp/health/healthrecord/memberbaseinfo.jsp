@@ -607,11 +607,11 @@
 	  <form id="upload_form" action="" method="post" name="upload_form"  enctype="multipart/form-data"  target="hidden_frame">
 	  <div class="popup_main">
 	    <ul>
-	      <li class="img_upload">
-	      	<input type="file" class="btn btn-info" id="filePath" name="filePath" >
+	      <li class="img_upload" style="float:left;width:85%">
+	      	<input type="file" class="btn btn-info" style="height:36px" id="filePath" name="filePath" >
 	      </li>
+	      <li class="btn_upload" ><a href="javascript:void(0)"  class="btn btn-info"  onclick="upload()"><i class="fa fa-cloud-upload"></i> 上传</a></li>  
 	      <li class="tgreen_bpPrompt">图像文件类型只限JPG、PNG、GIF、BMP等常见格式，大小不超过1M</li><br/><br/>
-	      <li class="btn_upload"><a href="javascript:void(0)"  class="btn btn-info"  onclick="upload()">上传</a></li>  
 	      <li><iframe name='hidden_frame' id="hidden_frame" style='display:none'></iframe></li>
 	    </ul>
 	  </div>
