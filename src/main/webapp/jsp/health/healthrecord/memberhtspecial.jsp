@@ -448,7 +448,7 @@
 				
               <div class="box-body">
 					         <div class="row">
-					         	<div class="col-lg-6 col-xs-6" style="padding-top:35px;">
+					         	<div class="col-lg-6 col-xs-6" style="padding-top:10px;">
 					         	
 						        <div class="col-lg-12 col-xs-12">
 						        	<span class="col-lg-4 col-xs-4 text-right form-span" >*患高血压日期：</span>
@@ -493,8 +493,8 @@
 						        </div>
 						        
 						        <div class="col-lg-6 col-xs-6" style="padding-top:0px;">
-						        <div class="col-lg-12 col-xs-12">
-						        	<span class="col-lg-12 col-xs-12 text-center form-span">*当前服用药物：</span>
+						        <div class="col-lg-12 col-xs-12" style="padding-left:0px;">
+						        	<span class="col-lg-12 col-xs-12 text-left form-span" style="padding-left:0px;">*当前服用药物：</span>
 						        </div>
 						        
 						        	<div class="col-lg-12 col-xs-12 table-medicine">
