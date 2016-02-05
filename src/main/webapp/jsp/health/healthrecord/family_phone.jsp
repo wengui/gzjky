@@ -252,7 +252,7 @@
 					   <div class="col-lg-12 col-xs-12">
 		              	<span class="col-lg-2 col-xs-2 div-padding-title">亲情号码</span>
 		              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:83px;">
-							 <a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-success" ><i class="fa fa-plus-square"></i> 新增</h3></a>
+							 <a href="javascript:void(0)" onclick="add_familyPhone()"><div class="btn btn-success" ><i class="fa fa-plus-square"></i> 新增</div></a>
 						</div>
 		              </div>
 						<!-- /.box-header -->
