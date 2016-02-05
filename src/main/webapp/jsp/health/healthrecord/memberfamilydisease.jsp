@@ -541,93 +541,142 @@
 
 </head>
 <body  onload="startInit()"  class="skin-blue">
-<form id="family_form">
-        <!--basic_information start-->
-        <div>
-        <div class="box box-info">
-        
-        	<div class="box-header">
-							<h3 class="box-title">家族遗传史</h3>
-							
-						<a  id="editImage" href="javascript:void(0)" onclick="edit_family(this)" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
-							 <h3 class='btn btn-success'><i class="fa fa-edit"></i>编辑 </h3></a>
-						
+	<form id="family_form">
+		<!--basic_information start-->
+		<div>
+			<div class="box box-info">
+
+				<div class="box-header">
+					<h3 class="box-title">家族遗传史</h3>
+
+					<a id="editImage" href="javascript:void(0)"
+						onclick="edit_family(this)"
+						style="float: right; margin: -12px; padding: 0px 22px 0px 0px;">
+						<h3 class='btn btn-success'>
+							<i class="fa fa-edit"></i>编辑
+						</h3>
+					</a>
+
+				</div>
+				<!-- /.box-header -->
+
+				<div class="box-body">
+		<div >
+						<dl class='dl-horizontal'>
+							<dt>高血压：</dt>
+							<dd>
+								<select  class="col-lg-1 col-xs-1 display-input"
+									id="heighBloodPressure" name="heighBloodPressure"
+									onchange="changeHeighBloodPressure()">
+									<option value="0">无</option>
+									<option value="1">有</option>
+								</select>
+							</dd>
+							<dd>
+								<div class="form-group">
+									<span class="col-lg-1 col-xs-1 text-right form-span">&nbsp;</span>
+									<div class="col-lg-8 col-xs-8 family_disease_relation"
+										id="heighBloodPressure_relation" align="left"></div>
+								</div>
+
+							</dd>
+						</dl>
 						</div>
-			<!-- /.box-header -->
-           
-              <div class="box-body">
-	 			         <div class="row">
+						<div>
+						<dl class='dl-horizontal'>
+							<dt>高血脂：</dt>
+							<dd>
+								<select class="col-lg-1 col-xs-1 display-input"
+									id="heighBloodFat" name="heighBloodFat"
+									onchange="changeHeighBloodFat()">
+									<option value="0">无</option>
+									<option value="1">有</option>
+								</select>
+							</dd>
+							<dd>
+								<div class="form-group">
+									<span class="col-lg-1 col-xs-1 text-right form-span">&nbsp;</span>
+									<div class="col-lg-8 col-xs-8 family_disease_relation"
+										id="heighBloodFat_relation" align="left"></div>
+								</div>
+							</dd>
+							
+	</dl>
+</div>
+<div >
+<dl class='dl-horizontal'>
+							<dt>糖尿病：</dt>
+							<dd>
+								<select  class="col-lg-1 col-xs-1 display-input"
+									id="diabetesMellitus" name="diabetesMellitus"
+									onchange="changeDiabetesMellitus()">
+									<option value="0">无</option>
+									<option value="1">有</option>
+								</select>
+							</dd>
+							<dd>
+								<div class="form-group">
+									<span class="col-lg-1 col-xs-1 text-right form-span">&nbsp;</span>
+									<div class="col-lg-8 col-xs-8 family_disease_relation"
+										id="diabetesMellitus_relation" align="left"></div>
+								</div>
+							</dd>
+								</dl>
+								</div>
+<div >
+<dl class='dl-horizontal'>
+							<dt>冠心病：</dt>
+							<dd>
+								<select  class="col-lg-1 col-xs-1 display-input"
+									id="coronaryDisease" name="coronaryDisease"
+									onchange="changeCoronaryDisease()">
+									<option value="0">无</option>
+									<option value="1">有</option>
+								</select>
+							</dd>
+							<dd>
+							<div class="form-group">
+								<span class="col-lg-1 col-xs-1 text-right form-span">&nbsp;</span>
+								<div class="col-lg-8 col-xs-8 family_disease_relation"
+									id="coronaryDisease_relation" align="left"></div>
+							</div>
+</dd>
+	</dl>
+	</div>
+	<div >
+<dl class='dl-horizontal'>
+							<dt>脑血管意外：</dt>
+							<dd>
+								<select
+									 class="col-lg-1 col-xs-1 display-input"
+									id="cardiovascularAccident" name="cardiovascularAccident"
+									onchange="changeCardiovascularAccident()">
+									<option value="0">无</option>
+									<option value="1">有</option>
+								</select>
+							</dd>
+							<dd>
+							<div class="form-group">
+								<span class="col-lg-1 col-xs-1 text-right form-span">&nbsp;</span>
+								<div class="col-lg-8 col-xs-8 family_disease_relation"
+									id="cardiovascularAccident_relation" align="left"></div>
+							</div>
+</dd>
+	</dl>
+	</div>
+						<div class="col-lg-2 col-xs-2">&nbsp;</div>
+					</div>
 
-						        <div class="col-lg-10 col-xs-10">
-						        	<span class="col-lg-4 col-xs-4 text-right form-span" >高血压：</span>
-	                 				<select class="col-lg-8 col-xs-8 display-input-add" id="heighBloodPressure"  name="heighBloodPressure" onchange="changeHeighBloodPressure()">
-				            				<option value="0">无</option>
-				            				<option value="1">有</option>
-	                 				</select>
-	                 				<div class="form-group">
-	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="heighBloodPressure_relation" align="left"></div>
-	                 				</div>
-						        </div>
-						        <div class="col-lg-10 col-xs-10">
-						        	<lable class="col-lg-4 col-xs-4 text-right form-span">高血脂：</lable>
-	                 				<select class="col-lg-8 col-xs-8 display-input-add" id="heighBloodFat"  name="heighBloodFat"  onchange="changeHeighBloodFat()">
-				            			<option value="0">无</option>
-				            			<option value="1">有</option>
-	                 				</select>
-	                 				<div class="form-group">
-	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="heighBloodFat_relation" align="left"></div>
-	                 				</div>    
-	                 				<div class="family_disease_relation" id="heighBloodFat_relation" align="left"  style="margin-left:80px;padding-top:40px"></div> 
-						        </div>
+				</div>
 
-						        <div class="col-lg-10 col-xs-10">
-						        	<span class="col-lg-4 col-xs-4 text-right  form-span">糖尿病：</span>
-	                 				<select class="col-lg-8 col-xs-8 display-input-add" id="diabetesMellitus"  name="diabetesMellitus" onchange="changeDiabetesMellitus()">
-				            			<option value="0">无</option>
-				            			<option value="1">有</option>
-	                 				</select>
-	                 				<div class="form-group">
-	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="diabetesMellitus_relation" align="left"></div>
-	                 				</div>    
-						        </div>
-						        <div class="col-lg-10 col-xs-10">
-						        	<lable class="col-lg-4 col-xs-4 text-right form-span">冠心病：</lable>
-	                 				<select class="col-lg-8 col-xs-8 display-input-add" id="coronaryDisease"  name="coronaryDisease"  onchange="changeCoronaryDisease()">
-				            			<option value="0">无</option>
-				            			<option value="1">有</option>
-	                 				</select>
-	                 				<div class="form-group">
-	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="coronaryDisease_relation" align="left"></div>
-	                 				</div>       
-                 					
-						        </div>
-						        <div class="col-lg-10 col-xs-10">
-						        	<span class="col-lg-4 col-xs-4 text-right form-span">脑血管意外：</span>
-	                 				<select class="col-lg-8 col-xs-8 display-input-add selectMax_informationModify" id="cardiovascularAccident"  name="cardiovascularAccident" onchange="changeCardiovascularAccident()">
-				            			<option value="0">无</option>
-				            			<option value="1">有</option>
-	                 				</select>
-	                 				<div class="form-group">
-	                 					<span class="col-lg-4 col-xs-4 text-right form-span" >&nbsp;</span>
-	                 					<div class="col-lg-8 col-xs-8 family_disease_relation" id="cardiovascularAccident_relation" align="left"></div>
-	                 				</div>          
-                 					
-						        </div>
-				   
-				        <div class="col-lg-2 col-xs-2">&nbsp;</div>
-			        </div>
-
-			    </div>
-        </div>
-        <!--basic_information start-->
-</form>
+			<!--basic_information start-->
+			<div class="family_disease_relation" id="heighBloodFat_relation"
+								align="left" style="margin-left: 80px; padding-top: 40px"></div>
+				
+	</form>
 
 
-<div id="divloading">
+	<div id="divloading">
 	<img src="../../../images/public/blue-loading.gif" />
 </div>
 
