@@ -104,10 +104,10 @@
 			}
 			//div+="<div style='width: 220px;float:left;'><img src='/gzjky/img/user-bg.png' width='80' height='500'></div>"
 			if(List[i].image==""){
-				div+="<table><tr><td><img src='/gzjky/images/device/device_notfount.png' width='200' height='180'></td><td>"
+				div+="<table><tr><td><img src='/gzjky/images/device/device_notfount.png'  class='img-device'></td><td>"
 			}
 			else{
-				div+="<table><tr><td><img src='"+List[i].image+"' width='200' height='180'></td><td>"
+				div+="<table><tr><td><img src='"+List[i].image+"' class='img-device' ></td><td>"
 			}
 			
 			
