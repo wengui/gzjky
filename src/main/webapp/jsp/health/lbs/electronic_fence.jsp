@@ -117,12 +117,12 @@
 	}
 	//初始化页面数据
 	function initQuery() {
-	showScreenProtectDiv(1);
+		showScreenProtectDiv(1);
 	   showLoading();
-	//给查询条件赋值当天日期
+		//给查询条件赋值当天日期
 		$("#startDate").val(getdate()+" 00:00:00");
 		$("#endDate").val(getdate()+" 23:59:59");
-		queryDeviceInfo();
+		//queryDeviceInfo();
 		
 		load();	//导入地图数据
 		startQueryFlag = 0;
@@ -716,7 +716,7 @@ function safe_island_del() {
 	                            </div><!-- /.input group -->
 	                        </div><!-- /.form group -->	
 	                        <div class="form-group">
-	                        	 <button class="btn btn-success btn-sm" style="width:100%" onclick="queryStart();">查询</button>
+	                        	 <button class="btn btn-success" style="width:100%" onclick="queryStart();">查询</button>
 			               	</div><!-- /.form group -->	
 			              <div class="map_queryResults" id="scrollBar" style="overflow-x:hidden;">
 			              <!--   <ul>
@@ -770,18 +770,21 @@ function safe_island_del() {
     </ul>
   </div>
   <div  id="popWindow_main" class="popup_main">
-      <table width="410" border="0" cellspacing="0" cellpadding="0" style="font-size:14px;" class="popWindow_tab">
+      <table width="550" border="0" cellspacing="0" cellpadding="0" style="font-size:14px;" class="popWindow_tab">
           <colgroup><col width="40%" /><col width="60%" /></colgroup>
           <tr>
-            <td ><span style="color:#c00;font-size:14px;line-height:30px;font:微软雅黑;">*</span>新安全岛中心地址：</td>
+            <td ><span style="line-height:30px;font:20px '微软雅黑';"><span style="color:#c00">*</span>新安全岛中心地址：</span></td>
             <td>
-            	<input type="text" name="name" id="safe_island_address" value="" maxlength="128" style="height:28px; padding-top:5px; border:#CCCCCC solid 1px; width:248px; padding-left:3px; font:12px '宋体';"/>
+            	<input type="text" name="name" id="safe_island_address" value="" maxlength="128" style="height:28px; padding-top:5px; border:#CCCCCC solid 1px; width:248px; padding-left:3px; font:20px '微软雅黑';"/>
             </td>
           </tr>
           <tr>
-            <td class="right_text"><span style="color:#c00;font-size:14px;line-height:30px;font:微软雅黑;">*</span>新安全岛半径：</td>
+          <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="right_text"><span style="line-height:30px;font:20px '微软雅黑';"><span style="color:#c00">*</span>新安全岛半径：</span></td>
             <td class="left_text">
-            	<input type="text" name="phone" id="safe_island_radius" value="" maxlength="8" style="height:28px; padding-top:5px; border:#CCCCCC solid 1px; width:248px; padding-left:3px; font:12px '宋体';"/>
+            	<input type="text" name="phone" id="safe_island_radius" value="" maxlength="8" style="height:28px; padding-top:5px; border:#CCCCCC solid 1px; width:248px; padding-left:3px; font:20px '微软雅黑';"/>
             </td>
           </tr>
           <tr>

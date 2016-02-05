@@ -124,7 +124,7 @@
 	  td.innerHTML = recordList[index].state;
 	 
 	  td = tr.insertCell(4);
-	  td.innerHTML = "<a href='javascript:void(0)' onclick='showDialogDetail("+index+")'>查看</a>";
+	  td.innerHTML = "<a href='javascript:void(0)' class='btn btn-info' style='width:85px' onclick='showDialogDetail("+index+")'><i class='fa fa-fw fa-eye'></i>查看</a>";
   }
   
   
@@ -252,12 +252,11 @@
 			<div >
 			  <div class="box box-info">
 	              <div class="box-header">
-	                  <h3 class="box-title">咨询历史</h3>
-	              </div>
+						<h3 class="box-title">咨询历史</h3>
+						<a href="javascript:void(0)" onclick="showDialog()" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+						<h3 class="btn btn-success"><i class="fa fa-plus-square"></i> 新增</h3></a>
+					</div>
               	  <div class="box-body">
-              	  <div class="row col-lg-11">
-					<a href="javascript:void(0)" class="btn btn-success" style="margin-left:10px" onclick="showDialog()"><i class="fa fa-plus-square"></i> 新增</a>               
-				  </div>
 				  <div class="row">
 				  <br/>
 				  <br/>
