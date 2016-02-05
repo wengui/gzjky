@@ -781,20 +781,20 @@
                                     <h3 class="box-title">最新医嘱</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body" id="advice">
-                                    <div class="alert alert-danger alert-dismissable">
-                                        <i class="fa">测压目标</i>
+                                    <div class="callout callout-danger">
+                                        <h4>测压目标</h4>
                                         <p id="goal">暂无</p>
                                     </div>
-                                    <div class="alert alert-info alert-dismissable">
-                                        <i class="fa">测压方案</i>
+                                    <div class="callout callout-info">
+                                        <h4>测压方案</h4>
                                         <p id="plan">暂无</p>
                                     </div>
-                                    <div class="alert alert-warning alert-dismissable">
-                                        <i class="fa">用药推荐</i>
+                                    <div class="callout callout-warning">
+                                        <h4>用药推荐</h4>
                                         <p id="medicine">暂无</p>
                                     </div>
-                                    <div class="alert alert-success alert-dismissable">
-                                        <i class="fa">保健建议</i>
+                                    <div class="callout callout-success">
+                                        <h4>保健建议</h4>
                                         <p id="suggestion">暂无</p>
                                     </div>
                                 </div><!-- /.box-body -->
@@ -806,8 +806,8 @@
                             <div class="box box-info">
                                 <div class="box-header">
                                     <i class="fa fa-bullhorn"></i>
-                                    <h3 class="box-title">最新咨询</h3>
-                                    <a href='<c:url value='/menuControlAction/memberConsult.do'/>' style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD"><i class="fa fa-angle-double-right"></i>会员咨询历史</a>
+                                    <h3 class="box-title">最新咨询  <a href='<c:url value='/menuControlAction/memberConsult.do'/>' style="color:#3A87AD;font-size:18px"><i class="fa fa-angle-double-right"></i>会员咨询历史</a></h3>
+                                    
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="callout callout-danger">
@@ -864,8 +864,9 @@
                               <i class="fa fa-bar-chart-o"></i>
                               <h3 class="box-title">
                                   	近期晨峰血压趋势图
+                                  	<a style="color:#3A87AD;text-decoration: underline;font-size:18px"  data-toggle="modal" href="#popWindow1">晨峰血压是什么？</a>
                               </h3>
-                               <a style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;"  data-toggle="modal" href="#popWindow1">晨峰血压是什么？</a>
+                               
                       	</div>
                        <div class="box-body no-padding">
                           <div class="row bpDiagnosis_results_trendChart">
@@ -882,33 +883,25 @@
                             <div class="box box-danger" id="histroy_bp_diagnose">
                                 <div class="box-header">
                                     <i class="fa fa-map-marker"></i>
-                                    <h3 class="box-title">血压等级分析</h3>
-                                    <a style="display: inline-block; padding: 13px 0px 10px 20px;color:#3A87AD;text-decoration: underline;" data-toggle="modal" href="#bloodstandard">高血压分级标准</a>
+                                    <h3 class="box-title">血压等级分析
+                                    <a style="color:#3A87AD;text-decoration: underline;font-size:18px" data-toggle="modal" href="#bloodstandard">高血压分级标准</a>
+                                    </h3>
+                                    
                                 </div><!-- /.box-header -->
 								<div class="box-body">
                                     <div class="box-group" id="accordion">
                                         <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
                                         <div class="panel box box-primary">
                                             <div class="box-header">
-                                                <h5 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="font-size:18px">
-                                                        	血压等级
-                                                    </a>
-                                                </h5>
+                                                <h4 class="box-title" style="color: #3c8dbc">血压等级 </h4>
                                             </div>
-                                            <div id="collapseOne" class="panel-collapse collapse in">
-                                                <div class="box-body" id="pressure_level" >
-                                                		暂无
-                                                </div>
+                                            <div class="box-body" id="collapseOne">
+                                                        		暂无
                                             </div>
                                         </div>
                                         <div class="panel box box-danger">
                                             <div class="box-header">
-                                                <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="font-size:18px">
-                                                        	心血管风险分层
-                                                    </a>
-                                                </h4>
+                                                <h4 class="box-title" style="color: #f56954">心血管风险分层 </h4>
                                             </div>
                                             <div id="collapseTwo" class="panel-collapse collapse in">
                                                 <div class="box-body" id="risk_level">
@@ -918,11 +911,7 @@
                                         </div>
                                         <div class="panel box box-warning">
                                             <div class="box-header">
-                                                <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" style="font-size:18px">
-                                                        	诊断依据
-                                                    </a>
-                                                </h4>
+                                                <h4 class="box-title" style="color: #f39c12;">诊断依据</h4>
                                             </div>
                                             <div id="collapseThree" class="panel-collapse collapse in">
                                                 <div class="box-body">
@@ -933,11 +922,7 @@
                                         <div class="panel box box-info">
                                         
                                         <div class="box-header"  id="doctor_bpana">
-                                                <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" style="font-size:18px">
-                                                        	医生分析
-                                                    </a>
-                                                </h4>
+                                                <h4 class="box-title" style="color: #00c0ef">医生分析</h4>
                                             </div>
                                             <div id="collapseFour" class="panel-collapse collapse in">
                                                 <div class="box-body" id="doctor_bpreport" >
@@ -947,11 +932,7 @@
                                         </div>
                                         <div class="panel box box-success">
                                             <div class="box-header">
-                                                <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" style="font-size:18px">
-                                                        	医生建议
-                                                    </a>
-                                                </h4>
+                                                <h4 class="box-title" style="color: #00a65a">医生建议</h4>
                                             </div>
                                             <div id="collapseFive" class="panel-collapse collapse in">
                                                 <div class="box-body" id="doctor_suggest">
@@ -961,10 +942,8 @@
                                         </div>
                                         <div class="panel box box-primary"  id="doctor_spana">
                                             <div class="box-header">
-                                                <h4 class="box-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" style="font-size:18px">
+                                                <h4 class="box-title" style="color: #3c8dbc;">
                                                         	保健建议
-                                                    </a>
                                                 </h4>
                                             </div>
                                             <div id="collapseSix" class="panel-collapse collapse in">
@@ -1013,7 +992,7 @@
 	                                    <div class="row">
 	                                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
 	                                        	<div><h4 class="box-body" id="reference_range"></h4></div>
-	                                            <div><h5 class="box-body">参考正常范围：60 &lt; 心率  &lt; 100</h5></div>
+	                                            <div><h5 class="box-body" style="font-size:18px">参考正常范围：60 &lt; 心率  &lt; 100</h5></div>
 	                                        </div><!-- ./col -->
 	                                        <div class="col-xs-8 text-center">
 	                                        	<li class="sketchMap" id="image_heart_rate">

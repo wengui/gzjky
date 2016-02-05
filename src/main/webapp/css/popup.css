@@ -9,12 +9,12 @@ li{list-style-type:none;}
 .name_popupHeader{width:72%; padding-left:3%; text-align:left; font-size:18px; font-weight:500; float:left}
 .close_popupHeader{width:22%; padding-right:3%; text-align:right; float:left}
 .close_popupHeader a{color:#fff; text-decoration:none; font-size:20px;}
-.popup_main{width:100%; float:left; padding:4%; background:#fff; text-align:left;}
+.popup_main{width:100%; float:left; padding:2% 4% 4% 4%; background:#fff; text-align:left;}
 .popup_main li{padding:10px 0;}
 .popup_main2{width:100%; float:left; padding:4%; background:#fff; text-align:left;}
 .popup_main2 li{padding:3px 0;}
 /*----------------bp---------------*/
-.tblack_bp{width:100%; float:left; height:30px; line-height:30px; text-align:left; color:#5a5a5a}
+.tblack_bp{width:100%; float:left; height:40px; line-height:30px; text-align:left; color:#5a5a5a}
 .tgreen_bpPrompt{width:100%; float:left; height:30px; line-height:30px; text-align:left; color:#3c8dbc}
 .tgreen_bp{background:url(../images/icon/greenMax.png) right center no-repeat;width:100%;text-align:left; float:left;  line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}
 .tblue_bp{background:url(../images/icon/blueMax.png) right center no-repeat; width:100%;float:left; line-height:30px; color:#5a5a5a; border-bottom:1px dotted #aeaeae}

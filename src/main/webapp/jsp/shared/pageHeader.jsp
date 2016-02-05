@@ -70,7 +70,7 @@
 													<div class="pull-left">
 														<img src="<c:url value='/imageUploadAction/showHeadImage.do'/>" class="img-circle" alt="User Image" />
 													</div>
-													<h4 style="color:#ccc">
+													<h4 style="color:#3c8dbc">
 														<c:out value="${pa.pname}" />(当前账户)
 													</h4>
 

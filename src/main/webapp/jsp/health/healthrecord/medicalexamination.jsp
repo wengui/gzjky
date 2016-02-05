@@ -127,8 +127,8 @@ function startInit(){
 				 td=tr.insertCell(6);
 				 td.innerHTML = xqjq+"μmol/L";
 				 
-				 //td=tr.insertCell(7);
-				 //td.innerHTML = wlnbdb+"mg/24h";
+				 td=tr.insertCell(7);
+				 td.innerHTML = wlnbdb+"mg/24h";
 			}catch(e){
 	    		$.alert('数据加载错误');
 	   		}
@@ -294,12 +294,11 @@ function startInit(){
               <!-- box-body start -->
               <div class="box-body">
               	<div class="col-lg-11 col-xs-11 text-right">
-	                 <div class="col-lg-6 col-xs-6">&nbsp;</div>
-	                <div class="col-lg-6 col-xs-6 from-float">
-		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-2 col-xs-2" onclick="showMedicalExamintionDialog()"><i class="fa fa-plus-square"></i> 增加</a>
-		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-2 col-xs-2" onclick="showMedicalExamintionDialog(1)"><i class="fa fa-edit"></i> 修改</a>
-		                 <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-2 col-xs-2"  onclick="deleteMedicalExamination()"><i class="fa fa-trash-o"></i> 删除</a>
-	                </div>
+		             
+		             
+		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="deleteMedicalExamination()"><i class="fa fa-trash-o"></i> 删除</a>
+		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="showMedicalExamintionDialog(1)"><i class="fa fa-edit"></i> 修改</a>
+		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="showMedicalExamintionDialog()"><i class="fa fa-plus-square"></i> 增加</a>
               </div>
               
   <div class="row">
@@ -308,11 +307,12 @@ function startInit(){
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="medicalExaminationTable">
       <colgroup>
         <col width="5%" />
+        <col width="13%" />
+        <col width="13%" />
+        <col width="13%" />
+        <col width="13%" />
+        <col width="13%" />
         <col width="15%" />
-        <col width="15%" />
-        <col width="15%" />
-        <col width="15%" />
-        <!-- <col width="20%" /> -->
       </colgroup>
       <tr>
       	<th nowrap="nowrap"><div class="rowCheckbox"><input type="checkbox" name="chkall" id="selAll" /><label for="chkall">选择</label></div></th>
@@ -322,7 +322,7 @@ function startInit(){
         <th nowrap="nowrap" title="高密度脂蛋白胆固醇">高密度胆固醇</th>
         <th nowrap="nowrap" title="低密度脂蛋白胆固醇">低密度胆固醇</th>
         <th nowrap="nowrap" title="血清肌酐">血清肌酐</th>
-        <!-- <th nowrap="nowrap" title="微量尿白蛋白">微量尿白蛋白</th> -->
+        <th nowrap="nowrap" title="微量尿白蛋白">微量尿白蛋白</th>
       </tr>
     </table>
     <div class="massage text-center col-lg-11 col-xs-11" style="color: red;display:none;">对不起，没有数据。</div>
