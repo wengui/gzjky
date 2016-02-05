@@ -102,8 +102,19 @@
 			else{
 				 div+="<div class='callout callout-info' id='device_div_id_"+i+"'>"
 			}
+			//div+="<div style='width: 220px;float:left;'><img src='/gzjky/img/user-bg.png' width='80' height='500'></div>"
+			if(List[i].image==""){
+				div+="<table><tr><td><img src='/gzjky/images/device/device_notfount.png' width='200' height='180'></td><td>"
+			}
+			else{
+				div+="<table><tr><td><img src='"+List[i].image+"' width='200' height='180'></td><td>"
+			}
+			
+			
+			//div+="<div style='margin-left: 220px;'>"
 			div+="<dl class='dl-horizontal'>"+
-			//div+="<ul>"+
+			
+			//div+="<ul>"+	
             "<dt>设备类型：</dt>"+
             "<dd>"+deviceType+"</dd>"+
             "<dt>设备编号：</dt>"+
@@ -150,6 +161,7 @@
            
            //div+="</ul>"+
          	div+="</dl>"+
+         	 "</td></table>"+
            "</div>"
 			}
 		}
@@ -456,10 +468,12 @@
 					<div class="box box-danger">
 						<div class="box-header">
 							<h3 class="box-title">设备信息</h3>
+							<a href="/gzjky/menuControlAction/memberBindDevice.do" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+							 <h3 class="btn btn-success"><i class="fa fa-plus-square"></i> 新增</h3></a>
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body">
-							<a href="/gzjky/menuControlAction/memberBindDevice.do"> <h3 class="btn btn-success"><i class="fa fa-plus-square"></i> 增加设备</h3></a>
+							
 							<div class="header_equipment" style="margin-top:10px" id="deviceInfo_head">
 							</div>
 						</div>
