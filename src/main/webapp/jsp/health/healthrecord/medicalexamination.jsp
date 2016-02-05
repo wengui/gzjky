@@ -304,13 +304,13 @@ function startInit(){
   <div class="col-lg-11 col-xs-11">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table"  id="medicalExaminationTable">
       <colgroup>
-        <col width="5%" />
+        <col width="8%" />
         <col width="13%" />
         <col width="13%" />
         <col width="13%" />
         <col width="13%" />
         <col width="13%" />
-        <col width="15%" />
+        <col width="13%" />
       </colgroup>
       <tr>
       	<th nowrap="nowrap"><div class="rowCheckbox"><input type="checkbox" name="chkall" id="selAll" /><label for="chkall">选择</label></div></th>
