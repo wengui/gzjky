@@ -7,7 +7,7 @@ li{list-style-type:none;}
 .popup{width:480px; position:absolute; font-family:"微软雅黑"; top:200px; left:100px;}
 .popup_header{width:100%; float:left; height:40px; background:#3c8dbc; line-height:40px; color:#fff}
 .name_popupHeader{width:72%; padding-left:3%; text-align:left; font-size:18px; font-weight:500; float:left}
-.close_popupHeader{width:22%; padding-right:3%; text-align:right; float:left}
+.close_popupHeader{width:22%; text-align:right; float:left}
 .close_popupHeader a{color:#fff; text-decoration:none; font-size:20px;}
 .popup_main{width:100%; float:left; padding:2% 4% 4% 4%; background:#fff; text-align:left;}
 .popup_main li{padding:10px 0;}

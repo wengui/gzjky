@@ -124,7 +124,7 @@
 	  td.innerHTML = recordList[index].state;
 	 
 	  td = tr.insertCell(4);
-	  td.innerHTML = "<a href='javascript:void(0)' onclick='showDialogDetail("+index+")'>查看</a>";
+	  td.innerHTML = "<a href='javascript:void(0)' class='btn btn-info' style='width:85px' onclick='showDialogDetail("+index+")'><i class='fa fa-fw fa-eye'></i>查看</a>";
   }
   
   
