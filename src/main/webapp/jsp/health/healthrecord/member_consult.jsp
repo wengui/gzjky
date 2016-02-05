@@ -259,8 +259,7 @@
               	  <div class="box-body">
 				  <div class="row">
 				  <br/>
-				  <br/>
-				  <div class="col-lg-11">
+				  <div class="col-lg-11" style="padding-left:10px">
 				    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="faceTable" >
 				      <colgroup>
 				        <col width="28%" />

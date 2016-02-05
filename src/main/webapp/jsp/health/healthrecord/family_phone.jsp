@@ -249,18 +249,16 @@
 	         </section> 
 	        	<div >
 					<div class="box box-success">
-					   <div class="col-lg-12 col-xs-12">
-		              	<span class="col-lg-2 col-xs-2 div-padding-title">亲情号码</span>
-		              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:83px;">
-							 <a href="javascript:void(0)" onclick="add_familyPhone()"><div class="btn btn-success" ><i class="fa fa-plus-square"></i> 新增</div></a>
-						</div>
-		              </div>
-						<!-- /.box-header -->
-       				    <div class="row" >
-						  <br/>
-						  <br/>
-						  <br/>
-						  <div class="col-lg-11">
+				      <div class="box-header">
+		                  <h3 class="box-title">亲情号码</h3>
+		                  <a href="javascript:void(0)" onclick="add_familyPhone()" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+						  <h3 class="btn btn-success"><i class="fa fa-plus-square"></i> 新增</h3></a>
+					  </div>
+		              <br/>
+					  <!-- /.box-header -->
+					  <div class="box-body">
+       				  <div class="row" >
+						  <div class="col-lg-11" style="padding-left:10px">
 						    <table width="100%" cellspacing="0" cellpadding="0" class="table-bordered bPhistory_table" id="familyPhoneTable">
 								<colgroup> 	
 									<col width="10%" />
@@ -279,6 +277,7 @@
 							</table>
 						  </div>
 						</div>
+					   </div>
 					</div>
 				</div><!-- /.box -->
 		</aside>

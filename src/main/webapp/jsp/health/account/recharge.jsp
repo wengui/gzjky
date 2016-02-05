@@ -87,26 +87,25 @@
               </div>		
               <div class="box-body">
 				<div class="row">
-				  <div class="account">
+				  <div style="padding-left:20px">
 				    <div class="recharge">
 				      <form action="/recharge/generateOrder.helowin" id="addform" name="addform" method="post" autocomplete="off">
 				      <!--account_security start-->
-				      <div class="recharge_main">
+				      <div class="">
 				        <ul>
-				          <li class="tgrey_recharge">充值账号：</li>
-				          <li class="tblack_recharge">test1</li>
-				          <li class="tgrey_recharge">充值金额：</li>
-				          <li class="Input_recharge"><input type="text" class="form-control" id="bill" name="bill" style="width:200px" value="" validate="required:true,money:true,min:0.01,max:1000" value=""/></li>
-				          <li class="tgrey_recharge">验&nbsp;证&nbsp;码：</li>
-				          <li class="Input_recharge">
+				          <li style="float:left">充值账号：</li>
+				          <li class="">${sessionScope.Patient.uname} </li>
+				          <li style="float:left;margin-top:10px">充值金额：</li>
+				          <li style="margin-top:10px"><input type="text" class="form-control" id="bill" name="bill" style="width:200px" value="" validate="required:true,money:true,min:0.01,max:1000" value=""/></li>
+				          <li style="float:left;margin-top:10px">验&nbsp;证&nbsp;码&nbsp;：</li>
+				          <li style="margin-top:10px;margin-left:100px">
 				                <input type="text" name="verifyCode" class="form-control" id="verifyCode" style="width:200px" autocomplete="off"  maxlength="5" validate="required:true" />
 				          </li>
-				          <li class="tgrey_recharge"></li>
-				          <li class="Input_recharge">
+				          <li style="margin-top:20px">
 				               <table>
 				                  <tr>
-				                     <td><img id="imageCode" name="imageCode" onclick="changeVeriyCode()" src="../../../images/VerifyCode.jpg" border="0" title="点击换一张" width="85" height="22" /></td>
-				                     <td>&nbsp;&nbsp;<a class="btn btn-success" href="javascript:void(0)" onclick="changeVeriyCode()" title="点击换一张">换一张</a></td>
+				                     <td><img id="imageCode" name="imageCode" onclick="changeVeriyCode()" src="<c:url value='/images/VerifyCode.jpg'/>" border="0" title="点击换一张" width="85" height="22" /></td>
+				                     <td>&nbsp;&nbsp;<a class="btn btn-success" href="javascript:void(0)" onclick="changeVeriyCode()" title="点击换一张"><i class="fa fa-repeat"></i> 换一张</a></td>
 				                  </tr>
 				               </table>
 				          </li>
@@ -136,8 +135,8 @@
 				              <input name="pay_type" type="radio" value="SPABANK" /><img src="/images/bank/pab.png" class="img_bank" />
 				              </li>
 				            </ul>
-				          </li>
-				          <li class="btn_recharge"><a href="javascript:void(0)" class="btn btn-success" style="width:200px" onclick="pay();">下一步</a></li>
+				          </li> 
+				          <li><a href="javascript:void(0)" class="btn btn-success" style="width:200px" onclick="pay();"><i class="fa fa-mail-forward"></i> 下一步</a></li>
 				        </ul>
 				      </div>
 				      <!--account_security end-->

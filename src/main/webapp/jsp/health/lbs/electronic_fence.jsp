@@ -653,17 +653,17 @@ function safe_island_del() {
 	                 <div class="box box-primary">
 	                    <div class="box-header">
 	                        <h3 class="box-title">终端定位：</h3>
-	                        <button class="btn btn-success " style="float:right;margin-top: 10px;" onclick="position();">重新定位</button>
+	                        <button class="btn btn-success " style="float:right;margin-top: 10px;" onclick="position();"><i class="fa fa-fw fa-location-arrow"></i>重新定位</button>
 	                    </div>
 	                    <div class="box-body">
 	                        <!-- Date range -->
 	                        <div class="form-group">
 	                            <label>产品类型及编号选择:</label>
-	                            <div class="input-group" style="margin-top: 6px;">
+	                            <div class="input-group" style="margin-top: 6px;padding-bottom:12px">
 	                                <div class="input-group-addon">
-	                                    <i class="fa  fa-location-arrow"></i>
+	                                    <i class="fa  fa-bars"></i>
 	                                </div>
-	                                <select class="form-control" id="device_sid_global" style="width:300px"><option value="1">TE8000Y3(A10120144012757)</option></select>
+	                                <select id="device_sid_global" style="width:320px"><option value="1">TE8000Y3(A10120144012757)</option></select>
 	                                
 	                            </div><!-- /.input group -->
 	                        </div><!-- /.form group -->
@@ -675,8 +675,8 @@ function safe_island_del() {
 	                    <div class="box-header">
 	                        <h3 class="box-title">安全岛设置：</h3>
 	                        <div style="float:right;margin-top: 10px;">
-	                        	<button class="btn btn-success " style="" onclick="showIsland();">设置</button>
-	                        	<button class="btn btn-success " style="margin-left:20px" onclick="safe_island_del();">清除</button>
+	                        	<button class="btn btn-success " style="" onclick="showIsland();"><i class="fa fa-fw fa-gear"></i>设置</button>
+	                        	<button class="btn btn-success " style="margin-left:20px" onclick="safe_island_del();"><i class='fa fa-fw fa-trash-o'></i>清除</button>
 	                    	</div>
 	                    </div>
 	                    <div class="box-body">
@@ -716,7 +716,7 @@ function safe_island_del() {
 	                            </div><!-- /.input group -->
 	                        </div><!-- /.form group -->	
 	                        <div class="form-group">
-	                        	 <button class="btn btn-success" style="width:100%" onclick="queryStart();">查询</button>
+	                        	 <button class="btn btn-success" style="width:100%" onclick="queryStart();"><i class="fa fa-fw fa-search"></i>查询</button>
 			               	</div><!-- /.form group -->	
 			              <div class="map_queryResults" id="scrollBar" style="overflow-x:hidden;">
 			              <!--   <ul>
