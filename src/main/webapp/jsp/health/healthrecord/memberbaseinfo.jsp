@@ -301,20 +301,20 @@
          </section>
 	<div class="bp_accouint" id="main_div">
 		  <div class="box box-success">
-              <div class="box-header">
-                  <h3 class="box-title">基本信息</h3>
-              </div>		
-              <div class="box-body">
-				    <div>
-					    <form id="memberBaseInfo_form" class="user_form formular">
-					      <!--basic_information start-->
-					        <div class="row form-group btn_title_informationModify">
+              <div class="col-lg-12 col-xs-12">
+              		<span class="col-lg-2 col-xs-2 div-padding-title">基本信息</span>
+              		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
 					          	<div class="col-lg-10 col-xs-10 text-right" id="saveImage" href="javascript:void(0)" onclick="edit_baseinfo(this)">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
-					        </div>
+					</div>
+              	</div>		
+              <div class="box-body">
+				    <div>
+					    <form id="memberBaseInfo_form" class="user_form formular">
+					      <!--basic_information start-->
 					        <div class="row" >
 					        <div class="col-lg-10 col-xs-10">
 					        	<div class="form-group">
@@ -354,19 +354,18 @@
 			</div>
 		</div>
 			<div class="box box-info ">
-              <div class="box-header">
-                  <h3 class="box-title">详细信息</h3>
-              </div>		
-              <div class="box-body">
-			      <form id="detail_form">
-
-				         <div class="row form-group btn_title_informationModify">
+                <div class="col-lg-12 col-xs-12">
+              		<span class="col-lg-2 col-xs-2 div-padding-title">详细信息</span>
+              		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
 					          	<div class="col-lg-10 col-xs-10 text-right" id="detailImage" href="javascript:void(0)" onclick="edit_detail(this)">
 					          		<a class="btn btn-success">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
- 						</div>
+					</div>
+              	</div>			
+              <div class="box-body">
+			      <form id="detail_form">
 	 			         <div class="row">
 					         <div class="col-lg-10 col-xs-10">
 					         	<div class="col-lg-12 col-xs-12">
@@ -450,7 +449,7 @@
 						        </div>
 						        <div  class="col-lg-12 col-xs-12">
 						        	<span class="col-lg-2 col-xs-2 text-right form-span">家庭地址：</span>
-						        	<input class="col-lg-10 col-xs-10 display-input inputMax_informationModify text-input validate[funcCall[includespecialchar]]" type="text"  id="homeaddress"  name="homeaddress"  maxlength="128"  />
+						        	<input class="col-lg-10 col-xs-10 display-input inputMax_informationModify text-input validate[funcCall[includespecialchar]]" type="text"  id="homeaddress"  name="homeaddress"  maxlength="128" style="margin-left:5px;width: 81.3%;"/>
 						        </div>
 				        </div>
 			        </div>
@@ -458,21 +457,19 @@
 			   </div>
 			</div>
 			<div class="box box-warning">
-              <div class="box-header">
-                  <h3 class="box-title">工作信息</h3>
-              </div>		
+			    <div class="col-lg-12 col-xs-12">
+              		<span class="col-lg-2 col-xs-2 div-padding-title">工作信息</span>
+              		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
+					          	<div class="col-lg-10 col-xs-10 text-right" id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)">
+					          		<a class="btn btn-success">
+					                   <i class="fa fa-edit"></i> 编辑
+					             	</a>
+					            </div>
+					</div>
+              	</div>			
               <div class="box-body">
 			      <form id="workinfo_form">
 			      <!--job_information start-->
-			      <div class="detailed_information">
-			          <div class="row form-group btn_title_informationModify">
-			          	<div class="col-lg-10 col-xs-10 text-right" id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)">
-			          		<a class="btn btn-success">
-			                   <i class="fa fa-edit"></i> 编辑
-			             	</a>
-			            </div>
-			        </div>
-			        
 			        <div class="row informationModify_main" >
 			          <div class="col-lg-10 col-xs-10">
 			        	<div class="col-lg-12 col-xs-12">
@@ -497,7 +494,7 @@
 				        </div>
 				        <div class="col-lg-12 col-xs-12">
 					        <span class="col-lg-2 col-xs-2 text-right form-span">公司地址：</span>
-					        <input class="display-input text-input inputMax_informationModify validate[funcCall[includespecialchar]]" style="width:83%" type="text"  id="companyaddress"  name="companyaddress"  maxlength="120"  />
+					        <input class="col-lg-10 col-xs-10 display-input inputMax_informationModify validate[funcCall[includespecialchar]]" style="margin-left:5px;width: 81.3%;" type="text"  id="companyaddress"  name="companyaddress"  maxlength="120"  />
 				        </div>
 			        </div>
 			        </div>
