@@ -117,7 +117,7 @@
 	    
 	    td=tr.insertCell(4);
 	    td.obj = obj;
-	    td.innerHTML = "<a href='javascript:void(0)' class='btn btn-info'   onclick=\"showDetail("+index+")\"><i class='fa fa-fw fa-edit'></i>详情</a>";
+	    td.innerHTML = "<a href='javascript:void(0)' class='btn btn-info'   onclick=\"showDetail("+index+")\"><i class='fa fa-fw fa-eye'></i></i>查看</a>";
   }
   //周
   function query_week(){
@@ -351,7 +351,6 @@
 <script type="text/javascript"	src="<c:url value='/js/highcharts/modules/exporting.js'/>"></script>
 <style>
 #secondview table {
-	width: 430px;
 	border: 1px solid #aeaeae;
 	border-collapse: collapse;
 	margin-left: 20px;
@@ -738,7 +737,7 @@
 								<li class="weekli_margin">
 									<table class="detailtable table table-bordered table-striped dataTable" id="week_plan_medicine" >
 										<tr>
-											<td >通用名称</td>
+											<td width="25%">通用名称</td>
 											<td width="10%">剂量</td>
 											<td width="50%">服用时间</td>
 										</tr>
@@ -1063,7 +1062,7 @@ var version=0;//版本
 									<table class="detailtable table table-bordered table-striped dataTable" id="plan_medicine2">
 										<tr>
 											<td  width="25%">通用名称</td>
-											<td width="35%">剂量</td>
+											<td width="10%">剂量</td>
 											<td width="50%">服用时间</td>
 										</tr>
 									</table>

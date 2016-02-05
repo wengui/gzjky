@@ -71,7 +71,7 @@
 														<img src="<c:url value='/imageUploadAction/showHeadImageByPid.do?pid=${pa.pid}'/>" class="img-circle" alt="User Image" />
 													</div>
 													<h4 style="color:#3c8dbc">
-														<c:out value="${pa.pname}" />(当前账户)
+														<c:out value="${pa.pname}" />(当前患者)
 													</h4>
 
 													</a>
@@ -109,7 +109,7 @@
                         <span class="label label-success">4</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
+                        <li class="header">您有4条新消息</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
@@ -119,10 +119,10 @@
                                             <img src="<c:url value='/img/avatar3.png'/>" class="img-circle" alt="User Image"/>
                                         </div>
                                         <h4>
-                                            Support Team
-                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                           	最新咨询反馈
+                                            <small><i class="fa fa-clock-o"></i> 5 分钟前</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>查看详情</p>
                                     </a>
                                 </li><!-- end message -->
                                 <li>
@@ -131,10 +131,10 @@
                                             <img src="<c:url value='/img/avatar2.png'/>" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
-                                            AdminLTE Design Team
-                                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                                           	心电监测回复
+                                            <small><i class="fa fa-clock-o"></i> 2 小时前</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>查看详情</p>
                                     </a>
                                 </li>
                                 <li>
@@ -143,10 +143,10 @@
                                             <img src="<c:url value='/img/avatar.png'/>" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
-                                            Developers
-                                            <small><i class="fa fa-clock-o"></i> Today</small>
+                                                                                                                                                         血压监测回复
+                                            <small><i class="fa fa-clock-o"></i> 今天</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>查看详情</p>
                                     </a>
                                 </li>
                                 <li>
@@ -155,27 +155,15 @@
                                             <img src="<c:url value='/img/avatar2.png'/>" class="img-circle" alt="user image"/>
                                         </div>
                                         <h4>
-                                            Sales Department
-                                            <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                                            新的医嘱
+                                            <small><i class="fa fa-clock-o"></i> 昨天</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="<c:url value='/img/avatar.png'/>" class="img-circle" alt="user image"/>
-                                        </div>
-                                        <h4>
-                                            Reviewers
-                                            <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>查看详情</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
+                        <li class="footer"><a href="#">查看所有信息</a></li>
                     </ul>
                 </li>
                 <!-- User Account: style can be found in dropdown.less -->
