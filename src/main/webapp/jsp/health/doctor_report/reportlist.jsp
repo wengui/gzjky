@@ -67,6 +67,9 @@
 				if(recordList.length == 0){
 					$('.commonPage').hide();
 					$('.massage').show();
+				}else{
+					$('.commonPage').show();
+					$('.massage').hide();
 				}
 				$.fn.page.settings.count = response.recordTotal;
 				page($.fn.page.settings.currentnum);
@@ -94,7 +97,6 @@
 	 var type= recordList[index].reportType;
 	 	td=tr.insertCell(0);
 	    td.innerHTML = recordList[index].createdOn.substring(0,19);
-	    td.align="center";
 	    
 	    td=tr.insertCell(1);
 	    td.innerHTML =  type==1?'周报':type==2?'月报':type==4?'高血压预判':type==5?'高血压总结':'';
@@ -726,7 +728,7 @@
 								<li class="weekli_margin">
 									<table class="detailtable table table-bordered table-striped dataTable" id="week_plan_unnormal">
 										<tr>
-											<td width="15%">血压值</td>
+											<td width="25%">血压值</td>
 											<td width="45%">测压时间</td>
 											<td width="40%">反馈</td>
 										</tr>
@@ -736,9 +738,9 @@
 								<li class="weekli_margin">
 									<table class="detailtable table table-bordered table-striped dataTable" id="week_plan_medicine" >
 										<tr>
-											<td>通用名称</td>
-											<td>剂量</td>
-											<td>服用时间</td>
+											<td >通用名称</td>
+											<td width="10%">剂量</td>
+											<td width="50%">服用时间</td>
 										</tr>
 									</table>
 								</li>																
@@ -1050,7 +1052,7 @@ var version=0;//版本
 								<li class="tblack_results monthli_margin">
 									<table class="detailtable table table-bordered table-striped dataTable" id="month_bp_static"id="plan_unnormal2">
 										<tr>
-											<td width="15%">血压值</td>
+											<td width="25%">血压值</td>
 											<td width="35%">测压时间</td>
 											<td width="50%">反馈</td>
 										</tr>
@@ -1060,9 +1062,9 @@ var version=0;//版本
 								<li class="tblack_results monthli_margin">
 									<table class="detailtable table table-bordered table-striped dataTable" id="plan_medicine2">
 										<tr>
-											<td>通用名称</td>
-											<td>剂量</td>
-											<td>服用时间</td>
+											<td  width="25%">通用名称</td>
+											<td width="35%">剂量</td>
+											<td width="50%">服用时间</td>
 										</tr>
 									</table>
 								</li>
