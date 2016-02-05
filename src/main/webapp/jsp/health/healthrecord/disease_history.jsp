@@ -15,10 +15,16 @@
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
+<style type="text/ss"> 
+body { 
+overflow-x搜索:hidden ; /*隐藏水平滚动条*/ 
+overflow-y:hidden ; /*隐藏水平滚动条*/ 
+} 
+</style>
 <script type="text/javascript">
 menuId = "#records";
-var edit_image = "<i class='fa fa-edit'></i> 编辑";
-var save_image = "<i class='fa fa-save'></i> 保存";
+var edit_image = "<h3 class='btn btn-success'><i class='fa fa-edit'></i> 编辑</h3>";
+var save_image = "<h3 class='btn btn-success'><i class='fa fa-save'></i> 保存</h3>";
 
 function startInit(){
 	var $div_hrli = $(".safePage");
@@ -131,6 +137,7 @@ function startInit(){
 			}
 		}
 </script>
+
 </head>
 
 <body onload="startInit()"  class="skin-blue">

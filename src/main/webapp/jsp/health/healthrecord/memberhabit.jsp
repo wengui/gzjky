@@ -168,16 +168,11 @@
    <!--detailed_information start-->
    <div>
      	<div class="box box-info">
-             <div class="col-lg-12 col-xs-12">
-              		<span class="col-lg-2 col-xs-2 div-padding-title">生活习惯</span>
-              		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
-					          	<div class="col-lg-10 col-xs-10 text-right">
-					          		<a class="btn btn-success" id="editImage" href="javascript:void(0)" onclick="edit_habit(this)">
-					                   <i class="fa fa-edit"></i> 编辑
-					             	</a>
-					            </div>
-					</div>
-              	</div>		
+     		<div class="box-header">
+					<h3 class="box-title">生活习惯</h3>
+					<a id="editImage" href="javascript:void(0)" onclick="edit_habit(this)" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+					<h3 class="btn btn-success"><i class="fa fa-edit"></i> 编辑</h3></a>
+			</div>	
               <div class="box-body">
 	 			         <div class="row">
 					         <div class="col-lg-10 col-xs-10">

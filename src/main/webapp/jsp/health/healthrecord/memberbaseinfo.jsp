@@ -29,8 +29,8 @@
 <script type="text/javascript">
 
    menuId = "#baseinfo";
-   var edit_image = "<i class='fa fa-edit'></i> 编辑";
-   var save_image = "<i class='fa fa-save'></i> 保存";
+   var edit_image = "<h3 class='btn btn-success'><i class='fa fa-edit'></i> 编辑</h3>";
+   var save_image = "<h3 class='btn btn-success'><i class='fa fa-save'></i> 保存</h3>";
    var basic_form_id =  "memberBaseInfo_form";
    var detail_form_id = "detail_form";
    var workinfo_form_id = "workinfo_form";
@@ -301,16 +301,12 @@
          </section>
 	<div class="bp_accouint" id="main_div">
 		  <div class="box box-success">
-              <div class="col-lg-12 col-xs-12">
-              		<span class="col-lg-2 col-xs-2 div-padding-title">基本信息</span>
-              		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
-					          	<div class="col-lg-10 col-xs-10 text-right">
-					          		<a class="btn btn-success" id="saveImage" href="javascript:void(0)" onclick="edit_baseinfo(this)">
-					                   <i class="fa fa-edit"></i> 编辑
-					             	</a>
-					            </div>
-					</div>
-              	</div>		
+		  <div class="box-header">
+					<h3 class="box-title">基本信息</h3>
+					<a id="saveImage" href="javascript:void(0)" onclick="edit_baseinfo(this)" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+					<h3 class="btn btn-success"><i class="fa fa-edit"></i> 编辑</h3></a>
+			</div>
+				
               <div class="box-body">
 				    <div>
 					    <form id="memberBaseInfo_form" class="user_form formular">
@@ -354,16 +350,12 @@
 			</div>
 		</div>
 			<div class="box box-info ">
-                <div class="col-lg-12 col-xs-12">
-              		<span class="col-lg-2 col-xs-2 div-padding-title">详细信息</span>
-              		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
-					          	<div class="col-lg-10 col-xs-10 text-right">
-					          		<a class="btn btn-success" id="detailImage" href="javascript:void(0)" onclick="edit_detail(this)">
-					                   <i class="fa fa-edit"></i> 编辑
-					             	</a>
-					            </div>
-					</div>
-              	</div>			
+			<div class="box-header">
+					<h3 class="box-title">详细信息</h3>
+					<a id="detailImage" href="javascript:void(0)" onclick="edit_detail(this)" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+					<h3 class="btn btn-success"><i class="fa fa-edit"></i> 编辑</h3></a>
+			</div>
+		
               <div class="box-body">
 			      <form id="detail_form">
 	 			         <div class="row">
@@ -457,16 +449,12 @@
 			   </div>
 			</div>
 			<div class="box box-warning">
-			    <div class="col-lg-12 col-xs-12">
-              		<span class="col-lg-2 col-xs-2 div-padding-title">工作信息</span>
-              		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
-					          	<div class="col-lg-10 col-xs-10 text-right">
-					          		<a class="btn btn-success" id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)">
-					                   <i class="fa fa-edit"></i> 编辑
-					             	</a>
-					            </div>
-					</div>
-              	</div>			
+				<div class="box-header">
+					<h3 class="box-title">工作信息</h3>
+					<a id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+					<h3 class="btn btn-success"><i class="fa fa-edit"></i> 编辑</h3></a>
+				</div>
+		
               <div class="box-body">
 			      <form id="workinfo_form">
 			      <!--job_information start-->

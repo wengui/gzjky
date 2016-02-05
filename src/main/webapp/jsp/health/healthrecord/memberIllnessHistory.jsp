@@ -468,14 +468,11 @@
 <!--bp_history start-->
   <div class="box box-info">
 <div class="" id="show_history">
-			   <div class="col-lg-12 col-xs-12">
-              	<span class="col-lg-2 col-xs-2 div-padding-title" style="padding-left:5px;">疾病史</span>
-              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:75px;">
-					 <div class="col-lg-12 col-xs-12 text-right">
-					      <a class="btn btn-success" id="editImage" href="javascript:void(0)" onclick="toAddMemberIllnessHistory()"><i class="fa fa-plus-square"></i> 新增</a>
-					  </div>
+				<div class="box-header">
+					<h3 class="box-title">疾病史</h3>
+					<a style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+					<h3 class="btn btn-success" id="editImage" href="javascript:void(0)" onclick="toAddMemberIllnessHistory()" ><i class="fa fa-plus-square"></i> 新增</h3></a>
 				</div>
-              </div>
               <div class="box-body">
  					<div class="row">
  						<br/>
