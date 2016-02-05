@@ -992,7 +992,7 @@
 	                                    <div class="row">
 	                                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
 	                                        	<div><h4 class="box-body" id="reference_range"></h4></div>
-	                                            <div><h5 class="box-body">参考正常范围：60 &lt; 心率  &lt; 100</h5></div>
+	                                            <div><h5 class="box-body" style="font-size:18px">参考正常范围：60 &lt; 心率  &lt; 100</h5></div>
 	                                        </div><!-- ./col -->
 	                                        <div class="col-xs-8 text-center">
 	                                        	<li class="sketchMap" id="image_heart_rate">

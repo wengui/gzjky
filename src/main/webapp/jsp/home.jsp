@@ -312,7 +312,9 @@
 		<aside class="right-side">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>最近登录 : ${sessionScope.online}</h1>
+				<h1>最近登录 : 
+				<small>${sessionScope.online}</small>
+				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
 					<li class="active">个人信息</li>
