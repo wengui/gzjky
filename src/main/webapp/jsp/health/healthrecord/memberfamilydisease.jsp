@@ -557,17 +557,15 @@
         <!--basic_information start-->
         <div>
         <div class="box box-info">
-              <div class="box-header">
-                  <h3 class="box-title">家族遗传史</h3>
-              </div>		
+             <div class="col-lg-12 col-xs-12">
+              	<span class="col-lg-2 col-xs-2 div-padding-title">家族遗传史</span>
+              	<div class="form-group col-lg-8 col-xs-8 text-right div-padding-top" style="padding-right:3px;">
+					 <div class="col-lg-10 col-xs-10 text-right">
+					      <a class="btn btn-success" id="editImage" href="javascript:void(0)" onclick="edit_family(this)"><i class="fa fa-edit"></i> 编辑</a>
+					  </div>
+				</div>
+              </div>	
               <div class="box-body">
-				         <div class="row form-group btn_title_informationModify">
-					          	<div class="col-lg-10 col-xs-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_family(this)">
-					          		<a class="btn btn-success">
-					                   <i class="fa fa-edit"></i> 编辑
-					             	</a>
-					            </div>
- 							</div>
 	 			         <div class="row">
 	 			         	<div class="col-lg-2 col-xs-2">&nbsp;</div>
 					         <div class="col-lg-8 col-xs-8">

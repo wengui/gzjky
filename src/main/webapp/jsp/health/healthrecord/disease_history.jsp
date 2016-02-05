@@ -17,8 +17,8 @@
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
 <script type="text/javascript">
 menuId = "#records";
-var edit_image = "<a class='btn btn-success'><i class='fa fa-edit'></i> 编辑</a>";
-var save_image = "<a class='btn btn-success'><i class='fa fa-save'></i> 保存</a>";
+var edit_image = "<i class='fa fa-edit'></i> 编辑";
+var save_image = "<i class='fa fa-save'></i> 保存";
 
 function startInit(){
 	var $div_hrli = $(".safePage");

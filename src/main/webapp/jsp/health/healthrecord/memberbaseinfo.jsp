@@ -29,8 +29,8 @@
 <script type="text/javascript">
 
    menuId = "#baseinfo";
-   var edit_image = "<a class='btn btn-success'><i class='fa fa-edit'></i> 编辑</a>";
-   var save_image = "<a class='btn btn-success'><i class='fa fa-save'></i> 保存</a>";
+   var edit_image = "<i class='fa fa-edit'></i> 编辑";
+   var save_image = "<i class='fa fa-save'></i> 保存";
    var basic_form_id =  "memberBaseInfo_form";
    var detail_form_id = "detail_form";
    var workinfo_form_id = "workinfo_form";
@@ -304,8 +304,8 @@
               <div class="col-lg-12 col-xs-12">
               		<span class="col-lg-2 col-xs-2 div-padding-title">基本信息</span>
               		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
-					          	<div class="col-lg-10 col-xs-10 text-right" id="saveImage" href="javascript:void(0)" onclick="edit_baseinfo(this)">
-					          		<a class="btn btn-success">
+					          	<div class="col-lg-10 col-xs-10 text-right">
+					          		<a class="btn btn-success" id="saveImage" href="javascript:void(0)" onclick="edit_baseinfo(this)">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
@@ -357,8 +357,8 @@
                 <div class="col-lg-12 col-xs-12">
               		<span class="col-lg-2 col-xs-2 div-padding-title">详细信息</span>
               		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
-					          	<div class="col-lg-10 col-xs-10 text-right" id="detailImage" href="javascript:void(0)" onclick="edit_detail(this)">
-					          		<a class="btn btn-success">
+					          	<div class="col-lg-10 col-xs-10 text-right">
+					          		<a class="btn btn-success" id="detailImage" href="javascript:void(0)" onclick="edit_detail(this)">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>
@@ -460,8 +460,8 @@
 			    <div class="col-lg-12 col-xs-12">
               		<span class="col-lg-2 col-xs-2 div-padding-title">工作信息</span>
               		<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:65px;">
-					          	<div class="col-lg-10 col-xs-10 text-right" id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)">
-					          		<a class="btn btn-success">
+					          	<div class="col-lg-10 col-xs-10 text-right">
+					          		<a class="btn btn-success" id="workImage" href="javascript:void(0)" onclick="edit_workinfo(this)">
 					                   <i class="fa fa-edit"></i> 编辑
 					             	</a>
 					            </div>

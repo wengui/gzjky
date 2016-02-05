@@ -217,17 +217,15 @@
 <form id="complication_form">
  <div>
         <div class="box box-info">
-              <div class="box-header">
-                 <h3 class="box-title">当前并发症</h3>
+            <div class="col-lg-12 col-xs-12">
+              	<span class="col-lg-2 col-xs-2 div-padding-title">当前并发症</span>
+              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:32px;">
+					 <div class="col-lg-10 col-xs-10 text-right">
+					      <a class="btn btn-success" id="editImage" href="javascript:void(0)" onclick="edit_complication(this)"><i class="fa fa-edit"></i> 编辑</a>
+					  </div>
+				</div>
               </div>		
               <div class="box-body">
-				         <div class="row form-group btn_title_informationModify">
-					          	<div class="col-lg-10 col-xs-10 text-right" id="editImage" href="javascript:void(0)" onclick="edit_complication(this)">
-					          		<a class="btn btn-success">
-					                   <i class="fa fa-edit"></i> 编辑
-					             	</a>
-					            </div>
- 							</div>
  						<div class="row" id="health_examination">
             					<ul class="col-lg-12 col-xs-12" id="health_ul">
 																		
