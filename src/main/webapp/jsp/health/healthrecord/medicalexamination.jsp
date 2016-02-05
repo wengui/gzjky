@@ -287,20 +287,18 @@ function startInit(){
 <body onload="startInit()"  class="skin-blue" >
 <div>
   
-  	<div class="box box-danger">
-              <div class="box-header">
-                  <h3 class="box-title">健康检查</h3>
-              </div>
-              <!-- box-body start -->
-              <div class="box-body">
-              	<div class="col-lg-11 col-xs-11 text-right">
-		             
-		             
+  	<div class="box box-info">
+  	          <div class="col-lg-12 col-xs-12">
+              	<span class="col-lg-2 col-xs-2 div-padding-title">健康检查</span>
+              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:90px;">
 		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="deleteMedicalExamination()"><i class="fa fa-trash-o"></i> 删除</a>
 		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="showMedicalExamintionDialog(1)"><i class="fa fa-edit"></i> 修改</a>
 		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="showMedicalExamintionDialog()"><i class="fa fa-plus-square"></i> 增加</a>
+				</div>
               </div>
-              
+<!-- box-body start -->
+<div class="box-body">
+
   <div class="row">
   <br/> 
   <div class="col-lg-11 col-xs-11">
