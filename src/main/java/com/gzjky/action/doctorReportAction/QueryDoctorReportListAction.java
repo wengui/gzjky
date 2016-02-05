@@ -14,7 +14,6 @@ import com.gzjky.action.acitonCommon.ModelMap;
 import com.gzjky.base.util.VaildateUtils;
 import com.gzjky.bean.extend.QueryDoctorReportInputBean;
 import com.gzjky.bean.extend.QueryDoctorReportOutputBean;
-import com.gzjky.dao.constant.CodeConstant;
 import com.gzjky.dao.readdao.DoctorsReportReadMapper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
