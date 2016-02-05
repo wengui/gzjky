@@ -109,6 +109,9 @@
 				if(memberIllnessHistoryList.length == 0){
 					$('.commonPage').hide();
 					$('.massage').show();
+				}else{
+					$('.commonPage').show();
+					$('.massage').hide();
 				}
 				
 				$.fn.page.settings.count = response.recordTotal;
@@ -155,7 +158,7 @@
 		  
 		    
 		    td=tr.insertCell(4);
-		    td.innerHTML =  "<a href='javascript:void(0)' onclick='showMemberIllness("+i+")'>查看</a>|&nbsp;&nbsp;<a href='javascript:void(0)' onclick='deleteMemberIllnessHistory("+i+")'>删除</a>";
+		    td.innerHTML =  "<a href='javascript:void(0)' class='btn btn-info' onclick='showMemberIllness("+i+")'><i class='fa fa-fw fa-eye'></i>查看</a><a href='javascript:void(0)' class='btn btn-info' onclick='deleteMemberIllnessHistory("+i+")'><i class='fa fa-fw fa-trash-o'></i>删除</a>";
 		   
 		    
 	   } catch(e){	   
@@ -468,14 +471,11 @@
 <!--bp_history start-->
   <div class="box box-info">
 <div class="" id="show_history">
-			   <div class="col-lg-12 col-xs-12">
-              	<span class="col-lg-2 col-xs-2 div-padding-title" style="padding-left:5px;">疾病史</span>
-              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:75px;">
-					 <div class="col-lg-12 col-xs-12 text-right">
-					      <a class="btn btn-success" id="editImage" href="javascript:void(0)" onclick="toAddMemberIllnessHistory()"><i class="fa fa-plus-square"></i> 新增</a>
-					  </div>
+				<div class="box-header">
+					<h3 class="box-title">疾病史</h3>
+					<a style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
+					<h3 class="btn btn-success" id="editImage" href="javascript:void(0)" onclick="toAddMemberIllnessHistory()" ><i class="fa fa-plus-square"></i> 新增</h3></a>
 				</div>
-              </div>
               <div class="box-body">
  					<div class="row">
  						<br/>

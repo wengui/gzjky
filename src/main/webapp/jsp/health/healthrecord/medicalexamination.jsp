@@ -72,6 +72,9 @@ function startInit(){
 					if(recordList.length == 0){
 						$('.commonPage').hide();
 						$('.massage').show();
+					}else{
+						$('.commonPage').show();
+						$('.massage').hide();
 					}
 					$.fn.page.settings.count = response.recordTotal;
 					page($.fn.page.settings.currentnum);
@@ -288,9 +291,9 @@ function startInit(){
 <div>
   
   	<div class="box box-info">
-  	          <div class="col-lg-12 col-xs-12">
+  	          <div class="col-lg-12 col-xs-12" style="padding-right:0px;">
               	<span class="col-lg-2 col-xs-2 div-padding-title">健康检查</span>
-              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:90px;">
+              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:12px;">
 		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="deleteMedicalExamination()"><i class="fa fa-trash-o"></i> 删除</a>
 		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="showMedicalExamintionDialog(1)"><i class="fa fa-edit"></i> 修改</a>
 		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="showMedicalExamintionDialog()"><i class="fa fa-plus-square"></i> 增加</a>

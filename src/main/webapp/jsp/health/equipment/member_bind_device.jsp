@@ -222,7 +222,7 @@
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body">
-							<ul>
+							<ul style="padding-left:5px">
 								<div class="form-group">
 									<li>设备序列号：</li>
 									<li class="register_input"><input type="text"

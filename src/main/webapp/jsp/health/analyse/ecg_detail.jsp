@@ -83,7 +83,7 @@
                   <h3 class="box-title">心电详情</h3>
                   <a href="javascript:void(0)" onclick="goback()" style="float: right;margin: -12px;padding: 0px 22px 0px 0px;">
 				  <h3 class="btn btn-success"><i class="fa fa-mail-reply"></i> 返回</h3></a>
-				  </div>
+			  </div>
               <div class="box-body">
               	<div class="row">
 				  <div class="col-lg-10" style="padding-left:10px" id="ecg_detail" >

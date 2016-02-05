@@ -98,7 +98,7 @@ menuId = "#pwd";
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body">
-							<form id="changePwd_form">
+							<form id="changePwd_form" style="padding-left:5px">
 								
 									<div class="box-group">
 										<ul>
