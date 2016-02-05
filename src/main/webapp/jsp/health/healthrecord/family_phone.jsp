@@ -10,6 +10,7 @@
 <link href="<c:url value='/css/index_tab.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/css/popup.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/artDialog/skins/blue.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/css/bootstrapCommon.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/js/validationEngine/skins/validationEngine.jquery.css'/>" rel="stylesheet" type="text/css"/>
 <script src="<c:url value='/js/jquery/jquery-migrate1.3.0.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
@@ -247,16 +248,14 @@
 	             </ol>
 	         </section> 
 	        	<div >
-					<div class="box box-danger">
-						<div class="box-header">
-							<h3 class="box-title">亲情号码</h3>
+					<div class="box box-success">
+					   <div class="col-lg-12 col-xs-12">
+		              	<span class="col-lg-2 col-xs-2 div-padding-title">亲情号码</span>
+		              	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:83px;">
+							 <a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-success" ><i class="fa fa-plus-square"></i> 新增</h3></a>
 						</div>
+		              </div>
 						<!-- /.box-header -->
-						<div class="box-body">
-							<div class="row col-lg-11">
-								<a href="javascript:void(0)" onclick="add_familyPhone()"><h3 class="btn btn-success" ><i class="fa fa-plus-square"></i> 增加</h3></a>
-							</div>
-						</div><!-- /.box-body -->
        				    <div class="row" >
 						  <br/>
 						  <br/>
