@@ -90,6 +90,8 @@ public class registerAction extends ActionSupport {
 					//PatientInfo表录入
 					PatientInfo patientInfo = new PatientInfo();
 					patientInfo.setRegdatetime(new Date());
+					//患者默认姓名
+					patientInfo.setPatientname("新用户");
 					//patientid获取
 					result =  String.valueOf(patientInfoWriteMapper.insertSelective(patientInfo));
 					if (result.equals("1")) {
