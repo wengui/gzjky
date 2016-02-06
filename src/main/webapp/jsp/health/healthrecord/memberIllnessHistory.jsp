@@ -275,6 +275,9 @@
 	}
 	
 	function toAddMemberIllnessHistory(){
+		// 疾病名称加载
+		reloadTree();
+		
 		$("#addMemberIllnessHistory").clearForm();
 	
 		$("#show_history").attr("style","display:none");
@@ -433,9 +436,7 @@
 			}
 		}); 
 		}
-		$(function(){
-			reloadTree() ;
-		});
+
 </SCRIPT>
 
 <script type="text/javascript">
@@ -555,8 +556,8 @@
 		 	<textarea rows="5" cols="40" name="comment"  id="comment"  class="col-lg-8 col-xs-8 display-textarea validate[funcCall[includespecialchar]]" ></textarea>
 		 </div>
 		 <div class="col-lg-8 col-xs-8">
-		 	<div class="col-lg-6 col-xs-6 text-right"><a href="javascript:void(0)"  class="btn btn-success" onclick="addMemberIllnessHistory()" id="save_button">保存</a></div>
-		 	<div class="col-lg-6 col-xs-6 text-left"><a href="javascript:void(0)"  class="btn btn-success" onclick="showMemberIllnessHistory()">返回列表</a></div>
+		 	<div class="col-lg-6 col-xs-6 text-right"><a href="javascript:void(0)"  class="btn btn-success" onclick="addMemberIllnessHistory()" id="save_button"><i class='fa fa-save'></i> 保存</a></div>
+		 	<div class="col-lg-6 col-xs-6 text-left"><a href="javascript:void(0)"  class="btn btn-success" onclick="showMemberIllnessHistory()"><i class='fa fa-mail-reply'></i> 返回</a></div>
 		 </div>
 		</div>
         

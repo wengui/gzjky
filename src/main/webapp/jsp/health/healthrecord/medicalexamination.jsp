@@ -292,7 +292,7 @@ function startInit(){
   
   	<div class="box box-info">
   	          <div class="col-lg-12 col-xs-12" style="padding-right:0px;">
-              	<span class="col-lg-2 col-xs-2 div-padding-title">健康检查</span>
+              	<span class="col-lg-2 col-xs-2 div-padding-title" style="padding-left:0px;">健康检查</span>
               	<div class="form-group col-lg-10 col-xs-10 text-right div-padding-top" style="padding-right:12px;">
 		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="deleteMedicalExamination()"><i class="fa fa-trash-o"></i> 删除</a>
 		             <a href="javascript:void(0)" class="btn btn-success from-a text-left col-lg-1 col-xs-1" style="float:right;" onclick="showMedicalExamintionDialog(1)"><i class="fa fa-edit"></i> 修改</a>
@@ -440,7 +440,7 @@ function startInit(){
 	              		<input class="inputMin_informationModify text-input validate[required,custom[number],funcCall[decimalRange[0.1,100]]]" style="width:230px" type="text"   id="wlnbdb"  name="wlnbdb" maxlength="5" />
 	              		mg/24h
 	              </li>			              
-	              <li class="btn_popup_confirm2 text-center"><a href="javascript:void(0)" class="btn btn-info" onclick="saveMedicalExamination()"><span>保存</span></a></li>                                       
+	              <li class="btn_popup_confirm2 text-center"><a href="javascript:void(0)" class="btn btn-info" onclick="saveMedicalExamination()"><i class='fa fa-save'></i> 保存</a></li>                                       
 	         </ul>
 	      </div>                 
   </form>

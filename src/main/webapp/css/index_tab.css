@@ -76,7 +76,7 @@
 .btn_goback a{height:30px; background:#00a65a; line-height:30px; color:#fff; text-align: center; width:88px; display: block; text-decoration: none}
 
 
-.family_disease_relation a{text-decoration:none; color:#00a65a; margin:0 5px;}
+.family_disease_relation a{text-decoration:none; color:white; margin:0 5px;}
 .family_disease_relation a:hover{text-decoration:underline}=======
 
 /*-------------------advice_detail---------------------*/
@@ -173,7 +173,7 @@ span.method{line-height: 28px;}
 .med_table a{color: #00a65a;font: 13px/26px "微软雅黑";}
 .med_table2 a{color: #00a65a;font: 13px/26px "微软雅黑";}
 
-.family_disease_relation a{text-decoration:none; color:#00a65a; margin:0 5px;}
+.family_disease_relation a{text-decoration:none; color:white; margin:0 5px;}
 .family_disease_relation a:hover{text-decoration:underline}
 
 .time_input select {

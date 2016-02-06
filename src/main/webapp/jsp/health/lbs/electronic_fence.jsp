@@ -790,7 +790,7 @@ function safe_island_del() {
           <tr>
             <td class="right_text"></td>
             <td class="left_text">
-            	<span id="alert_message_add" style="font-size:12px;color:red;"></span>
+            	<span id="alert_message_add" style="font-size:20px;color:red;"></span>
             </td>
           </tr>
           <tr>
