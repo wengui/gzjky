@@ -156,7 +156,7 @@ function startInit(){
              <div class="icon  text-center">
                   <i class="ion ion-person-add"></i>
              </div>
-             <a href="#" class="small-box-footer">
+             <a class="small-box-footer">
                 更多 <i class="fa fa-arrow-circle-right"></i>
              </a>
              </div>
@@ -170,7 +170,7 @@ function startInit(){
                     <div class="icon">
                          <i class="ion ion-person-add"></i>
                     </div>
-                   <a href="#" class="small-box-footer">
+                   <a class="small-box-footer">
                 	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
                </div>
@@ -186,7 +186,7 @@ function startInit(){
                  <div class="icon">
                      <i class="ion ion-person-add"></i>
                  </div>
-                    <a href="#" class="small-box-footer">
+                    <a class="small-box-footer">
                 	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
              </div>
@@ -200,7 +200,7 @@ function startInit(){
                  <div class="icon">
                      <i class="ion ion-person-add"></i>
                  </div>
-                   <a href="#" class="small-box-footer">
+                   <a class="small-box-footer">
                 	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
              </div>
@@ -216,7 +216,7 @@ function startInit(){
              <div class="icon">
                   <i class="ion ion-person-add"></i>
              </div>
-             <a href="#" class="small-box-footer">
+             <a class="small-box-footer">
                 更多 <i class="fa fa-arrow-circle-right"></i>
              </a>
              </div>
@@ -230,7 +230,7 @@ function startInit(){
                     <div class="icon">
                          <i class="ion ion-person-add"></i>
                     </div>
-                   <a href="#" class="small-box-footer">
+                   <a class="small-box-footer">
                 	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
                </div>
@@ -248,7 +248,7 @@ function startInit(){
                  <div class="icon">
                      <i class="ion ion-person-add"></i>
                  </div>
-                    <a href="#" class="small-box-footer">
+                    <a class="small-box-footer">
                 	更多 <i class="fa fa-arrow-circle-right"></i>
              		</a>
              </div>
