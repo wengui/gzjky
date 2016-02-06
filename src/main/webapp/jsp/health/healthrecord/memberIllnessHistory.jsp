@@ -275,6 +275,9 @@
 	}
 	
 	function toAddMemberIllnessHistory(){
+		// 疾病名称加载
+		reloadTree();
+		
 		$("#addMemberIllnessHistory").clearForm();
 	
 		$("#show_history").attr("style","display:none");
@@ -433,9 +436,7 @@
 			}
 		}); 
 		}
-		$(function(){
-			reloadTree() ;
-		});
+
 </SCRIPT>
 
 <script type="text/javascript">
