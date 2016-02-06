@@ -43,7 +43,7 @@ body {
 	text-overflow: ellipsis;
 	cursor: default;
 	line-height:40px;
-	background:#00aad5;
+	background:#3c8dbc;
 	font-size:20px;
 }
 
@@ -192,14 +192,13 @@ body {
 }
 
 .d-title {
-	height: 29px;
+	height: 40px;
 	line-height: 29px;
-	padding: 0 25px 0 0;
+	padding: 3px 25px 0 0;
 	_padding: 0;
 	text-indent: 5px;
 	color: #FFF;
-	font-weight: 700;
-
+	padding-left:3%;
 }
 
 .d-nw, .d-ne, .d-sw, .d-se, .d-n, .d-s, .d-close {
