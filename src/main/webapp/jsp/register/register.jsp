@@ -212,7 +212,7 @@
 		$("#register_button").attr("onclick", "");
 		
 		var login_id=$("#login_id").val();
-		var passwd=$("#passwd").val();
+		var passwd=$("#passwdv").val();
 		var cell_phone=$("#cell_phone").val();
 		var check_code=$("#check_code").val();
 		var email=$("#email").val();
