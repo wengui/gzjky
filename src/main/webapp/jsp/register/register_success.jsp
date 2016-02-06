@@ -61,7 +61,7 @@
               <li><a href="../login.jsp" title="立即登录">立即登录</a><span class="line_success">|</span><a href="../login.jsp" title="返回首页">返回首页</a></li>
               <li>
                <span id="tag" style="color: red;font-size: 25">5</span>  
-   						秒钟之后，自动<a href="view.jsp" title="立即跳转">跳转</a>  
+   						秒钟之后，自动跳转
               </li>
             </ul>
           </div>  
