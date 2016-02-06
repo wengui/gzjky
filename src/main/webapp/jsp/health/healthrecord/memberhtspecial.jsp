@@ -575,7 +575,7 @@ function closeHoursDiv(){
 		<div class="popup_header btn-info">
 			<ul>
 	      		<li class="name_popupHeader">用药时间</li>
-	      		<li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+	      		<li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal" class="d-close"></a></li>
 	    	</ul>
 	  	</div>
 	  

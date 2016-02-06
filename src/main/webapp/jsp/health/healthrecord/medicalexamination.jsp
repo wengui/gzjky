@@ -398,7 +398,7 @@ function startInit(){
   <div class="popup_header">
     <ul>
       <li class="name_popupHeader"  id="pop_medicalExaminationTitle">增加亲情号码</li>
-      <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+      <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal" class="d-close"></a></li>
     </ul>
   </div>
   <form id="medicalExaminationForm" >

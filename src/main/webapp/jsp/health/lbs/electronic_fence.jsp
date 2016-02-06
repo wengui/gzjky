@@ -766,7 +766,7 @@ function safe_island_del() {
   <div class="popup_header">
     <ul>
       <li class="name_popupHeader">安全岛中心设置</li>
-      <li class="close_popupHeader"><a href="javascript:void(0);" onclick="closeDiv();">X</a></li>
+      <li class="close_popupHeader"><a href="javascript:void(0);" onclick="closeDiv();" class="d-close"></a></li>
     </ul>
   </div>
   <div  id="popWindow_main" class="popup_main">

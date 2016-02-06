@@ -232,8 +232,8 @@ body {
 }
 
 .d-close {
-	top: 4px;
-	right: 4px;
+	top: 8px;
+	right: 8px;
 	_z-index: 1;
 	width: 20px;
 	height: 20px;

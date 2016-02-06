@@ -1020,7 +1020,7 @@
 	 <div class="popup_header">
 	   <ul>
 	     <li class="name_popupHeader">晨峰血压</li>
-	     <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+	     <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal" class="d-close"></a></li>
 	   </ul>
 	 </div>
 	 <div class="popup_main">
@@ -1042,7 +1042,7 @@
 	 <div class="popup_header">
 	   <ul>
 	     <li class="name_popupHeader">血压分级标准</li>
-	     <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+	     <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal" class="d-close"></a></li>
 	   </ul>
 	 </div>
 	 <div class="popup_main" >
@@ -1078,7 +1078,7 @@
 	 <div class="popup_header" >
 	   <ul >
 	     <li class="name_popupHeader" >心电图</li>
-	     <li class="close_popupHeader" ><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+	     <li class="close_popupHeader" ><a href="javascript:void(0)" data-dismiss="modal" class="d-close"></a></li>
 	   </ul>
 	 </div>
 	 <div class="popup_main">

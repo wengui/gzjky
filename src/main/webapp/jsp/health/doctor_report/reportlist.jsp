@@ -623,7 +623,7 @@
 		<div class="popup_header">
 			<ul>
 				<li class="name_popupHeader" id="detail_title">周报详情</li>
-				<li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+				<li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal" class="d-close"></a></li>
 			</ul>
 		</div>
 
@@ -943,7 +943,7 @@ var version=0;//版本
 		<div class="popup_header">
 			<ul>
 				<li class="name_popupHeader" id="detail_monthreport">月报详情</li>
-				<li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+				<li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal" class="d-close"></a></li>
 			</ul>
 		</div>
 

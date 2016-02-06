@@ -332,7 +332,7 @@
 	  <div class="popup_header">
 	    <ul>
 	      <li class="name_popupHeader" id="pop_memberConsultTitle">增加亲情号码</li>
-	      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_memberConsult();">X</a></li>
+	      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_memberConsult();" class="d-close"></a></li>
 	    </ul>
 	  </div>
 	  <form id="addMemberConsultForm" >
@@ -367,7 +367,7 @@
 	  <div class="popup_header">
 	    <ul>
 	      <li class="name_popupHeader" id="pop_memberConsultDtailTitle">会员咨询详情</li>
-	      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_memberConsultDetail();">X</a></li>
+	      <li class="close_popupHeader"><a href="javascript:void(0)" onclick="closeDiv_memberConsultDetail();" class="d-close"></a></li>
 	    </ul>
 	  </div>
 	  <form id="memberConsultDetailForm" >

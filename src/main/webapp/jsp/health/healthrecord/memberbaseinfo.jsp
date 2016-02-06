@@ -601,7 +601,7 @@
 	  <div class="popup_header">
 	    <ul>
 	      <li class="name_popupHeader">上传头像</li>
-	      <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal">X</a></li>
+	      <li class="close_popupHeader"><a href="javascript:void(0)" data-dismiss="modal" class="d-close"></a></li>
 	    </ul>
 	  </div>
 	  <form id="upload_form" action="" method="post" name="upload_form"  enctype="multipart/form-data"  target="hidden_frame">

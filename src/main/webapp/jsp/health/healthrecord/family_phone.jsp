@@ -292,7 +292,7 @@
 
 				<li class="close_popupHeader"><a
 					href="javascript:void(0)" 
-					data-dismiss="modal">X</a></li>
+					data-dismiss="modal" class="d-close"></a></li>
 			</ul>
 		</div>
 		<form id="addFamilyPhoneForm">
