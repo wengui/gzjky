@@ -226,7 +226,7 @@ table#faceTable tr:HOVER{background-color: rgb(239, 249, 229); cursor: pointer;}
 		                 <input class="col-lg-8 col-xs-8 display-input commonName" id="commonName" type="text" />
 	               </div>
 	               <div class="col-lg-3 col-xs-3">
-	               	 <button class="btn btn-success" onclick="queryStart();"><i class="fa fa-search"></i> 查询</button>
+	               	 <button class="btn btn-success" onclick="query();"><i class="fa fa-search"></i> 查询</button>
 	               </div>
               </div>
 

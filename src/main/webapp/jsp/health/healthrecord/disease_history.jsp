@@ -15,12 +15,6 @@
 <script src="<c:url value='/js/artDialog/jquery.artDialog.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/artDialog/artDialog.plugins.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/js/common.js'/>"  type="text/javascript"></script>
-<style type="text/ss"> 
-body { 
-overflow-x搜索:hidden ; /*隐藏水平滚动条*/ 
-overflow-y:hidden ; /*隐藏水平滚动条*/ 
-} 
-</style>
 <script type="text/javascript">
 menuId = "#records";
 var edit_image = "<h3 class='btn btn-success'><i class='fa fa-edit'></i> 编辑</h3>";
@@ -45,7 +39,8 @@ function startInit(){
 
 	   //页签已经加载
 		if(index in tab_map){
-			   
+			   // 定位到生活习惯
+			   location.href = "#memberHabitIframe";
 		}else{
 		    //var fn = function_map[index];
 		    var frame_sel = "";
@@ -60,6 +55,9 @@ function startInit(){
 		    		var pageurl = "/gzjky/jsp/health/healthrecord/"+page+".jsp";
 		    		document.getElementById(frame_sel).src = "<c:url value='"+pageurl+"'/>";
 		    	}
+		    	
+		    	// 定位到显示的内容
+		    	location.href = "#"+frame_sel;
 		    }
 		 }
 	});
@@ -123,19 +121,6 @@ function startInit(){
 			}
 		});
 	}
- 	
-
-	 
-	    function sonIframeResize(iframe) {
-			try {
-				var bHeight = iframe.contentWindow.document.body.scrollHeight;
-				var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
-				var height = Math.min(bHeight, dHeight);
-				iframe.height = height;
-			} catch (ex) {
-			    
-			}
-		}
 </script>
 
 </head>
@@ -282,7 +267,7 @@ function startInit(){
     <div class="tab_healthRecords_box">
        	
       <div>
-      		<iframe id="memberHabitIframe"  name = "memberHabitIframe" src="<c:url value='/jsp/health/healthrecord/memberhabit.jsp'/>"  frameborder="0" width="100%"  scrolling="no"   height="600px" ></iframe>
+      		<iframe id="memberHabitIframe"  name = "memberHabitIframe" src="<c:url value='/jsp/health/healthrecord/memberhabit.jsp'/>"  frameborder="0" width="100%"  scrolling="no"   height="650px" ></iframe>
       </div>
       
       <div class="hide_healthRecords">
@@ -293,10 +278,10 @@ function startInit(){
       		<iframe id="memberHtComplicationIframe"  name = "memberHtComplicationIframe" src=""  frameborder="0" width="100%"  scrolling="auto"></iframe>
       </div>
       <div class="hide_healthRecords">
-      		<iframe id="memberIllnessHistoryIframe"  name = "memberIllnessHistoryIframe" src=""  frameborder="0" width="100%"  scrolling="no"  height="600px" ></iframe>
+      		<iframe id="memberIllnessHistoryIframe"  name = "memberIllnessHistoryIframe" src=""  frameborder="0" width="100%"  scrolling="no"  height="700px" ></iframe>
       </div>
       <div class="hide_healthRecords">
-      		<iframe id="memberHtSpecialIframe"  name = "memberHtSpecialIframe" src=""  frameborder="0" width="100%" scrolling="no" height="800px" ></iframe>
+      		<iframe id="memberHtSpecialIframe"  name = "memberHtSpecialIframe" src=""  frameborder="0" width="100%" scrolling="auto"></iframe>
       </div>
       
       <div class="hide_healthRecords">
