@@ -4,9 +4,12 @@
 
 <web-app>
 
-  <display-name>Archetype Created Web Application</display-name>
-  
-  	<display-name>com_teamlab_wg_web</display-name>
+	<!-- 解决多项目部署到tomcat webapp.root冲突，tomact默认为webapp.root -->
+  	<display-name>com_gzjky</display-name>
+    <context-param>  
+        <param-name>gzjkywebAppRootKey</param-name>  
+        <param-value>com_gzjky.root</param-value>  
+    </context-param> 
 	
 	<!--Log4j配置-->  
     <context-param>  
