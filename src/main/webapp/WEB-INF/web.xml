@@ -7,8 +7,8 @@
 	<!-- 解决多项目部署到tomcat webapp.root冲突，tomact默认为webapp.root -->
   	<display-name>com_gzjky</display-name>
     <context-param>  
-        <param-name>gzjkywebAppRootKey</param-name>  
-        <param-value>com_gzjky.root</param-value>  
+        <param-name>webAppRootKey</param-name>  
+        <param-value>gzjky.root</param-value>  
     </context-param> 
 	
 	<!--Log4j配置-->  
