@@ -18,10 +18,10 @@
             <li class="tWhite">
             <span class="tGreen" title="联系我们">联系我们</span>
             </li>
-            <li class="tGray_bottom" title="地址">地址：浙江省杭州市西湖区西斗门路天堂软件园E幢13楼</li>
-            <li class="tGray_bottom" title="客服热线">客服热线：400-0785-120</li>
-            <li class="tGray_bottom" title="公司官网">公司官网：<a href="http://www.hellowin.cn" target="_blank">www.hellowin.cn</a></li>
-            <li class="tGray_bottom" title="服务邮箱">邮箱：helowin@hellowin.cn</li>
+            <li class="tGray_bottom" title="地址">地址：</li>
+            <li class="tGray_bottom" title="客服热线">客服热线：</li>
+            <li class="tGray_bottom" title="公司官网">公司官网：</li>
+            <li class="tGray_bottom" title="服务邮箱">邮箱：</li>
             <li class="tGray_bottom">
 				<a href="http://122.224.75.236/wzba/login.do?method=hdurl&doamin=http://www.995120.cn&id=330108000063652&SHID=1223.0AFF_NAME=com.rouger.
 				gs.main.UserInfoAff&AFF_ACTION=qyhzdetail&PAGE_URL=ShowDetail"
@@ -46,12 +46,12 @@
         <div class="bottom_concern">
           <ul>
             <li class="tWhite"><span class="tGreen">关注我们</span></li>
-            <li class="wechat_code">官方微信</li>
-            <li class="blog_code">官方新浪微博</li>
+            <li class="wechat_code">安卓 APP</li>
+            <li class="blog_code">IOS APP</li>
           </ul>
         </div>
         <div class="copyright">
-        Copyright © 2010-2014 浙江好络维物联网络技术有限公司版权所有  浙ICP备10212076号-1
+        Copyright © 
         <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000351579'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000351579%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>    
         </div>
       </div>
