@@ -1343,7 +1343,7 @@ var version=0;//版本
 									</li>
 									<li class="monthli_disc monthli_margin monthli_color">测压异常事件情况：</li>
 									<li class="tblack_results monthli_margin">
-										<table class="detailtable table table-bordered table-striped dataTable" id="month_bp_static"id="plan_unnormal2">
+										<table class="detailtable table table-bordered table-striped dataTable" id="plan_unnormal2">
 											<tr>
 												<td width="25%">血压值</td>
 												<td width="35%">测压时间</td>
