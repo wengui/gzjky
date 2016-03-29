@@ -210,6 +210,11 @@
 		});
    }
 </script>
+<style>
+.color_y{
+	background-color:#f3f4f5;
+}
+</style>
 </head>
 
 <body onload="startInit();" class="skin-blue">
@@ -373,7 +378,7 @@
 		$("#week_interval").html(bpWeekReport.starttime+"~"+bpWeekReport.endtime);
 		//日平均血压
 		//bloodPressureCharts(bpWeekReport.records,'血压趋势图');
-		bloodPressureCharts(null,'血压趋势图');
+		//bloodPressureCharts(null,'血压趋势图');
 		
 		//血压数据统计表
 		bp_static = bpWeekReport.bp_static;
@@ -383,6 +388,7 @@
 			weekdrawPlanbp(bp_week_start_plan,bp_week_end_plan);
 			
 		}
+		bloodPressureCharts(bp_static,'血压趋势图',"0");
 	
 		//测压异常事件
 		weekbprecords = bpWeekReport.incident;
@@ -403,7 +409,11 @@
 		}
 
 		//降压目标
-		$("#bp_target").html("收缩压:"+bpWeekReport.goalOfSBP+"mmhg,舒张压:"+bpWeekReport.goalOfDBP+"mmhg");
+		//$("#bp_target").html("收缩压:"+bpWeekReport.goalOfSBP+"mmhg,舒张压:"+bpWeekReport.goalOfDBP+"mmhg");
+		$("#week_target_shrink").html(bpWeekReport.goalOfSBP+"mmhg");
+		$("#week_target_diastole").html(bpWeekReport.goalOfDBP+"mmhg");
+		
+		
 		//血压分级
 		$("#bp_hype_type").html(bpWeekReport.bloodLevel);
 		//风险分层
@@ -415,11 +425,27 @@
 		//伴临床疾患
 		$("#clinical").html(bpWeekReport.clinicalDisease);
 		//血压总体分析
-		$("#mean_bp").html("平均血压:  收缩压:"+bpWeekReport.meanBloodPressureOfSBP+"mmhg,  舒张压:"+bpWeekReport.meanBloodPressureOfDBP+"mmhg");
-		$("#bp_load").html("血压负荷:  收缩压:"+bpWeekReport.bloodPressureLoadOfSBP+"舒张压:"+bpWeekReport.bloodPressureLoadOfDBP+";平均动脉压:"+bpWeekReport.bloodPressureLoadOfMAP+",心律:"+bpWeekReport.bloodPressureLoadOfHR);
-		$("#cv").html("血压变异性:"+bpWeekReport.sdMean);
-		$("#sbp").html("最大SBP:"+bpWeekReport.maxSBP+",  发生时间:"+bpWeekReport.maxSBPTime+";  最小SBP:"+bpWeekReport.minSBP+",  发生时间:"+bpWeekReport.minSBPTime);
-		$("#dbp").html("最大DBP:"+bpWeekReport.maxDBP+",  发生时间:"+bpWeekReport.maxDBPTime+";  最小DBP:"+bpWeekReport.minDBP+",  发生时间:"+bpWeekReport.minDBPTime);
+		//$("#mean_bp").html("平均血压:  收缩压:"+bpWeekReport.meanBloodPressureOfSBP+"mmhg,  舒张压:"+bpWeekReport.meanBloodPressureOfDBP+"mmhg");
+		//$("#bp_load").html("血压负荷:  收缩压:"+bpWeekReport.bloodPressureLoadOfSBP+"舒张压:"+bpWeekReport.bloodPressureLoadOfDBP+";平均动脉压:"+bpWeekReport.bloodPressureLoadOfMAP+",心律:"+bpWeekReport.bloodPressureLoadOfHR);
+		$("#week_avg_bp_shr").html(bpWeekReport.meanBloodPressureOfSBP+"mmhg");
+		$("#week_avg_bp_dia").html(bpWeekReport.meanBloodPressureOfDBP+"mmhg");
+		$("#week_bp_load_shr").html(bpWeekReport.bloodPressureLoadOfSBP+"mmhg");
+		$("#week_bp_load_dia").html(bpWeekReport.bloodPressureLoadOfDBP+"mmhg");
+		$("#week_mean_load").html(bpWeekReport.bloodPressureLoadOfMAP+"mmhg");
+		$("#week_heart_rate").html(bpWeekReport.bloodPressureLoadOfHR);
+		$("#week_cv").html(bpWeekReport.sdMean);
+		
+		//$("#sbp").html("最大SBP:"+bpWeekReport.maxSBP+",  发生时间:"+bpWeekReport.maxSBPTime+";  最小SBP:"+bpWeekReport.minSBP+",  发生时间:"+bpWeekReport.minSBPTime);
+		//$("#dbp").html("最大DBP:"+bpWeekReport.maxDBP+",  发生时间:"+bpWeekReport.maxDBPTime+";  最小DBP:"+bpWeekReport.minDBP+",  发生时间:"+bpWeekReport.minDBPTime);
+		$("#week_max_sbp").html(bpWeekReport.maxSBP);
+		$("#week_max_sbp_time").html(bpWeekReport.maxSBPTime);
+		$("#week_min_sbp").html(bpWeekReport.minSBP);
+		$("#week_min_sbp_time").html(bpWeekReport.minSBPTime);
+		$("#week_max_dbp").html(bpWeekReport.maxDBP);
+		$("#week_max_dbp_time").html(bpWeekReport.maxDBPTime);
+		$("#week_min_dbp").html(bpWeekReport.minDBP);
+		$("#week_min_dbp_time").html(bpWeekReport.minDBPTime);
+		
 		//不适症状
 		$("#week_plan_inadaptation").html(bpWeekReport.noIndication);
 		//测压方案完成情况
@@ -434,18 +460,22 @@
 		$("#detail_doctor_suggest").html(bpWeekReport.doctorHealthAdvice);
 		
 	}
+
 	//血压趋势图
-	function bloodPressureCharts(records,chartName) {
+	function bloodPressureCharts(records,chartName,flag) {
 		var tims = new Array(), cate = new Array();
 		var dia = new Array(), shr = new Array(), av = new Array();
-		
 		if (records != null && records != 'null') {
 			for ( var i = 0; i < records.length; i++) {
 				if(i<records.length-1){
 				cate[i] = i ;
 				}
+// 				var datetime= records[i].take_time;
 				
-				var datetime= records[i].take_time;
+// 				if(flag=="2"){
+// 					datetime = records[i].create_time;
+// 				}
+				var datetime= records[i].takeTime;
 				
 				if (datetime == null) {
 					datetime = '未知';
@@ -458,66 +488,102 @@
 					if (year == "0000")
 						datetime = '未知';
 				}
+				
 				tims[records.length - i - 1] = datetime;
-				var diap = records[i].diastole; 
-				var shrp = records[i].shrink;
-				
+				var diap = parseInt(records[i].diastole);
+				var shrp = parseInt(records[i].shrink);
 				var avg = 0;
-				if (shrp<60 || shrp>255 || diap<30 || diap>195 || shrp <= diap) {
-				
-					dia[records.length - i - 1] = 0;
-					shr[records.length - i - 1] = 0;
-				} else {
-					dia[records.length - i - 1] = diap;
-					shr[records.length - i - 1] = shrp;
-					avg = Math.round((((shrp - diap) * 1 / 3) + diap) * 100) / 100;
+				//如果是血压等级分析依据图超出阈值的血压点显示红色
+				if(flag=="1"){
+					if (shrp<60 || shrp>255 || diap<30 || diap>195 || shrp <= diap) {
+						dia[records.length - i - 1] = {y:0};
+						shr[records.length - i - 1] = {y:0};
+					} else {
+						if(diap<60 || diap>90){
+							dia[records.length - i - 1] = {color:'red',y:diap};
+						}else{
+							dia[records.length - i - 1] = {y:diap};
+						}
+						if(shrp<90 || shrp>140 ){
+							shr[records.length - i - 1] = {color:'red',y:shrp};
+						}else{
+							shr[records.length - i - 1] = {y:shrp};
+						}
+						
+						avg = Math.round((((shrp - diap) * 1 / 3) + diap) * 100) / 100;
+					}
+				}else{
+					if (shrp<60 || shrp>255 || diap<30 || diap>195 || shrp <= diap) {
+						dia[records.length - i - 1] = 0;
+						shr[records.length - i - 1] = 0;
+					} else {
+						dia[records.length - i - 1] = diap;
+						shr[records.length - i - 1] = shrp;
+						avg = Math.round((((shrp - diap) * 1 / 3) + diap) * 100) / 100;
+					}
 				}
 				av[records.length - i - 1] = avg;
 			}
 		}
+		
+			var renderId="container2";
 			var vals = [ {
 				name : '收缩压',
-				data : shr
+				data : shr,
 			}, {
 				name : '舒张压',
 				data : dia
 			}];
-			
+			if( flag=="0"){
 				vals[2]={
 				name : '平均压',
 				data : av
 				};
+				renderId="container";
+			}
+			if( flag=="2"){
+				vals[2]={
+				name : '平均压',
+				data : av
+				};
+				renderId="container1";
+			}
+			if( flag=="1"){
+				vals[2]={
+				name : '平均压',
+				data : av
+				};
+				renderId="container2";
+			}
 			
 			var ss = "";
 			if (tims[0] != '未知')
 				ss = tims[0];
 				
 			var text = '收缩压/舒张压(毫米汞柱)';
-		
+			
 			new Highcharts.Chart({
 				chart : {
-					renderTo : 'container',
+					renderTo : renderId,
 					defaultSeriesType : 'line',
 					marginRight : 80,
 					marginBottom : 45
 				},
-				colors:['#0ca7a1','#51b336','#ff9600'],
+				colors:['#71A944','#51b336','#ff9600'],
 				title:{
 				text : chartName
 				},
 				xAxis : {
-					categories : cate,
-					 plotLines: [{
-			                label: {
-			                	rotation: 40
-			                }
-			            }]
+					categories : cate
 				},
 				yAxis : {
 				
 					title : {
 						text : text
 					},
+					//max:150,
+					//min:60,
+					//tickInterval:25,
 					lineWidth:1,
 					plotLines : [ {
 						value : 0,
@@ -528,13 +594,23 @@
 				
 				tooltip : {
 					formatter : function() {
-						var tips='<b>' + tims[this.x ] + '</b><br/>'
-								+ vals[0].name + ': ' + shr[this.x ]
-								+ '毫米汞柱<br/>' + vals[1].name + ': '
-								+ dia[this.x ] + '毫米汞柱<br/>';
+						var tips='';
+						if( flag=="0"||flag=="2"){
+							 tips='<b>' + tims[this.x ] + '</b><br/>'
+									+ vals[0].name + ': ' + shr[this.x ]
+									+ '毫米汞柱<br/>' + vals[1].name + ': '
+									+ dia[this.x ] + '毫米汞柱<br/>';
+									
 								
-							tips+=vals[2].name
-								+ ': ' + av[this.x ] + '毫米汞柱';
+						}else{
+							 tips='<b>' + tims[this.x ] + '</b><br/>'
+									+ vals[0].name + ': ' + shr[this.x ].y
+									+ '毫米汞柱<br/>' + vals[1].name + ': '
+									+ dia[this.x ].y + '毫米汞柱<br/>';
+									
+						}
+						tips+=vals[2].name
+									+ ': ' + av[this.x ] + '毫米汞柱';
 						return tips;
 					}
 				},
@@ -554,7 +630,10 @@
         		},
 				series : vals
 			});
-	}
+			
+			
+
+	}	
 	
 	var weekbprecords ="";//测压完成情况集合
 	var week_start_plan=0;//测压完成情况开始条数
@@ -653,39 +732,152 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-								<ul>
-									<li class="weekli_disc weekli_margin">创建日期：<span class="tblack_results" id="week_tracking_date"></span></li>
-									<li class="weekli_disc weekli_margin">统计区间：<span class="tblack_results" id="week_interval"></span></li>
-									<li class="weekli_disc weekli_margin">降压目标：<span class="tblack_results" id="bp_target"></span></li>
-									<li class="weekli_disc weekli_margin">血压分级：<span class="tblack_results" id="bp_hype_type"></span></li>
-									<li class="weekli_disc weekli_margin">风险分层：<span class="tblack_results" id="risk_level"></span></li>
-									<li class="weekli_disc weekli_margin">心血管风险因素：</li>
-									<li class="weekli_margin"><span class="tblack_results"	id="cv_risk"></span></li>
-									<li class="weekli_disc weekli_margin">靶器官损害：</li>
-									<li class="weekli_margin"><span class="tblack_results"	id="target_organ_damage"></span></li>
-									<li class="weekli_disc weekli_margin">伴临床疾患：</li>
-									<li class="weekli_margin"><span class="tblack_results"	id="clinical"></span></li>
-									<li class="weekli_disc weekli_margin">血压总体分析：</li>
-									<li class="weekli_margin" id="mean_bp"></li>
-									<li class="weekli_margin" id="bp_load"></li>
-									<li class="weekli_margin" id="cv"></li>
-									<li class="weekli_margin" id="sbp"></li>
-									<li class="weekli_margin" id="dbp"></li>
-									<li class="weekli_disc weekli_margin">不适应症情况：</li>
-									<li class="weekli_margin"><span id="week_plan_inadaptation"style="border: 0px;"> </span></li>
-									<li class="weekli_disc weekli_margin">测压方案完成情况：</li>
-									<li class="weekli_margin"><span id="measure_compliance"></span></li>
-									<li class="weekli_disc weekli_margin">总结：</li>
-									<li class="weekli_margin" id="conclusion"></li>
-									<li class="weekli_disc weekli_margin">保健建议：</li>
-									<li class="weekli_margin" id="suggestion"></li>
-									<li class="weekli_disc weekli_margin">医生分析结果： <span class="tblack_results" id="detail_doctor_report"></span>	</li>
-									<li class="weekli_disc weekli_margin">医生建议： <span class="tblack_results" id="detail_doctor_suggest"></span></li>
-								</ul>
+
+                            	<ul>
+									<li class="weekli_disc weekli_margin"><span class="monthli_color">创建日期：</span><span class="tblack_results" id="week_tracking_date"></span></li>
+									<li class="weekli_disc weekli_margin"><span class="monthli_color">统计区间：</span><span class="tblack_results" id="week_interval"></span></li> 
+									<li class="weekli_disc weekli_margin monthli_color">总体情况：</li>
+								</ul>	
+	                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="detailtable table table-bordered dataTable">
+									<colgroup>
+										<col width="20%">
+										<col width="20%">
+										<col width="20%">
+										<col width="20%">
+										<col width="20%">
+										<col width="20%">
+									</colgroup>
+									<tbody><tr>
+										<td rowspan="2" class="color_y">降压目标</td>
+										<td class="color_y">收缩压</td>
+										<td id="week_target_shrink"></td>
+										<td class="color_y">血压等级</td>
+										<td id="bp_hype_type"></td>
+									</tr>
+									<tr>
+										<td class="color_y">舒张压</td>
+										<td id="week_target_diastole"></td>
+										<td class="color_y">风险分层</td>
+										<td id="risk_level">数据不足</td>
+									</tr>
+									<tr>
+										<td colspan="2" rowspan="1" class="color_y" >心血管风险因素</td>
+										<td colspan="3" id="cv_risk">&nbsp;</td>
+									</tr>
+									<tr id="month_tr_target_organ_damage">
+										<td colspan="2" class="color_y" >靶器官损害</td>
+										<td colspan="3" id="target_organ_damage">&nbsp;</td>
+									</tr>
+									<tr id="month_tr_clinical">
+										<td colspan="2" class="color_y" rowspan="3">伴临床疾患</td>
+										<td colspan="3" id="clinical"></td>
+									</tbody>
+								</table>		
+
+                            	<ul>
+									<li class="monthli_disc monthli_margin monthli_color">血压总体分析：</li>
+								</ul>	
+								<table width="100%" border="0" cellspacing="0" cellpadding="0"  class="detailtable table table-bordered dataTable">
+									<colgroup>
+										<col width="20%">
+										<col width="15%">
+										<col width="15%">
+										<col width="20%">
+										<col width="15%">
+										<col width="15%">
+									</colgroup>
+									<tbody>
+										<tr>
+											<td rowspan="2" class="color_y">平均血压</td>
+											<td class="color_y">收缩压</td>
+											<td id="week_avg_bp_shr"></td>
+											<td rowspan="4" class="color_y">血压负荷</td>
+											<td class="color_y">收缩压</td>
+											<td id="week_bp_load_shr"></td>
+										</tr>
+										<tr>
+											<td class="color_y">舒张压</td>
+											<td id="week_avg_bp_dia"></td>
+											<td class="color_y">舒张压</td>
+											<td id="week_bp_load_dia"></td>
+										</tr>
+										<tr>
+											<td rowspan="2" class="color_y">血压变异性</td>
+											<td colspan="2" rowspan="2" id="week_cv"></td>
+											<td class="color_y">平均动脉压</td>
+											<td id="week_mean_load"></td>
+										</tr>
+										<tr>
+											<td class="color_y">心率</td>
+											<td id="week_heart_rate"></td>
+										</tr>
+										<tr>
+											<td class="color_y">最大SBP</td>
+											<td colspan="2" id="week_max_sbp"></td>
+											<td class="color_y">发生时间</td>
+											<td colspan="2" id="week_max_sbp_time"></td>
+										</tr>
+										<tr>
+											<td class="color_y">最小SBP</td>
+											<td colspan="2" id="week_min_sbp"></td>
+											<td class="color_y">发生时间</td>
+											<td colspan="2" id="week_min_sbp_time"></td>
+										</tr>
+										<tr>
+											<td class="color_y">最大DBP</td>
+											<td colspan="2" id="week_max_dbp"></td>
+											<td class="color_y">发生时间</td>
+											<td colspan="2" id="week_max_dbp_time"></td>
+										</tr>
+										<tr>
+											<td class="color_y">最小DBP</td>
+											<td colspan="2" id="week_min_dbp"></td>
+											<td class="color_y">发生时间</td>
+											<td colspan="2" id="week_min_dbp_time"></td>
+										</tr>
+									</tbody>
+								</table>                            
+                            
+ 
+ 								<ul>
+									<li class="weekli_disc weekli_margin monthli_color">分析小结：</li>
+								</ul>	                            
+	                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="detailtable table table-bordered dataTable">
+										<colgroup>
+											<col width="20%">
+											<col width="80%">
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="color_y">不适应症情况：</td>
+												<td id="week_plan_inadaptation"></td>
+											</tr>
+											<tr>
+												<td class="color_y">测压方案完成情况：</td>
+												<td id="measure_compliance"></td>
+											</tr>
+											<tr >
+												<td class="color_y">总结：</td>
+												<td id="conclusion"></td>
+											</tr>
+											<tr>
+												<td class="color_y">保健建议：</td>
+												<td id="suggestion"></td>
+											</tr>
+											<tr >
+												<td class="color_y">医生分析结果：</td>
+												<td id="detail_doctor_report"></td>
+											</tr>
+											<tr >
+												<td class="color_y">医生建议： </td>
+												<td id="detail_doctor_suggest"></td>
+											</tr>
+										</tbody>
+								</table>	
                             </div><!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">				
 								<ul>
-									<li class="weekli_disc weekli_margin">血压数据统计表：</li>
+									<li class="weekli_disc weekli_margin monthli_color">血压数据统计表：</li>
 									<li class="weekli_margin">
 										<table class="detailtable table table-bordered table-striped dataTable" id="week_bp_static" >
 											<tr>
@@ -698,7 +890,7 @@
 											</tr>
 										</table>
 									</li>
-									<li class="weekli_disc weekli_margin">测压异常事件情况：</li>
+									<li class="weekli_disc weekli_margin monthli_color">测压异常事件情况：</li>
 									<li class="weekli_margin">
 										<table class="detailtable table table-bordered table-striped dataTable" id="week_plan_unnormal">
 											<tr>
@@ -708,7 +900,7 @@
 											</tr>
 										</table>
 									</li>
-									<li class="weekli_disc weekli_margin">服用药物情况：</li>
+									<li class="weekli_disc weekli_margin monthli_color">服用药物情况：</li>
 									<li class="weekli_margin">
 										<table class="detailtable table table-bordered table-striped dataTable" id="week_plan_medicine" >
 											<tr>
@@ -741,15 +933,15 @@ table th {
 	padding: 5px;
 	vertical-align: top;
 }
-.monthli_disc{
-	list-style-type:disc;
-}
 .monthli_decimal{
 	list-style-type:decimal;
 }
 
 .monthli_margin{
 	margin-left:10px;
+}
+.monthli_color{
+	color: #3c8dbc;
 }
 </style>
 <script type="text/javascript">
@@ -765,7 +957,7 @@ var version=0;//版本
 		$("#month_tracking_date").html(bpMonthReport.createdOn);
 		$("#month_interval").html(bpMonthReport.starttime+"~"+bpMonthReport.endtime);
 		//日平均血压
-		bloodPressureCharts(null,'血压趋势图');
+		//bloodPressureCharts(null,'血压趋势图');
 		version = 1;
 		//血压统计
 		bp_static = bpMonthReport.bp_static;
@@ -805,7 +997,10 @@ var version=0;//版本
 		}
 		
 		//降压目标
-		$("#month_bp_target").html("收缩压:"+bpMonthReport.goalOfSBP+"mmhg,舒张压:"+bpMonthReport.goalOfDBP+"mmhg");
+		//$("#month_bp_target").html("收缩压:"+bpMonthReport.goalOfSBP+"mmhg,舒张压:"+bpMonthReport.goalOfDBP+"mmhg");
+		$("#month_target_shrink").html(bpMonthReport.goalOfSBP+"mmhg");
+		$("#month_target_diastole").html(bpMonthReport.goalOfDBP+"mmhg");
+		
 		//血压分级
 		$("#month_bp_hype_type").html(bpMonthReport.bloodLevel);
 		//风险分层
@@ -817,11 +1012,28 @@ var version=0;//版本
 		//伴临床疾患
 		$("#month_clinical").html(bpMonthReport.clinicalDisease);
 		//血压总体分析
-		$("#month_mean_bp").html("平均血压:  收缩压:"+bpMonthReport.meanBloodPressureOfSBP+"mmhg,  舒张压: "+bpMonthReport.meanBloodPressureOfDBP+"mmhg");
-		$("#month_bp_load").html("血压负荷:  收缩压:"+bpMonthReport.bloodPressureLoadOfSBP+"  舒张压:"+bpMonthReport.bloodPressureLoadOfDBP+";  平均动脉压:"+bpMonthReport.bloodPressureLoadOfMAP+"  心律:"+bpMonthReport.bloodPressureLoadOfHR);
-		$("#month_cv").html("血压变异性:"+bpMonthReport.sdMean);
-		$("#month_sbp").html("最大SBP:"+bpMonthReport.maxSBP+",  发生时间:"+bpMonthReport.maxSBPTime+";  最小SBP:"+bpMonthReport.minSBP+",  发生时间:"+bpMonthReport.minSBPTime);
-		$("#month_dbp").html("最大DBP:"+bpMonthReport.maxDBP+",  发生时间:"+bpMonthReport.maxDBPTime+";  最小DBP:"+bpMonthReport.minDBP+",  发生时间:"+bpMonthReport.minDBPTime);
+		//$("#month_mean_bp").html("平均血压:  收缩压:"+bpMonthReport.meanBloodPressureOfSBP+"mmhg,  舒张压: "+bpMonthReport.meanBloodPressureOfDBP+"mmhg");
+		//$("#month_bp_load").html("血压负荷:  收缩压:"+bpMonthReport.bloodPressureLoadOfSBP+"  舒张压:"+bpMonthReport.bloodPressureLoadOfDBP+";  平均动脉压:"+bpMonthReport.bloodPressureLoadOfMAP+"  心律:"+bpMonthReport.bloodPressureLoadOfHR);
+		$("#month_avg_bp_shr").html(bpMonthReport.meanBloodPressureOfSBP+"mmhg");
+		$("#month_avg_bp_dia").html(bpMonthReport.meanBloodPressureOfDBP+"mmhg");
+		$("#month_bp_load_shr").html(bpMonthReport.bloodPressureLoadOfSBP+"mmhg");
+		$("#month_bp_load_dia").html(bpMonthReport.bloodPressureLoadOfDBP+"mmhg");
+		$("#month_mean_load").html(bpMonthReport.bloodPressureLoadOfMAP+"mmhg");
+		$("#month_heart_rate").html(bpMonthReport.bloodPressureLoadOfHR);
+		$("#month_cv").html(bpMonthReport.sdMean);
+
+		//$("#month_sbp").html("最大SBP:"+bpMonthReport.maxSBP+",  发生时间:"+bpMonthReport.maxSBPTime+";  最小SBP:"+bpMonthReport.minSBP+",  发生时间:"+bpMonthReport.minSBPTime);
+		//$("#month_dbp").html("最大DBP:"+bpMonthReport.maxDBP+",  发生时间:"+bpMonthReport.maxDBPTime+";  最小DBP:"+bpMonthReport.minDBP+",  发生时间:"+bpMonthReport.minDBPTime);
+		$("#month_max_sbp").html(bpMonthReport.maxSBP);
+		$("#month_max_sbp_time").html(bpMonthReport.maxSBPTime);
+		$("#month_min_sbp").html(bpMonthReport.minSBP);
+		$("#month_min_sbp_time").html(bpMonthReport.minSBPTime);
+
+		$("#month_max_dbp").html(bpMonthReport.maxDBP);
+		$("#month_max_dbp_time").html(bpMonthReport.maxDBPTime);
+		$("#month_min_dbp").html(bpMonthReport.minDBP);
+		$("#month_min_dbp_time").html(bpMonthReport.minDBPTime);		
+		
 		//不适症状
 		$("#plan_inadaptation2").html(bpMonthReport.noIndication);
 		//测压方案完成情况
@@ -956,52 +1168,167 @@ var version=0;//版本
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_3">
+                            
+                            	<ul>
+									<li class="monthli_disc monthli_margin"><span class="monthli_color">创建日期：</span><span class="tblack_results" id="month_tracking_date"></span></li>
+									<li class="monthli_disc monthli_margin"><span class="monthli_color">统计区间：</span><span class="tblack_results" id="month_interval"></span></li> 
+									<li class="monthli_disc monthli_margin monthli_color">总体情况：<span class="tblack_results" id="month_interval"></span></li>
+								</ul>	
+	                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="detailtable table table-bordered dataTable">
+									<colgroup>
+										<col width="20%">
+										<col width="20%">
+										<col width="20%">
+										<col width="20%">
+										<col width="20%">
+										<col width="20%">
+									</colgroup>
+									<tbody><tr>
+										<td rowspan="2" class="color_y">降压目标</td>
+										<td class="color_y">收缩压</td>
+										<td id="month_target_shrink"></td>
+										<td class="color_y">血压等级</td>
+										<td id="month_bp_hype_type"></td>
+									</tr>
+									<tr>
+										<td class="color_y">舒张压</td>
+										<td id="month_target_diastole"></td>
+										<td class="color_y">风险分层</td>
+										<td id="month_risk_level">数据不足</td>
+									</tr>
+									<tr id="month_tr_cv_risk">
+										<td colspan="2" rowspan="1" class="color_y" >心血管风险因素</td>
+										<td colspan="3" id="month_cv_risk">&nbsp;</td>
+									</tr>
+									<tr id="month_tr_target_organ_damage">
+										<td colspan="2" class="color_y" >靶器官损害</td>
+										<td colspan="3" id="month_target_organ_damage">&nbsp;</td>
+									</tr>
+									<tr id="month_tr_clinical">
+										<td colspan="2" class="color_y" rowspan="3">伴临床疾患</td>
+										<td colspan="3" id="month_clinical"></td>
+									</tbody>
+								</table>		
+
+                            	<ul>
+									<li class="monthli_disc monthli_margin monthli_color">血压总体分析：</li>
+								</ul>	
+								<table width="100%" border="0" cellspacing="0" cellpadding="0"  class="detailtable table table-bordered dataTable">
+									<colgroup>
+										<col width="20%">
+										<col width="15%">
+										<col width="15%">
+										<col width="20%">
+										<col width="15%">
+										<col width="15%">
+									</colgroup>
+									<tbody>
+										<tr>
+											<td rowspan="2" class="color_y">平均血压</td>
+											<td class="color_y">收缩压</td>
+											<td id="month_avg_bp_shr"></td>
+											<td rowspan="4" class="color_y">血压负荷</td>
+											<td class="color_y">收缩压</td>
+											<td id="month_bp_load_shr"></td>
+										</tr>
+										<tr>
+											<td class="color_y">舒张压</td>
+											<td id="month_avg_bp_dia"></td>
+											<td class="color_y">舒张压</td>
+											<td id="month_bp_load_dia"></td>
+										</tr>
+										<tr>
+											<td rowspan="2" class="color_y">血压变异性</td>
+											<td colspan="2" rowspan="2" id="month_cv"></td>
+											<td class="color_y">平均动脉压</td>
+											<td id="month_mean_load"></td>
+										</tr>
+										<tr>
+											<td class="color_y">心率</td>
+											<td id="month_heart_rate"></td>
+										</tr>
+										<tr>
+											<td class="color_y">最大SBP</td>
+											<td colspan="2" id="month_max_sbp"></td>
+											<td class="color_y">发生时间</td>
+											<td colspan="2" id="month_max_sbp_time"></td>
+										</tr>
+										<tr>
+											<td class="color_y">最小SBP</td>
+											<td colspan="2" id="month_min_sbp"></td>
+											<td class="color_y">发生时间</td>
+											<td colspan="2" id="month_min_sbp_time"></td>
+										</tr>
+										<tr>
+											<td class="color_y">最大DBP</td>
+											<td colspan="2" id="month_max_dbp"></td>
+											<td class="color_y">发生时间</td>
+											<td colspan="2" id="month_max_dbp_time"></td>
+										</tr>
+										<tr>
+											<td class="color_y">最小DBP</td>
+											<td colspan="2" id="month_min_dbp"></td>
+											<td class="color_y">发生时间</td>
+											<td colspan="2" id="month_min_dbp_time"></td>
+										</tr>
+									</tbody>
+								</table>
 								<ul>
-									<li class="monthli_disc monthli_margin">创建日期：<span class="tblack_results" id="month_tracking_date"></span></li>
-									<li class="monthli_disc monthli_margin">统计区间：<span class="tblack_results" id="month_interval"></span></li>
-									<li class="monthli_disc monthli_margin">降压目标：<span class="tblack_results" id="month_bp_target"></span></li>
-									<li class="monthli_disc monthli_margin">血压分级：<span class="tblack_results" id="month_bp_hype_type"></span></li>
-									<li class="monthli_disc monthli_margin">风险分层：<span class="tblack_results" id="month_risk_level"></span></li>
-									<li class="monthli_disc monthli_margin">心血管风险因素：</li>
-									<li class="monthli_margin"><span class="tblack_results" id="month_cv_risk"></span> </li>
-									<li class="monthli_disc monthli_margin">靶器官损害：</li>
-									<li class="monthli_margin"><span class="tblack_results"	id="month_target_organ_damage"></span></li>
-									<li class="monthli_disc monthli_margin">伴临床疾患：</li>
-									<li class="monthli_margin"><span class="tblack_results" id="month_clinical"></span></li>
-									<li class="monthli_disc monthli_margin">血压总体分析：</li>
-									<li class="monthli_margin" id="month_mean_bp"></li>
-									<li class="monthli_margin" id="month_bp_load"></li>
-									<li class="monthli_margin" id="month_cv"></li>
-									<li class="monthli_margin" id="month_sbp"></li>
-									<li class="monthli_margin" id="month_dbp"></li>
-									<li class="monthli_disc monthli_margin">不适应症情况：</li>
-									<li class="monthli_margin"><span id="plan_inadaptation2"style="border: 0px;"> </span></li>
-									<li class="monthli_disc monthli_margin">测压方案完成情况：</li>
-									<li class="monthli_margin"><span id="month_measure_compliance"></span></li>
-				
-									<li class="monthli_disc monthli_margin">总结：</li>
-									<li class="monthli_margin" id="month_conclusion"></li>
-									<li class="monthli_disc monthli_margin">保健建议：</li>
-									<li class="monthli_margin" id="month_suggestion"></li>
-									<li class="monthli_disc monthli_margin">评估等级：<select id="assessment_level" disabled="disabled">
-												<option value="高">高</option>
-												<option value="中">中</option>
-												<option value="低">低</option>
-											</select>
-											用户状态： <select id="user_state" disabled="disabled">
-												<option value="恢复迅速">恢复迅速</option>
-												<option value="有好转">有好转</option>
-												<option value="无好转">无好转</option>
-												<option value="更严重">更严重</option>
-											</select>
-									</li>
-									<li class="monthli_disc monthli_margin">总结：<span id="doctor_result"></span>
-									</li>
-								</ul>
+									<li class="monthli_disc monthli_margin monthli_color">分析小结：</li>
+								</ul>	                            
+	                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="detailtable table table-bordered dataTable">
+										<colgroup>
+											<col width="20%">
+											<col width="80%">
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="color_y">不适应症情况：</td>
+												<td id="plan_inadaptation2"></td>
+											</tr>
+											<tr>
+												<td class="color_y">测压方案完成情况：</td>
+												<td id="month_measure_compliance"></td>
+											</tr>
+											<tr >
+												<td class="color_y">总结：</td>
+												<td id="month_conclusion"></td>
+											</tr>
+											<tr>
+												<td class="color_y">保健建议：</td>
+												<td id="month_suggestion"></td>
+											</tr>
+											<tr >
+												<td class="color_y">评估等级：</td>
+												<td id="plan_inadaptation2">
+														<select id="assessment_level" disabled="disabled">
+															<option value="高">高</option>
+															<option value="中">中</option>
+															<option value="低">低</option>
+														</select>
+												</td>
+											</tr>
+											<tr >
+												<td class="color_y">用户状态： </td>
+												<td id="plan_inadaptation2">
+													<select id="user_state" disabled="disabled">
+														<option value="恢复迅速">恢复迅速</option>
+														<option value="有好转">有好转</option>
+														<option value="无好转">无好转</option>
+														<option value="更严重">更严重</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td class="color_y">医生总结：</td>
+												<td id="doctor_result"></td>
+											</tr>
+										</tbody>
+								</table>	
                             </div><!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_4">
 								<ul>
-									<li class="monthli_disc monthli_margin">血压数据统计表：</li>
+									<li class="monthli_disc monthli_margin monthli_color">血压数据统计表：</li>
 									<li class="tblack_results monthli_margin">
 										<table class="detailtable table table-bordered table-striped dataTable" id="month_bp_static">
 											<tr>
@@ -1014,7 +1341,7 @@ var version=0;//版本
 											</tr>
 										</table>
 									</li>
-									<li class="monthli_disc monthli_margin">测压异常事件情况：</li>
+									<li class="monthli_disc monthli_margin monthli_color">测压异常事件情况：</li>
 									<li class="tblack_results monthli_margin">
 										<table class="detailtable table table-bordered table-striped dataTable" id="month_bp_static"id="plan_unnormal2">
 											<tr>
@@ -1024,7 +1351,7 @@ var version=0;//版本
 											</tr>
 										</table>
 									</li>
-									<li class="monthli_disc monthli_margin">服用药物情况：</li>
+									<li class="monthli_disc monthli_margin monthli_color">服用药物情况：</li>
 									<li class="tblack_results monthli_margin">
 										<table class="detailtable table table-bordered table-striped dataTable" id="plan_medicine2">
 											<tr>
@@ -1034,7 +1361,7 @@ var version=0;//版本
 											</tr>
 										</table>
 									</li>
-									<li class="monthli_disc monthli_margin">心电监护结果：</li>
+									<li class="monthli_disc monthli_margin monthli_color">心电监护结果：</li>
 									<li class="tblack_results monthli_margin">
 										<table class="detailtable table table-bordered table-striped dataTable" id="month_ecg_report">
 											<tr>
