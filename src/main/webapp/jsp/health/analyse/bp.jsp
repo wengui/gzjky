@@ -136,7 +136,7 @@
 	 var shrink = recordList[index].shrink;
 	 //舒张压
 	 var diastole = recordList[index].diastole;
-	 if(shrink < diastole || (shrink<60 || shrink >255) || (diastole<30 || diastole>195)){
+	 if((parseInt(shrink) < parseInt(diastole)) || (shrink<60 || shrink >255) || (diastole<30 || diastole>195)){
 		 recordList[index].pressure_value = "打压失败";
 	 }else{
 		 recordList[index].pressure_value = shrink +"/"+ diastole;

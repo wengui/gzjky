@@ -118,7 +118,7 @@
 	  
 	  var report_content = recordList[index].report;
 	  td = tr.insertCell(2);
-	  td.innerHTML = report_content.length>=12?report_content.substring(0,10)+".." : report_content;
+	  td.innerHTML = report_content;
 
 	  td = tr.insertCell(3);
 	  td.innerHTML = recordList[index].state;

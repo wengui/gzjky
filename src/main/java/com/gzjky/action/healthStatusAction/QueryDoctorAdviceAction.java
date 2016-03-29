@@ -42,7 +42,7 @@ public class QueryDoctorAdviceAction extends ActionSupport {
 			String str = ActionContext.getContext().getSession().get("Patient").toString();
 			int patientID = Integer.parseInt(ActionContext.getContext().getSession().get("PatientID").toString());
 			
-			//TODO 患者ID要从session里取得
+			// 患者ID要从session里取得
 			List<QueryDoctorAdviceOutputBean> result = doctorAdviceReadMapper.selectByPatientID(patientID);
 			
 			ModelMap modelMap = new ModelMap();

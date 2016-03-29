@@ -895,7 +895,7 @@
                                             <div class="box-header">
                                                 <h4 class="box-title" style="color: #3c8dbc">血压等级 </h4>
                                             </div>
-                                            <div class="box-body" id="collapseOne">
+                                            <div class="box-body" id="pressure_level">
                                                         		暂无
                                             </div>
                                         </div>
@@ -915,7 +915,7 @@
                                             </div>
                                             <div id="collapseThree" class="panel-collapse collapse in">
                                                 <div class="box-body">
-														暂无
+														体力活动时没有心悸、轻微疲劳、呼吸正常。
                                                 </div>
                                             </div>
                                         </div>
