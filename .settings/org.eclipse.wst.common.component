@@ -14,6 +14,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/gzjky/target/classes"/>
-        <property name="context-root" value="wgadmin"/>
+        <property name="context-root" value="gzjky"/>
     </wb-module>
 </project-modules>
