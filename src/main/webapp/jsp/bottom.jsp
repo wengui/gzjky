@@ -22,12 +22,6 @@
             <li class="tGray_bottom" title="客服热线">客服热线：</li>
             <li class="tGray_bottom" title="公司官网">公司官网：</li>
             <li class="tGray_bottom" title="服务邮箱">邮箱：</li>
-            <li class="tGray_bottom">
-				<a href="http://122.224.75.236/wzba/login.do?method=hdurl&doamin=http://www.995120.cn&id=330108000063652&SHID=1223.0AFF_NAME=com.rouger.
-				gs.main.UserInfoAff&AFF_ACTION=qyhzdetail&PAGE_URL=ShowDetail"
-				target="_blank"> <img src="http://122.224.75.236/wzba/view/baxx/gh.jpg" border="0"></a>        
-            
-            </li>
             
             
           </ul>

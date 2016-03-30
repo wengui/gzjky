@@ -64,7 +64,7 @@ body{background:#ededed}
 .bottom_main{width:1000px; margin:0 auto;}
 .bottom_contact,.bottom_concern{width:300px; float:left; text-align:left}
 .tWhite{color:#fff; font-size:13px; padding-bottom:10px; width:300px;}
-.tGray_bottom{width:300px; font-size:12px; text-align:left; height:25px; line-height:25px;}
+.tGray_bottom{width:300px; font-size:12px; text-align:left; height:40px; line-height:25px;}
 
 
 .tGreen{width:140px; height:32px; text-align:left; color:#3d9970; font-size:24px; font-weight:500; line-height:30px; padding-right:10px}
@@ -77,7 +77,7 @@ body{background:#ededed}
 .taqueation_right{width:100px; height:25px; line-height:25px; text-align:right;}
 .wechat_code{background:url(../images/health/wechat_code.png) center 5px no-repeat; width:122px; height:15px; margin-right:51px; margin-left:5px; display:inline; text-align:center; padding-top:135px; font-size:13px;}
 .blog_code{background:url(../images/health/blog_code.png) center 5px no-repeat; width:122px; height:15px; text-align:center; padding-top:135px; font-size:13px;}
-.copyright{width:1000px; float:left; margin-top:20px; border-top:1px solid #5a5a5a; padding-top:10px; text-align:left; font-size:13px;}
+.copyright{width:1000px; float:left; border-top:1px solid #5a5a5a; padding-top:10px; text-align:left; font-size:13px;}
 
 /*----------------index_right---------------*/
 .index_health_right{width:710px; padding:20px; float:left; background:#e8e3d7}
