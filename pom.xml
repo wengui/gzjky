@@ -94,7 +94,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<warName>wgadmin</warName>
+					<warName>gzjky</warName>
 				</configuration>
 			</plugin>
 			<plugin>
